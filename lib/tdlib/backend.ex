@@ -5,7 +5,8 @@ defmodule TDLib.Backend do
   use GenServer
 
   @moduledoc false
-  @port_opts [:binary, :line]
+  @backend_verbosity_level Application.compile_env(:tdlib, :backend_verbosity_level, 2)
+  @port_opts [:binary, :line, args: ["verbose #{@backend_verbosity_level}"]]
 
   # Internal state
   defstruct [:name, :port, :buffer]
