@@ -4,10 +4,8 @@ defmodule TDLib.Handler do
   require Logger
   use GenServer
 
-  # Must be a multiple of 4
   @moduledoc false
-  @backend_verbosity_level 2
-  @disable_handling Application.compile_env(:telegram_tdlib, :disable_handling)
+  @disable_handling Application.compile_env(:tdlib, :disable_handling)
 
   def start_link(session_name) do
     GenServer.start_link(__MODULE__, session_name, [])
@@ -41,11 +39,6 @@ defmodule TDLib.Handler do
     event = Map.get(cli, "event")
 
     Logger.info "#{session}: received cli event #{event}"
-
-    case event do
-      "client_created" -> set_backend_verbosity(@backend_verbosity_level, session)
-      _ -> :ignore
-    end
   end
 
   def handle_object(json, session) do
@@ -92,15 +85,6 @@ defmodule TDLib.Handler do
 
     Logger.info "#{session}: sending #{Map.get(map, :"@type")}"
     GenServer.call backend_pid, {:transmit, msg}
-  end
-
-  defp set_backend_verbosity(level, session) do
-    # Set tdlib's verbosity level
-    backend_pid = Registry.get(session, :backend_pid)
-    command = "verbose #{level}"
-    GenServer.call backend_pid, {:transmit, command}
-
-    Logger.info "#{session}: backend verbosity set to #{level}."
   end
 
   defp recursive_match(:object, json, prefix) do
