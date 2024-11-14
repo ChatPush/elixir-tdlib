@@ -6,7 +6,7 @@ defmodule TDLib.Backend do
 
   @moduledoc false
   @backend_verbosity_level Application.compile_env(:tdlib, :backend_verbosity_level, 2)
-  @port_opts [:binary, :line, args: ["verbose #{@backend_verbosity_level}"]]
+  @port_opts [:binary, :line, args: ["#{@backend_verbosity_level}"]]
 
   # Internal state
   defstruct [:name, :port, :buffer]
