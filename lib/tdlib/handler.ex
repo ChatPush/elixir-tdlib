@@ -79,11 +79,11 @@ defmodule TDLib.Handler do
 
   ###
 
-  defp transmit(session, map) do
-    msg = Jason.encode!(map)
+  defp transmit(session, struct) do
+    msg = struct |> Map.delete(:__struct__) |> Jason.encode!()
     backend_pid = Registry.get(session, :backend_pid)
 
-    Logger.info "#{session}: sending #{Map.get(map, :"@type")}"
+    Logger.info "#{session}: sending #{Map.get(struct, :"@type")}"
     GenServer.call backend_pid, {:transmit, msg}
   end
 

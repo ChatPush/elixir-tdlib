@@ -73,8 +73,8 @@ defmodule TDLib do
   Alternatively it is also possible to directly provide an already encoded
   binary or string, althrough you should not need it.
   """
-  def transmit(session_name, msg) when is_map(msg) do
-    json = Jason.encode!(msg)
+  def transmit(session_name, struct) when is_map(struct) do
+    json = struct |> Map.delete(:__struct__) |> Jason.encode!()
     transmit(session_name, json)
   end
 
