@@ -6,7 +6,7 @@ defmodule Mix.Tasks.GenerateTypes do
   @json_source Mix.Project.deps_paths().tdlib_json_cli |> Path.join("types.json")
 
   defp extract(text) do
-    json = Poison.decode!(text)
+    json = Jason.decode!(text)
     keys = Map.keys(json)
     type_filter = fn (k, t) -> (Map.get(json, k) |> Map.get("type")) == t end
 

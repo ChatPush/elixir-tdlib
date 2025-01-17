@@ -20,7 +20,7 @@ defmodule TDLib.Handler do
   end
 
   def handle_info({:tdlib, msg}, session) do
-    json = Poison.decode!(msg)
+    json = Jason.decode!(msg)
     keys = Map.keys(json)
 
     cond do
@@ -80,7 +80,7 @@ defmodule TDLib.Handler do
   ###
 
   defp transmit(session, map) do
-    msg = Poison.encode!(map)
+    msg = Jason.encode!(map)
     backend_pid = Registry.get(session, :backend_pid)
 
     Logger.info "#{session}: sending #{Map.get(map, :"@type")}"

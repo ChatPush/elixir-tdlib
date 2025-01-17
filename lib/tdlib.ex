@@ -74,7 +74,7 @@ defmodule TDLib do
   binary or string, althrough you should not need it.
   """
   def transmit(session_name, msg) when is_map(msg) do
-    json = Poison.encode!(msg)
+    json = Jason.encode!(msg)
     transmit(session_name, json)
   end
 
