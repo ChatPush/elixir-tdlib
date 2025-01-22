@@ -38,7 +38,7 @@ defmodule TDLib.Handler do
     cli = Map.get(json, "@cli")
     event = Map.get(cli, "event")
 
-    Logger.info("#{session}: received cli event #{event}")
+    Logger.debug("#{session}: received cli event #{event}")
   end
 
   def handle_object(json, session) do
@@ -52,7 +52,7 @@ defmodule TDLib.Handler do
       end
 
     if struct do
-      Logger.info("#{session}: received object #{type}")
+      Logger.debug("#{session}: received object #{type}")
 
       unless @disable_handling do
         case struct do
@@ -91,7 +91,7 @@ defmodule TDLib.Handler do
     msg = struct |> Map.delete(:__struct__) |> Jason.encode!()
     backend_pid = Registry.get(session, :backend_pid)
 
-    Logger.info("#{session}: sending #{Map.get(struct, :"@type")}")
+    Logger.debug("#{session}: sending #{Map.get(struct, :"@type")}")
     GenServer.call(backend_pid, {:transmit, msg})
   end
 
