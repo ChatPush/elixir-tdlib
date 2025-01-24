@@ -6,8 +6,8 @@ defmodule TDLib.Mixfile do
       app: :tdlib,
       version: "0.0.3",
       elixir: "~> 1.5",
-      start_permanent: Mix.env == :prod,
-      compilers: Mix.compilers,
+      start_permanent: Mix.env() == :prod,
+      compilers: Mix.compilers(),
       deps: deps(),
 
       # Hex
@@ -53,11 +53,12 @@ defmodule TDLib.Mixfile do
       {:jason, "~> 1.4"},
       {:elixir_make, "~> 0.4", runtime: false},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
-      {:tdlib_json_cli,
+      {
+        :tdlib_json_cli,
         # git: "https://github.com/PushSMS/tdlib-json-cli",
         github: "alex-strizhakov/tdlib-json-cli",
         submodules: true,
-        branch: "nightly",
+        ref: "bf396cb91164d50d303e1c707870497bbecd0b19",
         app: false,
         compile: false
       }
