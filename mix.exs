@@ -58,7 +58,7 @@ defmodule TDLib.Mixfile do
         # git: "https://github.com/PushSMS/tdlib-json-cli",
         github: "alex-strizhakov/tdlib-json-cli",
         submodules: true,
-        ref: "bf396cb91164d50d303e1c707870497bbecd0b19",
+        ref: "ca921382eeecde905f56e010465c8416f0843124",
         app: false,
         compile: false
       }
