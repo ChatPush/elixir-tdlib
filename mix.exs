@@ -52,16 +52,16 @@ defmodule TDLib.Mixfile do
     [
       {:jason, "~> 1.4"},
       {:elixir_make, "~> 0.4", runtime: false},
-      {:ex_doc, "~> 0.21", only: :dev, runtime: false},
-      {
-        :tdlib_json_cli,
-        # git: "https://github.com/PushSMS/tdlib-json-cli",
-        github: "alex-strizhakov/tdlib-json-cli",
-        submodules: true,
-        ref: "21957271854403b6a19da6798ec1462ab93a7418",
-        app: false,
-        compile: false
-      }
+      {:ex_doc, "~> 0.21", only: :dev, runtime: false}
+      # {
+      #   :tdlib_json_cli,
+      #   # git: "https://github.com/PushSMS/tdlib-json-cli",
+      #   github: "alex-strizhakov/tdlib-json-cli",
+      #   submodules: true,
+      #   ref: "21957271854403b6a19da6798ec1462ab93a7418",
+      #   app: false,
+      #   compile: false
+      # }
     ]
   end
 end
