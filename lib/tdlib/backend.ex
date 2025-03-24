@@ -1,10 +1,10 @@
 defmodule TDLib.Backend do
-  alias TDLib.Backend
-  alias TDLib.SessionRegistry, as: Registry
+  @moduledoc false
+
+  alias TDLib.StateHolder
   require Logger
   use GenServer
 
-  @moduledoc false
   @backend_verbosity_level Application.compile_env(:tdlib, :backend_verbosity_level, 2)
   @port_opts [:binary, :line, args: ["#{@backend_verbosity_level}"]]
 
@@ -16,26 +16,29 @@ defmodule TDLib.Backend do
   end
 
   def init(name) do
-    # Register itself
-    true = Registry.update(name, backend_pid: self())
-
     binary = TDLib.get_backend_binary()
 
     # Generate the process' internal state, open the port
-    state = %Backend{
+    state = %__MODULE__{
       name: name,
       buffer: "",
       port: Port.open({:spawn_executable, binary}, @port_opts)
     }
 
-    {:ok, state}
+    {:ok, state, {:continue, :init}}
+  end
+
+  def handle_continue(:init, %{name: name} = state) do
+    session_state = StateHolder.get_state(name)
+    StateHolder.update_state(name, Map.put(session_state, :backend_pid, self()))
+    {:noreply, state}
   end
 
   ###
 
   def handle_call({:transmit, msg}, _from, state) do
     data = msg <> "\n"
-    result = Kernel.send state.port, {self(), {:command, data}}
+    result = Kernel.send(state.port, {self(), {:command, data}})
 
     {:reply, result, state}
   end
@@ -44,27 +47,30 @@ defmodule TDLib.Backend do
     case data do
       {:eol, tail} ->
         # complete buffered line part if required
-        {new_state, msg} = if (state.buffer != "") do
-          {struct(state, buffer: ""), state.buffer <> tail}
-        else
-          {state, tail}
-        end
+        {new_state, msg} =
+          if state.buffer != "" do
+            {struct(state, buffer: ""), state.buffer <> tail}
+          else
+            {state, tail}
+          end
 
         # resolve handler's pid
-        handler_pid = Registry.get(state.name, :handler_pid)
+        %{handler_pid: handler_pid} = StateHolder.get_state(state.name)
 
-        if (handler_pid != nil) do
+        if handler_pid != nil do
           # Forward msg to the client
-          Kernel.send handler_pid, {:tdlib, msg}
+          Kernel.send(handler_pid, {:tdlib, msg})
         else
-          Logger.warning "#{state.name}: incoming message but no handler registered."
+          Logger.warning("#{state.name}: incoming message but no handler registered.")
         end
 
         {:noreply, new_state}
+
       {:noeol, part} ->
         # incomplete line, fill the buffer
         new_state = struct(state, buffer: state.buffer <> part)
         {:noreply, new_state}
+
       _ ->
         raise "unknown input structure"
         {:noreply, state}
