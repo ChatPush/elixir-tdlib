@@ -1,28 +1,29 @@
 defmodule TDLib do
-  alias TDLib.Session
-  alias TDLib.SessionRegistry, as: Registry
-
-  @default_config %{
-    :use_test_dc              => false,
-    :database_directory       => "/tmp/tdlib",
-    :files_directory          => "", # When empty database_directory will be used
-    :use_file_database        => true,
-    :use_chat_info_database   => true,
-    :use_message_database     => true,
-    :use_secret_chats         => false,
-    :api_id                   => "0",
-    :api_hash                 => "0",
-    :system_language_code     => "en",
-    :device_model             => "Unknown",
-    :system_version           => "Unknown",
-    :application_version      => "Unknown",
-    :enable_storage_optimizer => true,
-    :ignore_file_names        => true
-  }
-
   @moduledoc """
   This module allow you to interact with and manage sessions.
   """
+
+  alias TDLib.SessionSupervisor
+  alias TDLib.StateHolder
+
+  @default_config %{
+    :use_test_dc => false,
+    :database_directory => "/tmp/tdlib",
+    # When empty database_directory will be used
+    :files_directory => "",
+    :use_file_database => true,
+    :use_chat_info_database => true,
+    :use_message_database => true,
+    :use_secret_chats => false,
+    :api_id => "0",
+    :api_hash => "0",
+    :system_language_code => "en",
+    :device_model => "Unknown",
+    :system_version => "Unknown",
+    :application_version => "Unknown",
+    :enable_storage_optimizer => true,
+    :ignore_file_names => true
+  }
 
   @doc """
   Configuration template for TDLib, to be modified and used as parameter of
@@ -52,14 +53,14 @@ defmodule TDLib do
   Return either `{:ok, pid}` or `{:error, reason}`.
   """
   def open(session_name, client_pid, config, encryption_key \\ "") do
-    Session.create(session_name, client_pid, config, encryption_key)
+    SessionSupervisor.create(session_name, client_pid, config, encryption_key)
   end
 
   @doc """
   Close the session identified by `session_name`.
   """
   def close(session_name) do
-    Session.destroy(session_name)
+    SessionSupervisor.destroy(session_name)
   end
 
   @doc """
@@ -74,13 +75,18 @@ defmodule TDLib do
   binary or string, althrough you should not need it.
   """
   def transmit(session_name, msg) when is_map(msg) do
-    json = Poison.encode!(msg)
+    json =
+      msg
+      |> Map.delete(:__struct__)
+      |> Map.new(fn {k, v} -> {k, transform_struct(v)} end)
+      |> Jason.encode!()
+
     transmit(session_name, json)
   end
 
   def transmit(session_name, json) when is_binary(json) do
-    backend_pid = Registry.get(session_name, :backend_pid)
-    GenServer.call backend_pid, {:transmit, json}
+    backend_pid = StateHolder.get_state(session_name) |> Map.get(:backend_pid)
+    GenServer.call(backend_pid, {:transmit, json})
   end
 
   @doc """
@@ -91,8 +97,8 @@ defmodule TDLib do
    The client is initially set when the session is create, using `open/3`.
   """
   def update_client(session_name, client_pid) do
-    handler_pid = Registry.get(session_name, :handler_pid)
-    GenServer.call handler_pid, {:set_client, client_pid}
+    handler_pid = StateHolder.get_state(session_name) |> Map.get(:handler_pid)
+    GenServer.call(handler_pid, {:set_client, client_pid})
   end
 
   @doc false
@@ -105,4 +111,12 @@ defmodule TDLib do
       _ -> Path.join(Application.app_dir(app_name), binary_path)
     end
   end
+
+  defp transform_struct(map) when is_map(map) do
+    map
+    |> Map.delete(:__struct__)
+    |> Map.new(fn {k, v} -> {k, transform_struct(v)} end)
+  end
+
+  defp transform_struct(value), do: value
 end
