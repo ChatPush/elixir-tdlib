@@ -89,18 +89,6 @@ defmodule TDLib do
     GenServer.call(backend_pid, {:transmit, json})
   end
 
-  @doc """
-   Set the process receiving the incoming update for session
-   `session_name` to `client_pid`. The incoming messages can be handled with
-   `def handle_info({:recv, msg}, state), do: ...` using GenServer.
-
-   The client is initially set when the session is create, using `open/3`.
-  """
-  def update_client(session_name, client_pid) do
-    handler_pid = StateHolder.get_state(session_name) |> Map.get(:handler_pid)
-    GenServer.call(handler_pid, {:set_client, client_pid})
-  end
-
   @doc false
   def get_backend_binary() do
     app_name = Application.get_env(:tdlib, :app_name)
@@ -110,6 +98,10 @@ defmodule TDLib do
       nil -> binary_path
       _ -> Path.join(Application.app_dir(app_name), binary_path)
     end
+  end
+
+  defp transform_struct(list) when is_list(list) do
+    Enum.map(list, &transform_struct/1)
   end
 
   defp transform_struct(map) when is_map(map) do
