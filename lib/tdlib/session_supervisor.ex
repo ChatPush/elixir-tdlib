@@ -16,9 +16,7 @@ defmodule TDLib.SessionSupervisor do
     state = %{
       config: config,
       client_pid: client_pid,
-      encryption_key: encryption_key,
-      backend_pid: nil,
-      handler_pid: nil
+      encryption_key: encryption_key
     }
 
     DynamicSupervisor.start_child(__MODULE__, %{
