@@ -1,37 +1,50 @@
 defmodule TDLib.Session do
-  @moduledoc """
-    Supervises essential session handlers
-  """
+  alias TDLib.Session
+  alias TDLib.SessionRegistry, as: Registry
   use Supervisor
 
-  alias TDLib.Backend
-  alias TDLib.Handler
-  alias TDLib.StateHolder
-  alias TDLib.SessionRegistry
+  @moduledoc false
 
-  def start_link(%{name: name, state: _state} = args) do
-    Supervisor.start_link(__MODULE__, args, name: build_name(name))
+  defstruct [:name, :config, :supervisor_pid, :backend_pid, :handler_pid,
+             :client_pid, :encryption_key]
+
+  def start_link(name) do
+    Supervisor.start_link(__MODULE__, name, [])
   end
 
-  @impl true
-  def init(%{name: name, state: state}) do
+  def init(name) do
+    Registry.update(name, supervisor_pid: self())
+
     children = [
-      %{
-        id: :state_holder,
-        start: {StateHolder, :start_link, [name, state]}
-      },
-      %{
-        id: :backend,
-        start: {Backend, :start_link, [name]}
-      },
-      %{
-        id: :handler,
-        start: {Handler, :start_link, [name]}
-      }
+      worker(TDLib.Backend, [name], restart: :permanent),
+      worker(TDLib.Handler, [name], restart: :permanent)
     ]
 
-    Supervisor.init(children, strategy: :one_for_one)
+    opts = [strategy: :one_for_one]
+    Supervisor.init(children, opts)
   end
 
-  def build_name(name), do: {:via, Registry, {SessionRegistry, name}}
+  def create(name, client, config, encryption_key) do
+    # Initialize the new session in the registry
+    state = %Session{
+      config: config,
+      client_pid: client,
+      encryption_key: encryption_key
+    }
+    Registry.set(name, state)
+
+    # Try to start the session
+    {status, output} = start_link(name)
+
+    # Remove from registry if the creation failed
+    unless status == :ok, do: Registry.drop(name)
+
+    {status, output}
+  end
+
+  def destroy(name) do
+    session = Registry.get name
+    Supervisor.stop(session.supervisor_pid, :normal)
+    Registry.drop(name)
+  end
 end
