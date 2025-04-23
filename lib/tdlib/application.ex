@@ -10,9 +10,7 @@ defmodule TDLib.Application do
 
     # Define workers and child supervisors to be supervised
     children = [
-      {Registry, keys: :unique, name: TDLib.SessionRegistry},
-      {Registry, keys: :unique, name: TDLib.StateHolderRegistry},
-      TDLib.SessionSupervisor
+      supervisor(TDLib.SessionRegistry, [], [restart: :permanent])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
