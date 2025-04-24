@@ -9,16 +9,15 @@ defmodule TDLib.Session do
   alias TDLib.StateHolder
   alias TDLib.SessionRegistry
 
-  def start_link(%{name: name, state: _state} = args) do
+  def start_link(%{name: name, params: _params} = args) do
     Supervisor.start_link(__MODULE__, args, name: build_name(name))
   end
 
-  @impl true
-  def init(%{name: name, state: state}) do
+  def init(%{name: name, params: params}) do
     children = [
       %{
         id: :state_holder,
-        start: {StateHolder, :start_link, [name, state]}
+        start: {StateHolder, :start_link, [name, params]}
       },
       %{
         id: :backend,
@@ -33,5 +32,5 @@ defmodule TDLib.Session do
     Supervisor.init(children, strategy: :one_for_one)
   end
 
-  def build_name(name), do: {:via, Registry, {SessionRegistry, name}}
+  def build_name(name), do: {:via, :global, {SessionRegistry, name}}
 end

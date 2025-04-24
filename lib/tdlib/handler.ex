@@ -18,8 +18,7 @@ defmodule TDLib.Handler do
   end
 
   def handle_continue(:init, session_name) do
-    session_state = StateHolder.get_state(session_name)
-    StateHolder.update_state(session_name, Map.put(session_state, :handler_pid, self()))
+    StateHolder.update_state(session_name, %{handler_pid: self()})
     {:noreply, session_name}
   end
 

@@ -29,8 +29,7 @@ defmodule TDLib.Backend do
   end
 
   def handle_continue(:init, %{name: name} = state) do
-    session_state = StateHolder.get_state(name)
-    StateHolder.update_state(name, Map.put(session_state, :backend_pid, self()))
+    StateHolder.update_state(name, %{backend_pid: self()})
     {:noreply, state}
   end
 

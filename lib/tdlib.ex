@@ -53,7 +53,11 @@ defmodule TDLib do
   Return either `{:ok, pid}` or `{:error, reason}`.
   """
   def open(session_name, client_pid, config, encryption_key \\ "") do
-    SessionSupervisor.create(session_name, client_pid, config, encryption_key)
+    SessionSupervisor.find_or_create(session_name, %{
+      config: config,
+      client_pid: client_pid,
+      encryption_key: encryption_key
+    })
   end
 
   @doc """

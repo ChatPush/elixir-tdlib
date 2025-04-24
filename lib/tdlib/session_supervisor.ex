@@ -11,19 +11,17 @@ defmodule TDLib.SessionSupervisor do
     DynamicSupervisor.init(strategy: :one_for_one)
   end
 
-  def create(session_name, client_pid, config, encryption_key) do
-    # Initialize the new session in the registry
-    state = %{
-      config: config,
-      client_pid: client_pid,
-      encryption_key: encryption_key,
-      backend_pid: nil,
-      handler_pid: nil
-    }
+  def find_or_create(session_name, params) do
+    case Session.build_name(session_name) |> GenServer.whereis() do
+      pid when is_pid(pid) -> {:ok, pid}
+      _ -> create(session_name, params)
+    end
+  end
 
+  def create(session_name, params) do
     DynamicSupervisor.start_child(__MODULE__, %{
-      id: session_name,
-      start: {Session, :start_link, [%{name: session_name, state: state}]}
+      id: Session.build_name(session_name),
+      start: {Session, :start_link, [%{name: session_name, params: params}]}
     })
   end
 
