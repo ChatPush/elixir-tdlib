@@ -1,8 +1,47 @@
 defmodule TDLib.Object do
   @moduledoc """
   This module was generated using Telegram's TDLib documentation. It contains
-  1679 submodules (= structs).
+  2230 submodules (= structs).
   """
+defmodule AffiliateProgramSortOrderCreationDate do
+  @moduledoc  """
+  The affiliate programs must be sorted by creation date.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_program_sort_order_creation_date.html).
+  """
+
+  defstruct "@type": "affiliateProgramSortOrderCreationDate", "@extra": nil
+end
+defmodule PaymentFormTypeStarSubscription do
+  @moduledoc  """
+  The payment form is for a payment in Telegram Stars for subscription.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | pricing | starSubscriptionPricing | Information about subscription plan. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_form_type_star_subscription.html).
+  """
+
+  defstruct "@type": "paymentFormTypeStarSubscription", "@extra": nil, pricing: nil
+end
+defmodule SuggestedActionCustom do
+  @moduledoc  """
+  A custom suggestion to be shown at the top of the chat list.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | name | string | Unique name of the suggestion. |
+  | title | formattedText | Title of the suggestion. |
+  | description | formattedText | Description of the suggestion. |
+  | url | string | The link to open when the suggestion is clicked. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_custom.html).
+  """
+
+  defstruct "@type": "suggestedActionCustom", "@extra": nil, name: nil, title: nil, description: nil, url: nil
+end
 defmodule SavedMessagesTopicType do
   @moduledoc  """
 
@@ -72,16 +111,6 @@ defmodule UpdateChatActionBar do
 
   defstruct "@type": "updateChatActionBar", "@extra": nil, chat_id: nil, action_bar: nil
 end
-defmodule InternalLinkTypeDefaultMessageAutoDeleteTimerSettings do
-  @moduledoc  """
-  The link is a link to the default message auto-delete timer settings section of the app settings.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_default_message_auto_delete_timer_settings.html).
-  """
-
-  defstruct "@type": "internalLinkTypeDefaultMessageAutoDeleteTimerSettings", "@extra": nil
-end
 defmodule InputChatPhotoSticker do
   @moduledoc  """
   A sticker on a custom background.
@@ -122,6 +151,34 @@ defmodule SuggestedActionExtendPremium do
 
   defstruct "@type": "suggestedActionExtendPremium", "@extra": nil, manage_premium_subscription_url: nil
 end
+defmodule LinkPreviewTypeDirectMessagesChat do
+  @moduledoc  """
+  The link is a link to a direct messages chat of a channel.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | chatPhoto | Photo of the channel chat; may be null. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_direct_messages_chat.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeDirectMessagesChat", "@extra": nil, photo: nil
+end
+defmodule StoreTransactionGooglePlay do
+  @moduledoc  """
+  A purchase through Google Play.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | package_name | string | Application package name. |
+  | store_product_id | string | Identifier of the purchased store product. |
+  | purchase_token | string | Google Play purchase token. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_transaction_google_play.html).
+  """
+
+  defstruct "@type": "storeTransactionGooglePlay", "@extra": nil, package_name: nil, store_product_id: nil, purchase_token: nil
+end
 defmodule SessionTypeChrome do
   @moduledoc  """
   The session is running on the Chrome browser.
@@ -146,50 +203,42 @@ defmodule Message do
   | is_outgoing | bool | True, if the message is outgoing. |
   | is_pinned | bool | True, if the message is pinned. |
   | is_from_offline | bool | True, if the message was sent because of a scheduled action by the message sender, for example, as away, or greeting service message. |
-  | can_be_edited | bool | True, if the message can be edited. For live location and poll messages this fields shows whether <a class="el" href="classtd_1_1td__api_1_1edit_message_live_location.html">editMessageLiveLocation</a> or <a class="el" href="classtd_1_1td__api_1_1stop_poll.html">stopPoll</a> can be used with this message by the application. |
-  | can_be_forwarded | bool | True, if the message can be forwarded. |
-  | can_be_replied_in_another_chat | bool | True, if the message can be replied in another chat or topic. |
-  | can_be_saved | bool | True, if content of the message can be saved locally or copied. |
-  | can_be_deleted_only_for_self | bool | True, if the message can be deleted only for the current user while other users will continue to see it. |
-  | can_be_deleted_for_all_users | bool | True, if the message can be deleted for all users. |
-  | can_get_added_reactions | bool | True, if the list of added reactions is available through <a class="el" href="classtd_1_1td__api_1_1get_message_added_reactions.html">getMessageAddedReactions</a>. |
-  | can_get_statistics | bool | True, if the message statistics are available through <a class="el" href="classtd_1_1td__api_1_1get_message_statistics.html">getMessageStatistics</a>. |
-  | can_get_message_thread | bool | True, if information about the message thread is available through <a class="el" href="classtd_1_1td__api_1_1get_message_thread.html">getMessageThread</a> and <a class="el" href="classtd_1_1td__api_1_1get_message_thread_history.html">getMessageThreadHistory</a>. |
-  | can_get_read_date | bool | True, if read date of the message can be received through <a class="el" href="classtd_1_1td__api_1_1get_message_read_date.html">getMessageReadDate</a>. |
-  | can_get_viewers | bool | True, if chat members already viewed the message can be received through <a class="el" href="classtd_1_1td__api_1_1get_message_viewers.html">getMessageViewers</a>. |
-  | can_get_media_timestamp_links | bool | True, if media timestamp links can be generated for media timestamp entities in the message text, caption or web page description through <a class="el" href="classtd_1_1td__api_1_1get_message_link.html">getMessageLink</a>. |
-  | can_report_reactions | bool | True, if reactions on the message can be reported through <a class="el" href="classtd_1_1td__api_1_1report_message_reactions.html">reportMessageReactions</a>. |
+  | can_be_saved | bool | True, if content of the message can be saved locally. |
   | has_timestamped_media | bool | True, if media timestamp entities refers to a media in this message as opposed to a media in the replied message. |
   | is_channel_post | bool | True, if the message is a channel post. All messages to channels are channel posts, all other messages are not channel posts. |
-  | is_topic_message | bool | True, if the message is a forum topic message. |
+  | is_paid_star_suggested_post | bool | True, if the message is a suggested channel post which was paid in Telegram Stars; a warning must be shown if the message is deleted in less than <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_lifetime_min") seconds after sending. |
+  | is_paid_ton_suggested_post | bool | True, if the message is a suggested channel post which was paid in Toncoins; a warning must be shown if the message is deleted in less than <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_lifetime_min") seconds after sending. |
   | contains_unread_mention | bool | True, if the message contains an unread mention for the current user. |
-  | date | int32 | Point in time (Unix timestamp) when the message was sent. |
-  | edit_date | int32 | Point in time (Unix timestamp) when the message was last edited. |
+  | date | int32 | Point in time (Unix timestamp) when the message was sent; 0 for scheduled messages. |
+  | edit_date | int32 | Point in time (Unix timestamp) when the message was last edited; 0 for scheduled messages. |
   | forward_info | messageForwardInfo | Information about the initial message sender; may be null if none or unknown. |
   | import_info | messageImportInfo | Information about the initial message for messages created with <a class="el" href="classtd_1_1td__api_1_1import_messages.html">importMessages</a>; may be null if the message isn't imported. |
   | interaction_info | messageInteractionInfo | Information about interactions with the message; may be null if none. |
   | unread_reactions | unreadReaction | Information about unread reactions added to the message. |
   | fact_check | factCheck | Information about fact-check added to the message; may be null if none. |
+  | suggested_post_info | suggestedPostInfo | Information about the suggested post; may be null if the message isn't a suggested post. |
   | reply_to | MessageReplyTo | Information about the message or the story this message is replying to; may be null if none. |
-  | message_thread_id | int53 | If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs. |
-  | saved_messages_topic_id | int53 | Identifier of the Saved Messages topic for the message; 0 for messages not from Saved Messages. |
+  | topic_id | MessageTopic | Identifier of the topic within the chat to which the message belongs; may be null if none; may change when the chat is converted to a forum or back. |
   | self_destruct_type | MessageSelfDestructType | The message's self-destruct type; may be null if none. |
   | self_destruct_in | double | Time left before the message self-destruct timer expires, in seconds; 0 if self-destruction isn't scheduled yet. |
   | auto_delete_in | double | Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never. |
   | via_bot_user_id | int53 | If non-zero, the user identifier of the inline bot through which this message was sent. |
   | sender_business_bot_user_id | int53 | If non-zero, the user identifier of the business bot that sent this message. |
   | sender_boost_count | int32 | Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead. |
+  | sender_tag | string | Tag of the sender of the message in the supergroup at the time the message was sent; may be empty if none or unknown. For messages sent in basic groups or supergroup administrators, the current custom title or tag must be used instead. |
+  | paid_message_star_count | int53 | The number of Telegram Stars the sender paid to send the message. |
   | author_signature | string | For channel posts and anonymous group messages, optional author signature. |
   | media_album_id | int64 | Unique identifier of an album this message belongs to; 0 if none. Only audios, documents, photos and videos can be grouped together in albums. |
   | effect_id | int64 | Unique identifier of the effect added to the message; 0 if none. |
-  | restriction_reason | string | If non-empty, contains a human-readable description of the reason why access to this message must be restricted. |
+  | restriction_info | restrictionInfo | Information about the restrictions that must be applied to the message content; may be null if none. |
+  | summary_language_code | string | IETF language tag of the message language on which it can be summarized; empty if summary isn't available for the message. |
   | content | MessageContent | Content of the message. |
   | reply_markup | ReplyMarkup | Reply markup for the message; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message.html).
   """
 
-  defstruct "@type": "message", "@extra": nil, id: nil, sender_id: nil, chat_id: nil, sending_state: nil, scheduling_state: nil, is_outgoing: nil, is_pinned: nil, is_from_offline: nil, can_be_edited: nil, can_be_forwarded: nil, can_be_replied_in_another_chat: nil, can_be_saved: nil, can_be_deleted_only_for_self: nil, can_be_deleted_for_all_users: nil, can_get_added_reactions: nil, can_get_statistics: nil, can_get_message_thread: nil, can_get_read_date: nil, can_get_viewers: nil, can_get_media_timestamp_links: nil, can_report_reactions: nil, has_timestamped_media: nil, is_channel_post: nil, is_topic_message: nil, contains_unread_mention: nil, date: nil, edit_date: nil, forward_info: nil, import_info: nil, interaction_info: nil, unread_reactions: nil, fact_check: nil, reply_to: nil, message_thread_id: nil, saved_messages_topic_id: nil, self_destruct_type: nil, self_destruct_in: nil, auto_delete_in: nil, via_bot_user_id: nil, sender_business_bot_user_id: nil, sender_boost_count: nil, author_signature: nil, media_album_id: nil, effect_id: nil, restriction_reason: nil, content: nil, reply_markup: nil
+  defstruct "@type": "message", "@extra": nil, id: nil, sender_id: nil, chat_id: nil, sending_state: nil, scheduling_state: nil, is_outgoing: nil, is_pinned: nil, is_from_offline: nil, can_be_saved: nil, has_timestamped_media: nil, is_channel_post: nil, is_paid_star_suggested_post: nil, is_paid_ton_suggested_post: nil, contains_unread_mention: nil, date: nil, edit_date: nil, forward_info: nil, import_info: nil, interaction_info: nil, unread_reactions: nil, fact_check: nil, suggested_post_info: nil, reply_to: nil, topic_id: nil, self_destruct_type: nil, self_destruct_in: nil, auto_delete_in: nil, via_bot_user_id: nil, sender_business_bot_user_id: nil, sender_boost_count: nil, sender_tag: nil, paid_message_star_count: nil, author_signature: nil, media_album_id: nil, effect_id: nil, restriction_info: nil, summary_language_code: nil, content: nil, reply_markup: nil
 end
 defmodule PassportElementTypeInternalPassport do
   @moduledoc  """
@@ -220,8 +269,8 @@ defmodule SponsoredMessage do
   | message_id | int53 | Message identifier; unique for the chat to which the sponsored message belongs among both ordinary and sponsored messages. |
   | is_recommended | bool | True, if the message needs to be labeled as "recommended" instead of "sponsored". |
   | can_be_reported | bool | True, if the message can be reported to Telegram moderators through <a class="el" href="classtd_1_1td__api_1_1report_chat_sponsored_message.html">reportChatSponsoredMessage</a>. |
-  | content | MessageContent | Content of the message. Currently, can be only of the type <a class="el" href="classtd_1_1td__api_1_1message_text.html">messageText</a>. |
-  | sponsor | messageSponsor | Information about the sponsor of the message. |
+  | content | MessageContent | Content of the message. Currently, can be only of the types <a class="el" href="classtd_1_1td__api_1_1message_text.html">messageText</a>, <a class="el" href="classtd_1_1td__api_1_1message_animation.html">messageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1message_photo.html">messagePhoto</a>, or <a class="el" href="classtd_1_1td__api_1_1message_video.html">messageVideo</a>. Video messages can be viewed fullscreen. The content must be fully downloaded before the message is shown. |
+  | sponsor | advertisementSponsor | Information about the sponsor of the message. |
   | title | string | Title of the sponsored message. |
   | button_text | string | Text for the message action button. |
   | accent_color_id | int32 | Identifier of the accent color for title, button text and message background. |
@@ -253,6 +302,66 @@ defmodule EmojiCategoryTypeChatPhoto do
 
   defstruct "@type": "emojiCategoryTypeChatPhoto", "@extra": nil
 end
+defmodule AcceptedGiftTypes do
+  @moduledoc  """
+  Describes gift types that are accepted by a user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | unlimited_gifts | bool | True, if unlimited regular gifts are accepted. |
+  | limited_gifts | bool | True, if limited regular gifts are accepted. |
+  | upgraded_gifts | bool | True, if upgraded gifts and regular gifts that can be upgraded for free are accepted. |
+  | gifts_from_channels | bool | True, if gifts from channels are accepted subject to other restrictions. |
+  | premium_subscription | bool | True, if Telegram Premium subscription is accepted. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1accepted_gift_types.html).
+  """
+
+  defstruct "@type": "acceptedGiftTypes", "@extra": nil, unlimited_gifts: nil, limited_gifts: nil, upgraded_gifts: nil, gifts_from_channels: nil, premium_subscription: nil
+end
+defmodule FoundAffiliatePrograms do
+  @moduledoc  """
+  Represents a list of found affiliate programs.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | total_count | int32 | The total number of found affiliate programs. |
+  | programs | foundAffiliateProgram | The list of affiliate programs. |
+  | next_offset | string | The offset for the next request. If empty, then there are no more results. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_affiliate_programs.html).
+  """
+
+  defstruct "@type": "foundAffiliatePrograms", "@extra": nil, total_count: nil, programs: nil, next_offset: nil
+end
+defmodule SettingsSectionEditProfile do
+  @moduledoc  """
+  The profile edit section.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "set-photo", "first-name", "last-name", "emoji-status", "bio", "birthday", "change-number", "username", "your-color", "channel", "add-account", "log-out", "profile-color/profile", "profile-color/profile/add-icons", "profile-color/profile/use-gift", "profile-color/name", "profile-color/name/add-icons", "profile-color/name/use-gift", "profile-photo/use-emoji". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_edit_profile.html).
+  """
+
+  defstruct "@type": "settingsSectionEditProfile", "@extra": nil, subsection: nil
+end
+defmodule StarTransactionTypeBotSubscriptionPurchase do
+  @moduledoc  """
+  The transaction is a purchase of a subscription from a bot or a business account by the current user; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the bot or the business account user who created the subscription link. |
+  | subscription_period | int32 | The number of seconds between consecutive Telegram Star debitings. |
+  | product_info | productInfo | Information about the bought subscription. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_bot_subscription_purchase.html).
+  """
+
+  defstruct "@type": "starTransactionTypeBotSubscriptionPurchase", "@extra": nil, user_id: nil, subscription_period: nil, product_info: nil
+end
 defmodule UpdateChatRevenueAmount do
   @moduledoc  """
   The revenue earned from sponsored messages in a chat has changed. If chat revenue screen is opened, then getChatRevenueTransactions may be called to fetch new transactions.
@@ -279,6 +388,20 @@ defmodule InputPassportElementIdentityCard do
   """
 
   defstruct "@type": "inputPassportElementIdentityCard", "@extra": nil, identity_card: nil
+end
+defmodule GiftForResale do
+  @moduledoc  """
+  Describes a gift available for resale.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | upgradedGift | The gift. |
+  | received_gift_id | string | Unique identifier of the received gift for the current user; only for the gifts owned by the current user. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_for_resale.html).
+  """
+
+  defstruct "@type": "giftForResale", "@extra": nil, gift: nil, received_gift_id: nil
 end
 defmodule RichTextUnderline do
   @moduledoc  """
@@ -312,6 +435,21 @@ defmodule Game do
 
   defstruct "@type": "game", "@extra": nil, id: nil, short_name: nil, title: nil, text: nil, description: nil, photo: nil, animation: nil
 end
+defmodule AgeVerificationParameters do
+  @moduledoc  """
+  Describes parameters for age verification of the current user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | min_age | int32 | The minimum age required to view restricted content. |
+  | verification_bot_username | string | Username of the bot which main Web App may be used to verify age of the user. |
+  | country | string | Unique name for the country or region, which legislation required age verification. May be used to get the corresponding localization key. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1age_verification_parameters.html).
+  """
+
+  defstruct "@type": "ageVerificationParameters", "@extra": nil, min_age: nil, verification_bot_username: nil, country: nil
+end
 defmodule StorageStatisticsFast do
   @moduledoc  """
   Contains approximate storage usage statistics, excluding files of unknown file type.
@@ -339,6 +477,16 @@ defmodule CheckChatUsernameResultUsernamePurchasable do
 
   defstruct "@type": "checkChatUsernameResultUsernamePurchasable", "@extra": nil
 end
+defmodule AffiliateProgramSortOrderProfitability do
+  @moduledoc  """
+  The affiliate programs must be sorted by the profitability.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_program_sort_order_profitability.html).
+  """
+
+  defstruct "@type": "affiliateProgramSortOrderProfitability", "@extra": nil
+end
 defmodule EmojiReaction do
   @moduledoc  """
   Contains information about an emoji reaction.
@@ -365,11 +513,14 @@ defmodule ChatMemberStatusMember do
   @moduledoc  """
   The user is a member of the chat, without any additional privileges or restrictions.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | member_until_date | int32 | Point in time (Unix timestamp) when the user will be removed from the chat because of the expired subscription; 0 if never. Ignored in <a class="el" href="classtd_1_1td__api_1_1set_chat_member_status.html">setChatMemberStatus</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_member_status_member.html).
   """
 
-  defstruct "@type": "chatMemberStatusMember", "@extra": nil
+  defstruct "@type": "chatMemberStatusMember", "@extra": nil, member_until_date: nil
 end
 defmodule UpdateLanguagePackStrings do
   @moduledoc  """
@@ -388,7 +539,7 @@ defmodule UpdateLanguagePackStrings do
 end
 defmodule InternalLinkTypeBackground do
   @moduledoc  """
-  The link is a link to a background. Call searchBackground with the given background name to process the link If background is found and the user wants to apply it, then call setDefaultBackground.
+  The link is a link to a background. Call searchBackground with the given background name to process the link. If background is found and the user wants to apply it, then call setDefaultBackground.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -498,6 +649,37 @@ defmodule InputStoryContent do
 
   defstruct "@type": "InputStoryContent", "@extra": nil
 end
+defmodule SuggestedPostInfo do
+  @moduledoc  """
+  Contains information about a suggested post. If the post can be approved or declined, then changes to the post can be also suggested. Use sendMessage with reply to the message and suggested post information to suggest message changes. Use addOffer to suggest price or time changes.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | price | SuggestedPostPrice | Price of the suggested post; may be null if the post is non-paid. |
+  | send_date | int32 | Point in time (Unix timestamp) when the post is expected to be published; 0 if the specific date isn't set yet. |
+  | state | SuggestedPostState | State of the post. |
+  | can_be_approved | bool | True, if the suggested post can be approved by the current user using <a class="el" href="classtd_1_1td__api_1_1approve_suggested_post.html">approveSuggestedPost</a>; updates aren't sent when value of this field changes. |
+  | can_be_declined | bool | True, if the suggested post can be declined by the current user using <a class="el" href="classtd_1_1td__api_1_1decline_suggested_post.html">declineSuggestedPost</a>; updates aren't sent when value of this field changes. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_post_info.html).
+  """
+
+  defstruct "@type": "suggestedPostInfo", "@extra": nil, price: nil, send_date: nil, state: nil, can_be_approved: nil, can_be_declined: nil
+end
+defmodule UpdateManagedBot do
+  @moduledoc  """
+  A bot that can be managed by the current bot was created or updated; for bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who created the bot. |
+  | bot_user_id | int53 | Identifier of the created managed bot. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_managed_bot.html).
+  """
+
+  defstruct "@type": "updateManagedBot", "@extra": nil, user_id: nil, bot_user_id: nil
+end
 defmodule UpdateCall do
   @moduledoc  """
   New call was created or information about a call was updated.
@@ -520,6 +702,31 @@ defmodule PremiumFeatureSavedMessagesTags do
   """
 
   defstruct "@type": "premiumFeatureSavedMessagesTags", "@extra": nil
+end
+defmodule LinkPreview do
+  @moduledoc  """
+  Describes a link preview.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | Original URL of the link. |
+  | display_url | string | URL to display. |
+  | site_name | string | Short name of the site (e.g., Google Docs, App Store). |
+  | title | string | Title of the content. |
+  | description | formattedText | Description of the content. |
+  | author | string | Author of the content. |
+  | type | LinkPreviewType | Type of the link preview. |
+  | has_large_media | bool | True, if size of media in the preview can be changed. |
+  | show_large_media | bool | True, if large media preview must be shown; otherwise, the media preview must be shown small and only the first frame must be shown for videos. |
+  | show_media_above_description | bool | True, if media must be shown above link preview description; otherwise, the media must be shown below the description. |
+  | skip_confirmation | bool | True, if there is no need to show an ordinary open URL confirmation, when opening the URL from the preview, because the URL is shown in the message text in clear. |
+  | show_above_text | bool | True, if the link preview must be shown above message text; otherwise, the link preview must be shown below the message text. |
+  | instant_view_version | int32 | Version of instant view (currently, can be 1 or 2) for the web page; 0 if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview.html).
+  """
+
+  defstruct "@type": "linkPreview", "@extra": nil, url: nil, display_url: nil, site_name: nil, title: nil, description: nil, author: nil, type: nil, has_large_media: nil, show_large_media: nil, show_media_above_description: nil, skip_confirmation: nil, show_above_text: nil, instant_view_version: nil
 end
 defmodule QuickReplyMessage do
   @moduledoc  """
@@ -550,23 +757,6 @@ defmodule InviteLinkChatType do
 
   defstruct "@type": "InviteLinkChatType", "@extra": nil
 end
-defmodule MessageExtendedMediaPreview do
-  @moduledoc  """
-  The media is hidden until the invoice is paid.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | width | int32 | Media width; 0 if unknown. |
-  | height | int32 | Media height; 0 if unknown. |
-  | duration | int32 | Media duration, in seconds; 0 if unknown. |
-  | minithumbnail | minithumbnail | Media minithumbnail; may be null. |
-  | caption | formattedText | Media caption. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_extended_media_preview.html).
-  """
-
-  defstruct "@type": "messageExtendedMediaPreview", "@extra": nil, width: nil, height: nil, duration: nil, minithumbnail: nil, caption: nil
-end
 defmodule PushMessageContentHidden do
   @moduledoc  """
   A general message with hidden content.
@@ -579,6 +769,42 @@ defmodule PushMessageContentHidden do
   """
 
   defstruct "@type": "pushMessageContentHidden", "@extra": nil, is_pinned: nil
+end
+defmodule StarTransactionTypeBusinessBotTransferSend do
+  @moduledoc  """
+  The transaction is a transfer of Telegram Stars to a business bot; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the bot that received Telegram Stars. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_business_bot_transfer_send.html).
+  """
+
+  defstruct "@type": "starTransactionTypeBusinessBotTransferSend", "@extra": nil, user_id: nil
+end
+defmodule Passkeys do
+  @moduledoc  """
+  Contains a list of passkeys.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | passkeys | passkey | List of passkeys. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passkeys.html).
+  """
+
+  defstruct "@type": "passkeys", "@extra": nil, passkeys: nil
+end
+defmodule TonTransactionTypeStakeDiceStake do
+  @moduledoc  """
+  The transaction is a payment for stake dice throw.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transaction_type_stake_dice_stake.html).
+  """
+
+  defstruct "@type": "tonTransactionTypeStakeDiceStake", "@extra": nil
 end
 defmodule InputPassportElementAddress do
   @moduledoc  """
@@ -632,7 +858,7 @@ defmodule BackgroundFillSolid do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | color | int32 | A color of the background in the RGB24 format. |
+  | color | int32 | A color of the background in the RGB format. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_fill_solid.html).
   """
@@ -696,6 +922,33 @@ defmodule AvailableReactions do
 
   defstruct "@type": "availableReactions", "@extra": nil, top_reactions: nil, recent_reactions: nil, popular_reactions: nil, allow_custom_emoji: nil, are_tags: nil, unavailability_reason: nil
 end
+defmodule PublicPostSearchLimits do
+  @moduledoc  """
+  Contains information about public post search limits.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | daily_free_query_count | int32 | Number of queries that can be sent daily for free. |
+  | remaining_free_query_count | int32 | Number of remaining free queries today. |
+  | next_free_query_in | int32 | Amount of time till the next free query can be sent; 0 if it can be sent now. |
+  | star_count | int53 | Number of Telegram Stars that must be paid for each non-free query. |
+  | is_current_query_free | bool | True, if the search for the specified query isn't charged. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1public_post_search_limits.html).
+  """
+
+  defstruct "@type": "publicPostSearchLimits", "@extra": nil, daily_free_query_count: nil, remaining_free_query_count: nil, next_free_query_in: nil, star_count: nil, is_current_query_free: nil
+end
+defmodule CraftGiftResultInvalidGift do
+  @moduledoc  """
+  Crafting isn't possible because one of the gifts isn't suitable for crafting.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1craft_gift_result_invalid_gift.html).
+  """
+
+  defstruct "@type": "craftGiftResultInvalidGift", "@extra": nil
+end
 defmodule ChatEventMemberInvited do
   @moduledoc  """
   A new chat member was invited.
@@ -730,14 +983,57 @@ defmodule AutoDownloadSettingsPresets do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | low | autoDownloadSettings | Preset with lowest settings; supposed to be used by default when roaming. |
-  | medium | autoDownloadSettings | Preset with medium settings; supposed to be used by default when using mobile data. |
-  | high | autoDownloadSettings | Preset with highest settings; supposed to be used by default when connected on Wi-Fi. |
+  | low | autoDownloadSettings | Preset with lowest settings; expected to be used by default when roaming. |
+  | medium | autoDownloadSettings | Preset with medium settings; expected to be used by default when using mobile data. |
+  | high | autoDownloadSettings | Preset with highest settings; expected to be used by default when connected on Wi-Fi. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1auto_download_settings_presets.html).
   """
 
   defstruct "@type": "autoDownloadSettingsPresets", "@extra": nil, low: nil, medium: nil, high: nil
+end
+defmodule LinkPreviewTypeVideo do
+  @moduledoc  """
+  The link is a link to a video.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | video | video | The video description. |
+  | cover | photo | Cover of the video; may be null if none. |
+  | start_timestamp | int32 | Timestamp from which the video playing must start, in seconds. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_video.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeVideo", "@extra": nil, video: nil, cover: nil, start_timestamp: nil
+end
+defmodule TonRevenueStatistics do
+  @moduledoc  """
+  A detailed statistics about Toncoins earned by the current user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | revenue_by_day_graph | StatisticalGraph | A graph containing amount of revenue in a given day. |
+  | status | tonRevenueStatus | Amount of earned revenue. |
+  | usd_rate | double | Current conversion rate of nanotoncoin to USD cents. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_revenue_statistics.html).
+  """
+
+  defstruct "@type": "tonRevenueStatistics", "@extra": nil, revenue_by_day_graph: nil, status: nil, usd_rate: nil
+end
+defmodule PushMessageContentChecklistTasksAdded do
+  @moduledoc  """
+  Some tasks were added to a checklist.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | task_count | int32 | Number of added tasks. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_checklist_tasks_added.html).
+  """
+
+  defstruct "@type": "pushMessageContentChecklistTasksAdded", "@extra": nil, task_count: nil
 end
 defmodule TestVectorString do
   @moduledoc  """
@@ -774,7 +1070,7 @@ defmodule UserPrivacySettingRuleAllowPremiumUsers do
 end
 defmodule ClosedVectorPath do
   @moduledoc  """
-  Represents a closed vector path. The path begins at the end point of the last command.
+  Represents a closed vector path. The path begins at the end point of the last command. The coordinate system origin is in the upper-left corner.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -807,6 +1103,24 @@ defmodule UserStatusOnline do
   """
 
   defstruct "@type": "userStatusOnline", "@extra": nil, expires: nil
+end
+defmodule GiftPurchaseOfferState do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_gift_purchase_offer_state.html).
+  """
+
+  defstruct "@type": "GiftPurchaseOfferState", "@extra": nil
+end
+defmodule ChatTheme do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_chat_theme.html).
+  """
+
+  defstruct "@type": "ChatTheme", "@extra": nil
 end
 defmodule PremiumSourceBusinessFeature do
   @moduledoc  """
@@ -883,6 +1197,19 @@ defmodule StickerTypeCustomEmoji do
 
   defstruct "@type": "stickerTypeCustomEmoji", "@extra": nil
 end
+defmodule AffiliateTypeChannel do
+  @moduledoc  """
+  The affiliate is a channel chat where the current user has can_post_messages administrator right.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the channel chat. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_type_channel.html).
+  """
+
+  defstruct "@type": "affiliateTypeChannel", "@extra": nil, chat_id: nil
+end
 defmodule MessageAnimatedEmoji do
   @moduledoc  """
   A message with an animated emoji.
@@ -910,6 +1237,24 @@ defmodule WebAppInfo do
   """
 
   defstruct "@type": "webAppInfo", "@extra": nil, launch_id: nil, url: nil
+end
+defmodule InputPaidMedia do
+  @moduledoc  """
+  Describes a paid media to be sent.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | type | InputPaidMediaType | Type of the media. |
+  | media | InputFile | Photo or video to be sent. |
+  | thumbnail | inputThumbnail | Media thumbnail; pass null to skip thumbnail uploading. |
+  | added_sticker_file_ids | int32 | File identifiers of the stickers added to the media, if applicable. |
+  | width | int32 | Media width. |
+  | height | int32 | Media height. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_paid_media.html).
+  """
+
+  defstruct "@type": "inputPaidMedia", "@extra": nil, type: nil, media: nil, thumbnail: nil, added_sticker_file_ids: nil, width: nil, height: nil
 end
 defmodule PhoneNumberCodeType do
   @moduledoc  """
@@ -954,9 +1299,23 @@ defmodule AuthenticationCodeTypeFragment do
 
   defstruct "@type": "authenticationCodeTypeFragment", "@extra": nil, url: nil, length: nil
 end
+defmodule StarTransactionTypeChannelPaidReactionSend do
+  @moduledoc  """
+  The transaction is a sending of a paid reaction to a message in a channel chat by the current user; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the channel chat. |
+  | message_id | int53 | Identifier of the reacted message; may be 0 or an identifier of a deleted message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_channel_paid_reaction_send.html).
+  """
+
+  defstruct "@type": "starTransactionTypeChannelPaidReactionSend", "@extra": nil, chat_id: nil, message_id: nil
+end
 defmodule TargetChatCurrent do
   @moduledoc  """
-  The currently opened chat needs to be kept.
+  The currently opened chat and forum topic must be kept.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1target_chat_current.html).
@@ -1044,15 +1403,12 @@ defmodule TargetChatChosen do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | allow_user_chats | bool | True, if private chats with ordinary users are allowed. |
-  | allow_bot_chats | bool | True, if private chats with other bots are allowed. |
-  | allow_group_chats | bool | True, if basic group and supergroup chats are allowed. |
-  | allow_channel_chats | bool | True, if channel chats are allowed. |
+  | types | targetChatTypes | Allowed types for the chat. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1target_chat_chosen.html).
   """
 
-  defstruct "@type": "targetChatChosen", "@extra": nil, allow_user_chats: nil, allow_bot_chats: nil, allow_group_chats: nil, allow_channel_chats: nil
+  defstruct "@type": "targetChatChosen", "@extra": nil, types: nil
 end
 defmodule PageBlockTable do
   @moduledoc  """
@@ -1094,6 +1450,33 @@ defmodule TextEntityTypeBold do
   """
 
   defstruct "@type": "textEntityTypeBold", "@extra": nil
+end
+defmodule PushMessageContentChecklist do
+  @moduledoc  """
+  A message with a checklist.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | title | string | Checklist title. |
+  | is_pinned | bool | True, if the message is a pinned message with the specified content. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_checklist.html).
+  """
+
+  defstruct "@type": "pushMessageContentChecklist", "@extra": nil, title: nil, is_pinned: nil
+end
+defmodule CallDiscardReasonUpgradeToGroupCall do
+  @moduledoc  """
+  The call was ended because it has been upgraded to a group call.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | invite_link | string | Invite link for the group call. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_discard_reason_upgrade_to_group_call.html).
+  """
+
+  defstruct "@type": "callDiscardReasonUpgradeToGroupCall", "@extra": nil, invite_link: nil
 end
 defmodule Document do
   @moduledoc  """
@@ -1161,6 +1544,42 @@ defmodule MessageReadDateTooOld do
 
   defstruct "@type": "messageReadDateTooOld", "@extra": nil
 end
+defmodule UpdateOwnedTonCount do
+  @moduledoc  """
+  The number of Toncoins owned by the current user has changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | ton_amount | int53 | The new amount of owned Toncoins; in the smallest units of the cryptocurrency. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_owned_ton_count.html).
+  """
+
+  defstruct "@type": "updateOwnedTonCount", "@extra": nil, ton_amount: nil
+end
+defmodule StarTransactionTypeUnsupported do
+  @moduledoc  """
+  The transaction is a transaction of an unsupported type.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_unsupported.html).
+  """
+
+  defstruct "@type": "starTransactionTypeUnsupported", "@extra": nil
+end
+defmodule EmojiStatusCustomEmojis do
+  @moduledoc  """
+  Contains a list of custom emoji identifiers for emoji statuses.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | custom_emoji_ids | int64 | The list of custom emoji identifiers. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_status_custom_emojis.html).
+  """
+
+  defstruct "@type": "emojiStatusCustomEmojis", "@extra": nil, custom_emoji_ids: nil
+end
 defmodule DatabaseStatistics do
   @moduledoc  """
   Contains database statistics.
@@ -1176,13 +1595,13 @@ defmodule DatabaseStatistics do
 end
 defmodule StarRevenueStatistics do
   @moduledoc  """
-  A detailed statistics about Telegram stars earned by a bot or a chat.
+  A detailed statistics about Telegram Stars earned by a user or a chat.
 
   | Name | Type | Description |
   |------|------| ------------|
   | revenue_by_day_graph | StatisticalGraph | A graph containing amount of revenue in a given day. |
-  | status | starRevenueStatus | Telegram star revenue status. |
-  | usd_rate | double | Current conversion rate of a Telegram star to USD. |
+  | status | starRevenueStatus | Telegram Star revenue status. |
+  | usd_rate | double | Current conversion rate of a Telegram Star to USD. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_revenue_statistics.html).
   """
@@ -1197,6 +1616,19 @@ defmodule PageBlockVerticalAlignment do
   """
 
   defstruct "@type": "PageBlockVerticalAlignment", "@extra": nil
+end
+defmodule AttributeCraftPersistenceProbability do
+  @moduledoc  """
+  Describes chance of the crafted gift to have the backdrop or symbol of one of the original gifts.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | persistence_chance_per_mille | int32 | The 4 numbers that describe probability of the craft result to have the same attribute as one of the original gifts if 1, 2, 3, or 4 gifts with the attribute are used in the craft. Each number represents the number of crafted gifts with the original attribute per 1000 successful craftings. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1attribute_craft_persistence_probability.html).
+  """
+
+  defstruct "@type": "attributeCraftPersistenceProbability", "@extra": nil, persistence_chance_per_mille: nil
 end
 defmodule PremiumStoryFeature do
   @moduledoc  """
@@ -1214,7 +1646,7 @@ defmodule ReplyMarkupShowKeyboard do
   | Name | Type | Description |
   |------|------| ------------|
   | rows | keyboardButton | A list of rows of bot keyboard buttons. |
-  | is_persistent | bool | True, if the keyboard is supposed to always be shown when the ordinary keyboard is hidden. |
+  | is_persistent | bool | True, if the keyboard is expected to always be shown when the ordinary keyboard is hidden. |
   | resize_keyboard | bool | True, if the application needs to resize the keyboard vertically. |
   | one_time | bool | True, if the application needs to hide the keyboard after use. |
   | is_personal | bool | True, if the keyboard must automatically be shown to the current user. For outgoing messages, specify true to show the keyboard only for the mentioned users and for the target user of a reply. |
@@ -1240,29 +1672,15 @@ defmodule ChatInviteLinkInfo do
   | description | string | Chat description. |
   | member_count | int32 | Number of members in the chat. |
   | member_user_ids | int53 | User identifiers of some chat members that may be known to the current user. |
+  | subscription_info | chatInviteLinkSubscriptionInfo | Information about subscription plan that must be paid by the user to use the link; may be null if the link doesn't require subscription. |
   | creates_join_request | bool | True, if the link only creates join request. |
   | is_public | bool | True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup. |
-  | is_verified | bool | True, if the chat is verified. |
-  | is_scam | bool | True, if many users reported this chat as a scam. |
-  | is_fake | bool | True, if many users reported this chat as a fake account. |
+  | verification_status | verificationStatus | Information about verification status of the chat; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_invite_link_info.html).
   """
 
-  defstruct "@type": "chatInviteLinkInfo", "@extra": nil, chat_id: nil, accessible_for: nil, type: nil, title: nil, photo: nil, accent_color_id: nil, description: nil, member_count: nil, member_user_ids: nil, creates_join_request: nil, is_public: nil, is_verified: nil, is_scam: nil, is_fake: nil
-end
-defmodule PremiumGiveawayParticipantStatusDisallowedCountry do
-  @moduledoc  """
-  The user can't participate in the giveaway, because they phone number is from a disallowed country.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | user_country_code | string | A two-letter ISO 3166-1 alpha-2 country code of the user's country. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_giveaway_participant_status_disallowed_country.html).
-  """
-
-  defstruct "@type": "premiumGiveawayParticipantStatusDisallowedCountry", "@extra": nil, user_country_code: nil
+  defstruct "@type": "chatInviteLinkInfo", "@extra": nil, chat_id: nil, accessible_for: nil, type: nil, title: nil, photo: nil, accent_color_id: nil, description: nil, member_count: nil, member_user_ids: nil, subscription_info: nil, creates_join_request: nil, is_public: nil, verification_status: nil
 end
 defmodule UserStatusEmpty do
   @moduledoc  """
@@ -1283,6 +1701,20 @@ defmodule TextEntityTypeItalic do
   """
 
   defstruct "@type": "textEntityTypeItalic", "@extra": nil
+end
+defmodule InternalLinkTypeStarPurchase do
+  @moduledoc  """
+  The link is a link to the Telegram Star purchase section of the application.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | The number of Telegram Stars that must be owned by the user. |
+  | purpose | string | Purpose of Telegram Star purchase. Arbitrary string specified by the server, for example, "subs" if the Telegram Stars are required to extend channel subscriptions. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_star_purchase.html).
+  """
+
+  defstruct "@type": "internalLinkTypeStarPurchase", "@extra": nil, star_count: nil, purpose: nil
 end
 defmodule UserLink do
   @moduledoc  """
@@ -1366,6 +1798,19 @@ defmodule ChatEventUsernameChanged do
 
   defstruct "@type": "chatEventUsernameChanged", "@extra": nil, old_username: nil, new_username: nil
 end
+defmodule StarTransactionTypePaidGroupCallMessageSend do
+  @moduledoc  """
+  The transaction is a sending of a paid group call message; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat that received the payment. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_paid_group_call_message_send.html).
+  """
+
+  defstruct "@type": "starTransactionTypePaidGroupCallMessageSend", "@extra": nil, chat_id: nil
+end
 defmodule MessageReadDateMyPrivacyRestricted do
   @moduledoc  """
   The read date is unknown due to privacy settings of the current user, but will be known if the user subscribes to Telegram Premium.
@@ -1396,6 +1841,16 @@ defmodule SessionTypeSafari do
 
   defstruct "@type": "sessionTypeSafari", "@extra": nil
 end
+defmodule ChatRevenueTransactionTypeUnsupported do
+  @moduledoc  """
+  Describes an unsupported transaction.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transaction_type_unsupported.html).
+  """
+
+  defstruct "@type": "chatRevenueTransactionTypeUnsupported", "@extra": nil
+end
 defmodule ChatEventSignMessagesToggled do
   @moduledoc  """
   The sign_messages setting of a channel was toggled.
@@ -1408,6 +1863,19 @@ defmodule ChatEventSignMessagesToggled do
   """
 
   defstruct "@type": "chatEventSignMessagesToggled", "@extra": nil, sign_messages: nil
+end
+defmodule UpdateDefaultPaidReactionType do
+  @moduledoc  """
+  The type of default paid reaction has changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | type | PaidReactionType | The new type of the default paid reaction. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_default_paid_reaction_type.html).
+  """
+
+  defstruct "@type": "updateDefaultPaidReactionType", "@extra": nil, type: nil
 end
 defmodule InputInlineQueryResultVoiceNote do
   @moduledoc  """
@@ -1453,6 +1921,29 @@ defmodule CountryInfo do
   """
 
   defstruct "@type": "countryInfo", "@extra": nil, country_code: nil, name: nil, english_name: nil, is_hidden: nil, calling_codes: nil
+end
+defmodule SearchMessagesChatTypeFilter do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_search_messages_chat_type_filter.html).
+  """
+
+  defstruct "@type": "SearchMessagesChatTypeFilter", "@extra": nil
+end
+defmodule InputCallFromMessage do
+  @moduledoc  """
+  A call from a message of the type messageCall with non-zero messageCall.unique_id.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Chat identifier of the message. |
+  | message_id | int53 | Message identifier. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_call_from_message.html).
+  """
+
+  defstruct "@type": "inputCallFromMessage", "@extra": nil, chat_id: nil, message_id: nil
 end
 defmodule TextEntities do
   @moduledoc  """
@@ -1531,12 +2022,13 @@ defmodule MessageForumTopicCreated do
   | Name | Type | Description |
   |------|------| ------------|
   | name | string | Name of the topic. |
+  | is_name_implicit | bool | True, if the name of the topic wasn't added explicitly. |
   | icon | forumTopicIcon | Icon of the topic. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_forum_topic_created.html).
   """
 
-  defstruct "@type": "messageForumTopicCreated", "@extra": nil, name: nil, icon: nil
+  defstruct "@type": "messageForumTopicCreated", "@extra": nil, name: nil, is_name_implicit: nil, icon: nil
 end
 defmodule SearchMessagesFilterDocument do
   @moduledoc  """
@@ -1606,6 +2098,16 @@ defmodule ChatEventForumTopicPinned do
 
   defstruct "@type": "chatEventForumTopicPinned", "@extra": nil, old_topic_info: nil, new_topic_info: nil
 end
+defmodule AffiliateTypeCurrentUser do
+  @moduledoc  """
+  The affiliate is the current user.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_type_current_user.html).
+  """
+
+  defstruct "@type": "affiliateTypeCurrentUser", "@extra": nil
+end
 defmodule UpdateChatLastMessage do
   @moduledoc  """
   The last message of a chat was changed.
@@ -1631,45 +2133,19 @@ defmodule GroupCallVideoQualityFull do
 
   defstruct "@type": "groupCallVideoQualityFull", "@extra": nil
 end
-defmodule WebPage do
+defmodule GiftPurchaseLimits do
   @moduledoc  """
-  Describes a link preview.
+  Describes the maximum number of times that a specific gift can be purchased.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | url | string | Original URL of the link. |
-  | display_url | string | URL to display. |
-  | type | string | Type of the web page. Can be: article, photo, audio, video, document, profile, app, or something else. |
-  | site_name | string | Short name of the site (e.g., Google Docs, App Store). |
-  | title | string | Title of the content. |
-  | description | formattedText | Description of the content. |
-  | photo | photo | Image representing the content; may be null. |
-  | embed_url | string | URL to show in the embedded preview. |
-  | embed_type | string | MIME type of the embedded preview, (e.g., text/html or video/mp4). |
-  | embed_width | int32 | Width of the embedded preview. |
-  | embed_height | int32 | Height of the embedded preview. |
-  | duration | int32 | Duration of the content, in seconds. |
-  | author | string | Author of the content. |
-  | has_large_media | bool | True, if size of media in the preview can be changed. |
-  | show_large_media | bool | True, if large media preview must be shown; otherwise, the media preview must be shown small and only the first frame must be shown for videos. |
-  | skip_confirmation | bool | True, if there is no need to show an ordinary open URL confirmation, when opening the URL from the preview, because the URL is shown in the message text in clear. |
-  | show_above_text | bool | True, if the link preview must be shown above message text; otherwise, the link preview must be shown below the message text. |
-  | animation | animation | Preview of the content as an animation, if available; may be null. |
-  | audio | audio | Preview of the content as an audio file, if available; may be null. |
-  | document | document | Preview of the content as a document, if available; may be null. |
-  | sticker | sticker | Preview of the content as a sticker for small WEBP files, if available; may be null. |
-  | video | video | Preview of the content as a video, if available; may be null. |
-  | video_note | videoNote | Preview of the content as a video note, if available; may be null. |
-  | voice_note | voiceNote | Preview of the content as a voice note, if available; may be null. |
-  | story_sender_chat_id | int53 | The identifier of the sender of the previewed story; 0 if none. |
-  | story_id | int32 | The identifier of the previewed story; 0 if none. |
-  | stickers | sticker | Up to 4 stickers from the sticker set available via the link. |
-  | instant_view_version | int32 | Version of web page instant view (currently, can be 1 or 2); 0 if none. |
+  | total_count | int32 | The maximum number of times the gifts can be purchased. |
+  | remaining_count | int32 | Number of remaining times the gift can be purchased. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_page.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_purchase_limits.html).
   """
 
-  defstruct "@type": "webPage", "@extra": nil, url: nil, display_url: nil, type: nil, site_name: nil, title: nil, description: nil, photo: nil, embed_url: nil, embed_type: nil, embed_width: nil, embed_height: nil, duration: nil, author: nil, has_large_media: nil, show_large_media: nil, skip_confirmation: nil, show_above_text: nil, animation: nil, audio: nil, document: nil, sticker: nil, video: nil, video_note: nil, voice_note: nil, story_sender_chat_id: nil, story_id: nil, stickers: nil, instant_view_version: nil
+  defstruct "@type": "giftPurchaseLimits", "@extra": nil, total_count: nil, remaining_count: nil
 end
 defmodule UpdateMessageSendAcknowledged do
   @moduledoc  """
@@ -1747,6 +2223,19 @@ defmodule EncryptedPassportElement do
 
   defstruct "@type": "encryptedPassportElement", "@extra": nil, type: nil, data: nil, front_side: nil, reverse_side: nil, selfie: nil, translation: nil, files: nil, value: nil, hash: nil
 end
+defmodule InputChatThemeGift do
+  @moduledoc  """
+  A theme based on an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | name | string | Name of the upgraded gift. A gift can be used only in one chat in a time. When the same gift is used in another chat, theme in the previous chat is reset to default. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_chat_theme_gift.html).
+  """
+
+  defstruct "@type": "inputChatThemeGift", "@extra": nil, name: nil
+end
 defmodule PersonalDetails do
   @moduledoc  """
   Contains the user's personal details.
@@ -1785,18 +2274,19 @@ defmodule ChatMember do
   | Name | Type | Description |
   |------|------| ------------|
   | member_id | MessageSender | Identifier of the chat member. Currently, other chats can be only Left or Banned. Only supergroups and channels can have other chats as Left or Banned members and these chats must be supergroups or channels. |
-  | inviter_user_id | int53 | Identifier of a user that invited/promoted/banned this member in the chat; 0 if unknown. |
+  | tag | string | Tag of the chat member or its custom title if the member is an administrator of the chat; 0-16 characters without emoji; applicable to basic groups and supergroups only. |
+  | inviter_user_id | int53 | Identifier of a user who invited/promoted/banned this member in the chat; 0 if unknown. |
   | joined_chat_date | int32 | Point in time (Unix timestamp) when the user joined/was promoted/was banned in the chat. |
   | status | ChatMemberStatus | Status of the member in the chat. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_member.html).
   """
 
-  defstruct "@type": "chatMember", "@extra": nil, member_id: nil, inviter_user_id: nil, joined_chat_date: nil, status: nil
+  defstruct "@type": "chatMember", "@extra": nil, member_id: nil, tag: nil, inviter_user_id: nil, joined_chat_date: nil, status: nil
 end
 defmodule TextEntityTypeCashtag do
   @moduledoc  """
-  A cashtag text, beginning with "$" and consisting of capital English letters (e.g., "$USD").
+  A cashtag text, beginning with "$", consisting of capital English letters (e.g., "$USD"), and optionally containing a chat username at the end.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_cashtag.html).
@@ -1900,28 +2390,28 @@ defmodule MessageProximityAlertTriggered do
 
   defstruct "@type": "messageProximityAlertTriggered", "@extra": nil, traveler_id: nil, watcher_id: nil, distance: nil
 end
+defmodule GiveawayPrizePremium do
+  @moduledoc  """
+  The giveaway sends Telegram Premium subscriptions to the winners.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | month_count | int32 | Number of months the Telegram Premium subscription will be active after code activation. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_prize_premium.html).
+  """
+
+  defstruct "@type": "giveawayPrizePremium", "@extra": nil, month_count: nil
+end
 defmodule SearchMessagesFilterUnreadReaction do
   @moduledoc  """
-  Returns only messages with unread reactions for the current user. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user.
+  Returns only messages with unread reactions for the current user. When using this filter the results can't be additionally filtered by a query or by the sending user.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_reaction.html).
   """
 
   defstruct "@type": "searchMessagesFilterUnreadReaction", "@extra": nil
-end
-defmodule StarTransactionPartnerChannel do
-  @moduledoc  """
-  The transaction is a transaction with a channel chat.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | chat_id | int53 | Identifier of the chat. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_partner_channel.html).
-  """
-
-  defstruct "@type": "starTransactionPartnerChannel", "@extra": nil, chat_id: nil
 end
 defmodule PremiumLimitTypePinnedChatCount do
   @moduledoc  """
@@ -1932,6 +2422,16 @@ defmodule PremiumLimitTypePinnedChatCount do
   """
 
   defstruct "@type": "premiumLimitTypePinnedChatCount", "@extra": nil
+end
+defmodule CanPostStoryResultPremiumNeeded do
+  @moduledoc  """
+  The user must subscribe to Telegram Premium to be able to post stories.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story_result_premium_needed.html).
+  """
+
+  defstruct "@type": "canPostStoryResultPremiumNeeded", "@extra": nil
 end
 defmodule SentWebAppMessage do
   @moduledoc  """
@@ -1946,26 +2446,31 @@ defmodule SentWebAppMessage do
 
   defstruct "@type": "sentWebAppMessage", "@extra": nil, inline_message_id: nil
 end
-defmodule CanSendStoryResultBoostNeeded do
+defmodule ChatRevenueTransactionTypeSponsoredMessageEarnings do
   @moduledoc  """
-  The chat must be boosted first by Telegram Premium subscribers to post more stories. Call getChatBoostStatus to get current boost status of the chat.
+  Describes earnings from sponsored messages in a chat in some time frame.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | start_date | int32 | Point in time (Unix timestamp) when the earnings started. |
+  | end_date | int32 | Point in time (Unix timestamp) when the earnings ended. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_story_result_boost_needed.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transaction_type_sponsored_message_earnings.html).
   """
 
-  defstruct "@type": "canSendStoryResultBoostNeeded", "@extra": nil
+  defstruct "@type": "chatRevenueTransactionTypeSponsoredMessageEarnings", "@extra": nil, start_date: nil, end_date: nil
 end
 defmodule MessagePaymentSuccessful do
   @moduledoc  """
-  A payment has been completed.
+  A payment has been sent to a bot or a business account.
 
   | Name | Type | Description |
   |------|------| ------------|
   | invoice_chat_id | int53 | Identifier of the chat, containing the corresponding invoice message. |
-  | invoice_message_id | int53 | Identifier of the message with the corresponding invoice; can be 0 or an identifier of a deleted message. |
+  | invoice_message_id | int53 | Identifier of the message with the corresponding invoice; may be 0 or an identifier of a deleted message. |
   | currency | string | Currency for the price of the product. |
   | total_amount | int53 | Total price for the product, in the smallest units of the currency. |
+  | subscription_until_date | int32 | Point in time (Unix timestamp) when the subscription will expire; 0 if unknown or the payment isn't recurring. |
   | is_recurring | bool | True, if this is a recurring payment. |
   | is_first_recurring | bool | True, if this is the first recurring payment. |
   | invoice_name | string | Name of the invoice; may be empty if unknown. |
@@ -1973,7 +2478,7 @@ defmodule MessagePaymentSuccessful do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_payment_successful.html).
   """
 
-  defstruct "@type": "messagePaymentSuccessful", "@extra": nil, invoice_chat_id: nil, invoice_message_id: nil, currency: nil, total_amount: nil, is_recurring: nil, is_first_recurring: nil, invoice_name: nil
+  defstruct "@type": "messagePaymentSuccessful", "@extra": nil, invoice_chat_id: nil, invoice_message_id: nil, currency: nil, total_amount: nil, subscription_until_date: nil, is_recurring: nil, is_first_recurring: nil, invoice_name: nil
 end
 defmodule UpdateChatHasProtectedContent do
   @moduledoc  """
@@ -2016,6 +2521,32 @@ defmodule PageBlockCollage do
   """
 
   defstruct "@type": "pageBlockCollage", "@extra": nil, page_blocks: nil, caption: nil
+end
+defmodule AvailableGift do
+  @moduledoc  """
+  Describes a gift that is available for purchase.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | gift | The gift. |
+  | resale_count | int32 | Number of gifts that are available for resale. |
+  | min_resale_star_count | int53 | The minimum price for the gifts available for resale in Telegram Star equivalent; 0 if there are no such gifts. |
+  | title | string | The title of the upgraded gift; empty if the gift isn't available for resale. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1available_gift.html).
+  """
+
+  defstruct "@type": "availableGift", "@extra": nil, gift: nil, resale_count: nil, min_resale_star_count: nil, title: nil
+end
+defmodule GiveawayParticipantStatusEligible do
+  @moduledoc  """
+  The user is eligible for the giveaway.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_participant_status_eligible.html).
+  """
+
+  defstruct "@type": "giveawayParticipantStatusEligible", "@extra": nil
 end
 defmodule MessageForumTopicEdited do
   @moduledoc  """
@@ -2077,19 +2608,6 @@ defmodule StoryInteractionTypeRepost do
 
   defstruct "@type": "storyInteractionTypeRepost", "@extra": nil, story: nil
 end
-defmodule CanSendStoryResultWeeklyLimitExceeded do
-  @moduledoc  """
-  The weekly limit for the number of posted stories exceeded. The user needs to buy Telegram Premium or wait specified time.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | retry_after | int32 | Time left before the user can send the next story. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_story_result_weekly_limit_exceeded.html).
-  """
-
-  defstruct "@type": "canSendStoryResultWeeklyLimitExceeded", "@extra": nil, retry_after: nil
-end
 defmodule BotCommandScopeAllPrivateChats do
   @moduledoc  """
   A scope covering all private chats.
@@ -2099,6 +2617,30 @@ defmodule BotCommandScopeAllPrivateChats do
   """
 
   defstruct "@type": "botCommandScopeAllPrivateChats", "@extra": nil
+end
+defmodule AffiliateProgramInfo do
+  @moduledoc  """
+  Contains information about an active affiliate program.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | parameters | affiliateProgramParameters | Parameters of the affiliate program. |
+  | end_date | int32 | Point in time (Unix timestamp) when the affiliate program will be closed; 0 if the affiliate program isn't scheduled to be closed. If positive, then the program can't be connected using <a class="el" href="classtd_1_1td__api_1_1connect_affiliate_program.html">connectAffiliateProgram</a>, but active connections will work until the date. |
+  | daily_revenue_per_user_amount | starAmount | The amount of daily revenue per user in Telegram Stars of the bot that created the affiliate program. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_program_info.html).
+  """
+
+  defstruct "@type": "affiliateProgramInfo", "@extra": nil, parameters: nil, end_date: nil, daily_revenue_per_user_amount: nil
+end
+defmodule EmojiStatusType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_emoji_status_type.html).
+  """
+
+  defstruct "@type": "EmojiStatusType", "@extra": nil
 end
 defmodule InputBackgroundRemote do
   @moduledoc  """
@@ -2121,12 +2663,13 @@ defmodule UpdatePollAnswer do
   |------|------| ------------|
   | poll_id | int64 | Unique poll identifier. |
   | voter_id | MessageSender | Identifier of the message sender that changed the answer to the poll. |
-  | option_ids | int32 | 0-based identifiers of answer options, chosen by the user. |
+  | option_ids | string | Unique identifiers of answer options, that were chosen by the user. |
+  | option_positions | int32 | 0-based identifiers of answer options, that were chosen by the user. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_poll_answer.html).
   """
 
-  defstruct "@type": "updatePollAnswer", "@extra": nil, poll_id: nil, voter_id: nil, option_ids: nil
+  defstruct "@type": "updatePollAnswer", "@extra": nil, poll_id: nil, voter_id: nil, option_ids: nil, option_positions: nil
 end
 defmodule EmailAddressResetStateAvailable do
   @moduledoc  """
@@ -2154,6 +2697,20 @@ defmodule FoundPosition do
 
   defstruct "@type": "foundPosition", "@extra": nil, position: nil
 end
+defmodule MainWebApp do
+  @moduledoc  """
+  Contains information about the main Web App of a bot.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | URL of the Web App to open. |
+  | mode | WebAppOpenMode | The mode in which the Web App must be opened. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1main_web_app.html).
+  """
+
+  defstruct "@type": "mainWebApp", "@extra": nil, url: nil, mode: nil
+end
 defmodule TMeUrlTypeChatInvite do
   @moduledoc  """
   A chat invite link.
@@ -2166,6 +2723,20 @@ defmodule TMeUrlTypeChatInvite do
   """
 
   defstruct "@type": "tMeUrlTypeChatInvite", "@extra": nil, info: nil
+end
+defmodule UpdateGroupCallParticipants do
+  @moduledoc  """
+  The list of group call participants that can send and receive encrypted call data has changed; for group calls not bound to a chat only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | group_call_id | int32 | Identifier of the group call. |
+  | participant_user_ids | int64 | New list of group call participant user identifiers. The identifiers may be invalid or the corresponding users may be unknown. The participants must be shown in the list of group call participants even if there is no information about them. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_group_call_participants.html).
+  """
+
+  defstruct "@type": "updateGroupCallParticipants", "@extra": nil, group_call_id: nil, participant_user_ids: nil
 end
 defmodule FileType do
   @moduledoc  """
@@ -2214,6 +2785,24 @@ defmodule TextEntity do
 
   defstruct "@type": "textEntity", "@extra": nil, offset: nil, length: nil, type: nil
 end
+defmodule MessagePaymentRefunded do
+  @moduledoc  """
+  A payment has been refunded.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | owner_id | MessageSender | Identifier of the previous owner of the Telegram Stars that refunds them. |
+  | currency | string | Currency for the price of the product. |
+  | total_amount | int53 | Total price for the product, in the smallest units of the currency. |
+  | invoice_payload | bytes | Invoice payload; only for bots. |
+  | telegram_payment_charge_id | string | Telegram payment identifier. |
+  | provider_payment_charge_id | string | Provider payment identifier. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_payment_refunded.html).
+  """
+
+  defstruct "@type": "messagePaymentRefunded", "@extra": nil, owner_id: nil, currency: nil, total_amount: nil, invoice_payload: nil, telegram_payment_charge_id: nil, provider_payment_charge_id: nil
+end
 defmodule PassportSuitableElement do
   @moduledoc  """
   Contains information about a Telegram Passport element that was requested by a service.
@@ -2229,6 +2818,28 @@ defmodule PassportSuitableElement do
   """
 
   defstruct "@type": "passportSuitableElement", "@extra": nil, type: nil, is_selfie_required: nil, is_translation_required: nil, is_native_name_required: nil
+end
+defmodule UpdateForumTopic do
+  @moduledoc  """
+  Information about a topic in a forum chat was changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Chat identifier. |
+  | forum_topic_id | int32 | Forum topic identifier of the topic. |
+  | is_pinned | bool | True, if the topic is pinned in the topic list. |
+  | last_read_inbox_message_id | int53 | Identifier of the last read incoming message. |
+  | last_read_outbox_message_id | int53 | Identifier of the last read outgoing message. |
+  | unread_mention_count | int32 | Number of unread messages with a mention/reply in the topic. |
+  | unread_reaction_count | int32 | Number of messages with unread reactions in the topic. |
+  | unread_poll_vote_count | int32 | Number of messages with unread poll votes in the topic. |
+  | notification_settings | chatNotificationSettings | Notification settings for the topic. |
+  | draft_message | draftMessage | A draft of a message in the topic; may be null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_forum_topic.html).
+  """
+
+  defstruct "@type": "updateForumTopic", "@extra": nil, chat_id: nil, forum_topic_id: nil, is_pinned: nil, last_read_inbox_message_id: nil, last_read_outbox_message_id: nil, unread_mention_count: nil, unread_reaction_count: nil, unread_poll_vote_count: nil, notification_settings: nil, draft_message: nil
 end
 defmodule PageBlockAnchor do
   @moduledoc  """
@@ -2312,6 +2923,26 @@ defmodule InputStoryAreaTypeLink do
 
   defstruct "@type": "inputStoryAreaTypeLink", "@extra": nil, url: nil
 end
+defmodule GiveawayParticipantStatusParticipating do
+  @moduledoc  """
+  The user participates in the giveaway.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_participant_status_participating.html).
+  """
+
+  defstruct "@type": "giveawayParticipantStatusParticipating", "@extra": nil
+end
+defmodule ButtonStyleSuccess do
+  @moduledoc  """
+  The button has green color.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1button_style_success.html).
+  """
+
+  defstruct "@type": "buttonStyleSuccess", "@extra": nil
+end
 defmodule MessageChatBoost do
   @moduledoc  """
   The chat was boosted by the sender of the message.
@@ -2337,20 +2968,6 @@ defmodule InternalLinkTypeBusinessChat do
   """
 
   defstruct "@type": "internalLinkTypeBusinessChat", "@extra": nil, link_name: nil
-end
-defmodule ReportChatSponsoredMessageOption do
-  @moduledoc  """
-  Describes an option to report a sponsored message.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | id | bytes | Unique identifier of the option. |
-  | text | string | Text of the option. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_sponsored_message_option.html).
-  """
-
-  defstruct "@type": "reportChatSponsoredMessageOption", "@extra": nil, id: nil, text: nil
 end
 defmodule MessageChatSetMessageAutoDeleteTime do
   @moduledoc  """
@@ -2404,21 +3021,6 @@ defmodule ChatEventVideoChatMuteNewParticipantsToggled do
 
   defstruct "@type": "chatEventVideoChatMuteNewParticipantsToggled", "@extra": nil, mute_new_participants: nil
 end
-defmodule ChatRevenueTransactionTypeWithdrawal do
-  @moduledoc  """
-  Describes a withdrawal of earnings.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | withdrawal_date | int32 | Point in time (Unix timestamp) when the earnings withdrawal started. |
-  | provider | string | Name of the payment provider. |
-  | state | RevenueWithdrawalState | State of the withdrawal. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transaction_type_withdrawal.html).
-  """
-
-  defstruct "@type": "chatRevenueTransactionTypeWithdrawal", "@extra": nil, withdrawal_date: nil, provider: nil, state: nil
-end
 defmodule FileTypeSecretThumbnail do
   @moduledoc  """
   The file is a thumbnail of a file from a secret chat.
@@ -2428,6 +3030,21 @@ defmodule FileTypeSecretThumbnail do
   """
 
   defstruct "@type": "fileTypeSecretThumbnail", "@extra": nil
+end
+defmodule AuctionBid do
+  @moduledoc  """
+  Describes a bid in an auction.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | The number of Telegram Stars that were put in the bid. |
+  | bid_date | int32 | Point in time (Unix timestamp) when the bid was made. |
+  | position | int32 | Position of the bid in the list of all bids. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1auction_bid.html).
+  """
+
+  defstruct "@type": "auctionBid", "@extra": nil, star_count: nil, bid_date: nil, position: nil
 end
 defmodule InputInlineQueryResultVenue do
   @moduledoc  """
@@ -2462,6 +3079,19 @@ defmodule StoryArea do
 
   defstruct "@type": "storyArea", "@extra": nil, position: nil, type: nil
 end
+defmodule InternalLinkTypeMyProfilePage do
+  @moduledoc  """
+  The link is a link to the My Profile application page.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | section | string | Section of the page; may be one of "", "posts", "posts/all-stories", "posts/add-album", "gifts", "archived-posts". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_my_profile_page.html).
+  """
+
+  defstruct "@type": "internalLinkTypeMyProfilePage", "@extra": nil, section: nil
+end
 defmodule PushMessageContentDocument do
   @moduledoc  """
   A document message (a general file).
@@ -2475,6 +3105,20 @@ defmodule PushMessageContentDocument do
   """
 
   defstruct "@type": "pushMessageContentDocument", "@extra": nil, document: nil, is_pinned: nil
+end
+defmodule GroupCallParticipants do
+  @moduledoc  """
+  Contains identifiers of group call participants.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | total_count | int32 | Total number of group call participants. |
+  | participant_ids | MessageSender | Identifiers of the participants. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_participants.html).
+  """
+
+  defstruct "@type": "groupCallParticipants", "@extra": nil, total_count: nil, participant_ids: nil
 end
 defmodule MessageChatAddMembers do
   @moduledoc  """
@@ -2541,13 +3185,13 @@ defmodule ChatAdministratorRights do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | can_manage_chat | bool | True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report supergroup spam messages and ignore slow mode. Implied by any other privilege; applicable to supergroups and channels only. |
+  | can_manage_chat | bool | True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report supergroup spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other privilege; applicable to supergroups and channels only. |
   | can_change_info | bool | True, if the administrator can change the chat title, photo, and other settings. |
-  | can_post_messages | bool | True, if the administrator can create channel posts or view channel statistics; applicable to channels only. |
+  | can_post_messages | bool | True, if the administrator can create channel posts, approve suggested channel posts, or view channel statistics; applicable to channels only. |
   | can_edit_messages | bool | True, if the administrator can edit messages of other users and pin messages; applicable to channels only. |
   | can_delete_messages | bool | True, if the administrator can delete messages of other users. |
   | can_invite_users | bool | True, if the administrator can invite new users to the chat. |
-  | can_restrict_members | bool | True, if the administrator can restrict, ban, or unban chat members or view supergroup statistics; always true for channels. |
+  | can_restrict_members | bool | True, if the administrator can restrict, ban, or unban chat members or view supergroup statistics. |
   | can_pin_messages | bool | True, if the administrator can pin messages; applicable to basic groups and supergroups only. |
   | can_manage_topics | bool | True, if the administrator can create, rename, close, reopen, hide, and unhide forum topics; applicable to forum supergroups only. |
   | can_promote_members | bool | True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them. |
@@ -2555,26 +3199,44 @@ defmodule ChatAdministratorRights do
   | can_post_stories | bool | True, if the administrator can create new chat stories, or edit and delete posted stories; applicable to supergroups and channels only. |
   | can_edit_stories | bool | True, if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access story archive; applicable to supergroups and channels only. |
   | can_delete_stories | bool | True, if the administrator can delete stories posted by other users; applicable to supergroups and channels only. |
+  | can_manage_direct_messages | bool | True, if the administrator can answer to channel direct messages; applicable to channels only. |
+  | can_manage_tags | bool | True, if the administrator can change tags of other users; applicable to basic groups and supergroups only. |
   | is_anonymous | bool | True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_administrator_rights.html).
   """
 
-  defstruct "@type": "chatAdministratorRights", "@extra": nil, can_manage_chat: nil, can_change_info: nil, can_post_messages: nil, can_edit_messages: nil, can_delete_messages: nil, can_invite_users: nil, can_restrict_members: nil, can_pin_messages: nil, can_manage_topics: nil, can_promote_members: nil, can_manage_video_chats: nil, can_post_stories: nil, can_edit_stories: nil, can_delete_stories: nil, is_anonymous: nil
+  defstruct "@type": "chatAdministratorRights", "@extra": nil, can_manage_chat: nil, can_change_info: nil, can_post_messages: nil, can_edit_messages: nil, can_delete_messages: nil, can_invite_users: nil, can_restrict_members: nil, can_pin_messages: nil, can_manage_topics: nil, can_promote_members: nil, can_manage_video_chats: nil, can_post_stories: nil, can_edit_stories: nil, can_delete_stories: nil, can_manage_direct_messages: nil, can_manage_tags: nil, is_anonymous: nil
 end
-defmodule ChatRevenueTransactionTypeRefund do
+defmodule TargetChatTypes do
   @moduledoc  """
-  Describes a refund for failed withdrawal of earnings.
+  Describes allowed types for the target chat.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | refund_date | int32 | Point in time (Unix timestamp) when the transaction was refunded. |
-  | provider | string | Name of the payment provider. |
+  | allow_user_chats | bool | True, if private chats with ordinary users are allowed. |
+  | allow_bot_chats | bool | True, if private chats with other bots are allowed. |
+  | allow_group_chats | bool | True, if basic group and supergroup chats are allowed. |
+  | allow_channel_chats | bool | True, if channel chats are allowed. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transaction_type_refund.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1target_chat_types.html).
   """
 
-  defstruct "@type": "chatRevenueTransactionTypeRefund", "@extra": nil, refund_date: nil, provider: nil
+  defstruct "@type": "targetChatTypes", "@extra": nil, allow_user_chats: nil, allow_bot_chats: nil, allow_group_chats: nil, allow_channel_chats: nil
+end
+defmodule PushMessageContentPaidMedia do
+  @moduledoc  """
+  A message with paid media.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | Number of Telegram Stars needed to buy access to the media in the message; 0 for pinned message. |
+  | is_pinned | bool | True, if the message is a pinned message with the specified content. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_paid_media.html).
+  """
+
+  defstruct "@type": "pushMessageContentPaidMedia", "@extra": nil, star_count: nil, is_pinned: nil
 end
 defmodule NotificationSounds do
   @moduledoc  """
@@ -2615,7 +3277,7 @@ defmodule InputStoryAreas do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | areas | inputStoryArea | List of input story areas. Currently, a story can have up to 10 <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_location.html">inputStoryAreaTypeLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_found_venue.html">inputStoryAreaTypeFoundVenue</a>, and <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_previous_venue.html">inputStoryAreaTypePreviousVenue</a> areas, up to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("story_suggested_reaction_area_count_max") <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_suggested_reaction.html">inputStoryAreaTypeSuggestedReaction</a> areas, up to 1 <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_message.html">inputStoryAreaTypeMessage</a> area, and up to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("story_link_area_count_max") <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_link.html">inputStoryAreaTypeLink</a> areas if the current user is a Telegram Premium user. |
+  | areas | inputStoryArea | List of input story areas. Currently, a story can have up to 10 <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_location.html">inputStoryAreaTypeLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_found_venue.html">inputStoryAreaTypeFoundVenue</a>, and <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_previous_venue.html">inputStoryAreaTypePreviousVenue</a> areas, up to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("story_suggested_reaction_area_count_max") <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_suggested_reaction.html">inputStoryAreaTypeSuggestedReaction</a> areas, up to 1 <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_message.html">inputStoryAreaTypeMessage</a> area, up to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("story_link_area_count_max") <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_link.html">inputStoryAreaTypeLink</a> areas if the current user is a Telegram Premium user, up to 3 <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_weather.html">inputStoryAreaTypeWeather</a> areas, and up to 1 <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_upgraded_gift.html">inputStoryAreaTypeUpgradedGift</a> area. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_areas.html).
   """
@@ -2647,6 +3309,16 @@ defmodule Hashtags do
   """
 
   defstruct "@type": "hashtags", "@extra": nil, hashtags: nil
+end
+defmodule UserPrivacySettingAllowUnpaidMessages do
+  @moduledoc  """
+  A privacy setting for managing whether the user can receive messages without additional payment.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_allow_unpaid_messages.html).
+  """
+
+  defstruct "@type": "userPrivacySettingAllowUnpaidMessages", "@extra": nil
 end
 defmodule StoryPrivacySettingsEveryone do
   @moduledoc  """
@@ -2729,6 +3401,19 @@ defmodule ChatPhotoStickerTypeCustomEmoji do
 
   defstruct "@type": "chatPhotoStickerTypeCustomEmoji", "@extra": nil, custom_emoji_id: nil
 end
+defmodule InternalLinkTypeOauth do
+  @moduledoc  """
+  The link is an OAuth link. Call getOauthLinkInfo with the given URL to process the link if the link was received from outside of the application; otherwise, ignore it. After getOauthLinkInfo, show the user confirmation dialog and process it with checkOauthRequestMatchCode, acceptOauthRequest or declineOauthRequest.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | URL to be passed to <a class="el" href="classtd_1_1td__api_1_1get_oauth_link_info.html">getOauthLinkInfo</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_oauth.html).
+  """
+
+  defstruct "@type": "internalLinkTypeOauth", "@extra": nil, url: nil
+end
 defmodule BotInfo do
   @moduledoc  """
   Contains information about a bot.
@@ -2739,10 +3424,21 @@ defmodule BotInfo do
   | description | string | The text shown in the chat with the bot if the chat is empty. |
   | photo | photo | Photo shown in the chat with the bot if the chat is empty; may be null. |
   | animation | animation | Animation shown in the chat with the bot if the chat is empty; may be null. |
+  | manager_bot_user_id | int53 | Identifier of the bot, which manages the bot; 0 if none or unknown; for owner of the bot only. |
   | menu_button | botMenuButton | Information about a button to show instead of the bot commands menu button; may be null if ordinary bot commands menu must be shown. |
   | commands | botCommand | List of the bot commands. |
+  | privacy_policy_url | string | The HTTP link to the privacy policy of the bot. If empty, then /privacy command must be used if supported by the bot. If the command isn't supported, then <a href="https://telegram.org/privacy-tpa">https://telegram.org/privacy-tpa</a> must be opened. |
   | default_group_administrator_rights | chatAdministratorRights | Default administrator rights for adding the bot to basic group and supergroup chats; may be null. |
   | default_channel_administrator_rights | chatAdministratorRights | Default administrator rights for adding the bot to channels; may be null. |
+  | affiliate_program | affiliateProgramInfo | Information about the affiliate program of the bot; may be null if none. |
+  | web_app_background_light_color | int32 | Default light background color for bot Web Apps; -1 if not specified. |
+  | web_app_background_dark_color | int32 | Default dark background color for bot Web Apps; -1 if not specified. |
+  | web_app_header_light_color | int32 | Default light header color for bot Web Apps; -1 if not specified. |
+  | web_app_header_dark_color | int32 | Default dark header color for bot Web Apps; -1 if not specified. |
+  | verification_parameters | botVerificationParameters | Parameters of the verification that can be provided by the bot; may be null if none or the current user isn't the owner of the bot. |
+  | can_get_revenue_statistics | bool | True, if the bot's revenue statistics are available to the current user. |
+  | can_manage_emoji_status | bool | True, if the bot can manage emoji status of the current user. |
+  | has_media_previews | bool | True, if the bot has media previews. |
   | edit_commands_link | InternalLinkType | The internal link, which can be used to edit bot commands; may be null. |
   | edit_description_link | InternalLinkType | The internal link, which can be used to edit bot description; may be null. |
   | edit_description_media_link | InternalLinkType | The internal link, which can be used to edit the photo or animation shown in the chat with the bot if the chat is empty; may be null. |
@@ -2751,7 +3447,7 @@ defmodule BotInfo do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_info.html).
   """
 
-  defstruct "@type": "botInfo", "@extra": nil, short_description: nil, description: nil, photo: nil, animation: nil, menu_button: nil, commands: nil, default_group_administrator_rights: nil, default_channel_administrator_rights: nil, edit_commands_link: nil, edit_description_link: nil, edit_description_media_link: nil, edit_settings_link: nil
+  defstruct "@type": "botInfo", "@extra": nil, short_description: nil, description: nil, photo: nil, animation: nil, manager_bot_user_id: nil, menu_button: nil, commands: nil, privacy_policy_url: nil, default_group_administrator_rights: nil, default_channel_administrator_rights: nil, affiliate_program: nil, web_app_background_light_color: nil, web_app_background_dark_color: nil, web_app_header_light_color: nil, web_app_header_dark_color: nil, verification_parameters: nil, can_get_revenue_statistics: nil, can_manage_emoji_status: nil, has_media_previews: nil, edit_commands_link: nil, edit_description_link: nil, edit_description_media_link: nil, edit_settings_link: nil
 end
 defmodule InputMessageVoiceNote do
   @moduledoc  """
@@ -2810,6 +3506,20 @@ defmodule PushMessageContentVideo do
 
   defstruct "@type": "pushMessageContentVideo", "@extra": nil, video: nil, caption: nil, is_secret: nil, is_pinned: nil
 end
+defmodule StarTransactionTypeUserDeposit do
+  @moduledoc  """
+  The transaction is a deposit of Telegram Stars by another user; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who gifted Telegram Stars; 0 if the user was anonymous. |
+  | sticker | sticker | The sticker to be shown in the transaction information; may be null if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_user_deposit.html).
+  """
+
+  defstruct "@type": "starTransactionTypeUserDeposit", "@extra": nil, user_id: nil, sticker: nil
+end
 defmodule PremiumFeatureCustomEmoji do
   @moduledoc  """
   Allowed to use custom emoji stickers in message texts and captions.
@@ -2826,16 +3536,40 @@ defmodule ThemeSettings do
 
   | Name | Type | Description |
   |------|------| ------------|
+  | base_theme | BuiltInTheme | Base theme for this theme. |
   | accent_color | int32 | Theme accent color in ARGB format. |
   | background | background | The background to be used in chats; may be null. |
-  | outgoing_message_fill | BackgroundFill | The fill to be used as a background for outgoing messages. |
+  | outgoing_message_fill | BackgroundFill | The fill to be used as a background for outgoing messages; may be null if the fill from the base theme must be used instead. |
   | animate_outgoing_message_fill | bool | If true, the freeform gradient fill needs to be animated on every sent message. |
   | outgoing_message_accent_color | int32 | Accent color of outgoing messages in ARGB format. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1theme_settings.html).
   """
 
-  defstruct "@type": "themeSettings", "@extra": nil, accent_color: nil, background: nil, outgoing_message_fill: nil, animate_outgoing_message_fill: nil, outgoing_message_accent_color: nil
+  defstruct "@type": "themeSettings", "@extra": nil, base_theme: nil, accent_color: nil, background: nil, outgoing_message_fill: nil, animate_outgoing_message_fill: nil, outgoing_message_accent_color: nil
+end
+defmodule UpdateActiveGiftAuctions do
+  @moduledoc  """
+  The list of auctions in which participate the current user has changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | states | giftAuctionState | New states of the auctions. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_active_gift_auctions.html).
+  """
+
+  defstruct "@type": "updateActiveGiftAuctions", "@extra": nil, states: nil
+end
+defmodule PremiumLimitTypeMonthlyPostedStoryCount do
+  @moduledoc  """
+  The maximum number of stories posted per month.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_monthly_posted_story_count.html).
+  """
+
+  defstruct "@type": "premiumLimitTypeMonthlyPostedStoryCount", "@extra": nil
 end
 defmodule InternalLinkTypeInstantView do
   @moduledoc  """
@@ -2860,6 +3594,29 @@ defmodule PremiumFeatureRealTimeChatTranslation do
   """
 
   defstruct "@type": "premiumFeatureRealTimeChatTranslation", "@extra": nil
+end
+defmodule SettingsSectionNotifications do
+  @moduledoc  """
+  The notification settings section.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "accounts", "private-chats", "private-chats/edit", "private-chats/show", "private-chats/preview", "private-chats/sound", "private-chats/add-exception", "private-chats/delete-exceptions", "private-chats/light-color", "private-chats/vibrate", "private-chats/priority", "groups", "groups/edit", "groups/show", "groups/preview", "groups/sound", "groups/add-exception", "groups/delete-exceptions", "groups/light-color", "groups/vibrate", "groups/priority", "channels", "channels/edit", "channels/show", "channels/preview", "channels/sound", "channels/add-exception", "channels/delete-exceptions", "channels/light-color", "channels/vibrate", "channels/priority", "stories", "stories/new", "stories/important", "stories/show-sender", "stories/sound", "stories/add-exception", "stories/delete-exceptions", "stories/light-color", "stories/vibrate", "stories/priority", "reactions", "reactions/messages", "reactions/stories", "reactions/show-sender", "reactions/sound", "reactions/light-color", "reactions/vibrate", "reactions/priority", "in-app-sounds", "in-app-vibrate", "in-app-preview", "in-chat-sounds", "in-app-popup", "lock-screen-names", "include-channels", "include-muted-chats", "count-unread-messages", "new-contacts", "pinned-messages", "reset", "web". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_notifications.html).
+  """
+
+  defstruct "@type": "settingsSectionNotifications", "@extra": nil, subsection: nil
+end
+defmodule InviteGroupCallParticipantResultUserPrivacyRestricted do
+  @moduledoc  """
+  The user can't be invited due to their privacy settings.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invite_group_call_participant_result_user_privacy_restricted.html).
+  """
+
+  defstruct "@type": "inviteGroupCallParticipantResultUserPrivacyRestricted", "@extra": nil
 end
 defmodule CollectibleItemTypeUsername do
   @moduledoc  """
@@ -2893,6 +3650,19 @@ defmodule EmojiCategorySourcePremium do
 
   defstruct "@type": "emojiCategorySourcePremium", "@extra": nil
 end
+defmodule MessageGiveawayCreated do
+  @moduledoc  """
+  A giveaway was created for the chat. Use telegramPaymentPurposePremiumGiveaway, storePaymentPurposePremiumGiveaway, telegramPaymentPurposeStarGiveaway, or storePaymentPurposeStarGiveaway to create a giveaway.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | Number of Telegram Stars that will be shared by winners of the giveaway; 0 for Telegram Premium giveaways. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_giveaway_created.html).
+  """
+
+  defstruct "@type": "messageGiveawayCreated", "@extra": nil, star_count: nil
+end
 defmodule Updates do
   @moduledoc  """
   Contains a list of updates.
@@ -2906,6 +3676,19 @@ defmodule Updates do
 
   defstruct "@type": "updates", "@extra": nil, updates: nil
 end
+defmodule LinkPreviewTypeAnimation do
+  @moduledoc  """
+  The link is a link to an animation.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | animation | animation | The animation. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_animation.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeAnimation", "@extra": nil, animation: nil
+end
 defmodule ChatMembersFilterBanned do
   @moduledoc  """
   Returns users banned from the chat; can be used only by administrators in a supergroup or in a channel.
@@ -2916,6 +3699,20 @@ defmodule ChatMembersFilterBanned do
 
   defstruct "@type": "chatMembersFilterBanned", "@extra": nil
 end
+defmodule StarSubscriptionTypeChannel do
+  @moduledoc  """
+  Describes a subscription to a channel chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | can_reuse | bool | True, if the subscription is active and the user can use the method <a class="el" href="classtd_1_1td__api_1_1reuse_star_subscription.html">reuseStarSubscription</a> to join the subscribed chat again. |
+  | invite_link | string | The invite link that can be used to renew the subscription if it has been expired; may be empty, if the link isn't available anymore. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_subscription_type_channel.html).
+  """
+
+  defstruct "@type": "starSubscriptionTypeChannel", "@extra": nil, can_reuse: nil, invite_link: nil
+end
 defmodule PageBlock do
   @moduledoc  """
 
@@ -2925,9 +3722,24 @@ defmodule PageBlock do
 
   defstruct "@type": "PageBlock", "@extra": nil
 end
+defmodule UpdateStoryPostFailed do
+  @moduledoc  """
+  A story failed to post. If the story posting is canceled, then updateStoryDeleted will be received instead of this update.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | story | story | The failed to post story. |
+  | error | error | The cause of the story posting failure. |
+  | error_type | CanPostStoryResult | Type of the error; may be null if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_story_post_failed.html).
+  """
+
+  defstruct "@type": "updateStoryPostFailed", "@extra": nil, story: nil, error: nil, error_type: nil
+end
 defmodule ConnectionStateUpdating do
   @moduledoc  """
-  Downloading data supposed to be received while the application was offline.
+  Downloading data expected to be received while the application was offline.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1connection_state_updating.html).
@@ -2949,6 +3761,16 @@ defmodule NotificationTypeNewMessage do
 
   defstruct "@type": "notificationTypeNewMessage", "@extra": nil, message: nil, show_preview: nil
 end
+defmodule ButtonStyleDanger do
+  @moduledoc  """
+  The button has red color.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1button_style_danger.html).
+  """
+
+  defstruct "@type": "buttonStyleDanger", "@extra": nil
+end
 defmodule BackgroundFill do
   @moduledoc  """
 
@@ -2957,21 +3779,6 @@ defmodule BackgroundFill do
   """
 
   defstruct "@type": "BackgroundFill", "@extra": nil
-end
-defmodule PushMessageContentPremiumGiveaway do
-  @moduledoc  """
-  A message with a Telegram Premium giveaway.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | winner_count | int32 | Number of users which will receive Telegram Premium subscription gift codes; 0 for pinned message. |
-  | month_count | int32 | Number of months the Telegram Premium subscription will be active after code activation; 0 for pinned message. |
-  | is_pinned | bool | True, if the message is a pinned message with the specified content. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_premium_giveaway.html).
-  """
-
-  defstruct "@type": "pushMessageContentPremiumGiveaway", "@extra": nil, winner_count: nil, month_count: nil, is_pinned: nil
 end
 defmodule ReportReasonUnrelatedLocation do
   @moduledoc  """
@@ -3064,6 +3871,28 @@ defmodule PushMessageContentChatAddMembers do
 
   defstruct "@type": "pushMessageContentChatAddMembers", "@extra": nil, member_name: nil, is_current_user: nil, is_returned: nil
 end
+defmodule SettingsSectionDevices do
+  @moduledoc  """
+  The Devices section.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "edit", "link-desktop", "terminate-sessions", "auto-terminate". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_devices.html).
+  """
+
+  defstruct "@type": "settingsSectionDevices", "@extra": nil, subsection: nil
+end
+defmodule TonTransactionType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_ton_transaction_type.html).
+  """
+
+  defstruct "@type": "TonTransactionType", "@extra": nil
+end
 defmodule MessageVideoChatStarted do
   @moduledoc  """
   A newly created video chat.
@@ -3092,6 +3921,42 @@ defmodule UnreadReaction do
 
   defstruct "@type": "unreadReaction", "@extra": nil, type: nil, sender_id: nil, is_big: nil
 end
+defmodule PushMessageContentSuggestBirthdate do
+  @moduledoc  """
+  A birthdate was suggested to be set.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_suggest_birthdate.html).
+  """
+
+  defstruct "@type": "pushMessageContentSuggestBirthdate", "@extra": nil
+end
+defmodule InviteGroupCallParticipantResultUserAlreadyParticipant do
+  @moduledoc  """
+  The user can't be invited because they are already a participant of the call.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invite_group_call_participant_result_user_already_participant.html).
+  """
+
+  defstruct "@type": "inviteGroupCallParticipantResultUserAlreadyParticipant", "@extra": nil
+end
+defmodule VerificationStatus do
+  @moduledoc  """
+  Contains information about verification status of a chat or a user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | is_verified | bool | True, if the chat or the user is verified by Telegram. |
+  | is_scam | bool | True, if the chat or the user is marked as scam by Telegram. |
+  | is_fake | bool | True, if the chat or the user is marked as fake by Telegram. |
+  | bot_verification_icon_custom_emoji_id | int64 | Identifier of the custom emoji to be shown as verification sign provided by a bot for the user; 0 if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1verification_status.html).
+  """
+
+  defstruct "@type": "verificationStatus", "@extra": nil, is_verified: nil, is_scam: nil, is_fake: nil, bot_verification_icon_custom_emoji_id: nil
+end
 defmodule NotificationTypeNewSecretChat do
   @moduledoc  """
   New secret chat was created.
@@ -3108,14 +3973,13 @@ defmodule AuthenticationCodeTypeFirebaseAndroid do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | use_play_integrity | bool | True, if Play Integrity API must be used for device verification. Otherwise, SafetyNet Attestation API must be used. |
-  | nonce | bytes | Nonce to pass to the Play Integrity API or the SafetyNet Attestation API. |
+  | device_verification_parameters | FirebaseDeviceVerificationParameters | Parameters to be used for device verification. |
   | length | int32 | Length of the code. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_firebase_android.html).
   """
 
-  defstruct "@type": "authenticationCodeTypeFirebaseAndroid", "@extra": nil, use_play_integrity: nil, nonce: nil, length: nil
+  defstruct "@type": "authenticationCodeTypeFirebaseAndroid", "@extra": nil, device_verification_parameters: nil, length: nil
 end
 defmodule MessageReplyToStory do
   @moduledoc  """
@@ -3123,13 +3987,13 @@ defmodule MessageReplyToStory do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | story_sender_chat_id | int53 | The identifier of the sender of the story. |
+  | story_poster_chat_id | int53 | The identifier of the poster of the story. |
   | story_id | int32 | The identifier of the story. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_reply_to_story.html).
   """
 
-  defstruct "@type": "messageReplyToStory", "@extra": nil, story_sender_chat_id: nil, story_id: nil
+  defstruct "@type": "messageReplyToStory", "@extra": nil, story_poster_chat_id: nil, story_id: nil
 end
 defmodule TextParseMode do
   @moduledoc  """
@@ -3182,6 +4046,29 @@ defmodule MessageChatSetBackground do
 
   defstruct "@type": "messageChatSetBackground", "@extra": nil, old_background_message_id: nil, background: nil, only_for_self: nil
 end
+defmodule UpgradedGiftAttributeId do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_upgraded_gift_attribute_id.html).
+  """
+
+  defstruct "@type": "UpgradedGiftAttributeId", "@extra": nil
+end
+defmodule LinkPreviewTypeUser do
+  @moduledoc  """
+  The link is a link to a user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | chatPhoto | Photo of the user; may be null if none. |
+  | is_bot | bool | True, if the user is a bot. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_user.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeUser", "@extra": nil, photo: nil, is_bot: nil
+end
 defmodule NotificationTypeNewPushMessage do
   @moduledoc  """
   New message was received through a push notification.
@@ -3214,16 +4101,17 @@ defmodule UpdateDefaultReactionType do
 end
 defmodule NewChatPrivacySettings do
   @moduledoc  """
-  Contains privacy settings for new chats with non-contacts.
+  Contains privacy settings for chats with non-contacts.
 
   | Name | Type | Description |
   |------|------| ------------|
   | allow_new_chats_from_unknown_users | bool | True, if non-contacts users are able to write first to the current user. Telegram Premium subscribers are able to write first regardless of this setting. |
+  | incoming_paid_message_star_count | int53 | Number of Telegram Stars that must be paid for every incoming private message by non-contacts; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("paid_message_star_count_max"). If positive, then allow_new_chats_from_unknown_users must be true. The current user will receive <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("paid_message_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for message sending. Can be positive, only if <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("can_enable_paid_messages") is true. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1new_chat_privacy_settings.html).
   """
 
-  defstruct "@type": "newChatPrivacySettings", "@extra": nil, allow_new_chats_from_unknown_users: nil
+  defstruct "@type": "newChatPrivacySettings", "@extra": nil, allow_new_chats_from_unknown_users: nil, incoming_paid_message_star_count: nil
 end
 defmodule ChatSourceMtprotoProxy do
   @moduledoc  """
@@ -3235,22 +4123,35 @@ defmodule ChatSourceMtprotoProxy do
 
   defstruct "@type": "chatSourceMtprotoProxy", "@extra": nil
 end
-defmodule StarRevenueStatus do
+defmodule SentGiftUpgraded do
   @moduledoc  """
-  Contains information about Telegram stars earned by a bot or a chat.
+  Upgraded gift.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | total_count | int53 | Total number of the stars earned. |
-  | current_count | int53 | The number of Telegram stars that aren't withdrawn yet. |
-  | available_count | int53 | The number of Telegram stars that are available for withdrawal. |
-  | withdrawal_enabled | bool | True, if Telegram stars can be withdrawn now or later. |
+  | gift | upgradedGift | The gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sent_gift_upgraded.html).
+  """
+
+  defstruct "@type": "sentGiftUpgraded", "@extra": nil, gift: nil
+end
+defmodule StarRevenueStatus do
+  @moduledoc  """
+  Contains information about Telegram Stars earned by a user or a chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | total_amount | starAmount | Total Telegram Star amount earned. |
+  | current_amount | starAmount | The Telegram Star amount that isn't withdrawn yet. |
+  | available_amount | starAmount | The Telegram Star amount that is available for withdrawal. |
+  | withdrawal_enabled | bool | True, if Telegram Stars can be withdrawn now or later. |
   | next_withdrawal_in | int32 | Time left before the next withdrawal can be started, in seconds; 0 if withdrawal can be started now. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_revenue_status.html).
   """
 
-  defstruct "@type": "starRevenueStatus", "@extra": nil, total_count: nil, current_count: nil, available_count: nil, withdrawal_enabled: nil, next_withdrawal_in: nil
+  defstruct "@type": "starRevenueStatus", "@extra": nil, total_amount: nil, current_amount: nil, available_amount: nil, withdrawal_enabled: nil, next_withdrawal_in: nil
 end
 defmodule UpdateChatBusinessBotManageBar do
   @moduledoc  """
@@ -3280,6 +4181,19 @@ defmodule MessageWebAppDataReceived do
 
   defstruct "@type": "messageWebAppDataReceived", "@extra": nil, button_text: nil, data: nil
 end
+defmodule Data do
+  @moduledoc  """
+  Contains some binary data.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | data | bytes | Data. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1data.html).
+  """
+
+  defstruct "@type": "data", "@extra": nil, data: nil
+end
 defmodule TopChatCategoryForwardChats do
   @moduledoc  """
   A category containing frequently used chats used to forward messages.
@@ -3289,6 +4203,20 @@ defmodule TopChatCategoryForwardChats do
   """
 
   defstruct "@type": "topChatCategoryForwardChats", "@extra": nil
+end
+defmodule StarTransactionTypeBotInvoicePurchase do
+  @moduledoc  """
+  The transaction is a purchase of a product from a bot or a business account by the current user; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the bot or the business account user who created the invoice. |
+  | product_info | productInfo | Information about the bought product. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_bot_invoice_purchase.html).
+  """
+
+  defstruct "@type": "starTransactionTypeBotInvoicePurchase", "@extra": nil, user_id: nil, product_info: nil
 end
 defmodule InputInlineQueryResult do
   @moduledoc  """
@@ -3315,18 +4243,19 @@ defmodule PremiumGiftCodeInfo do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | creator_id | MessageSender | Identifier of a chat or a user that created the gift code; may be null if unknown. If null and the code is from <a class="el" href="classtd_1_1td__api_1_1message_premium_gift_code.html">messagePremiumGiftCode</a> message, then creator_id from the message can be used. |
+  | creator_id | MessageSender | Identifier of a chat or a user who created the gift code; may be null if unknown. If null and the code is from <a class="el" href="classtd_1_1td__api_1_1message_premium_gift_code.html">messagePremiumGiftCode</a> message, then creator_id from the message can be used. |
   | creation_date | int32 | Point in time (Unix timestamp) when the code was created. |
   | is_from_giveaway | bool | True, if the gift code was created for a giveaway. |
-  | giveaway_message_id | int53 | Identifier of the corresponding giveaway message in the creator_id chat; can be 0 or an identifier of a deleted message. |
-  | month_count | int32 | Number of months the Telegram Premium subscription will be active after code activation. |
+  | giveaway_message_id | int53 | Identifier of the corresponding giveaway message in the creator_id chat; may be 0 or an identifier of a deleted message. |
+  | month_count | int32 | Number of months the Telegram Premium subscription will be active after code activation; 0 if the number of months isn't integer. |
+  | day_count | int32 | Number of days the Telegram Premium subscription will be active after code activation. |
   | user_id | int53 | Identifier of a user for which the code was created; 0 if none. |
   | use_date | int32 | Point in time (Unix timestamp) when the code was activated; 0 if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_gift_code_info.html).
   """
 
-  defstruct "@type": "premiumGiftCodeInfo", "@extra": nil, creator_id: nil, creation_date: nil, is_from_giveaway: nil, giveaway_message_id: nil, month_count: nil, user_id: nil, use_date: nil
+  defstruct "@type": "premiumGiftCodeInfo", "@extra": nil, creator_id: nil, creation_date: nil, is_from_giveaway: nil, giveaway_message_id: nil, month_count: nil, day_count: nil, user_id: nil, use_date: nil
 end
 defmodule PassportElementRentalAgreement do
   @moduledoc  """
@@ -3386,23 +4315,9 @@ defmodule StickerFullType do
 
   defstruct "@type": "StickerFullType", "@extra": nil
 end
-defmodule InternalLinkTypeSideMenuBot do
-  @moduledoc  """
-  The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then show a disclaimer about Mini Apps being a third-party apps, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the bot is added to side menu, then use getWebAppUrl with the given URL and open the returned URL as a Web App.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | bot_username | string | Username of the bot. |
-  | url | string | URL to be passed to <a class="el" href="classtd_1_1td__api_1_1get_web_app_url.html">getWebAppUrl</a>. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_side_menu_bot.html).
-  """
-
-  defstruct "@type": "internalLinkTypeSideMenuBot", "@extra": nil, bot_username: nil, url: nil
-end
 defmodule CloseBirthdayUser do
   @moduledoc  """
-  Describes a user that had or will have a birthday soon.
+  Describes a user who had or will have a birthday soon.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -3440,6 +4355,31 @@ defmodule ChatStatisticsInviterInfo do
   """
 
   defstruct "@type": "chatStatisticsInviterInfo", "@extra": nil, user_id: nil, added_member_count: nil
+end
+defmodule ReportSponsoredResultAdsHidden do
+  @moduledoc  """
+  Sponsored messages were hidden for the user in all chats.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_sponsored_result_ads_hidden.html).
+  """
+
+  defstruct "@type": "reportSponsoredResultAdsHidden", "@extra": nil
+end
+defmodule DiffEntity do
+  @moduledoc  """
+  Represents a change of a text.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | offset | int32 | Offset of the entity, in UTF-16 code units. |
+  | length | int32 | Length of the entity, in UTF-16 code units. |
+  | type | DiffEntityType | Type of the entity. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1diff_entity.html).
+  """
+
+  defstruct "@type": "diffEntity", "@extra": nil, offset: nil, length: nil, type: nil
 end
 defmodule PremiumFeatureBackgroundForBoth do
   @moduledoc  """
@@ -3490,6 +4430,35 @@ defmodule StoryPrivacySettingsCloseFriends do
 
   defstruct "@type": "storyPrivacySettingsCloseFriends", "@extra": nil
 end
+defmodule MessageGiveawayCompleted do
+  @moduledoc  """
+  A giveaway without public winners has been completed for the chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | giveaway_message_id | int53 | Identifier of the message with the giveaway; may be 0 or an identifier of a deleted message. |
+  | winner_count | int32 | Number of winners in the giveaway. |
+  | is_star_giveaway | bool | True, if the giveaway is a Telegram Star giveaway. |
+  | unclaimed_prize_count | int32 | Number of undistributed prizes; for Telegram Premium giveaways only. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_giveaway_completed.html).
+  """
+
+  defstruct "@type": "messageGiveawayCompleted", "@extra": nil, giveaway_message_id: nil, winner_count: nil, is_star_giveaway: nil, unclaimed_prize_count: nil
+end
+defmodule PushMessageContentPollOptionAdded do
+  @moduledoc  """
+  An option was added to a poll.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | string | Text of the option. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_poll_option_added.html).
+  """
+
+  defstruct "@type": "pushMessageContentPollOptionAdded", "@extra": nil, text: nil
+end
 defmodule ProxyTypeSocks5 do
   @moduledoc  """
   A SOCKS5 proxy server.
@@ -3506,14 +4475,14 @@ defmodule ProxyTypeSocks5 do
 end
 defmodule UpdateFileGenerationStart do
   @moduledoc  """
-  The file generation process needs to be started by the application.
+  The file generation process needs to be started by the application. Use setFileGenerationProgress and finishFileGeneration to generate the file.
 
   | Name | Type | Description |
   |------|------| ------------|
   | generation_id | int64 | Unique identifier for the generation process. |
-  | original_path | string | The path to a file from which a new file is generated; may be empty. |
-  | destination_path | string | The path to a file that must be created and where the new file is generated. |
-  | conversion | string | String specifying the conversion applied to the original file. If conversion is "#url#" than original_path contains an HTTP/HTTPS URL of a file, which must be downloaded by the application. |
+  | original_path | string | The original path specified by the application in <a class="el" href="classtd_1_1td__api_1_1input_file_generated.html">inputFileGenerated</a>. |
+  | destination_path | string | The path to a file that must be created and where the new file must be generated by the application. If the application has no access to the path, it can use <a class="el" href="classtd_1_1td__api_1_1write_generated_file_part.html">writeGeneratedFilePart</a> to generate the file. |
+  | conversion | string | If the conversion is "#url#" than original_path contains an HTTP/HTTPS URL of a file that must be downloaded by the application. Otherwise, this is the conversion specified by the application in <a class="el" href="classtd_1_1td__api_1_1input_file_generated.html">inputFileGenerated</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_file_generation_start.html).
   """
@@ -3530,6 +4499,19 @@ defmodule BusinessFeatureEmojiStatus do
 
   defstruct "@type": "businessFeatureEmojiStatus", "@extra": nil
 end
+defmodule InternalLinkTypeContactsPage do
+  @moduledoc  """
+  The link is a link to the Contacts tab or page.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | section | string | Section of the page; may be one of "", "search", "sort", "new", "invite", "manage". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_contacts_page.html).
+  """
+
+  defstruct "@type": "internalLinkTypeContactsPage", "@extra": nil, section: nil
+end
 defmodule AuthorizationStateWaitTdlibParameters do
   @moduledoc  """
   Initialization parameters are needed. Call setTdlibParameters to provide them.
@@ -3542,7 +4524,7 @@ defmodule AuthorizationStateWaitTdlibParameters do
 end
 defmodule RichTextAnchorLink do
   @moduledoc  """
-  A link to an anchor on the same web page.
+  A link to an anchor on the same page.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -3565,7 +4547,7 @@ defmodule StickerSetInfo do
   | title | string | Title of the sticker set. |
   | name | string | Name of the sticker set. |
   | thumbnail | thumbnail | Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed. |
-  | thumbnail_outline | closedVectorPath | Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner. |
+  | thumbnail_outline | outline | Sticker set thumbnail's outline; may be null if unknown. |
   | is_owned | bool | True, if the sticker set is owned by the current user. |
   | is_installed | bool | True, if the sticker set has been installed by the current user. |
   | is_archived | bool | True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously. |
@@ -3582,9 +4564,57 @@ defmodule StickerSetInfo do
 
   defstruct "@type": "stickerSetInfo", "@extra": nil, id: nil, title: nil, name: nil, thumbnail: nil, thumbnail_outline: nil, is_owned: nil, is_installed: nil, is_archived: nil, is_official: nil, sticker_type: nil, needs_repainting: nil, is_allowed_as_chat_emoji_status: nil, is_viewed: nil, size: nil, covers: nil
 end
+defmodule GiftUpgradeVariants do
+  @moduledoc  """
+  Contains all possible variants of upgraded gifts for the given regular gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | models | upgradedGiftModel | Models that can be chosen for the gift after upgrade. |
+  | symbols | upgradedGiftSymbol | Symbols that can be chosen for the gift after upgrade. |
+  | backdrops | upgradedGiftBackdrop | Backdrops that can be chosen for the gift after upgrade. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_upgrade_variants.html).
+  """
+
+  defstruct "@type": "giftUpgradeVariants", "@extra": nil, models: nil, symbols: nil, backdrops: nil
+end
+defmodule AccountInfo do
+  @moduledoc  """
+  Contains basic information about another user who started a chat with the current user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | registration_month | int32 | Month when the user was registered in Telegram; 0-12; may be 0 if unknown. |
+  | registration_year | int32 | Year when the user was registered in Telegram; 0-9999; may be 0 if unknown. |
+  | phone_number_country_code | string | A two-letter ISO 3166-1 alpha-2 country code based on the phone number of the user; may be empty if unknown. |
+  | last_name_change_date | int32 | Point in time (Unix timestamp) when the user changed name last time; 0 if unknown. |
+  | last_photo_change_date | int32 | Point in time (Unix timestamp) when the user changed photo last time; 0 if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1account_info.html).
+  """
+
+  defstruct "@type": "accountInfo", "@extra": nil, registration_month: nil, registration_year: nil, phone_number_country_code: nil, last_name_change_date: nil, last_photo_change_date: nil
+end
+defmodule PollOptionProperties do
+  @moduledoc  """
+  Contains properties of a poll option and describes actions that can be done with the option right now.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | can_be_deleted | bool | True, if the option can be deleted using <a class="el" href="classtd_1_1td__api_1_1delete_poll_option.html">deletePollOption</a>. |
+  | can_be_replied | bool | True, if the poll option can be replied in the same chat and forum topic using <a class="el" href="classtd_1_1td__api_1_1input_message_reply_to_message.html">inputMessageReplyToMessage</a>. |
+  | can_be_replied_in_another_chat | bool | True, if the poll option can be replied in another chat or forum topic using <a class="el" href="classtd_1_1td__api_1_1input_message_reply_to_external_message.html">inputMessageReplyToExternalMessage</a>. |
+  | can_get_link | bool | True, if a link can be generated for the poll option using <a class="el" href="classtd_1_1td__api_1_1get_message_link.html">getMessageLink</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_option_properties.html).
+  """
+
+  defstruct "@type": "pollOptionProperties", "@extra": nil, can_be_deleted: nil, can_be_replied: nil, can_be_replied_in_another_chat: nil, can_get_link: nil
+end
 defmodule RichTextReference do
   @moduledoc  """
-  A reference to a richTexts object on the same web page.
+  A reference to a richTexts object on the same page.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -3615,6 +4645,22 @@ defmodule ProfilePhoto do
 
   defstruct "@type": "profilePhoto", "@extra": nil, id: nil, small: nil, big: nil, minithumbnail: nil, has_animation: nil, is_personal: nil
 end
+defmodule UpdatePendingTextMessage do
+  @moduledoc  """
+  A new pending text message was received in a chat with a bot. The message must be shown in the chat for at most getOption("pending_text_message_period") seconds, replace any other pending message with the same draft_id, and be deleted whenever any incoming message from the bot in the message thread is received.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Chat identifier. |
+  | forum_topic_id | int32 | The forum topic identifier in which the message will be sent; 0 if none. |
+  | draft_id | int64 | Unique identifier of the message draft within the message thread. |
+  | text | formattedText | Text of the pending message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_pending_text_message.html).
+  """
+
+  defstruct "@type": "updatePendingTextMessage", "@extra": nil, chat_id: nil, forum_topic_id: nil, draft_id: nil, text: nil
+end
 defmodule MessageUsersShared do
   @moduledoc  """
   The current user shared users, which were requested by the bot.
@@ -3628,20 +4674,6 @@ defmodule MessageUsersShared do
   """
 
   defstruct "@type": "messageUsersShared", "@extra": nil, users: nil, button_id: nil
-end
-defmodule StarTransactionPartnerUser do
-  @moduledoc  """
-  The transaction is a transaction with another user.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | user_id | int53 | Identifier of the user. |
-  | product_info | productInfo | Information about the bought product; may be null if none. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_partner_user.html).
-  """
-
-  defstruct "@type": "starTransactionPartnerUser", "@extra": nil, user_id: nil, product_info: nil
 end
 defmodule MessageReaction do
   @moduledoc  """
@@ -3674,6 +4706,20 @@ defmodule ChatJoinRequests do
 
   defstruct "@type": "chatJoinRequests", "@extra": nil, total_count: nil, requests: nil
 end
+defmodule StarTransactionTypeBotPaidMediaPurchase do
+  @moduledoc  """
+  The transaction is a purchase of paid media from a bot or a business account by the current user; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the bot or the business account user who sent the paid media. |
+  | media | PaidMedia | The bought media if the transaction wasn't refunded. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_bot_paid_media_purchase.html).
+  """
+
+  defstruct "@type": "starTransactionTypeBotPaidMediaPurchase", "@extra": nil, user_id: nil, media: nil
+end
 defmodule TextEntityTypeUnderline do
   @moduledoc  """
   An underlined text.
@@ -3690,19 +4736,21 @@ defmodule Story do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | id | int32 | Unique story identifier among stories of the given sender. |
-  | sender_chat_id | int53 | Identifier of the chat that posted the story. |
-  | sender_id | MessageSender | Identifier of the sender of the story; may be null if the story is posted on behalf of the sender_chat_id. |
+  | id | int32 | Unique story identifier among stories posted by the given chat. |
+  | poster_chat_id | int53 | Identifier of the chat that posted the story. |
+  | poster_id | MessageSender | Identifier of the user or chat that posted the story; may be null if the story is posted on behalf of the poster_chat_id. |
   | date | int32 | Point in time (Unix timestamp) when the story was published. |
-  | is_being_sent | bool | True, if the story is being sent by the current user. |
+  | is_being_posted | bool | True, if the story is being posted by the current user. |
   | is_being_edited | bool | True, if the story is being edited by the current user. |
   | is_edited | bool | True, if the story was edited. |
-  | is_posted_to_chat_page | bool | True, if the story is saved in the sender's profile and will be available there after expiration. |
+  | is_posted_to_chat_page | bool | True, if the story is saved in the profile of the chat that posted it and will be available there after expiration. |
   | is_visible_only_for_self | bool | True, if the story is visible only for the current user. |
+  | can_be_added_to_album | bool | True, if the story can be added to an album using <a class="el" href="classtd_1_1td__api_1_1create_story_album.html">createStoryAlbum</a> and <a class="el" href="classtd_1_1td__api_1_1add_story_album_stories.html">addStoryAlbumStories</a>. |
   | can_be_deleted | bool | True, if the story can be deleted. |
   | can_be_edited | bool | True, if the story can be edited. |
-  | can_be_forwarded | bool | True, if the story can be forwarded as a message. Otherwise, screenshots and saving of the story content must be also forbidden. |
-  | can_be_replied | bool | True, if the story can be replied in the chat with the story sender. |
+  | can_be_forwarded | bool | True, if the story can be forwarded as a message or reposted as a story. Otherwise, screenshotting and saving of the story content must be also forbidden. |
+  | can_be_replied | bool | True, if the story can be replied in the chat with the user who posted the story. |
+  | can_set_privacy_settings | bool | True, if the story privacy settings can be changed. |
   | can_toggle_is_posted_to_chat_page | bool | True, if the story's is_posted_to_chat_page value can be changed. |
   | can_get_statistics | bool | True, if the story statistics are available through <a class="el" href="classtd_1_1td__api_1_1get_story_statistics.html">getStoryStatistics</a>. |
   | can_get_interactions | bool | True, if interactions with the story can be received through <a class="el" href="classtd_1_1td__api_1_1get_story_interactions.html">getStoryInteractions</a>. |
@@ -3714,11 +4762,12 @@ defmodule Story do
   | content | StoryContent | Content of the story. |
   | areas | storyArea | Clickable areas to be shown on the story content. |
   | caption | formattedText | Caption of the story. |
+  | album_ids | int32 | Identifiers of story albums to which the story is added; only for manageable stories. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story.html).
   """
 
-  defstruct "@type": "story", "@extra": nil, id: nil, sender_chat_id: nil, sender_id: nil, date: nil, is_being_sent: nil, is_being_edited: nil, is_edited: nil, is_posted_to_chat_page: nil, is_visible_only_for_self: nil, can_be_deleted: nil, can_be_edited: nil, can_be_forwarded: nil, can_be_replied: nil, can_toggle_is_posted_to_chat_page: nil, can_get_statistics: nil, can_get_interactions: nil, has_expired_viewers: nil, repost_info: nil, interaction_info: nil, chosen_reaction_type: nil, privacy_settings: nil, content: nil, areas: nil, caption: nil
+  defstruct "@type": "story", "@extra": nil, id: nil, poster_chat_id: nil, poster_id: nil, date: nil, is_being_posted: nil, is_being_edited: nil, is_edited: nil, is_posted_to_chat_page: nil, is_visible_only_for_self: nil, can_be_added_to_album: nil, can_be_deleted: nil, can_be_edited: nil, can_be_forwarded: nil, can_be_replied: nil, can_set_privacy_settings: nil, can_toggle_is_posted_to_chat_page: nil, can_get_statistics: nil, can_get_interactions: nil, has_expired_viewers: nil, repost_info: nil, interaction_info: nil, chosen_reaction_type: nil, privacy_settings: nil, content: nil, areas: nil, caption: nil, album_ids: nil
 end
 defmodule ChatBoostStatus do
   @moduledoc  """
@@ -3735,7 +4784,7 @@ defmodule ChatBoostStatus do
   | next_level_boost_count | int32 | The number of boosts needed to reach the next level; 0 if the next level isn't available. |
   | premium_member_count | int32 | Approximate number of Telegram Premium subscribers joined the chat; always 0 if the current user isn't an administrator in the chat. |
   | premium_member_percentage | double | A percentage of Telegram Premium subscribers joined the chat; always 0 if the current user isn't an administrator in the chat. |
-  | prepaid_giveaways | prepaidPremiumGiveaway | The list of prepaid giveaways available for the chat; only for chat administrators. |
+  | prepaid_giveaways | prepaidGiveaway | The list of prepaid giveaways available for the chat; only for chat administrators. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_status.html).
   """
@@ -3760,7 +4809,7 @@ defmodule ChatEventAccentColorChanged do
 end
 defmodule InternalLinkTypeBotAddToChannel do
   @moduledoc  """
-  The link is a link to a Telegram bot, which is supposed to be added to a channel chat as an administrator. Call searchPublicChat with the given bot username and check that the user is a bot, ask the current user to select a channel chat to add the bot to as an administrator. Then, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights and combine received rights with the requested administrator rights. Then, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed rights.
+  The link is a link to a Telegram bot, which is expected to be added to a channel chat as an administrator. Call searchPublicChat with the given bot username and check that the user is a bot, ask the current user to select a channel chat to add the bot to as an administrator. Then, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights and combine received rights with the requested administrator rights. Then, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed rights.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -3771,6 +4820,30 @@ defmodule InternalLinkTypeBotAddToChannel do
   """
 
   defstruct "@type": "internalLinkTypeBotAddToChannel", "@extra": nil, bot_username: nil, administrator_rights: nil
+end
+defmodule MessageChecklistTasksDone do
+  @moduledoc  """
+  Some tasks from a checklist were marked as done or not done.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | checklist_message_id | int53 | Identifier of the message with the checklist; may be 0 or an identifier of a deleted message. |
+  | marked_as_done_task_ids | int32 | Identifiers of tasks that were marked as done. |
+  | marked_as_not_done_task_ids | int32 | Identifiers of tasks that were marked as not done. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_checklist_tasks_done.html).
+  """
+
+  defstruct "@type": "messageChecklistTasksDone", "@extra": nil, checklist_message_id: nil, marked_as_done_task_ids: nil, marked_as_not_done_task_ids: nil
+end
+defmodule ActiveStoryState do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_active_story_state.html).
+  """
+
+  defstruct "@type": "ActiveStoryState", "@extra": nil
 end
 defmodule InputBusinessStartPage do
   @moduledoc  """
@@ -3833,6 +4906,16 @@ defmodule MessageSourceChatList do
 
   defstruct "@type": "messageSourceChatList", "@extra": nil
 end
+defmodule LinkPreviewTypeInvoice do
+  @moduledoc  """
+  The link is a link to an invoice.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_invoice.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeInvoice", "@extra": nil
+end
 defmodule MessageChatChangeTitle do
   @moduledoc  """
   An updated chat title.
@@ -3845,6 +4928,20 @@ defmodule MessageChatChangeTitle do
   """
 
   defstruct "@type": "messageChatChangeTitle", "@extra": nil, title: nil
+end
+defmodule ReportOption do
+  @moduledoc  """
+  Describes an option to report an entity to Telegram.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | bytes | Unique identifier of the option. |
+  | text | string | Text of the option. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_option.html).
+  """
+
+  defstruct "@type": "reportOption", "@extra": nil, id: nil, text: nil
 end
 defmodule NetworkType do
   @moduledoc  """
@@ -3868,6 +4965,19 @@ defmodule NetworkStatistics do
   """
 
   defstruct "@type": "networkStatistics", "@extra": nil, since_date: nil, entries: nil
+end
+defmodule LinkPreviewTypeChannelBoost do
+  @moduledoc  """
+  The link is a link to boost a channel chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | chatPhoto | Photo of the chat; may be null. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_channel_boost.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeChannelBoost", "@extra": nil, photo: nil
 end
 defmodule AddedReactions do
   @moduledoc  """
@@ -3893,19 +5003,6 @@ defmodule LogStreamEmpty do
   """
 
   defstruct "@type": "logStreamEmpty", "@extra": nil
-end
-defmodule FilePart do
-  @moduledoc  """
-  Contains a part of a file.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | data | bytes | File bytes. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_part.html).
-  """
-
-  defstruct "@type": "filePart", "@extra": nil, data: nil
 end
 defmodule PremiumLimitTypeSupergroupCount do
   @moduledoc  """
@@ -3962,18 +5059,19 @@ defmodule ChatActionUploadingVideo do
 end
 defmodule InternalLinkTypeWebApp do
   @moduledoc  """
-  The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot, then call searchWebApp with the received bot and the given web_app_short_name. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a disclaimer about Mini Apps being a third-party apps instead of the dialog and ask the user to accept their Terms of service. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. Then, call getWebAppLinkUrl and open the returned URL as a Web App.
+  The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot. If the bot is restricted for the current user, then show an error message. Otherwise, call searchWebApp with the received bot and the given web_app_short_name. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a disclaimer about Mini Apps being third-party applications instead of the dialog and ask the user to accept their Terms of service. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. Then, call getWebAppLinkUrl and open the returned URL as a Web App.
 
   | Name | Type | Description |
   |------|------| ------------|
   | bot_username | string | Username of the bot that owns the Web App. |
   | web_app_short_name | string | Short name of the Web App. |
   | start_parameter | string | Start parameter to be passed to <a class="el" href="classtd_1_1td__api_1_1get_web_app_link_url.html">getWebAppLinkUrl</a>. |
+  | mode | WebAppOpenMode | The mode in which the Web App must be opened. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_web_app.html).
   """
 
-  defstruct "@type": "internalLinkTypeWebApp", "@extra": nil, bot_username: nil, web_app_short_name: nil, start_parameter: nil
+  defstruct "@type": "internalLinkTypeWebApp", "@extra": nil, bot_username: nil, web_app_short_name: nil, start_parameter: nil, mode: nil
 end
 defmodule MessageForumTopicIsHiddenToggled do
   @moduledoc  """
@@ -3987,6 +5085,20 @@ defmodule MessageForumTopicIsHiddenToggled do
   """
 
   defstruct "@type": "messageForumTopicIsHiddenToggled", "@extra": nil, is_hidden: nil
+end
+defmodule LinkPreviewTypeAlbum do
+  @moduledoc  """
+  The link is a link to a media album consisting of photos and videos.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | media | LinkPreviewAlbumMedia | The list of album media. |
+  | caption | string | Album caption. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_album.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeAlbum", "@extra": nil, media: nil, caption: nil
 end
 defmodule ChatEventAvailableReactionsChanged do
   @moduledoc  """
@@ -4017,6 +5129,19 @@ defmodule ChatEventMemberPromoted do
 
   defstruct "@type": "chatEventMemberPromoted", "@extra": nil, user_id: nil, old_status: nil, new_status: nil
 end
+defmodule SettingsSectionChatFolders do
+  @moduledoc  """
+  The chat folder settings section.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "edit", "create", "add-recommended", "show-tags", "tab-view". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_chat_folders.html).
+  """
+
+  defstruct "@type": "settingsSectionChatFolders", "@extra": nil, subsection: nil
+end
 defmodule ChatActionRecordingVideoNote do
   @moduledoc  """
   The user is recording a video note.
@@ -4039,6 +5164,21 @@ defmodule UpdateSavedAnimations do
   """
 
   defstruct "@type": "updateSavedAnimations", "@extra": nil, animation_ids: nil
+end
+defmodule AuthorizationStateWaitPremiumPurchase do
+  @moduledoc  """
+  The user must buy Telegram Premium as an in-store purchase to log in. Call checkAuthenticationPremiumPurchase and then setAuthenticationPremiumPurchaseTransaction.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | store_product_id | string | Identifier of the store product that must be bought. |
+  | support_email_address | string | Email address to use for support if the user has issues with Telegram Premium purchase. |
+  | support_email_subject | string | Subject for the email sent to the support email address. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_premium_purchase.html).
+  """
+
+  defstruct "@type": "authorizationStateWaitPremiumPurchase", "@extra": nil, store_product_id: nil, support_email_address: nil, support_email_subject: nil
 end
 defmodule TemporaryPasswordState do
   @moduledoc  """
@@ -4081,6 +5221,36 @@ defmodule PollType do
 
   defstruct "@type": "PollType", "@extra": nil
 end
+defmodule GiveawayInfoCompleted do
+  @moduledoc  """
+  Describes a completed giveaway.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | creation_date | int32 | Point in time (Unix timestamp) when the giveaway was created. |
+  | actual_winners_selection_date | int32 | Point in time (Unix timestamp) when the winners were selected. May be bigger than winners selection date specified in parameters of the giveaway. |
+  | was_refunded | bool | True, if the giveaway was canceled and was fully refunded. |
+  | is_winner | bool | True, if the current user is a winner of the giveaway. |
+  | winner_count | int32 | Number of winners in the giveaway. |
+  | activation_count | int32 | Number of winners, which activated their gift codes; for Telegram Premium giveaways only. |
+  | gift_code | string | Telegram Premium gift code that was received by the current user; empty if the user isn't a winner in the giveaway or the giveaway isn't a Telegram Premium giveaway. |
+  | won_star_count | int53 | The Telegram Star amount won by the current user; 0 if the user isn't a winner in the giveaway or the giveaway isn't a Telegram Star giveaway. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_info_completed.html).
+  """
+
+  defstruct "@type": "giveawayInfoCompleted", "@extra": nil, creation_date: nil, actual_winners_selection_date: nil, was_refunded: nil, is_winner: nil, winner_count: nil, activation_count: nil, gift_code: nil, won_star_count: nil
+end
+defmodule WebAppOpenModeFullScreen do
+  @moduledoc  """
+  The Web App is opened in the full-screen mode.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_app_open_mode_full_screen.html).
+  """
+
+  defstruct "@type": "webAppOpenModeFullScreen", "@extra": nil
+end
 defmodule PushMessageContentVoiceNote do
   @moduledoc  """
   A voice note message.
@@ -4117,13 +5287,15 @@ defmodule InputMessageReplyToMessage do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | message_id | int53 | The identifier of the message to be replied in the same chat and forum topic. |
+  | message_id | int53 | The identifier of the message to be replied in the same chat and forum topic. A message can be replied in the same chat and forum topic only if messageProperties.can_be_replied. |
   | quote | inputTextQuote | Quote from the message to be replied; pass null if none. Must always be null for replies in secret chats. |
+  | checklist_task_id | int32 | Identifier of the checklist task in the message to be replied; pass 0 to reply to the whole message. |
+  | poll_option_id | string | Identifier of the poll option in the message to be replied; pass an empty string if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_reply_to_message.html).
   """
 
-  defstruct "@type": "inputMessageReplyToMessage", "@extra": nil, message_id: nil, quote: nil
+  defstruct "@type": "inputMessageReplyToMessage", "@extra": nil, message_id: nil, quote: nil, checklist_task_id: nil, poll_option_id: nil
 end
 defmodule PageBlockFooter do
   @moduledoc  """
@@ -4138,15 +5310,6 @@ defmodule PageBlockFooter do
 
   defstruct "@type": "pageBlockFooter", "@extra": nil, footer: nil
 end
-defmodule PremiumGiveawayInfo do
-  @moduledoc  """
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_premium_giveaway_info.html).
-  """
-
-  defstruct "@type": "PremiumGiveawayInfo", "@extra": nil
-end
 defmodule Sessions do
   @moduledoc  """
   Contains a list of sessions.
@@ -4160,6 +5323,21 @@ defmodule Sessions do
   """
 
   defstruct "@type": "sessions", "@extra": nil, sessions: nil, inactive_session_ttl_days: nil
+end
+defmodule UpdateNewOauthRequest do
+  @moduledoc  """
+  An OAuth authorization request was received.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | domain | string | A domain of the URL where the user authorizes. |
+  | location | string | Human-readable description of a country and a region from which the authorization is performed, based on the IP address. |
+  | url | string | The URL to pass to <a class="el" href="classtd_1_1td__api_1_1get_oauth_link_info.html">getOauthLinkInfo</a>; the link is valid for 60 seconds. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_oauth_request.html).
+  """
+
+  defstruct "@type": "updateNewOauthRequest", "@extra": nil, domain: nil, location: nil, url: nil
 end
 defmodule JsonValueString do
   @moduledoc  """
@@ -4194,12 +5372,27 @@ defmodule UpdateApplicationVerificationRequired do
   | Name | Type | Description |
   |------|------| ------------|
   | verification_id | int53 | Unique identifier for the verification process. |
-  | nonce | string | Unique nonce for the classic Play Integrity verification (<a href="https://developer.android.com/google/play/integrity/classic">https://developer.android.com/google/play/integrity/classic</a>) for Android, or a unique string to compare with verify_nonce field from a push notification for iOS. |
+  | nonce | string | Unique base64url-encoded nonce for the classic Play Integrity verification (<a href="https://developer.android.com/google/play/integrity/classic">https://developer.android.com/google/play/integrity/classic</a>) for Android, or a unique string to compare with verify_nonce field from a push notification for iOS. |
+  | cloud_project_number | int64 | Cloud project number to pass to the Play Integrity API on Android. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_application_verification_required.html).
   """
 
-  defstruct "@type": "updateApplicationVerificationRequired", "@extra": nil, verification_id: nil, nonce: nil
+  defstruct "@type": "updateApplicationVerificationRequired", "@extra": nil, verification_id: nil, nonce: nil, cloud_project_number: nil
+end
+defmodule Audios do
+  @moduledoc  """
+  Contains a list of audio files.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | total_count | int32 | Approximate total number of audio files found. |
+  | audios | audio | List of audio files. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1audios.html).
+  """
+
+  defstruct "@type": "audios", "@extra": nil, total_count: nil, audios: nil
 end
 defmodule ReportReasonPornography do
   @moduledoc  """
@@ -4241,6 +5434,16 @@ defmodule EmailAddressAuthenticationCodeInfo do
 
   defstruct "@type": "emailAddressAuthenticationCodeInfo", "@extra": nil, email_address_pattern: nil, length: nil
 end
+defmodule PaidMediaUnsupported do
+  @moduledoc  """
+  The media is unsupported.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_media_unsupported.html).
+  """
+
+  defstruct "@type": "paidMediaUnsupported", "@extra": nil
+end
 defmodule ChatInviteLinkCounts do
   @moduledoc  """
   Contains a list of chat invite link counts.
@@ -4253,6 +5456,29 @@ defmodule ChatInviteLinkCounts do
   """
 
   defstruct "@type": "chatInviteLinkCounts", "@extra": nil, invite_link_counts: nil
+end
+defmodule InputStoryAreaTypeUpgradedGift do
+  @moduledoc  """
+  An area with an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift_name | string | Unique name of the upgraded gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_area_type_upgraded_gift.html).
+  """
+
+  defstruct "@type": "inputStoryAreaTypeUpgradedGift", "@extra": nil, gift_name: nil
+end
+defmodule StarTransactionTypeGooglePlayDeposit do
+  @moduledoc  """
+  The transaction is a deposit of Telegram Stars from Google Play; relevant for regular users only.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_google_play_deposit.html).
+  """
+
+  defstruct "@type": "starTransactionTypeGooglePlayDeposit", "@extra": nil
 end
 defmodule UpdateBasicGroup do
   @moduledoc  """
@@ -4294,15 +5520,24 @@ defmodule MessageDocument do
 
   defstruct "@type": "messageDocument", "@extra": nil, document: nil, caption: nil
 end
-defmodule StarTransactionPartnerAppStore do
+defmodule GiveawayParameters do
   @moduledoc  """
-  The transaction is a transaction with App Store.
+  Describes parameters of a giveaway.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | boosted_chat_id | int53 | Identifier of the supergroup or channel chat, which will be automatically boosted by the winners of the giveaway for duration of the Telegram Premium subscription, or for the specified time. If the chat is a channel, then can_post_messages administrator right is required in the channel, otherwise, the user must be an administrator in the supergroup. |
+  | additional_chat_ids | int53 | Identifiers of other supergroup or channel chats that must be subscribed by the users to be eligible for the giveaway. There can be up to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("giveaway_additional_chat_count_max") additional chats. |
+  | winners_selection_date | int32 | Point in time (Unix timestamp) when the giveaway is expected to be performed; must be 60-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("giveaway_duration_max") seconds in the future in scheduled giveaways. |
+  | only_new_members | bool | True, if only new members of the chats will be eligible for the giveaway. |
+  | has_public_winners | bool | True, if the list of winners of the giveaway will be available to everyone. |
+  | country_codes | string | The list of two-letter ISO 3166-1 alpha-2 codes of countries, users from which will be eligible for the giveaway. If empty, then all users can participate in the giveaway. There can be up to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("giveaway_country_count_max") chosen countries. Users with phone number that was bought at <a href="https://fragment.com">https://fragment.com</a> can participate in any giveaway and the country code "FT" must not be specified in the list. |
+  | prize_description | string | Additional description of the giveaway prize; 0-128 characters. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_partner_app_store.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_parameters.html).
   """
 
-  defstruct "@type": "starTransactionPartnerAppStore", "@extra": nil
+  defstruct "@type": "giveawayParameters", "@extra": nil, boosted_chat_id: nil, additional_chat_ids: nil, winners_selection_date: nil, only_new_members: nil, has_public_winners: nil, country_codes: nil, prize_description: nil
 end
 defmodule AuthorizationStateClosing do
   @moduledoc  """
@@ -4342,18 +5577,65 @@ defmodule InputStoryAreaTypeFoundVenue do
 
   defstruct "@type": "inputStoryAreaTypeFoundVenue", "@extra": nil, query_id: nil, result_id: nil
 end
+defmodule GiftForResaleOrder do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_gift_for_resale_order.html).
+  """
+
+  defstruct "@type": "GiftForResaleOrder", "@extra": nil
+end
 defmodule MessagePoll do
   @moduledoc  """
   A message with a poll.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | poll | poll | The poll description. |
+  | poll | poll | Information about the poll. |
+  | description | formattedText | Description of the poll. |
+  | media | MessageContent | Media attached to the poll. Currently, can be only of the types <a class="el" href="classtd_1_1td__api_1_1message_animation.html">messageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1message_audio.html">messageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1message_document.html">messageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1message_location.html">messageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1message_photo.html">messagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1message_venue.html">messageVenue</a>, or <a class="el" href="classtd_1_1td__api_1_1message_video.html">messageVideo</a> without caption. |
+  | can_add_option | bool | True, if an option can be added to the poll using <a class="el" href="classtd_1_1td__api_1_1add_poll_option.html">addPollOption</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_poll.html).
   """
 
-  defstruct "@type": "messagePoll", "@extra": nil, poll: nil
+  defstruct "@type": "messagePoll", "@extra": nil, poll: nil, description: nil, media: nil, can_add_option: nil
+end
+defmodule DiffEntityTypeDelete do
+  @moduledoc  """
+  Removal of some text.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1diff_entity_type_delete.html).
+  """
+
+  defstruct "@type": "diffEntityTypeDelete", "@extra": nil
+end
+defmodule AffiliateInfo do
+  @moduledoc  """
+  Contains information about an affiliate that received commission from a Telegram Star transaction.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | commission_per_mille | int32 | The number of Telegram Stars received by the affiliate for each 1000 Telegram Stars received by the program owner. |
+  | affiliate_chat_id | int53 | Identifier of the chat which received the commission. |
+  | star_amount | starAmount | The Telegram Star amount that was received by the affiliate; can be negative for refunds. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_info.html).
+  """
+
+  defstruct "@type": "affiliateInfo", "@extra": nil, commission_per_mille: nil, affiliate_chat_id: nil, star_amount: nil
+end
+defmodule ReactionTypePaid do
+  @moduledoc  """
+  The paid reaction in a channel chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_type_paid.html).
+  """
+
+  defstruct "@type": "reactionTypePaid", "@extra": nil
 end
 defmodule CallStateDiscarded do
   @moduledoc  """
@@ -4380,6 +5662,16 @@ defmodule SuggestedActionRestorePremium do
   """
 
   defstruct "@type": "suggestedActionRestorePremium", "@extra": nil
+end
+defmodule MessageSourceDirectMessagesChatTopicHistory do
+  @moduledoc  """
+  The message is from history of a topic in a channel direct messages chat administered by the current user.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_direct_messages_chat_topic_history.html).
+  """
+
+  defstruct "@type": "messageSourceDirectMessagesChatTopicHistory", "@extra": nil
 end
 defmodule LanguagePackStringValuePluralized do
   @moduledoc  """
@@ -4446,17 +5738,17 @@ defmodule DiceStickersRegular do
 end
 defmodule InternalLinkTypeStory do
   @moduledoc  """
-  The link is a link to a story. Call searchPublicChat with the given sender username, then call getStory with the received chat identifier and the given story identifier, then show the story if received.
+  The link is a link to a story. Call searchPublicChat with the given poster username, then call getStory with the received chat identifier and the given story identifier, then show the story if received.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | story_sender_username | string | Username of the sender of the story. |
+  | story_poster_username | string | Username of the poster of the story. |
   | story_id | int32 | Story identifier. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_story.html).
   """
 
-  defstruct "@type": "internalLinkTypeStory", "@extra": nil, story_sender_username: nil, story_id: nil
+  defstruct "@type": "internalLinkTypeStory", "@extra": nil, story_poster_username: nil, story_id: nil
 end
 defmodule TextEntityTypeMention do
   @moduledoc  """
@@ -4467,6 +5759,20 @@ defmodule TextEntityTypeMention do
   """
 
   defstruct "@type": "textEntityTypeMention", "@extra": nil
+end
+defmodule UpgradedGiftSymbolCount do
+  @moduledoc  """
+  Describes a symbol shown on the pattern of an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | symbol | upgradedGiftSymbol | The symbol. |
+  | total_count | int32 | Total number of gifts with the symbol. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_symbol_count.html).
+  """
+
+  defstruct "@type": "upgradedGiftSymbolCount", "@extra": nil, symbol: nil, total_count: nil
 end
 defmodule ChatStatisticsSupergroup do
   @moduledoc  """
@@ -4528,6 +5834,53 @@ defmodule TestBytes do
 
   defstruct "@type": "testBytes", "@extra": nil, value: nil
 end
+defmodule TonRevenueStatus do
+  @moduledoc  """
+  Contains information about Toncoins earned by the current user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | total_amount | int64 | Total Toncoin amount earned; in the smallest units of the cryptocurrency. |
+  | balance_amount | int64 | The Toncoin amount that isn't withdrawn yet; in the smallest units of the cryptocurrency. |
+  | available_amount | int64 | The Toncoin amount that is available for withdrawal; in the smallest units of the cryptocurrency. |
+  | withdrawal_enabled | bool | True, if Toncoins can be withdrawn. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_revenue_status.html).
+  """
+
+  defstruct "@type": "tonRevenueStatus", "@extra": nil, total_amount: nil, balance_amount: nil, available_amount: nil, withdrawal_enabled: nil
+end
+defmodule MessageGift do
+  @moduledoc  """
+  A regular gift was received or sent by the current user, or the current user was notified about a channel gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | gift | The gift. |
+  | sender_id | MessageSender | Sender of the gift; may be null for outgoing messages about prepaid upgrade of gifts from unknown users. |
+  | receiver_id | MessageSender | Receiver of the gift. |
+  | received_gift_id | string | Unique identifier of the received gift for the current user; only for the receiver of the gift. |
+  | text | formattedText | Message added to the gift. |
+  | unique_gift_number | int32 | Unique number of the gift among gifts upgraded from the same gift after upgrade; 0 if yet unassigned. |
+  | sell_star_count | int53 | Number of Telegram Stars that can be claimed by the receiver instead of the regular gift; 0 if the gift can't be sold by the receiver. |
+  | prepaid_upgrade_star_count | int53 | Number of Telegram Stars that were paid by the sender for the ability to upgrade the gift. |
+  | is_upgrade_separate | bool | True, if the upgrade was bought after the gift was sent. In this case, prepaid upgrade cost must not be added to the gift cost. |
+  | is_from_auction | bool | True, if the message is a notification about a gift won on an auction. |
+  | is_private | bool | True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them. |
+  | is_saved | bool | True, if the gift is displayed on the user's or the channel's profile page; only for the receiver of the gift. |
+  | is_prepaid_upgrade | bool | True, if the message is about prepaid upgrade of the gift by another user. |
+  | can_be_upgraded | bool | True, if the gift can be upgraded to a unique gift; only for the receiver of the gift. |
+  | was_converted | bool | True, if the gift was converted to Telegram Stars; only for the receiver of the gift. |
+  | was_upgraded | bool | True, if the gift was upgraded to a unique gift. |
+  | was_refunded | bool | True, if the gift was refunded and isn't available anymore. |
+  | upgraded_received_gift_id | string | Identifier of the corresponding upgraded gift; may be empty if unknown. Use <a class="el" href="classtd_1_1td__api_1_1get_received_gift.html">getReceivedGift</a> to get information about the gift. |
+  | prepaid_upgrade_hash | string | If non-empty, then the user can pay for an upgrade of the gift using <a class="el" href="classtd_1_1td__api_1_1buy_gift_upgrade.html">buyGiftUpgrade</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_gift.html).
+  """
+
+  defstruct "@type": "messageGift", "@extra": nil, gift: nil, sender_id: nil, receiver_id: nil, received_gift_id: nil, text: nil, unique_gift_number: nil, sell_star_count: nil, prepaid_upgrade_star_count: nil, is_upgrade_separate: nil, is_from_auction: nil, is_private: nil, is_saved: nil, is_prepaid_upgrade: nil, can_be_upgraded: nil, was_converted: nil, was_upgraded: nil, was_refunded: nil, upgraded_received_gift_id: nil, prepaid_upgrade_hash: nil
+end
 defmodule StoryAreaTypeLocation do
   @moduledoc  """
   An area pointing to a location.
@@ -4555,15 +5908,19 @@ defmodule ChatActionUploadingPhoto do
 
   defstruct "@type": "chatActionUploadingPhoto", "@extra": nil, progress: nil
 end
-defmodule StarTransactionDirectionIncoming do
+defmodule UpdateGroupCallMessagesDeleted do
   @moduledoc  """
-  The transaction is incoming and increases the number of owned Telegram stars.
+  Some group call messages were deleted.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | group_call_id | int32 | Identifier of the group call. |
+  | message_ids | int32 | Identifiers of the deleted messages. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_direction_incoming.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_group_call_messages_deleted.html).
   """
 
-  defstruct "@type": "starTransactionDirectionIncoming", "@extra": nil
+  defstruct "@type": "updateGroupCallMessagesDeleted", "@extra": nil, group_call_id: nil, message_ids: nil
 end
 defmodule MessageEffectTypePremiumSticker do
   @moduledoc  """
@@ -4606,6 +5963,20 @@ defmodule InternalLinkTypeChatBoost do
 
   defstruct "@type": "internalLinkTypeChatBoost", "@extra": nil, url: nil
 end
+defmodule StarSubscriptionPricing do
+  @moduledoc  """
+  Describes subscription plan paid in Telegram Stars.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | period | int32 | The number of seconds between consecutive Telegram Star debiting. |
+  | star_count | int53 | The Telegram Star amount that must be paid for each period. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_subscription_pricing.html).
+  """
+
+  defstruct "@type": "starSubscriptionPricing", "@extra": nil, period: nil, star_count: nil
+end
 defmodule RtmpUrl do
   @moduledoc  """
   Represents an RTMP URL.
@@ -4620,15 +5991,18 @@ defmodule RtmpUrl do
 
   defstruct "@type": "rtmpUrl", "@extra": nil, url: nil, stream_key: nil
 end
-defmodule PremiumGiveawayParticipantStatusEligible do
+defmodule LinkPreviewAlbumMediaVideo do
   @moduledoc  """
-  The user is eligible for the giveaway.
+  The media is a video.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | video | video | Video description. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_giveaway_participant_status_eligible.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_album_media_video.html).
   """
 
-  defstruct "@type": "premiumGiveawayParticipantStatusEligible", "@extra": nil
+  defstruct "@type": "linkPreviewAlbumMediaVideo", "@extra": nil, video: nil
 end
 defmodule PushMessageContentMessageForwards do
   @moduledoc  """
@@ -4643,6 +6017,21 @@ defmodule PushMessageContentMessageForwards do
 
   defstruct "@type": "pushMessageContentMessageForwards", "@extra": nil, total_count: nil
 end
+defmodule GiftBackground do
+  @moduledoc  """
+  Describes background of a gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | center_color | int32 | Center color in RGB format. |
+  | edge_color | int32 | Edge color in RGB format. |
+  | text_color | int32 | Text color in RGB format. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_background.html).
+  """
+
+  defstruct "@type": "giftBackground", "@extra": nil, center_color: nil, edge_color: nil, text_color: nil
+end
 defmodule PageBlockVoiceNote do
   @moduledoc  """
   A voice note.
@@ -4656,6 +6045,19 @@ defmodule PageBlockVoiceNote do
   """
 
   defstruct "@type": "pageBlockVoiceNote", "@extra": nil, voice_note: nil, caption: nil
+end
+defmodule MessageChecklist do
+  @moduledoc  """
+  A message with a checklist.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | list | checklist | The checklist description. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_checklist.html).
+  """
+
+  defstruct "@type": "messageChecklist", "@extra": nil, list: nil
 end
 defmodule PageBlockKicker do
   @moduledoc  """
@@ -4695,11 +6097,11 @@ defmodule SupergroupMembersFilterSearch do
 end
 defmodule PaymentReceiptTypeStars do
   @moduledoc  """
-  The payment was done using Telegram stars.
+  The payment was done using Telegram Stars.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | star_count | int53 | Number of Telegram stars that were paid. |
+  | star_count | int53 | Number of Telegram Stars that were paid. |
   | transaction_id | string | Unique identifier of the transaction that can be used to dispute it. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_receipt_type_stars.html).
@@ -4709,7 +6111,7 @@ defmodule PaymentReceiptTypeStars do
 end
 defmodule InternalLinkTypeAttachmentMenuBot do
   @moduledoc  """
-  The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to attachment menu, then show a disclaimer about Mini Apps being a third-party apps, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
+  The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to attachment menu, then show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -4721,20 +6123,6 @@ defmodule InternalLinkTypeAttachmentMenuBot do
   """
 
   defstruct "@type": "internalLinkTypeAttachmentMenuBot", "@extra": nil, target_chat: nil, bot_username: nil, url: nil
-end
-defmodule MessageExtendedMediaVideo do
-  @moduledoc  """
-  The media is a video.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | video | video | The video. |
-  | caption | formattedText | Photo caption. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_extended_media_video.html).
-  """
-
-  defstruct "@type": "messageExtendedMediaVideo", "@extra": nil, video: nil, caption: nil
 end
 defmodule ChatEventBackgroundChanged do
   @moduledoc  """
@@ -4749,21 +6137,6 @@ defmodule ChatEventBackgroundChanged do
   """
 
   defstruct "@type": "chatEventBackgroundChanged", "@extra": nil, old_background: nil, new_background: nil
-end
-defmodule UpdateStorySendFailed do
-  @moduledoc  """
-  A story failed to send. If the story sending is canceled, then updateStoryDeleted will be received instead of this update.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | story | story | The failed to send story. |
-  | error | error | The cause of the story sending failure. |
-  | error_type | CanSendStoryResult | Type of the error; may be null if unknown. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_story_send_failed.html).
-  """
-
-  defstruct "@type": "updateStorySendFailed", "@extra": nil, story: nil, error: nil, error_type: nil
 end
 defmodule UpdateContactCloseBirthdays do
   @moduledoc  """
@@ -4791,6 +6164,16 @@ defmodule PaymentProviderOther do
 
   defstruct "@type": "paymentProviderOther", "@extra": nil, url: nil
 end
+defmodule StarTransactionTypeAppStoreDeposit do
+  @moduledoc  """
+  The transaction is a deposit of Telegram Stars from App Store; relevant for regular users only.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_app_store_deposit.html).
+  """
+
+  defstruct "@type": "starTransactionTypeAppStoreDeposit", "@extra": nil
+end
 defmodule User do
   @moduledoc  """
   Represents a user.
@@ -4804,23 +6187,22 @@ defmodule User do
   | phone_number | string | Phone number of the user. |
   | status | UserStatus | Current online status of the user. |
   | profile_photo | profilePhoto | Profile photo of the user; may be null. |
-  | accent_color_id | int32 | Identifier of the accent color for name, and backgrounds of profile photo, reply header, and link preview. For Telegram Premium users only. |
-  | background_custom_emoji_id | int64 | Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none. For Telegram Premium users only. |
-  | profile_accent_color_id | int32 | Identifier of the accent color for the user's profile; -1 if none. For Telegram Premium users only. |
-  | profile_background_custom_emoji_id | int64 | Identifier of a custom emoji to be shown on the background of the user's profile; 0 if none. For Telegram Premium users only. |
-  | emoji_status | emojiStatus | Emoji status to be shown instead of the default Telegram Premium badge; may be null. For Telegram Premium users only. |
+  | accent_color_id | int32 | Identifier of the accent color for name, and backgrounds of profile photo, reply header, and link preview. |
+  | background_custom_emoji_id | int64 | Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none. |
+  | upgraded_gift_colors | upgradedGiftColors | Color scheme based on an upgraded gift to be used for the user instead of accent_color_id and background_custom_emoji_id; may be null if none. |
+  | profile_accent_color_id | int32 | Identifier of the accent color for the user's profile; -1 if none. |
+  | profile_background_custom_emoji_id | int64 | Identifier of a custom emoji to be shown on the background of the user's profile; 0 if none. |
+  | emoji_status | emojiStatus | Emoji status to be shown instead of the default Telegram Premium badge; may be null. |
   | is_contact | bool | The user is a contact of the current user. |
   | is_mutual_contact | bool | The user is a contact of the current user and the current user is a contact of the user. |
   | is_close_friend | bool | The user is a close friend of the current user; implies that the user is a contact. |
-  | is_verified | bool | True, if the user is verified. |
+  | verification_status | verificationStatus | Information about verification status of the user; may be null if none. |
   | is_premium | bool | True, if the user is a Telegram Premium user. |
   | is_support | bool | True, if the user is Telegram support account. |
-  | restriction_reason | string | If non-empty, it contains a human-readable description of the reason why access to this user must be restricted. |
-  | is_scam | bool | True, if many users reported this user as a scam. |
-  | is_fake | bool | True, if many users reported this user as a fake account. |
-  | has_active_stories | bool | True, if the user has non-expired stories available to the current user. |
-  | has_unread_active_stories | bool | True, if the user has unread non-expired stories available to the current user. |
+  | restriction_info | restrictionInfo | Information about restrictions that must be applied to the corresponding private chat; may be null if none. |
+  | active_story_state | ActiveStoryState | State of active stories of the user; may be null if the user has no active stories. |
   | restricts_new_chats | bool | True, if the user may restrict new chats with non-contacts. Use <a class="el" href="classtd_1_1td__api_1_1can_send_message_to_user.html">canSendMessageToUser</a> to check whether the current user can message the user or try to create a chat with them. |
+  | paid_message_star_count | int53 | Number of Telegram Stars that must be paid by general user for each sent message to the user. If positive and <a class="el" href="classtd_1_1td__api_1_1user_full_info.html">userFullInfo</a> is unknown, use <a class="el" href="classtd_1_1td__api_1_1can_send_message_to_user.html">canSendMessageToUser</a> to check whether the current user must pay. |
   | have_access | bool | If false, the user is inaccessible, and the only information known about the user is inside this class. Identifier of the user can't be passed to any method. |
   | type | UserType | Type of the user. |
   | language_code | string | IETF language tag of the user's language; only available to bots. |
@@ -4829,21 +6211,21 @@ defmodule User do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user.html).
   """
 
-  defstruct "@type": "user", "@extra": nil, id: nil, first_name: nil, last_name: nil, usernames: nil, phone_number: nil, status: nil, profile_photo: nil, accent_color_id: nil, background_custom_emoji_id: nil, profile_accent_color_id: nil, profile_background_custom_emoji_id: nil, emoji_status: nil, is_contact: nil, is_mutual_contact: nil, is_close_friend: nil, is_verified: nil, is_premium: nil, is_support: nil, restriction_reason: nil, is_scam: nil, is_fake: nil, has_active_stories: nil, has_unread_active_stories: nil, restricts_new_chats: nil, have_access: nil, type: nil, language_code: nil, added_to_attachment_menu: nil
+  defstruct "@type": "user", "@extra": nil, id: nil, first_name: nil, last_name: nil, usernames: nil, phone_number: nil, status: nil, profile_photo: nil, accent_color_id: nil, background_custom_emoji_id: nil, upgraded_gift_colors: nil, profile_accent_color_id: nil, profile_background_custom_emoji_id: nil, emoji_status: nil, is_contact: nil, is_mutual_contact: nil, is_close_friend: nil, verification_status: nil, is_premium: nil, is_support: nil, restriction_info: nil, active_story_state: nil, restricts_new_chats: nil, paid_message_star_count: nil, have_access: nil, type: nil, language_code: nil, added_to_attachment_menu: nil
 end
 defmodule UpdateChatReplyMarkup do
   @moduledoc  """
-  The default chat reply markup was changed. Can occur because new messages with reply markup were received or because an old reply markup was hidden by the user.
+  The chat reply markup was changed.
 
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier. |
-  | reply_markup_message_id | int53 | Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat. |
+  | reply_markup_message | message | The message from which the reply markup must be used; may be null if there is no default reply markup in the chat. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_reply_markup.html).
   """
 
-  defstruct "@type": "updateChatReplyMarkup", "@extra": nil, chat_id: nil, reply_markup_message_id: nil
+  defstruct "@type": "updateChatReplyMarkup", "@extra": nil, chat_id: nil, reply_markup_message: nil
 end
 defmodule EmailAddressAuthenticationGoogleId do
   @moduledoc  """
@@ -4919,6 +6301,19 @@ defmodule UpdateChatMember do
 
   defstruct "@type": "updateChatMember", "@extra": nil, chat_id: nil, actor_user_id: nil, date: nil, invite_link: nil, via_join_request: nil, via_chat_folder_invite_link: nil, old_chat_member: nil, new_chat_member: nil
 end
+defmodule MessageTopicThread do
+  @moduledoc  """
+  A topic in a non-forum supergroup chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | message_thread_id | int53 | Unique identifier of the message thread. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_topic_thread.html).
+  """
+
+  defstruct "@type": "messageTopicThread", "@extra": nil, message_thread_id: nil
+end
 defmodule CallProblemEcho do
   @moduledoc  """
   The user heard their own voice.
@@ -4929,18 +6324,64 @@ defmodule CallProblemEcho do
 
   defstruct "@type": "callProblemEcho", "@extra": nil
 end
-defmodule InternalLinkTypePremiumFeatures do
+defmodule UpdateChatUnreadPollVoteCount do
   @moduledoc  """
-  The link is a link to the Premium features screen of the application from which the user can subscribe to Telegram Premium. Call getPremiumFeatures with the given referrer to process the link.
+  The chat unread_poll_vote_count has changed.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | referrer | string | Referrer specified in the link. |
+  | chat_id | int53 | Chat identifier. |
+  | unread_poll_vote_count | int32 | The number of messages with unread poll votes left in the chat. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_premium_features.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_unread_poll_vote_count.html).
   """
 
-  defstruct "@type": "internalLinkTypePremiumFeatures", "@extra": nil, referrer: nil
+  defstruct "@type": "updateChatUnreadPollVoteCount", "@extra": nil, chat_id: nil, unread_poll_vote_count: nil
+end
+defmodule GroupCallMessageLevel do
+  @moduledoc  """
+  Represents a level of features for a message sent in a live story group call.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | min_star_count | int53 | The minimum number of Telegram Stars required to get features of the level. |
+  | pin_duration | int32 | The amount of time the message of this level will be pinned, in seconds. |
+  | max_text_length | int32 | The maximum allowed length of the message text. |
+  | max_custom_emoji_count | int32 | The maximum allowed number of custom emoji in the message text. |
+  | first_color | int32 | The first color used to show the message text in the RGB format. |
+  | second_color | int32 | The second color used to show the message text in the RGB format. |
+  | background_color | int32 | Background color for the message the RGB format. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_message_level.html).
+  """
+
+  defstruct "@type": "groupCallMessageLevel", "@extra": nil, min_star_count: nil, pin_duration: nil, max_text_length: nil, max_custom_emoji_count: nil, first_color: nil, second_color: nil, background_color: nil
+end
+defmodule UserPrivacySettingRuleRestrictBots do
+  @moduledoc  """
+  A rule to restrict all bots from doing something.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rule_restrict_bots.html).
+  """
+
+  defstruct "@type": "userPrivacySettingRuleRestrictBots", "@extra": nil
+end
+defmodule UpgradedGiftModel do
+  @moduledoc  """
+  Describes a model of an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | name | string | Name of the model. |
+  | sticker | sticker | The sticker representing the upgraded gift. |
+  | rarity | UpgradedGiftAttributeRarity | The rarity of the model. |
+  | is_crafted | bool | True, if the model can be obtained only through gift crafting. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_model.html).
+  """
+
+  defstruct "@type": "upgradedGiftModel", "@extra": nil, name: nil, sticker: nil, rarity: nil, is_crafted: nil
 end
 defmodule ChatAction do
   @moduledoc  """
@@ -5001,13 +6442,14 @@ defmodule UpdateChatAccentColors do
   | chat_id | int53 | Chat identifier. |
   | accent_color_id | int32 | The new chat accent color identifier. |
   | background_custom_emoji_id | int64 | The new identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none. |
+  | upgraded_gift_colors | upgradedGiftColors | Color scheme based on an upgraded gift to be used for the chat instead of accent_color_id and background_custom_emoji_id; may be null if none. |
   | profile_accent_color_id | int32 | The new chat profile accent color identifier; -1 if none. |
   | profile_background_custom_emoji_id | int64 | The new identifier of a custom emoji to be shown on the profile background; 0 if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_accent_colors.html).
   """
 
-  defstruct "@type": "updateChatAccentColors", "@extra": nil, chat_id: nil, accent_color_id: nil, background_custom_emoji_id: nil, profile_accent_color_id: nil, profile_background_custom_emoji_id: nil
+  defstruct "@type": "updateChatAccentColors", "@extra": nil, chat_id: nil, accent_color_id: nil, background_custom_emoji_id: nil, upgraded_gift_colors: nil, profile_accent_color_id: nil, profile_background_custom_emoji_id: nil
 end
 defmodule InputBackground do
   @moduledoc  """
@@ -5031,19 +6473,14 @@ defmodule ChatEventForumTopicCreated do
 
   defstruct "@type": "chatEventForumTopicCreated", "@extra": nil, topic_info: nil
 end
-defmodule ChatRevenueTransactionTypeEarnings do
+defmodule ReportChatResult do
   @moduledoc  """
-  Describes earnings from sponsored messages in a chat in some time frame.
 
-  | Name | Type | Description |
-  |------|------| ------------|
-  | start_date | int32 | Point in time (Unix timestamp) when the earnings started. |
-  | end_date | int32 | Point in time (Unix timestamp) when the earnings ended. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transaction_type_earnings.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_report_chat_result.html).
   """
 
-  defstruct "@type": "chatRevenueTransactionTypeEarnings", "@extra": nil, start_date: nil, end_date: nil
+  defstruct "@type": "ReportChatResult", "@extra": nil
 end
 defmodule InternalLinkTypePremiumGiftCode do
   @moduledoc  """
@@ -5105,9 +6542,18 @@ defmodule KeyboardButtonType do
 
   defstruct "@type": "KeyboardButtonType", "@extra": nil
 end
+defmodule UpgradedGiftOrigin do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_upgraded_gift_origin.html).
+  """
+
+  defstruct "@type": "UpgradedGiftOrigin", "@extra": nil
+end
 defmodule StarPaymentOptions do
   @moduledoc  """
-  Contains a list of options for buying Telegram stars.
+  Contains a list of options for buying Telegram Stars.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -5141,6 +6587,31 @@ defmodule UpdateFavoriteStickers do
 
   defstruct "@type": "updateFavoriteStickers", "@extra": nil, sticker_ids: nil
 end
+defmodule BuiltInThemeTinted do
+  @moduledoc  """
+  Tinted dark theme.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1built_in_theme_tinted.html).
+  """
+
+  defstruct "@type": "builtInThemeTinted", "@extra": nil
+end
+defmodule DateTimeFormattingTypeAbsolute do
+  @moduledoc  """
+  The date and time must be shown as absolute timestamps.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | time_precision | DateTimePartPrecision | The precision with which hours, minutes and seconds are shown. |
+  | date_precision | DateTimePartPrecision | The precision with which the date is shown. |
+  | show_day_of_week | bool | True, if the day of week must be shown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1date_time_formatting_type_absolute.html).
+  """
+
+  defstruct "@type": "dateTimeFormattingTypeAbsolute", "@extra": nil, time_precision: nil, date_precision: nil, show_day_of_week: nil
+end
 defmodule ChatEventMemberJoined do
   @moduledoc  """
   A new member joined the chat.
@@ -5151,25 +6622,41 @@ defmodule ChatEventMemberJoined do
 
   defstruct "@type": "chatEventMemberJoined", "@extra": nil
 end
+defmodule GiftResaleResultOk do
+  @moduledoc  """
+  Operation was successfully completed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | received_gift_id | string | Unique identifier of the received gift; only for the gifts sent to the current user. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_resale_result_ok.html).
+  """
+
+  defstruct "@type": "giftResaleResultOk", "@extra": nil, received_gift_id: nil
+end
 defmodule MessageSendOptions do
   @moduledoc  """
   Options to be used when a message is sent.
 
   | Name | Type | Description |
   |------|------| ------------|
+  | suggested_post_info | inputSuggestedPostInfo | Information about the suggested post; pass null if none. For messages to channel direct messages chat only. Applicable only to <a class="el" href="classtd_1_1td__api_1_1send_message.html">sendMessage</a> and <a class="el" href="classtd_1_1td__api_1_1add_offer.html">addOffer</a>. |
   | disable_notification | bool | Pass true to disable notification for the message. |
   | from_background | bool | Pass true if the message is sent from the background. |
   | protect_content | bool | Pass true if the content of the message must be protected from forwarding and saving; for bots only. |
+  | allow_paid_broadcast | bool | Pass true to allow the message to ignore regular broadcast limits for a small fee; for bots only. |
+  | paid_message_star_count | int53 | The number of Telegram Stars the user agreed to pay to send the messages. |
   | update_order_of_installed_sticker_sets | bool | Pass true if the user explicitly chosen a sticker or a custom emoji from an installed sticker set; applicable only to <a class="el" href="classtd_1_1td__api_1_1send_message.html">sendMessage</a> and <a class="el" href="classtd_1_1td__api_1_1send_message_album.html">sendMessageAlbum</a>. |
-  | scheduling_state | MessageSchedulingState | Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled. |
-  | effect_id | int64 | Identifier of the effect to apply to the message; pass 0 if none; applicable only to <a class="el" href="classtd_1_1td__api_1_1send_message.html">sendMessage</a> and <a class="el" href="classtd_1_1td__api_1_1send_message_album.html">sendMessageAlbum</a> in private chats. |
+  | scheduling_state | MessageSchedulingState | Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, to a chat with paid messages, to a channel direct messages chat, live location messages and self-destructing messages can't be scheduled. |
+  | effect_id | int64 | Identifier of the effect to apply to the message; pass 0 if none; applicable only to <a class="el" href="classtd_1_1td__api_1_1send_message.html">sendMessage</a>, <a class="el" href="classtd_1_1td__api_1_1send_message_album.html">sendMessageAlbum</a> in private chats and <a class="el" href="classtd_1_1td__api_1_1forward_messages.html">forwardMessages</a> with one message to private chats. |
   | sending_id | int32 | Non-persistent identifier, which will be returned back in <a class="el" href="classtd_1_1td__api_1_1message_sending_state_pending.html">messageSendingStatePending</a> object and can be used to match sent messages and corresponding <a class="el" href="classtd_1_1td__api_1_1update_new_message.html">updateNewMessage</a> updates. |
   | only_preview | bool | Pass true to get a fake message instead of actually sending them. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_send_options.html).
   """
 
-  defstruct "@type": "messageSendOptions", "@extra": nil, disable_notification: nil, from_background: nil, protect_content: nil, update_order_of_installed_sticker_sets: nil, scheduling_state: nil, effect_id: nil, sending_id: nil, only_preview: nil
+  defstruct "@type": "messageSendOptions", "@extra": nil, suggested_post_info: nil, disable_notification: nil, from_background: nil, protect_content: nil, allow_paid_broadcast: nil, paid_message_star_count: nil, update_order_of_installed_sticker_sets: nil, scheduling_state: nil, effect_id: nil, sending_id: nil, only_preview: nil
 end
 defmodule PublicForwards do
   @moduledoc  """
@@ -5186,6 +6673,46 @@ defmodule PublicForwards do
 
   defstruct "@type": "publicForwards", "@extra": nil, total_count: nil, forwards: nil, next_offset: nil
 end
+defmodule TonTransactionTypeUpgradedGiftPurchase do
+  @moduledoc  """
+  The transaction is a purchase of an upgraded gift for some user or channel.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who sold the gift. |
+  | gift | upgradedGift | The gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transaction_type_upgraded_gift_purchase.html).
+  """
+
+  defstruct "@type": "tonTransactionTypeUpgradedGiftPurchase", "@extra": nil, user_id: nil, gift: nil
+end
+defmodule StoreTransactionAppStore do
+  @moduledoc  """
+  A purchase through App Store.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | receipt | bytes | App Store receipt. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_transaction_app_store.html).
+  """
+
+  defstruct "@type": "storeTransactionAppStore", "@extra": nil, receipt: nil
+end
+defmodule MessagePaidMessagePriceChanged do
+  @moduledoc  """
+  A price for paid messages was changed in the supergroup chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | paid_message_star_count | int53 | The new number of Telegram Stars that must be paid by non-administrator users of the supergroup chat for each sent message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_paid_message_price_changed.html).
+  """
+
+  defstruct "@type": "messagePaidMessagePriceChanged", "@extra": nil, paid_message_star_count: nil
+end
 defmodule MessageSourceChatEventLog do
   @moduledoc  """
   The message is from a chat event log.
@@ -5195,6 +6722,16 @@ defmodule MessageSourceChatEventLog do
   """
 
   defstruct "@type": "messageSourceChatEventLog", "@extra": nil
+end
+defmodule SettingsSectionAskQuestion do
+  @moduledoc  """
+  The "Ask a question" section.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_ask_question.html).
+  """
+
+  defstruct "@type": "settingsSectionAskQuestion", "@extra": nil
 end
 defmodule SuggestedActionCheckPhoneNumber do
   @moduledoc  """
@@ -5206,13 +6743,27 @@ defmodule SuggestedActionCheckPhoneNumber do
 
   defstruct "@type": "suggestedActionCheckPhoneNumber", "@extra": nil
 end
+defmodule FoundAffiliateProgram do
+  @moduledoc  """
+  Describes a found affiliate program.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | bot_user_id | int53 | User identifier of the bot created the program. |
+  | info | affiliateProgramInfo | Information about the affiliate program. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_affiliate_program.html).
+  """
+
+  defstruct "@type": "foundAffiliateProgram", "@extra": nil, bot_user_id: nil, info: nil
+end
 defmodule UpdateGroupCall do
   @moduledoc  """
   Information about a group call was updated.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | group_call | groupCall | New data about a group call. |
+  | group_call | groupCall | New data about the group call. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_group_call.html).
   """
@@ -5232,6 +6783,23 @@ defmodule UpdateChatIsMarkedAsUnread do
   """
 
   defstruct "@type": "updateChatIsMarkedAsUnread", "@extra": nil, chat_id: nil, is_marked_as_unread: nil
+end
+defmodule StorePaymentPurposeStarGiveaway do
+  @moduledoc  """
+  The user creating a Telegram Star giveaway.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | parameters | giveawayParameters | Giveaway parameters. |
+  | currency | string | ISO 4217 currency code of the payment currency. |
+  | amount | int53 | Paid amount, in the smallest units of the currency. |
+  | winner_count | int32 | The number of users to receive Telegram Stars. |
+  | star_count | int53 | The number of Telegram Stars to be distributed through the giveaway. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_star_giveaway.html).
+  """
+
+  defstruct "@type": "storePaymentPurposeStarGiveaway", "@extra": nil, parameters: nil, currency: nil, amount: nil, winner_count: nil, star_count: nil
 end
 defmodule MaskPointForehead do
   @moduledoc  """
@@ -5279,6 +6847,19 @@ defmodule SearchMessagesFilterEmpty do
   """
 
   defstruct "@type": "searchMessagesFilterEmpty", "@extra": nil
+end
+defmodule ChatEventShowMessageSenderToggled do
+  @moduledoc  """
+  The show_message_sender setting of a channel was toggled.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | show_message_sender | bool | New value of show_message_sender. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_show_message_sender_toggled.html).
+  """
+
+  defstruct "@type": "chatEventShowMessageSenderToggled", "@extra": nil, show_message_sender: nil
 end
 defmodule PremiumSourceLimitExceeded do
   @moduledoc  """
@@ -5364,6 +6945,50 @@ defmodule DeviceTokenWindowsPush do
 
   defstruct "@type": "deviceTokenWindowsPush", "@extra": nil, access_token: nil
 end
+defmodule StarTransactionTypeBotPaidMediaSale do
+  @moduledoc  """
+  The transaction is a sale of paid media by the bot or a business account managed by the bot; relevant for bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who bought the media. |
+  | media | PaidMedia | The bought media. |
+  | payload | string | Bot-provided payload. |
+  | affiliate | affiliateInfo | Information about the affiliate which received commission from the transaction; may be null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_bot_paid_media_sale.html).
+  """
+
+  defstruct "@type": "starTransactionTypeBotPaidMediaSale", "@extra": nil, user_id: nil, media: nil, payload: nil, affiliate: nil
+end
+defmodule UpdateGroupCallMessageSendFailed do
+  @moduledoc  """
+  A group call message failed to send.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | group_call_id | int32 | Identifier of the group call. |
+  | message_id | int32 | Message identifier. |
+  | error | error | The cause of the message sending failure. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_group_call_message_send_failed.html).
+  """
+
+  defstruct "@type": "updateGroupCallMessageSendFailed", "@extra": nil, group_call_id: nil, message_id: nil, error: nil
+end
+defmodule UpgradedGiftOriginUpgrade do
+  @moduledoc  """
+  The gift was obtained by upgrading of a previously received gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift_message_id | int53 | Identifier of the message with the regular gift that was upgraded; may be 0 or an identifier of a deleted message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_origin_upgrade.html).
+  """
+
+  defstruct "@type": "upgradedGiftOriginUpgrade", "@extra": nil, gift_message_id: nil
+end
 defmodule ResetPasswordResultOk do
   @moduledoc  """
   The password was reset.
@@ -5373,6 +6998,16 @@ defmodule ResetPasswordResultOk do
   """
 
   defstruct "@type": "resetPasswordResultOk", "@extra": nil
+end
+defmodule GroupCallDataChannelMain do
+  @moduledoc  """
+  The main data channel for audio and video data.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_data_channel_main.html).
+  """
+
+  defstruct "@type": "groupCallDataChannelMain", "@extra": nil
 end
 defmodule UpdateActiveEmojiReactions do
   @moduledoc  """
@@ -5399,6 +7034,23 @@ defmodule ConnectedWebsites do
   """
 
   defstruct "@type": "connectedWebsites", "@extra": nil, websites: nil
+end
+defmodule GiftUpgradePreview do
+  @moduledoc  """
+  Contains examples of possible upgraded gifts for the given regular gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | models | upgradedGiftModel | Examples of possible models that can be chosen for the gift after upgrade. |
+  | symbols | upgradedGiftSymbol | Examples of possible symbols that can be chosen for the gift after upgrade. |
+  | backdrops | upgradedGiftBackdrop | Examples of possible backdrops that can be chosen for the gift after upgrade. |
+  | prices | giftUpgradePrice | Examples of price for gift upgrade from the maximum price to the minimum price. |
+  | next_prices | giftUpgradePrice | Next changes for the price for gift upgrade with more granularity than in prices. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_upgrade_preview.html).
+  """
+
+  defstruct "@type": "giftUpgradePreview", "@extra": nil, models: nil, symbols: nil, backdrops: nil, prices: nil, next_prices: nil
 end
 defmodule PassportElementBankStatement do
   @moduledoc  """
@@ -5435,6 +7087,33 @@ defmodule CheckStickerSetNameResult do
   """
 
   defstruct "@type": "CheckStickerSetNameResult", "@extra": nil
+end
+defmodule SuggestedPostPrice do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_suggested_post_price.html).
+  """
+
+  defstruct "@type": "SuggestedPostPrice", "@extra": nil
+end
+defmodule LinkPreviewTypeEmbeddedAnimationPlayer do
+  @moduledoc  """
+  The link is a link to an animation player.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | URL of the external animation player. |
+  | animation | animation | The cached animation; may be null if unknown. |
+  | thumbnail | photo | Thumbnail of the animation; may be null if unknown. |
+  | duration | int32 | Duration of the animation, in seconds. |
+  | width | int32 | Expected width of the embedded player. |
+  | height | int32 | Expected height of the embedded player. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_embedded_animation_player.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeEmbeddedAnimationPlayer", "@extra": nil, url: nil, animation: nil, thumbnail: nil, duration: nil, width: nil, height: nil
 end
 defmodule ConnectionStateWaitingForNetwork do
   @moduledoc  """
@@ -5530,7 +7209,7 @@ defmodule MessageThreadInfo do
   | message_thread_id | int53 | Message thread identifier, unique within the chat. |
   | reply_info | messageReplyInfo | Information about the message thread; may be null for forum topic threads. |
   | unread_message_count | int32 | Approximate number of unread messages in the message thread. |
-  | messages | message | The messages from which the thread starts. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). |
+  | messages | message | The messages from which the thread starts. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id). |
   | draft_message | draftMessage | A draft of a message in the message thread; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_thread_info.html).
@@ -5548,25 +7227,6 @@ defmodule ReactionNotificationSourceContacts do
 
   defstruct "@type": "reactionNotificationSourceContacts", "@extra": nil
 end
-defmodule PremiumGiveawayParameters do
-  @moduledoc  """
-  Describes parameters of a Telegram Premium giveaway.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | boosted_chat_id | int53 | Identifier of the supergroup or channel chat, which will be automatically boosted by the winners of the giveaway for duration of the Premium subscription. If the chat is a channel, then can_post_messages right is required in the channel, otherwise, the user must be an administrator in the supergroup. |
-  | additional_chat_ids | int53 | Identifiers of other supergroup or channel chats that must be subscribed by the users to be eligible for the giveaway. There can be up to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("giveaway_additional_chat_count_max") additional chats. |
-  | winners_selection_date | int32 | Point in time (Unix timestamp) when the giveaway is expected to be performed; must be 60-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("giveaway_duration_max") seconds in the future in scheduled giveaways. |
-  | only_new_members | bool | True, if only new members of the chats will be eligible for the giveaway. |
-  | has_public_winners | bool | True, if the list of winners of the giveaway will be available to everyone. |
-  | country_codes | string | The list of two-letter ISO 3166-1 alpha-2 codes of countries, users from which will be eligible for the giveaway. If empty, then all users can participate in the giveaway. There can be up to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("giveaway_country_count_max") chosen countries. Users with phone number that was bought at <a href="https://fragment.com">https://fragment.com</a> can participate in any giveaway and the country code "FT" must not be specified in the list. |
-  | prize_description | string | Additional description of the giveaway prize; 0-128 characters. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_giveaway_parameters.html).
-  """
-
-  defstruct "@type": "premiumGiveawayParameters", "@extra": nil, boosted_chat_id: nil, additional_chat_ids: nil, winners_selection_date: nil, only_new_members: nil, has_public_winners: nil, country_codes: nil, prize_description: nil
-end
 defmodule LoginUrlInfo do
   @moduledoc  """
 
@@ -5575,6 +7235,20 @@ defmodule LoginUrlInfo do
   """
 
   defstruct "@type": "LoginUrlInfo", "@extra": nil
+end
+defmodule StarTransactionTypeGiftSale do
+  @moduledoc  """
+  The transaction is a sale of a received gift; relevant for regular users and channel chats only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who sent the gift. |
+  | gift | gift | The gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_gift_sale.html).
+  """
+
+  defstruct "@type": "starTransactionTypeGiftSale", "@extra": nil, user_id: nil, gift: nil
 end
 defmodule TopChatCategory do
   @moduledoc  """
@@ -5664,6 +7338,29 @@ defmodule MaskPointMouth do
 
   defstruct "@type": "maskPointMouth", "@extra": nil
 end
+defmodule ProfileTabGifs do
+  @moduledoc  """
+  A tab with animations posted by the channel.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1profile_tab_gifs.html).
+  """
+
+  defstruct "@type": "profileTabGifs", "@extra": nil
+end
+defmodule InternalLinkTypeNewStory do
+  @moduledoc  """
+  The link is a link to open the story posting interface.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | content_type | StoryContentType | The type of the content of the story to post; may be null if unspecified. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_new_story.html).
+  """
+
+  defstruct "@type": "internalLinkTypeNewStory", "@extra": nil, content_type: nil
+end
 defmodule ChatEventPollStopped do
   @moduledoc  """
   A poll in a message was stopped.
@@ -5677,6 +7374,19 @@ defmodule ChatEventPollStopped do
 
   defstruct "@type": "chatEventPollStopped", "@extra": nil, message: nil
 end
+defmodule SettingsSectionSendGift do
+  @moduledoc  """
+  The "Send a gift" section.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "self". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_send_gift.html).
+  """
+
+  defstruct "@type": "settingsSectionSendGift", "@extra": nil, subsection: nil
+end
 defmodule ChatRevenueAmount do
   @moduledoc  """
   Contains information about revenue earned from sponsored messages in a chat.
@@ -5687,11 +7397,12 @@ defmodule ChatRevenueAmount do
   | total_amount | int64 | Total amount of the cryptocurrency earned, in the smallest units of the cryptocurrency. |
   | balance_amount | int64 | Amount of the cryptocurrency that isn't withdrawn yet, in the smallest units of the cryptocurrency. |
   | available_amount | int64 | Amount of the cryptocurrency available for withdrawal, in the smallest units of the cryptocurrency. |
+  | withdrawal_enabled | bool | True, if Telegram Stars can be withdrawn now or later. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_amount.html).
   """
 
-  defstruct "@type": "chatRevenueAmount", "@extra": nil, cryptocurrency: nil, total_amount: nil, balance_amount: nil, available_amount: nil
+  defstruct "@type": "chatRevenueAmount", "@extra": nil, cryptocurrency: nil, total_amount: nil, balance_amount: nil, available_amount: nil, withdrawal_enabled: nil
 end
 defmodule StoryRepostInfo do
   @moduledoc  """
@@ -5744,6 +7455,16 @@ defmodule PushMessageContentSuggestProfilePhoto do
   """
 
   defstruct "@type": "pushMessageContentSuggestProfilePhoto", "@extra": nil
+end
+defmodule LinkPreviewTypePremiumGiftCode do
+  @moduledoc  """
+  The link is a link to a Telegram Premium gift code.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_premium_gift_code.html).
+  """
+
+  defstruct "@type": "linkPreviewTypePremiumGiftCode", "@extra": nil
 end
 defmodule CallbackQueryPayloadDataWithPassword do
   @moduledoc  """
@@ -5802,6 +7523,15 @@ defmodule ChatSourcePublicServiceAnnouncement do
   """
 
   defstruct "@type": "chatSourcePublicServiceAnnouncement", "@extra": nil, type: nil, text: nil
+end
+defmodule AffiliateType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_affiliate_type.html).
+  """
+
+  defstruct "@type": "AffiliateType", "@extra": nil
 end
 defmodule SessionTypeIpad do
   @moduledoc  """
@@ -5869,6 +7599,20 @@ defmodule PageBlockChatLink do
 
   defstruct "@type": "pageBlockChatLink", "@extra": nil, title: nil, photo: nil, accent_color_id: nil, username: nil
 end
+defmodule ChatFolderName do
+  @moduledoc  """
+  Describes name of a chat folder.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | formattedText | The text of the chat folder name; 1-12 characters without line feeds. May contain only CustomEmoji entities. |
+  | animate_custom_emoji | bool | True, if custom emoji in the name must be animated. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_folder_name.html).
+  """
+
+  defstruct "@type": "chatFolderName", "@extra": nil, text: nil, animate_custom_emoji: nil
+end
 defmodule ChatActiveStories do
   @moduledoc  """
   Describes active stories posted by a chat.
@@ -5877,14 +7621,15 @@ defmodule ChatActiveStories do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat that posted the stories. |
   | list | StoryList | Identifier of the story list in which the stories are shown; may be null if the stories aren't shown in a story list. |
-  | order | int53 | A parameter used to determine order of the stories in the story list; 0 if the stories doesn't need to be shown in the story list. Stories must be sorted by the pair (order, story_sender_chat_id) in descending order. |
+  | order | int53 | A parameter used to determine order of the stories in the story list; 0 if the stories doesn't need to be shown in the story list. Stories must be sorted by the pair (order, story_poster_chat_id) in descending order. |
+  | can_be_archived | bool | True, if the stories are shown in the main story list and can be archived; otherwise, the stories can be hidden from the main story list only by calling <a class="el" href="classtd_1_1td__api_1_1remove_top_chat.html">removeTopChat</a> with <a class="el" href="classtd_1_1td__api_1_1top_chat_category_users.html">topChatCategoryUsers</a> and the chat_id. Stories of the current user can't be archived nor hidden using <a class="el" href="classtd_1_1td__api_1_1remove_top_chat.html">removeTopChat</a>. |
   | max_read_story_id | int32 | Identifier of the last read active story. |
-  | stories | storyInfo | Basic information about the stories; use <a class="el" href="classtd_1_1td__api_1_1get_story.html">getStory</a> to get full information about the stories. The stories are in a chronological order (i.e., in order of increasing story identifiers). |
+  | stories | storyInfo | Basic information about the stories; use <a class="el" href="classtd_1_1td__api_1_1get_story.html">getStory</a> to get full information about the stories. The stories are in chronological order (i.e., in order of increasing story identifiers). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_active_stories.html).
   """
 
-  defstruct "@type": "chatActiveStories", "@extra": nil, chat_id: nil, list: nil, order: nil, max_read_story_id: nil, stories: nil
+  defstruct "@type": "chatActiveStories", "@extra": nil, chat_id: nil, list: nil, order: nil, can_be_archived: nil, max_read_story_id: nil, stories: nil
 end
 defmodule BankCardActionOpenUrl do
   @moduledoc  """
@@ -5942,11 +7687,14 @@ defmodule InternalLinkTypeSettings do
   @moduledoc  """
   The link is a link to application settings.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | section | SettingsSection | Section of the application settings to open; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_settings.html).
   """
 
-  defstruct "@type": "internalLinkTypeSettings", "@extra": nil
+  defstruct "@type": "internalLinkTypeSettings", "@extra": nil, section: nil
 end
 defmodule PremiumFeatureEmojiStatus do
   @moduledoc  """
@@ -5960,22 +7708,25 @@ defmodule PremiumFeatureEmojiStatus do
 end
 defmodule MessageGiftedPremium do
   @moduledoc  """
-  Telegram Premium was gifted to the user.
+  Telegram Premium was gifted to a user.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | gifter_user_id | int53 | The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous. |
+  | gifter_user_id | int53 | The identifier of a user who gifted Telegram Premium; 0 if the gift was anonymous or is outgoing. |
+  | receiver_user_id | int53 | The identifier of a user who received Telegram Premium; 0 if the gift is incoming. |
+  | text | formattedText | Message added to the gifted Telegram Premium by the sender. |
   | currency | string | Currency for the paid amount. |
   | amount | int53 | The paid amount, in the smallest units of the currency. |
   | cryptocurrency | string | Cryptocurrency used to pay for the gift; may be empty if none. |
   | cryptocurrency_amount | int64 | The paid amount, in the smallest units of the cryptocurrency; 0 if none. |
-  | month_count | int32 | Number of months the Telegram Premium subscription will be active. |
+  | month_count | int32 | Number of months the Telegram Premium subscription will be active after code activation; 0 if the number of months isn't integer. |
+  | day_count | int32 | Number of days the Telegram Premium subscription will be active. |
   | sticker | sticker | A sticker to be shown in the message; may be null if unknown. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_gifted_premium.html).
   """
 
-  defstruct "@type": "messageGiftedPremium", "@extra": nil, gifter_user_id: nil, currency: nil, amount: nil, cryptocurrency: nil, cryptocurrency_amount: nil, month_count: nil, sticker: nil
+  defstruct "@type": "messageGiftedPremium", "@extra": nil, gifter_user_id: nil, receiver_user_id: nil, text: nil, currency: nil, amount: nil, cryptocurrency: nil, cryptocurrency_amount: nil, month_count: nil, day_count: nil, sticker: nil
 end
 defmodule GameHighScores do
   @moduledoc  """
@@ -6004,16 +7755,6 @@ defmodule UpdateSuggestedActions do
 
   defstruct "@type": "updateSuggestedActions", "@extra": nil, added_actions: nil, removed_actions: nil
 end
-defmodule InternalLinkTypeChatFolderSettings do
-  @moduledoc  """
-  The link is a link to the folder section of the app settings.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_chat_folder_settings.html).
-  """
-
-  defstruct "@type": "internalLinkTypeChatFolderSettings", "@extra": nil
-end
 defmodule PremiumFeatureUniqueStickers do
   @moduledoc  """
   Allowed to use premium stickers with unique effects.
@@ -6023,6 +7764,25 @@ defmodule PremiumFeatureUniqueStickers do
   """
 
   defstruct "@type": "premiumFeatureUniqueStickers", "@extra": nil
+end
+defmodule GiftPurchaseOfferStateAccepted do
+  @moduledoc  """
+  The offer was accepted.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_purchase_offer_state_accepted.html).
+  """
+
+  defstruct "@type": "giftPurchaseOfferStateAccepted", "@extra": nil
+end
+defmodule InviteGroupCallParticipantResult do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_invite_group_call_participant_result.html).
+  """
+
+  defstruct "@type": "InviteGroupCallParticipantResult", "@extra": nil
 end
 defmodule RichTextEmailAddress do
   @moduledoc  """
@@ -6040,7 +7800,7 @@ defmodule RichTextEmailAddress do
 end
 defmodule MessageSourceMessageThreadHistory do
   @moduledoc  """
-  The message is from a message thread history.
+  The message is from history of a message thread.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_message_thread_history.html).
@@ -6056,21 +7816,6 @@ defmodule ReportReason do
   """
 
   defstruct "@type": "ReportReason", "@extra": nil
-end
-defmodule ChatTheme do
-  @moduledoc  """
-  Describes a chat theme.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | name | string | Theme name. |
-  | light_settings | themeSettings | Theme settings for a light chat theme. |
-  | dark_settings | themeSettings | Theme settings for a dark chat theme. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_theme.html).
-  """
-
-  defstruct "@type": "chatTheme", "@extra": nil, name: nil, light_settings: nil, dark_settings: nil
 end
 defmodule EmojiCategoryTypeRegularStickers do
   @moduledoc  """
@@ -6114,12 +7859,13 @@ defmodule PushMessageContentStory do
 
   | Name | Type | Description |
   |------|------| ------------|
+  | is_mention | bool | True, if the user was mentioned in the story. |
   | is_pinned | bool | True, if the message is a pinned message with the specified content. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_story.html).
   """
 
-  defstruct "@type": "pushMessageContentStory", "@extra": nil, is_pinned: nil
+  defstruct "@type": "pushMessageContentStory", "@extra": nil, is_mention: nil, is_pinned: nil
 end
 defmodule TimeZones do
   @moduledoc  """
@@ -6171,6 +7917,37 @@ defmodule CallDiscardReasonHungUp do
 
   defstruct "@type": "callDiscardReasonHungUp", "@extra": nil
 end
+defmodule UpdateNewGroupCallMessage do
+  @moduledoc  """
+  A new message was received in a group call.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | group_call_id | int32 | Identifier of the group call. |
+  | message | groupCallMessage | The message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_group_call_message.html).
+  """
+
+  defstruct "@type": "updateNewGroupCallMessage", "@extra": nil, group_call_id: nil, message: nil
+end
+defmodule UserAuctionBid do
+  @moduledoc  """
+  Describes a bid of the current user in an auction.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | The number of Telegram Stars that were put in the bid. |
+  | bid_date | int32 | Point in time (Unix timestamp) when the bid was made. |
+  | next_bid_star_count | int53 | The minimum number of Telegram Stars that can be put for the next bid. |
+  | owner_id | MessageSender | Identifier of the user or the chat that will receive the auctioned item. If the auction is opened in context of another user or chat, then a warning is supposed to be shown to the current user. |
+  | was_returned | bool | True, if the bid was returned to the user, because it was outbid and can't win anymore. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_auction_bid.html).
+  """
+
+  defstruct "@type": "userAuctionBid", "@extra": nil, star_count: nil, bid_date: nil, next_bid_star_count: nil, owner_id: nil, was_returned: nil
+end
 defmodule PremiumSourceSettings do
   @moduledoc  """
   A user opened the Premium features screen from settings.
@@ -6200,27 +7977,22 @@ defmodule ChatMemberStatusAdministrator do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | custom_title | string | A custom title of the administrator; 0-16 characters without emoji; applicable to supergroups only. |
   | can_be_edited | bool | True, if the current user can edit the administrator privileges for the called user. |
   | rights | chatAdministratorRights | Rights of the administrator. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_member_status_administrator.html).
   """
 
-  defstruct "@type": "chatMemberStatusAdministrator", "@extra": nil, custom_title: nil, can_be_edited: nil, rights: nil
+  defstruct "@type": "chatMemberStatusAdministrator", "@extra": nil, can_be_edited: nil, rights: nil
 end
-defmodule PremiumGiveawayParticipantStatusAlreadyWasMember do
+defmodule StartLiveStoryResult do
   @moduledoc  """
-  The user can't participate in the giveaway, because they have already been member of the chat.
 
-  | Name | Type | Description |
-  |------|------| ------------|
-  | joined_chat_date | int32 | Point in time (Unix timestamp) when the user joined the chat. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_giveaway_participant_status_already_was_member.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_start_live_story_result.html).
   """
 
-  defstruct "@type": "premiumGiveawayParticipantStatusAlreadyWasMember", "@extra": nil, joined_chat_date: nil
+  defstruct "@type": "StartLiveStoryResult", "@extra": nil
 end
 defmodule AuthenticationCodeType do
   @moduledoc  """
@@ -6261,19 +8033,20 @@ defmodule UpdateChatDefaultDisableNotification do
 end
 defmodule ReactionNotificationSettings do
   @moduledoc  """
-  Contains information about notification settings for reactions.
+  Contains information about notification settings for reactions and poll votes.
 
   | Name | Type | Description |
   |------|------| ------------|
   | message_reaction_source | ReactionNotificationSource | Source of message reactions for which notifications are shown. |
   | story_reaction_source | ReactionNotificationSource | Source of story reactions for which notifications are shown. |
+  | poll_vote_source | ReactionNotificationSource | Source of poll votes for which notifications are shown. |
   | sound_id | int64 | Identifier of the notification sound to be played; 0 if sound is disabled. |
   | show_preview | bool | True, if reaction sender and emoji must be displayed in notifications. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_notification_settings.html).
   """
 
-  defstruct "@type": "reactionNotificationSettings", "@extra": nil, message_reaction_source: nil, story_reaction_source: nil, sound_id: nil, show_preview: nil
+  defstruct "@type": "reactionNotificationSettings", "@extra": nil, message_reaction_source: nil, story_reaction_source: nil, poll_vote_source: nil, sound_id: nil, show_preview: nil
 end
 defmodule PageBlockSubtitle do
   @moduledoc  """
@@ -6302,6 +8075,15 @@ defmodule CallStatePending do
 
   defstruct "@type": "callStatePending", "@extra": nil, is_created: nil, is_received: nil
 end
+defmodule StoreTransaction do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_store_transaction.html).
+  """
+
+  defstruct "@type": "StoreTransaction", "@extra": nil
+end
 defmodule RevenueWithdrawalStateSucceeded do
   @moduledoc  """
   Withdrawal succeeded.
@@ -6329,6 +8111,60 @@ defmodule InternalLinkTypeUnknownDeepLink do
 
   defstruct "@type": "internalLinkTypeUnknownDeepLink", "@extra": nil, link: nil
 end
+defmodule RestrictionInfo do
+  @moduledoc  """
+  Contains information about restrictions that must be applied to a chat or a message.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | restriction_reason | string | A human-readable description of the reason why access to the content must be restricted. If empty, then the content can be accessed, but may be covered by hidden with 18+ spoiler anyway. |
+  | has_sensitive_content | bool | True, if media content of the messages must be hidden with 18+ spoiler. Use value of the option "can_ignore_sensitive_content_restrictions" to check whether the current user can ignore the restriction. If age verification parameters were received in <a class="el" href="classtd_1_1td__api_1_1update_age_verification_parameters.html">updateAgeVerificationParameters</a>, then the user must complete age verification to ignore the restriction. Set the option "ignore_sensitive_content_restrictions" to true if the user passes age verification. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1restriction_info.html).
+  """
+
+  defstruct "@type": "restrictionInfo", "@extra": nil, restriction_reason: nil, has_sensitive_content: nil
+end
+defmodule UpdateTonRevenueStatus do
+  @moduledoc  """
+  The Toncoin revenue earned by the current user has changed. If Toncoin transaction screen of the chat is opened, then getTonTransactions may be called to fetch new transactions.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | status | tonRevenueStatus | New Toncoin revenue status. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_ton_revenue_status.html).
+  """
+
+  defstruct "@type": "updateTonRevenueStatus", "@extra": nil, status: nil
+end
+defmodule LinkPreviewTypeArticle do
+  @moduledoc  """
+  The link is a link to a web site.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | photo | Article's main photo; may be null. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_article.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeArticle", "@extra": nil, photo: nil
+end
+defmodule LinkPreviewTypeStory do
+  @moduledoc  """
+  The link is a link to a story. Link preview description is unavailable.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | story_poster_chat_id | int53 | The identifier of the chat that posted the story. |
+  | story_id | int32 | Story identifier. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_story.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeStory", "@extra": nil, story_poster_chat_id: nil, story_id: nil
+end
 defmodule PremiumFeatureUpgradedStories do
   @moduledoc  """
   Allowed to use many additional features for stories.
@@ -6338,6 +8174,16 @@ defmodule PremiumFeatureUpgradedStories do
   """
 
   defstruct "@type": "premiumFeatureUpgradedStories", "@extra": nil
+end
+defmodule GroupCallDataChannelScreenSharing do
+  @moduledoc  """
+  The data channel for screen sharing.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_data_channel_screen_sharing.html).
+  """
+
+  defstruct "@type": "groupCallDataChannelScreenSharing", "@extra": nil
 end
 defmodule ChatEventTitleChanged do
   @moduledoc  """
@@ -6353,6 +8199,68 @@ defmodule ChatEventTitleChanged do
 
   defstruct "@type": "chatEventTitleChanged", "@extra": nil, old_title: nil, new_title: nil
 end
+defmodule ConnectedAffiliateProgram do
+  @moduledoc  """
+  Describes an affiliate program that was connected to an affiliate.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | The link that can be used to refer users if the program is still active. |
+  | bot_user_id | int53 | User identifier of the bot created the program. |
+  | parameters | affiliateProgramParameters | The parameters of the affiliate program. |
+  | connection_date | int32 | Point in time (Unix timestamp) when the affiliate program was connected. |
+  | is_disconnected | bool | True, if the program was canceled by the bot, or disconnected by the chat owner and isn't available anymore. |
+  | user_count | int64 | The number of users that used the affiliate program. |
+  | revenue_star_count | int53 | The number of Telegram Stars that were earned by the affiliate program. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1connected_affiliate_program.html).
+  """
+
+  defstruct "@type": "connectedAffiliateProgram", "@extra": nil, url: nil, bot_user_id: nil, parameters: nil, connection_date: nil, is_disconnected: nil, user_count: nil, revenue_star_count: nil
+end
+defmodule InputCallDiscarded do
+  @moduledoc  """
+  A just ended call.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | call_id | int32 | Identifier of the call. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_call_discarded.html).
+  """
+
+  defstruct "@type": "inputCallDiscarded", "@extra": nil, call_id: nil
+end
+defmodule MessageChatHasProtectedContentDisableRequested do
+  @moduledoc  """
+  Chat has_protected_content setting was requested to be disabled.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | is_expired | bool | True, if the request has expired. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_has_protected_content_disable_requested.html).
+  """
+
+  defstruct "@type": "messageChatHasProtectedContentDisableRequested", "@extra": nil, is_expired: nil
+end
+defmodule TonTransactionTypeUpgradedGiftSale do
+  @moduledoc  """
+  The transaction is a sale of an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who bought the gift. |
+  | gift | upgradedGift | The gift. |
+  | commission_per_mille | int32 | The number of Toncoins received by the Telegram for each 1000 Toncoins received by the seller of the gift. |
+  | commission_toncoin_amount | int53 | The Toncoin amount that was received by the Telegram; in the smallest units of the currency. |
+  | via_offer | bool | True, if the gift was sold through a purchase offer. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transaction_type_upgraded_gift_sale.html).
+  """
+
+  defstruct "@type": "tonTransactionTypeUpgradedGiftSale", "@extra": nil, user_id: nil, gift: nil, commission_per_mille: nil, commission_toncoin_amount: nil, via_offer: nil
+end
 defmodule PushMessageContentChatSetBackground do
   @moduledoc  """
   A chat background was edited.
@@ -6365,6 +8273,62 @@ defmodule PushMessageContentChatSetBackground do
   """
 
   defstruct "@type": "pushMessageContentChatSetBackground", "@extra": nil, is_same: nil
+end
+defmodule PremiumGiftPaymentOptions do
+  @moduledoc  """
+  Contains a list of options for gifting Telegram Premium to a user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | options | premiumGiftPaymentOption | The list of options sorted by Telegram Premium subscription duration. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_gift_payment_options.html).
+  """
+
+  defstruct "@type": "premiumGiftPaymentOptions", "@extra": nil, options: nil
+end
+defmodule UpdateLiveStoryTopDonors do
+  @moduledoc  """
+  The list of top donors in live story group call has changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | group_call_id | int32 | Identifier of the group call. |
+  | donors | liveStoryDonors | New list of live story donors. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_live_story_top_donors.html).
+  """
+
+  defstruct "@type": "updateLiveStoryTopDonors", "@extra": nil, group_call_id: nil, donors: nil
+end
+defmodule ReceivedGifts do
+  @moduledoc  """
+  Represents a list of gifts received by a user or a chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | total_count | int32 | The total number of received gifts. |
+  | gifts | receivedGift | The list of gifts. |
+  | are_notifications_enabled | bool | True, if notifications about new gifts of the owner are enabled. |
+  | next_offset | string | The offset for the next request. If empty, then there are no more results. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1received_gifts.html).
+  """
+
+  defstruct "@type": "receivedGifts", "@extra": nil, total_count: nil, gifts: nil, are_notifications_enabled: nil, next_offset: nil
+end
+defmodule ActiveStoryStateLive do
+  @moduledoc  """
+  The chat has an active live story.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | story_id | int32 | Identifier of the active live story. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1active_story_state_live.html).
+  """
+
+  defstruct "@type": "activeStoryStateLive", "@extra": nil, story_id: nil
 end
 defmodule CollectibleItemTypePhoneNumber do
   @moduledoc  """
@@ -6379,19 +8343,18 @@ defmodule CollectibleItemTypePhoneNumber do
 
   defstruct "@type": "collectibleItemTypePhoneNumber", "@extra": nil, phone_number: nil
 end
-defmodule MessageExtendedMediaPhoto do
+defmodule CanPostStoryResultWeeklyLimitExceeded do
   @moduledoc  """
-  The media is a photo.
+  The weekly limit for the number of posted stories exceeded. The user needs to buy Telegram Premium or wait specified time.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | photo | photo | The photo. |
-  | caption | formattedText | Photo caption. |
+  | retry_after | int32 | Time left before the user can post the next story, in seconds. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_extended_media_photo.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story_result_weekly_limit_exceeded.html).
   """
 
-  defstruct "@type": "messageExtendedMediaPhoto", "@extra": nil, photo: nil, caption: nil
+  defstruct "@type": "canPostStoryResultWeeklyLimitExceeded", "@extra": nil, retry_after: nil
 end
 defmodule ChatActionTyping do
   @moduledoc  """
@@ -6460,16 +8423,6 @@ defmodule AutosaveSettings do
 
   defstruct "@type": "autosaveSettings", "@extra": nil, private_chat_settings: nil, group_settings: nil, channel_settings: nil, exceptions: nil
 end
-defmodule InternalLinkTypeUnsupportedProxy do
-  @moduledoc  """
-  The link is a link to an unsupported proxy. An alert can be shown to the user.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_unsupported_proxy.html).
-  """
-
-  defstruct "@type": "internalLinkTypeUnsupportedProxy", "@extra": nil
-end
 defmodule InternalLinkTypeBotStart do
   @moduledoc  """
   The link is a link to a chat with a Telegram bot. Call searchPublicChat with the given bot username, check that the user is a bot, show START button in the chat with the bot, and then call sendBotStartMessage with the given start parameter after the button is pressed.
@@ -6512,6 +8465,25 @@ defmodule BasicGroup do
 
   defstruct "@type": "basicGroup", "@extra": nil, id: nil, member_count: nil, status: nil, is_active: nil, upgraded_to_supergroup_id: nil
 end
+defmodule StoryContentTypePhoto do
+  @moduledoc  """
+  A photo story.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_content_type_photo.html).
+  """
+
+  defstruct "@type": "storyContentTypePhoto", "@extra": nil
+end
+defmodule PaidReactionType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_paid_reaction_type.html).
+  """
+
+  defstruct "@type": "PaidReactionType", "@extra": nil
+end
 defmodule ChatBackground do
   @moduledoc  """
   Describes a background set for a specific chat.
@@ -6525,6 +8497,16 @@ defmodule ChatBackground do
   """
 
   defstruct "@type": "chatBackground", "@extra": nil, background: nil, dark_theme_dimming: nil
+end
+defmodule UpgradedGiftAttributeRarityRare do
+  @moduledoc  """
+  The attribute is rare.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_attribute_rarity_rare.html).
+  """
+
+  defstruct "@type": "upgradedGiftAttributeRarityRare", "@extra": nil
 end
 defmodule MessageFileTypeUnknown do
   @moduledoc  """
@@ -6581,6 +8563,19 @@ defmodule BusinessChatLink do
 
   defstruct "@type": "businessChatLink", "@extra": nil, link: nil, text: nil, title: nil, view_count: nil
 end
+defmodule PaidReactionTypeChat do
+  @moduledoc  """
+  A paid reaction on behalf of an owned chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_reaction_type_chat.html).
+  """
+
+  defstruct "@type": "paidReactionTypeChat", "@extra": nil, chat_id: nil
+end
 defmodule AuthorizationStateWaitCode do
   @moduledoc  """
   TDLib needs the user's authentication code to authorize. Call checkAuthenticationCode to check the code.
@@ -6624,14 +8619,42 @@ defmodule BackgroundFillGradient do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | top_color | int32 | A top color of the background in the RGB24 format. |
-  | bottom_color | int32 | A bottom color of the background in the RGB24 format. |
+  | top_color | int32 | A top color of the background in the RGB format. |
+  | bottom_color | int32 | A bottom color of the background in the RGB format. |
   | rotation_angle | int32 | Clockwise rotation angle of the gradient, in degrees; 0-359. Must always be divisible by 45. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_fill_gradient.html).
   """
 
   defstruct "@type": "backgroundFillGradient", "@extra": nil, top_color: nil, bottom_color: nil, rotation_angle: nil
+end
+defmodule UpdateActiveLiveLocationMessages do
+  @moduledoc  """
+  The list of messages with active live location that need to be updated by the application has changed. The list is persistent across application restarts only if the message database is used.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | messages | message | The list of messages with active live locations. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_active_live_location_messages.html).
+  """
+
+  defstruct "@type": "updateActiveLiveLocationMessages", "@extra": nil, messages: nil
+end
+defmodule ConnectedAffiliatePrograms do
+  @moduledoc  """
+  Represents a list of affiliate programs that were connected to an affiliate.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | total_count | int32 | The total number of affiliate programs that were connected to the affiliate. |
+  | programs | connectedAffiliateProgram | The list of connected affiliate programs. |
+  | next_offset | string | The offset for the next request. If empty, then there are no more results. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1connected_affiliate_programs.html).
+  """
+
+  defstruct "@type": "connectedAffiliatePrograms", "@extra": nil, total_count: nil, programs: nil, next_offset: nil
 end
 defmodule Animations do
   @moduledoc  """
@@ -6672,6 +8695,15 @@ defmodule ChatEventVideoChatEnded do
 
   defstruct "@type": "chatEventVideoChatEnded", "@extra": nil, group_call_id: nil
 end
+defmodule PaidMedia do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_paid_media.html).
+  """
+
+  defstruct "@type": "PaidMedia", "@extra": nil
+end
 defmodule MessageDice do
   @moduledoc  """
   A dice message. The dice value is randomly generated by the server.
@@ -6681,13 +8713,23 @@ defmodule MessageDice do
   | initial_state | DiceStickers | The animated stickers with the initial dice animation; may be null if unknown. The update <a class="el" href="classtd_1_1td__api_1_1update_message_content.html">updateMessageContent</a> will be sent when the sticker became known. |
   | final_state | DiceStickers | The animated stickers with the final dice animation; may be null if unknown. The update <a class="el" href="classtd_1_1td__api_1_1update_message_content.html">updateMessageContent</a> will be sent when the sticker became known. |
   | emoji | string | Emoji on which the dice throw animation is based. |
-  | value | int32 | The dice value. If the value is 0, the dice don't have final state yet. |
+  | value | int32 | The dice value. If the value is 0, then the dice don't have final state yet. |
   | success_animation_frame_number | int32 | Number of frame after which a success animation like a shower of confetti needs to be shown on <a class="el" href="classtd_1_1td__api_1_1update_message_send_succeeded.html">updateMessageSendSucceeded</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_dice.html).
   """
 
   defstruct "@type": "messageDice", "@extra": nil, initial_state: nil, final_state: nil, emoji: nil, value: nil, success_animation_frame_number: nil
+end
+defmodule LinkPreviewTypeMessage do
+  @moduledoc  """
+  The link is a link to a text or a poll Telegram message.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_message.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeMessage", "@extra": nil
 end
 defmodule NetworkStatisticsEntryFile do
   @moduledoc  """
@@ -6753,7 +8795,7 @@ defmodule UpdateProfileAccentColors do
   | Name | Type | Description |
   |------|------| ------------|
   | colors | profileAccentColor | Information about supported colors. |
-  | available_accent_color_ids | int32 | The list of accent color identifiers, which can be set through <a class="el" href="classtd_1_1td__api_1_1set_profile_accent_color.html">setProfileAccentColor</a> and <a class="el" href="classtd_1_1td__api_1_1set_chat_profile_accent_color.html">setChatProfileAccentColor</a>. The colors must be shown in the specififed order. |
+  | available_accent_color_ids | int32 | The list of accent color identifiers, which can be set through <a class="el" href="classtd_1_1td__api_1_1set_profile_accent_color.html">setProfileAccentColor</a> and <a class="el" href="classtd_1_1td__api_1_1set_chat_profile_accent_color.html">setChatProfileAccentColor</a>. The colors must be shown in the specified order. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_profile_accent_colors.html).
   """
@@ -6768,6 +8810,38 @@ defmodule UserPrivacySettingRule do
   """
 
   defstruct "@type": "UserPrivacySettingRule", "@extra": nil
+end
+defmodule UpgradedGiftColors do
+  @moduledoc  """
+  Contains information about color scheme for user's name, background of empty chat photo, replies to messages and link previews.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int64 | Unique identifier of the upgraded gift colors. |
+  | model_custom_emoji_id | int64 | Custom emoji identifier of the model of the upgraded gift. |
+  | symbol_custom_emoji_id | int64 | Custom emoji identifier of the symbol of the upgraded gift. |
+  | light_theme_accent_color | int32 | Accent color to use in light themes in RGB format. |
+  | light_theme_colors | int32 | The list of 1-3 colors in RGB format, describing the accent color, as expected to be shown in light themes. |
+  | dark_theme_accent_color | int32 | Accent color to use in dark themes in RGB format. |
+  | dark_theme_colors | int32 | The list of 1-3 colors in RGB format, describing the accent color, as expected to be shown in dark themes. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_colors.html).
+  """
+
+  defstruct "@type": "upgradedGiftColors", "@extra": nil, id: nil, model_custom_emoji_id: nil, symbol_custom_emoji_id: nil, light_theme_accent_color: nil, light_theme_colors: nil, dark_theme_accent_color: nil, dark_theme_colors: nil
+end
+defmodule GiveawayParticipantStatusAlreadyWasMember do
+  @moduledoc  """
+  The user can't participate in the giveaway, because they have already been member of the chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | joined_chat_date | int32 | Point in time (Unix timestamp) when the user joined the chat. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_participant_status_already_was_member.html).
+  """
+
+  defstruct "@type": "giveawayParticipantStatusAlreadyWasMember", "@extra": nil, joined_chat_date: nil
 end
 defmodule ChatBoost do
   @moduledoc  """
@@ -6796,18 +8870,15 @@ defmodule SessionTypeLinux do
 
   defstruct "@type": "sessionTypeLinux", "@extra": nil
 end
-defmodule PremiumGiftCodePaymentOptions do
+defmodule PremiumFeatureTextComposition do
   @moduledoc  """
-  Contains a list of options for creating Telegram Premium gift codes.
+  The ability to compose text with AI.
 
-  | Name | Type | Description |
-  |------|------| ------------|
-  | options | premiumGiftCodePaymentOption | The list of options. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_gift_code_payment_options.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_text_composition.html).
   """
 
-  defstruct "@type": "premiumGiftCodePaymentOptions", "@extra": nil, options: nil
+  defstruct "@type": "premiumFeatureTextComposition", "@extra": nil
 end
 defmodule MessageChatShared do
   @moduledoc  """
@@ -6825,47 +8896,54 @@ defmodule MessageChatShared do
 end
 defmodule MessagePaymentSuccessfulBot do
   @moduledoc  """
-  A payment has been completed; for bots only.
+  A payment has been received by the bot or the business account.
 
   | Name | Type | Description |
   |------|------| ------------|
   | currency | string | Currency for price of the product. |
   | total_amount | int53 | Total price for the product, in the smallest units of the currency. |
+  | subscription_until_date | int32 | Point in time (Unix timestamp) when the subscription will expire; 0 if unknown or the payment isn't recurring. |
   | is_recurring | bool | True, if this is a recurring payment. |
   | is_first_recurring | bool | True, if this is the first recurring payment. |
   | invoice_payload | bytes | Invoice payload. |
-  | shipping_option_id | string | Identifier of the shipping option chosen by the user; may be empty if not applicable. |
-  | order_info | orderInfo | Information about the order; may be null. |
+  | shipping_option_id | string | Identifier of the shipping option chosen by the user; may be empty if not applicable; for bots only. |
+  | order_info | orderInfo | Information about the order; may be null; for bots only. |
   | telegram_payment_charge_id | string | Telegram payment identifier. |
   | provider_payment_charge_id | string | Provider payment identifier. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_payment_successful_bot.html).
   """
 
-  defstruct "@type": "messagePaymentSuccessfulBot", "@extra": nil, currency: nil, total_amount: nil, is_recurring: nil, is_first_recurring: nil, invoice_payload: nil, shipping_option_id: nil, order_info: nil, telegram_payment_charge_id: nil, provider_payment_charge_id: nil
+  defstruct "@type": "messagePaymentSuccessfulBot", "@extra": nil, currency: nil, total_amount: nil, subscription_until_date: nil, is_recurring: nil, is_first_recurring: nil, invoice_payload: nil, shipping_option_id: nil, order_info: nil, telegram_payment_charge_id: nil, provider_payment_charge_id: nil
 end
-defmodule MessagePremiumGiveawayWinners do
+defmodule Gift do
   @moduledoc  """
-  A Telegram Premium giveaway with public winners has been completed for the chat.
+  Describes a gift that can be sent to another user or channel chat.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | boosted_chat_id | int53 | Identifier of the channel chat, which was automatically boosted by the winners of the giveaway for duration of the Premium subscription. |
-  | giveaway_message_id | int53 | Identifier of the message with the giveaway in the boosted chat. |
-  | additional_chat_count | int32 | Number of other chats that participated in the giveaway. |
-  | actual_winners_selection_date | int32 | Point in time (Unix timestamp) when the winners were selected. May be bigger than winners selection date specified in parameters of the giveaway. |
-  | only_new_members | bool | True, if only new members of the chats were eligible for the giveaway. |
-  | was_refunded | bool | True, if the giveaway was canceled and was fully refunded. |
-  | month_count | int32 | Number of months the Telegram Premium subscription will be active after code activation. |
-  | prize_description | string | Additional description of the giveaway prize. |
-  | winner_count | int32 | Total number of winners in the giveaway. |
-  | winner_user_ids | int53 | Up to 100 user identifiers of the winners of the giveaway. |
-  | unclaimed_prize_count | int32 | Number of undistributed prizes. |
+  | id | int64 | Unique identifier of the gift. |
+  | publisher_chat_id | int53 | Identifier of the chat that published the gift; 0 if none. |
+  | sticker | sticker | The sticker representing the gift. |
+  | star_count | int53 | Number of Telegram Stars that must be paid for the gift. |
+  | default_sell_star_count | int53 | Number of Telegram Stars that can be claimed by the receiver instead of the regular gift by default. If the gift was paid with just bought Telegram Stars, then full value can be claimed. |
+  | upgrade_star_count | int53 | Number of Telegram Stars that must be paid to upgrade the gift; 0 if upgrade isn't possible. |
+  | upgrade_variant_count | int32 | Number of unique gift variants that are available for the upgraded gift; 0 if unknown. |
+  | has_colors | bool | True, if the gift can be used to customize the user's name, and backgrounds of profile photo, reply header, and link preview. |
+  | is_for_birthday | bool | True, if the gift is a birthday gift. |
+  | is_premium | bool | True, if the gift can be bought only by Telegram Premium subscribers. |
+  | auction_info | giftAuction | Information about the auction on which the gift can be purchased; may be null if the gift can be purchased directly. |
+  | next_send_date | int32 | Point in time (Unix timestamp) when the gift can be sent next time by the current user; may be 0 or a date in the past. If the date is in the future, then call <a class="el" href="classtd_1_1td__api_1_1can_send_gift.html">canSendGift</a> to get the reason, why the gift can't be sent now. |
+  | user_limits | giftPurchaseLimits | Number of times the gift can be purchased by the current user; may be null if not limited. |
+  | overall_limits | giftPurchaseLimits | Number of times the gift can be purchased all users; may be null if not limited. |
+  | background | giftBackground | Background of the gift. |
+  | first_send_date | int32 | Point in time (Unix timestamp) when the gift was send for the first time; for sold out gifts only. |
+  | last_send_date | int32 | Point in time (Unix timestamp) when the gift was send for the last time; for sold out gifts only. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_premium_giveaway_winners.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift.html).
   """
 
-  defstruct "@type": "messagePremiumGiveawayWinners", "@extra": nil, boosted_chat_id: nil, giveaway_message_id: nil, additional_chat_count: nil, actual_winners_selection_date: nil, only_new_members: nil, was_refunded: nil, month_count: nil, prize_description: nil, winner_count: nil, winner_user_ids: nil, unclaimed_prize_count: nil
+  defstruct "@type": "gift", "@extra": nil, id: nil, publisher_chat_id: nil, sticker: nil, star_count: nil, default_sell_star_count: nil, upgrade_star_count: nil, upgrade_variant_count: nil, has_colors: nil, is_for_birthday: nil, is_premium: nil, auction_info: nil, next_send_date: nil, user_limits: nil, overall_limits: nil, background: nil, first_send_date: nil, last_send_date: nil
 end
 defmodule UpdateChatAvailableReactions do
   @moduledoc  """
@@ -6881,6 +8959,20 @@ defmodule UpdateChatAvailableReactions do
 
   defstruct "@type": "updateChatAvailableReactions", "@extra": nil, chat_id: nil, available_reactions: nil
 end
+defmodule BotMediaPreview do
+  @moduledoc  """
+  Describes media previews of a bot.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | date | int32 | Point in time (Unix timestamp) when the preview was added or changed last time. |
+  | content | StoryContent | Content of the preview; may only be of the types <a class="el" href="classtd_1_1td__api_1_1story_content_photo.html">storyContentPhoto</a>, <a class="el" href="classtd_1_1td__api_1_1story_content_video.html">storyContentVideo</a>, or <a class="el" href="classtd_1_1td__api_1_1story_content_unsupported.html">storyContentUnsupported</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_media_preview.html).
+  """
+
+  defstruct "@type": "botMediaPreview", "@extra": nil, date: nil, content: nil
+end
 defmodule BotCommandScopeChat do
   @moduledoc  """
   A scope covering all members of a chat.
@@ -6894,18 +8986,28 @@ defmodule BotCommandScopeChat do
 
   defstruct "@type": "botCommandScopeChat", "@extra": nil, chat_id: nil
 end
-defmodule UpdateChatThemes do
+defmodule SearchMessagesFilterPoll do
   @moduledoc  """
-  The list of available chat themes has changed.
+  Returns only poll messages.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_poll.html).
+  """
+
+  defstruct "@type": "searchMessagesFilterPoll", "@extra": nil
+end
+defmodule SuggestedPostPriceStar do
+  @moduledoc  """
+  Describes price of a suggested post in Telegram Stars.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | chat_themes | chatTheme | The new list of chat themes. |
+  | star_count | int53 | The Telegram Star amount expected to be paid for the post; <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_star_count_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_star_count_max"). |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_themes.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_post_price_star.html).
   """
 
-  defstruct "@type": "updateChatThemes", "@extra": nil, chat_themes: nil
+  defstruct "@type": "suggestedPostPriceStar", "@extra": nil, star_count: nil
 end
 defmodule ReportReasonChildAbuse do
   @moduledoc  """
@@ -6919,14 +9021,14 @@ defmodule ReportReasonChildAbuse do
 end
 defmodule MessageCopyOptions do
   @moduledoc  """
-  Options to be used when a message content is copied without reference to the original sender. Service messages, messages with messageInvoice, messagePremiumGiveaway, or messagePremiumGiveawayWinners content can't be copied.
+  Options to be used when a message content is copied without reference to the original sender. Service messages, messages with messageInvoice, messagePaidMedia, messageGiveaway, or messageGiveawayWinners content can't be copied.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | send_copy | bool | True, if content of the message needs to be copied without reference to the original sender. Always true if the message is forwarded to a secret chat or is local. |
+  | send_copy | bool | True, if content of the message needs to be copied without reference to the original sender. Always true if the message is forwarded to a secret chat or is local. Use messageProperties.can_be_copied and messageProperties.can_be_copied_to_secret_chat to check whether the message is suitable. |
   | replace_caption | bool | True, if media caption of the message copy needs to be replaced. Ignored if send_copy is false. |
   | new_caption | formattedText | New message caption; pass null to copy message without caption. Ignored if replace_caption is false. |
-  | new_show_caption_above_media | bool | True, if new caption must be shown above the animation; otherwise, new caption must be shown below the animation; not supported in secret chats. Ignored if replace_caption is false. |
+  | new_show_caption_above_media | bool | True, if new caption must be shown above the media; otherwise, new caption must be shown below the media; not supported in secret chats. Ignored if replace_caption is false. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_copy_options.html).
   """
@@ -6983,6 +9085,21 @@ defmodule PremiumLimitTypeSimilarChatCount do
 
   defstruct "@type": "premiumLimitTypeSimilarChatCount", "@extra": nil
 end
+defmodule TextCompositionStyle do
+  @moduledoc  """
+  Describes a style that can be used to compose a text.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | name | string | Name of the style. |
+  | custom_emoji_id | int64 | Identifier of the custom emoji corresponding to the style. |
+  | title | string | Title of the style in the user application's language. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_composition_style.html).
+  """
+
+  defstruct "@type": "textCompositionStyle", "@extra": nil, name: nil, custom_emoji_id: nil, title: nil
+end
 defmodule CallProblemDropped do
   @moduledoc  """
   The call ended unexpectedly.
@@ -6993,6 +9110,71 @@ defmodule CallProblemDropped do
 
   defstruct "@type": "callProblemDropped", "@extra": nil
 end
+defmodule FileTypeSelfDestructingVideoNote do
+  @moduledoc  """
+  The file is a self-destructing video note in a private chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_self_destructing_video_note.html).
+  """
+
+  defstruct "@type": "fileTypeSelfDestructingVideoNote", "@extra": nil
+end
+defmodule SuggestedPostRefundReason do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_suggested_post_refund_reason.html).
+  """
+
+  defstruct "@type": "SuggestedPostRefundReason", "@extra": nil
+end
+defmodule MessageTopicDirectMessages do
+  @moduledoc  """
+  A topic in a channel direct messages chat administered by the current user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | direct_messages_chat_topic_id | int53 | Unique identifier of the topic. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_topic_direct_messages.html).
+  """
+
+  defstruct "@type": "messageTopicDirectMessages", "@extra": nil, direct_messages_chat_topic_id: nil
+end
+defmodule ProfileTabLinks do
+  @moduledoc  """
+  A tab with messages posted by the channel and containing links.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1profile_tab_links.html).
+  """
+
+  defstruct "@type": "profileTabLinks", "@extra": nil
+end
+defmodule Outline do
+  @moduledoc  """
+  Represents outline of an image.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | paths | closedVectorPath | The list of closed vector paths. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1outline.html).
+  """
+
+  defstruct "@type": "outline", "@extra": nil, paths: nil
+end
+defmodule StarTransactionTypePremiumBotDeposit do
+  @moduledoc  """
+  The transaction is a deposit of Telegram Stars from the Premium bot; relevant for regular users only.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_premium_bot_deposit.html).
+  """
+
+  defstruct "@type": "starTransactionTypePremiumBotDeposit", "@extra": nil
+end
 defmodule MessageText do
   @moduledoc  """
   A text message.
@@ -7000,17 +9182,17 @@ defmodule MessageText do
   | Name | Type | Description |
   |------|------| ------------|
   | text | formattedText | Text of the message. |
-  | web_page | webPage | A link preview attached to the message; may be null. |
+  | link_preview | linkPreview | A link preview attached to the message; may be null. |
   | link_preview_options | linkPreviewOptions | Options which were used for generation of the link preview; may be null if default options were used. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_text.html).
   """
 
-  defstruct "@type": "messageText", "@extra": nil, text: nil, web_page: nil, link_preview_options: nil
+  defstruct "@type": "messageText", "@extra": nil, text: nil, link_preview: nil, link_preview_options: nil
 end
 defmodule ChatStatisticsObjectTypeStory do
   @moduledoc  """
-  Describes a story sent by the chat.
+  Describes a story posted on behalf of the chat.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -7126,6 +9308,16 @@ defmodule PageBlockHorizontalAlignmentCenter do
 
   defstruct "@type": "pageBlockHorizontalAlignmentCenter", "@extra": nil
 end
+defmodule SuggestedPostStatePending do
+  @moduledoc  """
+  The post must be approved or declined.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_post_state_pending.html).
+  """
+
+  defstruct "@type": "suggestedPostStatePending", "@extra": nil
+end
 defmodule NotificationGroupTypeSecretChat do
   @moduledoc  """
   A group containing a notification of type notificationTypeNewSecretChat.
@@ -7164,14 +9356,24 @@ defmodule InputMessageText do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | text | formattedText | Formatted text to be sent; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually. |
+  | text | formattedText | Formatted text to be sent; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote, Code, Pre, PreCode, TextUrl, MentionName, and DateTime entities are allowed to be specified manually. |
   | link_preview_options | linkPreviewOptions | Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options. |
-  | clear_draft | bool | True, if a chat message draft must be deleted. |
+  | clear_draft | bool | True, if the chat message draft must be deleted. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_text.html).
   """
 
   defstruct "@type": "inputMessageText", "@extra": nil, text: nil, link_preview_options: nil, clear_draft: nil
+end
+defmodule TonTransactionTypeStakeDicePayout do
+  @moduledoc  """
+  The transaction is a payment for successful stake dice throw.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transaction_type_stake_dice_payout.html).
+  """
+
+  defstruct "@type": "tonTransactionTypeStakeDicePayout", "@extra": nil
 end
 defmodule MessageExpiredVoiceNote do
   @moduledoc  """
@@ -7198,18 +9400,19 @@ defmodule PushMessageContentRecurringPayment do
 end
 defmodule StorePaymentPurposeStars do
   @moduledoc  """
-  The user buying Telegram stars.
+  The user buying Telegram Stars.
 
   | Name | Type | Description |
   |------|------| ------------|
   | currency | string | ISO 4217 currency code of the payment currency. |
   | amount | int53 | Paid amount, in the smallest units of the currency. |
-  | star_count | int53 | Number of bought stars. |
+  | star_count | int53 | Number of bought Telegram Stars. |
+  | chat_id | int53 | Identifier of the chat that is supposed to receive the Telegram Stars; pass 0 if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_stars.html).
   """
 
-  defstruct "@type": "storePaymentPurposeStars", "@extra": nil, currency: nil, amount: nil, star_count: nil
+  defstruct "@type": "storePaymentPurposeStars", "@extra": nil, currency: nil, amount: nil, star_count: nil, chat_id: nil
 end
 defmodule MessageOriginChat do
   @moduledoc  """
@@ -7234,6 +9437,28 @@ defmodule ChatMemberStatusLeft do
   """
 
   defstruct "@type": "chatMemberStatusLeft", "@extra": nil
+end
+defmodule InputCall do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_input_call.html).
+  """
+
+  defstruct "@type": "InputCall", "@extra": nil
+end
+defmodule GiveawayParticipantStatusDisallowedCountry do
+  @moduledoc  """
+  The user can't participate in the giveaway, because they phone number is from a disallowed country.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_country_code | string | A two-letter ISO 3166-1 alpha-2 country code of the user's country. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_participant_status_disallowed_country.html).
+  """
+
+  defstruct "@type": "giveawayParticipantStatusDisallowedCountry", "@extra": nil, user_country_code: nil
 end
 defmodule PushMessageContentChatChangePhoto do
   @moduledoc  """
@@ -7392,12 +9617,23 @@ defmodule InputMessageInvoice do
   | provider_token | string | Payment provider token; may be empty for payments in Telegram Stars. |
   | provider_data | string | JSON-encoded data about the invoice, which will be shared with the payment provider. |
   | start_parameter | string | Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message. |
-  | extended_media_content | InputMessageContent | The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_photo.html">inputMessagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video.html">inputMessageVideo</a>. |
+  | paid_media | inputPaidMedia | The content of paid media attached to the invoice; pass null if none. |
+  | paid_media_caption | formattedText | Paid media caption; pass null to use an empty caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_invoice.html).
   """
 
-  defstruct "@type": "inputMessageInvoice", "@extra": nil, invoice: nil, title: nil, description: nil, photo_url: nil, photo_size: nil, photo_width: nil, photo_height: nil, payload: nil, provider_token: nil, provider_data: nil, start_parameter: nil, extended_media_content: nil
+  defstruct "@type": "inputMessageInvoice", "@extra": nil, invoice: nil, title: nil, description: nil, photo_url: nil, photo_size: nil, photo_width: nil, photo_height: nil, payload: nil, provider_token: nil, provider_data: nil, start_parameter: nil, paid_media: nil, paid_media_caption: nil
+end
+defmodule ReportChatResultMessagesRequired do
+  @moduledoc  """
+  The user must choose messages to report and repeat the reportChat request with the chosen messages.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_result_messages_required.html).
+  """
+
+  defstruct "@type": "reportChatResultMessagesRequired", "@extra": nil
 end
 defmodule TextEntityType do
   @moduledoc  """
@@ -7407,6 +9643,15 @@ defmodule TextEntityType do
   """
 
   defstruct "@type": "TextEntityType", "@extra": nil
+end
+defmodule UpgradedGiftAttributeRarity do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_upgraded_gift_attribute_rarity.html).
+  """
+
+  defstruct "@type": "UpgradedGiftAttributeRarity", "@extra": nil
 end
 defmodule Ok do
   @moduledoc  """
@@ -7431,18 +9676,21 @@ defmodule UserPrivacySettingRuleRestrictUsers do
 
   defstruct "@type": "userPrivacySettingRuleRestrictUsers", "@extra": nil, user_ids: nil
 end
-defmodule PremiumGiveawayParticipantStatusAdministrator do
+defmodule StorePaymentPurposePremiumGift do
   @moduledoc  """
-  The user can't participate in the giveaway, because they are an administrator in one of the chats that created the giveaway.
+  The user gifting Telegram Premium to another user.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | chat_id | int53 | Identifier of the chat administered by the user. |
+  | currency | string | ISO 4217 currency code of the payment currency. |
+  | amount | int53 | Paid amount, in the smallest units of the currency. |
+  | user_id | int53 | Identifiers of the user which will receive Telegram Premium. |
+  | text | formattedText | Text to show along with the gift codes; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_giveaway_participant_status_administrator.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_premium_gift.html).
   """
 
-  defstruct "@type": "premiumGiveawayParticipantStatusAdministrator", "@extra": nil, chat_id: nil
+  defstruct "@type": "storePaymentPurposePremiumGift", "@extra": nil, currency: nil, amount: nil, user_id: nil, text: nil
 end
 defmodule CallServer do
   @moduledoc  """
@@ -7461,6 +9709,30 @@ defmodule CallServer do
 
   defstruct "@type": "callServer", "@extra": nil, id: nil, ip_address: nil, ipv6_address: nil, port: nil, type: nil
 end
+defmodule TonTransactionTypeUnsupported do
+  @moduledoc  """
+  The transaction is a transaction of an unsupported type.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transaction_type_unsupported.html).
+  """
+
+  defstruct "@type": "tonTransactionTypeUnsupported", "@extra": nil
+end
+defmodule StarTransactionTypeGiveawayDeposit do
+  @moduledoc  """
+  The transaction is a deposit of Telegram Stars from a giveaway; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of a supergroup or a channel chat that created the giveaway. |
+  | giveaway_message_id | int53 | Identifier of the message with the giveaway; may be 0 or an identifier of a deleted message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_giveaway_deposit.html).
+  """
+
+  defstruct "@type": "starTransactionTypeGiveawayDeposit", "@extra": nil, chat_id: nil, giveaway_message_id: nil
+end
 defmodule BotMenuButton do
   @moduledoc  """
   Describes a button to be shown instead of bot commands menu button.
@@ -7468,22 +9740,25 @@ defmodule BotMenuButton do
   | Name | Type | Description |
   |------|------| ------------|
   | text | string | Text of the button. |
-  | url | string | URL to be passed to <a class="el" href="classtd_1_1td__api_1_1open_web_app.html">openWebApp</a>. |
+  | url | string | URL of a Web App to open when the button is pressed. If the link is of the type <a class="el" href="classtd_1_1td__api_1_1internal_link_type_web_app.html">internalLinkTypeWebApp</a>, then it must be processed accordingly. Otherwise, the link must be passed to <a class="el" href="classtd_1_1td__api_1_1open_web_app.html">openWebApp</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_menu_button.html).
   """
 
   defstruct "@type": "botMenuButton", "@extra": nil, text: nil, url: nil
 end
-defmodule ReportChatSponsoredMessageResultPremiumRequired do
+defmodule SuggestedActionSetLoginEmailAddress do
   @moduledoc  """
-  The user asked to hide sponsored messages, but Telegram Premium is required for this.
+  Suggests the user to add login email address. Call isLoginEmailAddressRequired, and then setLoginEmailAddress or checkLoginEmailAddressCode to change the login email address.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | can_be_hidden | bool | True, if the suggested action can be hidden using <a class="el" href="classtd_1_1td__api_1_1hide_suggested_action.html">hideSuggestedAction</a>. Otherwise, the user must not be able to use the application without setting up the email address. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_sponsored_message_result_premium_required.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_set_login_email_address.html).
   """
 
-  defstruct "@type": "reportChatSponsoredMessageResultPremiumRequired", "@extra": nil
+  defstruct "@type": "suggestedActionSetLoginEmailAddress", "@extra": nil, can_be_hidden: nil
 end
 defmodule InputFileLocal do
   @moduledoc  """
@@ -7508,6 +9783,19 @@ defmodule PremiumFeatureProfileBadge do
 
   defstruct "@type": "premiumFeatureProfileBadge", "@extra": nil
 end
+defmodule LinkPreviewTypeAudio do
+  @moduledoc  """
+  The link is a link to an audio.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | audio | audio | The audio description. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_audio.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeAudio", "@extra": nil, audio: nil
+end
 defmodule MessageSourceChatHistory do
   @moduledoc  """
   The message is from a chat history.
@@ -7517,6 +9805,22 @@ defmodule MessageSourceChatHistory do
   """
 
   defstruct "@type": "messageSourceChatHistory", "@extra": nil
+end
+defmodule UpgradedGiftBackdropColors do
+  @moduledoc  """
+  Describes colors of a backdrop of an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | center_color | int32 | A color in the center of the backdrop in the RGB format. |
+  | edge_color | int32 | A color on the edges of the backdrop in the RGB format. |
+  | symbol_color | int32 | A color to be applied for the symbol in the RGB format. |
+  | text_color | int32 | A color for the text on the backdrop in the RGB format. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_backdrop_colors.html).
+  """
+
+  defstruct "@type": "upgradedGiftBackdropColors", "@extra": nil, center_color: nil, edge_color: nil, symbol_color: nil, text_color: nil
 end
 defmodule ChatEventMessagePinned do
   @moduledoc  """
@@ -7604,6 +9908,16 @@ defmodule KeyboardButtonTypeRequestChat do
   """
 
   defstruct "@type": "keyboardButtonTypeRequestChat", "@extra": nil, id: nil, chat_is_channel: nil, restrict_chat_is_forum: nil, chat_is_forum: nil, restrict_chat_has_username: nil, chat_has_username: nil, chat_is_created: nil, user_administrator_rights: nil, bot_administrator_rights: nil, bot_is_member: nil, request_title: nil, request_username: nil, request_photo: nil
+end
+defmodule StoryContentTypeUnsupported do
+  @moduledoc  """
+  A story of unknown content type.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_content_type_unsupported.html).
+  """
+
+  defstruct "@type": "storyContentTypeUnsupported", "@extra": nil
 end
 defmodule InlineKeyboardButtonTypeCallbackWithPassword do
   @moduledoc  """
@@ -7694,6 +10008,32 @@ defmodule UpdateNewMessage do
 
   defstruct "@type": "updateNewMessage", "@extra": nil, message: nil
 end
+defmodule TelegramPaymentPurposeJoinChat do
+  @moduledoc  """
+  The user joins a chat and subscribes to regular payments in Telegram Stars.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | invite_link | string | Invite link to use. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_join_chat.html).
+  """
+
+  defstruct "@type": "telegramPaymentPurposeJoinChat", "@extra": nil, invite_link: nil
+end
+defmodule MessageSuggestBirthdate do
+  @moduledoc  """
+  A birthdate was suggested to be set.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | birthdate | birthdate | The suggested birthdate. Use the method <a class="el" href="classtd_1_1td__api_1_1set_birthdate.html">setBirthdate</a> to apply the birthdate. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_suggest_birthdate.html).
+  """
+
+  defstruct "@type": "messageSuggestBirthdate", "@extra": nil, birthdate: nil
+end
 defmodule SavedMessagesTopicTypeAuthorHidden do
   @moduledoc  """
   Topic containing messages forwarded from a user with hidden privacy.
@@ -7713,6 +10053,22 @@ defmodule InviteLinkChatTypeChannel do
   """
 
   defstruct "@type": "inviteLinkChatTypeChannel", "@extra": nil
+end
+defmodule StoryAlbum do
+  @moduledoc  """
+  Describes album of stories.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int32 | Unique identifier of the album. |
+  | name | string | Name of the album. |
+  | photo_icon | photo | Icon of the album; may be null if none. |
+  | video_icon | video | Video icon of the album; may be null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_album.html).
+  """
+
+  defstruct "@type": "storyAlbum", "@extra": nil, id: nil, name: nil, photo_icon: nil, video_icon: nil
 end
 defmodule ConnectionStateReady do
   @moduledoc  """
@@ -7807,6 +10163,20 @@ defmodule BankCardInfo do
 
   defstruct "@type": "bankCardInfo", "@extra": nil, title: nil, actions: nil
 end
+defmodule UpgradedGiftBackdropCount do
+  @moduledoc  """
+  Describes a backdrop of an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | backdrop | upgradedGiftBackdrop | The backdrop. |
+  | total_count | int32 | Total number of gifts with the symbol. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_backdrop_count.html).
+  """
+
+  defstruct "@type": "upgradedGiftBackdropCount", "@extra": nil, backdrop: nil, total_count: nil
+end
 defmodule InlineKeyboardButtonTypeWebApp do
   @moduledoc  """
   A button that opens a Web App by calling openWebApp.
@@ -7875,6 +10245,15 @@ defmodule ArchiveChatListSettings do
 
   defstruct "@type": "archiveChatListSettings", "@extra": nil, archive_and_mute_new_chats_from_unknown_users: nil, keep_unmuted_chats_archived: nil, keep_chats_from_folders_archived: nil
 end
+defmodule InputPaidMediaType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_input_paid_media_type.html).
+  """
+
+  defstruct "@type": "InputPaidMediaType", "@extra": nil
+end
 defmodule InlineQueryResultVoiceNote do
   @moduledoc  """
   Represents a voice note.
@@ -7903,7 +10282,7 @@ defmodule InputMessageAnimation do
   | width | int32 | Width of the animation; may be replaced by the server. |
   | height | int32 | Height of the animation; may be replaced by the server. |
   | caption | formattedText | Animation caption; pass null to use an empty caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
-  | show_caption_above_media | bool | True, if caption must be shown above the animation; otherwise, caption must be shown below the animation; not supported in secret chats. |
+  | show_caption_above_media | bool | True, if the caption must be shown above the animation; otherwise, the caption must be shown below the animation; not supported in secret chats. |
   | has_spoiler | bool | True, if the animation preview must be covered by a spoiler animation; not supported in secret chats. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_animation.html).
@@ -7940,16 +10319,16 @@ defmodule LogVerbosityLevel do
 end
 defmodule UpdateOwnedStarCount do
   @moduledoc  """
-  The number of Telegram stars owned by the current user has changed.
+  The number of Telegram Stars owned by the current user has changed.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | star_count | int53 | The new number of Telegram stars owned. |
+  | star_amount | starAmount | The new amount of owned Telegram Stars. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_owned_star_count.html).
   """
 
-  defstruct "@type": "updateOwnedStarCount", "@extra": nil, star_count: nil
+  defstruct "@type": "updateOwnedStarCount", "@extra": nil, star_amount: nil
 end
 defmodule InlineKeyboardButtonTypeUser do
   @moduledoc  """
@@ -8019,15 +10398,31 @@ defmodule DeviceTokenWebPush do
 
   defstruct "@type": "deviceTokenWebPush", "@extra": nil, endpoint: nil, p256dh_base64url: nil, auth_base64url: nil
 end
+defmodule MessageTopicForum do
+  @moduledoc  """
+  A topic in a forum supergroup chat or a chat with a bot.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | forum_topic_id | int32 | Unique identifier of the forum topic. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_topic_forum.html).
+  """
+
+  defstruct "@type": "messageTopicForum", "@extra": nil, forum_topic_id: nil
+end
 defmodule PushMessageContentContactRegistered do
   @moduledoc  """
   A contact has registered with Telegram.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | as_premium_account | bool | True, if the user joined Telegram as a Telegram Premium account. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_contact_registered.html).
   """
 
-  defstruct "@type": "pushMessageContentContactRegistered", "@extra": nil
+  defstruct "@type": "pushMessageContentContactRegistered", "@extra": nil, as_premium_account: nil
 end
 defmodule MessageImportInfo do
   @moduledoc  """
@@ -8042,6 +10437,39 @@ defmodule MessageImportInfo do
   """
 
   defstruct "@type": "messageImportInfo", "@extra": nil, sender_name: nil, date: nil
+end
+defmodule InputMessageChecklist do
+  @moduledoc  """
+  A message with a checklist. Checklists can't be sent to secret chats, channel chats and channel direct messages chats; for Telegram Premium users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | checklist | inputChecklist | The checklist to send. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_checklist.html).
+  """
+
+  defstruct "@type": "inputMessageChecklist", "@extra": nil, checklist: nil
+end
+defmodule GiftAuctionAcquiredGift do
+  @moduledoc  """
+  Represents a gift that was acquired by the current user on an auction.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | receiver_id | MessageSender | Receiver of the gift. |
+  | date | int32 | Point in time (Unix timestamp) when the gift was acquired. |
+  | star_count | int53 | The number of Telegram Stars that were paid for the gift. |
+  | auction_round_number | int32 | Identifier of the auction round in which the gift was acquired. |
+  | auction_round_position | int32 | Position of the user in the round among all auction participants. |
+  | unique_gift_number | int32 | Unique number of the gift among gifts upgraded from the same gift after upgrade; 0 if yet unassigned. |
+  | text | formattedText | Message added to the gift. |
+  | is_private | bool | True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_auction_acquired_gift.html).
+  """
+
+  defstruct "@type": "giftAuctionAcquiredGift", "@extra": nil, receiver_id: nil, date: nil, star_count: nil, auction_round_number: nil, auction_round_position: nil, unique_gift_number: nil, text: nil, is_private: nil
 end
 defmodule PassportElementEmailAddress do
   @moduledoc  """
@@ -8098,7 +10526,7 @@ defmodule ReactionTypeEmoji do
 end
 defmodule StoryOriginPublicStory do
   @moduledoc  """
-  The original story was a public story with known sender.
+  The original story was a public story that was posted by a known chat.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -8128,6 +10556,19 @@ defmodule CallState do
 
   defstruct "@type": "CallState", "@extra": nil
 end
+defmodule UpgradedGiftAttributeIdSymbol do
+  @moduledoc  """
+  Identifier of a gift symbol.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | sticker_id | int64 | Identifier of the sticker representing the symbol. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_attribute_id_symbol.html).
+  """
+
+  defstruct "@type": "upgradedGiftAttributeIdSymbol", "@extra": nil, sticker_id: nil
+end
 defmodule InputMessageAudio do
   @moduledoc  """
   An audio message.
@@ -8145,6 +10586,29 @@ defmodule InputMessageAudio do
   """
 
   defstruct "@type": "inputMessageAudio", "@extra": nil, audio: nil, album_cover_thumbnail: nil, duration: nil, title: nil, performer: nil, caption: nil
+end
+defmodule SuggestedPostStateApproved do
+  @moduledoc  """
+  The post was approved.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_post_state_approved.html).
+  """
+
+  defstruct "@type": "suggestedPostStateApproved", "@extra": nil
+end
+defmodule UpdateEmojiChatThemes do
+  @moduledoc  """
+  The list of available emoji chat themes has changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_themes | emojiChatTheme | The new list of emoji chat themes. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_emoji_chat_themes.html).
+  """
+
+  defstruct "@type": "updateEmojiChatThemes", "@extra": nil, chat_themes: nil
 end
 defmodule MessageSelfDestructTypeTimer do
   @moduledoc  """
@@ -8184,6 +10648,19 @@ defmodule PushMessageContentSticker do
 
   defstruct "@type": "pushMessageContentSticker", "@extra": nil, sticker: nil, emoji: nil, is_pinned: nil
 end
+defmodule PushMessageContentInviteVideoChatParticipants do
+  @moduledoc  """
+  An invitation of participants to a video chat or live stream.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | is_current_user | bool | True, if the current user was invited to the video chat or the live stream. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_invite_video_chat_participants.html).
+  """
+
+  defstruct "@type": "pushMessageContentInviteVideoChatParticipants", "@extra": nil, is_current_user: nil
+end
 defmodule InputPassportElementErrorSource do
   @moduledoc  """
 
@@ -8193,15 +10670,19 @@ defmodule InputPassportElementErrorSource do
 
   defstruct "@type": "InputPassportElementErrorSource", "@extra": nil
 end
-defmodule ReportChatSponsoredMessageResultFailed do
+defmodule TonTransactionTypeFragmentDeposit do
   @moduledoc  """
-  The sponsored message is too old or not found.
+  The transaction is a deposit of Toncoins from Fragment.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | is_gift | bool | True, if the transaction is a gift from another user. |
+  | sticker | sticker | The sticker to be shown in the transaction information; may be null if unknown. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_sponsored_message_result_failed.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transaction_type_fragment_deposit.html).
   """
 
-  defstruct "@type": "reportChatSponsoredMessageResultFailed", "@extra": nil
+  defstruct "@type": "tonTransactionTypeFragmentDeposit", "@extra": nil, is_gift: nil, sticker: nil
 end
 defmodule PassportElementTypeRentalAgreement do
   @moduledoc  """
@@ -8212,6 +10693,22 @@ defmodule PassportElementTypeRentalAgreement do
   """
 
   defstruct "@type": "passportElementTypeRentalAgreement", "@extra": nil
+end
+defmodule UpgradedGiftBackdrop do
+  @moduledoc  """
+  Describes a backdrop of an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int32 | Unique identifier of the backdrop. |
+  | name | string | Name of the backdrop. |
+  | colors | upgradedGiftBackdropColors | Colors of the backdrop. |
+  | rarity | UpgradedGiftAttributeRarity | The rarity of the backdrop. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_backdrop.html).
+  """
+
+  defstruct "@type": "upgradedGiftBackdrop", "@extra": nil, id: nil, name: nil, colors: nil, rarity: nil
 end
 defmodule InputPassportElementPersonalDetails do
   @moduledoc  """
@@ -8246,12 +10743,12 @@ defmodule SupergroupMembersFilterMention do
   | Name | Type | Description |
   |------|------| ------------|
   | query | string | Query to search for. |
-  | message_thread_id | int53 | If non-zero, the identifier of the current message thread. |
+  | topic_id | MessageTopic | Identifier of the topic in which the users will be mentioned; pass null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_members_filter_mention.html).
   """
 
-  defstruct "@type": "supergroupMembersFilterMention", "@extra": nil, query: nil, message_thread_id: nil
+  defstruct "@type": "supergroupMembersFilterMention", "@extra": nil, query: nil, topic_id: nil
 end
 defmodule InputPassportElementInternalPassport do
   @moduledoc  """
@@ -8265,6 +10762,19 @@ defmodule InputPassportElementInternalPassport do
   """
 
   defstruct "@type": "inputPassportElementInternalPassport", "@extra": nil, internal_passport: nil
+end
+defmodule StoryAreaTypeUpgradedGift do
+  @moduledoc  """
+  An area with an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift_name | string | Unique name of the upgraded gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_area_type_upgraded_gift.html).
+  """
+
+  defstruct "@type": "storyAreaTypeUpgradedGift", "@extra": nil, gift_name: nil
 end
 defmodule BusinessAwayMessageSchedule do
   @moduledoc  """
@@ -8334,7 +10844,7 @@ defmodule MessageReadDateUserPrivacyRestricted do
 end
 defmodule PremiumFeatureLastSeenTimes do
   @moduledoc  """
-  The ability to view last seen and read times of other users even they can't view last seen or read time for the current user.
+  The ability to view last seen and read times of other users even if they can't view last seen or read time for the current user.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_last_seen_times.html).
@@ -8398,7 +10908,7 @@ defmodule ChatFolderInfo do
   | Name | Type | Description |
   |------|------| ------------|
   | id | int32 | Unique chat folder identifier. |
-  | title | string | The title of the folder; 1-12 characters without line feeds. |
+  | name | chatFolderName | The name of the folder. |
   | icon | chatFolderIcon | The chosen or default icon for the chat folder. |
   | color_id | int32 | The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is disabled. |
   | is_shareable | bool | True, if at least one link has been created for the folder. |
@@ -8407,11 +10917,11 @@ defmodule ChatFolderInfo do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_folder_info.html).
   """
 
-  defstruct "@type": "chatFolderInfo", "@extra": nil, id: nil, title: nil, icon: nil, color_id: nil, is_shareable: nil, has_my_invite_links: nil
+  defstruct "@type": "chatFolderInfo", "@extra": nil, id: nil, name: nil, icon: nil, color_id: nil, is_shareable: nil, has_my_invite_links: nil
 end
 defmodule PremiumLimitTypeStoryCaptionLength do
   @moduledoc  """
-  The maximum length of captions of sent stories.
+  The maximum length of captions of posted stories.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_story_caption_length.html).
@@ -8458,14 +10968,14 @@ defmodule ScopeNotificationSettings do
   | use_default_mute_stories | bool | If true, story notifications are received only for the first 5 chats from <a class="el" href="classtd_1_1td__api_1_1top_chat_category_users.html">topChatCategoryUsers</a> regardless of the value of mute_stories. |
   | mute_stories | bool | True, if story notifications are disabled. |
   | story_sound_id | int64 | Identifier of the notification sound to be played for stories; 0 if sound is disabled. |
-  | show_story_sender | bool | True, if the sender of stories must be displayed in notifications. |
+  | show_story_poster | bool | True, if the chat that posted a story must be displayed in notifications. |
   | disable_pinned_message_notifications | bool | True, if notifications for incoming pinned messages will be created as for an ordinary unread message. |
   | disable_mention_notifications | bool | True, if notifications for messages with mentions will be created as for an ordinary unread message. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1scope_notification_settings.html).
   """
 
-  defstruct "@type": "scopeNotificationSettings", "@extra": nil, mute_for: nil, sound_id: nil, show_preview: nil, use_default_mute_stories: nil, mute_stories: nil, story_sound_id: nil, show_story_sender: nil, disable_pinned_message_notifications: nil, disable_mention_notifications: nil
+  defstruct "@type": "scopeNotificationSettings", "@extra": nil, mute_for: nil, sound_id: nil, show_preview: nil, use_default_mute_stories: nil, mute_stories: nil, story_sound_id: nil, show_story_poster: nil, disable_pinned_message_notifications: nil, disable_mention_notifications: nil
 end
 defmodule LogTags do
   @moduledoc  """
@@ -8480,6 +10990,15 @@ defmodule LogTags do
 
   defstruct "@type": "logTags", "@extra": nil, tags: nil
 end
+defmodule ReportSponsoredResult do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_report_sponsored_result.html).
+  """
+
+  defstruct "@type": "ReportSponsoredResult", "@extra": nil
+end
 defmodule MessagePassportDataReceived do
   @moduledoc  """
   Telegram Passport data has been received; for bots only.
@@ -8493,6 +11012,29 @@ defmodule MessagePassportDataReceived do
   """
 
   defstruct "@type": "messagePassportDataReceived", "@extra": nil, elements: nil, credentials: nil
+end
+defmodule SettingsSectionPrivacyAndSecurity do
+  @moduledoc  """
+  The privacy and security section.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "blocked", "blocked/edit", "blocked/block-user", "blocked/block-user/chats", "blocked/block-user/contacts", "active-websites", "active-websites/edit", "active-websites/disconnect-all", "passcode", "passcode/disable", "passcode/change", "passcode/auto-lock", "passcode/face-id", "passcode/fingerprint", "2sv", "2sv/change", "2sv/disable", "2sv/change-email", "passkey", "passkey/create", "auto-delete", "auto-delete/set-custom", "login-email", "phone-number", "phone-number/never", "phone-number/always", "last-seen", "last-seen/never", "last-seen/always", "last-seen/hide-read-time", "profile-photos", "profile-photos/never", "profile-photos/always", "profile-photos/set-public", "profile-photos/update-public", "profile-photos/remove-public", "bio", "bio/never", "bio/always", "gifts", "gifts/show-icon", "gifts/never", "gifts/always", "gifts/accepted-types", "birthday", "birthday/add", "birthday/never", "birthday/always", "saved-music", "saved-music/never", "saved-music/always", "forwards", "forwards/never", "forwards/always", "calls", "calls/never", "calls/always", "calls/p2p", "calls/p2p/never", "calls/p2p/always", "calls/ios-integration", "voice", "voice/never", "voice/always", "messages", "messages/set-price", "messages/exceptions", "invites", "invites/never", "invites/always", "self-destruct", "data-settings", "data-settings/sync-contacts", "data-settings/delete-synced", "data-settings/suggest-contacts", "data-settings/delete-cloud-drafts", "data-settings/clear-payment-info", "data-settings/link-previews", "data-settings/bot-settings", "data-settings/map-provider", "archive-and-mute". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_privacy_and_security.html).
+  """
+
+  defstruct "@type": "settingsSectionPrivacyAndSecurity", "@extra": nil, subsection: nil
+end
+defmodule StarTransactionTypePublicPostSearch do
+  @moduledoc  """
+  The transaction is a payment for search of posts in public Telegram channels; relevant for regular users only.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_public_post_search.html).
+  """
+
+  defstruct "@type": "starTransactionTypePublicPostSearch", "@extra": nil
 end
 defmodule InternalLinkTypeMessage do
   @moduledoc  """
@@ -8532,17 +11074,18 @@ defmodule UpdateStoryStealthMode do
 end
 defmodule InternalLinkTypeUserPhoneNumber do
   @moduledoc  """
-  The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link. If the user is found, then call createPrivateChat and open the chat. If draft text isn't empty, then put the draft text in the input field.
+  The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link. If the user is found, then call createPrivateChat and open user's profile information screen or the chat itself. If draft text isn't empty, then put the draft text in the input field.
 
   | Name | Type | Description |
   |------|------| ------------|
   | phone_number | string | Phone number of the user. |
   | draft_text | string | Draft text for message to send in the chat. |
+  | open_profile | bool | True, if user's profile information screen must be opened; otherwise, the chat itself must be opened. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_user_phone_number.html).
   """
 
-  defstruct "@type": "internalLinkTypeUserPhoneNumber", "@extra": nil, phone_number: nil, draft_text: nil
+  defstruct "@type": "internalLinkTypeUserPhoneNumber", "@extra": nil, phone_number: nil, draft_text: nil, open_profile: nil
 end
 defmodule ChatRevenueTransactions do
   @moduledoc  """
@@ -8550,13 +11093,14 @@ defmodule ChatRevenueTransactions do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | total_count | int32 | Total number of transactions. |
+  | ton_amount | int53 | The amount of owned Toncoins; in the smallest units of the cryptocurrency. |
   | transactions | chatRevenueTransaction | List of transactions. |
+  | next_offset | string | The offset for the next request. If empty, then there are no more results. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transactions.html).
   """
 
-  defstruct "@type": "chatRevenueTransactions", "@extra": nil, total_count: nil, transactions: nil
+  defstruct "@type": "chatRevenueTransactions", "@extra": nil, ton_amount: nil, transactions: nil, next_offset: nil
 end
 defmodule ReactionUnavailabilityReason do
   @moduledoc  """
@@ -8586,6 +11130,22 @@ defmodule ChatEventAction do
 
   defstruct "@type": "ChatEventAction", "@extra": nil
 end
+defmodule MessageUpgradedGiftPurchaseOffer do
+  @moduledoc  """
+  An offer to purchase an upgraded gift was sent or received.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | upgradedGift | The gift. |
+  | state | GiftPurchaseOfferState | State of the offer. |
+  | price | GiftResalePrice | The proposed price. |
+  | expiration_date | int32 | Point in time (Unix timestamp) when the offer will expire or has expired. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_upgraded_gift_purchase_offer.html).
+  """
+
+  defstruct "@type": "messageUpgradedGiftPurchaseOffer", "@extra": nil, gift: nil, state: nil, price: nil, expiration_date: nil
+end
 defmodule ChatStatisticsMessageSenderInfo do
   @moduledoc  """
   Contains statistics about messages sent by a user.
@@ -8603,19 +11163,20 @@ defmodule ChatStatisticsMessageSenderInfo do
 end
 defmodule StorePaymentPurposePremiumGiftCodes do
   @moduledoc  """
-  The user creating Telegram Premium gift codes for other users.
+  The user boosting a chat by creating Telegram Premium gift codes for other users.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | boosted_chat_id | int53 | Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user; 0 if none. |
+  | boosted_chat_id | int53 | Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user. |
   | currency | string | ISO 4217 currency code of the payment currency. |
   | amount | int53 | Paid amount, in the smallest units of the currency. |
   | user_ids | int53 | Identifiers of the users which can activate the gift codes. |
+  | text | formattedText | Text to show along with the gift codes; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_premium_gift_codes.html).
   """
 
-  defstruct "@type": "storePaymentPurposePremiumGiftCodes", "@extra": nil, boosted_chat_id: nil, currency: nil, amount: nil, user_ids: nil
+  defstruct "@type": "storePaymentPurposePremiumGiftCodes", "@extra": nil, boosted_chat_id: nil, currency: nil, amount: nil, user_ids: nil, text: nil
 end
 defmodule ChatEventProfileAccentColorChanged do
   @moduledoc  """
@@ -8678,6 +11239,16 @@ defmodule BusinessFeatureOpeningHours do
 
   defstruct "@type": "businessFeatureOpeningHours", "@extra": nil
 end
+defmodule SettingsSectionPrivacyPolicy do
+  @moduledoc  """
+  The "Privacy Policy" section.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_privacy_policy.html).
+  """
+
+  defstruct "@type": "settingsSectionPrivacyPolicy", "@extra": nil
+end
 defmodule MessageCalendar do
   @moduledoc  """
   Contains information about found messages, split by days according to the option "utc_time_offset".
@@ -8702,12 +11273,12 @@ defmodule ForumTopics do
   | topics | forumTopic | List of forum topics. |
   | next_offset_date | int32 | Offset date for the next <a class="el" href="classtd_1_1td__api_1_1get_forum_topics.html">getForumTopics</a> request. |
   | next_offset_message_id | int53 | Offset message identifier for the next <a class="el" href="classtd_1_1td__api_1_1get_forum_topics.html">getForumTopics</a> request. |
-  | next_offset_message_thread_id | int53 | Offset message thread identifier for the next <a class="el" href="classtd_1_1td__api_1_1get_forum_topics.html">getForumTopics</a> request. |
+  | next_offset_forum_topic_id | int32 | Offset forum topic identifier for the next <a class="el" href="classtd_1_1td__api_1_1get_forum_topics.html">getForumTopics</a> request. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1forum_topics.html).
   """
 
-  defstruct "@type": "forumTopics", "@extra": nil, total_count: nil, topics: nil, next_offset_date: nil, next_offset_message_id: nil, next_offset_message_thread_id: nil
+  defstruct "@type": "forumTopics", "@extra": nil, total_count: nil, topics: nil, next_offset_date: nil, next_offset_message_id: nil, next_offset_forum_topic_id: nil
 end
 defmodule FileTypeVideo do
   @moduledoc  """
@@ -8719,18 +11290,19 @@ defmodule FileTypeVideo do
 
   defstruct "@type": "fileTypeVideo", "@extra": nil
 end
-defmodule StarTransactionPartnerFragment do
+defmodule StarTransactionTypeChannelPaidReactionReceive do
   @moduledoc  """
-  The transaction is a transaction with Fragment.
+  The transaction is a receiving of a paid reaction to a message by the channel chat; relevant for channel chats only.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | withdrawal_state | RevenueWithdrawalState | State of the withdrawal; may be null for refunds from Fragment. |
+  | user_id | int53 | Identifier of the user who added the paid reaction. |
+  | message_id | int53 | Identifier of the reacted message; may be 0 or an identifier of a deleted message. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_partner_fragment.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_channel_paid_reaction_receive.html).
   """
 
-  defstruct "@type": "starTransactionPartnerFragment", "@extra": nil, withdrawal_state: nil
+  defstruct "@type": "starTransactionTypeChannelPaidReactionReceive", "@extra": nil, user_id: nil, message_id: nil
 end
 defmodule ChatTypeBasicGroup do
   @moduledoc  """
@@ -8744,6 +11316,20 @@ defmodule ChatTypeBasicGroup do
   """
 
   defstruct "@type": "chatTypeBasicGroup", "@extra": nil, basic_group_id: nil
+end
+defmodule StarTransactionTypeGiftUpgradePurchase do
+  @moduledoc  """
+  The transaction is a purchase of an upgrade of a gift owned by another user or channel; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | owner_id | MessageSender | Owner of the upgraded gift. |
+  | gift | gift | The gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_gift_upgrade_purchase.html).
+  """
+
+  defstruct "@type": "starTransactionTypeGiftUpgradePurchase", "@extra": nil, owner_id: nil, gift: nil
 end
 defmodule BusinessAwayMessageScheduleAlways do
   @moduledoc  """
@@ -8779,6 +11365,46 @@ defmodule EmojiKeyword do
 
   defstruct "@type": "emojiKeyword", "@extra": nil, emoji: nil, keyword: nil
 end
+defmodule AffiliateProgramParameters do
+  @moduledoc  """
+  Describes parameters of an affiliate program.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | commission_per_mille | int32 | The number of Telegram Stars received by the affiliate for each 1000 Telegram Stars received by the program owner; <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("affiliate_program_commission_per_mille_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("affiliate_program_commission_per_mille_max"). |
+  | month_count | int32 | Number of months the program will be active; 0-36. If 0, then the program is eternal. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_program_parameters.html).
+  """
+
+  defstruct "@type": "affiliateProgramParameters", "@extra": nil, commission_per_mille: nil, month_count: nil
+end
+defmodule UpdateAgeVerificationParameters do
+  @moduledoc  """
+  The parameters for age verification of the current user's account has changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | parameters | ageVerificationParameters | Parameters for the age verification; may be null if age verification isn't needed. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_age_verification_parameters.html).
+  """
+
+  defstruct "@type": "updateAgeVerificationParameters", "@extra": nil, parameters: nil
+end
+defmodule CanSendMessageToUserResultUserHasPaidMessages do
+  @moduledoc  """
+  The user can be messaged, but the messages are paid.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | outgoing_paid_message_star_count | int53 | Number of Telegram Stars that must be paid by the current user for each sent message to the user. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_message_to_user_result_user_has_paid_messages.html).
+  """
+
+  defstruct "@type": "canSendMessageToUserResultUserHasPaidMessages", "@extra": nil, outgoing_paid_message_star_count: nil
+end
 defmodule TextEntityTypeTextUrl do
   @moduledoc  """
   A text description shown instead of a raw URL.
@@ -8809,22 +11435,62 @@ defmodule ChatActionBarReportAddBlock do
   | Name | Type | Description |
   |------|------| ------------|
   | can_unarchive | bool | If true, the chat was automatically archived and can be moved back to the main chat list using <a class="el" href="classtd_1_1td__api_1_1add_chat_to_list.html">addChatToList</a> simultaneously with setting chat notification settings to default using <a class="el" href="classtd_1_1td__api_1_1set_chat_notification_settings.html">setChatNotificationSettings</a>. |
-  | distance | int32 | If non-negative, the current user was found by the other user through <a class="el" href="classtd_1_1td__api_1_1search_chats_nearby.html">searchChatsNearby</a> and this is the distance between the users. |
+  | account_info | accountInfo | Basic information about the other user in the chat; may be null if unknown. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_bar_report_add_block.html).
   """
 
-  defstruct "@type": "chatActionBarReportAddBlock", "@extra": nil, can_unarchive: nil, distance: nil
+  defstruct "@type": "chatActionBarReportAddBlock", "@extra": nil, can_unarchive: nil, account_info: nil
 end
-defmodule ReportChatSponsoredMessageResultAdsHidden do
+defmodule ChatRevenueTransactionTypeFragmentWithdrawal do
   @moduledoc  """
-  Sponsored messages were hidden for the user in all chats.
+  Describes a withdrawal of earnings through Fragment.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | withdrawal_date | int32 | Point in time (Unix timestamp) when the earnings withdrawal started. |
+  | state | RevenueWithdrawalState | State of the withdrawal. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_sponsored_message_result_ads_hidden.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transaction_type_fragment_withdrawal.html).
   """
 
-  defstruct "@type": "reportChatSponsoredMessageResultAdsHidden", "@extra": nil
+  defstruct "@type": "chatRevenueTransactionTypeFragmentWithdrawal", "@extra": nil, withdrawal_date: nil, state: nil
+end
+defmodule ProfileTabMusic do
+  @moduledoc  """
+  A tab with audio messages posted by the channel.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1profile_tab_music.html).
+  """
+
+  defstruct "@type": "profileTabMusic", "@extra": nil
+end
+defmodule BusinessBotRights do
+  @moduledoc  """
+  Describes rights of a business bot.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | can_reply | bool | True, if the bot can send and edit messages in the private chats that had incoming messages in the last 24 hours. |
+  | can_read_messages | bool | True, if the bot can mark incoming private messages as read. |
+  | can_delete_sent_messages | bool | True, if the bot can delete sent messages. |
+  | can_delete_all_messages | bool | True, if the bot can delete any message. |
+  | can_edit_name | bool | True, if the bot can edit name of the business account. |
+  | can_edit_bio | bool | True, if the bot can edit bio of the business account. |
+  | can_edit_profile_photo | bool | True, if the bot can edit profile photo of the business account. |
+  | can_edit_username | bool | True, if the bot can edit username of the business account. |
+  | can_view_gifts_and_stars | bool | True, if the bot can view gifts and Telegram Star amount owned by the business account. |
+  | can_sell_gifts | bool | True, if the bot can sell regular gifts received by the business account. |
+  | can_change_gift_settings | bool | True, if the bot can change gift receiving settings of the business account. |
+  | can_transfer_and_upgrade_gifts | bool | True, if the bot can transfer and upgrade gifts received by the business account. |
+  | can_transfer_stars | bool | True, if the bot can transfer Telegram Stars received by the business account to account of the bot, or use them to upgrade and transfer gifts. |
+  | can_manage_stories | bool | True, if the bot can post, edit and delete stories. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_bot_rights.html).
+  """
+
+  defstruct "@type": "businessBotRights", "@extra": nil, can_reply: nil, can_read_messages: nil, can_delete_sent_messages: nil, can_delete_all_messages: nil, can_edit_name: nil, can_edit_bio: nil, can_edit_profile_photo: nil, can_edit_username: nil, can_view_gifts_and_stars: nil, can_sell_gifts: nil, can_change_gift_settings: nil, can_transfer_and_upgrade_gifts: nil, can_transfer_stars: nil, can_manage_stories: nil
 end
 defmodule StorageStatisticsByFileType do
   @moduledoc  """
@@ -8890,7 +11556,7 @@ defmodule PageBlockEmbedded do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | url | string | Web page URL, if available. |
+  | url | string | URL of the embedded page, if available. |
   | html | string | HTML-markup of the embedded page. |
   | poster_photo | photo | Poster photo, if available; may be null. |
   | width | int32 | Block width; 0 if unknown. |
@@ -8903,6 +11569,20 @@ defmodule PageBlockEmbedded do
   """
 
   defstruct "@type": "pageBlockEmbedded", "@extra": nil, url: nil, html: nil, poster_photo: nil, width: nil, height: nil, caption: nil, is_full_width: nil, allow_scrolling: nil
+end
+defmodule GiftChatThemes do
+  @moduledoc  """
+  Contains a list of chat themes based on upgraded gifts.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | themes | giftChatTheme | A list of chat themes. |
+  | next_offset | string | The offset for the next request. If empty, then there are no more results. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_chat_themes.html).
+  """
+
+  defstruct "@type": "giftChatThemes", "@extra": nil, themes: nil, next_offset: nil
 end
 defmodule LocalizationTargetInfo do
   @moduledoc  """
@@ -8930,13 +11610,27 @@ defmodule BotWriteAccessAllowReasonLaunchedWebApp do
 
   defstruct "@type": "botWriteAccessAllowReasonLaunchedWebApp", "@extra": nil, web_app: nil
 end
-defmodule PaymentFormTypeStars do
+defmodule StarTransactionTypePaidMessageSend do
   @moduledoc  """
-  The payment form is for a payment in Telegram stars.
+  The transaction is a sending of a paid message; relevant for regular users only.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | star_count | int53 | Number of Telegram stars that will be paid. |
+  | chat_id | int53 | Identifier of the chat that received the payment. |
+  | message_count | int32 | Number of sent paid messages. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_paid_message_send.html).
+  """
+
+  defstruct "@type": "starTransactionTypePaidMessageSend", "@extra": nil, chat_id: nil, message_count: nil
+end
+defmodule PaymentFormTypeStars do
+  @moduledoc  """
+  The payment form is for a payment in Telegram Stars.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | Number of Telegram Stars that will be paid. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_form_type_stars.html).
   """
@@ -8961,13 +11655,28 @@ defmodule ChatBoostLevelFeatures do
   | chat_theme_background_count | int32 | Number of chat theme backgrounds that can be set as chat background. |
   | can_set_custom_background | bool | True, if custom background can be set in the chat for all users. |
   | can_set_custom_emoji_sticker_set | bool | True, if custom emoji sticker set can be set for the chat. |
+  | can_enable_automatic_translation | bool | True, if automatic translation of messages can be enabled in the chat. |
   | can_recognize_speech | bool | True, if speech recognition can be used for video note and voice note messages by all users. |
   | can_disable_sponsored_messages | bool | True, if sponsored messages can be disabled in the chat. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_level_features.html).
   """
 
-  defstruct "@type": "chatBoostLevelFeatures", "@extra": nil, level: nil, story_per_day_count: nil, custom_emoji_reaction_count: nil, title_color_count: nil, profile_accent_color_count: nil, can_set_profile_background_custom_emoji: nil, accent_color_count: nil, can_set_background_custom_emoji: nil, can_set_emoji_status: nil, chat_theme_background_count: nil, can_set_custom_background: nil, can_set_custom_emoji_sticker_set: nil, can_recognize_speech: nil, can_disable_sponsored_messages: nil
+  defstruct "@type": "chatBoostLevelFeatures", "@extra": nil, level: nil, story_per_day_count: nil, custom_emoji_reaction_count: nil, title_color_count: nil, profile_accent_color_count: nil, can_set_profile_background_custom_emoji: nil, accent_color_count: nil, can_set_background_custom_emoji: nil, can_set_emoji_status: nil, chat_theme_background_count: nil, can_set_custom_background: nil, can_set_custom_emoji_sticker_set: nil, can_enable_automatic_translation: nil, can_recognize_speech: nil, can_disable_sponsored_messages: nil
+end
+defmodule PushMessageContentUpgradedGift do
+  @moduledoc  """
+  A message with an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | is_upgrade | bool | True, if the gift was obtained by upgrading of a previously received gift; otherwise, if is_prepaid_upgrade == false, then this is a transferred or resold gift. |
+  | is_prepaid_upgrade | bool | True, if the message is about completion of prepaid upgrade of the gift instead of actual receiving of a new gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_upgraded_gift.html).
+  """
+
+  defstruct "@type": "pushMessageContentUpgradedGift", "@extra": nil, is_upgrade: nil, is_prepaid_upgrade: nil
 end
 defmodule PageBlockMap do
   @moduledoc  """
@@ -8985,6 +11694,16 @@ defmodule PageBlockMap do
   """
 
   defstruct "@type": "pageBlockMap", "@extra": nil, location: nil, zoom: nil, width: nil, height: nil, caption: nil
+end
+defmodule PushMessageContentVideoChatEnded do
+  @moduledoc  """
+  A video chat or live stream has ended.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_video_chat_ended.html).
+  """
+
+  defstruct "@type": "pushMessageContentVideoChatEnded", "@extra": nil
 end
 defmodule StoryAreaTypeSuggestedReaction do
   @moduledoc  """
@@ -9057,6 +11776,22 @@ defmodule UpdateAnimationSearchParameters do
 
   defstruct "@type": "updateAnimationSearchParameters", "@extra": nil, provider: nil, emojis: nil
 end
+defmodule TelegramPaymentPurposeGiftedStars do
+  @moduledoc  """
+  The user buying Telegram Stars for other users.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user to which Telegram Stars are gifted. |
+  | currency | string | ISO 4217 currency code of the payment currency. |
+  | amount | int53 | Paid amount, in the smallest units of the currency. |
+  | star_count | int53 | Number of bought Telegram Stars. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_gifted_stars.html).
+  """
+
+  defstruct "@type": "telegramPaymentPurposeGiftedStars", "@extra": nil, user_id: nil, currency: nil, amount: nil, star_count: nil
+end
 defmodule InputThumbnail do
   @moduledoc  """
   A thumbnail to be sent along with a file; must be in JPEG or WEBP format for stickers, and less than 200 KB in size.
@@ -9072,6 +11807,22 @@ defmodule InputThumbnail do
 
   defstruct "@type": "inputThumbnail", "@extra": nil, thumbnail: nil, width: nil, height: nil
 end
+defmodule MessageUpgradedGiftPurchaseOfferRejected do
+  @moduledoc  """
+  An offer to purchase a gift was rejected or expired.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | upgradedGift | The gift. |
+  | price | GiftResalePrice | The proposed price. |
+  | offer_message_id | int53 | Identifier of the message with purchase offer which was rejected or expired; may be 0 or an identifier of a deleted message. |
+  | was_expired | bool | True, if the offer has expired; otherwise, the offer was explicitly rejected. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_upgraded_gift_purchase_offer_rejected.html).
+  """
+
+  defstruct "@type": "messageUpgradedGiftPurchaseOfferRejected", "@extra": nil, gift: nil, price: nil, offer_message_id: nil, was_expired: nil
+end
 defmodule PremiumFeature do
   @moduledoc  """
 
@@ -9085,18 +11836,15 @@ defmodule PollTypeRegular do
   @moduledoc  """
   A regular poll.
 
-  | Name | Type | Description |
-  |------|------| ------------|
-  | allow_multiple_answers | bool | True, if multiple answer options can be chosen simultaneously. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_type_regular.html).
   """
 
-  defstruct "@type": "pollTypeRegular", "@extra": nil, allow_multiple_answers: nil
+  defstruct "@type": "pollTypeRegular", "@extra": nil
 end
 defmodule ChatJoinRequest do
   @moduledoc  """
-  Describes a user that sent a join request and waits for administrator approval.
+  Describes a user who sent a join request and waits for administrator approval.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -9108,6 +11856,15 @@ defmodule ChatJoinRequest do
   """
 
   defstruct "@type": "chatJoinRequest", "@extra": nil, user_id: nil, date: nil, bio: nil
+end
+defmodule LinkPreviewType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_link_preview_type.html).
+  """
+
+  defstruct "@type": "LinkPreviewType", "@extra": nil
 end
 defmodule UpdateNewBusinessMessage do
   @moduledoc  """
@@ -9122,6 +11879,38 @@ defmodule UpdateNewBusinessMessage do
   """
 
   defstruct "@type": "updateNewBusinessMessage", "@extra": nil, connection_id: nil, message: nil
+end
+defmodule StarTransactionTypeGiftPurchase do
+  @moduledoc  """
+  The transaction is a purchase of a regular gift; relevant for regular users and bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | owner_id | MessageSender | Identifier of the user or the channel that received the gift. |
+  | gift | gift | The gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_gift_purchase.html).
+  """
+
+  defstruct "@type": "starTransactionTypeGiftPurchase", "@extra": nil, owner_id: nil, gift: nil
+end
+defmodule AlternativeVideo do
+  @moduledoc  """
+  Describes an alternative re-encoded quality of a video file.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int64 | Unique identifier of the alternative video, which is used in the HLS file. |
+  | width | int32 | Video width. |
+  | height | int32 | Video height. |
+  | codec | string | Codec used for video file encoding, for example, "h264", "h265", "av1", or "av01". |
+  | hls_file | file | HLS file describing the video. |
+  | video | file | File containing the video. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1alternative_video.html).
+  """
+
+  defstruct "@type": "alternativeVideo", "@extra": nil, id: nil, width: nil, height: nil, codec: nil, hls_file: nil, video: nil
 end
 defmodule InputMessageDocument do
   @moduledoc  """
@@ -9151,7 +11940,7 @@ defmodule KeyboardButtonTypeRequestLocation do
 end
 defmodule UpdateSpeedLimitNotification do
   @moduledoc  """
-  Download or upload file speed for the user was limited, but it can be restored by subscription to Telegram Premium. The notification can be postponed until a being downloaded or uploaded file is visible to the user Use getOption("premium_download_speedup") or getOption("premium_upload_speedup") to get expected speedup after subscription to Telegram Premium.
+  Download or upload file speed for the user was limited, but it can be restored by subscription to Telegram Premium. The notification can be postponed until a being downloaded or uploaded file is visible to the user. Use getOption("premium_download_speedup") or getOption("premium_upload_speedup") to get expected speedup after subscription to Telegram Premium.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -9191,6 +11980,15 @@ defmodule UpdateChatReadInbox do
 
   defstruct "@type": "updateChatReadInbox", "@extra": nil, chat_id: nil, last_read_inbox_message_id: nil, unread_count: nil
 end
+defmodule DateTimePartPrecision do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_date_time_part_precision.html).
+  """
+
+  defstruct "@type": "DateTimePartPrecision", "@extra": nil
+end
 defmodule PhoneNumberCodeTypeConfirmOwnership do
   @moduledoc  """
   Confirms ownership of a phone number to prevent account deletion while handling links of the type internalLinkTypePhoneNumberConfirmation.
@@ -9203,6 +12001,19 @@ defmodule PhoneNumberCodeTypeConfirmOwnership do
   """
 
   defstruct "@type": "phoneNumberCodeTypeConfirmOwnership", "@extra": nil, hash: nil
+end
+defmodule GiftResaleResultPriceIncreased do
+  @moduledoc  """
+  Operation has failed, because price has increased. If the price has decreased, then the buying will succeed anyway.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | price | GiftResalePrice | New price for the gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_resale_result_price_increased.html).
+  """
+
+  defstruct "@type": "giftResaleResultPriceIncreased", "@extra": nil, price: nil
 end
 defmodule UserFullInfo do
   @moduledoc  """
@@ -9223,18 +12034,29 @@ defmodule UserFullInfo do
   | has_sponsored_messages_enabled | bool | True, if the user always enabled sponsored messages; known only for the current user. |
   | need_phone_number_privacy_exception | bool | True, if the current user needs to explicitly allow to share their phone number with the user when the method <a class="el" href="classtd_1_1td__api_1_1add_contact.html">addContact</a> is used. |
   | set_chat_background | bool | True, if the user set chat background for both chat users and it wasn't reverted yet. |
+  | uses_unofficial_app | bool | True, if the user uses an unofficial application that poses a security risk. |
   | bio | formattedText | A short user bio; may be null for bots. |
   | birthdate | birthdate | Birthdate of the user; may be null if unknown. |
   | personal_chat_id | int53 | Identifier of the personal chat of the user; 0 if none. |
-  | premium_gift_options | premiumPaymentOption | The list of available options for gifting Telegram Premium to the user. |
+  | gift_count | int32 | Number of saved to profile gifts for other users or the total number of received gifts for the current user. |
   | group_in_common_count | int32 | Number of group chats where both the other user and the current user are a member; 0 for the current user. |
+  | incoming_paid_message_star_count | int53 | Number of Telegram Stars that must be paid by the user for each sent message to the current user. |
+  | outgoing_paid_message_star_count | int53 | Number of Telegram Stars that must be paid by the current user for each sent message to the user. |
+  | gift_settings | giftSettings | Settings for gift receiving for the user. |
+  | bot_verification | botVerification | Information about verification status of the user provided by a bot; may be null if none or unknown. |
+  | main_profile_tab | ProfileTab | The main tab chosen by the user; may be null if not chosen manually. |
+  | first_profile_audio | audio | The first audio file added to the user's profile; may be null if none. |
+  | rating | userRating | The current rating of the user; may be null if none. |
+  | pending_rating | userRating | The rating of the user after the next change; may be null if the user isn't the current user or there are no pending rating changes. |
+  | pending_rating_date | int32 | Unix timestamp when rating of the user will change to pending_rating; 0 if the user isn't the current user or there are no pending rating changes. |
+  | note | formattedText | Note added to the user's contact; may be null if none. |
   | business_info | businessInfo | Information about business settings for Telegram Business accounts; may be null if none. |
   | bot_info | botInfo | For bots, information about the bot; may be null if the user isn't a bot. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_full_info.html).
   """
 
-  defstruct "@type": "userFullInfo", "@extra": nil, personal_photo: nil, photo: nil, public_photo: nil, block_list: nil, can_be_called: nil, supports_video_calls: nil, has_private_calls: nil, has_private_forwards: nil, has_restricted_voice_and_video_note_messages: nil, has_posted_to_profile_stories: nil, has_sponsored_messages_enabled: nil, need_phone_number_privacy_exception: nil, set_chat_background: nil, bio: nil, birthdate: nil, personal_chat_id: nil, premium_gift_options: nil, group_in_common_count: nil, business_info: nil, bot_info: nil
+  defstruct "@type": "userFullInfo", "@extra": nil, personal_photo: nil, photo: nil, public_photo: nil, block_list: nil, can_be_called: nil, supports_video_calls: nil, has_private_calls: nil, has_private_forwards: nil, has_restricted_voice_and_video_note_messages: nil, has_posted_to_profile_stories: nil, has_sponsored_messages_enabled: nil, need_phone_number_privacy_exception: nil, set_chat_background: nil, uses_unofficial_app: nil, bio: nil, birthdate: nil, personal_chat_id: nil, gift_count: nil, group_in_common_count: nil, incoming_paid_message_star_count: nil, outgoing_paid_message_star_count: nil, gift_settings: nil, bot_verification: nil, main_profile_tab: nil, first_profile_audio: nil, rating: nil, pending_rating: nil, pending_rating_date: nil, note: nil, business_info: nil, bot_info: nil
 end
 defmodule InputPassportElementErrorSourceFile do
   @moduledoc  """
@@ -9276,20 +12098,15 @@ defmodule CallStateExchangingKeys do
 
   defstruct "@type": "callStateExchangingKeys", "@extra": nil
 end
-defmodule PremiumGiveawayInfoOngoing do
+defmodule UpgradedGiftAttributeRarityEpic do
   @moduledoc  """
-  Describes an ongoing giveaway.
+  The attribute is epic.
 
-  | Name | Type | Description |
-  |------|------| ------------|
-  | creation_date | int32 | Point in time (Unix timestamp) when the giveaway was created. |
-  | status | PremiumGiveawayParticipantStatus | Status of the current user in the giveaway. |
-  | is_ended | bool | True, if the giveaway has ended and results are being prepared. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_giveaway_info_ongoing.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_attribute_rarity_epic.html).
   """
 
-  defstruct "@type": "premiumGiveawayInfoOngoing", "@extra": nil, creation_date: nil, status: nil, is_ended: nil
+  defstruct "@type": "upgradedGiftAttributeRarityEpic", "@extra": nil
 end
 defmodule ReactionUnavailabilityReasonAnonymousAdministrator do
   @moduledoc  """
@@ -9300,6 +12117,33 @@ defmodule ReactionUnavailabilityReasonAnonymousAdministrator do
   """
 
   defstruct "@type": "reactionUnavailabilityReasonAnonymousAdministrator", "@extra": nil
+end
+defmodule MessageDirectMessagePriceChanged do
+  @moduledoc  """
+  A price for direct messages was changed in the channel chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | is_enabled | bool | True, if direct messages group was enabled for the channel; false otherwise. |
+  | paid_message_star_count | int53 | The new number of Telegram Stars that must be paid by non-administrator users of the channel chat for each message sent to the direct messages group; 0 if the direct messages group was disabled or the messages are free. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_direct_message_price_changed.html).
+  """
+
+  defstruct "@type": "messageDirectMessagePriceChanged", "@extra": nil, is_enabled: nil, paid_message_star_count: nil
+end
+defmodule InternalLinkTypePremiumFeaturesPage do
+  @moduledoc  """
+  The link is a link to the Premium features screen of the application from which the user can subscribe to Telegram Premium. Call getPremiumFeatures with the given referrer to process the link.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | referrer | string | Referrer specified in the link. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_premium_features_page.html).
+  """
+
+  defstruct "@type": "internalLinkTypePremiumFeaturesPage", "@extra": nil, referrer: nil
 end
 defmodule SessionTypeIphone do
   @moduledoc  """
@@ -9313,13 +12157,13 @@ defmodule SessionTypeIphone do
 end
 defmodule Contact do
   @moduledoc  """
-  Describes a user contact.
+  Describes a contact of a user.
 
   | Name | Type | Description |
   |------|------| ------------|
   | phone_number | string | Phone number of the user. |
-  | first_name | string | First name of the user; 1-255 characters in length. |
-  | last_name | string | Last name of the user. |
+  | first_name | string | First name of the user; 1-64 characters. |
+  | last_name | string | Last name of the user; 0-64 characters. |
   | vcard | string | Additional data about the user in a form of vCard; 0-2048 bytes in length. |
   | user_id | int53 | Identifier of the user, if known; 0 otherwise. |
 
@@ -9354,6 +12198,25 @@ defmodule TelegramPaymentPurpose do
 
   defstruct "@type": "TelegramPaymentPurpose", "@extra": nil
 end
+defmodule StarSubscription do
+  @moduledoc  """
+  Contains information about subscription to a channel chat, a bot, or a business account that was paid in Telegram Stars.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | string | Unique identifier of the subscription. |
+  | chat_id | int53 | Identifier of the chat that is subscribed. |
+  | expiration_date | int32 | Point in time (Unix timestamp) when the subscription will expire or expired. |
+  | is_canceled | bool | True, if the subscription was canceled. |
+  | is_expiring | bool | True, if the subscription expires soon and there are no enough Telegram Stars on the user's balance to extend it. |
+  | pricing | starSubscriptionPricing | The subscription plan. |
+  | type | StarSubscriptionType | Type of the subscription. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_subscription.html).
+  """
+
+  defstruct "@type": "starSubscription", "@extra": nil, id: nil, chat_id: nil, expiration_date: nil, is_canceled: nil, is_expiring: nil, pricing: nil, type: nil
+end
 defmodule UpdateActiveNotifications do
   @moduledoc  """
   Contains active notifications that were shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update.
@@ -9366,6 +12229,16 @@ defmodule UpdateActiveNotifications do
   """
 
   defstruct "@type": "updateActiveNotifications", "@extra": nil, groups: nil
+end
+defmodule ButtonStyleDefault do
+  @moduledoc  """
+  The button has default style.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1button_style_default.html).
+  """
+
+  defstruct "@type": "buttonStyleDefault", "@extra": nil
 end
 defmodule InlineQueryResultsButtonTypeStartBot do
   @moduledoc  """
@@ -9424,6 +12297,19 @@ defmodule FoundPositions do
 
   defstruct "@type": "foundPositions", "@extra": nil, total_count: nil, positions: nil
 end
+defmodule LinkPreviewAlbumMediaPhoto do
+  @moduledoc  """
+  The media is a photo.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | photo | Photo description. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_album_media_photo.html).
+  """
+
+  defstruct "@type": "linkPreviewAlbumMediaPhoto", "@extra": nil, photo: nil
+end
 defmodule BotWriteAccessAllowReasonAddedToAttachmentMenu do
   @moduledoc  """
   The user added the bot to attachment or side menu using toggleBotIsAddedToAttachmentMenu.
@@ -9436,7 +12322,7 @@ defmodule BotWriteAccessAllowReasonAddedToAttachmentMenu do
 end
 defmodule InternalLinkTypeTheme do
   @moduledoc  """
-  The link is a link to a theme. TDLib has no theme support yet.
+  The link is a link to a cloud theme. TDLib has no theme support yet.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -9476,12 +12362,12 @@ defmodule PushMessageContentChatSetTheme do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | theme_name | string | If non-empty, name of a new theme, set for the chat. Otherwise, the chat theme was reset to the default one. |
+  | name | string | If non-empty, human-readable name of the new theme. Otherwise, the chat theme was reset to the default one. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_chat_set_theme.html).
   """
 
-  defstruct "@type": "pushMessageContentChatSetTheme", "@extra": nil, theme_name: nil
+  defstruct "@type": "pushMessageContentChatSetTheme", "@extra": nil, name: nil
 end
 defmodule InputMessageContent do
   @moduledoc  """
@@ -9498,13 +12384,26 @@ defmodule UpdateGroupCallParticipant do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | group_call_id | int32 | Identifier of group call. |
-  | participant | groupCallParticipant | New data about a participant. |
+  | group_call_id | int32 | Identifier of the group call. |
+  | participant | groupCallParticipant | New data about the participant. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_group_call_participant.html).
   """
 
   defstruct "@type": "updateGroupCallParticipant", "@extra": nil, group_call_id: nil, participant: nil
+end
+defmodule StarTransactionTypeTelegramApiUsage do
+  @moduledoc  """
+  The transaction is a payment for Telegram API usage; relevant for bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | request_count | int32 | The number of billed requests. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_telegram_api_usage.html).
+  """
+
+  defstruct "@type": "starTransactionTypeTelegramApiUsage", "@extra": nil, request_count: nil
 end
 defmodule AuthenticationCodeTypeFlashCall do
   @moduledoc  """
@@ -9518,6 +12417,15 @@ defmodule AuthenticationCodeTypeFlashCall do
   """
 
   defstruct "@type": "authenticationCodeTypeFlashCall", "@extra": nil, pattern: nil
+end
+defmodule GiftResalePrice do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_gift_resale_price.html).
+  """
+
+  defstruct "@type": "GiftResalePrice", "@extra": nil
 end
 defmodule ChatRevenueTransactionType do
   @moduledoc  """
@@ -9569,6 +12477,33 @@ defmodule UpdateMessageUnreadReactions do
 
   defstruct "@type": "updateMessageUnreadReactions", "@extra": nil, chat_id: nil, message_id: nil, unread_reactions: nil, unread_reaction_count: nil
 end
+defmodule SettingsSectionAppearance do
+  @moduledoc  """
+  The appearance section.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "themes", "themes/edit", "themes/create", "wallpapers", "wallpapers/edit", "wallpapers/set", "wallpapers/choose-photo", "your-color/profile", "your-color/profile/add-icons", "your-color/profile/use-gift", "your-color/profile/reset", "your-color/name", "your-color/name/add-icons", "your-color/name/use-gift", "night-mode", "auto-night-mode", "text-size", "text-size/use-system", "message-corners", "animations", "stickers-and-emoji", "stickers-and-emoji/edit", "stickers-and-emoji/trending", "stickers-and-emoji/archived", "stickers-and-emoji/archived/edit", "stickers-and-emoji/emoji", "stickers-and-emoji/emoji/edit", "stickers-and-emoji/emoji/archived", "stickers-and-emoji/emoji/archived/edit", "stickers-and-emoji/emoji/suggest", "stickers-and-emoji/emoji/quick-reaction", "stickers-and-emoji/emoji/quick-reaction/choose", "stickers-and-emoji/suggest-by-emoji", "stickers-and-emoji/large-emoji", "stickers-and-emoji/dynamic-order", "stickers-and-emoji/emoji/show-more", "app-icon", "tap-for-next-media". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_appearance.html).
+  """
+
+  defstruct "@type": "settingsSectionAppearance", "@extra": nil, subsection: nil
+end
+defmodule PreparedInlineMessageId do
+  @moduledoc  """
+  Represents an inline message that can be sent via the bot.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | string | Unique identifier for the message. |
+  | expiration_date | int32 | Point in time (Unix timestamp) when the message can't be used anymore. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1prepared_inline_message_id.html).
+  """
+
+  defstruct "@type": "preparedInlineMessageId", "@extra": nil, id: nil, expiration_date: nil
+end
 defmodule TMeUrls do
   @moduledoc  """
   Contains a list of t.me URLs.
@@ -9592,6 +12527,19 @@ defmodule PassportElementErrorSourceFiles do
 
   defstruct "@type": "passportElementErrorSourceFiles", "@extra": nil
 end
+defmodule SettingsSectionQrCode do
+  @moduledoc  """
+  The current user's QR code section.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "share", "scan". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_qr_code.html).
+  """
+
+  defstruct "@type": "settingsSectionQrCode", "@extra": nil, subsection: nil
+end
 defmodule AuthorizationStateReady do
   @moduledoc  """
   The user has been successfully authorized. TDLib is now ready to answer general requests.
@@ -9601,6 +12549,20 @@ defmodule AuthorizationStateReady do
   """
 
   defstruct "@type": "authorizationStateReady", "@extra": nil
+end
+defmodule MessagePaidMessagesRefunded do
+  @moduledoc  """
+  Paid messages were refunded.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | message_count | int32 | The number of refunded messages. |
+  | star_count | int53 | The number of refunded Telegram Stars. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_paid_messages_refunded.html).
+  """
+
+  defstruct "@type": "messagePaidMessagesRefunded", "@extra": nil, message_count: nil, star_count: nil
 end
 defmodule Session do
   @moduledoc  """
@@ -9657,6 +12619,32 @@ defmodule ChatEventMemberRestricted do
 
   defstruct "@type": "chatEventMemberRestricted", "@extra": nil, member_id: nil, old_status: nil, new_status: nil
 end
+defmodule StarTransactionTypeGiftPurchaseOffer do
+  @moduledoc  """
+  The transaction is an offer of gift purchase; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | upgradedGift | The gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_gift_purchase_offer.html).
+  """
+
+  defstruct "@type": "starTransactionTypeGiftPurchaseOffer", "@extra": nil, gift: nil
+end
+defmodule StarTransactionTypePaidGroupCallReactionSend do
+  @moduledoc  """
+  The transaction is a sending of a paid group reaction; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat that received the payment. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_paid_group_call_reaction_send.html).
+  """
+
+  defstruct "@type": "starTransactionTypePaidGroupCallReactionSend", "@extra": nil, chat_id: nil
+end
 defmodule PaymentForm do
   @moduledoc  """
   Contains information about an invoice payment form.
@@ -9693,7 +12681,7 @@ defmodule StickerSet do
   | title | string | Title of the sticker set. |
   | name | string | Name of the sticker set. |
   | thumbnail | thumbnail | Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed. |
-  | thumbnail_outline | closedVectorPath | Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner. |
+  | thumbnail_outline | outline | Sticker set thumbnail's outline; may be null if unknown. |
   | is_owned | bool | True, if the sticker set is owned by the current user. |
   | is_installed | bool | True, if the sticker set has been installed by the current user. |
   | is_archived | bool | True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously. |
@@ -9709,6 +12697,16 @@ defmodule StickerSet do
   """
 
   defstruct "@type": "stickerSet", "@extra": nil, id: nil, title: nil, name: nil, thumbnail: nil, thumbnail_outline: nil, is_owned: nil, is_installed: nil, is_archived: nil, is_official: nil, sticker_type: nil, needs_repainting: nil, is_allowed_as_chat_emoji_status: nil, is_viewed: nil, stickers: nil, emojis: nil
+end
+defmodule SuggestedPostStateDeclined do
+  @moduledoc  """
+  The post was declined.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_post_state_declined.html).
+  """
+
+  defstruct "@type": "suggestedPostStateDeclined", "@extra": nil
 end
 defmodule PasswordState do
   @moduledoc  """
@@ -9744,6 +12742,16 @@ defmodule UpdateMessageIsPinned do
 
   defstruct "@type": "updateMessageIsPinned", "@extra": nil, chat_id: nil, message_id: nil, is_pinned: nil
 end
+defmodule CraftGiftResultFail do
+  @moduledoc  """
+  Crafting has failed.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1craft_gift_result_fail.html).
+  """
+
+  defstruct "@type": "craftGiftResultFail", "@extra": nil
+end
 defmodule InviteLinkChatTypeSupergroup do
   @moduledoc  """
   The link is an invite link for a supergroup.
@@ -9770,18 +12778,19 @@ defmodule ChatEventMessageDeleted do
 end
 defmodule TelegramPaymentPurposeStars do
   @moduledoc  """
-  The user buying Telegram stars.
+  The user buying Telegram Stars.
 
   | Name | Type | Description |
   |------|------| ------------|
   | currency | string | ISO 4217 currency code of the payment currency. |
   | amount | int53 | Paid amount, in the smallest units of the currency. |
-  | star_count | int53 | Number of bought stars. |
+  | star_count | int53 | Number of bought Telegram Stars. |
+  | chat_id | int53 | Identifier of the chat that is supposed to receive the Telegram Stars; pass 0 if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_stars.html).
   """
 
-  defstruct "@type": "telegramPaymentPurposeStars", "@extra": nil, currency: nil, amount: nil, star_count: nil
+  defstruct "@type": "telegramPaymentPurposeStars", "@extra": nil, currency: nil, amount: nil, star_count: nil, chat_id: nil
 end
 defmodule InlineKeyboardButtonTypeLoginUrl do
   @moduledoc  """
@@ -9815,13 +12824,43 @@ defmodule InputMessageReplyToExternalMessage do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | The identifier of the chat to which the message to be replied belongs. |
-  | message_id | int53 | The identifier of the message to be replied in the specified chat. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat. |
+  | message_id | int53 | The identifier of the message to be replied in the specified chat. A message can be replied in another chat or forum topic only if messageProperties.can_be_replied_in_another_chat. |
   | quote | inputTextQuote | Quote from the message to be replied; pass null if none. |
+  | checklist_task_id | int32 | Identifier of the checklist task in the message to be replied; pass 0 to reply to the whole message. |
+  | poll_option_id | string | Identifier of the poll option in the message to be replied; pass an empty string if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_reply_to_external_message.html).
   """
 
-  defstruct "@type": "inputMessageReplyToExternalMessage", "@extra": nil, chat_id: nil, message_id: nil, quote: nil
+  defstruct "@type": "inputMessageReplyToExternalMessage", "@extra": nil, chat_id: nil, message_id: nil, quote: nil, checklist_task_id: nil, poll_option_id: nil
+end
+defmodule TonTransactionTypeFragmentWithdrawal do
+  @moduledoc  """
+  The transaction is a withdrawal of earned Toncoins to Fragment.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | withdrawal_state | RevenueWithdrawalState | State of the withdrawal; may be null for refunds from Fragment. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transaction_type_fragment_withdrawal.html).
+  """
+
+  defstruct "@type": "tonTransactionTypeFragmentWithdrawal", "@extra": nil, withdrawal_state: nil
+end
+defmodule InputMessageStakeDice do
+  @moduledoc  """
+  A stake dice message.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | state_hash | string | Hash of the stake dice state. The state hash can be used only if it was received recently enough. Otherwise, a new state must be requested using <a class="el" href="classtd_1_1td__api_1_1get_stake_dice_state.html">getStakeDiceState</a>. |
+  | stake_toncoin_amount | int53 | The Toncoin amount that will be staked; in the smallest units of the currency. Must be in the range <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("stake_dice_stake_amount_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("stake_dice_stake_amount_max"). |
+  | clear_draft | bool | True, if the chat message draft must be deleted. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_stake_dice.html).
+  """
+
+  defstruct "@type": "inputMessageStakeDice", "@extra": nil, state_hash: nil, stake_toncoin_amount: nil, clear_draft: nil
 end
 defmodule SessionTypeApple do
   @moduledoc  """
@@ -9846,6 +12885,19 @@ defmodule UpdateQuickReplyShortcutMessages do
   """
 
   defstruct "@type": "updateQuickReplyShortcutMessages", "@extra": nil, shortcut_id: nil, messages: nil
+end
+defmodule LinkPreviewTypeStickerSet do
+  @moduledoc  """
+  The link is a link to a sticker set.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | stickers | sticker | Up to 4 stickers from the sticker set. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_sticker_set.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeStickerSet", "@extra": nil, stickers: nil
 end
 defmodule UserPrivacySettingRuleAllowUsers do
   @moduledoc  """
@@ -9881,6 +12933,19 @@ defmodule OptionValueString do
   """
 
   defstruct "@type": "optionValueString", "@extra": nil, value: nil
+end
+defmodule SettingsSectionBusiness do
+  @moduledoc  """
+  The "Telegram Business" section.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "do-not-hide-ads". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_business.html).
+  """
+
+  defstruct "@type": "settingsSectionBusiness", "@extra": nil, subsection: nil
 end
 defmodule ChatEventMessageAutoDeleteTimeChanged do
   @moduledoc  """
@@ -9924,6 +12989,15 @@ defmodule PageBlockSlideshow do
 
   defstruct "@type": "pageBlockSlideshow", "@extra": nil, page_blocks: nil, caption: nil
 end
+defmodule StoryContentType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_story_content_type.html).
+  """
+
+  defstruct "@type": "StoryContentType", "@extra": nil
+end
 defmodule RecoveryEmailAddress do
   @moduledoc  """
   Contains information about the current recovery email address.
@@ -9943,17 +13017,26 @@ defmodule InputMessageReplyToStory do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | story_sender_chat_id | int53 | The identifier of the sender of the story. Currently, stories can be replied only in the sender's chat and channel stories can't be replied. |
+  | story_poster_chat_id | int53 | The identifier of the poster of the story. Currently, stories can be replied only in the chat that posted the story; channel stories can't be replied. |
   | story_id | int32 | The identifier of the story. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_reply_to_story.html).
   """
 
-  defstruct "@type": "inputMessageReplyToStory", "@extra": nil, story_sender_chat_id: nil, story_id: nil
+  defstruct "@type": "inputMessageReplyToStory", "@extra": nil, story_poster_chat_id: nil, story_id: nil
+end
+defmodule FirebaseDeviceVerificationParameters do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_firebase_device_verification_parameters.html).
+  """
+
+  defstruct "@type": "FirebaseDeviceVerificationParameters", "@extra": nil
 end
 defmodule VectorPathCommandCubicBezierCurve do
   @moduledoc  """
-  A cubic Bï¿½zier curve to a given point.
+  A cubic Bézier curve to a given point.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -10011,20 +13094,34 @@ defmodule CallDiscardReasonDisconnected do
 end
 defmodule TelegramPaymentPurposePremiumGiftCodes do
   @moduledoc  """
-  The user creating Telegram Premium gift codes for other users.
+  The user boosting a chat by creating Telegram Premium gift codes for other users.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | boosted_chat_id | int53 | Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user; 0 if none. |
+  | boosted_chat_id | int53 | Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user. |
   | currency | string | ISO 4217 currency code of the payment currency. |
   | amount | int53 | Paid amount, in the smallest units of the currency. |
   | user_ids | int53 | Identifiers of the users which can activate the gift codes. |
   | month_count | int32 | Number of months the Telegram Premium subscription will be active for the users. |
+  | text | formattedText | Text to show along with the gift codes; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_premium_gift_codes.html).
   """
 
-  defstruct "@type": "telegramPaymentPurposePremiumGiftCodes", "@extra": nil, boosted_chat_id: nil, currency: nil, amount: nil, user_ids: nil, month_count: nil
+  defstruct "@type": "telegramPaymentPurposePremiumGiftCodes", "@extra": nil, boosted_chat_id: nil, currency: nil, amount: nil, user_ids: nil, month_count: nil, text: nil
+end
+defmodule UpdateGroupCallMessageLevels do
+  @moduledoc  """
+  The levels of live story group call messages have changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | levels | groupCallMessageLevel | New description of the levels in decreasing order of groupCallMessageLevel.min_star_count. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_group_call_message_levels.html).
+  """
+
+  defstruct "@type": "updateGroupCallMessageLevels", "@extra": nil, levels: nil
 end
 defmodule PaymentOption do
   @moduledoc  """
@@ -10040,6 +13137,28 @@ defmodule PaymentOption do
 
   defstruct "@type": "paymentOption", "@extra": nil, title: nil, url: nil
 end
+defmodule LinkPreviewTypeVideoNote do
+  @moduledoc  """
+  The link is a link to a video note message.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | video_note | videoNote | The video note. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_video_note.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeVideoNote", "@extra": nil, video_note: nil
+end
+defmodule SuggestedPostState do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_suggested_post_state.html).
+  """
+
+  defstruct "@type": "SuggestedPostState", "@extra": nil
+end
 defmodule Location do
   @moduledoc  """
   Describes a location on planet Earth.
@@ -10054,6 +13173,19 @@ defmodule Location do
   """
 
   defstruct "@type": "location", "@extra": nil, latitude: nil, longitude: nil, horizontal_accuracy: nil
+end
+defmodule GiveawayParticipantStatusAdministrator do
+  @moduledoc  """
+  The user can't participate in the giveaway, because they are an administrator in one of the chats that created the giveaway.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat administered by the user. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_participant_status_administrator.html).
+  """
+
+  defstruct "@type": "giveawayParticipantStatusAdministrator", "@extra": nil, chat_id: nil
 end
 defmodule PushMessageContentChatChangeTitle do
   @moduledoc  """
@@ -10076,7 +13208,6 @@ defmodule InlineQueryResultArticle do
   |------|------| ------------|
   | id | string | Unique identifier of the query result. |
   | url | string | URL of the result, if it exists. |
-  | hide_url | bool | True, if the URL must be not shown. |
   | title | string | Title of the result. |
   | description | string | A short description of the result. |
   | thumbnail | thumbnail | Result thumbnail in JPEG format; may be null. |
@@ -10084,7 +13215,7 @@ defmodule InlineQueryResultArticle do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_result_article.html).
   """
 
-  defstruct "@type": "inlineQueryResultArticle", "@extra": nil, id: nil, url: nil, hide_url: nil, title: nil, description: nil, thumbnail: nil
+  defstruct "@type": "inlineQueryResultArticle", "@extra": nil, id: nil, url: nil, title: nil, description: nil, thumbnail: nil
 end
 defmodule UpdateChatEmojiStatus do
   @moduledoc  """
@@ -10126,22 +13257,6 @@ defmodule FileDownload do
 
   defstruct "@type": "fileDownload", "@extra": nil, file_id: nil, message: nil, add_date: nil, complete_date: nil, is_paused: nil
 end
-defmodule MessagePremiumGiveaway do
-  @moduledoc  """
-  A Telegram Premium giveaway.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | parameters | premiumGiveawayParameters | Giveaway parameters. |
-  | winner_count | int32 | Number of users which will receive Telegram Premium subscription gift codes. |
-  | month_count | int32 | Number of months the Telegram Premium subscription will be active after code activation. |
-  | sticker | sticker | A sticker to be shown in the message; may be null if unknown. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_premium_giveaway.html).
-  """
-
-  defstruct "@type": "messagePremiumGiveaway", "@extra": nil, parameters: nil, winner_count: nil, month_count: nil, sticker: nil
-end
 defmodule ReplyMarkupForceReply do
   @moduledoc  """
   Instructs application to force a reply to this message.
@@ -10162,7 +13277,7 @@ defmodule MessageOriginUser do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | sender_user_id | int53 | Identifier of the user that originally sent the message. |
+  | sender_user_id | int53 | Identifier of the user who originally sent the message. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_origin_user.html).
   """
@@ -10188,17 +13303,18 @@ defmodule LinkPreviewOptions do
 end
 defmodule PollTypeQuiz do
   @moduledoc  """
-  A poll in quiz mode, which has exactly one correct answer option and can be answered only once.
+  A poll in quiz mode, which has predefined correct answers.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | correct_option_id | int32 | 0-based identifier of the correct answer option; -1 for a yet unanswered poll. |
-  | explanation | formattedText | Text that is shown when the user chooses an incorrect answer or taps on the lamp icon; 0-200 characters with at most 2 line feeds; empty for a yet unanswered poll. |
+  | correct_option_ids | int32 | Increasing list of 0-based identifiers of the correct answer options; empty for a yet unanswered poll. |
+  | explanation | formattedText | Text that is shown when the user chooses an incorrect answer or taps on the lamp icon; empty for a yet unanswered poll. |
+  | explanation_media | MessageContent | Media that is shown when the user chooses an incorrect answer or taps on the lamp icon; may be null if none or the poll is unanswered yet. Currently, can be only of the types <a class="el" href="classtd_1_1td__api_1_1message_animation.html">messageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1message_audio.html">messageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1message_document.html">messageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1message_location.html">messageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1message_photo.html">messagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1message_venue.html">messageVenue</a>, or <a class="el" href="classtd_1_1td__api_1_1message_video.html">messageVideo</a> without caption. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_type_quiz.html).
   """
 
-  defstruct "@type": "pollTypeQuiz", "@extra": nil, correct_option_id: nil, explanation: nil
+  defstruct "@type": "pollTypeQuiz", "@extra": nil, correct_option_ids: nil, explanation: nil, explanation_media: nil
 end
 defmodule FileTypeThumbnail do
   @moduledoc  """
@@ -10253,6 +13369,16 @@ defmodule UpdateSavedMessagesTags do
   """
 
   defstruct "@type": "updateSavedMessagesTags", "@extra": nil, saved_messages_topic_id: nil, tags: nil
+end
+defmodule BuiltInThemeNight do
+  @moduledoc  """
+  Regular dark theme.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1built_in_theme_night.html).
+  """
+
+  defstruct "@type": "builtInThemeNight", "@extra": nil
 end
 defmodule CallServerTypeWebrtc do
   @moduledoc  """
@@ -10310,13 +13436,14 @@ defmodule ChatBoostFeatures do
   | min_chat_theme_background_boost_level | int32 | The minimum boost level required to set a chat theme background as chat background. |
   | min_custom_background_boost_level | int32 | The minimum boost level required to set custom chat background. |
   | min_custom_emoji_sticker_set_boost_level | int32 | The minimum boost level required to set custom emoji sticker set for the chat; for supergroup chats only. |
+  | min_automatic_translation_boost_level | int32 | The minimum boost level allowing to enable automatic translation of messages for non-Premium users; for channel chats only. |
   | min_speech_recognition_boost_level | int32 | The minimum boost level allowing to recognize speech in video note and voice note messages for non-Premium users; for supergroup chats only. |
   | min_sponsored_message_disable_boost_level | int32 | The minimum boost level allowing to disable sponsored messages in the chat; for channel chats only. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_features.html).
   """
 
-  defstruct "@type": "chatBoostFeatures", "@extra": nil, features: nil, min_profile_background_custom_emoji_boost_level: nil, min_background_custom_emoji_boost_level: nil, min_emoji_status_boost_level: nil, min_chat_theme_background_boost_level: nil, min_custom_background_boost_level: nil, min_custom_emoji_sticker_set_boost_level: nil, min_speech_recognition_boost_level: nil, min_sponsored_message_disable_boost_level: nil
+  defstruct "@type": "chatBoostFeatures", "@extra": nil, features: nil, min_profile_background_custom_emoji_boost_level: nil, min_background_custom_emoji_boost_level: nil, min_emoji_status_boost_level: nil, min_chat_theme_background_boost_level: nil, min_custom_background_boost_level: nil, min_custom_emoji_sticker_set_boost_level: nil, min_automatic_translation_boost_level: nil, min_speech_recognition_boost_level: nil, min_sponsored_message_disable_boost_level: nil
 end
 defmodule BusinessConnection do
   @moduledoc  """
@@ -10325,16 +13452,16 @@ defmodule BusinessConnection do
   | Name | Type | Description |
   |------|------| ------------|
   | id | string | Unique identifier of the connection. |
-  | user_id | int53 | Identifier of the business user that created the connection. |
+  | user_id | int53 | Identifier of the business user who created the connection. |
   | user_chat_id | int53 | Chat identifier of the private chat with the user. |
   | date | int32 | Point in time (Unix timestamp) when the connection was established. |
-  | can_reply | bool | True, if the bot can send messages to the connected user; false otherwise. |
+  | rights | businessBotRights | Rights of the bot; may be null if the connection was disabled. |
   | is_enabled | bool | True, if the connection is enabled; false otherwise. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_connection.html).
   """
 
-  defstruct "@type": "businessConnection", "@extra": nil, id: nil, user_id: nil, user_chat_id: nil, date: nil, can_reply: nil, is_enabled: nil
+  defstruct "@type": "businessConnection", "@extra": nil, id: nil, user_id: nil, user_chat_id: nil, date: nil, rights: nil, is_enabled: nil
 end
 defmodule MessageReadDateRead do
   @moduledoc  """
@@ -10349,6 +13476,19 @@ defmodule MessageReadDateRead do
 
   defstruct "@type": "messageReadDateRead", "@extra": nil, read_date: nil
 end
+defmodule UpdateGiftAuctionState do
+  @moduledoc  """
+  State of a gift auction was updated.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | state | giftAuctionState | New state of the auction. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_gift_auction_state.html).
+  """
+
+  defstruct "@type": "updateGiftAuctionState", "@extra": nil, state: nil
+end
 defmodule InputPassportElementErrorSourceDataField do
   @moduledoc  """
   A data field contains an error. The error is considered resolved when the field's value changes.
@@ -10362,6 +13502,21 @@ defmodule InputPassportElementErrorSourceDataField do
   """
 
   defstruct "@type": "inputPassportElementErrorSourceDataField", "@extra": nil, field_name: nil, data_hash: nil
+end
+defmodule StarTransactionTypePremiumPurchase do
+  @moduledoc  """
+  The transaction is a purchase of Telegram Premium subscription; relevant for regular users and bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who received the Telegram Premium subscription. |
+  | month_count | int32 | Number of months the Telegram Premium subscription will be active. |
+  | sticker | sticker | A sticker to be shown in the transaction information; may be null if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_premium_purchase.html).
+  """
+
+  defstruct "@type": "starTransactionTypePremiumPurchase", "@extra": nil, user_id: nil, month_count: nil, sticker: nil
 end
 defmodule PassportElementPassport do
   @moduledoc  """
@@ -10420,6 +13575,16 @@ defmodule UpdateChatHasScheduledMessages do
 
   defstruct "@type": "updateChatHasScheduledMessages", "@extra": nil, chat_id: nil, has_scheduled_messages: nil
 end
+defmodule SearchMessagesChatTypeFilterChannel do
+  @moduledoc  """
+  Returns only messages in channel chats.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_chat_type_filter_channel.html).
+  """
+
+  defstruct "@type": "searchMessagesChatTypeFilterChannel", "@extra": nil
+end
 defmodule UpdateSpeechRecognitionTrial do
   @moduledoc  """
   The parameters of speech recognition without Telegram Premium subscription has changed.
@@ -10445,6 +13610,33 @@ defmodule TextEntityTypeCode do
   """
 
   defstruct "@type": "textEntityTypeCode", "@extra": nil
+end
+defmodule SettingsSectionDataAndStorage do
+  @moduledoc  """
+  The data and storage settings section.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "storage", "storage/edit", "storage/auto-remove", "storage/clear-cache", "storage/max-cache", "usage", "usage/mobile", "usage/wifi", "usage/reset", "usage/roaming", "auto-download/mobile", "auto-download/mobile/enable", "auto-download/mobile/usage", "auto-download/mobile/photos", "auto-download/mobile/stories", "auto-download/mobile/videos", "auto-download/mobile/files", "auto-download/wifi", "auto-download/wifi/enable", "auto-download/wifi/usage", "auto-download/wifi/photos", "auto-download/wifi/stories", "auto-download/wifi/videos", "auto-download/wifi/files", "auto-download/roaming", "auto-download/roaming/enable", "auto-download/roaming/usage", "auto-download/roaming/photos", "auto-download/roaming/stories", "auto-download/roaming/videos", "auto-download/roaming/files", "auto-download/reset", "save-to-photos/chats", "save-to-photos/chats/max-video-size", "save-to-photos/chats/add-exception", "save-to-photos/chats/delete-all", "save-to-photos/groups", "save-to-photos/groups/max-video-size", "save-to-photos/groups/add-exception", "save-to-photos/groups/delete-all", "save-to-photos/channels", "save-to-photos/channels/max-video-size", "save-to-photos/channels/add-exception", "save-to-photos/channels/delete-all", "less-data-calls", "open-links", "share-sheet", "share-sheet/suggested-chats", "share-sheet/suggest-by", "share-sheet/reset", "saved-edited-photos", "pause-music", "raise-to-listen", "raise-to-speak", "show-18-content", "proxy", "proxy/edit", "proxy/use-proxy", "proxy/add-proxy", "proxy/share-list", "proxy/use-for-calls". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_data_and_storage.html).
+  """
+
+  defstruct "@type": "settingsSectionDataAndStorage", "@extra": nil, subsection: nil
+end
+defmodule LinkPreviewTypeBackground do
+  @moduledoc  """
+  The link is a link to a background. Link preview title and description are available only for filled backgrounds.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | document | document | Document with the background; may be null for filled backgrounds. |
+  | background_type | BackgroundType | Type of the background; may be null if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_background.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeBackground", "@extra": nil, document: nil, background_type: nil
 end
 defmodule MessageFileTypeGroup do
   @moduledoc  """
@@ -10489,7 +13681,7 @@ defmodule NotificationTypeNewCall do
 end
 defmodule MessageSourceForumTopicHistory do
   @moduledoc  """
-  The message is from a forum topic history.
+  The message is from history of a forum topic.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_forum_topic_history.html).
@@ -10503,7 +13695,7 @@ defmodule UpdateMessageSendSucceeded do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | message | message | The sent message. Usually only the message identifier, date, and content are changed, but almost all other fields can also change. |
+  | message | message | The sent message. Almost any field of the new message can be different from the corresponding field of the original message. For example, the field scheduling_state may change, making the message scheduled, or non-scheduled. |
   | old_message_id | int53 | The previous temporary message identifier. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_send_succeeded.html).
@@ -10519,6 +13711,16 @@ defmodule ResetPasswordResult do
   """
 
   defstruct "@type": "ResetPasswordResult", "@extra": nil
+end
+defmodule UpgradedGiftOriginTransfer do
+  @moduledoc  """
+  The gift was transferred from another owner.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_origin_transfer.html).
+  """
+
+  defstruct "@type": "upgradedGiftOriginTransfer", "@extra": nil
 end
 defmodule TMeUrlType do
   @moduledoc  """
@@ -10559,7 +13761,7 @@ defmodule TextEntityTypeMediaTimestamp do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | media_timestamp | int32 | Timestamp from which a video/audio/video note/voice note/story playing must start, in seconds. The media can be in the content or the web page preview of the current message, or in the same places in the replied message. |
+  | media_timestamp | int32 | Timestamp from which a video/audio/video note/voice note/story playing must start, in seconds. The media can be in the content or the link preview of the current message, or in the same places in the replied message. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_media_timestamp.html).
   """
@@ -10581,17 +13783,17 @@ defmodule UpdateSavedMessagesTopicCount do
 end
 defmodule EmojiStatus do
   @moduledoc  """
-  Describes a custom emoji to be shown instead of the Telegram Premium badge.
+  Describes an emoji to be shown instead of the Telegram Premium badge.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | custom_emoji_id | int64 | Identifier of the custom emoji in <a class="el" href="classtd_1_1td__api_1_1sticker_format_tgs.html">stickerFormatTgs</a> format. |
+  | type | EmojiStatusType | Type of the emoji status. |
   | expiration_date | int32 | Point in time (Unix timestamp) when the status will expire; 0 if never. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_status.html).
   """
 
-  defstruct "@type": "emojiStatus", "@extra": nil, custom_emoji_id: nil, expiration_date: nil
+  defstruct "@type": "emojiStatus", "@extra": nil, type: nil, expiration_date: nil
 end
 defmodule MessageSenderChat do
   @moduledoc  """
@@ -10605,6 +13807,16 @@ defmodule MessageSenderChat do
   """
 
   defstruct "@type": "messageSenderChat", "@extra": nil, chat_id: nil
+end
+defmodule SuggestedActionExtendStarSubscriptions do
+  @moduledoc  """
+  Suggests the user to extend their expiring Telegram Star subscriptions. Call getStarSubscriptions with only_expiring == true to get the number of expiring subscriptions and the number of required to buy Telegram Stars.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_extend_star_subscriptions.html).
+  """
+
+  defstruct "@type": "suggestedActionExtendStarSubscriptions", "@extra": nil
 end
 defmodule PremiumFeaturePromotionAnimation do
   @moduledoc  """
@@ -10650,24 +13862,31 @@ defmodule GroupCallParticipant do
 
   defstruct "@type": "groupCallParticipant", "@extra": nil, participant_id: nil, audio_source_id: nil, screen_sharing_audio_source_id: nil, video_info: nil, screen_sharing_video_info: nil, bio: nil, is_current_user: nil, is_speaking: nil, is_hand_raised: nil, can_be_muted_for_all_users: nil, can_be_unmuted_for_all_users: nil, can_be_muted_for_current_user: nil, can_be_unmuted_for_current_user: nil, is_muted_for_all_users: nil, is_muted_for_current_user: nil, can_unmute_self: nil, volume_level: nil, order: nil
 end
-defmodule StarTransactionPartnerGooglePlay do
+defmodule MessageUpgradedGift do
   @moduledoc  """
-  The transaction is a transaction with Google Play.
+  An upgraded gift was received or sent by the current user, or the current user was notified about a channel gift.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | upgradedGift | The gift. |
+  | sender_id | MessageSender | Sender of the gift; may be null for anonymous gifts. |
+  | receiver_id | MessageSender | Receiver of the gift. |
+  | origin | UpgradedGiftOrigin | Origin of the upgraded gift. |
+  | received_gift_id | string | Unique identifier of the received gift for the current user; only for the receiver of the gift. |
+  | is_saved | bool | True, if the gift is displayed on the user's or the channel's profile page; only for the receiver of the gift. |
+  | can_be_transferred | bool | True, if the gift can be transferred to another owner; only for the receiver of the gift. |
+  | was_transferred | bool | True, if the gift has already been transferred to another owner; only for the receiver of the gift. |
+  | transfer_star_count | int53 | Number of Telegram Stars that must be paid to transfer the upgraded gift; only for the receiver of the gift. |
+  | drop_original_details_star_count | int53 | Number of Telegram Stars that must be paid to drop original details of the upgraded gift; 0 if not available; only for the receiver of the gift. |
+  | next_transfer_date | int32 | Point in time (Unix timestamp) when the gift can be transferred to another owner; can be in the past; 0 if the gift can be transferred immediately or transfer isn't possible; only for the receiver of the gift. |
+  | next_resale_date | int32 | Point in time (Unix timestamp) when the gift can be resold to another user; can be in the past; 0 if the gift can't be resold; only for the receiver of the gift. |
+  | export_date | int32 | Point in time (Unix timestamp) when the gift can be transferred to the TON blockchain as an NFT; can be in the past; 0 if NFT export isn't possible; only for the receiver of the gift. |
+  | craft_date | int32 | Point in time (Unix timestamp) when the gift can be used to craft another gift can be in the past; only for the receiver of the gift. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_partner_google_play.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_upgraded_gift.html).
   """
 
-  defstruct "@type": "starTransactionPartnerGooglePlay", "@extra": nil
-end
-defmodule MessageExtendedMedia do
-  @moduledoc  """
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_message_extended_media.html).
-  """
-
-  defstruct "@type": "MessageExtendedMedia", "@extra": nil
+  defstruct "@type": "messageUpgradedGift", "@extra": nil, gift: nil, sender_id: nil, receiver_id: nil, origin: nil, received_gift_id: nil, is_saved: nil, can_be_transferred: nil, was_transferred: nil, transfer_star_count: nil, drop_original_details_star_count: nil, next_transfer_date: nil, next_resale_date: nil, export_date: nil, craft_date: nil
 end
 defmodule CallProblemPixelatedVideo do
   @moduledoc  """
@@ -10687,12 +13906,12 @@ defmodule BusinessConnectedBot do
   |------|------| ------------|
   | bot_user_id | int53 | User identifier of the bot. |
   | recipients | businessRecipients | Private chats that will be accessible to the bot. |
-  | can_reply | bool | True, if the bot can send messages to the private chats; false otherwise. |
+  | rights | businessBotRights | Rights of the bot. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_connected_bot.html).
   """
 
-  defstruct "@type": "businessConnectedBot", "@extra": nil, bot_user_id: nil, recipients: nil, can_reply: nil
+  defstruct "@type": "businessConnectedBot", "@extra": nil, bot_user_id: nil, recipients: nil, rights: nil
 end
 defmodule SessionTypeVivaldi do
   @moduledoc  """
@@ -10776,7 +13995,7 @@ defmodule StatisticalGraphAsync do
 end
 defmodule FailedToAddMember do
   @moduledoc  """
-  Contains information about a user that has failed to be added to a chat.
+  Contains information about a user who has failed to be added to a chat.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -10789,15 +14008,19 @@ defmodule FailedToAddMember do
 
   defstruct "@type": "failedToAddMember", "@extra": nil, user_id: nil, premium_would_allow_invite: nil, premium_required_to_send_messages: nil
 end
-defmodule InternalLinkTypeThemeSettings do
+defmodule MessageSuggestedPostApprovalFailed do
   @moduledoc  """
-  The link is a link to the theme section of the app settings.
+  Approval of suggested post has failed, because the user which proposed the post had no enough funds.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | suggested_post_message_id | int53 | Identifier of the message with the suggested post; may be 0 or an identifier of a deleted message. |
+  | price | SuggestedPostPrice | Price of the suggested post. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_theme_settings.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_suggested_post_approval_failed.html).
   """
 
-  defstruct "@type": "internalLinkTypeThemeSettings", "@extra": nil
+  defstruct "@type": "messageSuggestedPostApprovalFailed", "@extra": nil, suggested_post_message_id: nil, price: nil
 end
 defmodule TestInt do
   @moduledoc  """
@@ -10811,6 +14034,27 @@ defmodule TestInt do
   """
 
   defstruct "@type": "testInt", "@extra": nil, value: nil
+end
+defmodule MessageGiftedStars do
+  @moduledoc  """
+  Telegram Stars were gifted to a user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gifter_user_id | int53 | The identifier of a user who gifted Telegram Stars; 0 if the gift was anonymous or is outgoing. |
+  | receiver_user_id | int53 | The identifier of a user who received Telegram Stars; 0 if the gift is incoming. |
+  | currency | string | Currency for the paid amount. |
+  | amount | int53 | The paid amount, in the smallest units of the currency. |
+  | cryptocurrency | string | Cryptocurrency used to pay for the gift; may be empty if none. |
+  | cryptocurrency_amount | int64 | The paid amount, in the smallest units of the cryptocurrency; 0 if none. |
+  | star_count | int53 | Number of Telegram Stars that were gifted. |
+  | transaction_id | string | Identifier of the transaction for Telegram Stars purchase; for receiver only. |
+  | sticker | sticker | A sticker to be shown in the message; may be null if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_gifted_stars.html).
+  """
+
+  defstruct "@type": "messageGiftedStars", "@extra": nil, gifter_user_id: nil, receiver_user_id: nil, currency: nil, amount: nil, cryptocurrency: nil, cryptocurrency_amount: nil, star_count: nil, transaction_id: nil, sticker: nil
 end
 defmodule CheckChatUsernameResultUsernameInvalid do
   @moduledoc  """
@@ -10835,6 +14079,31 @@ defmodule UpdateChatTitle do
   """
 
   defstruct "@type": "updateChatTitle", "@extra": nil, chat_id: nil, title: nil
+end
+defmodule DiffEntityTypeInsert do
+  @moduledoc  """
+  Addition of some text.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1diff_entity_type_insert.html).
+  """
+
+  defstruct "@type": "diffEntityTypeInsert", "@extra": nil
+end
+defmodule StarTransactionTypeChannelPaidMediaSale do
+  @moduledoc  """
+  The transaction is a sale of paid media by the channel chat; relevant for channel chats only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who bought the media. |
+  | message_id | int53 | Identifier of the corresponding message with paid media; may be 0 or an identifier of a deleted message. |
+  | media | PaidMedia | The bought media. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_channel_paid_media_sale.html).
+  """
+
+  defstruct "@type": "starTransactionTypeChannelPaidMediaSale", "@extra": nil, user_id: nil, message_id: nil, media: nil
 end
 defmodule SearchMessagesFilterPhotoAndVideo do
   @moduledoc  """
@@ -10890,6 +14159,20 @@ defmodule UpdateUserStatus do
   """
 
   defstruct "@type": "updateUserStatus", "@extra": nil, user_id: nil, status: nil
+end
+defmodule ReportChatResultTextRequired do
+  @moduledoc  """
+  The user must add additional text details to the report.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | option_id | bytes | Option identifier for the next <a class="el" href="classtd_1_1td__api_1_1report_chat.html">reportChat</a> request. |
+  | is_optional | bool | True, if the user can skip text adding. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_result_text_required.html).
+  """
+
+  defstruct "@type": "reportChatResultTextRequired", "@extra": nil, option_id: nil, is_optional: nil
 end
 defmodule CustomRequestResult do
   @moduledoc  """
@@ -10975,13 +14258,33 @@ defmodule ChatLocation do
 
   defstruct "@type": "chatLocation", "@extra": nil, location: nil, address: nil
 end
+defmodule PaidReactionTypeAnonymous do
+  @moduledoc  """
+  An anonymous paid reaction.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_reaction_type_anonymous.html).
+  """
+
+  defstruct "@type": "paidReactionTypeAnonymous", "@extra": nil
+end
+defmodule InternalLinkTypeSavedMessages do
+  @moduledoc  """
+  The link is a link to the Saved Messages chat. Call createPrivateChat with getOption("my_id") and open the chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_saved_messages.html).
+  """
+
+  defstruct "@type": "internalLinkTypeSavedMessages", "@extra": nil
+end
 defmodule InputMessageVideoNote do
   @moduledoc  """
   A video note message.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | video_note | InputFile | Video note to be sent. |
+  | video_note | InputFile | Video note to be sent. The video is expected to be encoded to MPEG4 format with H.264 codec and have no data outside of the visible circle. |
   | thumbnail | inputThumbnail | Video thumbnail; may be null if empty; pass null to skip thumbnail uploading. |
   | duration | int32 | Duration of the video, in seconds; 0-60. |
   | length | int32 | Video width and height; must be positive and not greater than 640. |
@@ -10991,6 +14294,48 @@ defmodule InputMessageVideoNote do
   """
 
   defstruct "@type": "inputMessageVideoNote", "@extra": nil, video_note: nil, thumbnail: nil, duration: nil, length: nil, self_destruct_type: nil
+end
+defmodule CraftGiftResultSuccess do
+  @moduledoc  """
+  Crafting was successful.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | upgradedGift | The created gift. |
+  | received_gift_id | string | Unique identifier of the received gift for the current user. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1craft_gift_result_success.html).
+  """
+
+  defstruct "@type": "craftGiftResultSuccess", "@extra": nil, gift: nil, received_gift_id: nil
+end
+defmodule LinkPreviewTypeGiftAuction do
+  @moduledoc  """
+  The link is a link to a gift auction.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | gift | The gift. |
+  | auction_end_date | int32 | Point in time (Unix timestamp) when the auction will be ended. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_gift_auction.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeGiftAuction", "@extra": nil, gift: nil, auction_end_date: nil
+end
+defmodule InputPollTypeQuiz do
+  @moduledoc  """
+  A poll in quiz mode, which has predefined correct answers.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | correct_option_ids | int32 | Increasing list of 0-based identifiers of the correct answer options; must be non-empty. |
+  | explanation | formattedText | Text that is shown when the user chooses an incorrect answer or taps on the lamp icon; 0-200 characters with at most 2 line feeds. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_type_quiz.html).
+  """
+
+  defstruct "@type": "inputPollTypeQuiz", "@extra": nil, correct_option_ids: nil, explanation: nil
 end
 defmodule InlineQueryResultSticker do
   @moduledoc  """
@@ -11060,25 +14405,27 @@ defmodule AccountTtl do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | days | int32 | Number of days of inactivity before the account will be flagged for deletion; 30-366 days. |
+  | days | int32 | Number of days of inactivity before the account will be flagged for deletion; 30-730 days. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1account_ttl.html).
   """
 
   defstruct "@type": "accountTtl", "@extra": nil, days: nil
 end
-defmodule InternalLinkTypePremiumGift do
+defmodule UpdateNewGroupCallPaidReaction do
   @moduledoc  """
-  The link is a link to the screen for gifting Telegram Premium subscriptions to friends via inputInvoiceTelegram payments or in-store purchases.
+  A new paid reaction was received in a live story group call.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | referrer | string | Referrer specified in the link. |
+  | group_call_id | int32 | Identifier of the group call. |
+  | sender_id | MessageSender | Identifier of the sender of the reaction. |
+  | star_count | int53 | The number of Telegram Stars that were paid to send the reaction. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_premium_gift.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_group_call_paid_reaction.html).
   """
 
-  defstruct "@type": "internalLinkTypePremiumGift", "@extra": nil, referrer: nil
+  defstruct "@type": "updateNewGroupCallPaidReaction", "@extra": nil, group_call_id: nil, sender_id: nil, star_count: nil
 end
 defmodule MessageEffectTypeEmojiReaction do
   @moduledoc  """
@@ -11104,6 +14451,33 @@ defmodule StoryListMain do
 
   defstruct "@type": "storyListMain", "@extra": nil
 end
+defmodule StoryAlbums do
+  @moduledoc  """
+  Represents a list of story albums.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | albums | storyAlbum | List of story albums. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_albums.html).
+  """
+
+  defstruct "@type": "storyAlbums", "@extra": nil, albums: nil
+end
+defmodule LiveStoryDonors do
+  @moduledoc  """
+  Contains a list of users and chats that spend most money on paid messages and reactions in a live story.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | total_star_count | int53 | Total amount of spend Telegram Stars. |
+  | top_donors | paidReactor | List of top donors in the live story. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1live_story_donors.html).
+  """
+
+  defstruct "@type": "liveStoryDonors", "@extra": nil, total_star_count: nil, top_donors: nil
+end
 defmodule MessageSendingStatePending do
   @moduledoc  """
   The message is being sent now, but has not yet been delivered to the server.
@@ -11117,6 +14491,41 @@ defmodule MessageSendingStatePending do
 
   defstruct "@type": "messageSendingStatePending", "@extra": nil, sending_id: nil
 end
+defmodule SettingsSectionSearch do
+  @moduledoc  """
+  Search in Settings.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_search.html).
+  """
+
+  defstruct "@type": "settingsSectionSearch", "@extra": nil
+end
+defmodule UpdateApplicationRecaptchaVerificationRequired do
+  @moduledoc  """
+  A request can't be completed unless reCAPTCHA verification is performed; for official mobile applications only. The method setApplicationVerificationToken must be called once the verification is completed or failed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | verification_id | int53 | Unique identifier for the verification process. |
+  | action | string | The action for the check. |
+  | recaptcha_key_id | string | Identifier of the reCAPTCHA key. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_application_recaptcha_verification_required.html).
+  """
+
+  defstruct "@type": "updateApplicationRecaptchaVerificationRequired", "@extra": nil, verification_id: nil, action: nil, recaptcha_key_id: nil
+end
+defmodule InternalLinkTypeSearch do
+  @moduledoc  """
+  The link is a link to the global chat and messages search field.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_search.html).
+  """
+
+  defstruct "@type": "internalLinkTypeSearch", "@extra": nil
+end
 defmodule MessageVideoChatScheduled do
   @moduledoc  """
   A new video chat was scheduled.
@@ -11124,7 +14533,7 @@ defmodule MessageVideoChatScheduled do
   | Name | Type | Description |
   |------|------| ------------|
   | group_call_id | int32 | Identifier of the video chat. The video chat can be received through the method <a class="el" href="classtd_1_1td__api_1_1get_group_call.html">getGroupCall</a>. |
-  | start_date | int32 | Point in time (Unix timestamp) when the group call is supposed to be started by an administrator. |
+  | start_date | int32 | Point in time (Unix timestamp) when the group call is expected to be started by an administrator. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_video_chat_scheduled.html).
   """
@@ -11227,12 +14636,28 @@ defmodule MessageChatSetTheme do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | theme_name | string | If non-empty, name of a new theme, set for the chat. Otherwise, chat theme was reset to the default one. |
+  | theme | ChatTheme | New theme for the chat; may be null if chat theme was reset to the default one. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_set_theme.html).
   """
 
-  defstruct "@type": "messageChatSetTheme", "@extra": nil, theme_name: nil
+  defstruct "@type": "messageChatSetTheme", "@extra": nil, theme: nil
+end
+defmodule VideoStoryboard do
+  @moduledoc  """
+  Describes a storyboard for a video.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | storyboard_file | file | A JPEG file that contains tiled previews of video. |
+  | width | int32 | Width of a tile. |
+  | height | int32 | Height of a tile. |
+  | map_file | file | File that describes mapping of position in the video to a tile in the JPEG file. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1video_storyboard.html).
+  """
+
+  defstruct "@type": "videoStoryboard", "@extra": nil, storyboard_file: nil, width: nil, height: nil, map_file: nil
 end
 defmodule ChatRevenueTransaction do
   @moduledoc  """
@@ -11280,7 +14705,7 @@ defmodule StoryContentVideo do
   | Name | Type | Description |
   |------|------| ------------|
   | video | storyVideo | The video in MPEG4 format. |
-  | alternative_video | storyVideo | Alternative version of the video in MPEG4 format, encoded by x264 codec; may be null. |
+  | alternative_video | storyVideo | Alternative version of the video in MPEG4 format, encoded with H.264 codec; may be null. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_content_video.html).
   """
@@ -11327,19 +14752,6 @@ defmodule RichTextStrikethrough do
 
   defstruct "@type": "richTextStrikethrough", "@extra": nil, text: nil
 end
-defmodule MessageExtendedMediaUnsupported do
-  @moduledoc  """
-  The media is unsupported.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | caption | formattedText | Media caption. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_extended_media_unsupported.html).
-  """
-
-  defstruct "@type": "messageExtendedMediaUnsupported", "@extra": nil, caption: nil
-end
 defmodule UpdateFileDownload do
   @moduledoc  """
   A file download was changed. This update is sent only after file download list is loaded for the first time.
@@ -11358,7 +14770,7 @@ defmodule UpdateFileDownload do
 end
 defmodule AuthorizationStateWaitPhoneNumber do
   @moduledoc  """
-  TDLib needs the user's phone number to authorize. Call setAuthenticationPhoneNumber to provide the phone number, or use requestQrCodeAuthentication or checkAuthenticationBotToken for other authentication options.
+  TDLib needs the user's phone number to authorize. Call setAuthenticationPhoneNumber to provide the phone number, or use requestQrCodeAuthentication, getAuthenticationPasskeyParameters, or checkAuthenticationBotToken for other authentication options.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_phone_number.html).
@@ -11403,9 +14815,10 @@ defmodule ChatPermissions do
   | can_send_videos | bool | True, if the user can send videos. |
   | can_send_video_notes | bool | True, if the user can send video notes. |
   | can_send_voice_notes | bool | True, if the user can send voice notes. |
-  | can_send_polls | bool | True, if the user can send polls. |
+  | can_send_polls | bool | True, if the user can send polls and checklists. |
   | can_send_other_messages | bool | True, if the user can send animations, games, stickers, and dice and use inline bots. |
-  | can_add_web_page_previews | bool | True, if the user may add a web page preview to their messages. |
+  | can_add_link_previews | bool | True, if the user may add a link preview to their messages. |
+  | can_edit_tag | bool | True, if the user may change the tag of self. |
   | can_change_info | bool | True, if the user can change the chat title, photo, and other settings. |
   | can_invite_users | bool | True, if the user can invite new users to the chat. |
   | can_pin_messages | bool | True, if the user can pin messages. |
@@ -11414,7 +14827,22 @@ defmodule ChatPermissions do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_permissions.html).
   """
 
-  defstruct "@type": "chatPermissions", "@extra": nil, can_send_basic_messages: nil, can_send_audios: nil, can_send_documents: nil, can_send_photos: nil, can_send_videos: nil, can_send_video_notes: nil, can_send_voice_notes: nil, can_send_polls: nil, can_send_other_messages: nil, can_add_web_page_previews: nil, can_change_info: nil, can_invite_users: nil, can_pin_messages: nil, can_create_topics: nil
+  defstruct "@type": "chatPermissions", "@extra": nil, can_send_basic_messages: nil, can_send_audios: nil, can_send_documents: nil, can_send_photos: nil, can_send_videos: nil, can_send_video_notes: nil, can_send_voice_notes: nil, can_send_polls: nil, can_send_other_messages: nil, can_add_link_previews: nil, can_edit_tag: nil, can_change_info: nil, can_invite_users: nil, can_pin_messages: nil, can_create_topics: nil
+end
+defmodule BotVerification do
+  @moduledoc  """
+  Describes verification status provided by a bot.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | bot_user_id | int53 | Identifier of the bot that provided the verification. |
+  | icon_custom_emoji_id | int64 | Identifier of the custom emoji that is used as the verification sign. |
+  | custom_description | formattedText | Custom description of verification reason set by the bot. Can contain only Mention, Hashtag, Cashtag, PhoneNumber, BankCardNumber, Url, and EmailAddress entities. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_verification.html).
+  """
+
+  defstruct "@type": "botVerification", "@extra": nil, bot_user_id: nil, icon_custom_emoji_id: nil, custom_description: nil
 end
 defmodule UserPrivacySettingShowStatus do
   @moduledoc  """
@@ -11475,6 +14903,21 @@ defmodule MessageGameScore do
   """
 
   defstruct "@type": "messageGameScore", "@extra": nil, game_message_id: nil, game_id: nil, score: nil
+end
+defmodule UpgradedGiftSymbol do
+  @moduledoc  """
+  Describes a symbol shown on the pattern of an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | name | string | Name of the symbol. |
+  | sticker | sticker | The sticker representing the symbol. |
+  | rarity | UpgradedGiftAttributeRarity | The rarity of the symbol. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_symbol.html).
+  """
+
+  defstruct "@type": "upgradedGiftSymbol", "@extra": nil, name: nil, sticker: nil, rarity: nil
 end
 defmodule ChatMessageSender do
   @moduledoc  """
@@ -11578,6 +15021,19 @@ defmodule FoundChatMessages do
 
   defstruct "@type": "foundChatMessages", "@extra": nil, total_count: nil, messages: nil, next_from_message_id: nil
 end
+defmodule SentGiftRegular do
+  @moduledoc  """
+  Regular gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | gift | The gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sent_gift_regular.html).
+  """
+
+  defstruct "@type": "sentGiftRegular", "@extra": nil, gift: nil
+end
 defmodule ForwardSource do
   @moduledoc  """
   Contains information about the last message from which a new message was forwarded last time.
@@ -11610,6 +15066,34 @@ defmodule PageBlockDetails do
   """
 
   defstruct "@type": "pageBlockDetails", "@extra": nil, header: nil, page_blocks: nil, is_open: nil
+end
+defmodule UpdateTopicMessageCount do
+  @moduledoc  """
+  Number of messages in a topic has changed; for Saved Messages and channel direct messages chat topics only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat in topic of which the number of messages has changed. |
+  | topic_id | MessageTopic | Identifier of the topic. |
+  | message_count | int32 | Approximate number of messages in the topic. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_topic_message_count.html).
+  """
+
+  defstruct "@type": "updateTopicMessageCount", "@extra": nil, chat_id: nil, topic_id: nil, message_count: nil
+end
+defmodule LinkPreviewTypeWebApp do
+  @moduledoc  """
+  The link is a link to a Web App.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | photo | Web App photo; may be null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_web_app.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeWebApp", "@extra": nil, photo: nil
 end
 defmodule JsonValue do
   @moduledoc  """
@@ -11651,7 +15135,7 @@ defmodule AuthenticationCodeTypeFirebaseIos do
   | Name | Type | Description |
   |------|------| ------------|
   | receipt | string | Receipt of successful application token validation to compare with receipt from push notification. |
-  | push_timeout | int32 | Time after the next authentication method is supposed to be used if verification push notification isn't received, in seconds. |
+  | push_timeout | int32 | Time after the next authentication method is expected to be used if verification push notification isn't received, in seconds. |
   | length | int32 | Length of the code. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_firebase_ios.html).
@@ -11682,6 +15166,19 @@ defmodule StoryListArchive do
 
   defstruct "@type": "storyListArchive", "@extra": nil
 end
+defmodule LinkPreviewTypeUpgradedGift do
+  @moduledoc  """
+  The link is a link to an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | upgradedGift | The gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_upgraded_gift.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeUpgradedGift", "@extra": nil, gift: nil
+end
 defmodule ChatEventMemberJoinedByInviteLink do
   @moduledoc  """
   A new member joined the chat via an invite link.
@@ -11696,6 +15193,16 @@ defmodule ChatEventMemberJoinedByInviteLink do
 
   defstruct "@type": "chatEventMemberJoinedByInviteLink", "@extra": nil, invite_link: nil, via_chat_folder_invite_link: nil
 end
+defmodule ProfileTabGifts do
+  @moduledoc  """
+  A tab with gifts received by the user or the channel chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1profile_tab_gifts.html).
+  """
+
+  defstruct "@type": "profileTabGifts", "@extra": nil
+end
 defmodule PremiumStoryFeatureSaveStories do
   @moduledoc  """
   The ability to save other's unprotected stories.
@@ -11706,22 +15213,41 @@ defmodule PremiumStoryFeatureSaveStories do
 
   defstruct "@type": "premiumStoryFeatureSaveStories", "@extra": nil
 end
+defmodule MessageSuggestedPostDeclined do
+  @moduledoc  """
+  A suggested post was declined.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | suggested_post_message_id | int53 | Identifier of the message with the suggested post; may be 0 or an identifier of a deleted message. |
+  | comment | string | Comment added by administrator of the channel when the post was declined. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_suggested_post_declined.html).
+  """
+
+  defstruct "@type": "messageSuggestedPostDeclined", "@extra": nil, suggested_post_message_id: nil, comment: nil
+end
 defmodule PollOption do
   @moduledoc  """
   Describes one answer option of a poll.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | text | formattedText | Option text; 1-100 characters. Only custom emoji entities are allowed. |
-  | voter_count | int32 | Number of voters for this option, available only for closed or voted polls. |
+  | id | string | Unique identifier of the option in the poll. |
+  | text | formattedText | Option text; 1-100 characters; may contain only custom emoji entities. |
+  | media | MessageContent | Option media. Currently, can be only of the types <a class="el" href="classtd_1_1td__api_1_1message_animation.html">messageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1message_location.html">messageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1message_photo.html">messagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1message_sticker.html">messageSticker</a>, <a class="el" href="classtd_1_1td__api_1_1message_venue.html">messageVenue</a>, or <a class="el" href="classtd_1_1td__api_1_1message_video.html">messageVideo</a> without caption. |
+  | voter_count | int32 | Number of voters for this option, available only for closed or voted polls, or if the current user is the creator of the poll. |
   | vote_percentage | int32 | The percentage of votes for this option; 0-100. |
+  | recent_voter_ids | MessageSender | Identifiers of recent voters for the option, if the poll is non-anonymous and poll results are available. |
   | is_chosen | bool | True, if the option was chosen by the user. |
   | is_being_chosen | bool | True, if the option is being chosen by a pending <a class="el" href="classtd_1_1td__api_1_1set_poll_answer.html">setPollAnswer</a> request. |
+  | author | MessageSender | Identifier of the user or chat who added the option; may be null if the option existed from creation of the poll. |
+  | addition_date | int32 | Point in time (Unix timestamp) when the option was added; 0 if the option existed from creation of the poll. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_option.html).
   """
 
-  defstruct "@type": "pollOption", "@extra": nil, text: nil, voter_count: nil, vote_percentage: nil, is_chosen: nil, is_being_chosen: nil
+  defstruct "@type": "pollOption", "@extra": nil, id: nil, text: nil, media: nil, voter_count: nil, vote_percentage: nil, recent_voter_ids: nil, is_chosen: nil, is_being_chosen: nil, author: nil, addition_date: nil
 end
 defmodule RichTextItalic do
   @moduledoc  """
@@ -11759,7 +15285,7 @@ defmodule PremiumPaymentOption do
   | currency | string | ISO 4217 currency code for Telegram Premium subscription payment. |
   | amount | int53 | The amount to pay, in the smallest units of the currency. |
   | discount_percentage | int32 | The discount associated with this option, as a percentage. |
-  | month_count | int32 | Number of months the Telegram Premium subscription will be active. |
+  | month_count | int32 | Number of months the Telegram Premium subscription will be active. Use <a class="el" href="classtd_1_1td__api_1_1get_premium_info_sticker.html">getPremiumInfoSticker</a> to get the sticker to be used as representation of the Telegram Premium subscription. |
   | store_product_id | string | Identifier of the store product associated with the option. |
   | payment_link | InternalLinkType | An internal link to be opened for buying Telegram Premium to the user if store payment isn't possible; may be null if direct payment isn't available. |
 
@@ -11795,6 +15321,93 @@ defmodule LogStreamFile do
   """
 
   defstruct "@type": "logStreamFile", "@extra": nil, path: nil, max_file_size: nil, redirect_stderr: nil
+end
+defmodule StarTransactionTypeGiftAuctionBid do
+  @moduledoc  """
+  The transaction is a bid on a gift auction; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | owner_id | MessageSender | Identifier of the user who will receive the gift. |
+  | gift | gift | The gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_gift_auction_bid.html).
+  """
+
+  defstruct "@type": "starTransactionTypeGiftAuctionBid", "@extra": nil, owner_id: nil, gift: nil
+end
+defmodule TelegramPaymentPurposeStarGiveaway do
+  @moduledoc  """
+  The user creating a Telegram Star giveaway.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | parameters | giveawayParameters | Giveaway parameters. |
+  | currency | string | ISO 4217 currency code of the payment currency. |
+  | amount | int53 | Paid amount, in the smallest units of the currency. |
+  | winner_count | int32 | The number of users to receive Telegram Stars. |
+  | star_count | int53 | The number of Telegram Stars to be distributed through the giveaway. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_star_giveaway.html).
+  """
+
+  defstruct "@type": "telegramPaymentPurposeStarGiveaway", "@extra": nil, parameters: nil, currency: nil, amount: nil, winner_count: nil, star_count: nil
+end
+defmodule LinkPreviewTypeEmbeddedAudioPlayer do
+  @moduledoc  """
+  The link is a link to an audio player.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | URL of the external audio player. |
+  | audio | audio | The cached audio; may be null if unknown. |
+  | thumbnail | photo | Thumbnail of the audio; may be null if unknown. |
+  | duration | int32 | Duration of the audio, in seconds. |
+  | width | int32 | Expected width of the embedded player. |
+  | height | int32 | Expected height of the embedded player. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_embedded_audio_player.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeEmbeddedAudioPlayer", "@extra": nil, url: nil, audio: nil, thumbnail: nil, duration: nil, width: nil, height: nil
+end
+defmodule DirectMessagesChatTopic do
+  @moduledoc  """
+  Contains information about a topic in a channel direct messages chat administered by the current user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat to which the topic belongs. |
+  | id | int53 | Unique topic identifier. |
+  | sender_id | MessageSender | Identifier of the user or chat that sends the messages to the topic. |
+  | order | int64 | A parameter used to determine order of the topic in the topic list. Topics must be sorted by the order in descending order. |
+  | can_send_unpaid_messages | bool | True, if the other party can send unpaid messages even if the chat has paid messages enabled. |
+  | is_marked_as_unread | bool | True, if the topic is marked as unread. |
+  | unread_count | int53 | Number of unread messages in the chat. |
+  | last_read_inbox_message_id | int53 | Identifier of the last read incoming message. |
+  | last_read_outbox_message_id | int53 | Identifier of the last read outgoing message. |
+  | unread_reaction_count | int53 | Number of messages with unread reactions in the chat. |
+  | last_message | message | Last message in the topic; may be null if none or unknown. |
+  | draft_message | draftMessage | A draft of a message in the topic; may be null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1direct_messages_chat_topic.html).
+  """
+
+  defstruct "@type": "directMessagesChatTopic", "@extra": nil, chat_id: nil, id: nil, sender_id: nil, order: nil, can_send_unpaid_messages: nil, is_marked_as_unread: nil, unread_count: nil, last_read_inbox_message_id: nil, last_read_outbox_message_id: nil, unread_reaction_count: nil, last_message: nil, draft_message: nil
+end
+defmodule StoryContentLive do
+  @moduledoc  """
+  A live story.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | group_call_id | int32 | Identifier of the corresponding group call. The group call can be received through the method <a class="el" href="classtd_1_1td__api_1_1get_group_call.html">getGroupCall</a>. |
+  | is_rtmp_stream | bool | True, if the call is an RTMP stream instead of an ordinary group call. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_content_live.html).
+  """
+
+  defstruct "@type": "storyContentLive", "@extra": nil, group_call_id: nil, is_rtmp_stream: nil
 end
 defmodule MessageOriginHiddenUser do
   @moduledoc  """
@@ -11849,8 +15462,8 @@ defmodule AttachmentMenuBotColor do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | light_color | int32 | Color in the RGB24 format for light themes. |
-  | dark_color | int32 | Color in the RGB24 format for dark themes. |
+  | light_color | int32 | Color in the RGB format for light themes. |
+  | dark_color | int32 | Color in the RGB format for dark themes. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1attachment_menu_bot_color.html).
   """
@@ -11911,6 +15524,43 @@ defmodule MessageFileTypePrivate do
 
   defstruct "@type": "messageFileTypePrivate", "@extra": nil, name: nil
 end
+defmodule StarTransactionTypeSuggestedPostPaymentSend do
+  @moduledoc  """
+  The transaction is a payment for a suggested post; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the channel chat that posted the post. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_suggested_post_payment_send.html).
+  """
+
+  defstruct "@type": "starTransactionTypeSuggestedPostPaymentSend", "@extra": nil, chat_id: nil
+end
+defmodule TransactionDirection do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_transaction_direction.html).
+  """
+
+  defstruct "@type": "TransactionDirection", "@extra": nil
+end
+defmodule StoryAreaTypeWeather do
+  @moduledoc  """
+  An area with information about weather.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | temperature | double | Temperature, in degree Celsius. |
+  | emoji | string | Emoji representing the weather. |
+  | background_color | int32 | A color of the area background in the ARGB format. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_area_type_weather.html).
+  """
+
+  defstruct "@type": "storyAreaTypeWeather", "@extra": nil, temperature: nil, emoji: nil, background_color: nil
+end
 defmodule StickerFormatWebm do
   @moduledoc  """
   The sticker is a video in WEBM format.
@@ -11921,14 +15571,18 @@ defmodule StickerFormatWebm do
 
   defstruct "@type": "stickerFormatWebm", "@extra": nil
 end
-defmodule CanSendStoryResult do
+defmodule SettingsSectionInAppBrowser do
   @moduledoc  """
+  The in-app browser settings section.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "enable-browser", "clear-cookies", "clear-cache", "history", "clear-history", "never-open", "clear-list", "search". |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_can_send_story_result.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_in_app_browser.html).
   """
 
-  defstruct "@type": "CanSendStoryResult", "@extra": nil
+  defstruct "@type": "settingsSectionInAppBrowser", "@extra": nil, subsection: nil
 end
 defmodule PublicForwardStory do
   @moduledoc  """
@@ -11943,6 +15597,31 @@ defmodule PublicForwardStory do
 
   defstruct "@type": "publicForwardStory", "@extra": nil, story: nil
 end
+defmodule MessagePaidMedia do
+  @moduledoc  """
+  A message with paid media.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | Number of Telegram Stars needed to buy access to the media in the message. |
+  | media | PaidMedia | Information about the media. |
+  | caption | formattedText | Media caption. |
+  | show_caption_above_media | bool | True, if the caption must be shown above the media; otherwise, the caption must be shown below the media. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_paid_media.html).
+  """
+
+  defstruct "@type": "messagePaidMedia", "@extra": nil, star_count: nil, media: nil, caption: nil, show_caption_above_media: nil
+end
+defmodule GiveawayInfo do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_giveaway_info.html).
+  """
+
+  defstruct "@type": "GiveawayInfo", "@extra": nil
+end
 defmodule BotWriteAccessAllowReasonAcceptedRequest do
   @moduledoc  """
   The user accepted bot's request to send messages with allowBotToSendMessages.
@@ -11952,6 +15631,35 @@ defmodule BotWriteAccessAllowReasonAcceptedRequest do
   """
 
   defstruct "@type": "botWriteAccessAllowReasonAcceptedRequest", "@extra": nil
+end
+defmodule UpdateGroupCallVerificationState do
+  @moduledoc  """
+  The verification state of an encrypted group call has changed; for group calls not bound to a chat only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | group_call_id | int32 | Identifier of the group call. |
+  | generation | int32 | The call state generation to which the emoji corresponds. If generation is different for two users, then their emoji may be also different. |
+  | emojis | string | Group call state fingerprint represented as 4 emoji; may be empty if the state isn't verified yet. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_group_call_verification_state.html).
+  """
+
+  defstruct "@type": "updateGroupCallVerificationState", "@extra": nil, group_call_id: nil, generation: nil, emojis: nil
+end
+defmodule StarTransactionTypeGiftUpgrade do
+  @moduledoc  """
+  The transaction is an upgrade of a gift; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who initially sent the gift. |
+  | gift | upgradedGift | The upgraded gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_gift_upgrade.html).
+  """
+
+  defstruct "@type": "starTransactionTypeGiftUpgrade", "@extra": nil, user_id: nil, gift: nil
 end
 defmodule AnimatedEmoji do
   @moduledoc  """
@@ -11970,14 +15678,21 @@ defmodule AnimatedEmoji do
 
   defstruct "@type": "animatedEmoji", "@extra": nil, sticker: nil, sticker_width: nil, sticker_height: nil, fitzpatrick_type: nil, sound: nil
 end
-defmodule PremiumGiveawayParticipantStatus do
+defmodule FoundPublicPosts do
   @moduledoc  """
+  Contains a list of messages found by a public post search.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | messages | message | List of found public posts. |
+  | next_offset | string | The offset for the next request. If empty, then there are no more results. |
+  | search_limits | publicPostSearchLimits | Updated public post search limits after the query; repeated requests with the same query will be free; may be null if they didn't change. |
+  | are_limits_exceeded | bool | True, if the query has failed because search limits are exceeded. In this case search_limits.daily_free_query_count will be equal to 0. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_premium_giveaway_participant_status.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_public_posts.html).
   """
 
-  defstruct "@type": "PremiumGiveawayParticipantStatus", "@extra": nil
+  defstruct "@type": "foundPublicPosts", "@extra": nil, messages: nil, next_offset: nil, search_limits: nil, are_limits_exceeded: nil
 end
 defmodule CallServerTypeTelegramReflector do
   @moduledoc  """
@@ -12045,6 +15760,20 @@ defmodule FileTypeVoiceNote do
 
   defstruct "@type": "fileTypeVoiceNote", "@extra": nil
 end
+defmodule StarTransactionTypeUpgradedGiftPurchase do
+  @moduledoc  """
+  The transaction is a purchase of an upgraded gift for some user or channel; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who sold the gift. |
+  | gift | upgradedGift | The gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_upgraded_gift_purchase.html).
+  """
+
+  defstruct "@type": "starTransactionTypeUpgradedGiftPurchase", "@extra": nil, user_id: nil, gift: nil
+end
 defmodule NetworkTypeMobileRoaming do
   @moduledoc  """
   A mobile roaming network.
@@ -12083,7 +15812,7 @@ defmodule ChatRevenueStatistics do
 end
 defmodule ChatAvailableReactionsAll do
   @moduledoc  """
-  All reactions are available in the chat.
+  All reactions are available in the chat, excluding the paid reaction and custom reactions in channel chats.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -12108,26 +15837,6 @@ defmodule GameHighScore do
   """
 
   defstruct "@type": "gameHighScore", "@extra": nil, position: nil, user_id: nil, score: nil
-end
-defmodule PremiumGiveawayParticipantStatusParticipating do
-  @moduledoc  """
-  The user participates in the giveaway.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_giveaway_participant_status_participating.html).
-  """
-
-  defstruct "@type": "premiumGiveawayParticipantStatusParticipating", "@extra": nil
-end
-defmodule CanSendStoryResultOk do
-  @moduledoc  """
-  A story can be sent.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_story_result_ok.html).
-  """
-
-  defstruct "@type": "canSendStoryResultOk", "@extra": nil
 end
 defmodule UpdateChatMessageSender do
   @moduledoc  """
@@ -12166,6 +15875,20 @@ defmodule ChatInviteLinkMembers do
 
   defstruct "@type": "chatInviteLinkMembers", "@extra": nil, total_count: nil, members: nil
 end
+defmodule CurrentWeather do
+  @moduledoc  """
+  Describes the current weather.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | temperature | double | Temperature, in degree Celsius. |
+  | emoji | string | Emoji representing the weather. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1current_weather.html).
+  """
+
+  defstruct "@type": "currentWeather", "@extra": nil, temperature: nil, emoji: nil
+end
 defmodule InputPassportElement do
   @moduledoc  """
 
@@ -12197,6 +15920,16 @@ defmodule InputMessageVenue do
   """
 
   defstruct "@type": "inputMessageVenue", "@extra": nil, venue: nil
+end
+defmodule PremiumLimitTypeOwnedBotCount do
+  @moduledoc  """
+  The maximum number of owned bots.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_owned_bot_count.html).
+  """
+
+  defstruct "@type": "premiumLimitTypeOwnedBotCount", "@extra": nil
 end
 defmodule StoryInteractionType do
   @moduledoc  """
@@ -12271,30 +16004,15 @@ defmodule ChatMemberStatus do
 
   defstruct "@type": "ChatMemberStatus", "@extra": nil
 end
-defmodule MessageSponsor do
+defmodule SuggestedActionSetProfilePhoto do
   @moduledoc  """
-  Information about the sponsor of a message.
+  Suggests the user to set profile photo.
 
-  | Name | Type | Description |
-  |------|------| ------------|
-  | url | string | URL of the sponsor to be opened when the message is clicked. |
-  | photo | photo | Photo of the sponsor; may be null if must not be shown. |
-  | info | string | Additional optional information about the sponsor to be shown along with the message. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sponsor.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_set_profile_photo.html).
   """
 
-  defstruct "@type": "messageSponsor", "@extra": nil, url: nil, photo: nil, info: nil
-end
-defmodule StarTransactionDirectionOutgoing do
-  @moduledoc  """
-  The transaction is outgoing and decreases the number of owned Telegram stars.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_direction_outgoing.html).
-  """
-
-  defstruct "@type": "starTransactionDirectionOutgoing", "@extra": nil
+  defstruct "@type": "suggestedActionSetProfilePhoto", "@extra": nil
 end
 defmodule UpdateFile do
   @moduledoc  """
@@ -12327,19 +16045,34 @@ defmodule ForumTopic do
   |------|------| ------------|
   | info | forumTopicInfo | Basic information about the topic. |
   | last_message | message | Last message in the topic; may be null if unknown. |
+  | order | int64 | A parameter used to determine order of the topic in the topic list. Topics must be sorted by the order in descending order. |
   | is_pinned | bool | True, if the topic is pinned in the topic list. |
   | unread_count | int32 | Number of unread messages in the topic. |
   | last_read_inbox_message_id | int53 | Identifier of the last read incoming message. |
   | last_read_outbox_message_id | int53 | Identifier of the last read outgoing message. |
   | unread_mention_count | int32 | Number of unread messages with a mention/reply in the topic. |
   | unread_reaction_count | int32 | Number of messages with unread reactions in the topic. |
+  | unread_poll_vote_count | int32 | Number of messages with unread poll votes in the topic. |
   | notification_settings | chatNotificationSettings | Notification settings for the topic. |
   | draft_message | draftMessage | A draft of a message in the topic; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1forum_topic.html).
   """
 
-  defstruct "@type": "forumTopic", "@extra": nil, info: nil, last_message: nil, is_pinned: nil, unread_count: nil, last_read_inbox_message_id: nil, last_read_outbox_message_id: nil, unread_mention_count: nil, unread_reaction_count: nil, notification_settings: nil, draft_message: nil
+  defstruct "@type": "forumTopic", "@extra": nil, info: nil, last_message: nil, order: nil, is_pinned: nil, unread_count: nil, last_read_inbox_message_id: nil, last_read_outbox_message_id: nil, unread_mention_count: nil, unread_reaction_count: nil, unread_poll_vote_count: nil, notification_settings: nil, draft_message: nil
+end
+defmodule UpdateDirectMessagesChatTopic do
+  @moduledoc  """
+  Basic information about a topic in a channel direct messages chat administered by the current user has changed. This update is guaranteed to come before the topic identifier is returned to the application.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | topic | directMessagesChatTopic | New data about the topic. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_direct_messages_chat_topic.html).
+  """
+
+  defstruct "@type": "updateDirectMessagesChatTopic", "@extra": nil, topic: nil
 end
 defmodule ResendCodeReason do
   @moduledoc  """
@@ -12373,6 +16106,24 @@ defmodule PremiumStoryFeatureLinksAndFormatting do
   """
 
   defstruct "@type": "premiumStoryFeatureLinksAndFormatting", "@extra": nil
+end
+defmodule PremiumGiveawayPaymentOption do
+  @moduledoc  """
+  Describes an option for creating of Telegram Premium giveaway or manual distribution of Telegram Premium among chat members. Use telegramPaymentPurposePremiumGiftCodes or telegramPaymentPurposePremiumGiveaway for out-of-store payments.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | currency | string | ISO 4217 currency code for Telegram Premium gift code payment. |
+  | amount | int53 | The amount to pay, in the smallest units of the currency. |
+  | winner_count | int32 | Number of users which will be able to activate the gift codes. |
+  | month_count | int32 | Number of months the Telegram Premium subscription will be active. |
+  | store_product_id | string | Identifier of the store product associated with the option; may be empty if none. |
+  | store_product_quantity | int32 | Number of times the store product must be paid. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_giveaway_payment_option.html).
+  """
+
+  defstruct "@type": "premiumGiveawayPaymentOption", "@extra": nil, currency: nil, amount: nil, winner_count: nil, month_count: nil, store_product_id: nil, store_product_quantity: nil
 end
 defmodule SessionTypeUbuntu do
   @moduledoc  """
@@ -12425,7 +16176,7 @@ defmodule ResendCodeReasonVerificationFailed do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | error_message | string | Cause of the verification failure, for example, PLAY_SERVICES_NOT_AVAILABLE, APNS_RECEIVE_TIMEOUT, APNS_INIT_FAILED, etc. |
+  | error_message | string | Cause of the verification failure, for example, "PLAY_SERVICES_NOT_AVAILABLE", "APNS_RECEIVE_TIMEOUT", or "APNS_INIT_FAILED". |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1resend_code_reason_verification_failed.html).
   """
@@ -12446,19 +16197,55 @@ defmodule UpdateChatBoost do
 
   defstruct "@type": "updateChatBoost", "@extra": nil, chat_id: nil, boost: nil
 end
-defmodule StoryFullId do
+defmodule FixedText do
   @moduledoc  """
-  Contains identifier of a story along with identifier of its sender.
+  A text fixed using fixTextWithAi.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | sender_chat_id | int53 | Identifier of the chat that posted the story. |
-  | story_id | int32 | Unique story identifier among stories of the given sender. |
+  | text | formattedText | The resulting text. |
+  | diff_text | diffText | Changes made to the original text. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1fixed_text.html).
+  """
+
+  defstruct "@type": "fixedText", "@extra": nil, text: nil, diff_text: nil
+end
+defmodule UpdateTextCompositionStyles do
+  @moduledoc  """
+  The styles supported for text composition have changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | styles | textCompositionStyle | The new list of supported styles. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_text_composition_styles.html).
+  """
+
+  defstruct "@type": "updateTextCompositionStyles", "@extra": nil, styles: nil
+end
+defmodule CanPostStoryResult do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_can_post_story_result.html).
+  """
+
+  defstruct "@type": "CanPostStoryResult", "@extra": nil
+end
+defmodule StoryFullId do
+  @moduledoc  """
+  Contains identifier of a story along with identifier of the chat that posted it.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | poster_chat_id | int53 | Identifier of the chat that posted the story. |
+  | story_id | int32 | Unique story identifier among stories of the chat. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_full_id.html).
   """
 
-  defstruct "@type": "storyFullId", "@extra": nil, sender_chat_id: nil, story_id: nil
+  defstruct "@type": "storyFullId", "@extra": nil, poster_chat_id: nil, story_id: nil
 end
 defmodule ResendCodeReasonUserRequest do
   @moduledoc  """
@@ -12469,6 +16256,15 @@ defmodule ResendCodeReasonUserRequest do
   """
 
   defstruct "@type": "resendCodeReasonUserRequest", "@extra": nil
+end
+defmodule InputPollType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_input_poll_type.html).
+  """
+
+  defstruct "@type": "InputPollType", "@extra": nil
 end
 defmodule AuthenticationCodeTypeMissedCall do
   @moduledoc  """
@@ -12494,6 +16290,32 @@ defmodule TopChatCategoryCalls do
 
   defstruct "@type": "topChatCategoryCalls", "@extra": nil
 end
+defmodule AddedProxies do
+  @moduledoc  """
+  Represents a list of added proxy servers.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | proxies | addedProxy | List of proxy servers. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1added_proxies.html).
+  """
+
+  defstruct "@type": "addedProxies", "@extra": nil, proxies: nil
+end
+defmodule LinkPreviewTypeSticker do
+  @moduledoc  """
+  The link is a link to a sticker.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | sticker | sticker | The sticker. It can be an arbitrary WEBP image and can have dimensions bigger than 512. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_sticker.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeSticker", "@extra": nil, sticker: nil
+end
 defmodule PublicChatTypeHasUsername do
   @moduledoc  """
   The chat is public, because it has an active username.
@@ -12517,28 +16339,43 @@ defmodule DeviceTokenBlackBerryPush do
 
   defstruct "@type": "deviceTokenBlackBerryPush", "@extra": nil, token: nil
 end
+defmodule MessageChatOwnerLeft do
+  @moduledoc  """
+  The owner of the chat has left.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | new_owner_user_id | int53 | Identifier of the user who will become the new owner of the chat if the previous owner isn't return; 0 if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_owner_left.html).
+  """
+
+  defstruct "@type": "messageChatOwnerLeft", "@extra": nil, new_owner_user_id: nil
+end
 defmodule InputMessageVideo do
   @moduledoc  """
   A video message.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | video | InputFile | Video to be sent. |
+  | video | InputFile | Video to be sent. The video is expected to be re-encoded to MPEG4 format with H.264 codec by the sender. |
   | thumbnail | inputThumbnail | Video thumbnail; pass null to skip thumbnail uploading. |
+  | cover | InputFile | Cover of the video; pass null to skip cover uploading; not supported in secret chats and for self-destructing messages. |
+  | start_timestamp | int32 | Timestamp from which the video playing must start, in seconds. |
   | added_sticker_file_ids | int32 | File identifiers of the stickers added to the video, if applicable. |
   | duration | int32 | Duration of the video, in seconds. |
   | width | int32 | Video width. |
   | height | int32 | Video height. |
-  | supports_streaming | bool | True, if the video is supposed to be streamed. |
+  | supports_streaming | bool | True, if the video is expected to be streamed. |
   | caption | formattedText | Video caption; pass null to use an empty caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
-  | show_caption_above_media | bool | True, if caption must be shown above the video; otherwise, caption must be shown below the video; not supported in secret chats. |
+  | show_caption_above_media | bool | True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats. |
   | self_destruct_type | MessageSelfDestructType | Video self-destruct type; pass null if none; private chats only. |
   | has_spoiler | bool | True, if the video preview must be covered by a spoiler animation; not supported in secret chats. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video.html).
   """
 
-  defstruct "@type": "inputMessageVideo", "@extra": nil, video: nil, thumbnail: nil, added_sticker_file_ids: nil, duration: nil, width: nil, height: nil, supports_streaming: nil, caption: nil, show_caption_above_media: nil, self_destruct_type: nil, has_spoiler: nil
+  defstruct "@type": "inputMessageVideo", "@extra": nil, video: nil, thumbnail: nil, cover: nil, start_timestamp: nil, added_sticker_file_ids: nil, duration: nil, width: nil, height: nil, supports_streaming: nil, caption: nil, show_caption_above_media: nil, self_destruct_type: nil, has_spoiler: nil
 end
 defmodule VectorPathCommand do
   @moduledoc  """
@@ -12562,8 +16399,11 @@ defmodule SupergroupFullInfo do
   | restricted_count | int32 | Number of restricted users in the supergroup; 0 if unknown. |
   | banned_count | int32 | Number of users banned from chat; 0 if unknown. |
   | linked_chat_id | int53 | Chat identifier of a discussion group for the channel, or a channel, for which the supergroup is the designated discussion group; 0 if none or unknown. |
+  | direct_messages_chat_id | int53 | Chat identifier of a direct messages group for the channel, or a channel, for which the supergroup is the designated direct messages group; 0 if none. |
   | slow_mode_delay | int32 | Delay between consecutive sent messages for non-administrator supergroup members, in seconds. |
   | slow_mode_delay_expires_in | double | Time left before next message can be sent in the supergroup, in seconds. An <a class="el" href="classtd_1_1td__api_1_1update_supergroup_full_info.html">updateSupergroupFullInfo</a> update is not triggered when value of this field changes, but both new and old values are non-zero. |
+  | can_enable_paid_messages | bool | True, if paid messages can be enabled in the supergroup chat; for supergroup only. |
+  | can_enable_paid_reaction | bool | True, if paid reaction can be enabled in the channel chat; for channels only. |
   | can_get_members | bool | True, if members of the chat can be retrieved via <a class="el" href="classtd_1_1td__api_1_1get_supergroup_members.html">getSupergroupMembers</a> or <a class="el" href="classtd_1_1td__api_1_1search_chat_members.html">searchChatMembers</a>. |
   | has_hidden_members | bool | True, if non-administrators can receive only administrators and bots using <a class="el" href="classtd_1_1td__api_1_1get_supergroup_members.html">getSupergroupMembers</a> or <a class="el" href="classtd_1_1td__api_1_1search_chat_members.html">searchChatMembers</a>. |
   | can_hide_members | bool | True, if non-administrators and non-bots can be hidden in responses to <a class="el" href="classtd_1_1td__api_1_1get_supergroup_members.html">getSupergroupMembers</a> and <a class="el" href="classtd_1_1td__api_1_1search_chat_members.html">searchChatMembers</a> for non-administrators. |
@@ -12571,25 +16411,32 @@ defmodule SupergroupFullInfo do
   | can_set_location | bool | True, if the supergroup location can be changed. |
   | can_get_statistics | bool | True, if the supergroup or channel statistics are available. |
   | can_get_revenue_statistics | bool | True, if the supergroup or channel revenue statistics are available. |
+  | can_get_star_revenue_statistics | bool | True, if the supergroup or channel Telegram Star revenue statistics are available. |
+  | can_send_gift | bool | True, if the user can send a gift to the supergroup or channel using <a class="el" href="classtd_1_1td__api_1_1send_gift.html">sendGift</a> or <a class="el" href="classtd_1_1td__api_1_1transfer_gift.html">transferGift</a>. |
   | can_toggle_aggressive_anti_spam | bool | True, if aggressive anti-spam checks can be enabled or disabled in the supergroup. |
   | is_all_history_available | bool | True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available, so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators. |
   | can_have_sponsored_messages | bool | True, if the chat can have sponsored messages. The value of this field is only available to the owner of the chat. |
   | has_aggressive_anti_spam_enabled | bool | True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators. |
+  | has_paid_media_allowed | bool | True, if paid media can be sent and forwarded to the channel chat; for channels only. |
   | has_pinned_stories | bool | True, if the supergroup or channel has pinned stories. |
+  | gift_count | int32 | Number of saved to profile gifts for channels without can_post_messages administrator right, otherwise, the total number of received gifts. |
   | my_boost_count | int32 | Number of times the current user boosted the supergroup or channel. |
   | unrestrict_boost_count | int32 | Number of times the supergroup must be boosted by a user to ignore slow mode and chat permission restrictions; 0 if unspecified. |
+  | outgoing_paid_message_star_count | int53 | Number of Telegram Stars that must be paid by the current user for each sent message to the supergroup. |
   | sticker_set_id | int64 | Identifier of the supergroup sticker set that must be shown before user sticker sets; 0 if none. |
   | custom_emoji_sticker_set_id | int64 | Identifier of the custom emoji sticker set that can be used in the supergroup without Telegram Premium subscription; 0 if none. |
   | location | chatLocation | Location to which the supergroup is connected; may be null if none. |
   | invite_link | chatInviteLink | Primary invite link for the chat; may be null. For chat administrators with can_invite_users right only. |
   | bot_commands | botCommands | List of commands of bots in the group. |
+  | bot_verification | botVerification | Information about verification status of the supergroup or the channel provided by a bot; may be null if none or unknown. |
+  | main_profile_tab | ProfileTab | The main tab chosen by the administrators of the channel; may be null if not chosen manually. |
   | upgraded_from_basic_group_id | int53 | Identifier of the basic group from which supergroup was upgraded; 0 if none. |
   | upgraded_from_max_message_id | int53 | Identifier of the last message in the basic group from which supergroup was upgraded; 0 if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).
   """
 
-  defstruct "@type": "supergroupFullInfo", "@extra": nil, photo: nil, description: nil, member_count: nil, administrator_count: nil, restricted_count: nil, banned_count: nil, linked_chat_id: nil, slow_mode_delay: nil, slow_mode_delay_expires_in: nil, can_get_members: nil, has_hidden_members: nil, can_hide_members: nil, can_set_sticker_set: nil, can_set_location: nil, can_get_statistics: nil, can_get_revenue_statistics: nil, can_toggle_aggressive_anti_spam: nil, is_all_history_available: nil, can_have_sponsored_messages: nil, has_aggressive_anti_spam_enabled: nil, has_pinned_stories: nil, my_boost_count: nil, unrestrict_boost_count: nil, sticker_set_id: nil, custom_emoji_sticker_set_id: nil, location: nil, invite_link: nil, bot_commands: nil, upgraded_from_basic_group_id: nil, upgraded_from_max_message_id: nil
+  defstruct "@type": "supergroupFullInfo", "@extra": nil, photo: nil, description: nil, member_count: nil, administrator_count: nil, restricted_count: nil, banned_count: nil, linked_chat_id: nil, direct_messages_chat_id: nil, slow_mode_delay: nil, slow_mode_delay_expires_in: nil, can_enable_paid_messages: nil, can_enable_paid_reaction: nil, can_get_members: nil, has_hidden_members: nil, can_hide_members: nil, can_set_sticker_set: nil, can_set_location: nil, can_get_statistics: nil, can_get_revenue_statistics: nil, can_get_star_revenue_statistics: nil, can_send_gift: nil, can_toggle_aggressive_anti_spam: nil, is_all_history_available: nil, can_have_sponsored_messages: nil, has_aggressive_anti_spam_enabled: nil, has_paid_media_allowed: nil, has_pinned_stories: nil, gift_count: nil, my_boost_count: nil, unrestrict_boost_count: nil, outgoing_paid_message_star_count: nil, sticker_set_id: nil, custom_emoji_sticker_set_id: nil, location: nil, invite_link: nil, bot_commands: nil, bot_verification: nil, main_profile_tab: nil, upgraded_from_basic_group_id: nil, upgraded_from_max_message_id: nil
 end
 defmodule MessageChatJoinByRequest do
   @moduledoc  """
@@ -12617,6 +16464,19 @@ defmodule UpdateNewShippingQuery do
 
   defstruct "@type": "updateNewShippingQuery", "@extra": nil, id: nil, sender_user_id: nil, invoice_payload: nil, shipping_address: nil
 end
+defmodule StarTransactionTypeBusinessBotTransferReceive do
+  @moduledoc  """
+  The transaction is a transfer of Telegram Stars from a business account; relevant for bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who sent Telegram Stars. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_business_bot_transfer_receive.html).
+  """
+
+  defstruct "@type": "starTransactionTypeBusinessBotTransferReceive", "@extra": nil, user_id: nil
+end
 defmodule FirebaseAuthenticationSettings do
   @moduledoc  """
 
@@ -12641,6 +16501,15 @@ defmodule MessageForwardInfo do
   """
 
   defstruct "@type": "messageForwardInfo", "@extra": nil, origin: nil, date: nil, source: nil, public_service_announcement_type: nil
+end
+defmodule SettingsSection do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_settings_section.html).
+  """
+
+  defstruct "@type": "SettingsSection", "@extra": nil
 end
 defmodule MessageViewer do
   @moduledoc  """
@@ -12676,19 +16545,6 @@ defmodule MaskPointChin do
 
   defstruct "@type": "maskPointChin", "@extra": nil
 end
-defmodule UpdateUsersNearby do
-  @moduledoc  """
-  The list of users nearby has changed. The update is guaranteed to be sent only 60 seconds after a successful searchChatsNearby request.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | users_nearby | chatNearby | The new list of users nearby. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_users_nearby.html).
-  """
-
-  defstruct "@type": "updateUsersNearby", "@extra": nil, users_nearby: nil
-end
 defmodule PassportElementTypePassportRegistration do
   @moduledoc  """
   A Telegram Passport element containing the registration page of the user's passport.
@@ -12711,6 +16567,16 @@ defmodule TestVectorInt do
   """
 
   defstruct "@type": "testVectorInt", "@extra": nil, value: nil
+end
+defmodule PremiumFeaturePaidMessages do
+  @moduledoc  """
+  The ability to require a payment for incoming messages in new chats.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_paid_messages.html).
+  """
+
+  defstruct "@type": "premiumFeaturePaidMessages", "@extra": nil
 end
 defmodule SuggestedActionViewChecksHint do
   @moduledoc  """
@@ -12736,9 +16602,61 @@ defmodule ChatBoostLinkInfo do
 
   defstruct "@type": "chatBoostLinkInfo", "@extra": nil, is_public: nil, chat_id: nil
 end
+defmodule CanPostStoryResultOk do
+  @moduledoc  """
+  A story can be sent.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | story_count | int32 | Number of stories that can be posted by the user. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story_result_ok.html).
+  """
+
+  defstruct "@type": "canPostStoryResultOk", "@extra": nil, story_count: nil
+end
+defmodule DateTimePartPrecisionLong do
+  @moduledoc  """
+  Show the date or time in a long way (March 17, 2022 or 22:45:00.)
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1date_time_part_precision_long.html).
+  """
+
+  defstruct "@type": "dateTimePartPrecisionLong", "@extra": nil
+end
+defmodule GroupCallJoinParameters do
+  @moduledoc  """
+  Describes parameters used to join a group call.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | audio_source_id | int32 | Audio channel synchronization source identifier; received from tgcalls. |
+  | payload | string | Group call join payload; received from tgcalls. |
+  | is_muted | bool | Pass true to join the call with muted microphone. |
+  | is_my_video_enabled | bool | Pass true if the user's video is enabled. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_join_parameters.html).
+  """
+
+  defstruct "@type": "groupCallJoinParameters", "@extra": nil, audio_source_id: nil, payload: nil, is_muted: nil, is_my_video_enabled: nil
+end
+defmodule StarTransactionTypeFragmentWithdrawal do
+  @moduledoc  """
+  The transaction is a withdrawal of earned Telegram Stars to Fragment; relevant for regular users, bots, supergroup and channel chats only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | withdrawal_state | RevenueWithdrawalState | State of the withdrawal; may be null for refunds from Fragment. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_fragment_withdrawal.html).
+  """
+
+  defstruct "@type": "starTransactionTypeFragmentWithdrawal", "@extra": nil, withdrawal_state: nil
+end
 defmodule VideoChat do
   @moduledoc  """
-  Describes a video chat.
+  Describes a video chat, i.e. a group call bound to a chat.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -12765,6 +16683,16 @@ defmodule MessagePosition do
   """
 
   defstruct "@type": "messagePosition", "@extra": nil, position: nil, message_id: nil, date: nil
+end
+defmodule GiftForResaleOrderPrice do
+  @moduledoc  """
+  The gifts will be sorted by their price from the lowest to the highest.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_for_resale_order_price.html).
+  """
+
+  defstruct "@type": "giftForResaleOrderPrice", "@extra": nil
 end
 defmodule BotCommandScopeDefault do
   @moduledoc  """
@@ -12812,6 +16740,19 @@ defmodule InternalLinkTypeRestorePurchases do
 
   defstruct "@type": "internalLinkTypeRestorePurchases", "@extra": nil
 end
+defmodule InputPollOption do
+  @moduledoc  """
+  Describes one answer option of a poll to be created.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | formattedText | Option text; 1-100 characters. Only custom emoji entities are allowed to be added and only by Premium users. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_option.html).
+  """
+
+  defstruct "@type": "inputPollOption", "@extra": nil, text: nil
+end
 defmodule ChatActionBarInviteMembers do
   @moduledoc  """
   The chat is a recently created group chat to which new members can be invited.
@@ -12822,15 +16763,20 @@ defmodule ChatActionBarInviteMembers do
 
   defstruct "@type": "chatActionBarInviteMembers", "@extra": nil
 end
-defmodule StarTransactionPartnerTelegram do
+defmodule ChatEventMemberSubscriptionExtended do
   @moduledoc  """
-  The transaction is a transaction with Telegram through a bot.
+  A chat member extended their subscription to the chat.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Affected chat member user identifier. |
+  | old_status | ChatMemberStatus | Previous status of the chat member. |
+  | new_status | ChatMemberStatus | New status of the chat member. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_partner_telegram.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_member_subscription_extended.html).
   """
 
-  defstruct "@type": "starTransactionPartnerTelegram", "@extra": nil
+  defstruct "@type": "chatEventMemberSubscriptionExtended", "@extra": nil, user_id: nil, old_status: nil, new_status: nil
 end
 defmodule InlineQueryResultAnimation do
   @moduledoc  """
@@ -12853,14 +16799,12 @@ defmodule InternalLinkTypeProxy do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | server | string | Proxy server domain or IP address. |
-  | port | int32 | Proxy server port. |
-  | type | ProxyType | Type of the proxy. |
+  | proxy | proxy | The proxy; may be null if the proxy is unsupported, in which case an alert can be shown to the user. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_proxy.html).
   """
 
-  defstruct "@type": "internalLinkTypeProxy", "@extra": nil, server: nil, port: nil, type: nil
+  defstruct "@type": "internalLinkTypeProxy", "@extra": nil, proxy: nil
 end
 defmodule UserTypeDeleted do
   @moduledoc  """
@@ -12885,23 +16829,13 @@ defmodule UpdateSupergroup do
 
   defstruct "@type": "updateSupergroup", "@extra": nil, supergroup: nil
 end
-defmodule PremiumLimitTypeWeeklySentStoryCount do
-  @moduledoc  """
-  The maximum number of stories sent per week.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_weekly_sent_story_count.html).
-  """
-
-  defstruct "@type": "premiumLimitTypeWeeklySentStoryCount", "@extra": nil
-end
 defmodule ChatFolder do
   @moduledoc  """
   Represents a folder for user chats.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | title | string | The title of the folder; 1-12 characters without line feeds. |
+  | name | chatFolderName | The name of the folder. |
   | icon | chatFolderIcon | The chosen icon for the chat folder; may be null. If null, use <a class="el" href="classtd_1_1td__api_1_1get_chat_folder_default_icon_name.html">getChatFolderDefaultIconName</a> to get default icon name for the folder. |
   | color_id | int32 | The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is disabled. Can't be changed if folder tags are disabled or the current user doesn't have Telegram Premium subscription. |
   | is_shareable | bool | True, if at least one link has been created for the folder. |
@@ -12920,7 +16854,32 @@ defmodule ChatFolder do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_folder.html).
   """
 
-  defstruct "@type": "chatFolder", "@extra": nil, title: nil, icon: nil, color_id: nil, is_shareable: nil, pinned_chat_ids: nil, included_chat_ids: nil, excluded_chat_ids: nil, exclude_muted: nil, exclude_read: nil, exclude_archived: nil, include_contacts: nil, include_non_contacts: nil, include_bots: nil, include_groups: nil, include_channels: nil
+  defstruct "@type": "chatFolder", "@extra": nil, name: nil, icon: nil, color_id: nil, is_shareable: nil, pinned_chat_ids: nil, included_chat_ids: nil, excluded_chat_ids: nil, exclude_muted: nil, exclude_read: nil, exclude_archived: nil, include_contacts: nil, include_non_contacts: nil, include_bots: nil, include_groups: nil, include_channels: nil
+end
+defmodule StarTransactionTypePaidGroupCallMessageReceive do
+  @moduledoc  """
+  The transaction is a receiving of a paid group call message; relevant for regular users and channel chats only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | sender_id | MessageSender | Identifier of the sender of the message. |
+  | commission_per_mille | int32 | The number of Telegram Stars received by the Telegram for each 1000 Telegram Stars paid for message sending. |
+  | commission_star_amount | starAmount | The Telegram Star amount that was received by Telegram; can be negative for refunds. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_paid_group_call_message_receive.html).
+  """
+
+  defstruct "@type": "starTransactionTypePaidGroupCallMessageReceive", "@extra": nil, sender_id: nil, commission_per_mille: nil, commission_star_amount: nil
+end
+defmodule SettingsSectionMyToncoins do
+  @moduledoc  """
+  The Toncoin balance and transaction section.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_my_toncoins.html).
+  """
+
+  defstruct "@type": "settingsSectionMyToncoins", "@extra": nil
 end
 defmodule UpdateAttachmentMenuBots do
   @moduledoc  """
@@ -12935,18 +16894,21 @@ defmodule UpdateAttachmentMenuBots do
 
   defstruct "@type": "updateAttachmentMenuBots", "@extra": nil, bots: nil
 end
-defmodule CanSendStoryResultMonthlyLimitExceeded do
+defmodule GiftCollection do
   @moduledoc  """
-  The monthly limit for the number of posted stories exceeded. The user needs to buy Telegram Premium or wait specified time.
+  Describes collection of gifts.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | retry_after | int32 | Time left before the user can send the next story. |
+  | id | int32 | Unique identifier of the collection. |
+  | name | string | Name of the collection. |
+  | icon | sticker | Icon of the collection; may be null if none. |
+  | gift_count | int32 | Total number of gifts in the collection. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_story_result_monthly_limit_exceeded.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_collection.html).
   """
 
-  defstruct "@type": "canSendStoryResultMonthlyLimitExceeded", "@extra": nil, retry_after: nil
+  defstruct "@type": "giftCollection", "@extra": nil, id: nil, name: nil, icon: nil, gift_count: nil
 end
 defmodule ChatBoostSlots do
   @moduledoc  """
@@ -12977,6 +16939,15 @@ defmodule PaymentProviderStripe do
 
   defstruct "@type": "paymentProviderStripe", "@extra": nil, publishable_key: nil, need_country: nil, need_postal_code: nil, need_cardholder_name: nil
 end
+defmodule ReportStoryResult do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_report_story_result.html).
+  """
+
+  defstruct "@type": "ReportStoryResult", "@extra": nil
+end
 defmodule CallStateError do
   @moduledoc  """
   The call has ended with an error.
@@ -12989,20 +16960,6 @@ defmodule CallStateError do
   """
 
   defstruct "@type": "callStateError", "@extra": nil, error: nil
-end
-defmodule ChatNearby do
-  @moduledoc  """
-  Describes a chat located nearby.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | chat_id | int53 | Chat identifier. |
-  | distance | int32 | Distance to the chat location, in meters. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_nearby.html).
-  """
-
-  defstruct "@type": "chatNearby", "@extra": nil, chat_id: nil, distance: nil
 end
 defmodule PushMessageContentPhoto do
   @moduledoc  """
@@ -13045,6 +17002,21 @@ defmodule ReportReasonPersonalDetails do
 
   defstruct "@type": "reportReasonPersonalDetails", "@extra": nil
 end
+defmodule MessageChatHasProtectedContentToggled do
+  @moduledoc  """
+  Chat has_protected_content setting was changed or request to change it was rejected.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | request_message_id | int53 | Identifier of the message with the request to change the setting; can be an identifier of a deleted message or 0. |
+  | old_has_protected_content | bool | Previous value of the setting. |
+  | new_has_protected_content | bool | New value of the setting. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_has_protected_content_toggled.html).
+  """
+
+  defstruct "@type": "messageChatHasProtectedContentToggled", "@extra": nil, request_message_id: nil, old_has_protected_content: nil, new_has_protected_content: nil
+end
 defmodule PhoneNumberInfo do
   @moduledoc  """
   Contains information about a phone number.
@@ -13060,6 +17032,43 @@ defmodule PhoneNumberInfo do
   """
 
   defstruct "@type": "phoneNumberInfo", "@extra": nil, country: nil, country_calling_code: nil, formatted_phone_number: nil, is_anonymous: nil
+end
+defmodule CanSendGiftResult do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_can_send_gift_result.html).
+  """
+
+  defstruct "@type": "CanSendGiftResult", "@extra": nil
+end
+defmodule MessageGiveawayPrizeStars do
+  @moduledoc  """
+  A Telegram Stars were received by the current user from a giveaway.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | Number of Telegram Stars that were received. |
+  | transaction_id | string | Identifier of the transaction for Telegram Stars credit. |
+  | boosted_chat_id | int53 | Identifier of the supergroup or channel chat, which was automatically boosted by the winners of the giveaway. |
+  | giveaway_message_id | int53 | Identifier of the message with the giveaway in the boosted chat; may be 0 or an identifier of a deleted message. |
+  | is_unclaimed | bool | True, if the corresponding winner wasn't chosen and the Telegram Stars were received by the owner of the boosted chat. |
+  | sticker | sticker | A sticker to be shown in the message; may be null if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_giveaway_prize_stars.html).
+  """
+
+  defstruct "@type": "messageGiveawayPrizeStars", "@extra": nil, star_count: nil, transaction_id: nil, boosted_chat_id: nil, giveaway_message_id: nil, is_unclaimed: nil, sticker: nil
+end
+defmodule ReportStoryResultOk do
+  @moduledoc  """
+  The story was reported successfully.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_story_result_ok.html).
+  """
+
+  defstruct "@type": "reportStoryResultOk", "@extra": nil
 end
 defmodule ChatEventLinkedChatChanged do
   @moduledoc  """
@@ -13098,6 +17107,16 @@ defmodule PageBlockHorizontalAlignmentRight do
 
   defstruct "@type": "pageBlockHorizontalAlignmentRight", "@extra": nil
 end
+defmodule FileTypeSelfDestructingLivePhotoVideo do
+  @moduledoc  """
+  The file is a seld-destructing video for a live photo in a private chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_self_destructing_live_photo_video.html).
+  """
+
+  defstruct "@type": "fileTypeSelfDestructingLivePhotoVideo", "@extra": nil
+end
 defmodule SearchMessagesFilterAnimation do
   @moduledoc  """
   Returns only animation messages.
@@ -13116,6 +17135,7 @@ defmodule Invoice do
   |------|------| ------------|
   | currency | string | ISO 4217 currency code. |
   | price_parts | labeledPricePart | A list of objects used to calculate the total price of the product. |
+  | subscription_period | int32 | The number of seconds between consecutive Telegram Star debiting for subscription invoices; 0 if the invoice doesn't create subscription. |
   | max_tip_amount | int53 | The maximum allowed amount of tip in the smallest units of the currency. |
   | suggested_tip_amounts | int53 | Suggested amounts of tip in the smallest units of the currency. |
   | recurring_payment_terms_of_service_url | string | An HTTP URL with terms of service for recurring payments. If non-empty, the invoice payment will result in recurring payments and the user must accept the terms of service before allowed to pay. |
@@ -13132,7 +17152,7 @@ defmodule Invoice do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invoice.html).
   """
 
-  defstruct "@type": "invoice", "@extra": nil, currency: nil, price_parts: nil, max_tip_amount: nil, suggested_tip_amounts: nil, recurring_payment_terms_of_service_url: nil, terms_of_service_url: nil, is_test: nil, need_name: nil, need_phone_number: nil, need_email_address: nil, need_shipping_address: nil, send_phone_number_to_provider: nil, send_email_address_to_provider: nil, is_flexible: nil
+  defstruct "@type": "invoice", "@extra": nil, currency: nil, price_parts: nil, subscription_period: nil, max_tip_amount: nil, suggested_tip_amounts: nil, recurring_payment_terms_of_service_url: nil, terms_of_service_url: nil, is_test: nil, need_name: nil, need_phone_number: nil, need_email_address: nil, need_shipping_address: nil, send_phone_number_to_provider: nil, send_email_address_to_provider: nil, is_flexible: nil
 end
 defmodule MessageSourceScreenshot do
   @moduledoc  """
@@ -13156,6 +17176,16 @@ defmodule PageBlockSubheader do
   """
 
   defstruct "@type": "pageBlockSubheader", "@extra": nil, subheader: nil
+end
+defmodule ReportSponsoredResultFailed do
+  @moduledoc  """
+  The sponsored message is too old or not found.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_sponsored_result_failed.html).
+  """
+
+  defstruct "@type": "reportSponsoredResultFailed", "@extra": nil
 end
 defmodule UserPrivacySettingAllowFindingByPhoneNumber do
   @moduledoc  """
@@ -13205,6 +17235,15 @@ defmodule TrendingStickerSets do
 
   defstruct "@type": "trendingStickerSets", "@extra": nil, total_count: nil, sets: nil, is_premium: nil
 end
+defmodule CraftGiftResult do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_craft_gift_result.html).
+  """
+
+  defstruct "@type": "CraftGiftResult", "@extra": nil
+end
 defmodule UpdateBusinessMessagesDeleted do
   @moduledoc  """
   Messages in a business account were deleted; for bots only.
@@ -13220,14 +17259,31 @@ defmodule UpdateBusinessMessagesDeleted do
 
   defstruct "@type": "updateBusinessMessagesDeleted", "@extra": nil, connection_id: nil, chat_id: nil, message_ids: nil
 end
+defmodule MessageStakeDice do
+  @moduledoc  """
+  A stake dice message. The dice value is randomly generated by the server.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | initial_state | DiceStickers | The animated stickers with the initial dice animation; may be null if unknown. The update <a class="el" href="classtd_1_1td__api_1_1update_message_content.html">updateMessageContent</a> will be sent when the sticker became known. |
+  | final_state | DiceStickers | The animated stickers with the final dice animation; may be null if unknown. The update <a class="el" href="classtd_1_1td__api_1_1update_message_content.html">updateMessageContent</a> will be sent when the sticker became known. |
+  | value | int32 | The dice value. If the value is 0, then the dice don't have final state yet. |
+  | stake_toncoin_amount | int53 | The Toncoin amount that was staked; in the smallest units of the currency. |
+  | prize_toncoin_amount | int53 | The Toncoin amount that was gained from the roll; in the smallest units of the currency; -1 if the dice don't have final state yet. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_stake_dice.html).
+  """
+
+  defstruct "@type": "messageStakeDice", "@extra": nil, initial_state: nil, final_state: nil, value: nil, stake_toncoin_amount: nil, prize_toncoin_amount: nil
+end
 defmodule UpdateAccentColors do
   @moduledoc  """
   The list of supported accent colors has changed.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | colors | accentColor | Information about supported colors; colors with identifiers 0 (red), 1 (orange), 2 (purple/violet), 3 (green), 4 (cyan), 5 (blue), 6 (pink) must always be supported and aren't included in the list. The exact colors for the accent colors with identifiers 0-6 must be taken from the app theme. |
-  | available_accent_color_ids | int32 | The list of accent color identifiers, which can be set through <a class="el" href="classtd_1_1td__api_1_1set_accent_color.html">setAccentColor</a> and <a class="el" href="classtd_1_1td__api_1_1set_chat_accent_color.html">setChatAccentColor</a>. The colors must be shown in the specififed order. |
+  | colors | accentColor | Information about supported colors; colors with identifiers 0 (red), 1 (orange), 2 (purple/violet), 3 (green), 4 (cyan), 5 (blue), 6 (pink) must always be supported and aren't included in the list. The exact colors for the accent colors with identifiers 0-6 must be taken from the application theme. |
+  | available_accent_color_ids | int32 | The list of accent color identifiers, which can be set through <a class="el" href="classtd_1_1td__api_1_1set_accent_color.html">setAccentColor</a> and <a class="el" href="classtd_1_1td__api_1_1set_chat_accent_color.html">setChatAccentColor</a>. The colors must be shown in the specified order. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_accent_colors.html).
   """
@@ -13241,12 +17297,12 @@ defmodule UpdateChatTheme do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier. |
-  | theme_name | string | The new name of the chat theme; may be empty if theme was reset to default. |
+  | theme | ChatTheme | The new theme of the chat; may be null if theme was reset to default. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_theme.html).
   """
 
-  defstruct "@type": "updateChatTheme", "@extra": nil, chat_id: nil, theme_name: nil
+  defstruct "@type": "updateChatTheme", "@extra": nil, chat_id: nil, theme: nil
 end
 defmodule BotWriteAccessAllowReasonConnectedWebsite do
   @moduledoc  """
@@ -13280,6 +17336,16 @@ defmodule ThumbnailFormatJpeg do
 
   defstruct "@type": "thumbnailFormatJpeg", "@extra": nil
 end
+defmodule ActiveStoryStateRead do
+  @moduledoc  """
+  The chat has active stories, all of which were read.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1active_story_state_read.html).
+  """
+
+  defstruct "@type": "activeStoryStateRead", "@extra": nil
+end
 defmodule CallbackQueryPayload do
   @moduledoc  """
 
@@ -13289,15 +17355,22 @@ defmodule CallbackQueryPayload do
 
   defstruct "@type": "CallbackQueryPayload", "@extra": nil
 end
-defmodule CanSendStoryResultActiveStoryLimitExceeded do
+defmodule PaidReactor do
   @moduledoc  """
-  The limit for the number of active stories exceeded. The user can buy Telegram Premium, delete an active story, or wait for the oldest story to expire.
+  Contains information about a user who added paid reactions.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | sender_id | MessageSender | Identifier of the user or chat that added the reactions; may be null for anonymous reactors that aren't the current user. |
+  | star_count | int53 | Number of Telegram Stars added. |
+  | is_top | bool | True, if the reactor is one of the most active reactors; may be false if the reactor is the current user. |
+  | is_me | bool | True, if the paid reaction was added by the current user. |
+  | is_anonymous | bool | True, if the reactor is anonymous. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_story_result_active_story_limit_exceeded.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_reactor.html).
   """
 
-  defstruct "@type": "canSendStoryResultActiveStoryLimitExceeded", "@extra": nil
+  defstruct "@type": "paidReactor", "@extra": nil, sender_id: nil, star_count: nil, is_top: nil, is_me: nil, is_anonymous: nil
 end
 defmodule AttachmentMenuBot do
   @moduledoc  """
@@ -13363,6 +17436,25 @@ defmodule UserSupportInfo do
 
   defstruct "@type": "userSupportInfo", "@extra": nil, message: nil, author: nil, date: nil
 end
+defmodule PremiumFeatureProtectPrivateChatContent do
+  @moduledoc  """
+  The ability to enable content protection in private chats.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_protect_private_chat_content.html).
+  """
+
+  defstruct "@type": "premiumFeatureProtectPrivateChatContent", "@extra": nil
+end
+defmodule GiftResaleResult do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_gift_resale_result.html).
+  """
+
+  defstruct "@type": "GiftResaleResult", "@extra": nil
+end
 defmodule ChatMemberStatusRestricted do
   @moduledoc  """
   The user is under certain restrictions in the chat. Not supported in basic groups and channels.
@@ -13384,7 +17476,7 @@ defmodule StorePaymentPurposePremiumGiveaway do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | parameters | premiumGiveawayParameters | Giveaway parameters. |
+  | parameters | giveawayParameters | Giveaway parameters. |
   | currency | string | ISO 4217 currency code of the payment currency. |
   | amount | int53 | Paid amount, in the smallest units of the currency. |
 
@@ -13431,6 +17523,32 @@ defmodule ScopeAutosaveSettings do
 
   defstruct "@type": "scopeAutosaveSettings", "@extra": nil, autosave_photos: nil, autosave_videos: nil, max_video_file_size: nil
 end
+defmodule SettingsSectionMyStars do
+  @moduledoc  """
+  The Telegram Star balance and transaction section.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "top-up", "stats", "gift", "earn". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_my_stars.html).
+  """
+
+  defstruct "@type": "settingsSectionMyStars", "@extra": nil, subsection: nil
+end
+defmodule InternalLinkTypeGroupCall do
+  @moduledoc  """
+  The link is a link to a group call that isn't bound to a chat. Use getGroupCallParticipants to get the list of group call participants and show them on the join group call screen. Call joinGroupCall with the given invite_link to join the call.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | invite_link | string | Internal representation of the invite link. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_group_call.html).
+  """
+
+  defstruct "@type": "internalLinkTypeGroupCall", "@extra": nil, invite_link: nil
+end
 defmodule PageBlockHorizontalAlignmentLeft do
   @moduledoc  """
   The content must be left-aligned.
@@ -13447,13 +17565,54 @@ defmodule UpdateStoryDeleted do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | story_sender_chat_id | int53 | Identifier of the chat that posted the story. |
+  | story_poster_chat_id | int53 | Identifier of the chat that posted the story. |
   | story_id | int32 | Story identifier. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_story_deleted.html).
   """
 
-  defstruct "@type": "updateStoryDeleted", "@extra": nil, story_sender_chat_id: nil, story_id: nil
+  defstruct "@type": "updateStoryDeleted", "@extra": nil, story_poster_chat_id: nil, story_id: nil
+end
+defmodule CanSendGiftResultFail do
+  @moduledoc  """
+  The gift can't be sent now by the current user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | reason | formattedText | Reason to be shown to the user. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_gift_result_fail.html).
+  """
+
+  defstruct "@type": "canSendGiftResultFail", "@extra": nil, reason: nil
+end
+defmodule GiftForResaleOrderNumber do
+  @moduledoc  """
+  The gifts will be sorted by their number from the smallest to the largest.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_for_resale_order_number.html).
+  """
+
+  defstruct "@type": "giftForResaleOrderNumber", "@extra": nil
+end
+defmodule LinkPreviewTypeEmbeddedVideoPlayer do
+  @moduledoc  """
+  The link is a link to a video player.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | URL of the external video player. |
+  | video | video | The cached video; may be null if unknown. |
+  | thumbnail | photo | Thumbnail of the video; may be null if unknown. |
+  | duration | int32 | Duration of the video, in seconds. |
+  | width | int32 | Expected width of the embedded player. |
+  | height | int32 | Expected height of the embedded player. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_embedded_video_player.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeEmbeddedVideoPlayer", "@extra": nil, url: nil, video: nil, thumbnail: nil, duration: nil, width: nil, height: nil
 end
 defmodule InputInlineQueryResultPhoto do
   @moduledoc  """
@@ -13492,7 +17651,7 @@ defmodule PushMessageContentInvoice do
 end
 defmodule ReplyMarkupRemoveKeyboard do
   @moduledoc  """
-  Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, updateChatReplyMarkup with message_id == 0 will be sent.
+  Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, updateChatReplyMarkup with reply_markup_message == null will be sent.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -13502,6 +17661,57 @@ defmodule ReplyMarkupRemoveKeyboard do
   """
 
   defstruct "@type": "replyMarkupRemoveKeyboard", "@extra": nil, is_personal: nil
+end
+defmodule InputStoryAreaTypeWeather do
+  @moduledoc  """
+  An area with information about weather.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | temperature | double | Temperature, in degree Celsius. |
+  | emoji | string | Emoji representing the weather. |
+  | background_color | int32 | A color of the area background in the ARGB format. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_area_type_weather.html).
+  """
+
+  defstruct "@type": "inputStoryAreaTypeWeather", "@extra": nil, temperature: nil, emoji: nil, background_color: nil
+end
+defmodule ChecklistTask do
+  @moduledoc  """
+  Describes a task in a checklist.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int32 | Unique identifier of the task. |
+  | text | formattedText | Text of the task; may contain only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, DateTime and automatically found entities. |
+  | completed_by | MessageSender | Identifier of the user or chat that completed the task; may be null if the task isn't completed yet. |
+  | completion_date | int32 | Point in time (Unix timestamp) when the task was completed; 0 if the task isn't completed. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1checklist_task.html).
+  """
+
+  defstruct "@type": "checklistTask", "@extra": nil, id: nil, text: nil, completed_by: nil, completion_date: nil
+end
+defmodule TransactionDirectionOutgoing do
+  @moduledoc  """
+  The transaction is outgoing and decreases the amount of owned currency.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1transaction_direction_outgoing.html).
+  """
+
+  defstruct "@type": "transactionDirectionOutgoing", "@extra": nil
+end
+defmodule PremiumLimitTypeWeeklyPostedStoryCount do
+  @moduledoc  """
+  The maximum number of stories posted per week.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_weekly_posted_story_count.html).
+  """
+
+  defstruct "@type": "premiumLimitTypeWeeklyPostedStoryCount", "@extra": nil
 end
 defmodule MessageSourceNotification do
   @moduledoc  """
@@ -13616,21 +17826,32 @@ defmodule UserPrivacySettingShowBirthdate do
 
   defstruct "@type": "userPrivacySettingShowBirthdate", "@extra": nil
 end
+defmodule BuiltInThemeArctic do
+  @moduledoc  """
+  Arctic light theme.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1built_in_theme_arctic.html).
+  """
+
+  defstruct "@type": "builtInThemeArctic", "@extra": nil
+end
 defmodule DraftMessage do
   @moduledoc  """
   Contains information about a message draft.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | reply_to | InputMessageReplyTo | Information about the message to be replied; must be of the type <a class="el" href="classtd_1_1td__api_1_1input_message_reply_to_message.html">inputMessageReplyToMessage</a>; may be null if none. |
+  | reply_to | InputMessageReplyTo | Information about the message to be replied; <a class="el" href="classtd_1_1td__api_1_1input_message_reply_to_story.html">inputMessageReplyToStory</a> is unsupported; may be null if none. |
   | date | int32 | Point in time (Unix timestamp) when the draft was created. |
   | input_message_text | InputMessageContent | Content of the message draft; must be of the type <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video_note.html">inputMessageVideoNote</a>, or <a class="el" href="classtd_1_1td__api_1_1input_message_voice_note.html">inputMessageVoiceNote</a>. |
   | effect_id | int64 | Identifier of the effect to apply to the message when it is sent; 0 if none. |
+  | suggested_post_info | inputSuggestedPostInfo | Information about the suggested post; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1draft_message.html).
   """
 
-  defstruct "@type": "draftMessage", "@extra": nil, reply_to: nil, date: nil, input_message_text: nil, effect_id: nil
+  defstruct "@type": "draftMessage", "@extra": nil, reply_to: nil, date: nil, input_message_text: nil, effect_id: nil, suggested_post_info: nil
 end
 defmodule UpdateFileAddedToDownloads do
   @moduledoc  """
@@ -13645,6 +17866,16 @@ defmodule UpdateFileAddedToDownloads do
   """
 
   defstruct "@type": "updateFileAddedToDownloads", "@extra": nil, file_download: nil, counts: nil
+end
+defmodule UserPrivacySettingAutosaveGifts do
+  @moduledoc  """
+  A privacy setting for managing whether received gifts are automatically shown on the user's profile page.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_autosave_gifts.html).
+  """
+
+  defstruct "@type": "userPrivacySettingAutosaveGifts", "@extra": nil
 end
 defmodule GroupCallVideoQuality do
   @moduledoc  """
@@ -13661,13 +17892,12 @@ defmodule UpdateForumTopicInfo do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | chat_id | int53 | Chat identifier. |
   | info | forumTopicInfo | New information about the topic. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_forum_topic_info.html).
   """
 
-  defstruct "@type": "updateForumTopicInfo", "@extra": nil, chat_id: nil, info: nil
+  defstruct "@type": "updateForumTopicInfo", "@extra": nil, info: nil
 end
 defmodule ThumbnailFormatTgs do
   @moduledoc  """
@@ -13749,6 +17979,16 @@ defmodule PassportElementTypeUtilityBill do
 
   defstruct "@type": "passportElementTypeUtilityBill", "@extra": nil
 end
+defmodule StarTransactionTypeFragmentDeposit do
+  @moduledoc  """
+  The transaction is a deposit of Telegram Stars from Fragment; relevant for regular users and bots only.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_fragment_deposit.html).
+  """
+
+  defstruct "@type": "starTransactionTypeFragmentDeposit", "@extra": nil
+end
 defmodule AuthenticationCodeTypeSmsPhrase do
   @moduledoc  """
   An authentication code is a phrase from multiple words delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code.
@@ -13762,6 +18002,31 @@ defmodule AuthenticationCodeTypeSmsPhrase do
 
   defstruct "@type": "authenticationCodeTypeSmsPhrase", "@extra": nil, first_word: nil
 end
+defmodule LinkPreviewTypeChat do
+  @moduledoc  """
+  The link is a link to a chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | type | InviteLinkChatType | Type of the chat. |
+  | photo | chatPhoto | Photo of the chat; may be null. |
+  | creates_join_request | bool | True, if the link only creates join request. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_chat.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeChat", "@extra": nil, type: nil, photo: nil, creates_join_request: nil
+end
+defmodule ReportSponsoredResultOk do
+  @moduledoc  """
+  The message was reported successfully.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_sponsored_result_ok.html).
+  """
+
+  defstruct "@type": "reportSponsoredResultOk", "@extra": nil
+end
 defmodule PremiumFeatureChatBoost do
   @moduledoc  """
   The ability to boost chats.
@@ -13771,6 +18036,41 @@ defmodule PremiumFeatureChatBoost do
   """
 
   defstruct "@type": "premiumFeatureChatBoost", "@extra": nil
+end
+defmodule LinkPreviewTypePhoto do
+  @moduledoc  """
+  The link is a link to a photo.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | photo | The photo. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_photo.html).
+  """
+
+  defstruct "@type": "linkPreviewTypePhoto", "@extra": nil, photo: nil
+end
+defmodule MessageSchedulingStateSendWhenVideoProcessed do
+  @moduledoc  """
+  The message will be sent when the video in the message is converted and optimized; can be used only by the server.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | send_date | int32 | Approximate point in time (Unix timestamp) when the message is expected to be sent. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_scheduling_state_send_when_video_processed.html).
+  """
+
+  defstruct "@type": "messageSchedulingStateSendWhenVideoProcessed", "@extra": nil, send_date: nil
+end
+defmodule DiffEntityType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_diff_entity_type.html).
+  """
+
+  defstruct "@type": "DiffEntityType", "@extra": nil
 end
 defmodule LocationAddress do
   @moduledoc  """
@@ -13802,22 +18102,51 @@ defmodule ChatPhotoSticker do
 
   defstruct "@type": "chatPhotoSticker", "@extra": nil, type: nil, background_fill: nil
 end
+defmodule ChatThemeEmoji do
+  @moduledoc  """
+  A chat theme based on an emoji.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | name | string | Name of the theme; full theme description is received through <a class="el" href="classtd_1_1td__api_1_1update_emoji_chat_themes.html">updateEmojiChatThemes</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_theme_emoji.html).
+  """
+
+  defstruct "@type": "chatThemeEmoji", "@extra": nil, name: nil
+end
 defmodule StarTransaction do
   @moduledoc  """
-  Represents a transaction changing the amount of owned Telegram stars.
+  Represents a transaction changing the amount of owned Telegram Stars.
 
   | Name | Type | Description |
   |------|------| ------------|
   | id | string | Unique identifier of the transaction. |
-  | star_count | int53 | The amount of added owned Telegram stars; negative for outgoing transactions. |
+  | star_amount | starAmount | The amount of added owned Telegram Stars; negative for outgoing transactions. |
   | is_refund | bool | True, if the transaction is a refund of a previous transaction. |
   | date | int32 | Point in time (Unix timestamp) when the transaction was completed. |
-  | partner | StarTransactionPartner | Source of the incoming transaction, or its recipient for outgoing transactions. |
+  | type | StarTransactionType | Type of the transaction. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction.html).
   """
 
-  defstruct "@type": "starTransaction", "@extra": nil, id: nil, star_count: nil, is_refund: nil, date: nil, partner: nil
+  defstruct "@type": "starTransaction", "@extra": nil, id: nil, star_amount: nil, is_refund: nil, date: nil, type: nil
+end
+defmodule UpgradedGiftOriginalDetails do
+  @moduledoc  """
+  Describes the original details about the gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | sender_id | MessageSender | Identifier of the user or the chat that sent the gift; may be null if the gift was private. |
+  | receiver_id | MessageSender | Identifier of the user or the chat that received the gift. |
+  | text | formattedText | Message added to the gift. |
+  | date | int32 | Point in time (Unix timestamp) when the gift was sent. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_original_details.html).
+  """
+
+  defstruct "@type": "upgradedGiftOriginalDetails", "@extra": nil, sender_id: nil, receiver_id: nil, text: nil, date: nil
 end
 defmodule Birthdate do
   @moduledoc  """
@@ -13848,6 +18177,15 @@ defmodule UpdateChatReadOutbox do
 
   defstruct "@type": "updateChatReadOutbox", "@extra": nil, chat_id: nil, last_read_outbox_message_id: nil
 end
+defmodule GiveawayPrize do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_giveaway_prize.html).
+  """
+
+  defstruct "@type": "GiveawayPrize", "@extra": nil
+end
 defmodule Background do
   @moduledoc  """
   Describes a chat background.
@@ -13866,21 +18204,52 @@ defmodule Background do
 
   defstruct "@type": "background", "@extra": nil, id: nil, is_default: nil, is_dark: nil, name: nil, document: nil, type: nil
 end
-defmodule PrepaidPremiumGiveaway do
+defmodule MessageGiveawayWinners do
   @moduledoc  """
-  Describes a prepaid Telegram Premium giveaway.
+  A giveaway with public winners has been completed for the chat.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | id | int64 | Unique identifier of the prepaid giveaway. |
-  | winner_count | int32 | Number of users which will receive Telegram Premium subscription gift codes. |
-  | month_count | int32 | Number of months the Telegram Premium subscription will be active after code activation. |
-  | payment_date | int32 | Point in time (Unix timestamp) when the giveaway was paid. |
+  | boosted_chat_id | int53 | Identifier of the supergroup or channel chat, which was automatically boosted by the winners of the giveaway. |
+  | giveaway_message_id | int53 | Identifier of the message with the giveaway in the boosted chat. |
+  | additional_chat_count | int32 | Number of other chats that participated in the giveaway. |
+  | actual_winners_selection_date | int32 | Point in time (Unix timestamp) when the winners were selected. May be bigger than winners selection date specified in parameters of the giveaway. |
+  | only_new_members | bool | True, if only new members of the chats were eligible for the giveaway. |
+  | was_refunded | bool | True, if the giveaway was canceled and was fully refunded. |
+  | prize | GiveawayPrize | Prize of the giveaway. |
+  | prize_description | string | Additional description of the giveaway prize. |
+  | winner_count | int32 | Total number of winners in the giveaway. |
+  | winner_user_ids | int53 | Up to 100 user identifiers of the winners of the giveaway. |
+  | unclaimed_prize_count | int32 | Number of undistributed prizes; for Telegram Premium giveaways only. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1prepaid_premium_giveaway.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_giveaway_winners.html).
   """
 
-  defstruct "@type": "prepaidPremiumGiveaway", "@extra": nil, id: nil, winner_count: nil, month_count: nil, payment_date: nil
+  defstruct "@type": "messageGiveawayWinners", "@extra": nil, boosted_chat_id: nil, giveaway_message_id: nil, additional_chat_count: nil, actual_winners_selection_date: nil, only_new_members: nil, was_refunded: nil, prize: nil, prize_description: nil, winner_count: nil, winner_user_ids: nil, unclaimed_prize_count: nil
+end
+defmodule StoryContentTypeLive do
+  @moduledoc  """
+  A live story.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_content_type_live.html).
+  """
+
+  defstruct "@type": "storyContentTypeLive", "@extra": nil
+end
+defmodule ReportStoryResultOptionRequired do
+  @moduledoc  """
+  The user must choose an option to report the story and repeat request with the chosen option.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | title | string | Title for the option choice. |
+  | options | reportOption | List of available options. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_story_result_option_required.html).
+  """
+
+  defstruct "@type": "reportStoryResultOptionRequired", "@extra": nil, title: nil, options: nil
 end
 defmodule UpdateMessageContentOpened do
   @moduledoc  """
@@ -13904,6 +18273,29 @@ defmodule BackgroundType do
   """
 
   defstruct "@type": "BackgroundType", "@extra": nil
+end
+defmodule UpgradedGiftOriginResale do
+  @moduledoc  """
+  The gift was bought from another user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | price | GiftResalePrice | Price paid for the gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_origin_resale.html).
+  """
+
+  defstruct "@type": "upgradedGiftOriginResale", "@extra": nil, price: nil
+end
+defmodule DateTimeFormattingTypeRelative do
+  @moduledoc  """
+  The time must be shown relative to the current time ([in ] X seconds, minutes, hours, days, months, years [ago]).
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1date_time_formatting_type_relative.html).
+  """
+
+  defstruct "@type": "dateTimeFormattingTypeRelative", "@extra": nil
 end
 defmodule PageBlockAudio do
   @moduledoc  """
@@ -13932,19 +18324,51 @@ defmodule InputBackgroundLocal do
 
   defstruct "@type": "inputBackgroundLocal", "@extra": nil, background: nil
 end
+defmodule UpdateMessageSuggestedPostInfo do
+  @moduledoc  """
+  Information about suggested post of a message was changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Chat identifier. |
+  | message_id | int53 | Message identifier. |
+  | suggested_post_info | suggestedPostInfo | The new information about the suggested post. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_suggested_post_info.html).
+  """
+
+  defstruct "@type": "updateMessageSuggestedPostInfo", "@extra": nil, chat_id: nil, message_id: nil, suggested_post_info: nil
+end
+defmodule MessageGiveaway do
+  @moduledoc  """
+  A giveaway.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | parameters | giveawayParameters | Giveaway parameters. |
+  | winner_count | int32 | Number of users which will receive Telegram Premium subscription gift codes. |
+  | prize | GiveawayPrize | Prize of the giveaway. |
+  | sticker | sticker | A sticker to be shown in the message; may be null if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_giveaway.html).
+  """
+
+  defstruct "@type": "messageGiveaway", "@extra": nil, parameters: nil, winner_count: nil, prize: nil, sticker: nil
+end
 defmodule InternalLinkTypePublicChat do
   @moduledoc  """
-  The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link If the chat is found, open its profile information screen or the chat itself. If draft text isn't empty and the chat is a private chat with a regular user, then put the draft text in the input field.
+  The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link. If the chat is found, open its profile information screen or the chat itself. If draft text isn't empty and the chat is a private chat with a regular user, then put the draft text in the input field.
 
   | Name | Type | Description |
   |------|------| ------------|
   | chat_username | string | Username of the chat. |
   | draft_text | string | Draft text for message to send in the chat. |
+  | open_profile | bool | True, if chat profile information screen must be opened; otherwise, the chat itself must be opened. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_public_chat.html).
   """
 
-  defstruct "@type": "internalLinkTypePublicChat", "@extra": nil, chat_username: nil, draft_text: nil
+  defstruct "@type": "internalLinkTypePublicChat", "@extra": nil, chat_username: nil, draft_text: nil, open_profile: nil
 end
 defmodule TextEntityTypeUrl do
   @moduledoc  """
@@ -13962,14 +18386,15 @@ defmodule StoryInfo do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | story_id | int32 | Unique story identifier among stories of the given sender. |
+  | story_id | int32 | Unique story identifier among stories of the chat. |
   | date | int32 | Point in time (Unix timestamp) when the story was published. |
   | is_for_close_friends | bool | True, if the story is available only to close friends. |
+  | is_live | bool | True, if the story is a live story. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_info.html).
   """
 
-  defstruct "@type": "storyInfo", "@extra": nil, story_id: nil, date: nil, is_for_close_friends: nil
+  defstruct "@type": "storyInfo", "@extra": nil, story_id: nil, date: nil, is_for_close_friends: nil, is_live: nil
 end
 defmodule CallProblem do
   @moduledoc  """
@@ -14003,6 +18428,20 @@ defmodule FileTypeNone do
 
   defstruct "@type": "fileTypeNone", "@extra": nil
 end
+defmodule InternalLinkTypeStoryAlbum do
+  @moduledoc  """
+  The link is a link to an album of stories. Call searchPublicChat with the given username, then call getStoryAlbumStories with the received chat identifier and the given story album identifier, then show the story album if received.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | story_album_owner_username | string | Username of the owner of the story album. |
+  | story_album_id | int32 | Story album identifier. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_story_album.html).
+  """
+
+  defstruct "@type": "internalLinkTypeStoryAlbum", "@extra": nil, story_album_owner_username: nil, story_album_id: nil
+end
 defmodule ChatEventPermissionsChanged do
   @moduledoc  """
   The chat permissions were changed.
@@ -14016,6 +18455,19 @@ defmodule ChatEventPermissionsChanged do
   """
 
   defstruct "@type": "chatEventPermissionsChanged", "@extra": nil, old_permissions: nil, new_permissions: nil
+end
+defmodule GiftCollections do
+  @moduledoc  """
+  Contains a list of gift collections.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | collections | giftCollection | List of gift collections. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_collections.html).
+  """
+
+  defstruct "@type": "giftCollections", "@extra": nil, collections: nil
 end
 defmodule CallStateHangingUp do
   @moduledoc  """
@@ -14056,14 +18508,13 @@ defmodule ChatMemberStatusCreator do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | custom_title | string | A custom title of the owner; 0-16 characters without emoji; applicable to supergroups only. |
   | is_anonymous | bool | True, if the creator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only. |
   | is_member | bool | True, if the user is a member of the chat. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_member_status_creator.html).
   """
 
-  defstruct "@type": "chatMemberStatusCreator", "@extra": nil, custom_title: nil, is_anonymous: nil, is_member: nil
+  defstruct "@type": "chatMemberStatusCreator", "@extra": nil, is_anonymous: nil, is_member: nil
 end
 defmodule InputInlineQueryResultArticle do
   @moduledoc  """
@@ -14073,7 +18524,6 @@ defmodule InputInlineQueryResultArticle do
   |------|------| ------------|
   | id | string | Unique identifier of the query result. |
   | url | string | URL of the result, if it exists. |
-  | hide_url | bool | True, if the URL must be not shown. |
   | title | string | Title of the result. |
   | description | string | A short description of the result. |
   | thumbnail_url | string | URL of the result thumbnail, if it exists. |
@@ -14085,11 +18535,21 @@ defmodule InputInlineQueryResultArticle do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_article.html).
   """
 
-  defstruct "@type": "inputInlineQueryResultArticle", "@extra": nil, id: nil, url: nil, hide_url: nil, title: nil, description: nil, thumbnail_url: nil, thumbnail_width: nil, thumbnail_height: nil, reply_markup: nil, input_message_content: nil
+  defstruct "@type": "inputInlineQueryResultArticle", "@extra": nil, id: nil, url: nil, title: nil, description: nil, thumbnail_url: nil, thumbnail_width: nil, thumbnail_height: nil, reply_markup: nil, input_message_content: nil
+end
+defmodule StarTransactionTypeTelegramAdsWithdrawal do
+  @moduledoc  """
+  The transaction is a withdrawal of earned Telegram Stars to Telegram Ad platform; relevant for bots and channel chats only.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_telegram_ads_withdrawal.html).
+  """
+
+  defstruct "@type": "starTransactionTypeTelegramAdsWithdrawal", "@extra": nil
 end
 defmodule InternalLinkTypeBotStartInGroup do
   @moduledoc  """
-  The link is a link to a Telegram bot, which is supposed to be added to a group chat. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to groups, ask the current user to select a basic group or a supergroup chat to add the bot to, taking into account that bots can be added to a public supergroup only by administrators of the supergroup. If administrator rights are provided by the link, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights, combine received rights with the requested administrator rights, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed administrator rights. Before call to setChatMemberStatus it may be required to upgrade the chosen basic group chat to a supergroup chat. Then, if start_parameter isn't empty, call sendBotStartMessage with the given start parameter and the chosen chat; otherwise, just send /start message with bot's username added to the chat.
+  The link is a link to a Telegram bot, which is expected to be added to a group chat. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to groups, ask the current user to select a basic group or a supergroup chat to add the bot to, taking into account that bots can be added to a public supergroup only by administrators of the supergroup. If administrator rights are provided by the link, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights, combine received rights with the requested administrator rights, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed administrator rights. Before call to setChatMemberStatus it may be required to upgrade the chosen basic group chat to a supergroup chat. Then, if start_parameter isn't empty, call sendBotStartMessage with the given start parameter and the chosen chat; otherwise, just send /start message with bot's username added to the chat.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -14176,20 +18636,22 @@ defmodule InlineKeyboardButton do
   | Name | Type | Description |
   |------|------| ------------|
   | text | string | Text of the button. |
+  | icon_custom_emoji_id | int64 | Identifier of the custom emoji that must be shown on the button; 0 if none. |
+  | style | ButtonStyle | Style of the button. |
   | type | InlineKeyboardButtonType | Type of the button. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button.html).
   """
 
-  defstruct "@type": "inlineKeyboardButton", "@extra": nil, text: nil, type: nil
+  defstruct "@type": "inlineKeyboardButton", "@extra": nil, text: nil, icon_custom_emoji_id: nil, style: nil, type: nil
 end
 defmodule BackgroundTypeChatTheme do
   @moduledoc  """
-  A background from a chat theme; can be used only as a chat background in channels.
+  A background from a chat theme based on an emoji; can be used only as a chat background in channels.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | theme_name | string | Name of the chat theme. |
+  | theme_name | string | Name of the emoji chat theme. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_type_chat_theme.html).
   """
@@ -14222,15 +18684,31 @@ defmodule StickerFullTypeRegular do
 
   defstruct "@type": "stickerFullTypeRegular", "@extra": nil, premium_animation: nil
 end
-defmodule InternalLinkTypePrivacyAndSecuritySettings do
+defmodule DateTimePartPrecisionShort do
   @moduledoc  """
-  The link is a link to the privacy and security section of the app settings.
+  Show the date or time in a short way (17.03.22 or 22:45).
 
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_privacy_and_security_settings.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1date_time_part_precision_short.html).
   """
 
-  defstruct "@type": "internalLinkTypePrivacyAndSecuritySettings", "@extra": nil
+  defstruct "@type": "dateTimePartPrecisionShort", "@extra": nil
+end
+defmodule StarSubscriptionTypeBot do
+  @moduledoc  """
+  Describes a subscription in a bot or a business account.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | is_canceled_by_bot | bool | True, if the subscription was canceled by the bot and can't be extended. |
+  | title | string | Subscription invoice title. |
+  | photo | photo | Subscription invoice photo. |
+  | invoice_link | string | The link to the subscription invoice. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_subscription_type_bot.html).
+  """
+
+  defstruct "@type": "starSubscriptionTypeBot", "@extra": nil, is_canceled_by_bot: nil, title: nil, photo: nil, invoice_link: nil
 end
 defmodule PassportElementDriverLicense do
   @moduledoc  """
@@ -14291,6 +18769,22 @@ defmodule RichTextMarked do
 
   defstruct "@type": "richTextMarked", "@extra": nil, text: nil
 end
+defmodule StarSubscriptions do
+  @moduledoc  """
+  Represents a list of Telegram Star subscriptions.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_amount | starAmount | The amount of owned Telegram Stars. |
+  | subscriptions | starSubscription | List of subscriptions for Telegram Stars. |
+  | required_star_count | int53 | The number of Telegram Stars required to buy to extend subscriptions expiring soon. |
+  | next_offset | string | The offset for the next request. If empty, then there are no more results. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_subscriptions.html).
+  """
+
+  defstruct "@type": "starSubscriptions", "@extra": nil, star_amount: nil, subscriptions: nil, required_star_count: nil, next_offset: nil
+end
 defmodule CanTransferOwnershipResultSessionTooFresh do
   @moduledoc  """
   The session was created recently, user needs to wait.
@@ -14303,6 +18797,16 @@ defmodule CanTransferOwnershipResultSessionTooFresh do
   """
 
   defstruct "@type": "canTransferOwnershipResultSessionTooFresh", "@extra": nil, retry_after: nil
+end
+defmodule InternalLinkTypeNewGroupChat do
+  @moduledoc  """
+  The link is a link to the screen for creating a new group chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_new_group_chat.html).
+  """
+
+  defstruct "@type": "internalLinkTypeNewGroupChat", "@extra": nil
 end
 defmodule InputChatPhotoPrevious do
   @moduledoc  """
@@ -14333,18 +18837,18 @@ defmodule GroupCallVideoSourceGroup do
 end
 defmodule StarTransactions do
   @moduledoc  """
-  Represents a list of Telegram star transactions.
+  Represents a list of Telegram Star transactions.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | star_count | int53 | The amount of owned Telegram stars. |
-  | transactions | starTransaction | List of transactions with Telegram stars. |
+  | star_amount | starAmount | The amount of owned Telegram Stars. |
+  | transactions | starTransaction | List of transactions with Telegram Stars. |
   | next_offset | string | The offset for the next request. If empty, then there are no more results. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transactions.html).
   """
 
-  defstruct "@type": "starTransactions", "@extra": nil, star_count: nil, transactions: nil, next_offset: nil
+  defstruct "@type": "starTransactions", "@extra": nil, star_amount: nil, transactions: nil, next_offset: nil
 end
 defmodule UpdateStory do
   @moduledoc  """
@@ -14394,6 +18898,20 @@ defmodule ChatStatisticsAdministratorActionsInfo do
 
   defstruct "@type": "chatStatisticsAdministratorActionsInfo", "@extra": nil, user_id: nil, deleted_message_count: nil, banned_user_count: nil, restricted_user_count: nil
 end
+defmodule LinkPreviewTypeTheme do
+  @moduledoc  """
+  The link is a link to a cloud theme. TDLib has no theme support yet.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | documents | document | The list of files with theme description. |
+  | settings | themeSettings | Settings for the cloud theme; may be null if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_theme.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeTheme", "@extra": nil, documents: nil, settings: nil
+end
 defmodule BusinessBotManageBar do
   @moduledoc  """
   Contains information about a business bot that manages the chat.
@@ -14409,6 +18927,20 @@ defmodule BusinessBotManageBar do
   """
 
   defstruct "@type": "businessBotManageBar", "@extra": nil, bot_user_id: nil, manage_url: nil, is_bot_paused: nil, can_bot_reply: nil
+end
+defmodule TextEntityTypeDateTime do
+  @moduledoc  """
+  A date and time.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | unix_time | int32 | Point in time (Unix timestamp) representing the date and time. |
+  | formatting_type | DateTimeFormattingType | Date and time formatting type; may be null if none and the original text must not be changed. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_date_time.html).
+  """
+
+  defstruct "@type": "textEntityTypeDateTime", "@extra": nil, unix_time: nil, formatting_type: nil
 end
 defmodule UpdateNewInlineQuery do
   @moduledoc  """
@@ -14442,6 +18974,15 @@ defmodule FactCheck do
 
   defstruct "@type": "factCheck", "@extra": nil, text: nil, country_code: nil
 end
+defmodule ButtonStyle do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_button_style.html).
+  """
+
+  defstruct "@type": "ButtonStyle", "@extra": nil
+end
 defmodule DeviceTokenUbuntuPush do
   @moduledoc  """
   A token for Ubuntu Push Client service.
@@ -14467,13 +19008,13 @@ defmodule UserPrivacySettingRuleAllowContacts do
 end
 defmodule StarPaymentOption do
   @moduledoc  """
-  Describes an option for buying Telegram stars.
+  Describes an option for buying Telegram Stars. Use telegramPaymentPurposeStars for out-of-store payments.
 
   | Name | Type | Description |
   |------|------| ------------|
   | currency | string | ISO 4217 currency code for the payment. |
   | amount | int53 | The amount to pay, in the smallest units of the currency. |
-  | star_count | int53 | Number of Telegram stars that will be purchased. |
+  | star_count | int53 | Number of Telegram Stars that will be purchased. |
   | store_product_id | string | Identifier of the store product associated with the option; may be empty if none. |
   | is_additional | bool | True, if the option must be shown only in the full list of payment options. |
 
@@ -14567,15 +19108,6 @@ defmodule StoryAreaPosition do
 
   defstruct "@type": "storyAreaPosition", "@extra": nil, x_percentage: nil, y_percentage: nil, width_percentage: nil, height_percentage: nil, rotation_angle: nil, corner_radius_percentage: nil
 end
-defmodule StarTransactionPartner do
-  @moduledoc  """
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_star_transaction_partner.html).
-  """
-
-  defstruct "@type": "StarTransactionPartner", "@extra": nil
-end
 defmodule PushMessageContentMediaAlbum do
   @moduledoc  """
   A media album.
@@ -14610,14 +19142,16 @@ defmodule InputMessageForwarded do
   | Name | Type | Description |
   |------|------| ------------|
   | from_chat_id | int53 | Identifier for the chat this forwarded message came from. |
-  | message_id | int53 | Identifier of the message to forward. A message can be forwarded only if message.can_be_forwarded. |
-  | in_game_share | bool | True, if a game message is being shared from a launched game; applies only to game messages. |
+  | message_id | int53 | Identifier of the message to forward. A message can be forwarded only if messageProperties.can_be_forwarded. |
+  | in_game_share | bool | Pass true if a game message is being shared from a launched game; applies only to game messages. |
+  | replace_video_start_timestamp | bool | Pass true to replace video start timestamp in the forwarded message. |
+  | new_video_start_timestamp | int32 | The new video start timestamp; ignored if replace_video_start_timestamp == false. |
   | copy_options | messageCopyOptions | Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_forwarded.html).
   """
 
-  defstruct "@type": "inputMessageForwarded", "@extra": nil, from_chat_id: nil, message_id: nil, in_game_share: nil, copy_options: nil
+  defstruct "@type": "inputMessageForwarded", "@extra": nil, from_chat_id: nil, message_id: nil, in_game_share: nil, replace_video_start_timestamp: nil, new_video_start_timestamp: nil, copy_options: nil
 end
 defmodule CallServerType do
   @moduledoc  """
@@ -14634,11 +19168,11 @@ defmodule WebPageInstantView do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | page_blocks | PageBlock | Content of the web page. |
+  | page_blocks | PageBlock | Content of the instant view page. |
   | view_count | int32 | Number of the instant view views; 0 if unknown. |
   | version | int32 | Version of the instant view; currently, can be 1 or 2. |
   | is_rtl | bool | True, if the instant view must be shown from right to left. |
-  | is_full | bool | True, if the instant view contains the full page. A network request might be needed to get the full web page instant view. |
+  | is_full | bool | True, if the instant view contains the full page. A network request might be needed to get the full instant view. |
   | feedback_link | InternalLinkType | An internal link to be opened to leave feedback about the instant view. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_page_instant_view.html).
@@ -14659,15 +19193,6 @@ defmodule Point do
   """
 
   defstruct "@type": "point", "@extra": nil, x: nil, y: nil
-end
-defmodule ReportChatSponsoredMessageResult do
-  @moduledoc  """
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_report_chat_sponsored_message_result.html).
-  """
-
-  defstruct "@type": "ReportChatSponsoredMessageResult", "@extra": nil
 end
 defmodule InputFileId do
   @moduledoc  """
@@ -14709,6 +19234,27 @@ defmodule ChatEventMemberJoinedByRequest do
 
   defstruct "@type": "chatEventMemberJoinedByRequest", "@extra": nil, approver_user_id: nil, invite_link: nil
 end
+defmodule UpgradeGiftResult do
+  @moduledoc  """
+  Contains result of gift upgrading.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | upgradedGift | The upgraded gift. |
+  | received_gift_id | string | Unique identifier of the received gift for the current user. |
+  | is_saved | bool | True, if the gift is displayed on the user's or the channel's profile page. |
+  | can_be_transferred | bool | True, if the gift can be transferred to another owner. |
+  | transfer_star_count | int53 | Number of Telegram Stars that must be paid to transfer the upgraded gift. |
+  | drop_original_details_star_count | int53 | Number of Telegram Stars that must be paid to drop original details of the upgraded gift; 0 if not available. |
+  | next_transfer_date | int32 | Point in time (Unix timestamp) when the gift can be transferred to another owner; can be in the past; 0 if the gift can be transferred immediately or transfer isn't possible. |
+  | next_resale_date | int32 | Point in time (Unix timestamp) when the gift can be resold to another user; can be in the past; 0 if the gift can't be resold; only for the receiver of the gift. |
+  | export_date | int32 | Point in time (Unix timestamp) when the gift can be transferred to the TON blockchain as an NFT; can be in the past. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgrade_gift_result.html).
+  """
+
+  defstruct "@type": "upgradeGiftResult", "@extra": nil, gift: nil, received_gift_id: nil, is_saved: nil, can_be_transferred: nil, transfer_star_count: nil, drop_original_details_star_count: nil, next_transfer_date: nil, next_resale_date: nil, export_date: nil
+end
 defmodule TargetChat do
   @moduledoc  """
 
@@ -14733,7 +19279,7 @@ defmodule MessageSenders do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | total_count | int32 | Approximate total number of messages senders found. |
+  | total_count | int32 | Approximate total number of message senders found. |
   | senders | MessageSender | List of message senders. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_senders.html).
@@ -14741,15 +19287,43 @@ defmodule MessageSenders do
 
   defstruct "@type": "messageSenders", "@extra": nil, total_count: nil, senders: nil
 end
-defmodule CanSendStoryResultPremiumNeeded do
+defmodule StarAmount do
   @moduledoc  """
-  The user must subscribe to Telegram Premium to be able to post stories.
+  Describes a possibly non-integer Telegram Star amount.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | The integer Telegram Star amount rounded to 0. |
+  | nanostar_count | int32 | The number of 1/1000000000 shares of Telegram Stars; from -999999999 to 999999999. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_story_result_premium_needed.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_amount.html).
   """
 
-  defstruct "@type": "canSendStoryResultPremiumNeeded", "@extra": nil
+  defstruct "@type": "starAmount", "@extra": nil, star_count: nil, nanostar_count: nil
+end
+defmodule ProfileTabVoice do
+  @moduledoc  """
+  A tab with voice notes posted by the channel.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1profile_tab_voice.html).
+  """
+
+  defstruct "@type": "profileTabVoice", "@extra": nil
+end
+defmodule MessageChecklistTasksAdded do
+  @moduledoc  """
+  Some tasks were added to a checklist.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | checklist_message_id | int53 | Identifier of the message with the checklist; may be 0 or an identifier of a deleted message. |
+  | tasks | checklistTask | List of tasks added to the checklist. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_checklist_tasks_added.html).
+  """
+
+  defstruct "@type": "messageChecklistTasksAdded", "@extra": nil, checklist_message_id: nil, tasks: nil
 end
 defmodule UserPrivacySettingShowBio do
   @moduledoc  """
@@ -14784,6 +19358,20 @@ defmodule SearchMessagesFilterVoiceNote do
 
   defstruct "@type": "searchMessagesFilterVoiceNote", "@extra": nil
 end
+defmodule PollVoters do
+  @moduledoc  """
+  Represents a list of poll voters.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | total_count | int32 | Approximate total number of poll voters found. |
+  | voters | pollVoter | List of poll voters. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_voters.html).
+  """
+
+  defstruct "@type": "pollVoters", "@extra": nil, total_count: nil, voters: nil
+end
 defmodule UnconfirmedSession do
   @moduledoc  """
   Contains information about an unconfirmed session.
@@ -14799,6 +19387,16 @@ defmodule UnconfirmedSession do
   """
 
   defstruct "@type": "unconfirmedSession", "@extra": nil, id: nil, log_in_date: nil, device_model: nil, location: nil
+end
+defmodule PremiumFeatureMessageEffects do
+  @moduledoc  """
+  The ability to use all available message effects.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_message_effects.html).
+  """
+
+  defstruct "@type": "premiumFeatureMessageEffects", "@extra": nil
 end
 defmodule ReactionNotificationSourceNone do
   @moduledoc  """
@@ -14823,6 +19421,16 @@ defmodule PremiumSourceFeature do
 
   defstruct "@type": "premiumSourceFeature", "@extra": nil, feature: nil
 end
+defmodule PaidReactionTypeRegular do
+  @moduledoc  """
+  A paid reaction on behalf of the current user.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_reaction_type_regular.html).
+  """
+
+  defstruct "@type": "paidReactionTypeRegular", "@extra": nil
+end
 defmodule Countries do
   @moduledoc  """
   Contains information about countries.
@@ -14835,6 +19443,19 @@ defmodule Countries do
   """
 
   defstruct "@type": "countries", "@extra": nil, countries: nil
+end
+defmodule AvailableGifts do
+  @moduledoc  """
+  Contains a list of gifts that can be sent to another user or channel chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gifts | availableGift | The list of gifts. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1available_gifts.html).
+  """
+
+  defstruct "@type": "availableGifts", "@extra": nil, gifts: nil
 end
 defmodule MessageInvoice do
   @moduledoc  """
@@ -14849,12 +19470,42 @@ defmodule MessageInvoice do
   | is_test | bool | True, if the invoice is a test invoice. |
   | need_shipping_address | bool | True, if the shipping address must be specified. |
   | receipt_message_id | int53 | The identifier of the message with the receipt, after the product has been purchased. |
-  | extended_media | MessageExtendedMedia | Extended media attached to the invoice; may be null. |
+  | paid_media | PaidMedia | Extended media attached to the invoice; may be null if none. |
+  | paid_media_caption | formattedText | Extended media caption; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_invoice.html).
   """
 
-  defstruct "@type": "messageInvoice", "@extra": nil, product_info: nil, currency: nil, total_amount: nil, start_parameter: nil, is_test: nil, need_shipping_address: nil, receipt_message_id: nil, extended_media: nil
+  defstruct "@type": "messageInvoice", "@extra": nil, product_info: nil, currency: nil, total_amount: nil, start_parameter: nil, is_test: nil, need_shipping_address: nil, receipt_message_id: nil, paid_media: nil, paid_media_caption: nil
+end
+defmodule SettingsSectionFaq do
+  @moduledoc  """
+  The FAQ section.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_faq.html).
+  """
+
+  defstruct "@type": "settingsSectionFaq", "@extra": nil
+end
+defmodule GroupCallMessage do
+  @moduledoc  """
+  Represents a message sent in a group call.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | message_id | int32 | Unique message identifier within the group call. |
+  | sender_id | MessageSender | Identifier of the sender of the message. |
+  | date | int32 | Point in time (Unix timestamp) when the message was sent. |
+  | text | formattedText | Text of the message. If empty, then the message is a paid reaction in a live story. |
+  | paid_message_star_count | int53 | The number of Telegram Stars that were paid to send the message; for live stories only. |
+  | is_from_owner | bool | True, if the message is sent by the owner of the call and must be treated as a message of the maximum level; for live stories only. |
+  | can_be_deleted | bool | True, if the message can be deleted by the current user; for live stories only. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_message.html).
+  """
+
+  defstruct "@type": "groupCallMessage", "@extra": nil, message_id: nil, sender_id: nil, date: nil, text: nil, paid_message_star_count: nil, is_from_owner: nil, can_be_deleted: nil
 end
 defmodule JsonValueObject do
   @moduledoc  """
@@ -14869,15 +19520,15 @@ defmodule JsonValueObject do
 
   defstruct "@type": "jsonValueObject", "@extra": nil, members: nil
 end
-defmodule PremiumLimitTypeMonthlySentStoryCount do
+defmodule FileTypeLivePhotoVideo do
   @moduledoc  """
-  The maximum number of stories sent per month.
+  The file is a video for a live photo.
 
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_monthly_sent_story_count.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_live_photo_video.html).
   """
 
-  defstruct "@type": "premiumLimitTypeMonthlySentStoryCount", "@extra": nil
+  defstruct "@type": "fileTypeLivePhotoVideo", "@extra": nil
 end
 defmodule UserStatusLastWeek do
   @moduledoc  """
@@ -14917,6 +19568,16 @@ defmodule MessageVoiceNote do
 
   defstruct "@type": "messageVoiceNote", "@extra": nil, voice_note: nil, caption: nil, is_listened: nil
 end
+defmodule InternalLinkTypeChatSelection do
+  @moduledoc  """
+  The link is a link that allows to select some chats.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_chat_selection.html).
+  """
+
+  defstruct "@type": "internalLinkTypeChatSelection", "@extra": nil
+end
 defmodule SecretChatStatePending do
   @moduledoc  """
   The secret chat is not yet created; waiting for the other user to get online.
@@ -14926,6 +19587,16 @@ defmodule SecretChatStatePending do
   """
 
   defstruct "@type": "secretChatStatePending", "@extra": nil
+end
+defmodule LinkPreviewTypeGroupCall do
+  @moduledoc  """
+  The link is a link to a group call that isn't bound to a chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_group_call.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeGroupCall", "@extra": nil
 end
 defmodule PushMessageContentLocation do
   @moduledoc  """
@@ -14941,14 +19612,15 @@ defmodule PushMessageContentLocation do
 
   defstruct "@type": "pushMessageContentLocation", "@extra": nil, is_live: nil, is_pinned: nil
 end
-defmodule StarTransactionDirection do
+defmodule GiftPurchaseOfferStateRejected do
   @moduledoc  """
+  The offer was rejected.
 
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_star_transaction_direction.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_purchase_offer_state_rejected.html).
   """
 
-  defstruct "@type": "StarTransactionDirection", "@extra": nil
+  defstruct "@type": "giftPurchaseOfferStateRejected", "@extra": nil
 end
 defmodule ChatEventInviteLinkDeleted do
   @moduledoc  """
@@ -14962,20 +19634,6 @@ defmodule ChatEventInviteLinkDeleted do
   """
 
   defstruct "@type": "chatEventInviteLinkDeleted", "@extra": nil, invite_link: nil
-end
-defmodule ReportChatSponsoredMessageResultOptionRequired do
-  @moduledoc  """
-  The user must choose an option to report the message and repeat request with the chosen option.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | title | string | Title for the option choice. |
-  | options | reportChatSponsoredMessageOption | List of available options. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_sponsored_message_result_option_required.html).
-  """
-
-  defstruct "@type": "reportChatSponsoredMessageResultOptionRequired", "@extra": nil, title: nil, options: nil
 end
 defmodule ChatEvent do
   @moduledoc  """
@@ -14993,6 +19651,34 @@ defmodule ChatEvent do
 
   defstruct "@type": "chatEvent", "@extra": nil, id: nil, date: nil, member_id: nil, action: nil
 end
+defmodule EmojiChatTheme do
+  @moduledoc  """
+  Describes a chat theme based on an emoji.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | name | string | Theme name. |
+  | light_settings | themeSettings | Theme settings for a light chat theme. |
+  | dark_settings | themeSettings | Theme settings for a dark chat theme. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_chat_theme.html).
+  """
+
+  defstruct "@type": "emojiChatTheme", "@extra": nil, name: nil, light_settings: nil, dark_settings: nil
+end
+defmodule GiftAuctionAcquiredGifts do
+  @moduledoc  """
+  Represents a list of gifts that were acquired by the current user on an auction.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gifts | giftAuctionAcquiredGift | The list of acquired gifts. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_auction_acquired_gifts.html).
+  """
+
+  defstruct "@type": "giftAuctionAcquiredGifts", "@extra": nil, gifts: nil
+end
 defmodule ChatEventVideoChatCreated do
   @moduledoc  """
   A video chat was created.
@@ -15005,6 +19691,21 @@ defmodule ChatEventVideoChatCreated do
   """
 
   defstruct "@type": "chatEventVideoChatCreated", "@extra": nil, group_call_id: nil
+end
+defmodule VideoMessageAdvertisements do
+  @moduledoc  """
+  Contains a list of advertisements to be shown while a video from a message is watched.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | advertisements | videoMessageAdvertisement | List of advertisements. |
+  | start_delay | int32 | Delay before the first advertisement is shown, in seconds. |
+  | between_delay | int32 | Delay between consecutive advertisements, in seconds. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1video_message_advertisements.html).
+  """
+
+  defstruct "@type": "videoMessageAdvertisements", "@extra": nil, advertisements: nil, start_delay: nil, between_delay: nil
 end
 defmodule ChatListFolder do
   @moduledoc  """
@@ -15019,6 +19720,25 @@ defmodule ChatListFolder do
 
   defstruct "@type": "chatListFolder", "@extra": nil, chat_folder_id: nil
 end
+defmodule PremiumGiftPaymentOption do
+  @moduledoc  """
+  Describes an option for gifting Telegram Premium to a user. Use telegramPaymentPurposePremiumGift for out-of-store payments or payments in Telegram Stars.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | currency | string | ISO 4217 currency code for the payment. |
+  | amount | int53 | The amount to pay, in the smallest units of the currency. |
+  | star_count | int53 | The alternative Telegram Star amount to pay; 0 if payment in Telegram Stars is not possible. |
+  | discount_percentage | int32 | The discount associated with this option, as a percentage. |
+  | month_count | int32 | Number of months the Telegram Premium subscription will be active. |
+  | store_product_id | string | Identifier of the store product associated with the option. |
+  | sticker | sticker | A sticker to be shown along with the option; may be null if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_gift_payment_option.html).
+  """
+
+  defstruct "@type": "premiumGiftPaymentOption", "@extra": nil, currency: nil, amount: nil, star_count: nil, discount_percentage: nil, month_count: nil, store_product_id: nil, sticker: nil
+end
 defmodule GroupCall do
   @moduledoc  """
   Describes a group call.
@@ -15026,23 +19746,34 @@ defmodule GroupCall do
   | Name | Type | Description |
   |------|------| ------------|
   | id | int32 | Group call identifier. |
-  | title | string | Group call title. |
-  | scheduled_start_date | int32 | Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 if it is already active or was ended. |
-  | enabled_start_notification | bool | True, if the group call is scheduled and the current user will receive a notification when the group call starts. |
+  | unique_id | int64 | Persistent unique group call identifier. |
+  | title | string | Group call title; for video chats only. |
+  | invite_link | string | Invite link for the group call; for group calls that aren't bound to a chat. For video chats call <a class="el" href="classtd_1_1td__api_1_1get_video_chat_invite_link.html">getVideoChatInviteLink</a> to get the link. For live stories in chats with username call <a class="el" href="classtd_1_1td__api_1_1get_internal_link.html">getInternalLink</a> with <a class="el" href="classtd_1_1td__api_1_1internal_link_type_live_story.html">internalLinkTypeLiveStory</a>. |
+  | paid_message_star_count | int53 | The minimum number of Telegram Stars that must be paid by general participant for each sent message to the call; for live stories only. |
+  | scheduled_start_date | int32 | Point in time (Unix timestamp) when the group call is expected to be started by an administrator; 0 if it is already active or was ended; for video chats only. |
+  | enabled_start_notification | bool | True, if the group call is scheduled and the current user will receive a notification when the group call starts; for video chats only. |
   | is_active | bool | True, if the call is active. |
-  | is_rtmp_stream | bool | True, if the chat is an RTMP stream instead of an ordinary video chat. |
+  | is_video_chat | bool | True, if the call is bound to a chat. |
+  | is_live_story | bool | True, if the call is a live story of a chat. |
+  | is_rtmp_stream | bool | True, if the call is an RTMP stream instead of an ordinary video chat; for video chats and live stories only. |
   | is_joined | bool | True, if the call is joined. |
   | need_rejoin | bool | True, if user was kicked from the call because of network loss and the call needs to be rejoined. |
-  | can_be_managed | bool | True, if the current user can manage the group call. |
+  | is_owned | bool | True, if the user is the owner of the call and can end the call, change volume level of other users, or ban users there; for group calls that aren't bound to a chat. |
+  | can_be_managed | bool | True, if the current user can manage the group call; for video chats and live stories only. |
   | participant_count | int32 | Number of participants in the group call. |
-  | has_hidden_listeners | bool | True, if group call participants, which are muted, aren't returned in participant list. |
+  | has_hidden_listeners | bool | True, if group call participants, which are muted, aren't returned in participant list; for video chats only. |
   | loaded_all_participants | bool | True, if all group call participants are loaded. |
+  | message_sender_id | MessageSender | Message sender chosen to send messages to the group call; for live stories only; may be null if the call isn't a live story. |
   | recent_speakers | groupCallRecentSpeaker | At most 3 recently speaking users in the group call. |
   | is_my_video_enabled | bool | True, if the current user's video is enabled. |
   | is_my_video_paused | bool | True, if the current user's video is paused. |
   | can_enable_video | bool | True, if the current user can broadcast video or share screen. |
-  | mute_new_participants | bool | True, if only group call administrators can unmute new participants. |
-  | can_toggle_mute_new_participants | bool | True, if the current user can enable or disable mute_new_participants setting. |
+  | mute_new_participants | bool | True, if only group call administrators can unmute new participants; for video chats only. |
+  | can_toggle_mute_new_participants | bool | True, if the current user can enable or disable mute_new_participants setting; for video chats only. |
+  | can_send_messages | bool | True, if the current user can send messages to the group call. |
+  | are_messages_allowed | bool | True, if sending of messages is allowed in the group call. |
+  | can_toggle_are_messages_allowed | bool | True, if the current user can enable or disable sending of messages in the group call. |
+  | can_delete_messages | bool | True, if the user can delete messages in the group call. |
   | record_duration | int32 | Duration of the ongoing group call recording, in seconds; 0 if none. An <a class="el" href="classtd_1_1td__api_1_1update_group_call.html">updateGroupCall</a> update is not triggered when value of this field changes, but the same recording goes on. |
   | is_video_recorded | bool | True, if a video file is being recorded for the call. |
   | duration | int32 | Call duration, in seconds; for ended calls only. |
@@ -15050,7 +19781,7 @@ defmodule GroupCall do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).
   """
 
-  defstruct "@type": "groupCall", "@extra": nil, id: nil, title: nil, scheduled_start_date: nil, enabled_start_notification: nil, is_active: nil, is_rtmp_stream: nil, is_joined: nil, need_rejoin: nil, can_be_managed: nil, participant_count: nil, has_hidden_listeners: nil, loaded_all_participants: nil, recent_speakers: nil, is_my_video_enabled: nil, is_my_video_paused: nil, can_enable_video: nil, mute_new_participants: nil, can_toggle_mute_new_participants: nil, record_duration: nil, is_video_recorded: nil, duration: nil
+  defstruct "@type": "groupCall", "@extra": nil, id: nil, unique_id: nil, title: nil, invite_link: nil, paid_message_star_count: nil, scheduled_start_date: nil, enabled_start_notification: nil, is_active: nil, is_video_chat: nil, is_live_story: nil, is_rtmp_stream: nil, is_joined: nil, need_rejoin: nil, is_owned: nil, can_be_managed: nil, participant_count: nil, has_hidden_listeners: nil, loaded_all_participants: nil, message_sender_id: nil, recent_speakers: nil, is_my_video_enabled: nil, is_my_video_paused: nil, can_enable_video: nil, mute_new_participants: nil, can_toggle_mute_new_participants: nil, can_send_messages: nil, are_messages_allowed: nil, can_toggle_are_messages_allowed: nil, can_delete_messages: nil, record_duration: nil, is_video_recorded: nil, duration: nil
 end
 defmodule ChatEventHasProtectedContentToggled do
   @moduledoc  """
@@ -15071,21 +19802,23 @@ defmodule MessagePremiumGiftCode do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | creator_id | MessageSender | Identifier of a chat or a user that created the gift code; may be null if unknown. |
+  | creator_id | MessageSender | Identifier of a chat or a user who created the gift code; may be null if unknown. |
+  | text | formattedText | Message added to the gift. |
   | is_from_giveaway | bool | True, if the gift code was created for a giveaway. |
   | is_unclaimed | bool | True, if the winner for the corresponding Telegram Premium subscription wasn't chosen. |
   | currency | string | Currency for the paid amount; empty if unknown. |
   | amount | int53 | The paid amount, in the smallest units of the currency; 0 if unknown. |
   | cryptocurrency | string | Cryptocurrency used to pay for the gift; may be empty if none or unknown. |
   | cryptocurrency_amount | int64 | The paid amount, in the smallest units of the cryptocurrency; 0 if unknown. |
-  | month_count | int32 | Number of months the Telegram Premium subscription will be active after code activation. |
+  | month_count | int32 | Number of months the Telegram Premium subscription will be active after code activation; 0 if the number of months isn't integer. |
+  | day_count | int32 | Number of days the Telegram Premium subscription will be active after code activation. |
   | sticker | sticker | A sticker to be shown in the message; may be null if unknown. |
   | code | string | The gift code. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_premium_gift_code.html).
   """
 
-  defstruct "@type": "messagePremiumGiftCode", "@extra": nil, creator_id: nil, is_from_giveaway: nil, is_unclaimed: nil, currency: nil, amount: nil, cryptocurrency: nil, cryptocurrency_amount: nil, month_count: nil, sticker: nil, code: nil
+  defstruct "@type": "messagePremiumGiftCode", "@extra": nil, creator_id: nil, text: nil, is_from_giveaway: nil, is_unclaimed: nil, currency: nil, amount: nil, cryptocurrency: nil, cryptocurrency_amount: nil, month_count: nil, day_count: nil, sticker: nil, code: nil
 end
 defmodule QuickReplyMessages do
   @moduledoc  """
@@ -15113,16 +19846,6 @@ defmodule InputFileRemote do
 
   defstruct "@type": "inputFileRemote", "@extra": nil, id: nil
 end
-defmodule InternalLinkTypeLanguageSettings do
-  @moduledoc  """
-  The link is a link to the language section of the app settings.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_language_settings.html).
-  """
-
-  defstruct "@type": "internalLinkTypeLanguageSettings", "@extra": nil
-end
 defmodule SearchMessagesFilterAudio do
   @moduledoc  """
   Returns only audio messages.
@@ -15146,6 +19869,23 @@ defmodule PushMessageContentAudio do
   """
 
   defstruct "@type": "pushMessageContentAudio", "@extra": nil, audio: nil, is_pinned: nil
+end
+defmodule LinkPreviewTypeExternalVideo do
+  @moduledoc  """
+  The link is a link to a video file.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | URL of the video file. |
+  | mime_type | string | MIME type of the video file. |
+  | width | int32 | Expected width of the video preview; 0 if unknown. |
+  | height | int32 | Expected height of the video preview; 0 if unknown. |
+  | duration | int32 | Duration of the video, in seconds; 0 if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_external_video.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeExternalVideo", "@extra": nil, url: nil, mime_type: nil, width: nil, height: nil, duration: nil
 end
 defmodule PassportElementUtilityBill do
   @moduledoc  """
@@ -15197,6 +19937,19 @@ defmodule SearchMessagesFilterPhoto do
 
   defstruct "@type": "searchMessagesFilterPhoto", "@extra": nil
 end
+defmodule CraftGiftResultTooEarly do
+  @moduledoc  """
+  Crafting isn't possible because one of the gifts can't be used for crafting yet.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | retry_after | int32 | Time left before the gift can be used for crafting. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1craft_gift_result_too_early.html).
+  """
+
+  defstruct "@type": "craftGiftResultTooEarly", "@extra": nil, retry_after: nil
+end
 defmodule UpdateWebAppMessageSent do
   @moduledoc  """
   A message was sent by an opened Web App, so the Web App needs to be closed.
@@ -15209,6 +19962,19 @@ defmodule UpdateWebAppMessageSent do
   """
 
   defstruct "@type": "updateWebAppMessageSent", "@extra": nil, web_app_launch_id: nil
+end
+defmodule DiffEntityTypeReplace do
+  @moduledoc  """
+  Change of some text.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | old_text | string | The old text. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1diff_entity_type_replace.html).
+  """
+
+  defstruct "@type": "diffEntityTypeReplace", "@extra": nil, old_text: nil
 end
 defmodule UpdateDiceEmojis do
   @moduledoc  """
@@ -15251,16 +20017,6 @@ defmodule InternalLinkTypeLanguagePack do
 
   defstruct "@type": "internalLinkTypeLanguagePack", "@extra": nil, language_pack_id: nil
 end
-defmodule MessagePremiumGiveawayCreated do
-  @moduledoc  """
-  A Telegram Premium giveaway was created for the chat.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_premium_giveaway_created.html).
-  """
-
-  defstruct "@type": "messagePremiumGiveawayCreated", "@extra": nil
-end
 defmodule InlineQueryResults do
   @moduledoc  """
   Represents the results of the inline query. Use sendInlineQueryResultMessage to send the result of the query.
@@ -15277,6 +20033,22 @@ defmodule InlineQueryResults do
 
   defstruct "@type": "inlineQueryResults", "@extra": nil, inline_query_id: nil, button: nil, results: nil, next_offset: nil
 end
+defmodule ImportedContact do
+  @moduledoc  """
+  Describes a contact to import.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | phone_number | string | Phone number of the user. |
+  | first_name | string | First name of the user; 1-64 characters. |
+  | last_name | string | Last name of the user; 0-64 characters. |
+  | note | formattedText | Note to add about the user; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("user_note_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed; pass null to keep the current user's note. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1imported_contact.html).
+  """
+
+  defstruct "@type": "importedContact", "@extra": nil, phone_number: nil, first_name: nil, last_name: nil, note: nil
+end
 defmodule PremiumFeatureIncreasedLimits do
   @moduledoc  """
   Increased limits.
@@ -15287,15 +20059,15 @@ defmodule PremiumFeatureIncreasedLimits do
 
   defstruct "@type": "premiumFeatureIncreasedLimits", "@extra": nil
 end
-defmodule InternalLinkTypeEditProfileSettings do
+defmodule WebAppOpenModeFullSize do
   @moduledoc  """
-  The link is a link to the edit profile section of the app settings.
+  The Web App is opened in the full-size mode.
 
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_edit_profile_settings.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_app_open_mode_full_size.html).
   """
 
-  defstruct "@type": "internalLinkTypeEditProfileSettings", "@extra": nil
+  defstruct "@type": "webAppOpenModeFullSize", "@extra": nil
 end
 defmodule PageBlockEmbeddedPost do
   @moduledoc  """
@@ -15303,7 +20075,7 @@ defmodule PageBlockEmbeddedPost do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | url | string | Web page URL. |
+  | url | string | URL of the embedded post. |
   | author | string | Post author. |
   | author_photo | photo | Post author photo; may be null. |
   | date | int32 | Point in time (Unix timestamp) when the post was created; 0 if unknown. |
@@ -15410,6 +20182,19 @@ defmodule SessionType do
 
   defstruct "@type": "SessionType", "@extra": nil
 end
+defmodule InternalLinkTypeGiftAuction do
+  @moduledoc  """
+  The link is a link to a gift auction. Call getGiftAuctionState with the given auction identifier to process the link.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | auction_id | string | Unique identifier of the auction. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_gift_auction.html).
+  """
+
+  defstruct "@type": "internalLinkTypeGiftAuction", "@extra": nil, auction_id: nil
+end
 defmodule InlineKeyboardButtonTypeCallbackGame do
   @moduledoc  """
   A button with a game that sends a callback query to a bot. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageGame.
@@ -15419,6 +20204,19 @@ defmodule InlineKeyboardButtonTypeCallbackGame do
   """
 
   defstruct "@type": "inlineKeyboardButtonTypeCallbackGame", "@extra": nil
+end
+defmodule BotMediaPreviews do
+  @moduledoc  """
+  Contains a list of media previews of a bot.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | previews | botMediaPreview | List of media previews. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_media_previews.html).
+  """
+
+  defstruct "@type": "botMediaPreviews", "@extra": nil, previews: nil
 end
 defmodule SuggestedActionSetPassword do
   @moduledoc  """
@@ -15468,6 +20266,23 @@ defmodule EmojiCategory do
 
   defstruct "@type": "emojiCategory", "@extra": nil, name: nil, icon: nil, source: nil, is_greeting: nil
 end
+defmodule Passkey do
+  @moduledoc  """
+  Describes a passkey.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | string | Unique identifier of the passkey. |
+  | name | string | Name of the passkey. |
+  | addition_date | int32 | Point in time (Unix timestamp) when the passkey was added. |
+  | last_usage_date | int32 | Point in time (Unix timestamp) when the passkey was used last time; 0 if never. |
+  | software_icon_custom_emoji_id | int64 | Identifier of the custom emoji that is used as the icon of the software, which created the passkey; 0 if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passkey.html).
+  """
+
+  defstruct "@type": "passkey", "@extra": nil, id: nil, name: nil, addition_date: nil, last_usage_date: nil, software_icon_custom_emoji_id: nil
+end
 defmodule InputPassportElementError do
   @moduledoc  """
   Contains the description of an error in a Telegram Passport element; for bots only.
@@ -15512,17 +20327,17 @@ defmodule InputMessageSticker do
 end
 defmodule InputMessageStory do
   @moduledoc  """
-  A message with a forwarded story. Stories can't be sent to secret chats. A story can be forwarded only if story.can_be_forwarded.
+  A message with a forwarded story. Stories can't be forwarded to secret chats. A story can be forwarded only if story.can_be_forwarded.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | story_sender_chat_id | int53 | Identifier of the chat that posted the story. |
+  | story_poster_chat_id | int53 | Identifier of the chat that posted the story. |
   | story_id | int32 | Story identifier. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_story.html).
   """
 
-  defstruct "@type": "inputMessageStory", "@extra": nil, story_sender_chat_id: nil, story_id: nil
+  defstruct "@type": "inputMessageStory", "@extra": nil, story_poster_chat_id: nil, story_id: nil
 end
 defmodule InputMessageContact do
   @moduledoc  """
@@ -15564,6 +20379,43 @@ defmodule JsonValueArray do
 
   defstruct "@type": "jsonValueArray", "@extra": nil, values: nil
 end
+defmodule MessageGiftedTon do
+  @moduledoc  """
+  Toncoins were gifted to a user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gifter_user_id | int53 | The identifier of a user who gifted Toncoins; 0 if the gift was anonymous or is outgoing. |
+  | receiver_user_id | int53 | The identifier of a user who received Toncoins; 0 if the gift is incoming. |
+  | ton_amount | int53 | The received Toncoin amount, in the smallest units of the cryptocurrency. |
+  | transaction_id | string | Identifier of the transaction for Toncoin credit; for receiver only. |
+  | sticker | sticker | A sticker to be shown in the message; may be null if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_gifted_ton.html).
+  """
+
+  defstruct "@type": "messageGiftedTon", "@extra": nil, gifter_user_id: nil, receiver_user_id: nil, ton_amount: nil, transaction_id: nil, sticker: nil
+end
+defmodule SettingsSectionPremium do
+  @moduledoc  """
+  The "Telegram Premium" section.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_premium.html).
+  """
+
+  defstruct "@type": "settingsSectionPremium", "@extra": nil
+end
+defmodule WebAppOpenModeCompact do
+  @moduledoc  """
+  The Web App is opened in the compact mode.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_app_open_mode_compact.html).
+  """
+
+  defstruct "@type": "webAppOpenModeCompact", "@extra": nil
+end
 defmodule PushMessageContentChatJoinByRequest do
   @moduledoc  """
   A new member was accepted to the chat by an administrator.
@@ -15573,6 +20425,19 @@ defmodule PushMessageContentChatJoinByRequest do
   """
 
   defstruct "@type": "pushMessageContentChatJoinByRequest", "@extra": nil
+end
+defmodule FirebaseDeviceVerificationParametersSafetyNet do
+  @moduledoc  """
+  Device verification must be performed with the SafetyNet Attestation API.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | nonce | bytes | Nonce to pass to the SafetyNet Attestation API. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1firebase_device_verification_parameters_safety_net.html).
+  """
+
+  defstruct "@type": "firebaseDeviceVerificationParametersSafetyNet", "@extra": nil, nonce: nil
 end
 defmodule TMeUrlTypeStickerSet do
   @moduledoc  """
@@ -15599,6 +20464,15 @@ defmodule Count do
   """
 
   defstruct "@type": "count", "@extra": nil, count: nil
+end
+defmodule WebAppOpenMode do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_web_app_open_mode.html).
+  """
+
+  defstruct "@type": "WebAppOpenMode", "@extra": nil
 end
 defmodule UpdateChatBackground do
   @moduledoc  """
@@ -15634,15 +20508,16 @@ defmodule MessagePhoto do
   | Name | Type | Description |
   |------|------| ------------|
   | photo | photo | The photo. |
+  | video | video | The video representing the live photo; may be null if the photo is static. |
   | caption | formattedText | Photo caption. |
-  | show_caption_above_media | bool | True, if caption must be shown above the photo; otherwise, caption must be shown below the photo. |
+  | show_caption_above_media | bool | True, if the caption must be shown above the photo; otherwise, the caption must be shown below the photo. |
   | has_spoiler | bool | True, if the photo preview must be covered by a spoiler animation. |
   | is_secret | bool | True, if the photo must be blurred and must be shown only while tapped. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_photo.html).
   """
 
-  defstruct "@type": "messagePhoto", "@extra": nil, photo: nil, caption: nil, show_caption_above_media: nil, has_spoiler: nil, is_secret: nil
+  defstruct "@type": "messagePhoto", "@extra": nil, photo: nil, video: nil, caption: nil, show_caption_above_media: nil, has_spoiler: nil, is_secret: nil
 end
 defmodule PageBlockVerticalAlignmentMiddle do
   @moduledoc  """
@@ -15653,6 +20528,20 @@ defmodule PageBlockVerticalAlignmentMiddle do
   """
 
   defstruct "@type": "pageBlockVerticalAlignmentMiddle", "@extra": nil
+end
+defmodule PushMessageContentGift do
+  @moduledoc  """
+  A message with a gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | Number of Telegram Stars that sender paid for the gift. |
+  | is_prepaid_upgrade | bool | True, if the message is about prepaid upgrade of the gift by another user instead of actual receiving of a new gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_gift.html).
+  """
+
+  defstruct "@type": "pushMessageContentGift", "@extra": nil, star_count: nil, is_prepaid_upgrade: nil
 end
 defmodule PassportElementAddress do
   @moduledoc  """
@@ -15700,6 +20589,19 @@ defmodule SupergroupMembersFilter do
 
   defstruct "@type": "SupergroupMembersFilter", "@extra": nil
 end
+defmodule EmojiStatusTypeCustomEmoji do
+  @moduledoc  """
+  A custom emoji set as emoji status.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | custom_emoji_id | int64 | Identifier of the custom emoji in <a class="el" href="classtd_1_1td__api_1_1sticker_format_tgs.html">stickerFormatTgs</a> format. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_status_type_custom_emoji.html).
+  """
+
+  defstruct "@type": "emojiStatusTypeCustomEmoji", "@extra": nil, custom_emoji_id: nil
+end
 defmodule InputInlineQueryResultSticker do
   @moduledoc  """
   Represents a link to a WEBP, TGS, or WEBM sticker.
@@ -15743,6 +20645,19 @@ defmodule NotificationType do
 
   defstruct "@type": "NotificationType", "@extra": nil
 end
+defmodule LinkPreviewTypeDocument do
+  @moduledoc  """
+  The link is a link to a general file.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | document | document | The document description. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_document.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeDocument", "@extra": nil, document: nil
+end
 defmodule StickerFormat do
   @moduledoc  """
 
@@ -15762,6 +20677,15 @@ defmodule BusinessFeatureUpgradedStories do
 
   defstruct "@type": "businessFeatureUpgradedStories", "@extra": nil
 end
+defmodule SentGift do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_sent_gift.html).
+  """
+
+  defstruct "@type": "SentGift", "@extra": nil
+end
 defmodule StatisticalGraphError do
   @moduledoc  """
   An error message to be shown to the user instead of the graph.
@@ -15774,6 +20698,21 @@ defmodule StatisticalGraphError do
   """
 
   defstruct "@type": "statisticalGraphError", "@extra": nil, error_message: nil
+end
+defmodule MessagePollOptionDeleted do
+  @moduledoc  """
+  A message with information about a deleted poll option.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | poll_message_id | int53 | Identifier of the message with the poll; can be an identifier of a deleted message or 0. |
+  | option_id | string | Identifier of the deleted option in the poll. |
+  | text | formattedText | Text of the option; 1-100 characters; may contain only custom emoji entities. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_poll_option_deleted.html).
+  """
+
+  defstruct "@type": "messagePollOptionDeleted", "@extra": nil, poll_message_id: nil, option_id: nil, text: nil
 end
 defmodule CheckStickerSetNameResultNameOccupied do
   @moduledoc  """
@@ -15795,30 +20734,62 @@ defmodule FileTypeSticker do
 
   defstruct "@type": "fileTypeSticker", "@extra": nil
 end
+defmodule ReportSponsoredResultOptionRequired do
+  @moduledoc  """
+  The user must choose an option to report the message and repeat request with the chosen option.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | title | string | Title for the option choice. |
+  | options | reportOption | List of available options. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_sponsored_result_option_required.html).
+  """
+
+  defstruct "@type": "reportSponsoredResultOptionRequired", "@extra": nil, title: nil, options: nil
+end
+defmodule StorePaymentPurposeGiftedStars do
+  @moduledoc  """
+  The user buying Telegram Stars for other users.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user to which Telegram Stars are gifted. |
+  | currency | string | ISO 4217 currency code of the payment currency. |
+  | amount | int53 | Paid amount, in the smallest units of the currency. |
+  | star_count | int53 | Number of bought Telegram Stars. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_gifted_stars.html).
+  """
+
+  defstruct "@type": "storePaymentPurposeGiftedStars", "@extra": nil, user_id: nil, currency: nil, amount: nil, star_count: nil
+end
 defmodule ThemeParameters do
   @moduledoc  """
   Contains parameters of the application theme.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | background_color | int32 | A color of the background in the RGB24 format. |
-  | secondary_background_color | int32 | A secondary color for the background in the RGB24 format. |
-  | header_background_color | int32 | A color of the header background in the RGB24 format. |
-  | section_background_color | int32 | A color of the section background in the RGB24 format. |
-  | text_color | int32 | A color of text in the RGB24 format. |
-  | accent_text_color | int32 | An accent color of the text in the RGB24 format. |
-  | section_header_text_color | int32 | A color of text on the section headers in the RGB24 format. |
-  | subtitle_text_color | int32 | A color of the subtitle text in the RGB24 format. |
-  | destructive_text_color | int32 | A color of the text for destructive actions in the RGB24 format. |
-  | hint_color | int32 | A color of hints in the RGB24 format. |
-  | link_color | int32 | A color of links in the RGB24 format. |
-  | button_color | int32 | A color of the buttons in the RGB24 format. |
-  | button_text_color | int32 | A color of text on the buttons in the RGB24 format. |
+  | background_color | int32 | A color of the background in the RGB format. |
+  | secondary_background_color | int32 | A secondary color for the background in the RGB format. |
+  | header_background_color | int32 | A color of the header background in the RGB format. |
+  | bottom_bar_background_color | int32 | A color of the bottom bar background in the RGB format. |
+  | section_background_color | int32 | A color of the section background in the RGB format. |
+  | section_separator_color | int32 | A color of the section separator in the RGB format. |
+  | text_color | int32 | A color of text in the RGB format. |
+  | accent_text_color | int32 | An accent color of the text in the RGB format. |
+  | section_header_text_color | int32 | A color of text on the section headers in the RGB format. |
+  | subtitle_text_color | int32 | A color of the subtitle text in the RGB format. |
+  | destructive_text_color | int32 | A color of the text for destructive actions in the RGB format. |
+  | hint_color | int32 | A color of hints in the RGB format. |
+  | link_color | int32 | A color of links in the RGB format. |
+  | button_color | int32 | A color of the buttons in the RGB format. |
+  | button_text_color | int32 | A color of text on the buttons in the RGB format. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1theme_parameters.html).
   """
 
-  defstruct "@type": "themeParameters", "@extra": nil, background_color: nil, secondary_background_color: nil, header_background_color: nil, section_background_color: nil, text_color: nil, accent_text_color: nil, section_header_text_color: nil, subtitle_text_color: nil, destructive_text_color: nil, hint_color: nil, link_color: nil, button_color: nil, button_text_color: nil
+  defstruct "@type": "themeParameters", "@extra": nil, background_color: nil, secondary_background_color: nil, header_background_color: nil, bottom_bar_background_color: nil, section_background_color: nil, section_separator_color: nil, text_color: nil, accent_text_color: nil, section_header_text_color: nil, subtitle_text_color: nil, destructive_text_color: nil, hint_color: nil, link_color: nil, button_color: nil, button_text_color: nil
 end
 defmodule UpdateConnectionState do
   @moduledoc  """
@@ -15863,7 +20834,7 @@ defmodule BackgroundFillFreeformGradient do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | colors | int32 | A list of 3 or 4 colors of the freeform gradient in the RGB24 format. |
+  | colors | int32 | A list of 3 or 4 colors of the freeform gradient in the RGB format. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_fill_freeform_gradient.html).
   """
@@ -15879,6 +20850,102 @@ defmodule ThumbnailFormatWebp do
   """
 
   defstruct "@type": "thumbnailFormatWebp", "@extra": nil
+end
+defmodule DateTimeFormattingType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_date_time_formatting_type.html).
+  """
+
+  defstruct "@type": "DateTimeFormattingType", "@extra": nil
+end
+defmodule PaidMediaPhoto do
+  @moduledoc  """
+  The media is a photo.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | photo | The photo. |
+  | video | video | The video representing the live photo; may be null if the photo is static. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_media_photo.html).
+  """
+
+  defstruct "@type": "paidMediaPhoto", "@extra": nil, photo: nil, video: nil
+end
+defmodule InputGroupCallMessage do
+  @moduledoc  """
+  The group call is accessible through a message of the type messageGroupCall.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat with the message. |
+  | message_id | int53 | Identifier of the message of the type <a class="el" href="classtd_1_1td__api_1_1message_group_call.html">messageGroupCall</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_group_call_message.html).
+  """
+
+  defstruct "@type": "inputGroupCallMessage", "@extra": nil, chat_id: nil, message_id: nil
+end
+defmodule ActiveStoryStateUnread do
+  @moduledoc  """
+  The chat has some unread active stories.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1active_story_state_unread.html).
+  """
+
+  defstruct "@type": "activeStoryStateUnread", "@extra": nil
+end
+defmodule ReceivedGift do
+  @moduledoc  """
+  Represents a gift received by a user or a chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | received_gift_id | string | Unique identifier of the received gift for the current user; only for the receiver of the gift. |
+  | sender_id | MessageSender | Identifier of a user or a chat that sent the gift; may be null if unknown. |
+  | text | formattedText | Message added to the gift. |
+  | unique_gift_number | int32 | Unique number of the gift among gifts upgraded from the same gift after upgrade; 0 if yet unassigned. |
+  | is_private | bool | True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone are able to see them. |
+  | is_saved | bool | True, if the gift is displayed on the chat's profile page; only for the receiver of the gift. |
+  | is_pinned | bool | True, if the gift is pinned to the top of the chat's profile page. |
+  | can_be_upgraded | bool | True, if the gift is a regular gift that can be upgraded to a unique gift; only for the receiver of the gift. |
+  | can_be_transferred | bool | True, if the gift is an upgraded gift that can be transferred to another owner; only for the receiver of the gift. |
+  | was_refunded | bool | True, if the gift was refunded and isn't available anymore. |
+  | date | int32 | Point in time (Unix timestamp) when the gift was sent. |
+  | gift | SentGift | The gift. |
+  | collection_ids | int32 | Identifiers of collections to which the gift is added; only for the receiver of the gift. |
+  | sell_star_count | int53 | Number of Telegram Stars that can be claimed by the receiver instead of the regular gift; 0 if the gift can't be sold by the current user. |
+  | prepaid_upgrade_star_count | int53 | Number of Telegram Stars that were paid by the sender for the ability to upgrade the gift. |
+  | is_upgrade_separate | bool | True, if the upgrade was bought after the gift was sent. In this case, prepaid upgrade cost must not be added to the gift cost. |
+  | transfer_star_count | int53 | Number of Telegram Stars that must be paid to transfer the upgraded gift; only for the receiver of the gift. |
+  | drop_original_details_star_count | int53 | Number of Telegram Stars that must be paid to drop original details of the upgraded gift; 0 if not available; only for the receiver of the gift. |
+  | next_transfer_date | int32 | Point in time (Unix timestamp) when the gift can be transferred to another owner; can be in the past; 0 if the gift can be transferred immediately or transfer isn't possible; only for the receiver of the gift. |
+  | next_resale_date | int32 | Point in time (Unix timestamp) when the gift can be resold to another user; can be in the past; 0 if the gift can't be resold; only for the receiver of the gift. |
+  | export_date | int32 | Point in time (Unix timestamp) when the upgraded gift can be transferred to the TON blockchain as an NFT; can be in the past; 0 if NFT export isn't possible; only for the receiver of the gift. |
+  | prepaid_upgrade_hash | string | If non-empty, then the user can pay for an upgrade of the gift using <a class="el" href="classtd_1_1td__api_1_1buy_gift_upgrade.html">buyGiftUpgrade</a>. |
+  | craft_date | int32 | Point in time (Unix timestamp) when the gift can be used to craft another gift can be in the past; only for the receiver of the gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1received_gift.html).
+  """
+
+  defstruct "@type": "receivedGift", "@extra": nil, received_gift_id: nil, sender_id: nil, text: nil, unique_gift_number: nil, is_private: nil, is_saved: nil, is_pinned: nil, can_be_upgraded: nil, can_be_transferred: nil, was_refunded: nil, date: nil, gift: nil, collection_ids: nil, sell_star_count: nil, prepaid_upgrade_star_count: nil, is_upgrade_separate: nil, transfer_star_count: nil, drop_original_details_star_count: nil, next_transfer_date: nil, next_resale_date: nil, export_date: nil, prepaid_upgrade_hash: nil, craft_date: nil
+end
+defmodule LinkPreviewTypeStoryAlbum do
+  @moduledoc  """
+  The link is a link to an album of stories.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo_icon | photo | Icon of the album; may be null if none. |
+  | video_icon | video | Video icon of the album; may be null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_story_album.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeStoryAlbum", "@extra": nil, photo_icon: nil, video_icon: nil
 end
 defmodule ChatMembers do
   @moduledoc  """
@@ -15896,12 +20963,12 @@ defmodule ChatMembers do
 end
 defmodule InputInvoiceMessage do
   @moduledoc  """
-  An invoice from a message of the type messageInvoice.
+  An invoice from a message of the type messageInvoice or paid media purchase from messagePaidMedia.
 
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier of the message. |
-  | message_id | int53 | Message identifier. |
+  | message_id | int53 | Message identifier. Use messageProperties.can_be_paid to check whether the message can be used in the method. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_invoice_message.html).
   """
@@ -15935,8 +21002,10 @@ defmodule ChatInviteLink do
   | date | int32 | Point in time (Unix timestamp) when the link was created. |
   | edit_date | int32 | Point in time (Unix timestamp) when the link was last edited; 0 if never or unknown. |
   | expiration_date | int32 | Point in time (Unix timestamp) when the link will expire; 0 if never. |
+  | subscription_pricing | starSubscriptionPricing | Information about subscription plan that is applied to the users joining the chat by the link; may be null if the link doesn't require subscription. |
   | member_limit | int32 | The maximum number of members, which can join the chat using the link simultaneously; 0 if not limited. Always 0 if the link requires approval. |
   | member_count | int32 | Number of chat members, which joined the chat using the link. |
+  | expired_member_count | int32 | Number of chat members, which joined the chat using the link, but have already left because of expired subscription; for subscription links only. |
   | pending_join_request_count | int32 | Number of pending join requests created using this link. |
   | creates_join_request | bool | True, if the link only creates join request. If true, total number of joining members will be unlimited. |
   | is_primary | bool | True, if the link is primary. Primary invite link can't have name, expiration date, or usage limit. There is exactly one primary invite link for each administrator with can_invite_users right at a given time. |
@@ -15945,7 +21014,7 @@ defmodule ChatInviteLink do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_invite_link.html).
   """
 
-  defstruct "@type": "chatInviteLink", "@extra": nil, invite_link: nil, name: nil, creator_user_id: nil, date: nil, edit_date: nil, expiration_date: nil, member_limit: nil, member_count: nil, pending_join_request_count: nil, creates_join_request: nil, is_primary: nil, is_revoked: nil
+  defstruct "@type": "chatInviteLink", "@extra": nil, invite_link: nil, name: nil, creator_user_id: nil, date: nil, edit_date: nil, expiration_date: nil, subscription_pricing: nil, member_limit: nil, member_count: nil, expired_member_count: nil, pending_join_request_count: nil, creates_join_request: nil, is_primary: nil, is_revoked: nil
 end
 defmodule ForumTopicIcon do
   @moduledoc  """
@@ -15974,6 +21043,19 @@ defmodule OptionValueBoolean do
 
   defstruct "@type": "optionValueBoolean", "@extra": nil, value: nil
 end
+defmodule InputChatThemeEmoji do
+  @moduledoc  """
+  A theme based on an emoji.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | name | string | Name of the theme. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_chat_theme_emoji.html).
+  """
+
+  defstruct "@type": "inputChatThemeEmoji", "@extra": nil, name: nil
+end
 defmodule PassportElementErrorSourceReverseSide do
   @moduledoc  """
   The reverse side of the document contains an error. The error will be considered resolved when the file with the reverse side changes.
@@ -15993,11 +21075,12 @@ defmodule ChatAdministrator do
   | user_id | int53 | User identifier of the administrator. |
   | custom_title | string | Custom title of the administrator. |
   | is_owner | bool | True, if the user is the owner of the chat. |
+  | can_be_edited | bool | True, if the current user can edit the administrator privileges for the administrator. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_administrator.html).
   """
 
-  defstruct "@type": "chatAdministrator", "@extra": nil, user_id: nil, custom_title: nil, is_owner: nil
+  defstruct "@type": "chatAdministrator", "@extra": nil, user_id: nil, custom_title: nil, is_owner: nil, can_be_edited: nil
 end
 defmodule InputPassportElementPassport do
   @moduledoc  """
@@ -16035,16 +21118,21 @@ defmodule UserTypeBot do
   | can_be_edited | bool | True, if the bot is owned by the current user and can be edited using the methods <a class="el" href="classtd_1_1td__api_1_1toggle_bot_username_is_active.html">toggleBotUsernameIsActive</a>, <a class="el" href="classtd_1_1td__api_1_1reorder_bot_active_usernames.html">reorderBotActiveUsernames</a>, <a class="el" href="classtd_1_1td__api_1_1set_bot_profile_photo.html">setBotProfilePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1set_bot_name.html">setBotName</a>, <a class="el" href="classtd_1_1td__api_1_1set_bot_info_description.html">setBotInfoDescription</a>, and <a class="el" href="classtd_1_1td__api_1_1set_bot_info_short_description.html">setBotInfoShortDescription</a>. |
   | can_join_groups | bool | True, if the bot can be invited to basic group and supergroup chats. |
   | can_read_all_group_messages | bool | True, if the bot can read all messages in basic group or supergroup chats and not just those addressed to the bot. In private and channel chats a bot can always read all messages. |
+  | has_main_web_app | bool | True, if the bot has the main Web App. |
+  | has_topics | bool | True, if the bot has topics. |
+  | allows_users_to_create_topics | bool | True, if users can create and delete topics in the chat with the bot. |
+  | can_manage_bots | bool | True, if the bot can manage other bots. |
   | is_inline | bool | True, if the bot supports inline queries. |
   | inline_query_placeholder | string | Placeholder for inline queries (displayed on the application input field). |
   | need_location | bool | True, if the location of the user is expected to be sent with every inline query to this bot. |
   | can_connect_to_business | bool | True, if the bot supports connection to Telegram Business accounts. |
   | can_be_added_to_attachment_menu | bool | True, if the bot can be added to attachment or side menu. |
+  | active_user_count | int32 | The number of recently active users of the bot. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html).
   """
 
-  defstruct "@type": "userTypeBot", "@extra": nil, can_be_edited: nil, can_join_groups: nil, can_read_all_group_messages: nil, is_inline: nil, inline_query_placeholder: nil, need_location: nil, can_connect_to_business: nil, can_be_added_to_attachment_menu: nil
+  defstruct "@type": "userTypeBot", "@extra": nil, can_be_edited: nil, can_join_groups: nil, can_read_all_group_messages: nil, has_main_web_app: nil, has_topics: nil, allows_users_to_create_topics: nil, can_manage_bots: nil, is_inline: nil, inline_query_placeholder: nil, need_location: nil, can_connect_to_business: nil, can_be_added_to_attachment_menu: nil, active_user_count: nil
 end
 defmodule UpdateDeleteMessages do
   @moduledoc  """
@@ -16105,6 +21193,16 @@ defmodule MessageContent do
 
   defstruct "@type": "MessageContent", "@extra": nil
 end
+defmodule SearchMessagesChatTypeFilterPrivate do
+  @moduledoc  """
+  Returns only messages in private chats.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_chat_type_filter_private.html).
+  """
+
+  defstruct "@type": "searchMessagesChatTypeFilterPrivate", "@extra": nil
+end
 defmodule CallProblemSilentRemote do
   @moduledoc  """
   The other side couldn't hear the user.
@@ -16127,6 +21225,33 @@ defmodule PassportElements do
   """
 
   defstruct "@type": "passportElements", "@extra": nil, elements: nil
+end
+defmodule MessageSuggestedPostRefunded do
+  @moduledoc  """
+  A suggested post was refunded.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | suggested_post_message_id | int53 | Identifier of the message with the suggested post; may be 0 or an identifier of a deleted message. |
+  | reason | SuggestedPostRefundReason | Reason of the refund. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_suggested_post_refunded.html).
+  """
+
+  defstruct "@type": "messageSuggestedPostRefunded", "@extra": nil, suggested_post_message_id: nil, reason: nil
+end
+defmodule SettingsSectionPowerSaving do
+  @moduledoc  """
+  The power saving settings section.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "videos", "gifs", "stickers", "emoji", "effects", "preload", "background", "call-animations", "particles", "transitions". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_power_saving.html).
+  """
+
+  defstruct "@type": "settingsSectionPowerSaving", "@extra": nil, subsection: nil
 end
 defmodule TMeUrlTypeSupergroup do
   @moduledoc  """
@@ -16168,6 +21293,20 @@ defmodule RemoteFile do
 
   defstruct "@type": "remoteFile", "@extra": nil, id: nil, unique_id: nil, is_uploading_active: nil, is_uploading_completed: nil, uploaded_size: nil
 end
+defmodule StarTransactionTypeGiftOriginalDetailsDrop do
+  @moduledoc  """
+  The transaction is a drop of original details of an upgraded gift; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | owner_id | MessageSender | Identifier of the user or the channel that owns the gift. |
+  | gift | upgradedGift | The gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_gift_original_details_drop.html).
+  """
+
+  defstruct "@type": "starTransactionTypeGiftOriginalDetailsDrop", "@extra": nil, owner_id: nil, gift: nil
+end
 defmodule PassportElementErrorSourceTranslationFiles do
   @moduledoc  """
   The translation of the document contains an error. The error will be considered resolved when the list of translation files changes.
@@ -16191,6 +21330,34 @@ defmodule UpdateInstalledStickerSets do
   """
 
   defstruct "@type": "updateInstalledStickerSets", "@extra": nil, sticker_type: nil, sticker_set_ids: nil
+end
+defmodule InputChecklistTask do
+  @moduledoc  """
+  Describes a task in a checklist to be sent.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int32 | Unique identifier of the task; must be positive. |
+  | text | formattedText | Text of the task; 1-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("checklist_task_text_length_max") characters without line feeds. May contain only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_checklist_task.html).
+  """
+
+  defstruct "@type": "inputChecklistTask", "@extra": nil, id: nil, text: nil
+end
+defmodule InternalLinkTypeChatAffiliateProgram do
+  @moduledoc  """
+  The link is an affiliate program link. Call searchChatAffiliateProgram with the given username and referrer to process the link.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | username | string | Username to be passed to <a class="el" href="classtd_1_1td__api_1_1search_chat_affiliate_program.html">searchChatAffiliateProgram</a>. |
+  | referrer | string | Referrer to be passed to <a class="el" href="classtd_1_1td__api_1_1search_chat_affiliate_program.html">searchChatAffiliateProgram</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_chat_affiliate_program.html).
+  """
+
+  defstruct "@type": "internalLinkTypeChatAffiliateProgram", "@extra": nil, username: nil, referrer: nil
 end
 defmodule ChatMessageSenders do
   @moduledoc  """
@@ -16282,6 +21449,19 @@ defmodule ChatBoostLink do
 
   defstruct "@type": "chatBoostLink", "@extra": nil, link: nil, is_public: nil
 end
+defmodule GiftResalePriceTon do
+  @moduledoc  """
+  Describes price of a resold gift in Toncoins.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | toncoin_cent_count | int53 | The amount of 1/100 of Toncoin expected to be paid for the gift. Must be in the range <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_resale_toncoin_cent_count_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_resale_toncoin_cent_count_max"). |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_resale_price_ton.html).
+  """
+
+  defstruct "@type": "giftResalePriceTon", "@extra": nil, toncoin_cent_count: nil
+end
 defmodule InputIdentityDocument do
   @moduledoc  """
   An identity document to be saved to Telegram Passport.
@@ -16323,6 +21503,33 @@ defmodule InputCredentialsSaved do
 
   defstruct "@type": "inputCredentialsSaved", "@extra": nil, saved_credentials_id: nil
 end
+defmodule UpdateTrustedMiniAppBots do
+  @moduledoc  """
+  Lists of bots which Mini Apps must be allowed to read text from clipboard and must be opened without a warning.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | bot_user_ids | int53 | List of user identifiers of the bots; the corresponding users may not be sent using <a class="el" href="classtd_1_1td__api_1_1update_user.html">updateUser</a> updates and may not be accessible. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_trusted_mini_app_bots.html).
+  """
+
+  defstruct "@type": "updateTrustedMiniAppBots", "@extra": nil, bot_user_ids: nil
+end
+defmodule StarTransactionTypeGiftTransfer do
+  @moduledoc  """
+  The transaction is a transfer of an upgraded gift; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | owner_id | MessageSender | Identifier of the user or the channel that received the gift. |
+  | gift | upgradedGift | The gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_gift_transfer.html).
+  """
+
+  defstruct "@type": "starTransactionTypeGiftTransfer", "@extra": nil, owner_id: nil, gift: nil
+end
 defmodule ChatEventStickerSetChanged do
   @moduledoc  """
   The supergroup sticker set was changed.
@@ -16347,6 +21554,21 @@ defmodule LogStreamDefault do
 
   defstruct "@type": "logStreamDefault", "@extra": nil
 end
+defmodule InternalLinkTypeMainWebApp do
+  @moduledoc  """
+  The link is a link to the main Web App of a bot. Call searchPublicChat with the given bot username, check that the user is a bot and has the main Web App. If the bot can be added to attachment menu, then use getAttachmentMenuBot to receive information about the bot, then if the bot isn't added to side menu, show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu, then if the user accepts the terms and confirms adding, use toggleBotIsAddedToAttachmentMenu to add the bot. Then, use getMainWebApp with the given start parameter and mode and open the returned URL as a Web App.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | bot_username | string | Username of the bot. |
+  | start_parameter | string | Start parameter to be passed to <a class="el" href="classtd_1_1td__api_1_1get_main_web_app.html">getMainWebApp</a>. |
+  | mode | WebAppOpenMode | The mode to be passed to <a class="el" href="classtd_1_1td__api_1_1get_main_web_app.html">getMainWebApp</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_main_web_app.html).
+  """
+
+  defstruct "@type": "internalLinkTypeMainWebApp", "@extra": nil, bot_username: nil, start_parameter: nil, mode: nil
+end
 defmodule MessageSource do
   @moduledoc  """
 
@@ -16365,6 +21587,20 @@ defmodule BusinessFeatureAwayMessage do
   """
 
   defstruct "@type": "businessFeatureAwayMessage", "@extra": nil
+end
+defmodule UpgradedGiftModelCount do
+  @moduledoc  """
+  Describes a model of an upgraded gift with the number of gifts found.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | model | upgradedGiftModel | The model. |
+  | total_count | int32 | Total number of gifts with the model. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_model_count.html).
+  """
+
+  defstruct "@type": "upgradedGiftModelCount", "@extra": nil, model: nil, total_count: nil
 end
 defmodule JsonValueNumber do
   @moduledoc  """
@@ -16393,6 +21629,35 @@ defmodule ChatEventVideoChatParticipantIsMutedToggled do
 
   defstruct "@type": "chatEventVideoChatParticipantIsMutedToggled", "@extra": nil, participant_id: nil, is_muted: nil
 end
+defmodule FoundUsers do
+  @moduledoc  """
+  Represents a list of found users.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_ids | int53 | Identifiers of the found users. |
+  | next_offset | string | The offset for the next request. If empty, then there are no more results. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_users.html).
+  """
+
+  defstruct "@type": "foundUsers", "@extra": nil, user_ids: nil, next_offset: nil
+end
+defmodule AdvertisementSponsor do
+  @moduledoc  """
+  Information about the sponsor of an advertisement.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | URL of the sponsor to be opened when the advertisement is clicked. |
+  | photo | photo | Photo of the sponsor; may be null if must not be shown. |
+  | info | string | Additional optional information about the sponsor to be shown along with the advertisement. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1advertisement_sponsor.html).
+  """
+
+  defstruct "@type": "advertisementSponsor", "@extra": nil, url: nil, photo: nil, info: nil
+end
 defmodule MessageReadDate do
   @moduledoc  """
 
@@ -16412,6 +21677,48 @@ defmodule OptionValueEmpty do
 
   defstruct "@type": "optionValueEmpty", "@extra": nil
 end
+defmodule UpdatePaidMediaPurchased do
+  @moduledoc  """
+  Paid media were purchased by a user; for bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | User identifier. |
+  | payload | string | Bot-specified payload for the paid media. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_paid_media_purchased.html).
+  """
+
+  defstruct "@type": "updatePaidMediaPurchased", "@extra": nil, user_id: nil, payload: nil
+end
+defmodule InternalLinkTypeRequestManagedBot do
+  @moduledoc  """
+  The link is a link to a dialog for creating of a managed bot. Call searchPublicChat with the given manager bot username. If the chat is found, the chat is a chat with a bot and the bot has can_manage_bots == true, then show bot creation confirmation dialog with the given suggested_bot_username and suggested_bot_name. If user agrees, call createBot with via_link == true to create the bot.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | manager_bot_username | string | Username of the bot which will manage the new bot. |
+  | suggested_bot_username | string | Suggested username for the bot. |
+  | suggested_bot_name | string | Suggested name for the bot; may be empty if not specified. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_request_managed_bot.html).
+  """
+
+  defstruct "@type": "internalLinkTypeRequestManagedBot", "@extra": nil, manager_bot_username: nil, suggested_bot_username: nil, suggested_bot_name: nil
+end
+defmodule GiveawayPrizeStars do
+  @moduledoc  """
+  The giveaway sends Telegram Stars to the winners.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | Number of Telegram Stars that will be shared by all winners. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_prize_stars.html).
+  """
+
+  defstruct "@type": "giveawayPrizeStars", "@extra": nil, star_count: nil
+end
 defmodule CheckChatUsernameResult do
   @moduledoc  """
 
@@ -16430,6 +21737,20 @@ defmodule InlineQueryResult do
 
   defstruct "@type": "InlineQueryResult", "@extra": nil
 end
+defmodule KeyboardButtonSourceMessage do
+  @moduledoc  """
+  The button is from a bot's message.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat with the message. |
+  | message_id | int53 | Identifier of the message with the button. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_source_message.html).
+  """
+
+  defstruct "@type": "keyboardButtonSourceMessage", "@extra": nil, chat_id: nil, message_id: nil
+end
 defmodule NotificationSettingsScopeChannelChats do
   @moduledoc  """
   Notification settings applied to all channel chats when the corresponding chat setting has a default value.
@@ -16440,15 +21761,31 @@ defmodule NotificationSettingsScopeChannelChats do
 
   defstruct "@type": "notificationSettingsScopeChannelChats", "@extra": nil
 end
-defmodule ChatActionBarReportUnrelatedLocation do
+defmodule OauthLinkInfo do
   @moduledoc  """
-  The chat is a location-based supergroup, which can be reported as having unrelated location using the method reportChat with the reason reportReasonUnrelatedLocation.
+  Information about the OAuth authorization.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user for which the link was generated; may be 0 if unknown. The corresponding user may be unknown. If the user is logged in the application, then they must be chosen for authorization by default. |
+  | url | string | An HTTP URL where the user authorizes. |
+  | domain | string | A domain of the URL. |
+  | from_app | bool | True, if the authorization originates from an application. |
+  | verified_app_name | string | Verified name of the application; if empty, then "Unverified App" must be shown instead. |
+  | bot_user_id | int53 | User identifier of a bot linked with the website. |
+  | request_write_access | bool | True, if the user must be asked for the permission to the bot to send them messages. |
+  | request_phone_number_access | bool | True, if the user must be asked for the permission to share their phone number. |
+  | browser | string | The version of a browser used for the authorization. |
+  | platform | string | Operating system the browser is running on. |
+  | ip_address | string | IP address from which the authorization is performed, in human-readable format. |
+  | location | string | Human-readable description of a country and a region from which the authorization is performed, based on the IP address. |
+  | match_code_first | bool | True, if code matching dialog must be shown first and <a class="el" href="classtd_1_1td__api_1_1check_oauth_request_match_code.html">checkOauthRequestMatchCode</a> must be called before <a class="el" href="classtd_1_1td__api_1_1accept_oauth_request.html">acceptOauthRequest</a>. Otherwise, <a class="el" href="classtd_1_1td__api_1_1check_oauth_request_match_code.html">checkOauthRequestMatchCode</a> must not be called. |
+  | match_codes | string | The list of codes to match; may be empty if irrelevant. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_bar_report_unrelated_location.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1oauth_link_info.html).
   """
 
-  defstruct "@type": "chatActionBarReportUnrelatedLocation", "@extra": nil
+  defstruct "@type": "oauthLinkInfo", "@extra": nil, user_id: nil, url: nil, domain: nil, from_app: nil, verified_app_name: nil, bot_user_id: nil, request_write_access: nil, request_phone_number_access: nil, browser: nil, platform: nil, ip_address: nil, location: nil, match_code_first: nil, match_codes: nil
 end
 defmodule SearchMessagesFilterVideo do
   @moduledoc  """
@@ -16459,6 +21796,20 @@ defmodule SearchMessagesFilterVideo do
   """
 
   defstruct "@type": "searchMessagesFilterVideo", "@extra": nil
+end
+defmodule ReportChatResultOptionRequired do
+  @moduledoc  """
+  The user must choose an option to report the chat and repeat request with the chosen option.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | title | string | Title for the option choice. |
+  | options | reportOption | List of available options. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_result_option_required.html).
+  """
+
+  defstruct "@type": "reportChatResultOptionRequired", "@extra": nil, title: nil, options: nil
 end
 defmodule ChatLists do
   @moduledoc  """
@@ -16479,7 +21830,7 @@ defmodule InputTextQuote do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | text | formattedText | Text of the quote; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_reply_quote_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed to be kept and must be kept in the quote. |
+  | text | formattedText | Text of the quote; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_reply_quote_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed to be kept and must be kept in the quote. |
   | position | int32 | Quote position in the original message in UTF-16 code units. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_text_quote.html).
@@ -16500,6 +21851,16 @@ defmodule InputStoryAreaTypeLocation do
   """
 
   defstruct "@type": "inputStoryAreaTypeLocation", "@extra": nil, location: nil, address: nil
+end
+defmodule BuiltInThemeDay do
+  @moduledoc  """
+  Regular light theme.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1built_in_theme_day.html).
+  """
+
+  defstruct "@type": "builtInThemeDay", "@extra": nil
 end
 defmodule DeviceTokenMicrosoftPush do
   @moduledoc  """
@@ -16574,6 +21935,16 @@ defmodule EmojiCategoryTypeEmojiStatus do
 
   defstruct "@type": "emojiCategoryTypeEmojiStatus", "@extra": nil
 end
+defmodule UserPrivacySettingRuleAllowBots do
+  @moduledoc  """
+  A rule to allow all bots to do something.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rule_allow_bots.html).
+  """
+
+  defstruct "@type": "userPrivacySettingRuleAllowBots", "@extra": nil
+end
 defmodule SessionTypeAndroid do
   @moduledoc  """
   The session is running on an Android device.
@@ -16614,15 +21985,16 @@ defmodule InputStoryContentVideo do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | video | InputFile | Video to be sent. The video size must be 720x1280. The video must be streamable and stored in MPEG4 format, after encoding with x265 codec and key frames added each second. |
+  | video | InputFile | Video to be sent. The video size must be 720x1280. The video must be streamable and stored in MPEG4 format, after encoding with H.265 codec and key frames added each second. |
   | added_sticker_file_ids | int32 | File identifiers of the stickers added to the video, if applicable. |
   | duration | double | Precise duration of the video, in seconds; 0-60. |
+  | cover_frame_timestamp | double | Timestamp of the frame, which will be used as video thumbnail. |
   | is_animation | bool | True, if the video has no sound. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_content_video.html).
   """
 
-  defstruct "@type": "inputStoryContentVideo", "@extra": nil, video: nil, added_sticker_file_ids: nil, duration: nil, is_animation: nil
+  defstruct "@type": "inputStoryContentVideo", "@extra": nil, video: nil, added_sticker_file_ids: nil, duration: nil, cover_frame_timestamp: nil, is_animation: nil
 end
 defmodule File do
   @moduledoc  """
@@ -16641,9 +22013,19 @@ defmodule File do
 
   defstruct "@type": "file", "@extra": nil, id: nil, size: nil, expected_size: nil, local: nil, remote: nil
 end
+defmodule CanPostStoryResultBoostNeeded do
+  @moduledoc  """
+  The chat must be boosted first by Telegram Premium subscribers to post more stories. Call getChatBoostStatus to get current boost status of the chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story_result_boost_needed.html).
+  """
+
+  defstruct "@type": "canPostStoryResultBoostNeeded", "@extra": nil
+end
 defmodule UpdateMessageLiveLocationViewed do
   @moduledoc  """
-  A message with a live location was viewed. When the update is received, the application is supposed to update the live location.
+  A message with a live location was viewed. When the update is received, the application is expected to update the live location.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -16678,6 +22060,28 @@ defmodule StoryContentUnsupported do
 
   defstruct "@type": "storyContentUnsupported", "@extra": nil
 end
+defmodule UpgradedGiftAttributeIdModel do
+  @moduledoc  """
+  Identifier of a gift model.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | sticker_id | int64 | Identifier of the sticker representing the model. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_attribute_id_model.html).
+  """
+
+  defstruct "@type": "upgradedGiftAttributeIdModel", "@extra": nil, sticker_id: nil
+end
+defmodule ProfileTab do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_profile_tab.html).
+  """
+
+  defstruct "@type": "ProfileTab", "@extra": nil
+end
 defmodule MessageLinkInfo do
   @moduledoc  """
   Contains information about a link to a message or a forum topic in a chat.
@@ -16686,15 +22090,17 @@ defmodule MessageLinkInfo do
   |------|------| ------------|
   | is_public | bool | True, if the link is a public link for a message or a forum topic in a chat. |
   | chat_id | int53 | If found, identifier of the chat to which the link points, 0 otherwise. |
-  | message_thread_id | int53 | If found, identifier of the message thread in which to open the message, or a forum topic to open if the message is missing. |
+  | topic_id | MessageTopic | Identifier of the specific topic in which the message must be opened, or a topic to open if the message is missing; may be null if none. |
   | message | message | If found, the linked message; may be null. |
-  | media_timestamp | int32 | Timestamp from which the video/audio/video note/voice note/story playing must start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview. |
+  | media_timestamp | int32 | Timestamp from which the video/audio/video note/voice note/story playing must start, in seconds; 0 if not specified. The media can be in the message content or in its link preview. |
+  | checklist_task_id | int32 | Identifier of the checklist task that is linked; 0 if none. |
+  | poll_option_id | string | Identifier of the poll option that is linked; empty if none. |
   | for_album | bool | True, if the whole media album to which the message belongs is linked. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_link_info.html).
   """
 
-  defstruct "@type": "messageLinkInfo", "@extra": nil, is_public: nil, chat_id: nil, message_thread_id: nil, message: nil, media_timestamp: nil, for_album: nil
+  defstruct "@type": "messageLinkInfo", "@extra": nil, is_public: nil, chat_id: nil, topic_id: nil, message: nil, media_timestamp: nil, checklist_task_id: nil, poll_option_id: nil, for_album: nil
 end
 defmodule SearchMessagesFilterChatPhoto do
   @moduledoc  """
@@ -16716,6 +22122,21 @@ defmodule EmojiCategoryTypeDefault do
 
   defstruct "@type": "emojiCategoryTypeDefault", "@extra": nil
 end
+defmodule KeyboardButtonTypeRequestManagedBot do
+  @moduledoc  """
+  A button that requests creation of a managed bot by the current user; available only in private chats. Use the method createBot to complete the request.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int32 | Unique button identifier. |
+  | suggested_name | string | Suggested name for the bot; may be empty if not specified. |
+  | suggested_username | string | Suggested username for the bot; may be empty if not specified. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_managed_bot.html).
+  """
+
+  defstruct "@type": "keyboardButtonTypeRequestManagedBot", "@extra": nil, id: nil, suggested_name: nil, suggested_username: nil
+end
 defmodule InputInvoiceName do
   @moduledoc  """
   An invoice from a link of the type internalLinkTypeInvoice.
@@ -16731,13 +22152,13 @@ defmodule InputInvoiceName do
 end
 defmodule InputFileGenerated do
   @moduledoc  """
-  A file generated by the application.
+  A file generated by the application. The application must handle updates updateFileGenerationStart and updateFileGenerationStop to generate the file when asked by TDLib.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | original_path | string | Local path to a file from which the file is generated; may be empty if there is no such file. |
+  | original_path | string | Local path to a file from which the file is generated. The path doesn't have to be a valid path and is used by TDLib only to detect name and MIME type of the generated file. |
   | conversion | string | String specifying the conversion applied to the original file; must be persistent across application restarts. Conversions beginning with '#' are reserved for internal TDLib usage. |
-  | expected_size | int53 | Expected size of the generated file, in bytes; 0 if unknown. |
+  | expected_size | int53 | Expected size of the generated file, in bytes; pass 0 if unknown. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_file_generated.html).
   """
@@ -16757,6 +22178,42 @@ defmodule AvailableReaction do
   """
 
   defstruct "@type": "availableReaction", "@extra": nil, type: nil, needs_premium: nil
+end
+defmodule SuggestedActionAddLoginPasskey do
+  @moduledoc  """
+  Suggests the user to add a passkey for login using addLoginPasskey.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_add_login_passkey.html).
+  """
+
+  defstruct "@type": "suggestedActionAddLoginPasskey", "@extra": nil
+end
+defmodule StarGiveawayPaymentOptions do
+  @moduledoc  """
+  Contains a list of options for creating of Telegram Star giveaway.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | options | starGiveawayPaymentOption | The list of options. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_giveaway_payment_options.html).
+  """
+
+  defstruct "@type": "starGiveawayPaymentOptions", "@extra": nil, options: nil
+end
+defmodule PremiumGiveawayPaymentOptions do
+  @moduledoc  """
+  Contains a list of options for creating of Telegram Premium giveaway or manual distribution of Telegram Premium among chat members.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | options | premiumGiveawayPaymentOption | The list of options. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_giveaway_payment_options.html).
+  """
+
+  defstruct "@type": "premiumGiveawayPaymentOptions", "@extra": nil, options: nil
 end
 defmodule FileTypeWallpaper do
   @moduledoc  """
@@ -16849,14 +22306,46 @@ defmodule MessageReplyToMessage do
   | chat_id | int53 | The identifier of the chat to which the message belongs; may be 0 if the replied message is in unknown chat. |
   | message_id | int53 | The identifier of the message; may be 0 if the replied message is in unknown chat. |
   | quote | textQuote | Chosen quote from the replied message; may be null if none. |
+  | checklist_task_id | int32 | Identifier of the checklist task in the original message that was replied; 0 if none. |
+  | poll_option_id | string | Identifier of the poll option in the original message that was replied; empty if none. |
   | origin | MessageOrigin | Information about origin of the message if the message was from another chat or topic; may be null for messages from the same chat. |
   | origin_send_date | int32 | Point in time (Unix timestamp) when the message was sent if the message was from another chat or topic; 0 for messages from the same chat. |
-  | content | MessageContent | Media content of the message if the message was from another chat or topic; may be null for messages from the same chat and messages without media. Can be only one of the following types: <a class="el" href="classtd_1_1td__api_1_1message_animation.html">messageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1message_audio.html">messageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1message_contact.html">messageContact</a>, <a class="el" href="classtd_1_1td__api_1_1message_dice.html">messageDice</a>, <a class="el" href="classtd_1_1td__api_1_1message_document.html">messageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1message_game.html">messageGame</a>, <a class="el" href="classtd_1_1td__api_1_1message_invoice.html">messageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1message_location.html">messageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1message_photo.html">messagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1message_poll.html">messagePoll</a>, <a class="el" href="classtd_1_1td__api_1_1message_premium_giveaway.html">messagePremiumGiveaway</a>, <a class="el" href="classtd_1_1td__api_1_1message_premium_giveaway_winners.html">messagePremiumGiveawayWinners</a>, <a class="el" href="classtd_1_1td__api_1_1message_sticker.html">messageSticker</a>, <a class="el" href="classtd_1_1td__api_1_1message_story.html">messageStory</a>, <a class="el" href="classtd_1_1td__api_1_1message_text.html">messageText</a> (for link preview), <a class="el" href="classtd_1_1td__api_1_1message_venue.html">messageVenue</a>, <a class="el" href="classtd_1_1td__api_1_1message_video.html">messageVideo</a>, <a class="el" href="classtd_1_1td__api_1_1message_video_note.html">messageVideoNote</a>, or <a class="el" href="classtd_1_1td__api_1_1message_voice_note.html">messageVoiceNote</a>. |
+  | content | MessageContent | Media content of the message if the message was from another chat or topic; may be null for messages from the same chat and messages without media. Can be only one of the following types: <a class="el" href="classtd_1_1td__api_1_1message_animation.html">messageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1message_audio.html">messageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1message_checklist.html">messageChecklist</a>, <a class="el" href="classtd_1_1td__api_1_1message_contact.html">messageContact</a>, <a class="el" href="classtd_1_1td__api_1_1message_dice.html">messageDice</a>, <a class="el" href="classtd_1_1td__api_1_1message_document.html">messageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1message_game.html">messageGame</a>, <a class="el" href="classtd_1_1td__api_1_1message_giveaway.html">messageGiveaway</a>, <a class="el" href="classtd_1_1td__api_1_1message_giveaway_winners.html">messageGiveawayWinners</a>, <a class="el" href="classtd_1_1td__api_1_1message_invoice.html">messageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1message_location.html">messageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1message_paid_media.html">messagePaidMedia</a>, <a class="el" href="classtd_1_1td__api_1_1message_photo.html">messagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1message_poll.html">messagePoll</a>, <a class="el" href="classtd_1_1td__api_1_1message_stake_dice.html">messageStakeDice</a>, <a class="el" href="classtd_1_1td__api_1_1message_sticker.html">messageSticker</a>, <a class="el" href="classtd_1_1td__api_1_1message_story.html">messageStory</a>, <a class="el" href="classtd_1_1td__api_1_1message_text.html">messageText</a> (for link preview), <a class="el" href="classtd_1_1td__api_1_1message_venue.html">messageVenue</a>, <a class="el" href="classtd_1_1td__api_1_1message_video.html">messageVideo</a>, <a class="el" href="classtd_1_1td__api_1_1message_video_note.html">messageVideoNote</a>, or <a class="el" href="classtd_1_1td__api_1_1message_voice_note.html">messageVoiceNote</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_reply_to_message.html).
   """
 
-  defstruct "@type": "messageReplyToMessage", "@extra": nil, chat_id: nil, message_id: nil, quote: nil, origin: nil, origin_send_date: nil, content: nil
+  defstruct "@type": "messageReplyToMessage", "@extra": nil, chat_id: nil, message_id: nil, quote: nil, checklist_task_id: nil, poll_option_id: nil, origin: nil, origin_send_date: nil, content: nil
+end
+defmodule BotVerificationParameters do
+  @moduledoc  """
+  Describes parameters of verification that is provided by a bot.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | icon_custom_emoji_id | int64 | Identifier of the custom emoji that is used as the verification sign. |
+  | organization_name | string | Name of the organization that provides verification. |
+  | default_custom_description | formattedText | Default custom description of verification reason to be used as placeholder in <a class="el" href="classtd_1_1td__api_1_1set_message_sender_bot_verification.html">setMessageSenderBotVerification</a>; may be null if none. |
+  | can_set_custom_description | bool | True, if the bot is allowed to provide custom description for verified entities. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_verification_parameters.html).
+  """
+
+  defstruct "@type": "botVerificationParameters", "@extra": nil, icon_custom_emoji_id: nil, organization_name: nil, default_custom_description: nil, can_set_custom_description: nil
+end
+defmodule GiftAuctionState do
+  @moduledoc  """
+  Represent auction state of a gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | gift | The gift. |
+  | state | AuctionState | Auction state of the gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_auction_state.html).
+  """
+
+  defstruct "@type": "giftAuctionState", "@extra": nil, gift: nil, state: nil
 end
 defmodule ChatInviteLinks do
   @moduledoc  """
@@ -16899,6 +22388,20 @@ defmodule ChatActionUploadingVideoNote do
   """
 
   defstruct "@type": "chatActionUploadingVideoNote", "@extra": nil, progress: nil
+end
+defmodule StarTransactionTypeChannelSubscriptionPurchase do
+  @moduledoc  """
+  The transaction is a purchase of a subscription to a channel chat by the current user; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the channel chat that created the subscription. |
+  | subscription_period | int32 | The number of seconds between consecutive Telegram Star debitings. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_channel_subscription_purchase.html).
+  """
+
+  defstruct "@type": "starTransactionTypeChannelSubscriptionPurchase", "@extra": nil, chat_id: nil, subscription_period: nil
 end
 defmodule CallProblemInterruptions do
   @moduledoc  """
@@ -16959,6 +22462,16 @@ defmodule PremiumFeatureForumTopicIcon do
 
   defstruct "@type": "premiumFeatureForumTopicIcon", "@extra": nil
 end
+defmodule UpgradedGiftAttributeRarityUncommon do
+  @moduledoc  """
+  The attribute is uncommon.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_attribute_rarity_uncommon.html).
+  """
+
+  defstruct "@type": "upgradedGiftAttributeRarityUncommon", "@extra": nil
+end
 defmodule UpdateChatActiveStories do
   @moduledoc  """
   The list of active stories posted by a specific chat has changed.
@@ -16981,20 +22494,6 @@ defmodule ChatMembersFilterBots do
   """
 
   defstruct "@type": "chatMembersFilterBots", "@extra": nil
-end
-defmodule ChatsNearby do
-  @moduledoc  """
-  Represents a list of chats located nearby.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | users_nearby | chatNearby | List of users nearby. |
-  | supergroups_nearby | chatNearby | List of location-based supergroups nearby. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chats_nearby.html).
-  """
-
-  defstruct "@type": "chatsNearby", "@extra": nil, users_nearby: nil, supergroups_nearby: nil
 end
 defmodule UserPrivacySettingShowLinkInForwardedMessages do
   @moduledoc  """
@@ -17022,7 +22521,7 @@ defmodule UpdateStoryListChatCount do
 end
 defmodule InternalLinkTypeVideoChat do
   @moduledoc  """
-  The link is a link to a video chat. Call searchPublicChat with the given chat username, and then joinGroupCall with the given invite hash to process the link.
+  The link is a link to a video chat. Call searchPublicChat with the given chat username, and then joinVideoChat with the given invite hash to process the link.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -17034,6 +22533,20 @@ defmodule InternalLinkTypeVideoChat do
   """
 
   defstruct "@type": "internalLinkTypeVideoChat", "@extra": nil, chat_username: nil, invite_hash: nil, is_live_stream: nil
+end
+defmodule UpdateStoryPostSucceeded do
+  @moduledoc  """
+  A story has been successfully posted.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | story | story | The posted story. |
+  | old_story_id | int32 | The previous temporary story identifier. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_story_post_succeeded.html).
+  """
+
+  defstruct "@type": "updateStoryPostSucceeded", "@extra": nil, story: nil, old_story_id: nil
 end
 defmodule InputPassportElementErrorSourceFiles do
   @moduledoc  """
@@ -17047,6 +22560,20 @@ defmodule InputPassportElementErrorSourceFiles do
   """
 
   defstruct "@type": "inputPassportElementErrorSourceFiles", "@extra": nil, file_hashes: nil
+end
+defmodule DiffText do
+  @moduledoc  """
+  A text with some changes highlighted.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | string | The text. |
+  | entities | diffEntity | Entities describing changes in the text. Entities doesn't mutually intersect with each other. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1diff_text.html).
+  """
+
+  defstruct "@type": "diffText", "@extra": nil, text: nil, entities: nil
 end
 defmodule VideoNote do
   @moduledoc  """
@@ -17112,7 +22639,7 @@ defmodule CanSendMessageToUserResultUserRestrictsNewChats do
 end
 defmodule SearchMessagesFilterUnreadMention do
   @moduledoc  """
-  Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user.
+  Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query or by the sending user.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_mention.html).
@@ -17122,16 +22649,16 @@ defmodule SearchMessagesFilterUnreadMention do
 end
 defmodule StoryOriginHiddenUser do
   @moduledoc  """
-  The original story was sent by an unknown user.
+  The original story was posted by an unknown user.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | sender_name | string | Name of the story sender. |
+  | poster_name | string | Name of the user or the chat that posted the story. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_origin_hidden_user.html).
   """
 
-  defstruct "@type": "storyOriginHiddenUser", "@extra": nil, sender_name: nil
+  defstruct "@type": "storyOriginHiddenUser", "@extra": nil, poster_name: nil
 end
 defmodule CallDiscardReason do
   @moduledoc  """
@@ -17166,17 +22693,16 @@ defmodule Sticker do
   | set_id | int64 | Identifier of the sticker set to which the sticker belongs; 0 if none. |
   | width | int32 | Sticker width; as defined by the sender. |
   | height | int32 | Sticker height; as defined by the sender. |
-  | emoji | string | Emoji corresponding to the sticker. |
+  | emoji | string | Emoji corresponding to the sticker; may be empty if unknown. |
   | format | StickerFormat | Sticker format. |
   | full_type | StickerFullType | Sticker's full type. |
-  | outline | closedVectorPath | Sticker's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner. |
   | thumbnail | thumbnail | Sticker thumbnail in WEBP or JPEG format; may be null. |
   | sticker | file | File containing the sticker. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker.html).
   """
 
-  defstruct "@type": "sticker", "@extra": nil, id: nil, set_id: nil, width: nil, height: nil, emoji: nil, format: nil, full_type: nil, outline: nil, thumbnail: nil, sticker: nil
+  defstruct "@type": "sticker", "@extra": nil, id: nil, set_id: nil, width: nil, height: nil, emoji: nil, format: nil, full_type: nil, thumbnail: nil, sticker: nil
 end
 defmodule PremiumState do
   @moduledoc  """
@@ -17204,6 +22730,22 @@ defmodule SearchMessagesFilterUrl do
 
   defstruct "@type": "searchMessagesFilterUrl", "@extra": nil
 end
+defmodule UpdateFreezeState do
+  @moduledoc  """
+  The freeze state of the current user's account has changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | is_frozen | bool | True, if the account is frozen. |
+  | freezing_date | int32 | Point in time (Unix timestamp) when the account was frozen; 0 if the account isn't frozen. |
+  | deletion_date | int32 | Point in time (Unix timestamp) when the account will be deleted and can't be unfrozen; 0 if the account isn't frozen. |
+  | appeal_link | string | The link to open to send an appeal to unfreeze the account. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_freeze_state.html).
+  """
+
+  defstruct "@type": "updateFreezeState", "@extra": nil, is_frozen: nil, freezing_date: nil, deletion_date: nil, appeal_link: nil
+end
 defmodule MessageExpiredPhoto do
   @moduledoc  """
   A self-destructed photo message.
@@ -17223,6 +22765,16 @@ defmodule BusinessFeature do
 
   defstruct "@type": "BusinessFeature", "@extra": nil
 end
+defmodule PremiumFeatureChecklists do
+  @moduledoc  """
+  The ability to create and use checklist messages.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_checklists.html).
+  """
+
+  defstruct "@type": "premiumFeatureChecklists", "@extra": nil
+end
 defmodule ChatEventLogFilters do
   @moduledoc  """
   Represents a set of filters used to obtain a chat event log.
@@ -17237,16 +22789,60 @@ defmodule ChatEventLogFilters do
   | member_invites | bool | True, if invited member events need to be returned. |
   | member_promotions | bool | True, if member promotion/demotion events need to be returned. |
   | member_restrictions | bool | True, if member restricted/unrestricted/banned/unbanned events need to be returned. |
+  | member_tag_changes | bool | True, if member tag and custom title change events need to be returned. |
   | info_changes | bool | True, if changes in chat information need to be returned. |
   | setting_changes | bool | True, if changes in chat settings need to be returned. |
   | invite_link_changes | bool | True, if changes to invite links need to be returned. |
   | video_chat_changes | bool | True, if video chat actions need to be returned. |
   | forum_changes | bool | True, if forum-related actions need to be returned. |
+  | subscription_extensions | bool | True, if subscription extensions need to be returned. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_log_filters.html).
   """
 
-  defstruct "@type": "chatEventLogFilters", "@extra": nil, message_edits: nil, message_deletions: nil, message_pins: nil, member_joins: nil, member_leaves: nil, member_invites: nil, member_promotions: nil, member_restrictions: nil, info_changes: nil, setting_changes: nil, invite_link_changes: nil, video_chat_changes: nil, forum_changes: nil
+  defstruct "@type": "chatEventLogFilters", "@extra": nil, message_edits: nil, message_deletions: nil, message_pins: nil, member_joins: nil, member_leaves: nil, member_invites: nil, member_promotions: nil, member_restrictions: nil, member_tag_changes: nil, info_changes: nil, setting_changes: nil, invite_link_changes: nil, video_chat_changes: nil, forum_changes: nil, subscription_extensions: nil
+end
+defmodule PushMessageContentProximityAlertTriggered do
+  @moduledoc  """
+  A user in the chat came within proximity alert range from the current user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | distance | int32 | The distance to the user. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_proximity_alert_triggered.html).
+  """
+
+  defstruct "@type": "pushMessageContentProximityAlertTriggered", "@extra": nil, distance: nil
+end
+defmodule GiveawayInfoOngoing do
+  @moduledoc  """
+  Describes an ongoing giveaway.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | creation_date | int32 | Point in time (Unix timestamp) when the giveaway was created. |
+  | status | GiveawayParticipantStatus | Status of the current user in the giveaway. |
+  | is_ended | bool | True, if the giveaway has ended and results are being prepared. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_info_ongoing.html).
+  """
+
+  defstruct "@type": "giveawayInfoOngoing", "@extra": nil, creation_date: nil, status: nil, is_ended: nil
+end
+defmodule UpdateVideoPublished do
+  @moduledoc  """
+  An automatically scheduled message with video has been successfully sent after conversion.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat with the message. |
+  | message_id | int53 | Identifier of the sent message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_video_published.html).
+  """
+
+  defstruct "@type": "updateVideoPublished", "@extra": nil, chat_id: nil, message_id: nil
 end
 defmodule AuthorizationStateWaitEmailCode do
   @moduledoc  """
@@ -17264,13 +22860,23 @@ defmodule AuthorizationStateWaitEmailCode do
 
   defstruct "@type": "authorizationStateWaitEmailCode", "@extra": nil, allow_apple_id: nil, allow_google_id: nil, code_info: nil, email_address_reset_state: nil
 end
+defmodule ReportSponsoredResultPremiumRequired do
+  @moduledoc  """
+  The user asked to hide sponsored messages, but Telegram Premium is required for this.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_sponsored_result_premium_required.html).
+  """
+
+  defstruct "@type": "reportSponsoredResultPremiumRequired", "@extra": nil
+end
 defmodule TelegramPaymentPurposePremiumGiveaway do
   @moduledoc  """
   The user creating a Telegram Premium giveaway.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | parameters | premiumGiveawayParameters | Giveaway parameters. |
+  | parameters | giveawayParameters | Giveaway parameters. |
   | currency | string | ISO 4217 currency code of the payment currency. |
   | amount | int53 | Paid amount, in the smallest units of the currency. |
   | winner_count | int32 | Number of users which will be able to activate the gift codes. |
@@ -17280,6 +22886,15 @@ defmodule TelegramPaymentPurposePremiumGiveaway do
   """
 
   defstruct "@type": "telegramPaymentPurposePremiumGiveaway", "@extra": nil, parameters: nil, currency: nil, amount: nil, winner_count: nil, month_count: nil
+end
+defmodule AuctionState do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_auction_state.html).
+  """
+
+  defstruct "@type": "AuctionState", "@extra": nil
 end
 defmodule InputInlineQueryResultGame do
   @moduledoc  """
@@ -17348,20 +22963,33 @@ defmodule PushMessageContentGame do
 
   defstruct "@type": "pushMessageContentGame", "@extra": nil, title: nil, is_pinned: nil
 end
-defmodule MessagePremiumGiveawayCompleted do
+defmodule Checklist do
   @moduledoc  """
-  A Telegram Premium giveaway without public winners has been completed for the chat.
+  Describes a checklist.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | giveaway_message_id | int53 | Identifier of the message with the giveaway; can be 0 if the message was deleted. |
-  | winner_count | int32 | Number of winners in the giveaway. |
-  | unclaimed_prize_count | int32 | Number of undistributed prizes. |
+  | title | formattedText | Title of the checklist; may contain only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities. |
+  | tasks | checklistTask | List of tasks in the checklist. |
+  | others_can_add_tasks | bool | True, if users other than creator of the list can add tasks to the list. |
+  | can_add_tasks | bool | True, if the current user can add tasks to the list if they have Telegram Premium subscription. |
+  | others_can_mark_tasks_as_done | bool | True, if users other than creator of the list can mark tasks as done or not done. If true, then the checklist is called "group checklist". |
+  | can_mark_tasks_as_done | bool | True, if the current user can mark tasks as done or not done if they have Telegram Premium subscription. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_premium_giveaway_completed.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1checklist.html).
   """
 
-  defstruct "@type": "messagePremiumGiveawayCompleted", "@extra": nil, giveaway_message_id: nil, winner_count: nil, unclaimed_prize_count: nil
+  defstruct "@type": "checklist", "@extra": nil, title: nil, tasks: nil, others_can_add_tasks: nil, can_add_tasks: nil, others_can_mark_tasks_as_done: nil, can_mark_tasks_as_done: nil
+end
+defmodule FileTypeSelfDestructingVideo do
+  @moduledoc  """
+  The file is a self-destructing video in a private chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_self_destructing_video.html).
+  """
+
+  defstruct "@type": "fileTypeSelfDestructingVideo", "@extra": nil
 end
 defmodule StoryPrivacySettingsContacts do
   @moduledoc  """
@@ -17480,6 +23108,21 @@ defmodule SharedChat do
 
   defstruct "@type": "sharedChat", "@extra": nil, chat_id: nil, title: nil, username: nil, photo: nil
 end
+defmodule GiftResaleParameters do
+  @moduledoc  """
+  Describes parameters of a unique gift available for resale.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | Resale price of the gift in Telegram Stars. |
+  | toncoin_cent_count | int53 | Resale price of the gift in 1/100 of Toncoin. |
+  | toncoin_only | bool | True, if the gift can be bought only using Toncoins. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_resale_parameters.html).
+  """
+
+  defstruct "@type": "giftResaleParameters", "@extra": nil, star_count: nil, toncoin_cent_count: nil, toncoin_only: nil
+end
 defmodule DeviceTokenTizenPush do
   @moduledoc  """
   A token for Tizen Push Service.
@@ -17557,12 +23200,13 @@ defmodule Usernames do
   |------|------| ------------|
   | active_usernames | string | List of active usernames; the first one must be shown as the primary username. The order of active usernames can be changed with <a class="el" href="classtd_1_1td__api_1_1reorder_active_usernames.html">reorderActiveUsernames</a>, <a class="el" href="classtd_1_1td__api_1_1reorder_bot_active_usernames.html">reorderBotActiveUsernames</a> or <a class="el" href="classtd_1_1td__api_1_1reorder_supergroup_active_usernames.html">reorderSupergroupActiveUsernames</a>. |
   | disabled_usernames | string | List of currently disabled usernames; the username can be activated with <a class="el" href="classtd_1_1td__api_1_1toggle_username_is_active.html">toggleUsernameIsActive</a>, <a class="el" href="classtd_1_1td__api_1_1toggle_bot_username_is_active.html">toggleBotUsernameIsActive</a>, or <a class="el" href="classtd_1_1td__api_1_1toggle_supergroup_username_is_active.html">toggleSupergroupUsernameIsActive</a>. |
-  | editable_username | string | The active username, which can be changed with <a class="el" href="classtd_1_1td__api_1_1set_username.html">setUsername</a> or <a class="el" href="classtd_1_1td__api_1_1set_supergroup_username.html">setSupergroupUsername</a>. Information about other active usernames can be received using <a class="el" href="classtd_1_1td__api_1_1get_collectible_item_info.html">getCollectibleItemInfo</a>. |
+  | editable_username | string | Active or disabled username, which may be changed with <a class="el" href="classtd_1_1td__api_1_1set_username.html">setUsername</a> or <a class="el" href="classtd_1_1td__api_1_1set_supergroup_username.html">setSupergroupUsername</a>. |
+  | collectible_usernames | string | Collectible usernames that were purchased at <a href="https://fragment.com">https://fragment.com</a> and can be passed to <a class="el" href="classtd_1_1td__api_1_1get_collectible_item_info.html">getCollectibleItemInfo</a> for more details. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1usernames.html).
   """
 
-  defstruct "@type": "usernames", "@extra": nil, active_usernames: nil, disabled_usernames: nil, editable_username: nil
+  defstruct "@type": "usernames", "@extra": nil, active_usernames: nil, disabled_usernames: nil, editable_username: nil, collectible_usernames: nil
 end
 defmodule NotificationGroupType do
   @moduledoc  """
@@ -17613,9 +23257,35 @@ defmodule StoryInteraction do
 
   defstruct "@type": "storyInteraction", "@extra": nil, actor_id: nil, interaction_date: nil, block_list: nil, type: nil
 end
+defmodule SettingsSectionLanguage do
+  @moduledoc  """
+  The application language section.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | subsection | string | Subsection of the section; may be one of "", "show-button" for Show Translate Button toggle, "translate-chats" for Translate Entire Chats toggle, "do-not-translate" - for Do Not Translate language list. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_language.html).
+  """
+
+  defstruct "@type": "settingsSectionLanguage", "@extra": nil, subsection: nil
+end
+defmodule StarTransactionTypeSuggestedPostPaymentReceive do
+  @moduledoc  """
+  The transaction is a receiving of a payment for a suggested post by the channel chat; relevant for channel chats only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who paid for the suggested post. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_suggested_post_payment_receive.html).
+  """
+
+  defstruct "@type": "starTransactionTypeSuggestedPostPaymentReceive", "@extra": nil, user_id: nil
+end
 defmodule PremiumSourceLink do
   @moduledoc  """
-  A user opened an internal link of the type internalLinkTypePremiumFeatures.
+  A user opened an internal link of the type internalLinkTypePremiumFeaturesPage.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -17694,6 +23364,19 @@ defmodule UpdateAnimatedEmojiMessageClicked do
 
   defstruct "@type": "updateAnimatedEmojiMessageClicked", "@extra": nil, chat_id: nil, message_id: nil, sticker: nil
 end
+defmodule ChatThemeGift do
+  @moduledoc  """
+  A chat theme based on an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift_theme | giftChatTheme | The chat theme. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_theme_gift.html).
+  """
+
+  defstruct "@type": "chatThemeGift", "@extra": nil, gift_theme: nil
+end
 defmodule SearchMessagesFilterPinned do
   @moduledoc  """
   Returns only pinned messages.
@@ -17703,19 +23386,6 @@ defmodule SearchMessagesFilterPinned do
   """
 
   defstruct "@type": "searchMessagesFilterPinned", "@extra": nil
-end
-defmodule Proxies do
-  @moduledoc  """
-  Represents a list of proxy servers.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | proxies | proxy | List of proxy servers. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1proxies.html).
-  """
-
-  defstruct "@type": "proxies", "@extra": nil, proxies: nil
 end
 defmodule InternalLinkTypeStickerSet do
   @moduledoc  """
@@ -17730,6 +23400,20 @@ defmodule InternalLinkTypeStickerSet do
   """
 
   defstruct "@type": "internalLinkTypeStickerSet", "@extra": nil, sticker_set_name: nil, expect_custom_emoji: nil
+end
+defmodule PollVoter do
+  @moduledoc  """
+  Represents a poll voter.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | voter_id | MessageSender | The voter identifier. |
+  | date | int32 | Point in time (Unix timestamp) when the vote was added. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_voter.html).
+  """
+
+  defstruct "@type": "pollVoter", "@extra": nil, voter_id: nil, date: nil
 end
 defmodule SupergroupMembersFilterRestricted do
   @moduledoc  """
@@ -17831,6 +23515,33 @@ defmodule ChatEventCustomEmojiStickerSetChanged do
 
   defstruct "@type": "chatEventCustomEmojiStickerSetChanged", "@extra": nil, old_sticker_set_id: nil, new_sticker_set_id: nil
 end
+defmodule InternalLinkTypeGiftCollection do
+  @moduledoc  """
+  The link is a link to a gift collection. Call searchPublicChat with the given username, then call getReceivedGifts with the received gift owner identifier and the given collection identifier, then show the collection if received.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift_owner_username | string | Username of the owner of the gift collection. |
+  | collection_id | int32 | Gift collection identifier. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_gift_collection.html).
+  """
+
+  defstruct "@type": "internalLinkTypeGiftCollection", "@extra": nil, gift_owner_username: nil, collection_id: nil
+end
+defmodule InternalLinkTypeDirectMessagesChat do
+  @moduledoc  """
+  The link is a link to a channel direct messages chat by username of the channel. Call searchPublicChat with the given chat username to process the link. If the chat is found and is channel, open the direct messages chat of the channel.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | channel_username | string | Username of the channel. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_direct_messages_chat.html).
+  """
+
+  defstruct "@type": "internalLinkTypeDirectMessagesChat", "@extra": nil, channel_username: nil
+end
 defmodule SavedMessagesTopicTypeMyNotes do
   @moduledoc  """
   Topic containing messages sent by the current user of forwarded from an unknown chat.
@@ -17887,7 +23598,7 @@ defmodule PhoneNumberAuthenticationSettings do
   | has_unknown_phone_number | bool | Pass true if there is a SIM card in the current device, but it is not possible to check whether phone number matches. |
   | allow_sms_retriever_api | bool | For official applications only. True, if the application can use Android SMS Retriever API (requires Google Play Services >= 10.2) to automatically receive the authentication code from the SMS. See <a href="https://developers.google.com/identity/sms-retriever/">https://developers.google.com/identity/sms-retriever/</a> for more details. |
   | firebase_authentication_settings | FirebaseAuthenticationSettings | For official Android and iOS applications only; pass null otherwise. Settings for Firebase Authentication. |
-  | authentication_tokens | string | List of up to 20 authentication tokens, recently received in <a class="el" href="classtd_1_1td__api_1_1update_option.html">updateOption</a>("authentication_token") in previously logged out sessions. |
+  | authentication_tokens | string | List of up to 20 authentication tokens, recently received in <a class="el" href="classtd_1_1td__api_1_1update_option.html">updateOption</a>("authentication_token") in previously logged out sessions; for <a class="el" href="classtd_1_1td__api_1_1set_authentication_phone_number.html">setAuthenticationPhoneNumber</a> only. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1phone_number_authentication_settings.html).
   """
@@ -17906,6 +23617,19 @@ defmodule SpeechRecognitionResultText do
   """
 
   defstruct "@type": "speechRecognitionResultText", "@extra": nil, text: nil
+end
+defmodule SuggestedPostPriceTon do
+  @moduledoc  """
+  Describes price of a suggested post in Toncoins.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | toncoin_cent_count | int53 | The amount of 1/100 of Toncoin expected to be paid for the post; <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_toncoin_cent_count_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_toncoin_cent_count_max"). |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_post_price_ton.html).
+  """
+
+  defstruct "@type": "suggestedPostPriceTon", "@extra": nil, toncoin_cent_count: nil
 end
 defmodule TopChatCategoryBots do
   @moduledoc  """
@@ -17954,7 +23678,7 @@ defmodule TextQuote do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | text | formattedText | Text of the quote. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities can be present in the text. |
+  | text | formattedText | Text of the quote. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities can be present in the text. |
   | position | int32 | Approximate quote position in the original message in UTF-16 code units as specified by the message sender. |
   | is_manual | bool | True, if the quote was manually chosen by the message sender. |
 
@@ -17998,30 +23722,13 @@ defmodule CallStateReady do
   | encryption_key | bytes | Call encryption key. |
   | emojis | string | Encryption key fingerprint represented as 4 emoji. |
   | allow_p2p | bool | True, if peer-to-peer connection is allowed by users privacy settings. |
+  | is_group_call_supported | bool | True, if the other party supports upgrading of the call to a group call. |
   | custom_parameters | string | Custom JSON-encoded call parameters to be passed to tgcalls. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_state_ready.html).
   """
 
-  defstruct "@type": "callStateReady", "@extra": nil, protocol: nil, servers: nil, config: nil, encryption_key: nil, emojis: nil, allow_p2p: nil, custom_parameters: nil
-end
-defmodule PremiumGiftCodePaymentOption do
-  @moduledoc  """
-  Describes an option for creating Telegram Premium gift codes.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | currency | string | ISO 4217 currency code for Telegram Premium gift code payment. |
-  | amount | int53 | The amount to pay, in the smallest units of the currency. |
-  | user_count | int32 | Number of users which will be able to activate the gift codes. |
-  | month_count | int32 | Number of months the Telegram Premium subscription will be active. |
-  | store_product_id | string | Identifier of the store product associated with the option; may be empty if none. |
-  | store_product_quantity | int32 | Number of times the store product must be paid. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_gift_code_payment_option.html).
-  """
-
-  defstruct "@type": "premiumGiftCodePaymentOption", "@extra": nil, currency: nil, amount: nil, user_count: nil, month_count: nil, store_product_id: nil, store_product_quantity: nil
+  defstruct "@type": "callStateReady", "@extra": nil, protocol: nil, servers: nil, config: nil, encryption_key: nil, emojis: nil, allow_p2p: nil, is_group_call_supported: nil, custom_parameters: nil
 end
 defmodule PremiumFeatureMessagePrivacy do
   @moduledoc  """
@@ -18074,6 +23781,15 @@ defmodule InputChatPhotoStatic do
   """
 
   defstruct "@type": "inputChatPhotoStatic", "@extra": nil, photo: nil
+end
+defmodule AffiliateProgramSortOrder do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_affiliate_program_sort_order.html).
+  """
+
+  defstruct "@type": "AffiliateProgramSortOrder", "@extra": nil
 end
 defmodule InputStoryArea do
   @moduledoc  """
@@ -18129,6 +23845,16 @@ defmodule UpdateNewChatJoinRequest do
 
   defstruct "@type": "updateNewChatJoinRequest", "@extra": nil, chat_id: nil, request: nil, user_chat_id: nil, invite_link: nil
 end
+defmodule ButtonStylePrimary do
+  @moduledoc  """
+  The button has dark blue color.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1button_style_primary.html).
+  """
+
+  defstruct "@type": "buttonStylePrimary", "@extra": nil
+end
 defmodule TextEntityTypeStrikethrough do
   @moduledoc  """
   A strikethrough text.
@@ -18155,19 +23881,20 @@ defmodule ChatEventVideoChatParticipantVolumeLevelChanged do
 end
 defmodule ChatBoostSourceGiveaway do
   @moduledoc  """
-  The chat created a Telegram Premium giveaway.
+  The chat created a giveaway.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | user_id | int53 | Identifier of a user that won in the giveaway; 0 if none. |
-  | gift_code | string | The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise. |
+  | user_id | int53 | Identifier of a user who won in the giveaway; 0 if none. |
+  | gift_code | string | The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise; for Telegram Premium giveways only. |
+  | star_count | int53 | Number of Telegram Stars distributed among winners of the giveaway. |
   | giveaway_message_id | int53 | Identifier of the corresponding giveaway message; can be an identifier of a deleted message. |
-  | is_unclaimed | bool | True, if the winner for the corresponding Telegram Premium subscription wasn't chosen, because there were not enough participants. |
+  | is_unclaimed | bool | True, if the winner for the corresponding giveaway prize wasn't chosen, because there were not enough participants. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_source_giveaway.html).
   """
 
-  defstruct "@type": "chatBoostSourceGiveaway", "@extra": nil, user_id: nil, gift_code: nil, giveaway_message_id: nil, is_unclaimed: nil
+  defstruct "@type": "chatBoostSourceGiveaway", "@extra": nil, user_id: nil, gift_code: nil, star_count: nil, giveaway_message_id: nil, is_unclaimed: nil
 end
 defmodule DeviceTokenApplePushVoIP do
   @moduledoc  """
@@ -18191,16 +23918,42 @@ defmodule MessageSendingStateFailed do
   | Name | Type | Description |
   |------|------| ------------|
   | error | error | The cause of the message sending failure. |
-  | can_retry | bool | True, if the message can be re-sent. |
+  | can_retry | bool | True, if the message can be re-sent using <a class="el" href="classtd_1_1td__api_1_1resend_messages.html">resendMessages</a> or <a class="el" href="classtd_1_1td__api_1_1readd_quick_reply_shortcut_messages.html">readdQuickReplyShortcutMessages</a>. |
   | need_another_sender | bool | True, if the message can be re-sent only on behalf of a different sender. |
   | need_another_reply_quote | bool | True, if the message can be re-sent only if another quote is chosen in the message that is replied by the given message. |
   | need_drop_reply | bool | True, if the message can be re-sent only if the message to be replied is removed. This will be done automatically by <a class="el" href="classtd_1_1td__api_1_1resend_messages.html">resendMessages</a>. |
+  | required_paid_message_star_count | int53 | The number of Telegram Stars that must be paid to send the message; 0 if the current amount is correct. |
   | retry_after | double | Time left before the message can be re-sent, in seconds. No update is sent when this field changes. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sending_state_failed.html).
   """
 
-  defstruct "@type": "messageSendingStateFailed", "@extra": nil, error: nil, can_retry: nil, need_another_sender: nil, need_another_reply_quote: nil, need_drop_reply: nil, retry_after: nil
+  defstruct "@type": "messageSendingStateFailed", "@extra": nil, error: nil, can_retry: nil, need_another_sender: nil, need_another_reply_quote: nil, need_drop_reply: nil, required_paid_message_star_count: nil, retry_after: nil
+end
+defmodule TonTransactions do
+  @moduledoc  """
+  Represents a list of Toncoin transactions.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | ton_amount | int53 | The total amount of owned Toncoins. |
+  | transactions | tonTransaction | List of Toncoin transactions. |
+  | next_offset | string | The offset for the next request. If empty, then there are no more results. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transactions.html).
+  """
+
+  defstruct "@type": "tonTransactions", "@extra": nil, ton_amount: nil, transactions: nil, next_offset: nil
+end
+defmodule StoryContentTypeVideo do
+  @moduledoc  """
+  A video story.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_content_type_video.html).
+  """
+
+  defstruct "@type": "storyContentTypeVideo", "@extra": nil
 end
 defmodule ProxyTypeMtproto do
   @moduledoc  """
@@ -18217,7 +23970,7 @@ defmodule ProxyTypeMtproto do
 end
 defmodule ChatStatisticsInteractionInfo do
   @moduledoc  """
-  Contains statistics about interactions with a message sent in the chat or a story sent by the chat.
+  Contains statistics about interactions with a message sent in the chat or a story posted on behalf of the chat.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -18257,6 +24010,19 @@ defmodule ChatEventForumTopicToggleIsHidden do
 
   defstruct "@type": "chatEventForumTopicToggleIsHidden", "@extra": nil, topic_info: nil
 end
+defmodule StarCount do
+  @moduledoc  """
+  Contains a number of Telegram Stars.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | Number of Telegram Stars. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_count.html).
+  """
+
+  defstruct "@type": "starCount", "@extra": nil, star_count: nil
+end
 defmodule InlineQueryResultVenue do
   @moduledoc  """
   Represents information about a venue.
@@ -18271,6 +24037,19 @@ defmodule InlineQueryResultVenue do
   """
 
   defstruct "@type": "inlineQueryResultVenue", "@extra": nil, id: nil, venue: nil, thumbnail: nil
+end
+defmodule InternalLinkTypePremiumGiftPurchase do
+  @moduledoc  """
+  The link is a link to the screen for gifting Telegram Premium subscriptions to friends via inputInvoiceTelegram with telegramPaymentPurposePremiumGift payments or in-store purchases.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | referrer | string | Referrer specified in the link. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_premium_gift_purchase.html).
+  """
+
+  defstruct "@type": "internalLinkTypePremiumGiftPurchase", "@extra": nil, referrer: nil
 end
 defmodule SuggestedActionGiftPremiumForChristmas do
   @moduledoc  """
@@ -18315,6 +24094,20 @@ defmodule MessageContactRegistered do
 
   defstruct "@type": "messageContactRegistered", "@extra": nil
 end
+defmodule ReportStoryResultTextRequired do
+  @moduledoc  """
+  The user must add additional text details to the report.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | option_id | bytes | Option identifier for the next <a class="el" href="classtd_1_1td__api_1_1report_story.html">reportStory</a> request. |
+  | is_optional | bool | True, if the user can skip text adding. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_story_result_text_required.html).
+  """
+
+  defstruct "@type": "reportStoryResultTextRequired", "@extra": nil, option_id: nil, is_optional: nil
+end
 defmodule TextEntityTypeBotCommand do
   @moduledoc  """
   A bot command, beginning with "/".
@@ -18324,6 +24117,15 @@ defmodule TextEntityTypeBotCommand do
   """
 
   defstruct "@type": "textEntityTypeBotCommand", "@extra": nil
+end
+defmodule BuiltInTheme do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_built_in_theme.html).
+  """
+
+  defstruct "@type": "BuiltInTheme", "@extra": nil
 end
 defmodule EmailAddressAuthenticationCode do
   @moduledoc  """
@@ -18385,9 +24187,9 @@ defmodule ChatStatisticsChannel do
   | mean_message_view_count | statisticalValue | Mean number of times the recently sent messages were viewed. |
   | mean_message_share_count | statisticalValue | Mean number of times the recently sent messages were shared. |
   | mean_message_reaction_count | statisticalValue | Mean number of times reactions were added to the recently sent messages. |
-  | mean_story_view_count | statisticalValue | Mean number of times the recently sent stories were viewed. |
-  | mean_story_share_count | statisticalValue | Mean number of times the recently sent stories were shared. |
-  | mean_story_reaction_count | statisticalValue | Mean number of times reactions were added to the recently sent stories. |
+  | mean_story_view_count | statisticalValue | Mean number of times the recently posted stories were viewed. |
+  | mean_story_share_count | statisticalValue | Mean number of times the recently posted stories were shared. |
+  | mean_story_reaction_count | statisticalValue | Mean number of times reactions were added to the recently posted stories. |
   | enabled_notifications_percentage | double | A percentage of users with enabled notifications for the chat; 0-100. |
   | member_count_graph | StatisticalGraph | A graph containing number of members in the chat. |
   | join_graph | StatisticalGraph | A graph containing number of members joined and left the chat. |
@@ -18401,12 +24203,38 @@ defmodule ChatStatisticsChannel do
   | story_interaction_graph | StatisticalGraph | A graph containing number of story views and shares. |
   | story_reaction_graph | StatisticalGraph | A graph containing number of reactions on stories. |
   | instant_view_interaction_graph | StatisticalGraph | A graph containing number of views of associated with the chat instant views. |
-  | recent_interactions | chatStatisticsInteractionInfo | Detailed statistics about number of views and shares of recently sent messages and stories. |
+  | recent_interactions | chatStatisticsInteractionInfo | Detailed statistics about number of views and shares of recently sent messages and posted stories. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_statistics_channel.html).
   """
 
   defstruct "@type": "chatStatisticsChannel", "@extra": nil, period: nil, member_count: nil, mean_message_view_count: nil, mean_message_share_count: nil, mean_message_reaction_count: nil, mean_story_view_count: nil, mean_story_share_count: nil, mean_story_reaction_count: nil, enabled_notifications_percentage: nil, member_count_graph: nil, join_graph: nil, mute_graph: nil, view_count_by_hour_graph: nil, view_count_by_source_graph: nil, join_by_source_graph: nil, language_graph: nil, message_interaction_graph: nil, message_reaction_graph: nil, story_interaction_graph: nil, story_reaction_graph: nil, instant_view_interaction_graph: nil, recent_interactions: nil
+end
+defmodule CanPostStoryResultActiveStoryLimitExceeded do
+  @moduledoc  """
+  The limit for the number of active stories exceeded. The user can buy Telegram Premium, delete an active story, or wait for the oldest story to expire.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story_result_active_story_limit_exceeded.html).
+  """
+
+  defstruct "@type": "canPostStoryResultActiveStoryLimitExceeded", "@extra": nil
+end
+defmodule SponsoredChat do
+  @moduledoc  """
+  Describes a sponsored chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | unique_id | int53 | Unique identifier of this result. |
+  | chat_id | int53 | Chat identifier. |
+  | sponsor_info | string | Additional optional information about the sponsor to be shown along with the chat. |
+  | additional_info | string | If non-empty, additional information about the sponsored chat to be shown along with the chat. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sponsored_chat.html).
+  """
+
+  defstruct "@type": "sponsoredChat", "@extra": nil, unique_id: nil, chat_id: nil, sponsor_info: nil, additional_info: nil
 end
 defmodule ReactionUnavailabilityReasonGuest do
   @moduledoc  """
@@ -18538,6 +24366,15 @@ defmodule StoryAreaTypeLink do
 
   defstruct "@type": "storyAreaTypeLink", "@extra": nil, url: nil
 end
+defmodule MessageTopic do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_message_topic.html).
+  """
+
+  defstruct "@type": "MessageTopic", "@extra": nil
+end
 defmodule MessageChatUpgradeFrom do
   @moduledoc  """
   A supergroup has been created from a basic group.
@@ -18572,9 +24409,34 @@ defmodule FirebaseAuthenticationSettingsAndroid do
 
   defstruct "@type": "firebaseAuthenticationSettingsAndroid", "@extra": nil
 end
+defmodule FileTypeSelfDestructingVoiceNote do
+  @moduledoc  """
+  The file is a self-destructing voice note in a private chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_self_destructing_voice_note.html).
+  """
+
+  defstruct "@type": "fileTypeSelfDestructingVoiceNote", "@extra": nil
+end
+defmodule StarTransactionTypePaidGroupCallReactionReceive do
+  @moduledoc  """
+  The transaction is a receiving of a paid group call reaction; relevant for regular users and channel chats only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | sender_id | MessageSender | Identifier of the sender of the reaction. |
+  | commission_per_mille | int32 | The number of Telegram Stars received by the Telegram for each 1000 Telegram Stars paid for reaction sending. |
+  | commission_star_amount | starAmount | The Telegram Star amount that was received by Telegram; can be negative for refunds. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_paid_group_call_reaction_receive.html).
+  """
+
+  defstruct "@type": "starTransactionTypePaidGroupCallReactionReceive", "@extra": nil, sender_id: nil, commission_per_mille: nil, commission_star_amount: nil
+end
 defmodule ChatActionBarReportSpam do
   @moduledoc  """
-  The chat can be reported as spam using the method reportChat with the reason reportReasonSpam. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown.
+  The chat can be reported as spam using the method reportChat with an empty option_id and message_ids. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -18584,6 +24446,25 @@ defmodule ChatActionBarReportSpam do
   """
 
   defstruct "@type": "chatActionBarReportSpam", "@extra": nil, can_unarchive: nil
+end
+defmodule AuctionStateFinished do
+  @moduledoc  """
+  Contains information about a finished auction.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | start_date | int32 | Point in time (Unix timestamp) when the auction started. |
+  | end_date | int32 | Point in time (Unix timestamp) when the auction will be ended. |
+  | average_price | int53 | Average price of bought items in Telegram Stars. |
+  | acquired_item_count | int32 | The number of items that were purchased by the current user on the auction. |
+  | telegram_listed_item_count | int32 | Number of items from the auction being resold on Telegram. |
+  | fragment_listed_item_count | int32 | Number of items from the auction being resold on Fragment. |
+  | fragment_url | string | The HTTPS link to the Fragment for the resold items; may be empty if there are no such items being sold on Fragment. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1auction_state_finished.html).
+  """
+
+  defstruct "@type": "auctionStateFinished", "@extra": nil, start_date: nil, end_date: nil, average_price: nil, acquired_item_count: nil, telegram_listed_item_count: nil, fragment_listed_item_count: nil, fragment_url: nil
 end
 defmodule Emojis do
   @moduledoc  """
@@ -18598,6 +24479,21 @@ defmodule Emojis do
 
   defstruct "@type": "emojis", "@extra": nil, emojis: nil
 end
+defmodule ChatInviteLinkSubscriptionInfo do
+  @moduledoc  """
+  Contains information about subscription plan that must be paid by the user to use a chat invite link.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | pricing | starSubscriptionPricing | Information about subscription plan that must be paid by the user to use the link. |
+  | can_reuse | bool | True, if the user has already paid for the subscription and can use <a class="el" href="classtd_1_1td__api_1_1join_chat_by_invite_link.html">joinChatByInviteLink</a> to join the subscribed chat again. |
+  | form_id | int64 | Identifier of the payment form to use for subscription payment; 0 if the subscription can't be paid. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_invite_link_subscription_info.html).
+  """
+
+  defstruct "@type": "chatInviteLinkSubscriptionInfo", "@extra": nil, pricing: nil, can_reuse: nil, form_id: nil
+end
 defmodule CanTransferOwnershipResultOk do
   @moduledoc  """
   The session can be used.
@@ -18608,6 +24504,81 @@ defmodule CanTransferOwnershipResultOk do
 
   defstruct "@type": "canTransferOwnershipResultOk", "@extra": nil
 end
+defmodule UpgradedGiftValueInfo do
+  @moduledoc  """
+  Contains information about value of an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | currency | string | ISO 4217 currency code of the currency in which the prices are represented. |
+  | value | int53 | Estimated value of the gift; in the smallest units of the currency. |
+  | is_value_average | bool | True, if the value is calculated as average value of similar sold gifts. Otherwise, it is based on the sale price of the gift. |
+  | initial_sale_date | int32 | Point in time (Unix timestamp) when the corresponding regular gift was originally purchased. |
+  | initial_sale_star_count | int53 | The Telegram Star amount that was paid for the gift. |
+  | initial_sale_price | int53 | Initial price of the gift; in the smallest units of the currency. |
+  | last_sale_date | int32 | Point in time (Unix timestamp) when the upgraded gift was purchased last time; 0 if never. |
+  | last_sale_price | int53 | Last purchase price of the gift; in the smallest units of the currency; 0 if the gift has never been resold. |
+  | is_last_sale_on_fragment | bool | True, if the last sale was completed on Fragment. |
+  | minimum_price | int53 | The current minimum price of gifts upgraded from the same gift; in the smallest units of the currency; 0 if there are no such gifts. |
+  | average_sale_price | int53 | The average sale price in the last month of gifts upgraded from the same gift; in the smallest units of the currency; 0 if there were no such sales. |
+  | telegram_listed_gift_count | int32 | Number of gifts upgraded from the same gift being resold on Telegram. |
+  | fragment_listed_gift_count | int32 | Number of gifts upgraded from the same gift being resold on Fragment. |
+  | fragment_url | string | The HTTPS link to the Fragment for the gift; may be empty if there are no such gifts being sold on Fragment. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_value_info.html).
+  """
+
+  defstruct "@type": "upgradedGiftValueInfo", "@extra": nil, currency: nil, value: nil, is_value_average: nil, initial_sale_date: nil, initial_sale_star_count: nil, initial_sale_price: nil, last_sale_date: nil, last_sale_price: nil, is_last_sale_on_fragment: nil, minimum_price: nil, average_sale_price: nil, telegram_listed_gift_count: nil, fragment_listed_gift_count: nil, fragment_url: nil
+end
+defmodule MessageProperties do
+  @moduledoc  """
+  Contains properties of a message and describes actions that can be done with the message right now.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | can_add_offer | bool | True, if an offer can be added to the message using <a class="el" href="classtd_1_1td__api_1_1add_offer.html">addOffer</a>. |
+  | can_add_tasks | bool | True, if tasks can be added to the message's checklist using <a class="el" href="classtd_1_1td__api_1_1add_checklist_tasks.html">addChecklistTasks</a> if the current user has Telegram Premium subscription. |
+  | can_be_approved | bool | True, if the message is a suggested post that can be approved by the user using <a class="el" href="classtd_1_1td__api_1_1approve_suggested_post.html">approveSuggestedPost</a>. |
+  | can_be_copied | bool | True, if content of the message can be copied using <a class="el" href="classtd_1_1td__api_1_1input_message_forwarded.html">inputMessageForwarded</a> or <a class="el" href="classtd_1_1td__api_1_1forward_messages.html">forwardMessages</a> with copy options. |
+  | can_be_copied_to_secret_chat | bool | True, if content of the message can be copied to a secret chat using <a class="el" href="classtd_1_1td__api_1_1input_message_forwarded.html">inputMessageForwarded</a> or <a class="el" href="classtd_1_1td__api_1_1forward_messages.html">forwardMessages</a> with copy options. |
+  | can_be_declined | bool | True, if the message is a suggested post that can be declined by the user using <a class="el" href="classtd_1_1td__api_1_1decline_suggested_post.html">declineSuggestedPost</a>. |
+  | can_be_deleted_only_for_self | bool | True, if the message can be deleted only for the current user while other users will continue to see it using the method <a class="el" href="classtd_1_1td__api_1_1delete_messages.html">deleteMessages</a> with revoke == false. |
+  | can_be_deleted_for_all_users | bool | True, if the message can be deleted for all users using the method <a class="el" href="classtd_1_1td__api_1_1delete_messages.html">deleteMessages</a> with revoke == true. |
+  | can_be_edited | bool | True, if the message can be edited using the methods <a class="el" href="classtd_1_1td__api_1_1edit_message_text.html">editMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1edit_message_caption.html">editMessageCaption</a>, or <a class="el" href="classtd_1_1td__api_1_1edit_message_reply_markup.html">editMessageReplyMarkup</a>. For live location, poll, and checklist messages this fields shows whether <a class="el" href="classtd_1_1td__api_1_1edit_message_live_location.html">editMessageLiveLocation</a>, <a class="el" href="classtd_1_1td__api_1_1stop_poll.html">stopPoll</a>, or <a class="el" href="classtd_1_1td__api_1_1edit_message_checklist.html">editMessageChecklist</a> respectively can be used with this message. |
+  | can_be_forwarded | bool | True, if the message can be forwarded using <a class="el" href="classtd_1_1td__api_1_1input_message_forwarded.html">inputMessageForwarded</a> or <a class="el" href="classtd_1_1td__api_1_1forward_messages.html">forwardMessages</a> without copy options. |
+  | can_be_paid | bool | True, if the message can be paid using <a class="el" href="classtd_1_1td__api_1_1input_invoice_message.html">inputInvoiceMessage</a>. |
+  | can_be_pinned | bool | True, if the message can be pinned or unpinned in the chat using <a class="el" href="classtd_1_1td__api_1_1pin_chat_message.html">pinChatMessage</a> or <a class="el" href="classtd_1_1td__api_1_1unpin_chat_message.html">unpinChatMessage</a>. |
+  | can_be_replied | bool | True, if the message can be replied in the same chat and forum topic using <a class="el" href="classtd_1_1td__api_1_1input_message_reply_to_message.html">inputMessageReplyToMessage</a>. |
+  | can_be_replied_in_another_chat | bool | True, if the message can be replied in another chat or forum topic using <a class="el" href="classtd_1_1td__api_1_1input_message_reply_to_external_message.html">inputMessageReplyToExternalMessage</a>. |
+  | can_be_saved | bool | True, if content of the message can be saved locally. |
+  | can_be_shared_in_story | bool | True, if the message can be shared in a story using <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_message.html">inputStoryAreaTypeMessage</a>. |
+  | can_edit_media | bool | True, if the message can be edited using the method <a class="el" href="classtd_1_1td__api_1_1edit_message_media.html">editMessageMedia</a>. |
+  | can_edit_scheduling_state | bool | True, if scheduling state of the message can be edited. |
+  | can_edit_suggested_post_info | bool | True, if another price or post send time can be suggested using <a class="el" href="classtd_1_1td__api_1_1add_offer.html">addOffer</a>. |
+  | can_get_author | bool | True, if author of the message sent on behalf of a chat can be received through <a class="el" href="classtd_1_1td__api_1_1get_message_author.html">getMessageAuthor</a>. |
+  | can_get_embedding_code | bool | True, if code for message embedding can be received using <a class="el" href="classtd_1_1td__api_1_1get_message_embedding_code.html">getMessageEmbeddingCode</a>. |
+  | can_get_link | bool | True, if a link can be generated for the message using <a class="el" href="classtd_1_1td__api_1_1get_message_link.html">getMessageLink</a>. |
+  | can_get_media_timestamp_links | bool | True, if media timestamp links can be generated for media timestamp entities in the message text, caption or link preview description using <a class="el" href="classtd_1_1td__api_1_1get_message_link.html">getMessageLink</a>. |
+  | can_get_message_thread | bool | True, if information about the message thread is available through <a class="el" href="classtd_1_1td__api_1_1get_message_thread.html">getMessageThread</a> and <a class="el" href="classtd_1_1td__api_1_1get_message_thread_history.html">getMessageThreadHistory</a>. |
+  | can_get_read_date | bool | True, if read date of the message can be received through <a class="el" href="classtd_1_1td__api_1_1get_message_read_date.html">getMessageReadDate</a>. |
+  | can_get_statistics | bool | True, if message statistics are available through <a class="el" href="classtd_1_1td__api_1_1get_message_statistics.html">getMessageStatistics</a> and message forwards can be received using <a class="el" href="classtd_1_1td__api_1_1get_message_public_forwards.html">getMessagePublicForwards</a>. |
+  | can_get_video_advertisements | bool | True, if advertisements for video of the message can be received though <a class="el" href="classtd_1_1td__api_1_1get_video_message_advertisements.html">getVideoMessageAdvertisements</a>. |
+  | can_get_viewers | bool | True, if chat members already viewed the message can be received through <a class="el" href="classtd_1_1td__api_1_1get_message_viewers.html">getMessageViewers</a>. |
+  | can_mark_tasks_as_done | bool | True, if tasks can be marked as done or not done in the message's checklist using <a class="el" href="classtd_1_1td__api_1_1mark_checklist_tasks_as_done.html">markChecklistTasksAsDone</a> if the current user has Telegram Premium subscription. |
+  | can_recognize_speech | bool | True, if speech can be recognized for the message through <a class="el" href="classtd_1_1td__api_1_1recognize_speech.html">recognizeSpeech</a>. |
+  | can_report_chat | bool | True, if the message can be reported using <a class="el" href="classtd_1_1td__api_1_1report_chat.html">reportChat</a>. |
+  | can_report_reactions | bool | True, if reactions on the message can be reported through <a class="el" href="classtd_1_1td__api_1_1report_message_reactions.html">reportMessageReactions</a>. |
+  | can_report_supergroup_spam | bool | True, if the message can be reported using <a class="el" href="classtd_1_1td__api_1_1report_supergroup_spam.html">reportSupergroupSpam</a>. |
+  | can_set_fact_check | bool | True, if fact check for the message can be changed through <a class="el" href="classtd_1_1td__api_1_1set_message_fact_check.html">setMessageFactCheck</a>. |
+  | has_protected_content_by_current_user | bool | True, if content of the message can't be saved locally, because it is protected by the current user; if true, then can_be_saved is false. |
+  | has_protected_content_by_other_user | bool | True, if content of the message can't be saved locally, because it is protected by the other user; if true, then can_be_saved is false. |
+  | need_show_statistics | bool | True, if message statistics must be available from context menu of the message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).
+  """
+
+  defstruct "@type": "messageProperties", "@extra": nil, can_add_offer: nil, can_add_tasks: nil, can_be_approved: nil, can_be_copied: nil, can_be_copied_to_secret_chat: nil, can_be_declined: nil, can_be_deleted_only_for_self: nil, can_be_deleted_for_all_users: nil, can_be_edited: nil, can_be_forwarded: nil, can_be_paid: nil, can_be_pinned: nil, can_be_replied: nil, can_be_replied_in_another_chat: nil, can_be_saved: nil, can_be_shared_in_story: nil, can_edit_media: nil, can_edit_scheduling_state: nil, can_edit_suggested_post_info: nil, can_get_author: nil, can_get_embedding_code: nil, can_get_link: nil, can_get_media_timestamp_links: nil, can_get_message_thread: nil, can_get_read_date: nil, can_get_statistics: nil, can_get_video_advertisements: nil, can_get_viewers: nil, can_mark_tasks_as_done: nil, can_recognize_speech: nil, can_report_chat: nil, can_report_reactions: nil, can_report_supergroup_spam: nil, can_set_fact_check: nil, has_protected_content_by_current_user: nil, has_protected_content_by_other_user: nil, need_show_statistics: nil
+end
 defmodule PremiumFeatureBusiness do
   @moduledoc  """
   The ability to use Business features.
@@ -18617,6 +24588,16 @@ defmodule PremiumFeatureBusiness do
   """
 
   defstruct "@type": "premiumFeatureBusiness", "@extra": nil
+end
+defmodule InternalLinkTypeNewChannelChat do
+  @moduledoc  """
+  The link is a link to the screen for creating a new channel chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_new_channel_chat.html).
+  """
+
+  defstruct "@type": "internalLinkTypeNewChannelChat", "@extra": nil
 end
 defmodule CollectibleItemType do
   @moduledoc  """
@@ -18661,6 +24642,16 @@ defmodule SuggestedActionUpgradePremium do
 
   defstruct "@type": "suggestedActionUpgradePremium", "@extra": nil
 end
+defmodule FileTypeSelfDestructingPhoto do
+  @moduledoc  """
+  The file is a self-destructing photo in a private chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_self_destructing_photo.html).
+  """
+
+  defstruct "@type": "fileTypeSelfDestructingPhoto", "@extra": nil
+end
 defmodule PassportElementErrorSourceSelfie do
   @moduledoc  """
   The selfie with the document contains an error. The error will be considered resolved when the file with the selfie changes.
@@ -18698,6 +24689,21 @@ defmodule InlineQueryResultGame do
 
   defstruct "@type": "inlineQueryResultGame", "@extra": nil, id: nil, game: nil
 end
+defmodule PushMessageContentGiveaway do
+  @moduledoc  """
+  A message with a giveaway.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | winner_count | int32 | Number of users which will receive giveaway prizes; 0 for pinned message. |
+  | prize | GiveawayPrize | Prize of the giveaway; may be null for pinned message. |
+  | is_pinned | bool | True, if the message is a pinned message with the specified content. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_giveaway.html).
+  """
+
+  defstruct "@type": "pushMessageContentGiveaway", "@extra": nil, winner_count: nil, prize: nil, is_pinned: nil
+end
 defmodule NotificationSound do
   @moduledoc  """
   Describes a notification sound in MP3 format.
@@ -18716,6 +24722,16 @@ defmodule NotificationSound do
 
   defstruct "@type": "notificationSound", "@extra": nil, id: nil, duration: nil, date: nil, title: nil, data: nil, sound: nil
 end
+defmodule UpgradedGiftOriginCraft do
+  @moduledoc  """
+  The gift was crafted from other gifts.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_origin_craft.html).
+  """
+
+  defstruct "@type": "upgradedGiftOriginCraft", "@extra": nil
+end
 defmodule BotWriteAccessAllowReason do
   @moduledoc  """
 
@@ -18724,6 +24740,69 @@ defmodule BotWriteAccessAllowReason do
   """
 
   defstruct "@type": "BotWriteAccessAllowReason", "@extra": nil
+end
+defmodule StarTransactionTypeUpgradedGiftSale do
+  @moduledoc  """
+  The transaction is a sale of an upgraded gift; relevant for regular users only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who bought the gift. |
+  | gift | upgradedGift | The gift. |
+  | commission_per_mille | int32 | The number of Telegram Stars received by the Telegram for each 1000 Telegram Stars received by the seller of the gift. |
+  | commission_star_amount | starAmount | The Telegram Star amount that was received by Telegram; can be negative for refunds. |
+  | via_offer | bool | True, if the gift was sold through a purchase offer. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_upgraded_gift_sale.html).
+  """
+
+  defstruct "@type": "starTransactionTypeUpgradedGiftSale", "@extra": nil, user_id: nil, gift: nil, commission_per_mille: nil, commission_star_amount: nil, via_offer: nil
+end
+defmodule UpgradedGiftOriginOffer do
+  @moduledoc  """
+  The gift was bought through an offer.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | price | GiftResalePrice | Price paid for the gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_origin_offer.html).
+  """
+
+  defstruct "@type": "upgradedGiftOriginOffer", "@extra": nil, price: nil
+end
+defmodule TelegramPaymentPurposePremiumGift do
+  @moduledoc  """
+  The user gifting Telegram Premium to another user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | currency | string | ISO 4217 currency code of the payment currency, or "XTR" for payments in Telegram Stars. |
+  | amount | int53 | Paid amount, in the smallest units of the currency. |
+  | user_id | int53 | Identifier of the user which will receive Telegram Premium. |
+  | month_count | int32 | Number of months the Telegram Premium subscription will be active for the user. |
+  | text | formattedText | Text to show to the user receiving Telegram Premium; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_premium_gift.html).
+  """
+
+  defstruct "@type": "telegramPaymentPurposePremiumGift", "@extra": nil, currency: nil, amount: nil, user_id: nil, month_count: nil, text: nil
+end
+defmodule AuctionRound do
+  @moduledoc  """
+  Describes a round of an auction.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | number | int32 | 1-based number of the round. |
+  | duration | int32 | Duration of the round, in seconds. |
+  | extend_time | int32 | The number of seconds for which the round will be extended if there are changes in the top winners. |
+  | top_winner_count | int32 | The number of top winners who trigger round extension if changed. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1auction_round.html).
+  """
+
+  defstruct "@type": "auctionRound", "@extra": nil, number: nil, duration: nil, extend_time: nil, top_winner_count: nil
 end
 defmodule UserPrivacySettingShowProfilePhoto do
   @moduledoc  """
@@ -18734,6 +24813,32 @@ defmodule UserPrivacySettingShowProfilePhoto do
   """
 
   defstruct "@type": "userPrivacySettingShowProfilePhoto", "@extra": nil
+end
+defmodule InputPaidMediaTypeVideo do
+  @moduledoc  """
+  The media is a video.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | cover | InputFile | Cover of the video; pass null to skip cover uploading. |
+  | start_timestamp | int32 | Timestamp from which the video playing must start, in seconds. |
+  | duration | int32 | Duration of the video, in seconds. |
+  | supports_streaming | bool | True, if the video is expected to be streamed. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_paid_media_type_video.html).
+  """
+
+  defstruct "@type": "inputPaidMediaTypeVideo", "@extra": nil, cover: nil, start_timestamp: nil, duration: nil, supports_streaming: nil
+end
+defmodule DateTimePartPrecisionNone do
+  @moduledoc  """
+  Don't show the date or time.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1date_time_part_precision_none.html).
+  """
+
+  defstruct "@type": "dateTimePartPrecisionNone", "@extra": nil
 end
 defmodule Venue do
   @moduledoc  """
@@ -18782,6 +24887,38 @@ defmodule InternalLinkTypeChatFolderInvite do
 
   defstruct "@type": "internalLinkTypeChatFolderInvite", "@extra": nil, invite_link: nil
 end
+defmodule PrepaidGiveaway do
+  @moduledoc  """
+  Describes a prepaid giveaway.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int64 | Unique identifier of the prepaid giveaway. |
+  | winner_count | int32 | Number of users which will receive giveaway prize. |
+  | prize | GiveawayPrize | Prize of the giveaway. |
+  | boost_count | int32 | The number of boosts received by the chat from the giveaway; for Telegram Star giveaways only. |
+  | payment_date | int32 | Point in time (Unix timestamp) when the giveaway was paid. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1prepaid_giveaway.html).
+  """
+
+  defstruct "@type": "prepaidGiveaway", "@extra": nil, id: nil, winner_count: nil, prize: nil, boost_count: nil, payment_date: nil
+end
+defmodule MessageSuggestedPostPaid do
+  @moduledoc  """
+  A suggested post was published for getOption("suggested_post_lifetime_min") seconds and payment for the post was received.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | suggested_post_message_id | int53 | Identifier of the message with the suggested post; may be 0 or an identifier of a deleted message. |
+  | star_amount | starAmount | The amount of received Telegram Stars. |
+  | ton_amount | int53 | The amount of received Toncoins; in the smallest units of the cryptocurrency. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_suggested_post_paid.html).
+  """
+
+  defstruct "@type": "messageSuggestedPostPaid", "@extra": nil, suggested_post_message_id: nil, star_amount: nil, ton_amount: nil
+end
 defmodule UpdateScopeNotificationSettings do
   @moduledoc  """
   Notification settings for some type of chats were updated.
@@ -18820,6 +24957,25 @@ defmodule InputStoryContentPhoto do
 
   defstruct "@type": "inputStoryContentPhoto", "@extra": nil, photo: nil, added_sticker_file_ids: nil
 end
+defmodule InputChatTheme do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_input_chat_theme.html).
+  """
+
+  defstruct "@type": "InputChatTheme", "@extra": nil
+end
+defmodule ReportChatResultOk do
+  @moduledoc  """
+  The chat was reported successfully.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_result_ok.html).
+  """
+
+  defstruct "@type": "reportChatResultOk", "@extra": nil
+end
 defmodule InputStoryAreaTypeMessage do
   @moduledoc  """
   An area pointing to a message.
@@ -18827,12 +24983,35 @@ defmodule InputStoryAreaTypeMessage do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat with the message. Currently, the chat must be a supergroup or a channel chat. |
-  | message_id | int53 | Identifier of the message. Only successfully sent non-scheduled messages can be specified. |
+  | message_id | int53 | Identifier of the message. Use messageProperties.can_be_shared_in_story to check whether the message is suitable. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_area_type_message.html).
   """
 
   defstruct "@type": "inputStoryAreaTypeMessage", "@extra": nil, chat_id: nil, message_id: nil
+end
+defmodule ProfileTabPosts do
+  @moduledoc  """
+  A tab with stories posted by the user or the channel chat and saved to profile.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1profile_tab_posts.html).
+  """
+
+  defstruct "@type": "profileTabPosts", "@extra": nil
+end
+defmodule UpgradedGiftAttributeIdBackdrop do
+  @moduledoc  """
+  Identifier of a gift backdrop.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | backdrop_id | int32 | Identifier of the backdrop. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_attribute_id_backdrop.html).
+  """
+
+  defstruct "@type": "upgradedGiftAttributeIdBackdrop", "@extra": nil, backdrop_id: nil
 end
 defmodule ForumTopicInfo do
   @moduledoc  """
@@ -18840,20 +25019,22 @@ defmodule ForumTopicInfo do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | message_thread_id | int53 | Message thread identifier of the topic. |
+  | chat_id | int53 | Identifier of a forum supergroup chat or a chat with a bot to which the topic belongs. |
+  | forum_topic_id | int32 | Forum topic identifier of the topic. |
   | name | string | Name of the topic. |
   | icon | forumTopicIcon | Icon of the topic. |
   | creation_date | int32 | Point in time (Unix timestamp) when the topic was created. |
   | creator_id | MessageSender | Identifier of the creator of the topic. |
-  | is_general | bool | True, if the topic is the General topic list. |
+  | is_general | bool | True, if the topic is the General topic. |
   | is_outgoing | bool | True, if the topic was created by the current user. |
-  | is_closed | bool | True, if the topic is closed. |
+  | is_closed | bool | True, if the topic is closed. If the topic is closed, then the user must have can_manage_topics administrator right in the supergroup or must be the creator of the topic to send messages there. |
   | is_hidden | bool | True, if the topic is hidden above the topic list and closed; for General topic only. |
+  | is_name_implicit | bool | True, if the name of the topic wasn't added explicitly. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1forum_topic_info.html).
   """
 
-  defstruct "@type": "forumTopicInfo", "@extra": nil, message_thread_id: nil, name: nil, icon: nil, creation_date: nil, creator_id: nil, is_general: nil, is_outgoing: nil, is_closed: nil, is_hidden: nil
+  defstruct "@type": "forumTopicInfo", "@extra": nil, chat_id: nil, forum_topic_id: nil, name: nil, icon: nil, creation_date: nil, creator_id: nil, is_general: nil, is_outgoing: nil, is_closed: nil, is_hidden: nil, is_name_implicit: nil
 end
 defmodule SavedMessagesTag do
   @moduledoc  """
@@ -18869,6 +25050,15 @@ defmodule SavedMessagesTag do
   """
 
   defstruct "@type": "savedMessagesTag", "@extra": nil, tag: nil, label: nil, count: nil
+end
+defmodule InputGroupCall do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_input_group_call.html).
+  """
+
+  defstruct "@type": "InputGroupCall", "@extra": nil
 end
 defmodule ProfileAccentColors do
   @moduledoc  """
@@ -18887,7 +25077,7 @@ defmodule ProfileAccentColors do
 end
 defmodule PageBlockCaption do
   @moduledoc  """
-  Contains a caption of an instant view web page block, consisting of a text and a trailing credit.
+  Contains a caption of another block.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -18912,6 +25102,23 @@ defmodule RichTextAnchor do
 
   defstruct "@type": "richTextAnchor", "@extra": nil, name: nil
 end
+defmodule TonTransaction do
+  @moduledoc  """
+  Represents a transaction changing the amount of owned Toncoins.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | string | Unique identifier of the transaction. |
+  | ton_amount | int53 | The amount of added owned Toncoins; negative for outgoing transactions. |
+  | is_refund | bool | True, if the transaction is a refund of a previous transaction. |
+  | date | int32 | Point in time (Unix timestamp) when the transaction was completed. |
+  | type | TonTransactionType | Type of the transaction. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transaction.html).
+  """
+
+  defstruct "@type": "tonTransaction", "@extra": nil, id: nil, ton_amount: nil, is_refund: nil, date: nil, type: nil
+end
 defmodule MessageVideoNote do
   @moduledoc  """
   A video note message.
@@ -18927,20 +25134,20 @@ defmodule MessageVideoNote do
 
   defstruct "@type": "messageVideoNote", "@extra": nil, video_note: nil, is_viewed: nil, is_secret: nil
 end
-defmodule StorePaymentPurposeGiftedPremium do
+defmodule StarTransactionTypeChannelPaidMediaPurchase do
   @moduledoc  """
-  The user gifting Telegram Premium to another user.
+  The transaction is a purchase of paid media from a channel by the current user; relevant for regular users only.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | user_id | int53 | Identifier of the user to which Premium was gifted. |
-  | currency | string | ISO 4217 currency code of the payment currency. |
-  | amount | int53 | Paid amount, in the smallest units of the currency. |
+  | chat_id | int53 | Identifier of the channel chat that sent the paid media. |
+  | message_id | int53 | Identifier of the corresponding message with paid media; may be 0 or an identifier of a deleted message. |
+  | media | PaidMedia | The bought media if the transaction wasn't refunded. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_gifted_premium.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_channel_paid_media_purchase.html).
   """
 
-  defstruct "@type": "storePaymentPurposeGiftedPremium", "@extra": nil, user_id: nil, currency: nil, amount: nil
+  defstruct "@type": "starTransactionTypeChannelPaidMediaPurchase", "@extra": nil, chat_id: nil, message_id: nil, media: nil
 end
 defmodule SessionTypeEdge do
   @moduledoc  """
@@ -18951,6 +25158,19 @@ defmodule SessionTypeEdge do
   """
 
   defstruct "@type": "sessionTypeEdge", "@extra": nil
+end
+defmodule LinkPreviewTypeVoiceNote do
+  @moduledoc  """
+  The link is a link to a voice note message.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | voice_note | voiceNote | The voice note. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_voice_note.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeVoiceNote", "@extra": nil, voice_note: nil
 end
 defmodule InputPassportElementErrorSourceTranslationFiles do
   @moduledoc  """
@@ -18998,6 +25218,7 @@ defmodule MessageCall do
 
   | Name | Type | Description |
   |------|------| ------------|
+  | unique_id | int64 | Persistent unique call identifier; 0 for calls from other devices, which can't be passed as <a class="el" href="classtd_1_1td__api_1_1input_call_from_message.html">inputCallFromMessage</a>. |
   | is_video | bool | True, if the call was a video call. |
   | discard_reason | CallDiscardReason | Reason why the call was discarded. |
   | duration | int32 | Call duration, in seconds. |
@@ -19005,7 +25226,24 @@ defmodule MessageCall do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_call.html).
   """
 
-  defstruct "@type": "messageCall", "@extra": nil, is_video: nil, discard_reason: nil, duration: nil
+  defstruct "@type": "messageCall", "@extra": nil, unique_id: nil, is_video: nil, discard_reason: nil, duration: nil
+end
+defmodule InputMessagePaidMedia do
+  @moduledoc  """
+  A message with paid media; can be used only in channel chats with supergroupFullInfo.has_paid_media_allowed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | The number of Telegram Stars that must be paid to see the media; 1-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("paid_media_message_star_count_max"). |
+  | paid_media | inputPaidMedia | The content of the paid media. |
+  | caption | formattedText | Message caption; pass null to use an empty caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
+  | show_caption_above_media | bool | True, if the caption must be shown above the media; otherwise, the caption must be shown below the media; not supported in secret chats. |
+  | payload | string | Bot-provided data for the paid media; bots only. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_paid_media.html).
+  """
+
+  defstruct "@type": "inputMessagePaidMedia", "@extra": nil, star_count: nil, paid_media: nil, caption: nil, show_caption_above_media: nil, payload: nil
 end
 defmodule StickerTypeRegular do
   @moduledoc  """
@@ -19029,12 +25267,13 @@ defmodule Chat do
   | photo | chatPhotoInfo | Chat photo; may be null. |
   | accent_color_id | int32 | Identifier of the accent color for message sender name, and backgrounds of chat photo, reply header, and link preview. |
   | background_custom_emoji_id | int64 | Identifier of a custom emoji to be shown on the reply header and link preview background for messages sent by the chat; 0 if none. |
+  | upgraded_gift_colors | upgradedGiftColors | Color scheme based on an upgraded gift to be used for the chat instead of accent_color_id and background_custom_emoji_id; may be null if none. |
   | profile_accent_color_id | int32 | Identifier of the profile accent color for the chat's profile; -1 if none. |
   | profile_background_custom_emoji_id | int64 | Identifier of a custom emoji to be shown on the background of the chat's profile; 0 if none. |
   | permissions | chatPermissions | Actions that non-administrator chat members are allowed to take in the chat. |
   | last_message | message | Last message in the chat; may be null if none or unknown. |
   | positions | chatPosition | Positions of the chat in chat lists. |
-  | chat_lists | ChatList | Chat lists to which the chat belongs. A chat can have a non-zero position in a chat list even it doesn't belong to the chat list and have no position in a chat list even it belongs to the chat list. |
+  | chat_lists | ChatList | Chat lists to which the chat belongs. A chat can have a non-zero position in a chat list even if it doesn't belong to the chat list and have no position in a chat list even if it belongs to the chat list. |
   | message_sender_id | MessageSender | Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender. |
   | block_list | BlockList | Block list to which the chat is added; may be null if none. |
   | has_protected_content | bool | True, if chat content can't be saved locally, forwarded, or copied. |
@@ -19051,24 +25290,25 @@ defmodule Chat do
   | last_read_outbox_message_id | int53 | Identifier of the last read outgoing message. |
   | unread_mention_count | int32 | Number of unread messages with a mention/reply in the chat. |
   | unread_reaction_count | int32 | Number of messages with unread reactions in the chat. |
+  | unread_poll_vote_count | int32 | Number of messages with unread poll votes in the chat. |
   | notification_settings | chatNotificationSettings | Notification settings for the chat. |
   | available_reactions | ChatAvailableReactions | Types of reaction, available in the chat. |
   | message_auto_delete_time | int32 | Current message auto-delete or self-destruct timer setting for the chat, in seconds; 0 if disabled. Self-destruct timer in secret chats starts after the message or its content is viewed. Auto-delete timer in other chats starts from the send date. |
   | emoji_status | emojiStatus | Emoji status to be shown along with chat title; may be null. |
   | background | chatBackground | Background set for the chat; may be null if none. |
-  | theme_name | string | If non-empty, name of a theme, set for the chat. |
+  | theme | ChatTheme | Theme set for the chat; may be null if none. |
   | action_bar | ChatActionBar | Information about actions which must be possible to do through the chat action bar; may be null if none. |
   | business_bot_manage_bar | businessBotManageBar | Information about bar for managing a business bot in the chat; may be null if none. |
   | video_chat | videoChat | Information about video chat of the chat. |
   | pending_join_requests | chatJoinRequestsInfo | Information about pending join requests; may be null if none. |
-  | reply_markup_message_id | int53 | Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat. |
+  | reply_markup_message_id | int53 | Identifier of the message from which reply markup needs to be used; 0 if there is no reply markup in the chat. |
   | draft_message | draftMessage | A draft of a message in the chat; may be null if none. |
   | client_data | string | Application-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat.html).
   """
 
-  defstruct "@type": "chat", "@extra": nil, id: nil, type: nil, title: nil, photo: nil, accent_color_id: nil, background_custom_emoji_id: nil, profile_accent_color_id: nil, profile_background_custom_emoji_id: nil, permissions: nil, last_message: nil, positions: nil, chat_lists: nil, message_sender_id: nil, block_list: nil, has_protected_content: nil, is_translatable: nil, is_marked_as_unread: nil, view_as_topics: nil, has_scheduled_messages: nil, can_be_deleted_only_for_self: nil, can_be_deleted_for_all_users: nil, can_be_reported: nil, default_disable_notification: nil, unread_count: nil, last_read_inbox_message_id: nil, last_read_outbox_message_id: nil, unread_mention_count: nil, unread_reaction_count: nil, notification_settings: nil, available_reactions: nil, message_auto_delete_time: nil, emoji_status: nil, background: nil, theme_name: nil, action_bar: nil, business_bot_manage_bar: nil, video_chat: nil, pending_join_requests: nil, reply_markup_message_id: nil, draft_message: nil, client_data: nil
+  defstruct "@type": "chat", "@extra": nil, id: nil, type: nil, title: nil, photo: nil, accent_color_id: nil, background_custom_emoji_id: nil, upgraded_gift_colors: nil, profile_accent_color_id: nil, profile_background_custom_emoji_id: nil, permissions: nil, last_message: nil, positions: nil, chat_lists: nil, message_sender_id: nil, block_list: nil, has_protected_content: nil, is_translatable: nil, is_marked_as_unread: nil, view_as_topics: nil, has_scheduled_messages: nil, can_be_deleted_only_for_self: nil, can_be_deleted_for_all_users: nil, can_be_reported: nil, default_disable_notification: nil, unread_count: nil, last_read_inbox_message_id: nil, last_read_outbox_message_id: nil, unread_mention_count: nil, unread_reaction_count: nil, unread_poll_vote_count: nil, notification_settings: nil, available_reactions: nil, message_auto_delete_time: nil, emoji_status: nil, background: nil, theme: nil, action_bar: nil, business_bot_manage_bar: nil, video_chat: nil, pending_join_requests: nil, reply_markup_message_id: nil, draft_message: nil, client_data: nil
 end
 defmodule PassportElementErrorSourceDataField do
   @moduledoc  """
@@ -19096,6 +25336,20 @@ defmodule TargetChatInternalLink do
 
   defstruct "@type": "targetChatInternalLink", "@extra": nil, link: nil
 end
+defmodule BotMediaPreviewInfo do
+  @moduledoc  """
+  Contains a list of media previews of a bot for the given language and the list of languages for which the bot has dedicated previews.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | previews | botMediaPreview | List of media previews. |
+  | language_codes | string | List of language codes for which the bot has dedicated previews. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_media_preview_info.html).
+  """
+
+  defstruct "@type": "botMediaPreviewInfo", "@extra": nil, previews: nil, language_codes: nil
+end
 defmodule CallProblemSilentLocal do
   @moduledoc  """
   The user couldn't hear the other side.
@@ -19114,22 +25368,23 @@ defmodule InputMessagePhoto do
   |------|------| ------------|
   | photo | InputFile | Photo to send. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. |
   | thumbnail | inputThumbnail | Photo thumbnail to be sent; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats. |
+  | video | InputFile | Video of the live photo; not supported in secret chats; pass null if the photo isn't a live photo. |
   | added_sticker_file_ids | int32 | File identifiers of the stickers added to the photo, if applicable. |
   | width | int32 | Photo width. |
   | height | int32 | Photo height. |
   | caption | formattedText | Photo caption; pass null to use an empty caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
-  | show_caption_above_media | bool | True, if caption must be shown above the photo; otherwise, caption must be shown below the photo; not supported in secret chats. |
+  | show_caption_above_media | bool | True, if the caption must be shown above the photo; otherwise, the caption must be shown below the photo; not supported in secret chats. |
   | self_destruct_type | MessageSelfDestructType | Photo self-destruct type; pass null if none; private chats only. |
   | has_spoiler | bool | True, if the photo preview must be covered by a spoiler animation; not supported in secret chats. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_photo.html).
   """
 
-  defstruct "@type": "inputMessagePhoto", "@extra": nil, photo: nil, thumbnail: nil, added_sticker_file_ids: nil, width: nil, height: nil, caption: nil, show_caption_above_media: nil, self_destruct_type: nil, has_spoiler: nil
+  defstruct "@type": "inputMessagePhoto", "@extra": nil, photo: nil, thumbnail: nil, video: nil, added_sticker_file_ids: nil, width: nil, height: nil, caption: nil, show_caption_above_media: nil, self_destruct_type: nil, has_spoiler: nil
 end
 defmodule StoryVideo do
   @moduledoc  """
-  Describes a video file sent in a story.
+  Describes a video file posted as a story.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -19140,13 +25395,37 @@ defmodule StoryVideo do
   | is_animation | bool | True, if the video has no sound. |
   | minithumbnail | minithumbnail | Video minithumbnail; may be null. |
   | thumbnail | thumbnail | Video thumbnail in JPEG or MPEG4 format; may be null. |
-  | preload_prefix_size | int32 | Size of file prefix, which is supposed to be preloaded, in bytes. |
+  | preload_prefix_size | int32 | Size of file prefix, which is expected to be preloaded, in bytes. |
+  | cover_frame_timestamp | double | Timestamp of the frame used as video thumbnail. |
   | video | file | File containing the video. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_video.html).
   """
 
-  defstruct "@type": "storyVideo", "@extra": nil, duration: nil, width: nil, height: nil, has_stickers: nil, is_animation: nil, minithumbnail: nil, thumbnail: nil, preload_prefix_size: nil, video: nil
+  defstruct "@type": "storyVideo", "@extra": nil, duration: nil, width: nil, height: nil, has_stickers: nil, is_animation: nil, minithumbnail: nil, thumbnail: nil, preload_prefix_size: nil, cover_frame_timestamp: nil, video: nil
+end
+defmodule UpdateStakeDiceState do
+  @moduledoc  """
+  The stake dice state has changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | state | stakeDiceState | The new state. The state can be used only if it was received recently enough. Otherwise, a new state must be requested using <a class="el" href="classtd_1_1td__api_1_1get_stake_dice_state.html">getStakeDiceState</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_stake_dice_state.html).
+  """
+
+  defstruct "@type": "updateStakeDiceState", "@extra": nil, state: nil
+end
+defmodule AffiliateProgramSortOrderRevenue do
+  @moduledoc  """
+  The affiliate programs must be sorted by the expected revenue.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_program_sort_order_revenue.html).
+  """
+
+  defstruct "@type": "affiliateProgramSortOrderRevenue", "@extra": nil
 end
 defmodule AddedReaction do
   @moduledoc  """
@@ -19163,6 +25442,19 @@ defmodule AddedReaction do
   """
 
   defstruct "@type": "addedReaction", "@extra": nil, type: nil, sender_id: nil, is_outgoing: nil, date: nil
+end
+defmodule SponsoredChats do
+  @moduledoc  """
+  Contains a list of sponsored chats.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chats | sponsoredChat | List of sponsored chats. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sponsored_chats.html).
+  """
+
+  defstruct "@type": "sponsoredChats", "@extra": nil, chats: nil
 end
 defmodule UpdateServiceNotification do
   @moduledoc  """
@@ -19191,6 +25483,16 @@ defmodule TextEntityTypePreCode do
 
   defstruct "@type": "textEntityTypePreCode", "@extra": nil, language: nil
 end
+defmodule ProfileTabMedia do
+  @moduledoc  """
+  A tab with photos and videos posted by the channel.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1profile_tab_media.html).
+  """
+
+  defstruct "@type": "profileTabMedia", "@extra": nil
+end
 defmodule NotificationGroupTypeMessages do
   @moduledoc  """
   A group containing notifications of type notificationTypeNewMessage and notificationTypeNewPushMessage with ordinary unread messages.
@@ -19215,6 +25517,16 @@ defmodule ChatEventDescriptionChanged do
 
   defstruct "@type": "chatEventDescriptionChanged", "@extra": nil, old_description: nil, new_description: nil
 end
+defmodule SuggestedPostRefundReasonPaymentRefunded do
+  @moduledoc  """
+  The post was refunded, because the payment for the post was refunded.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_post_refund_reason_payment_refunded.html).
+  """
+
+  defstruct "@type": "suggestedPostRefundReasonPaymentRefunded", "@extra": nil
+end
 defmodule SearchMessagesFilterFailedToSend do
   @moduledoc  """
   Returns only failed to send messages. This filter can be used only if the message database is used.
@@ -19225,6 +25537,21 @@ defmodule SearchMessagesFilterFailedToSend do
 
   defstruct "@type": "searchMessagesFilterFailedToSend", "@extra": nil
 end
+defmodule WebAppOpenParameters do
+  @moduledoc  """
+  Options to be used when a Web App is opened.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | theme | themeParameters | Preferred Web App theme; pass null to use the default theme. |
+  | application_name | string | Short name of the current application; 0-64 English letters, digits, and underscores. |
+  | mode | WebAppOpenMode | The mode in which the Web App is opened; pass null to open in <a class="el" href="classtd_1_1td__api_1_1web_app_open_mode_full_size.html">webAppOpenModeFullSize</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_app_open_parameters.html).
+  """
+
+  defstruct "@type": "webAppOpenParameters", "@extra": nil, theme: nil, application_name: nil, mode: nil
+end
 defmodule FileTypeVideoNote do
   @moduledoc  """
   The file is a video note.
@@ -19234,6 +25561,16 @@ defmodule FileTypeVideoNote do
   """
 
   defstruct "@type": "fileTypeVideoNote", "@extra": nil
+end
+defmodule GiftForResaleOrderPriceChangeDate do
+  @moduledoc  """
+  The gifts will be sorted by the last date when their price was changed from the newest to the oldest.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_for_resale_order_price_change_date.html).
+  """
+
+  defstruct "@type": "giftForResaleOrderPriceChangeDate", "@extra": nil
 end
 defmodule CanTransferOwnershipResultPasswordNeeded do
   @moduledoc  """
@@ -19298,6 +25635,29 @@ defmodule ChatEventSlowModeDelayChanged do
 
   defstruct "@type": "chatEventSlowModeDelayChanged", "@extra": nil, old_slow_mode_delay: nil, new_slow_mode_delay: nil
 end
+defmodule StarTransactionTypeChannelSubscriptionSale do
+  @moduledoc  """
+  The transaction is a sale of a subscription by the channel chat; relevant for channel chats only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who bought the subscription. |
+  | subscription_period | int32 | The number of seconds between consecutive Telegram Star debitings. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_channel_subscription_sale.html).
+  """
+
+  defstruct "@type": "starTransactionTypeChannelSubscriptionSale", "@extra": nil, user_id: nil, subscription_period: nil
+end
+defmodule KeyboardButtonSource do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_keyboard_button_source.html).
+  """
+
+  defstruct "@type": "KeyboardButtonSource", "@extra": nil
+end
 defmodule RichTextBold do
   @moduledoc  """
   A bold rich text.
@@ -19334,6 +25694,19 @@ defmodule RecommendedChatFolders do
 
   defstruct "@type": "recommendedChatFolders", "@extra": nil, chat_folders: nil
 end
+defmodule CanPostStoryResultLiveStoryIsActive do
+  @moduledoc  """
+  The user or the chat has an active live story. The live story must be deleted first.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | story_id | int32 | Identifier of the active live story. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story_result_live_story_is_active.html).
+  """
+
+  defstruct "@type": "canPostStoryResultLiveStoryIsActive", "@extra": nil, story_id: nil
+end
 defmodule SuggestedActionSubscribeToAnnualPremium do
   @moduledoc  """
   Suggests the user to subscribe to the Premium subscription with annual payments.
@@ -19365,6 +25738,15 @@ defmodule ConnectedWebsite do
 
   defstruct "@type": "connectedWebsite", "@extra": nil, id: nil, domain_name: nil, bot_user_id: nil, browser: nil, platform: nil, log_in_date: nil, last_active_date: nil, ip_address: nil, location: nil
 end
+defmodule GroupCallDataChannel do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_group_call_data_channel.html).
+  """
+
+  defstruct "@type": "GroupCallDataChannel", "@extra": nil
+end
 defmodule UpdateFileGenerationStop do
   @moduledoc  """
   File generation is no longer needed.
@@ -19378,6 +25760,15 @@ defmodule UpdateFileGenerationStop do
 
   defstruct "@type": "updateFileGenerationStop", "@extra": nil, generation_id: nil
 end
+defmodule StarTransactionType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_star_transaction_type.html).
+  """
+
+  defstruct "@type": "StarTransactionType", "@extra": nil
+end
 defmodule SearchMessagesFilter do
   @moduledoc  """
 
@@ -19387,15 +25778,19 @@ defmodule SearchMessagesFilter do
 
   defstruct "@type": "SearchMessagesFilter", "@extra": nil
 end
-defmodule InternalLinkTypeChangePhoneNumber do
+defmodule KeyboardButtonSourceWebApp do
   @moduledoc  """
-  The link is a link to the change phone number section of the app.
+  The button is a prepared keyboard button from a Mini App received via getPreparedKeyboardButton.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | bot_user_id | int53 | Identifier of the bot that created the button. |
+  | prepared_button_id | string | Identifier of the prepared button. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_change_phone_number.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_source_web_app.html).
   """
 
-  defstruct "@type": "internalLinkTypeChangePhoneNumber", "@extra": nil
+  defstruct "@type": "keyboardButtonSourceWebApp", "@extra": nil, bot_user_id: nil, prepared_button_id: nil
 end
 defmodule ChatSource do
   @moduledoc  """
@@ -19405,6 +25800,19 @@ defmodule ChatSource do
   """
 
   defstruct "@type": "ChatSource", "@extra": nil
+end
+defmodule PushMessageContentChecklistTasksDone do
+  @moduledoc  """
+  Some tasks from a checklist were marked as done or not done.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | task_count | int32 | Number of changed tasks. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_checklist_tasks_done.html).
+  """
+
+  defstruct "@type": "pushMessageContentChecklistTasksDone", "@extra": nil, task_count: nil
 end
 defmodule UpdateMessageSendFailed do
   @moduledoc  """
@@ -19430,16 +25838,6 @@ defmodule ChatMembersFilter do
 
   defstruct "@type": "ChatMembersFilter", "@extra": nil
 end
-defmodule ReportChatSponsoredMessageResultOk do
-  @moduledoc  """
-  The message was reported successfully.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_sponsored_message_result_ok.html).
-  """
-
-  defstruct "@type": "reportChatSponsoredMessageResultOk", "@extra": nil
-end
 defmodule PremiumLimitTypePinnedArchivedChatCount do
   @moduledoc  """
   The maximum number of pinned chats in the archive chat list.
@@ -19458,6 +25856,29 @@ defmodule StickerType do
   """
 
   defstruct "@type": "StickerType", "@extra": nil
+end
+defmodule PushMessageContentVideoChatStarted do
+  @moduledoc  """
+  A video chat or live stream was started.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_video_chat_started.html).
+  """
+
+  defstruct "@type": "pushMessageContentVideoChatStarted", "@extra": nil
+end
+defmodule TonTransactionTypeGiftPurchaseOffer do
+  @moduledoc  """
+  The transaction is an offer of gift purchase.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | upgradedGift | The gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transaction_type_gift_purchase_offer.html).
+  """
+
+  defstruct "@type": "tonTransactionTypeGiftPurchaseOffer", "@extra": nil, gift: nil
 end
 defmodule MessageContact do
   @moduledoc  """
@@ -19514,6 +25935,20 @@ defmodule PremiumFeatureImprovedDownloadSpeed do
 
   defstruct "@type": "premiumFeatureImprovedDownloadSpeed", "@extra": nil
 end
+defmodule GiftSettings do
+  @moduledoc  """
+  Contains settings for gift receiving for a user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | show_gift_button | bool | True, if a button for sending a gift to the user or by the user must always be shown in the input field. |
+  | accepted_gift_types | acceptedGiftTypes | Types of gifts accepted by the user; for Telegram Premium users only. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_settings.html).
+  """
+
+  defstruct "@type": "giftSettings", "@extra": nil, show_gift_button: nil, accepted_gift_types: nil
+end
 defmodule UpdateChatAction do
   @moduledoc  """
   A message sender activity in the chat has changed.
@@ -19521,14 +25956,14 @@ defmodule UpdateChatAction do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier. |
-  | message_thread_id | int53 | If not 0, the message thread identifier in which the action was performed. |
+  | topic_id | MessageTopic | Identifier of the specific topic in which the action was performed; may be null if none. |
   | sender_id | MessageSender | Identifier of a message sender performing the action. |
   | action | ChatAction | The action. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_action.html).
   """
 
-  defstruct "@type": "updateChatAction", "@extra": nil, chat_id: nil, message_thread_id: nil, sender_id: nil, action: nil
+  defstruct "@type": "updateChatAction", "@extra": nil, chat_id: nil, topic_id: nil, sender_id: nil, action: nil
 end
 defmodule AuthenticationCodeTypeTelegramMessage do
   @moduledoc  """
@@ -19684,6 +26119,19 @@ defmodule MessageChatJoinByLink do
 
   defstruct "@type": "messageChatJoinByLink", "@extra": nil
 end
+defmodule InlineKeyboardButtonTypeCopyText do
+  @moduledoc  """
+  A button that copies specified text to clipboard.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | string | The text to copy to clipboard. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_copy_text.html).
+  """
+
+  defstruct "@type": "inlineKeyboardButtonTypeCopyText", "@extra": nil, text: nil
+end
 defmodule BusinessLocation do
   @moduledoc  """
   Represents a location of a business.
@@ -19735,6 +26183,19 @@ defmodule CanTransferOwnershipResultPasswordTooFresh do
 
   defstruct "@type": "canTransferOwnershipResultPasswordTooFresh", "@extra": nil, retry_after: nil
 end
+defmodule ChatEventAutomaticTranslationToggled do
+  @moduledoc  """
+  The has_automatic_translation setting of a channel was toggled.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | has_automatic_translation | bool | New value of has_automatic_translation. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_automatic_translation_toggled.html).
+  """
+
+  defstruct "@type": "chatEventAutomaticTranslationToggled", "@extra": nil, has_automatic_translation: nil
+end
 defmodule FileTypeAudio do
   @moduledoc  """
   The file is an audio file.
@@ -19744,6 +26205,16 @@ defmodule FileTypeAudio do
   """
 
   defstruct "@type": "fileTypeAudio", "@extra": nil
+end
+defmodule UpgradedGiftOriginPrepaidUpgrade do
+  @moduledoc  """
+  The sender or receiver of the message has paid for upgraid of the gift, which has been completed.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_origin_prepaid_upgrade.html).
+  """
+
+  defstruct "@type": "upgradedGiftOriginPrepaidUpgrade", "@extra": nil
 end
 defmodule FoundFileDownloads do
   @moduledoc  """
@@ -19794,6 +26265,24 @@ defmodule BotCommandScopeChatMember do
 
   defstruct "@type": "botCommandScopeChatMember", "@extra": nil, chat_id: nil, user_id: nil
 end
+defmodule MessageGroupCall do
+  @moduledoc  """
+  A message with information about a group call not bound to a chat. If the message is incoming, the call isn't active, isn't missed, and has no duration, and getOption("can_accept_calls") is true, then incoming call screen must be shown to the user. Use getGroupCallParticipants to show current group call participants on the screen. Use joinGroupCall to accept the call or declineGroupCallInvitation to decline it. If the call become active or missed, then the call screen must be hidden.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | unique_id | int64 | Persistent unique group call identifier. |
+  | is_active | bool | True, if the call is active, i.e. the called user joined the call. |
+  | was_missed | bool | True, if the called user missed or declined the call. |
+  | is_video | bool | True, if the call is a video call. |
+  | duration | int32 | Call duration, in seconds; for left calls only. |
+  | other_participant_ids | MessageSender | Identifiers of some other call participants. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_group_call.html).
+  """
+
+  defstruct "@type": "messageGroupCall", "@extra": nil, unique_id: nil, is_active: nil, was_missed: nil, is_video: nil, duration: nil, other_participant_ids: nil
+end
 defmodule Poll do
   @moduledoc  """
   Describes a poll.
@@ -19801,11 +26290,15 @@ defmodule Poll do
   | Name | Type | Description |
   |------|------| ------------|
   | id | int64 | Unique poll identifier. |
-  | question | formattedText | Poll question; 1-300 characters. Only custom emoji entities are allowed. |
+  | question | formattedText | Poll question; 1-300 characters; may contain only custom emoji entities. |
   | options | pollOption | List of poll answer options. |
   | total_voter_count | int32 | Total number of voters, participating in the poll. |
-  | recent_voter_ids | MessageSender | Identifiers of recent voters, if the poll is non-anonymous. |
+  | recent_voter_ids | MessageSender | Identifiers of recent voters, if the poll is non-anonymous and poll results are available. |
+  | can_get_voters | bool | True, if the current user can get voters in the poll. |
   | is_anonymous | bool | True, if the poll is anonymous. |
+  | allows_multiple_answers | bool | True, if multiple answer options can be chosen simultaneously. |
+  | allows_revoting | bool | True, if the poll can be answered multiple times. |
+  | option_order | int32 | The list of 0-based poll identifiers in which the options of the poll must be shown; empty if the order of options must not be changed. |
   | type | PollType | Type of the poll. |
   | open_period | int32 | Amount of time the poll will be active after creation, in seconds. |
   | close_date | int32 | Point in time (Unix timestamp) when the poll will automatically be closed. |
@@ -19814,7 +26307,7 @@ defmodule Poll do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll.html).
   """
 
-  defstruct "@type": "poll", "@extra": nil, id: nil, question: nil, options: nil, total_voter_count: nil, recent_voter_ids: nil, is_anonymous: nil, type: nil, open_period: nil, close_date: nil, is_closed: nil
+  defstruct "@type": "poll", "@extra": nil, id: nil, question: nil, options: nil, total_voter_count: nil, recent_voter_ids: nil, can_get_voters: nil, is_anonymous: nil, allows_multiple_answers: nil, allows_revoting: nil, option_order: nil, type: nil, open_period: nil, close_date: nil, is_closed: nil
 end
 defmodule PassportElementTypePersonalDetails do
   @moduledoc  """
@@ -19841,17 +26334,26 @@ defmodule InputPassportElementDriverLicense do
 end
 defmodule UpdateStarRevenueStatus do
   @moduledoc  """
-  The Telegram star revenue earned by a bot or a chat has changed. If star transactions screen of the chat is opened, then getStarTransactions may be called to fetch new transactions.
+  The Telegram Star revenue earned by a user or a chat has changed. If Telegram Star transaction screen of the chat is opened, then getStarTransactions may be called to fetch new transactions.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | owner_id | MessageSender | Identifier of the owner of the Telegram stars. |
-  | status | starRevenueStatus | New Telegram star revenue status. |
+  | owner_id | MessageSender | Identifier of the owner of the Telegram Stars. |
+  | status | starRevenueStatus | New Telegram Star revenue status. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_star_revenue_status.html).
   """
 
   defstruct "@type": "updateStarRevenueStatus", "@extra": nil, owner_id: nil, status: nil
+end
+defmodule GiveawayParticipantStatus do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_giveaway_participant_status.html).
+  """
+
+  defstruct "@type": "GiveawayParticipantStatus", "@extra": nil
 end
 defmodule InputCredentialsGooglePay do
   @moduledoc  """
@@ -19893,6 +26395,21 @@ defmodule PublicForward do
 
   defstruct "@type": "PublicForward", "@extra": nil
 end
+defmodule ChatEventMemberTagChanged do
+  @moduledoc  """
+  A chat member tag has been changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Affected chat member user identifier. |
+  | old_tag | string | Previous tag of the chat member. |
+  | new_tag | string | New tag of the chat member. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_member_tag_changed.html).
+  """
+
+  defstruct "@type": "chatEventMemberTagChanged", "@extra": nil, user_id: nil, old_tag: nil, new_tag: nil
+end
 defmodule SessionTypeUnknown do
   @moduledoc  """
   The session is running on an unknown type of device.
@@ -19902,6 +26419,21 @@ defmodule SessionTypeUnknown do
   """
 
   defstruct "@type": "sessionTypeUnknown", "@extra": nil
+end
+defmodule PaidMediaVideo do
+  @moduledoc  """
+  The media is a video.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | video | video | The video. |
+  | cover | photo | Cover of the video; may be null if none. |
+  | start_timestamp | int32 | Timestamp from which the video playing must start, in seconds. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_media_video.html).
+  """
+
+  defstruct "@type": "paidMediaVideo", "@extra": nil, video: nil, cover: nil, start_timestamp: nil
 end
 defmodule UpdateNewBusinessCallbackQuery do
   @moduledoc  """
@@ -20005,12 +26537,25 @@ defmodule InlineKeyboardButtonTypeUrl do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | url | string | HTTP or tg:// URL to open. |
+  | url | string | HTTP or tg:// URL to open. If the link is of the type <a class="el" href="classtd_1_1td__api_1_1internal_link_type_web_app.html">internalLinkTypeWebApp</a>, then the button must be marked as a Web App button. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_url.html).
   """
 
   defstruct "@type": "inlineKeyboardButtonTypeUrl", "@extra": nil, url: nil
+end
+defmodule TonTransactionTypeSuggestedPostPayment do
+  @moduledoc  """
+  The transaction is a payment for a suggested post.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the channel chat that posted the post. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transaction_type_suggested_post_payment.html).
+  """
+
+  defstruct "@type": "tonTransactionTypeSuggestedPostPayment", "@extra": nil, chat_id: nil
 end
 defmodule Update do
   @moduledoc  """
@@ -20020,6 +26565,20 @@ defmodule Update do
   """
 
   defstruct "@type": "Update", "@extra": nil
+end
+defmodule GroupCallInfo do
+  @moduledoc  """
+  Contains information about a just created or just joined group call.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | group_call_id | int32 | Identifier of the group call. |
+  | join_payload | string | Join response payload for tgcalls; empty if the call isn't joined. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_info.html).
+  """
+
+  defstruct "@type": "groupCallInfo", "@extra": nil, group_call_id: nil, join_payload: nil
 end
 defmodule CheckStickerSetNameResultOk do
   @moduledoc  """
@@ -20097,6 +26656,41 @@ defmodule SavedMessagesTags do
 
   defstruct "@type": "savedMessagesTags", "@extra": nil, tags: nil
 end
+defmodule SettingsSectionFeatures do
+  @moduledoc  """
+  The "Telegram Features" section.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_features.html).
+  """
+
+  defstruct "@type": "settingsSectionFeatures", "@extra": nil
+end
+defmodule GiftPurchaseOfferStatePending do
+  @moduledoc  """
+  The offer must be accepted or rejected.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_purchase_offer_state_pending.html).
+  """
+
+  defstruct "@type": "giftPurchaseOfferStatePending", "@extra": nil
+end
+defmodule GiftAuction do
+  @moduledoc  """
+  Describes an auction on which a gift can be purchased.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | string | Identifier of the auction. |
+  | gifts_per_round | int32 | Number of gifts distributed in each round. |
+  | start_date | int32 | Point in time (Unix timestamp) when the auction will start. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_auction.html).
+  """
+
+  defstruct "@type": "giftAuction", "@extra": nil, id: nil, gifts_per_round: nil, start_date: nil
+end
 defmodule EncryptedCredentials do
   @moduledoc  """
   Contains encrypted Telegram Passport data credentials.
@@ -20111,6 +26705,67 @@ defmodule EncryptedCredentials do
   """
 
   defstruct "@type": "encryptedCredentials", "@extra": nil, data: nil, hash: nil, secret: nil
+end
+defmodule UpgradedGiftAttributeRarityLegendary do
+  @moduledoc  """
+  The attribute is legendary.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_attribute_rarity_legendary.html).
+  """
+
+  defstruct "@type": "upgradedGiftAttributeRarityLegendary", "@extra": nil
+end
+defmodule AddedProxy do
+  @moduledoc  """
+  Contains information about a proxy server added to the list of proxies.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int32 | Unique identifier of the proxy. |
+  | last_used_date | int32 | Point in time (Unix timestamp) when the proxy was last used; 0 if never. |
+  | is_enabled | bool | True, if the proxy is enabled now. |
+  | proxy | proxy | The proxy. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1added_proxy.html).
+  """
+
+  defstruct "@type": "addedProxy", "@extra": nil, id: nil, last_used_date: nil, is_enabled: nil, proxy: nil
+end
+defmodule VideoMessageAdvertisement do
+  @moduledoc  """
+  Describes an advertisent to be shown while a video from a message is watched.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | unique_id | int53 | Unique identifier of this result. |
+  | text | string | Text of the advertisement. |
+  | min_display_duration | int32 | The minimum amount of time the advertisement must be displayed before it can be hidden by the user, in seconds. |
+  | max_display_duration | int32 | The maximum amount of time the advertisement must be displayed before it must be automatically hidden, in seconds. |
+  | can_be_reported | bool | True, if the advertisement can be reported to Telegram moderators through <a class="el" href="classtd_1_1td__api_1_1report_video_message_advertisement.html">reportVideoMessageAdvertisement</a>. |
+  | sponsor | advertisementSponsor | Information about the sponsor of the advertisement. |
+  | title | string | Title of the sponsored message. |
+  | additional_info | string | If non-empty, additional information about the sponsored message to be shown along with the message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1video_message_advertisement.html).
+  """
+
+  defstruct "@type": "videoMessageAdvertisement", "@extra": nil, unique_id: nil, text: nil, min_display_duration: nil, max_display_duration: nil, can_be_reported: nil, sponsor: nil, title: nil, additional_info: nil
+end
+defmodule PreparedInlineMessage do
+  @moduledoc  """
+  Represents a ready to send inline message. Use sendInlineQueryResultMessage to send the message.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | inline_query_id | int64 | Unique identifier of the inline query to pass to <a class="el" href="classtd_1_1td__api_1_1send_inline_query_result_message.html">sendInlineQueryResultMessage</a>. |
+  | result | InlineQueryResult | Resulted inline message of the query. |
+  | chat_types | targetChatTypes | Types of the chats to which the message can be sent. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1prepared_inline_message.html).
+  """
+
+  defstruct "@type": "preparedInlineMessage", "@extra": nil, inline_query_id: nil, result: nil, chat_types: nil
 end
 defmodule ChatActionUploadingDocument do
   @moduledoc  """
@@ -20151,6 +26806,34 @@ defmodule RichTextPlain do
   """
 
   defstruct "@type": "richTextPlain", "@extra": nil, text: nil
+end
+defmodule LinkPreviewTypeUnsupported do
+  @moduledoc  """
+  The link preview type is unsupported yet.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_unsupported.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeUnsupported", "@extra": nil
+end
+defmodule EmojiStatusTypeUpgradedGift do
+  @moduledoc  """
+  An upgraded gift set as emoji status.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | upgraded_gift_id | int64 | Identifier of the upgraded gift. |
+  | gift_title | string | The title of the upgraded gift. |
+  | gift_name | string | Unique name of the upgraded gift that can be used with <a class="el" href="classtd_1_1td__api_1_1internal_link_type_upgraded_gift.html">internalLinkTypeUpgradedGift</a>. |
+  | model_custom_emoji_id | int64 | Custom emoji identifier of the model of the upgraded gift. |
+  | symbol_custom_emoji_id | int64 | Custom emoji identifier of the symbol of the upgraded gift. |
+  | backdrop_colors | upgradedGiftBackdropColors | Colors of the backdrop of the upgraded gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_status_type_upgraded_gift.html).
+  """
+
+  defstruct "@type": "emojiStatusTypeUpgradedGift", "@extra": nil, upgraded_gift_id: nil, gift_title: nil, gift_name: nil, model_custom_emoji_id: nil, symbol_custom_emoji_id: nil, backdrop_colors: nil
 end
 defmodule PaymentReceiptType do
   @moduledoc  """
@@ -20209,6 +26892,22 @@ defmodule StatisticalValue do
 
   defstruct "@type": "statisticalValue", "@extra": nil, value: nil, previous_value: nil, growth_rate_percentage: nil
 end
+defmodule GiftsForCrafting do
+  @moduledoc  """
+  Represents a list of gifts received by a user or a chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | total_count | int32 | The total number of received gifts. |
+  | gifts | receivedGift | The list of gifts. |
+  | attribute_persistence_probabilities | attributeCraftPersistenceProbability | The 4 objects that describe probabilities of the crafted gift to have the backdrop or symbol of one of the original gifts for the cases when 1, 2, 3 or 4 gifts are used in the craft correspondingly. |
+  | next_offset | string | The offset for the next request. If empty, then there are no more results. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gifts_for_crafting.html).
+  """
+
+  defstruct "@type": "giftsForCrafting", "@extra": nil, total_count: nil, gifts: nil, attribute_persistence_probabilities: nil, next_offset: nil
+end
 defmodule UpdateMessageMentionRead do
   @moduledoc  """
   A message with an unread mention was read.
@@ -20238,20 +26937,34 @@ defmodule MessageSticker do
 
   defstruct "@type": "messageSticker", "@extra": nil, sticker: nil, is_premium: nil
 end
+defmodule InviteGroupCallParticipantResultSuccess do
+  @moduledoc  """
+  The user was invited and a service message of the type messageGroupCall was sent which can be used in declineGroupCallInvitation to cancel the invitation.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat with the invitation message. |
+  | message_id | int53 | Identifier of the message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invite_group_call_participant_result_success.html).
+  """
+
+  defstruct "@type": "inviteGroupCallParticipantResultSuccess", "@extra": nil, chat_id: nil, message_id: nil
+end
 defmodule MessageStory do
   @moduledoc  """
   A message with a forwarded story.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | story_sender_chat_id | int53 | Identifier of the chat that posted the story. |
+  | story_poster_chat_id | int53 | Identifier of the chat that posted the story. |
   | story_id | int32 | Story identifier. |
   | via_mention | bool | True, if the story was automatically forwarded because of a mention of the user. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_story.html).
   """
 
-  defstruct "@type": "messageStory", "@extra": nil, story_sender_chat_id: nil, story_id: nil, via_mention: nil
+  defstruct "@type": "messageStory", "@extra": nil, story_poster_chat_id: nil, story_id: nil, via_mention: nil
 end
 defmodule Chats do
   @moduledoc  """
@@ -20266,6 +26979,16 @@ defmodule Chats do
   """
 
   defstruct "@type": "chats", "@extra": nil, total_count: nil, chat_ids: nil
+end
+defmodule CanSendGiftResultOk do
+  @moduledoc  """
+  The gift can be sent now by the current user.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_gift_result_ok.html).
+  """
+
+  defstruct "@type": "canSendGiftResultOk", "@extra": nil
 end
 defmodule MessageSuggestProfilePhoto do
   @moduledoc  """
@@ -20320,6 +27043,26 @@ defmodule GroupCallVideoQualityThumbnail do
 
   defstruct "@type": "groupCallVideoQualityThumbnail", "@extra": nil
 end
+defmodule StarGiveawayPaymentOption do
+  @moduledoc  """
+  Describes an option for creating of Telegram Star giveaway. Use telegramPaymentPurposeStarGiveaway for out-of-store payments.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | currency | string | ISO 4217 currency code for the payment. |
+  | amount | int53 | The amount to pay, in the smallest units of the currency. |
+  | star_count | int53 | Number of Telegram Stars that will be distributed among winners. |
+  | store_product_id | string | Identifier of the store product associated with the option; may be empty if none. |
+  | yearly_boost_count | int32 | Number of times the chat will be boosted for one year if the option is chosen. |
+  | winner_options | starGiveawayWinnerOption | Allowed options for the number of giveaway winners. |
+  | is_default | bool | True, if the option must be chosen by default. |
+  | is_additional | bool | True, if the option must be shown only in the full list of payment options. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_giveaway_payment_option.html).
+  """
+
+  defstruct "@type": "starGiveawayPaymentOption", "@extra": nil, currency: nil, amount: nil, star_count: nil, store_product_id: nil, yearly_boost_count: nil, winner_options: nil, is_default: nil, is_additional: nil
+end
 defmodule StorageStatisticsByChat do
   @moduledoc  """
   Contains the storage usage statistics for a specific chat.
@@ -20336,6 +27079,21 @@ defmodule StorageStatisticsByChat do
 
   defstruct "@type": "storageStatisticsByChat", "@extra": nil, chat_id: nil, size: nil, count: nil, by_file_type: nil
 end
+defmodule MessageSuggestedPostApproved do
+  @moduledoc  """
+  A suggested post was approved.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | suggested_post_message_id | int53 | Identifier of the message with the suggested post; may be 0 or an identifier of a deleted message. |
+  | price | SuggestedPostPrice | Price of the suggested post; may be null if the post is non-paid. |
+  | send_date | int32 | Point in time (Unix timestamp) when the post is expected to be published. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_suggested_post_approved.html).
+  """
+
+  defstruct "@type": "messageSuggestedPostApproved", "@extra": nil, suggested_post_message_id: nil, price: nil, send_date: nil
+end
 defmodule DeviceTokenHuaweiPush do
   @moduledoc  """
   A token for HUAWEI Push Service.
@@ -20349,6 +27107,20 @@ defmodule DeviceTokenHuaweiPush do
   """
 
   defstruct "@type": "deviceTokenHuaweiPush", "@extra": nil, token: nil, encrypt: nil
+end
+defmodule StarTransactionTypeAffiliateProgramCommission do
+  @moduledoc  """
+  The transaction is a receiving of a commission from an affiliate program; relevant for regular users, bots and channel chats only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat that created the affiliate program. |
+  | commission_per_mille | int32 | The number of Telegram Stars received by the affiliate for each 1000 Telegram Stars received by the program owner. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_affiliate_program_commission.html).
+  """
+
+  defstruct "@type": "starTransactionTypeAffiliateProgramCommission", "@extra": nil, chat_id: nil, commission_per_mille: nil
 end
 defmodule GroupCallParticipantVideoInfo do
   @moduledoc  """
@@ -20364,6 +27136,23 @@ defmodule GroupCallParticipantVideoInfo do
   """
 
   defstruct "@type": "groupCallParticipantVideoInfo", "@extra": nil, source_groups: nil, endpoint_id: nil, is_paused: nil
+end
+defmodule StarTransactionTypeBotSubscriptionSale do
+  @moduledoc  """
+  The transaction is a sale of a subscription by the bot; relevant for bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who bought the subscription. |
+  | subscription_period | int32 | The number of seconds between consecutive Telegram Star debitings. |
+  | product_info | productInfo | Information about the bought subscription. |
+  | invoice_payload | bytes | Invoice payload. |
+  | affiliate | affiliateInfo | Information about the affiliate which received commission from the transaction; may be null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_bot_subscription_sale.html).
+  """
+
+  defstruct "@type": "starTransactionTypeBotSubscriptionSale", "@extra": nil, user_id: nil, subscription_period: nil, product_info: nil, invoice_payload: nil, affiliate: nil
 end
 defmodule AuthorizationState do
   @moduledoc  """
@@ -20383,6 +27172,32 @@ defmodule CheckStickerSetNameResultNameInvalid do
   """
 
   defstruct "@type": "checkStickerSetNameResultNameInvalid", "@extra": nil
+end
+defmodule UserRating do
+  @moduledoc  """
+  Contains description of user rating.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | level | int32 | The level of the user; may be negative. |
+  | is_maximum_level_reached | bool | True, if the maximum level is reached. |
+  | rating | int53 | Numerical value of the rating. |
+  | current_level_rating | int53 | The rating required for the current level. |
+  | next_level_rating | int53 | The rating required for the next level; 0 if the maximum level is reached. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_rating.html).
+  """
+
+  defstruct "@type": "userRating", "@extra": nil, level: nil, is_maximum_level_reached: nil, rating: nil, current_level_rating: nil, next_level_rating: nil
+end
+defmodule StarSubscriptionType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_star_subscription_type.html).
+  """
+
+  defstruct "@type": "StarSubscriptionType", "@extra": nil
 end
 defmodule UpdateUnconfirmedSession do
   @moduledoc  """
@@ -20411,6 +27226,20 @@ defmodule InternalLinkTypeMessageDraft do
 
   defstruct "@type": "internalLinkTypeMessageDraft", "@extra": nil, text: nil, contains_link: nil
 end
+defmodule FirebaseDeviceVerificationParametersPlayIntegrity do
+  @moduledoc  """
+  Device verification must be performed with the classic Play Integrity verification (https://developer.android.com/google/play/integrity/classic).
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | nonce | string | Base64url-encoded nonce to pass to the Play Integrity API. |
+  | cloud_project_number | int64 | Cloud project number to pass to the Play Integrity API. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1firebase_device_verification_parameters_play_integrity.html).
+  """
+
+  defstruct "@type": "firebaseDeviceVerificationParametersPlayIntegrity", "@extra": nil, nonce: nil, cloud_project_number: nil
+end
 defmodule MessageForumTopicIsClosedToggled do
   @moduledoc  """
   A forum topic has been closed or opened.
@@ -20431,15 +27260,19 @@ defmodule MessageVideo do
   | Name | Type | Description |
   |------|------| ------------|
   | video | video | The video description. |
+  | alternative_videos | alternativeVideo | Alternative qualities of the video. |
+  | storyboards | videoStoryboard | Available storyboards for the video. |
+  | cover | photo | Cover of the video; may be null if none. |
+  | start_timestamp | int32 | Timestamp from which the video playing must start, in seconds. |
   | caption | formattedText | Video caption. |
-  | show_caption_above_media | bool | True, if caption must be shown above the video; otherwise, caption must be shown below the video. |
+  | show_caption_above_media | bool | True, if the caption must be shown above the video; otherwise, the caption must be shown below the video. |
   | has_spoiler | bool | True, if the video preview must be covered by a spoiler animation. |
   | is_secret | bool | True, if the video thumbnail must be blurred and the video must be shown only while tapped. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_video.html).
   """
 
-  defstruct "@type": "messageVideo", "@extra": nil, video: nil, caption: nil, show_caption_above_media: nil, has_spoiler: nil, is_secret: nil
+  defstruct "@type": "messageVideo", "@extra": nil, video: nil, alternative_videos: nil, storyboards: nil, cover: nil, start_timestamp: nil, caption: nil, show_caption_above_media: nil, has_spoiler: nil, is_secret: nil
 end
 defmodule ChatEventHasAggressiveAntiSpamEnabledToggled do
   @moduledoc  """
@@ -20494,19 +27327,20 @@ defmodule InputPassportElementErrorSourceTranslationFile do
 
   defstruct "@type": "inputPassportElementErrorSourceTranslationFile", "@extra": nil, file_hash: nil
 end
-defmodule UpdateStorySendSucceeded do
+defmodule MessagePollOptionAdded do
   @moduledoc  """
-  A story has been successfully sent.
+  A message with information about an added poll option.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | story | story | The sent story. |
-  | old_story_id | int32 | The previous temporary story identifier. |
+  | poll_message_id | int53 | Identifier of the message with the poll; can be an identifier of a deleted message or 0. |
+  | option_id | string | Identifier of the added option in the poll. |
+  | text | formattedText | Text of the option; 1-100 characters; may contain only custom emoji entities. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_story_send_succeeded.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_poll_option_added.html).
   """
 
-  defstruct "@type": "updateStorySendSucceeded", "@extra": nil, story: nil, old_story_id: nil
+  defstruct "@type": "messagePollOptionAdded", "@extra": nil, poll_message_id: nil, option_id: nil, text: nil
 end
 defmodule UpdateMessageEdited do
   @moduledoc  """
@@ -20550,6 +27384,72 @@ defmodule UserPrivacySettingRules do
 
   defstruct "@type": "userPrivacySettingRules", "@extra": nil, rules: nil
 end
+defmodule ChatRevenueTransactionTypeSuggestedPostEarnings do
+  @moduledoc  """
+  Describes earnings from a published suggested post.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who paid for the suggested post. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transaction_type_suggested_post_earnings.html).
+  """
+
+  defstruct "@type": "chatRevenueTransactionTypeSuggestedPostEarnings", "@extra": nil, user_id: nil
+end
+defmodule UpgradedGiftAttributeRarityPerMille do
+  @moduledoc  """
+  The rarity is represented as the numeric frequence of the model.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | per_mille | int32 | The number of upgraded gifts that receive this attribute for each 1000 gifts upgraded; if 0, then it can be shown as "<0.1%". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_attribute_rarity_per_mille.html).
+  """
+
+  defstruct "@type": "upgradedGiftAttributeRarityPerMille", "@extra": nil, per_mille: nil
+end
+defmodule AuctionStateActive do
+  @moduledoc  """
+  Contains information about an ongoing or scheduled auction.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | start_date | int32 | Point in time (Unix timestamp) when the auction started or will start. |
+  | end_date | int32 | Point in time (Unix timestamp) when the auction will be ended. |
+  | min_bid | int53 | The minimum possible bid in the auction in Telegram Stars. |
+  | bid_levels | auctionBid | A sparse list of bids that were made in the auction. |
+  | top_bidder_user_ids | int53 | User identifiers of at most 3 users with the biggest bids. |
+  | rounds | auctionRound | Rounds of the auction in which their duration or extension rules are changed. |
+  | current_round_end_date | int32 | Point in time (Unix timestamp) when the current round will end. |
+  | current_round_number | int32 | 1-based number of the current round. |
+  | total_round_count | int32 | The total number of rounds. |
+  | distributed_item_count | int32 | The number of items that were purchased on the auction by all users. |
+  | left_item_count | int32 | The number of items that have to be distributed on the auction. |
+  | acquired_item_count | int32 | The number of items that were purchased by the current user on the auction. |
+  | user_bid | userAuctionBid | Bid of the current user in the auction; may be null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1auction_state_active.html).
+  """
+
+  defstruct "@type": "auctionStateActive", "@extra": nil, start_date: nil, end_date: nil, min_bid: nil, bid_levels: nil, top_bidder_user_ids: nil, rounds: nil, current_round_end_date: nil, current_round_number: nil, total_round_count: nil, distributed_item_count: nil, left_item_count: nil, acquired_item_count: nil, user_bid: nil
+end
+defmodule StarGiveawayWinnerOption do
+  @moduledoc  """
+  Describes an option for the number of winners of a Telegram Star giveaway.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | winner_count | int32 | The number of users that will be chosen as winners. |
+  | won_star_count | int53 | The number of Telegram Stars that will be won by the winners of the giveaway. |
+  | is_default | bool | True, if the option must be chosen by default. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_giveaway_winner_option.html).
+  """
+
+  defstruct "@type": "starGiveawayWinnerOption", "@extra": nil, winner_count: nil, won_star_count: nil, is_default: nil
+end
 defmodule ThumbnailFormatGif do
   @moduledoc  """
   The thumbnail is in static GIF format. It will be used only for some bot inline query results.
@@ -20567,12 +27467,14 @@ defmodule KeyboardButton do
   | Name | Type | Description |
   |------|------| ------------|
   | text | string | Text of the button. |
+  | icon_custom_emoji_id | int64 | Identifier of the custom emoji that must be shown on the button; 0 if none. |
+  | style | ButtonStyle | Style of the button. |
   | type | KeyboardButtonType | Type of the button. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button.html).
   """
 
-  defstruct "@type": "keyboardButton", "@extra": nil, text: nil, type: nil
+  defstruct "@type": "keyboardButton", "@extra": nil, text: nil, icon_custom_emoji_id: nil, style: nil, type: nil
 end
 defmodule GroupCallVideoQualityMedium do
   @moduledoc  """
@@ -20583,6 +27485,19 @@ defmodule GroupCallVideoQualityMedium do
   """
 
   defstruct "@type": "groupCallVideoQualityMedium", "@extra": nil
+end
+defmodule MessageManagedBotCreated do
+  @moduledoc  """
+  A bot managed by another bot was created by the user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | bot_user_id | int53 | User identifier of the created bot. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_managed_bot_created.html).
+  """
+
+  defstruct "@type": "messageManagedBotCreated", "@extra": nil, bot_user_id: nil
 end
 defmodule UpdateNotification do
   @moduledoc  """
@@ -20612,6 +27527,20 @@ defmodule UpdateBasicGroupFullInfo do
 
   defstruct "@type": "updateBasicGroupFullInfo", "@extra": nil, basic_group_id: nil, basic_group_full_info: nil
 end
+defmodule InputSuggestedPostInfo do
+  @moduledoc  """
+  Contains information about a post to suggest.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | price | SuggestedPostPrice | Price of the suggested post; pass null to suggest a post without payment. If the current user isn't an administrator of the channel direct messages chat and has no enough funds to pay for the post, then the error "BALANCE_TOO_LOW" will be returned immediately. |
+  | send_date | int32 | Point in time (Unix timestamp) when the post is expected to be published; pass 0 if the date isn't restricted. If specified, then the date must be <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_send_delay_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_send_delay_max") seconds in the future. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_suggested_post_info.html).
+  """
+
+  defstruct "@type": "inputSuggestedPostInfo", "@extra": nil, price: nil, send_date: nil
+end
 defmodule UserPrivacySettingShowPhoneNumber do
   @moduledoc  """
   A privacy setting for managing whether the user's phone number is visible.
@@ -20635,6 +27564,19 @@ defmodule PageBlockRelatedArticles do
   """
 
   defstruct "@type": "pageBlockRelatedArticles", "@extra": nil, header: nil, articles: nil
+end
+defmodule InternalLinkTypeCallsPage do
+  @moduledoc  """
+  The link is a link to the Call tab or page.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | section | string | Section of the page; may be one of "", "all", "missed", "edit", "show-tab", "start-call". |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_calls_page.html).
+  """
+
+  defstruct "@type": "internalLinkTypeCallsPage", "@extra": nil, section: nil
 end
 defmodule ReplyMarkup do
   @moduledoc  """
@@ -20757,6 +27699,15 @@ defmodule GroupCallRecentSpeaker do
 
   defstruct "@type": "groupCallRecentSpeaker", "@extra": nil, participant_id: nil, is_speaking: nil
 end
+defmodule LinkPreviewAlbumMedia do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_link_preview_album_media.html).
+  """
+
+  defstruct "@type": "LinkPreviewAlbumMedia", "@extra": nil
+end
 defmodule JsonObjectMember do
   @moduledoc  """
   Represents one member of a JSON object.
@@ -20770,6 +27721,56 @@ defmodule JsonObjectMember do
   """
 
   defstruct "@type": "jsonObjectMember", "@extra": nil, key: nil, value: nil
+end
+defmodule SearchMessagesFilterUnreadPollVote do
+  @moduledoc  """
+  Returns only messages with unread poll votes for the current user. When using this filter the results can't be additionally filtered by a query or by the sending user.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_poll_vote.html).
+  """
+
+  defstruct "@type": "searchMessagesFilterUnreadPollVote", "@extra": nil
+end
+defmodule InviteGroupCallParticipantResultUserWasBanned do
+  @moduledoc  """
+  The user can't be invited because they were banned by the owner of the call and can be invited back only by the owner of the group call.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invite_group_call_participant_result_user_was_banned.html).
+  """
+
+  defstruct "@type": "inviteGroupCallParticipantResultUserWasBanned", "@extra": nil
+end
+defmodule PaidMediaPreview do
+  @moduledoc  """
+  The media is hidden until the invoice is paid.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | width | int32 | Media width; 0 if unknown. |
+  | height | int32 | Media height; 0 if unknown. |
+  | duration | int32 | Media duration, in seconds; 0 if unknown. |
+  | minithumbnail | minithumbnail | Media minithumbnail; may be null. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_media_preview.html).
+  """
+
+  defstruct "@type": "paidMediaPreview", "@extra": nil, width: nil, height: nil, duration: nil, minithumbnail: nil
+end
+defmodule LinkPreviewTypeLiveStory do
+  @moduledoc  """
+  The link is a link to a live story group call.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | story_poster_chat_id | int53 | The identifier of the chat that posted the story. |
+  | story_id | int32 | Story identifier. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_live_story.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeLiveStory", "@extra": nil, story_poster_chat_id: nil, story_id: nil
 end
 defmodule DeepLinkInfo do
   @moduledoc  """
@@ -20804,6 +27805,16 @@ defmodule NetworkTypeNone do
 
   defstruct "@type": "networkTypeNone", "@extra": nil
 end
+defmodule LinkPreviewTypeShareableChatFolder do
+  @moduledoc  """
+  The link is a link to a shareable chat folder.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_shareable_chat_folder.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeShareableChatFolder", "@extra": nil
+end
 defmodule BackgroundTypeFill do
   @moduledoc  """
   A filled background.
@@ -20826,6 +27837,22 @@ defmodule PassportElementTypeBankStatement do
   """
 
   defstruct "@type": "passportElementTypeBankStatement", "@extra": nil
+end
+defmodule StarTransactionTypeBotInvoiceSale do
+  @moduledoc  """
+  The transaction is a sale of a product by the bot; relevant for bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user who bought the product. |
+  | product_info | productInfo | Information about the bought product. |
+  | invoice_payload | bytes | Invoice payload. |
+  | affiliate | affiliateInfo | Information about the affiliate which received commission from the transaction; may be null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_bot_invoice_sale.html).
+  """
+
+  defstruct "@type": "starTransactionTypeBotInvoiceSale", "@extra": nil, user_id: nil, product_info: nil, invoice_payload: nil, affiliate: nil
 end
 defmodule LanguagePackStringValue do
   @moduledoc  """
@@ -20865,21 +27892,31 @@ defmodule SupergroupMembersFilterBanned do
 end
 defmodule Proxy do
   @moduledoc  """
-  Contains information about a proxy server.
+  Describes a proxy server.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | id | int32 | Unique identifier of the proxy. |
   | server | string | Proxy server domain or IP address. |
   | port | int32 | Proxy server port. |
-  | last_used_date | int32 | Point in time (Unix timestamp) when the proxy was last used; 0 if never. |
-  | is_enabled | bool | True, if the proxy is enabled now. |
   | type | ProxyType | Type of the proxy. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1proxy.html).
   """
 
-  defstruct "@type": "proxy", "@extra": nil, id: nil, server: nil, port: nil, last_used_date: nil, is_enabled: nil, type: nil
+  defstruct "@type": "proxy", "@extra": nil, server: nil, port: nil, type: nil
+end
+defmodule AffiliateTypeBot do
+  @moduledoc  """
+  The affiliate is a bot owned by the current user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | User identifier of the bot. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_type_bot.html).
+  """
+
+  defstruct "@type": "affiliateTypeBot", "@extra": nil, user_id: nil
 end
 defmodule UserPrivacySettingRuleAllowAll do
   @moduledoc  """
@@ -20903,6 +27940,16 @@ defmodule InputCredentialsApplePay do
   """
 
   defstruct "@type": "inputCredentialsApplePay", "@extra": nil, data: nil
+end
+defmodule InternalLinkTypeNewPrivateChat do
+  @moduledoc  """
+  The link is a link to the screen for creating a new private chat with a contact.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_new_private_chat.html).
+  """
+
+  defstruct "@type": "internalLinkTypeNewPrivateChat", "@extra": nil
 end
 defmodule ChatActionRecordingVoiceNote do
   @moduledoc  """
@@ -20963,6 +28010,16 @@ defmodule MessageVideoChatEnded do
 
   defstruct "@type": "messageVideoChatEnded", "@extra": nil, duration: nil
 end
+defmodule UserPrivacySettingShowProfileAudio do
+  @moduledoc  """
+  A privacy setting for managing whether the user's profile audio files are visible.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_show_profile_audio.html).
+  """
+
+  defstruct "@type": "userPrivacySettingShowProfileAudio", "@extra": nil
+end
 defmodule PremiumFeatureUniqueReactions do
   @moduledoc  """
   Allowed to use more reactions.
@@ -20972,6 +28029,24 @@ defmodule PremiumFeatureUniqueReactions do
   """
 
   defstruct "@type": "premiumFeatureUniqueReactions", "@extra": nil
+end
+defmodule GiftsForResale do
+  @moduledoc  """
+  Describes gifts available for resale.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | total_count | int32 | Total number of gifts found. |
+  | gifts | giftForResale | The gifts. |
+  | models | upgradedGiftModelCount | Available models; for <a class="el" href="classtd_1_1td__api_1_1search_gifts_for_resale.html">searchGiftsForResale</a> requests without offset and attributes only. |
+  | symbols | upgradedGiftSymbolCount | Available symbols; for <a class="el" href="classtd_1_1td__api_1_1search_gifts_for_resale.html">searchGiftsForResale</a> requests without offset and attributes only. |
+  | backdrops | upgradedGiftBackdropCount | Available backdrops; for <a class="el" href="classtd_1_1td__api_1_1search_gifts_for_resale.html">searchGiftsForResale</a> requests without offset and attributes only. |
+  | next_offset | string | The offset for the next request. If empty, then there are no more results. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gifts_for_resale.html).
+  """
+
+  defstruct "@type": "giftsForResale", "@extra": nil, total_count: nil, gifts: nil, models: nil, symbols: nil, backdrops: nil, next_offset: nil
 end
 defmodule FileTypeVideoStory do
   @moduledoc  """
@@ -21003,6 +28078,19 @@ defmodule SessionTypeOpera do
 
   defstruct "@type": "sessionTypeOpera", "@extra": nil
 end
+defmodule MessageChatOwnerChanged do
+  @moduledoc  """
+  The owner of the chat has changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | new_owner_user_id | int53 | Identifier of the user who is the new owner of the chat. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_owner_changed.html).
+  """
+
+  defstruct "@type": "messageChatOwnerChanged", "@extra": nil, new_owner_user_id: nil
+end
 defmodule KeyboardButtonTypeRequestPoll do
   @moduledoc  """
   A button that allows the user to create and send a poll when pressed; available only in private chats.
@@ -21030,6 +28118,16 @@ defmodule UpdateQuickReplyShortcuts do
 
   defstruct "@type": "updateQuickReplyShortcuts", "@extra": nil, shortcut_ids: nil
 end
+defmodule UpgradedGiftOriginBlockchain do
+  @moduledoc  """
+  The gift was assigned from blockchain and isn't owned by the current user. The gift can't be transferred, resold or withdrawn to blockchain.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_origin_blockchain.html).
+  """
+
+  defstruct "@type": "upgradedGiftOriginBlockchain", "@extra": nil
+end
 defmodule UpdateUserPrivacySettingRules do
   @moduledoc  """
   Some privacy setting rules have been changed.
@@ -21043,6 +28141,57 @@ defmodule UpdateUserPrivacySettingRules do
   """
 
   defstruct "@type": "updateUserPrivacySettingRules", "@extra": nil, setting: nil, rules: nil
+end
+defmodule InternalLinkTypeUpgradedGift do
+  @moduledoc  """
+  The link is a link to an upgraded gift. Call getUpgradedGift with the given name to process the link.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | name | string | Name of the unique gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_upgraded_gift.html).
+  """
+
+  defstruct "@type": "internalLinkTypeUpgradedGift", "@extra": nil, name: nil
+end
+defmodule LinkPreviewTypeGiftCollection do
+  @moduledoc  """
+  The link is a link to a gift collection.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | icons | sticker | Icons for some gifts from the collection; may be empty. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_gift_collection.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeGiftCollection", "@extra": nil, icons: nil
+end
+defmodule ProfileTabFiles do
+  @moduledoc  """
+  A tab with documents posted by the channel.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1profile_tab_files.html).
+  """
+
+  defstruct "@type": "profileTabFiles", "@extra": nil
+end
+defmodule LinkPreviewTypeVideoChat do
+  @moduledoc  """
+  The link is a link to a video chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | chatPhoto | Photo of the chat with the video chat; may be null if none. |
+  | is_live_stream | bool | True, if the video chat is expected to be a live stream in a channel or a broadcast group. |
+  | joins_as_speaker | bool | True, if the user can use the link to join the video chat without being muted by administrators. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_video_chat.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeVideoChat", "@extra": nil, photo: nil, is_live_stream: nil, joins_as_speaker: nil
 end
 defmodule NetworkTypeMobile do
   @moduledoc  """
@@ -21076,18 +28225,72 @@ defmodule StoryList do
 
   defstruct "@type": "StoryList", "@extra": nil
 end
-defmodule EmojiStatuses do
+defmodule StartLiveStoryResultFail do
   @moduledoc  """
-  Contains a list of custom emoji identifiers for emoji statuses.
+  The live story failed to post with an error to be handled.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | custom_emoji_ids | int64 | The list of custom emoji identifiers. |
+  | error_type | CanPostStoryResult | Type of the error; other error types may be returned as regular errors. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1start_live_story_result_fail.html).
+  """
+
+  defstruct "@type": "startLiveStoryResultFail", "@extra": nil, error_type: nil
+end
+defmodule UpgradedGift do
+  @moduledoc  """
+  Describes an upgraded gift that can be transferred to another owner or transferred to the TON blockchain as an NFT.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int64 | Unique identifier of the gift. |
+  | regular_gift_id | int64 | Unique identifier of the regular gift from which the gift was upgraded; may be 0 for short period of time for old gifts from database. |
+  | publisher_chat_id | int53 | Identifier of the chat that published the gift; 0 if none. |
+  | title | string | The title of the upgraded gift. |
+  | name | string | Unique name of the upgraded gift that can be used with <a class="el" href="classtd_1_1td__api_1_1internal_link_type_upgraded_gift.html">internalLinkTypeUpgradedGift</a> or <a class="el" href="classtd_1_1td__api_1_1send_resold_gift.html">sendResoldGift</a>. |
+  | number | int32 | Unique number of the upgraded gift among gifts upgraded from the same gift. |
+  | total_upgraded_count | int32 | Total number of gifts that were upgraded from the same gift. |
+  | max_upgraded_count | int32 | The maximum number of gifts that can be upgraded from the same gift. |
+  | is_burned | bool | True, if the gift was used to craft another gift. |
+  | is_crafted | bool | True, if the gift was craft from another gifts. |
+  | is_premium | bool | True, if the original gift could have been bought only by Telegram Premium subscribers. |
+  | is_theme_available | bool | True, if the gift can be used to set a theme in a chat. |
+  | used_theme_chat_id | int53 | Identifier of the chat for which the gift is used to set a theme; 0 if none or the gift isn't owned by the current user. |
+  | host_id | MessageSender | Identifier of the user or the chat to which the upgraded gift was assigned from blockchain; may be null if none or unknown. |
+  | owner_id | MessageSender | Identifier of the user or the chat that owns the upgraded gift; may be null if none or unknown. |
+  | owner_address | string | Address of the gift NFT owner in TON blockchain; may be empty if none. Append the address to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("ton_blockchain_explorer_url") to get a link with information about the address. |
+  | owner_name | string | Name of the owner for the case when owner identifier and address aren't known. |
+  | gift_address | string | Address of the gift NFT in TON blockchain; may be empty if none. Append the address to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("ton_blockchain_explorer_url") to get a link with information about the address. |
+  | model | upgradedGiftModel | Model of the upgraded gift. |
+  | symbol | upgradedGiftSymbol | Symbol of the upgraded gift. |
+  | backdrop | upgradedGiftBackdrop | Backdrop of the upgraded gift. |
+  | original_details | upgradedGiftOriginalDetails | Information about the originally sent gift; may be null if unknown. |
+  | colors | upgradedGiftColors | Colors that can be set for user's name, background of empty chat photo, replies to messages and link previews; may be null if none or unknown. |
+  | resale_parameters | giftResaleParameters | Resale parameters of the gift; may be null if resale isn't possible. |
+  | can_send_purchase_offer | bool | True, if an offer to purchase the gift can be sent using <a class="el" href="classtd_1_1td__api_1_1send_gift_purchase_offer.html">sendGiftPurchaseOffer</a>. |
+  | craft_probability_per_mille | int32 | Probability that the gift adds to the chance of successful crafting of a new gift; 0 if the gift can't be used for crafting. |
+  | value_currency | string | ISO 4217 currency code of the currency in which value of the gift is represented; may be empty if unavailable. |
+  | value_amount | int53 | Estimated value of the gift; in the smallest units of the currency; 0 if unavailable. |
+  | value_usd_amount | int53 | Estimated value of the gift in USD; in USD cents; 0 if unavailable. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift.html).
+  """
+
+  defstruct "@type": "upgradedGift", "@extra": nil, id: nil, regular_gift_id: nil, publisher_chat_id: nil, title: nil, name: nil, number: nil, total_upgraded_count: nil, max_upgraded_count: nil, is_burned: nil, is_crafted: nil, is_premium: nil, is_theme_available: nil, used_theme_chat_id: nil, host_id: nil, owner_id: nil, owner_address: nil, owner_name: nil, gift_address: nil, model: nil, symbol: nil, backdrop: nil, original_details: nil, colors: nil, resale_parameters: nil, can_send_purchase_offer: nil, craft_probability_per_mille: nil, value_currency: nil, value_amount: nil, value_usd_amount: nil
+end
+defmodule EmojiStatuses do
+  @moduledoc  """
+  Contains a list of emoji statuses.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | emoji_statuses | emojiStatus | The list of emoji statuses identifiers. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_statuses.html).
   """
 
-  defstruct "@type": "emojiStatuses", "@extra": nil, custom_emoji_ids: nil
+  defstruct "@type": "emojiStatuses", "@extra": nil, emoji_statuses: nil
 end
 defmodule BusinessFeatureStartPage do
   @moduledoc  """
@@ -21105,12 +28308,12 @@ defmodule ChatMembersFilterMention do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | message_thread_id | int53 | If non-zero, the identifier of the current message thread. |
+  | topic_id | MessageTopic | Identifier of the topic in which the users will be mentioned; pass null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_members_filter_mention.html).
   """
 
-  defstruct "@type": "chatMembersFilterMention", "@extra": nil, message_thread_id: nil
+  defstruct "@type": "chatMembersFilterMention", "@extra": nil, topic_id: nil
 end
 defmodule UpdatePoll do
   @moduledoc  """
@@ -21127,7 +28330,7 @@ defmodule UpdatePoll do
 end
 defmodule TextEntityTypeHashtag do
   @moduledoc  """
-  A hashtag text, beginning with "#".
+  A hashtag text, beginning with "#" and optionally containing a chat username at the end.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_hashtag.html).
@@ -21159,6 +28362,19 @@ defmodule PremiumFeatureDisabledAds do
   """
 
   defstruct "@type": "premiumFeatureDisabledAds", "@extra": nil
+end
+defmodule MessageTopicSavedMessages do
+  @moduledoc  """
+  A topic in Saved Messages chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | saved_messages_topic_id | int53 | Unique identifier of the Saved Messages topic. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_topic_saved_messages.html).
+  """
+
+  defstruct "@type": "messageTopicSavedMessages", "@extra": nil, saved_messages_topic_id: nil
 end
 defmodule UpdateSupergroupFullInfo do
   @moduledoc  """
@@ -21275,29 +28491,33 @@ defmodule Supergroup do
   | id | int53 | Supergroup or channel identifier. |
   | usernames | usernames | Usernames of the supergroup or channel; may be null. |
   | date | int32 | Point in time (Unix timestamp) when the current user joined, or the point in time when the supergroup or channel was created, in case the user is not a member. |
-  | status | ChatMemberStatus | Status of the current user in the supergroup or channel; custom title will always be empty. |
-  | member_count | int32 | Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through <a class="el" href="classtd_1_1td__api_1_1get_chat_similar_chats.html">getChatSimilarChats</a>, <a class="el" href="classtd_1_1td__api_1_1get_chats_to_send_stories.html">getChatsToSendStories</a>, <a class="el" href="classtd_1_1td__api_1_1get_created_public_chats.html">getCreatedPublicChats</a>, <a class="el" href="classtd_1_1td__api_1_1get_groups_in_common.html">getGroupsInCommon</a>, <a class="el" href="classtd_1_1td__api_1_1get_inactive_supergroup_chats.html">getInactiveSupergroupChats</a>, <a class="el" href="classtd_1_1td__api_1_1get_recommended_chats.html">getRecommendedChats</a>, <a class="el" href="classtd_1_1td__api_1_1get_suitable_discussion_chats.html">getSuitableDiscussionChats</a>, <a class="el" href="classtd_1_1td__api_1_1get_user_privacy_setting_rules.html">getUserPrivacySettingRules</a>, <a class="el" href="classtd_1_1td__api_1_1get_video_chat_available_participants.html">getVideoChatAvailableParticipants</a>, <a class="el" href="classtd_1_1td__api_1_1search_chats_nearby.html">searchChatsNearby</a>, <a class="el" href="classtd_1_1td__api_1_1search_public_chats.html">searchPublicChats</a>, or in chatFolderInviteLinkInfo.missing_chat_ids, or in userFullInfo.personal_chat_id, or for chats with messages or stories from <a class="el" href="classtd_1_1td__api_1_1public_forwards.html">publicForwards</a>. |
+  | status | ChatMemberStatus | Status of the current user in the supergroup or channel. |
+  | member_count | int32 | Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through <a class="el" href="classtd_1_1td__api_1_1get_chat_similar_chats.html">getChatSimilarChats</a>, <a class="el" href="classtd_1_1td__api_1_1get_chats_to_post_stories.html">getChatsToPostStories</a>, <a class="el" href="classtd_1_1td__api_1_1get_created_public_chats.html">getCreatedPublicChats</a>, <a class="el" href="classtd_1_1td__api_1_1get_groups_in_common.html">getGroupsInCommon</a>, <a class="el" href="classtd_1_1td__api_1_1get_inactive_supergroup_chats.html">getInactiveSupergroupChats</a>, <a class="el" href="classtd_1_1td__api_1_1get_recommended_chats.html">getRecommendedChats</a>, <a class="el" href="classtd_1_1td__api_1_1get_suitable_discussion_chats.html">getSuitableDiscussionChats</a>, <a class="el" href="classtd_1_1td__api_1_1get_user_privacy_setting_rules.html">getUserPrivacySettingRules</a>, <a class="el" href="classtd_1_1td__api_1_1get_video_chat_available_participants.html">getVideoChatAvailableParticipants</a>, <a class="el" href="classtd_1_1td__api_1_1search_public_chats.html">searchPublicChats</a>, or in chatFolderInviteLinkInfo.missing_chat_ids, or in userFullInfo.personal_chat_id, or for chats with messages or stories from <a class="el" href="classtd_1_1td__api_1_1public_forwards.html">publicForwards</a> and <a class="el" href="classtd_1_1td__api_1_1found_stories.html">foundStories</a>. |
   | boost_level | int32 | Approximate boost level for the chat. |
+  | has_automatic_translation | bool | True, if automatic translation of messages is enabled in the channel. |
   | has_linked_chat | bool | True, if the channel has a discussion group, or the supergroup is the designated discussion group for a channel. |
   | has_location | bool | True, if the supergroup is connected to a location, i.e. the supergroup is a location-based supergroup. |
-  | sign_messages | bool | True, if messages sent to the channel need to contain information about the sender. This field is only applicable to channels. |
-  | join_to_send_messages | bool | True, if users need to join the supergroup before they can send messages. Always true for channels and non-discussion supergroups. |
-  | join_by_request | bool | True, if all users directly joining the supergroup need to be approved by supergroup administrators. Always false for channels and supergroups without username, location, or a linked chat. |
+  | sign_messages | bool | True, if messages sent to the channel contains name of the sender. This field is only applicable to channels. |
+  | show_message_sender | bool | True, if messages sent to the channel have information about the sender user. This field is only applicable to channels. |
+  | join_to_send_messages | bool | True, if users need to join the supergroup before they can send messages. May be false only for discussion supergroups and channel direct messages groups. |
+  | join_by_request | bool | True, if all users directly joining the supergroup need to be approved by supergroup administrators. May be true only for non-broadcast supergroups with username, location, or a linked chat. |
   | is_slow_mode_enabled | bool | True, if the slow mode is enabled in the supergroup. |
   | is_channel | bool | True, if the supergroup is a channel. |
   | is_broadcast_group | bool | True, if the supergroup is a broadcast group, i.e. only administrators can send messages and there is no limit on the number of members. |
   | is_forum | bool | True, if the supergroup is a forum with topics. |
-  | is_verified | bool | True, if the supergroup or channel is verified. |
-  | restriction_reason | string | If non-empty, contains a human-readable description of the reason why access to this supergroup or channel must be restricted. |
-  | is_scam | bool | True, if many users reported this supergroup or channel as a scam. |
-  | is_fake | bool | True, if many users reported this supergroup or channel as a fake account. |
-  | has_active_stories | bool | True, if the supergroup or channel has non-expired stories available to the current user. |
-  | has_unread_active_stories | bool | True, if the supergroup or channel has unread non-expired stories available to the current user. |
+  | is_direct_messages_group | bool | True, if the supergroup is a direct message group for a channel chat. |
+  | is_administered_direct_messages_group | bool | True, if the supergroup is a direct messages group for a channel chat that is administered by the current user. |
+  | verification_status | verificationStatus | Information about verification status of the supergroup or channel; may be null if none. |
+  | has_direct_messages_group | bool | True, if the channel has direct messages group. |
+  | has_forum_tabs | bool | True, if the supergroup is a forum, which topics are shown in the same way as in channel direct messages groups. |
+  | restriction_info | restrictionInfo | Information about the restrictions that must be applied to the corresponding supergroup or channel chat; may be null if none. |
+  | paid_message_star_count | int53 | Number of Telegram Stars that must be paid by non-administrator users of the supergroup chat for each sent message. |
+  | active_story_state | ActiveStoryState | State of active stories of the supergroup or channel; may be null if there are no active stories. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup.html).
   """
 
-  defstruct "@type": "supergroup", "@extra": nil, id: nil, usernames: nil, date: nil, status: nil, member_count: nil, boost_level: nil, has_linked_chat: nil, has_location: nil, sign_messages: nil, join_to_send_messages: nil, join_by_request: nil, is_slow_mode_enabled: nil, is_channel: nil, is_broadcast_group: nil, is_forum: nil, is_verified: nil, restriction_reason: nil, is_scam: nil, is_fake: nil, has_active_stories: nil, has_unread_active_stories: nil
+  defstruct "@type": "supergroup", "@extra": nil, id: nil, usernames: nil, date: nil, status: nil, member_count: nil, boost_level: nil, has_automatic_translation: nil, has_linked_chat: nil, has_location: nil, sign_messages: nil, show_message_sender: nil, join_to_send_messages: nil, join_by_request: nil, is_slow_mode_enabled: nil, is_channel: nil, is_broadcast_group: nil, is_forum: nil, is_direct_messages_group: nil, is_administered_direct_messages_group: nil, verification_status: nil, has_direct_messages_group: nil, has_forum_tabs: nil, restriction_info: nil, paid_message_star_count: nil, active_story_state: nil
 end
 defmodule UpdateAutosaveSettings do
   @moduledoc  """
@@ -21353,6 +28573,24 @@ defmodule MessageExpiredVideoNote do
   """
 
   defstruct "@type": "messageExpiredVideoNote", "@extra": nil
+end
+defmodule StakeDiceState do
+  @moduledoc  """
+  Describes state of the stake dice.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | state_hash | string | Hash of the state to use for sending the next dice; may be empty if the stake dice can't be sent by the current user. |
+  | stake_toncoin_amount | int53 | The Toncoin amount that was staked in the previous roll; in the smallest units of the currency. |
+  | suggested_stake_toncoin_amounts | int53 | The amounts of Toncoins that are suggested to be staked; in the smallest units of the currency. |
+  | current_streak | int32 | The number of rolled sixes towards the streak; 0-2. |
+  | prize_per_mille | int32 | The number of Toncoins received by the user for each 1000 Toncoins staked if the dice outcome is 1-6 correspondingly; may be empty if the stake dice can't be sent by the current user. |
+  | streak_prize_per_mille | int32 | The number of Toncoins received by the user for each 1000 Toncoins staked if the dice outcome is 6 three times in a row with the same stake. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1stake_dice_state.html).
+  """
+
+  defstruct "@type": "stakeDiceState", "@extra": nil, state_hash: nil, stake_toncoin_amount: nil, suggested_stake_toncoin_amounts: nil, current_streak: nil, prize_per_mille: nil, streak_prize_per_mille: nil
 end
 defmodule MessageReplyTo do
   @moduledoc  """
@@ -21429,7 +28667,7 @@ defmodule Audio do
   | file_name | string | Original name of the file; as defined by the sender. |
   | mime_type | string | The MIME type of the file; as defined by the sender. |
   | album_cover_minithumbnail | minithumbnail | The minithumbnail of the album cover; may be null. |
-  | album_cover_thumbnail | thumbnail | The thumbnail of the album cover in JPEG format; as defined by the sender. The full size thumbnail is supposed to be extracted from the downloaded audio file; may be null. |
+  | album_cover_thumbnail | thumbnail | The thumbnail of the album cover in JPEG format; as defined by the sender. The full size thumbnail is expected to be extracted from the downloaded audio file; may be null. |
   | external_album_covers | thumbnail | Album cover variants to use if the downloaded audio file contains no album cover. Provided thumbnail dimensions are approximate. |
   | audio | file | File containing the audio. |
 
@@ -21446,11 +28684,13 @@ defmodule MessageReactions do
   |------|------| ------------|
   | reactions | messageReaction | List of added reactions. |
   | are_tags | bool | True, if the reactions are tags and Telegram Premium users can filter messages by them. |
+  | paid_reactors | paidReactor | Information about top users that added the paid reaction. |
+  | can_get_added_reactions | bool | True, if the list of added reactions is available using <a class="el" href="classtd_1_1td__api_1_1get_message_added_reactions.html">getMessageAddedReactions</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_reactions.html).
   """
 
-  defstruct "@type": "messageReactions", "@extra": nil, reactions: nil, are_tags: nil
+  defstruct "@type": "messageReactions", "@extra": nil, reactions: nil, are_tags: nil, paid_reactors: nil, can_get_added_reactions: nil
 end
 defmodule PageBlockTitle do
   @moduledoc  """
@@ -21464,6 +28704,19 @@ defmodule PageBlockTitle do
   """
 
   defstruct "@type": "pageBlockTitle", "@extra": nil, title: nil
+end
+defmodule StartLiveStoryResultOk do
+  @moduledoc  """
+  The live story was successfully posted.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | story | story | The live story. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1start_live_story_result_ok.html).
+  """
+
+  defstruct "@type": "startLiveStoryResultOk", "@extra": nil, story: nil
 end
 defmodule PaymentFormType do
   @moduledoc  """
@@ -21513,8 +28766,8 @@ defmodule ChatNotificationSettings do
   | mute_stories | bool | True, if story notifications are disabled for the chat. |
   | use_default_story_sound | bool | If true, the value for the relevant type of chat is used instead of story_sound_id. |
   | story_sound_id | int64 | Identifier of the notification sound to be played for stories; 0 if sound is disabled. |
-  | use_default_show_story_sender | bool | If true, the value for the relevant type of chat is used instead of show_story_sender. |
-  | show_story_sender | bool | True, if the sender of stories must be displayed in notifications. |
+  | use_default_show_story_poster | bool | If true, the value for the relevant type of chat is used instead of show_story_poster. |
+  | show_story_poster | bool | True, if the chat that posted a story must be displayed in notifications. |
   | use_default_disable_pinned_message_notifications | bool | If true, the value for the relevant type of chat or the forum chat is used instead of disable_pinned_message_notifications. |
   | disable_pinned_message_notifications | bool | If true, notifications for incoming pinned messages will be created as for an ordinary unread message. |
   | use_default_disable_mention_notifications | bool | If true, the value for the relevant type of chat or the forum chat is used instead of disable_mention_notifications. |
@@ -21523,7 +28776,7 @@ defmodule ChatNotificationSettings do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_notification_settings.html).
   """
 
-  defstruct "@type": "chatNotificationSettings", "@extra": nil, use_default_mute_for: nil, mute_for: nil, use_default_sound: nil, sound_id: nil, use_default_show_preview: nil, show_preview: nil, use_default_mute_stories: nil, mute_stories: nil, use_default_story_sound: nil, story_sound_id: nil, use_default_show_story_sender: nil, show_story_sender: nil, use_default_disable_pinned_message_notifications: nil, disable_pinned_message_notifications: nil, use_default_disable_mention_notifications: nil, disable_mention_notifications: nil
+  defstruct "@type": "chatNotificationSettings", "@extra": nil, use_default_mute_for: nil, mute_for: nil, use_default_sound: nil, sound_id: nil, use_default_show_preview: nil, show_preview: nil, use_default_mute_stories: nil, mute_stories: nil, use_default_story_sound: nil, story_sound_id: nil, use_default_show_story_poster: nil, show_story_poster: nil, use_default_disable_pinned_message_notifications: nil, disable_pinned_message_notifications: nil, use_default_disable_mention_notifications: nil, disable_mention_notifications: nil
 end
 defmodule MessageSchedulingStateSendWhenOnline do
   @moduledoc  """
@@ -21560,6 +28813,32 @@ defmodule TextParseModeMarkdown do
   """
 
   defstruct "@type": "textParseModeMarkdown", "@extra": nil, version: nil
+end
+defmodule GiftResalePriceStar do
+  @moduledoc  """
+  Describes price of a resold gift in Telegram Stars.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | star_count | int53 | The Telegram Star amount expected to be paid for the gift. Must be in the range <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_resale_star_count_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_resale_star_count_max") for gifts put for resale. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_resale_price_star.html).
+  """
+
+  defstruct "@type": "giftResalePriceStar", "@extra": nil, star_count: nil
+end
+defmodule LinkPreviewTypeSupergroupBoost do
+  @moduledoc  """
+  The link is a link to boost a supergroup chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | chatPhoto | Photo of the chat; may be null. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_supergroup_boost.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeSupergroupBoost", "@extra": nil, photo: nil
 end
 defmodule ChatAvailableReactions do
   @moduledoc  """
@@ -21598,18 +28877,61 @@ defmodule ChatFolderInviteLink do
 
   defstruct "@type": "chatFolderInviteLink", "@extra": nil, invite_link: nil, name: nil, chat_ids: nil
 end
+defmodule LinkPreviewTypeExternalAudio do
+  @moduledoc  """
+  The link is a link to an audio file.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | URL of the audio file. |
+  | mime_type | string | MIME type of the audio file. |
+  | duration | int32 | Duration of the audio, in seconds; 0 if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_external_audio.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeExternalAudio", "@extra": nil, url: nil, mime_type: nil, duration: nil
+end
+defmodule LinkPreviewTypeApp do
+  @moduledoc  """
+  The link is a link to an app at App Store or Google Play.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | photo | Photo for the app. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_app.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeApp", "@extra": nil, photo: nil
+end
 defmodule MessageSenderUser do
   @moduledoc  """
   The message was sent by a known user.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | user_id | int53 | Identifier of the user that sent the message. |
+  | user_id | int53 | Identifier of the user who sent the message. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sender_user.html).
   """
 
   defstruct "@type": "messageSenderUser", "@extra": nil, user_id: nil
+end
+defmodule GiftChatTheme do
+  @moduledoc  """
+  Describes a chat theme based on an upgraded gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | upgradedGift | The gift. |
+  | light_settings | themeSettings | Theme settings for a light chat theme. |
+  | dark_settings | themeSettings | Theme settings for a dark chat theme. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_chat_theme.html).
+  """
+
+  defstruct "@type": "giftChatTheme", "@extra": nil, gift: nil, light_settings: nil, dark_settings: nil
 end
 defmodule MessageWebAppDataSent do
   @moduledoc  """
@@ -21666,6 +28988,22 @@ defmodule FoundChatBoosts do
 
   defstruct "@type": "foundChatBoosts", "@extra": nil, total_count: nil, boosts: nil, next_offset: nil
 end
+defmodule InputChecklist do
+  @moduledoc  """
+  Describes a checklist to be sent.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | title | formattedText | Title of the checklist; 1-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("checklist_title_length_max") characters. May contain only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities. |
+  | tasks | inputChecklistTask | List of tasks in the checklist; 1-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("checklist_task_count_max") tasks. |
+  | others_can_add_tasks | bool | True, if other users can add tasks to the list. |
+  | others_can_mark_tasks_as_done | bool | True, if other users can mark tasks as done or not done. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_checklist.html).
+  """
+
+  defstruct "@type": "inputChecklist", "@extra": nil, title: nil, tasks: nil, others_can_add_tasks: nil, others_can_mark_tasks_as_done: nil
+end
 defmodule Call do
   @moduledoc  """
   Describes a call.
@@ -21673,6 +29011,7 @@ defmodule Call do
   | Name | Type | Description |
   |------|------| ------------|
   | id | int32 | Call identifier, not persistent. |
+  | unique_id | int64 | Persistent unique call identifier; 0 if isn't assigned yet by the server. |
   | user_id | int53 | User identifier of the other call participant. |
   | is_outgoing | bool | True, if the call is outgoing. |
   | is_video | bool | True, if the call is a video call. |
@@ -21681,7 +29020,7 @@ defmodule Call do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call.html).
   """
 
-  defstruct "@type": "call", "@extra": nil, id: nil, user_id: nil, is_outgoing: nil, is_video: nil, state: nil
+  defstruct "@type": "call", "@extra": nil, id: nil, unique_id: nil, user_id: nil, is_outgoing: nil, is_video: nil, state: nil
 end
 defmodule PassportElementTypeEmailAddress do
   @moduledoc  """
@@ -21707,6 +29046,19 @@ defmodule InputBusinessChatLink do
 
   defstruct "@type": "inputBusinessChatLink", "@extra": nil, text: nil, title: nil
 end
+defmodule ChatRevenueTransactionTypeFragmentRefund do
+  @moduledoc  """
+  Describes a refund for failed withdrawal of earnings through Fragment.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | refund_date | int32 | Point in time (Unix timestamp) when the transaction was refunded. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transaction_type_fragment_refund.html).
+  """
+
+  defstruct "@type": "chatRevenueTransactionTypeFragmentRefund", "@extra": nil, refund_date: nil
+end
 defmodule VoiceNote do
   @moduledoc  """
   Describes a voice note.
@@ -21723,6 +29075,19 @@ defmodule VoiceNote do
   """
 
   defstruct "@type": "voiceNote", "@extra": nil, duration: nil, waveform: nil, mime_type: nil, speech_recognition_result: nil, voice: nil
+end
+defmodule InternalLinkTypeLiveStory do
+  @moduledoc  """
+  The link is a link to a live story. Call searchPublicChat with the given chat username, then getChatActiveStories to get active stories in the chat, then find a live story among active stories of the chat, and then joinLiveStory to join the live story.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | story_poster_username | string | Username of the poster of the story. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_live_story.html).
+  """
+
+  defstruct "@type": "internalLinkTypeLiveStory", "@extra": nil, story_poster_username: nil
 end
 defmodule PassportElementError do
   @moduledoc  """
@@ -21772,7 +29137,7 @@ defmodule FormattedText do
   | Name | Type | Description |
   |------|------| ------------|
   | text | string | The text. |
-  | entities | textEntity | Entities contained in the text. Entities can be nested, but must not mutually intersect with each other. Pre, Code and PreCode entities can't contain other entities. BlockQuote entities can't contain other BlockQuote entities. Bold, Italic, Underline, Strikethrough, and Spoiler entities can contain and can be part of any other entities. All other entities can't contain each other. |
+  | entities | textEntity | Entities contained in the text. Entities can be nested, but must not mutually intersect with each other. Pre, Code, PreCode, and DateTime entities can't contain other entities. BlockQuote entities can't contain other BlockQuote entities. Bold, Italic, Underline, Strikethrough, and Spoiler entities can contain and can be part of any other entities. All other entities can't contain each other. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1formatted_text.html).
   """
@@ -21797,24 +29162,53 @@ defmodule PageBlockTableCell do
 
   defstruct "@type": "pageBlockTableCell", "@extra": nil, text: nil, is_header: nil, colspan: nil, rowspan: nil, align: nil, valign: nil
 end
+defmodule BuiltInThemeClassic do
+  @moduledoc  """
+  Classic light theme.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1built_in_theme_classic.html).
+  """
+
+  defstruct "@type": "builtInThemeClassic", "@extra": nil
+end
 defmodule InputMessagePoll do
   @moduledoc  """
-  A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot.
+  A message with a poll. Polls can't be sent to secret chats and channel direct messages chats. Polls can be sent to a private chat only if the chat is a chat with a bot or the Saved Messages chat.
 
   | Name | Type | Description |
   |------|------| ------------|
   | question | formattedText | Poll question; 1-255 characters (up to 300 characters for bots). Only custom emoji entities are allowed to be added and only by Premium users. |
-  | options | formattedText | List of poll answer options, 2-10 strings 1-100 characters each. Only custom emoji entities are allowed to be added and only by Premium users. |
+  | options | inputPollOption | List of poll answer options; 2-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("poll_answer_count_max") options. |
+  | description | formattedText | Poll description; pass null to use an empty description; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
   | is_anonymous | bool | True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels. |
-  | type | PollType | Type of the poll. |
-  | open_period | int32 | Amount of time the poll will be active after creation, in seconds; for bots only. |
-  | close_date | int32 | Point in time (Unix timestamp) when the poll will automatically be closed; for bots only. |
+  | allows_multiple_answers | bool | True, if multiple answer options can be chosen simultaneously. |
+  | allows_revoting | bool | True, if the poll can be answered multiple times. |
+  | shuffle_options | bool | True, if poll options must be shown in a fixed random order. |
+  | hide_results_until_closes | bool | True, if the poll results will appear only after the poll closes. |
+  | type | InputPollType | Type of the poll. |
+  | open_period | int32 | Amount of time the poll will be active after creation, in seconds; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("poll_open_period_max"); pass 0 if not specified. |
+  | close_date | int32 | Point in time (Unix timestamp) when the poll will automatically be closed; must be 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("poll_open_period_max") seconds in the future; pass 0 if not specified. |
   | is_closed | bool | True, if the poll needs to be sent already closed; for bots only. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_poll.html).
   """
 
-  defstruct "@type": "inputMessagePoll", "@extra": nil, question: nil, options: nil, is_anonymous: nil, type: nil, open_period: nil, close_date: nil, is_closed: nil
+  defstruct "@type": "inputMessagePoll", "@extra": nil, question: nil, options: nil, description: nil, is_anonymous: nil, allows_multiple_answers: nil, allows_revoting: nil, shuffle_options: nil, hide_results_until_closes: nil, type: nil, open_period: nil, close_date: nil, is_closed: nil
+end
+defmodule GiftUpgradePrice do
+  @moduledoc  """
+  Describes a price required to pay to upgrade a gift.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | date | int32 | Point in time (Unix timestamp) when the price will be in effect. |
+  | star_count | int53 | The Telegram Star amount required to pay to upgrade the gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_upgrade_price.html).
+  """
+
+  defstruct "@type": "giftUpgradePrice", "@extra": nil, date: nil, star_count: nil
 end
 defmodule BusinessOpeningHoursInterval do
   @moduledoc  """
@@ -21841,13 +29235,23 @@ defmodule ChatPhoto do
   | minithumbnail | minithumbnail | Photo minithumbnail; may be null. |
   | sizes | photoSize | Available variants of the photo in JPEG format, in different size. |
   | animation | animatedChatPhoto | A big (up to 1280x1280) animated variant of the photo in MPEG4 format; may be null. |
-  | small_animation | animatedChatPhoto | A small (160x160) animated variant of the photo in MPEG4 format; may be null even the big animation is available. |
+  | small_animation | animatedChatPhoto | A small (160x160) animated variant of the photo in MPEG4 format; may be null even if the big animation is available. |
   | sticker | chatPhotoSticker | Sticker-based version of the chat photo; may be null. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_photo.html).
   """
 
   defstruct "@type": "chatPhoto", "@extra": nil, id: nil, added_date: nil, minithumbnail: nil, sizes: nil, animation: nil, small_animation: nil, sticker: nil
+end
+defmodule TransactionDirectionIncoming do
+  @moduledoc  """
+  The transaction is incoming and increases the amount of owned currency.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1transaction_direction_incoming.html).
+  """
+
+  defstruct "@type": "transactionDirectionIncoming", "@extra": nil
 end
 defmodule MessageChatDeletePhoto do
   @moduledoc  """
@@ -21890,11 +29294,22 @@ defmodule MessageSchedulingStateSendAtDate do
   | Name | Type | Description |
   |------|------| ------------|
   | send_date | int32 | Point in time (Unix timestamp) when the message will be sent. The date must be within 367 days in the future. |
+  | repeat_period | int32 | Period after which the message will be sent again; in seconds; 0 if never; for Telegram Premium users only; may be non-zero only in <a class="el" href="classtd_1_1td__api_1_1send_message.html">sendMessage</a> and <a class="el" href="classtd_1_1td__api_1_1forward_messages.html">forwardMessages</a> with one message requests; must be one of 0, 86400, 7 * 86400, 14 * 86400, 30 * 86400, 91 * 86400, 182 * 86400, 365 * 86400, or additionally 60, or 300 in the Test DC. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_scheduling_state_send_at_date.html).
   """
 
-  defstruct "@type": "messageSchedulingStateSendAtDate", "@extra": nil, send_date: nil
+  defstruct "@type": "messageSchedulingStateSendAtDate", "@extra": nil, send_date: nil, repeat_period: nil
+end
+defmodule LinkPreviewTypeRequestManagedBot do
+  @moduledoc  """
+  The link is a link to a dialog for creating of a managed bot.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_request_managed_bot.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeRequestManagedBot", "@extra": nil
 end
 defmodule IdentityDocument do
   @moduledoc  """
@@ -21954,6 +29369,16 @@ defmodule UserPrivacySettingRuleRestrictContacts do
 
   defstruct "@type": "userPrivacySettingRuleRestrictContacts", "@extra": nil
 end
+defmodule TopChatCategoryWebAppBots do
+  @moduledoc  """
+  A category containing frequently used chats with bots, which Web Apps were opened.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1top_chat_category_web_app_bots.html).
+  """
+
+  defstruct "@type": "topChatCategoryWebAppBots", "@extra": nil
+end
 defmodule MessagePositions do
   @moduledoc  """
   Contains a list of message positions.
@@ -21968,19 +29393,38 @@ defmodule MessagePositions do
 
   defstruct "@type": "messagePositions", "@extra": nil, total_count: nil, positions: nil
 end
-defmodule StarTransactionPartnerUnsupported do
+defmodule InputPollTypeRegular do
   @moduledoc  """
-  The transaction is a transaction with unknown partner.
+  A regular poll.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | allow_adding_options | bool | True, if answer options can be added to the poll after creation; not supported in channel chats and for anonymous polls. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_partner_unsupported.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_type_regular.html).
   """
 
-  defstruct "@type": "starTransactionPartnerUnsupported", "@extra": nil
+  defstruct "@type": "inputPollTypeRegular", "@extra": nil, allow_adding_options: nil
+end
+defmodule MessageRefundedUpgradedGift do
+  @moduledoc  """
+  A gift which purchase, upgrade or transfer were refunded.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gift | gift | The gift. |
+  | sender_id | MessageSender | Sender of the gift. |
+  | receiver_id | MessageSender | Receiver of the gift. |
+  | origin | UpgradedGiftOrigin | Origin of the upgraded gift. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_refunded_upgraded_gift.html).
+  """
+
+  defstruct "@type": "messageRefundedUpgradedGift", "@extra": nil, gift: nil, sender_id: nil, receiver_id: nil, origin: nil
 end
 defmodule GroupCallStream do
   @moduledoc  """
-  Describes an available stream in a group call.
+  Describes an available stream in a video chat or a live story.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -21993,15 +29437,25 @@ defmodule GroupCallStream do
 
   defstruct "@type": "groupCallStream", "@extra": nil, channel_id: nil, scale: nil, time_offset: nil
 end
-defmodule InternalLinkTypeActiveSessions do
+defmodule SuggestedPostRefundReasonPostDeleted do
   @moduledoc  """
-  The link is a link to the Devices section of the application. Use getActiveSessions to get the list of active sessions and show them to the user.
+  The post was refunded, because it was deleted by channel administrators in less than getOption("suggested_post_lifetime_min") seconds.
 
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_active_sessions.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_post_refund_reason_post_deleted.html).
   """
 
-  defstruct "@type": "internalLinkTypeActiveSessions", "@extra": nil
+  defstruct "@type": "suggestedPostRefundReasonPostDeleted", "@extra": nil
+end
+defmodule SearchMessagesChatTypeFilterGroup do
+  @moduledoc  """
+  Returns only messages in basic group and supergroup chats.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_chat_type_filter_group.html).
+  """
+
+  defstruct "@type": "searchMessagesChatTypeFilterGroup", "@extra": nil
 end
 defmodule UpdateChatUnreadReactionCount do
   @moduledoc  """
@@ -22017,24 +29471,6 @@ defmodule UpdateChatUnreadReactionCount do
 
   defstruct "@type": "updateChatUnreadReactionCount", "@extra": nil, chat_id: nil, unread_reaction_count: nil
 end
-defmodule PremiumGiveawayInfoCompleted do
-  @moduledoc  """
-  Describes a completed giveaway.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | creation_date | int32 | Point in time (Unix timestamp) when the giveaway was created. |
-  | actual_winners_selection_date | int32 | Point in time (Unix timestamp) when the winners were selected. May be bigger than winners selection date specified in parameters of the giveaway. |
-  | was_refunded | bool | True, if the giveaway was canceled and was fully refunded. |
-  | winner_count | int32 | Number of winners in the giveaway. |
-  | activation_count | int32 | Number of winners, which activated their gift codes. |
-  | gift_code | string | Telegram Premium gift code that was received by the current user; empty if the user isn't a winner in the giveaway. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_giveaway_info_completed.html).
-  """
-
-  defstruct "@type": "premiumGiveawayInfoCompleted", "@extra": nil, creation_date: nil, actual_winners_selection_date: nil, was_refunded: nil, winner_count: nil, activation_count: nil, gift_code: nil
-end
 defmodule MessageAnimation do
   @moduledoc  """
   An animation message (GIF-style).
@@ -22043,7 +29479,7 @@ defmodule MessageAnimation do
   |------|------| ------------|
   | animation | animation | The animation description. |
   | caption | formattedText | Animation caption. |
-  | show_caption_above_media | bool | True, if caption must be shown above the animation; otherwise, caption must be shown below the animation. |
+  | show_caption_above_media | bool | True, if the caption must be shown above the animation; otherwise, the caption must be shown below the animation. |
   | has_spoiler | bool | True, if the animation preview must be covered by a spoiler animation. |
   | is_secret | bool | True, if the animation thumbnail must be blurred and the animation must be shown only while tapped. |
 
@@ -22051,6 +29487,22 @@ defmodule MessageAnimation do
   """
 
   defstruct "@type": "messageAnimation", "@extra": nil, animation: nil, caption: nil, show_caption_above_media: nil, has_spoiler: nil, is_secret: nil
+end
+defmodule StarTransactionTypePaidMessageReceive do
+  @moduledoc  """
+  The transaction is a receiving of a paid message; relevant for regular users, supergroup and channel chats only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | sender_id | MessageSender | Identifier of the sender of the message. |
+  | message_count | int32 | Number of received paid messages. |
+  | commission_per_mille | int32 | The number of Telegram Stars received by the Telegram for each 1000 Telegram Stars paid for message sending. |
+  | commission_star_amount | starAmount | The Telegram Star amount that was received by Telegram; can be negative for refunds. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_paid_message_receive.html).
+  """
+
+  defstruct "@type": "starTransactionTypePaidMessageReceive", "@extra": nil, sender_id: nil, message_count: nil, commission_per_mille: nil, commission_star_amount: nil
 end
 defmodule InputChatPhotoAnimation do
   @moduledoc  """
@@ -22065,6 +29517,19 @@ defmodule InputChatPhotoAnimation do
   """
 
   defstruct "@type": "inputChatPhotoAnimation", "@extra": nil, animation: nil, main_frame_timestamp: nil
+end
+defmodule CanPostStoryResultMonthlyLimitExceeded do
+  @moduledoc  """
+  The monthly limit for the number of posted stories exceeded. The user needs to buy Telegram Premium or wait specified time.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | retry_after | int32 | Time left before the user can post the next story, in seconds. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story_result_monthly_limit_exceeded.html).
+  """
+
+  defstruct "@type": "canPostStoryResultMonthlyLimitExceeded", "@extra": nil, retry_after: nil
 end
 defmodule ReportReasonFake do
   @moduledoc  """
@@ -22124,6 +29589,19 @@ defmodule ReactionNotificationSource do
 
   defstruct "@type": "ReactionNotificationSource", "@extra": nil
 end
+defmodule InputGroupCallLink do
+  @moduledoc  """
+  The group call is accessible through a link.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | link | string | The link for the group call. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_group_call_link.html).
+  """
+
+  defstruct "@type": "inputGroupCallLink", "@extra": nil, link: nil
+end
 defmodule Error do
   @moduledoc  """
   An object of this type can be returned on every function call, in case of an error.
@@ -22150,7 +29628,7 @@ defmodule Video do
   | file_name | string | Original name of the file; as defined by the sender. |
   | mime_type | string | MIME type of the file; as defined by the sender. |
   | has_stickers | bool | True, if stickers were added to the video. The list of corresponding sticker sets can be received using <a class="el" href="classtd_1_1td__api_1_1get_attached_sticker_sets.html">getAttachedStickerSets</a>. |
-  | supports_streaming | bool | True, if the video is supposed to be streamed. |
+  | supports_streaming | bool | True, if the video is expected to be streamed. |
   | minithumbnail | minithumbnail | Video minithumbnail; may be null. |
   | thumbnail | thumbnail | Video thumbnail in JPEG or MPEG4 format; as defined by the sender; may be null. |
   | video | file | File containing the video. |
@@ -22159,5 +29637,18 @@ defmodule Video do
   """
 
   defstruct "@type": "video", "@extra": nil, duration: nil, width: nil, height: nil, file_name: nil, mime_type: nil, has_stickers: nil, supports_streaming: nil, minithumbnail: nil, thumbnail: nil, video: nil
+end
+defmodule InputPaidMediaTypePhoto do
+  @moduledoc  """
+  The media is a photo. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | video | InputFile | Video of the live photo; pass null if the photo isn't a live photo. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_paid_media_type_photo.html).
+  """
+
+  defstruct "@type": "inputPaidMediaTypePhoto", "@extra": nil, video: nil
 end
 end
