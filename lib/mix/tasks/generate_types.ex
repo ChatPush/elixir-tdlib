@@ -5,6 +5,12 @@ defmodule Mix.Tasks.GenerateTypes do
   @method_module "lib/tdlib/method.ex"
   @json_source Mix.Project.deps_paths().tdlib_json_cli |> Path.join("types.json")
 
+  defp sanitize_ascii(text) do
+    text
+    |> String.normalize(:nfd)
+    |> String.replace(~r/[^\x00-\x7F]/u, "")
+  end
+
   defp extract(text) do
     json = Jason.decode!(text)
     keys = Map.keys(json)
@@ -147,7 +153,7 @@ defmodule Mix.Tasks.GenerateTypes do
 
   def run(_) do
     IO.puts("Importing #{@json_source}...")
-    text = File.read!(@json_source)
+    text = File.read!(@json_source) |> sanitize_ascii()
 
     IO.puts("Parsing JSON...")
     {json, objects, methods} = extract(text)
