@@ -42,6 +42,10 @@ defmodule TDLib.Backend do
     {:reply, result, state}
   end
 
+  def handle_info({:EXIT, port, reason}, %{port: port} = state) do
+    {:stop, {:port_exit, reason}, state}
+  end
+
   def handle_info({_from, {:data, data}}, state) do
     case data do
       {:eol, tail} ->

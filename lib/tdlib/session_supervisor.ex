@@ -2,6 +2,7 @@ defmodule TDLib.SessionSupervisor do
   use DynamicSupervisor
 
   alias TDLib.Session
+  alias TDLib.StateHolder
 
   def start_link(_) do
     DynamicSupervisor.start_link(__MODULE__, 0, name: __MODULE__)
@@ -13,8 +14,16 @@ defmodule TDLib.SessionSupervisor do
 
   def find_or_create(session_name, params) do
     case Session.build_name(session_name) |> GenServer.whereis() do
-      pid when is_pid(pid) -> {:ok, pid}
-      _ -> create(session_name, params)
+      pid when is_pid(pid) ->
+        StateHolder.update_state(session_name, %{
+          client_pid: params.client_pid,
+          config: params.config
+        })
+
+        {:ok, pid}
+
+      _ ->
+        create(session_name, params)
     end
   end
 

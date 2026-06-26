@@ -3,8 +3,7 @@ defmodule TDLib.Handler do
   require Logger
   use GenServer
 
-  alias TDLib.{Object, Method}
-  alias TDLib.StateHolder
+  alias TDLib.{Object, Method, Process, StateHolder}
 
   @disable_handling Application.compile_env(:tdlib, :disable_handling)
 
@@ -80,7 +79,7 @@ defmodule TDLib.Handler do
       # Forward to client
       client_pid = StateHolder.get_state(session) |> Map.get(:client_pid)
 
-      if is_pid(client_pid) and Process.alive?(client_pid) do
+      if Process.alive?(client_pid) do
         Kernel.send(client_pid, {:recv, struct})
       end
     else
