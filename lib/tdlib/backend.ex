@@ -95,7 +95,11 @@ defmodule TDLib.Backend do
   end
 
   def terminate(_reason, state) do
-    Port.close(state.port)
+    try do
+      Port.close(state.port)
+    rescue
+      ArgumentError -> :ok
+    end
   end
 
   defp stop_on_port_exit(reason, state) do

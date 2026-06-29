@@ -8,6 +8,7 @@ defmodule TDLib.Mixfile do
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       compilers: Mix.compilers,
+      elixirc_paths: elixirc_paths(Mix.env()),
       deps: deps(),
 
       # Hex
@@ -47,7 +48,6 @@ defmodule TDLib.Mixfile do
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:jason, "~> 1.4"},
@@ -61,4 +61,7 @@ defmodule TDLib.Mixfile do
       }
     ]
   end
+
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
 end
