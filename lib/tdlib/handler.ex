@@ -3,7 +3,7 @@ defmodule TDLib.Handler do
   require Logger
   use GenServer
 
-  alias TDLib.{Object, Method, Process, StateHolder}
+  alias TDLib.{Object, Method, StateHolder}
 
   @disable_handling Application.compile_env(:tdlib, :disable_handling)
 
@@ -24,8 +24,8 @@ defmodule TDLib.Handler do
     Object.AuthorizationStateWaitTdlibParameters
   ]
 
-  # client_monitor_ref — monitor ref on client_pid to close the session when the client dies
-  defstruct [:session, :client_monitor_ref]
+  # client_pid + client_monitor_ref — forward updates only while the client is monitored
+  defstruct [:session, :client_pid, :client_monitor_ref]
 
   def start_link(session_name) do
     GenServer.start_link(__MODULE__, session_name, [])
@@ -65,7 +65,7 @@ defmodule TDLib.Handler do
   def handle_info({:DOWN, ref, :process, _pid, reason}, %{client_monitor_ref: ref, session: session} = state) do
     Logger.warning("#{session}: client process down (#{inspect(reason)}), closing session")
     TDLib.close(session)
-    {:noreply, %{state | client_monitor_ref: nil}}
+    {:noreply, %{state | client_pid: nil, client_monitor_ref: nil}}
   end
 
   def handle_info({:DOWN, _ref, :process, _pid, _reason}, state), do: {:noreply, state}
@@ -76,7 +76,7 @@ defmodule TDLib.Handler do
 
     cond do
       "@cli" in keys -> json |> handle_cli(session)
-      "@type" in keys -> json |> handle_object(session)
+      "@type" in keys -> handle_object(state, json)
       true -> Logger.warning("#{session}: unknown structure received")
     end
 
@@ -92,7 +92,7 @@ defmodule TDLib.Handler do
     Logger.info("#{session}: received cli event #{event}")
   end
 
-  def handle_object(json, session) do
+  defp handle_object(state, json) do
     type = Map.get(json, "@type")
 
     case decode_tdlib_object(json) do
@@ -101,14 +101,15 @@ defmodule TDLib.Handler do
 
       %{__struct__: module} = authorization_state when module in @authorization_state_modules ->
         client_object = %Object.UpdateAuthorizationState{authorization_state: authorization_state}
-        deliver_object(session, type, client_object)
+        deliver_object(state, type, client_object)
 
       object ->
-        deliver_object(session, type, object)
+        deliver_object(state, type, object)
     end
   end
 
-  defp deliver_object(session, type, object) do
+  defp deliver_object(state, type, object) do
+    session = state.session
     Logger.info("#{session}: received object #{type}")
 
     case object do
@@ -119,7 +120,7 @@ defmodule TDLib.Handler do
         :ok
     end
 
-    forward_to_client(session, object)
+    forward_to_client(state, object)
   end
 
   ###
@@ -144,15 +145,11 @@ defmodule TDLib.Handler do
 
   ###
 
-  defp forward_to_client(session, struct) do
-    client_pid = StateHolder.get_state(session) |> Map.get(:client_pid)
-
-    # TDLib.Process.alive? is cluster-safe: client_pid is often on another cluster node
-    if Process.alive?(client_pid) do
+  defp forward_to_client(%{client_monitor_ref: ref, client_pid: client_pid, session: session}, struct) do
+    if is_reference(ref) and is_pid(client_pid) do
       Kernel.send(client_pid, {:recv, struct})
     else
-      # Updates used to be dropped silently — log for stale client_pid diagnosis
-      Logger.error("#{session}: dropping #{Map.get(struct, :"@type")}, client_pid is not alive")
+      Logger.error("#{session}: dropping #{Map.get(struct, :"@type")}, client is not monitored")
     end
   end
 
@@ -177,13 +174,13 @@ defmodule TDLib.Handler do
     end
 
     client_monitor_ref =
-      if Process.alive?(client_pid) do
+      if is_pid(client_pid) do
         Elixir.Process.monitor(client_pid)
       else
         nil
       end
 
-    %{state | client_monitor_ref: client_monitor_ref}
+    %{state | client_pid: client_pid, client_monitor_ref: client_monitor_ref}
   end
 
   defp transmit(session, map) do
@@ -205,7 +202,7 @@ defmodule TDLib.Handler do
     # Look for maps at depth n+1
     nested_maps = :maps.filter(fn _, v -> is_map(v) end, struct)
 
-    # Math depth n+1
+    # Match depth n+1
     nested_structs = :maps.map(fn _k, v -> recursive_match(:object, v, prefix) end, nested_maps)
 
     # Merge

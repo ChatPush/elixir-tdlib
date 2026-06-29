@@ -6,7 +6,7 @@ defmodule TDLib.Backend do
   use GenServer
 
   @backend_verbosity_level Application.compile_env(:tdlib, :backend_verbosity_level, 2)
-  @port_opts [:binary, :line, args: ["#{@backend_verbosity_level}"]]
+  @port_opts [:binary, :line, :exit_status, args: ["#{@backend_verbosity_level}"]]
 
   # Internal state
   # pending_messages — inbound json_cli lines buffered until Handler registers handler_pid
@@ -56,9 +56,17 @@ defmodule TDLib.Backend do
     {:noreply, %{state | pending_messages: []}}
   end
 
-  # json_cli exited (OOM, segfault) — stop Backend; supervisor restarts it and updates backend_pid
+  # json_cli exited or port closed — stop Backend; supervisor restarts it and updates backend_pid
   def handle_info({:EXIT, port, reason}, %{port: port} = state) do
-    {:stop, {:port_exit, reason}, state}
+    stop_on_port_exit(reason, state)
+  end
+
+  def handle_info({port, {:exit_status, status}}, %{port: port} = state) do
+    stop_on_port_exit({:exit_status, status}, state)
+  end
+
+  def handle_info({port, :closed}, %{port: port} = state) do
+    stop_on_port_exit(:closed, state)
   end
 
   def handle_info({_from, {:data, data}}, state) do
@@ -88,6 +96,10 @@ defmodule TDLib.Backend do
 
   def terminate(_reason, state) do
     Port.close(state.port)
+  end
+
+  defp stop_on_port_exit(reason, state) do
+    {:stop, {:port_exit, reason}, state}
   end
 
   # On session start json_cli may send AuthorizationStateReady before Handler exists —
