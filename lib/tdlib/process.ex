@@ -12,7 +12,9 @@ defmodule TDLib.Process do
         Elixir.Process.alive?(pid)
 
       remote ->
-        if remote in [node() | Node.list()] do
+        cluster_nodes = [node() | Node.list()]
+
+        if Enum.member?(cluster_nodes, remote) do
           :rpc.call(remote, Elixir.Process, :alive?, [pid]) == true
         else
           false

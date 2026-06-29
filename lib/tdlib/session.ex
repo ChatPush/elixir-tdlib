@@ -29,7 +29,9 @@ defmodule TDLib.Session do
       }
     ]
 
-    Supervisor.init(children, strategy: :one_for_one)
+    # rest_for_one: when StateHolder crashes, Backend and Handler restart too,
+    # so backend_pid/handler_pid are written to StateHolder again (not left nil)
+    Supervisor.init(children, strategy: :rest_for_one)
   end
 
   def build_name(name), do: {:via, :global, {SessionRegistry, name}}
