@@ -1,7 +1,6 @@
 defmodule TDLibTest do
-  alias TDLib.{Object, Method}
+  alias TDLib.{Object, Method, Session, StateHolder}
   alias TDLib.Object.UpdateAuthorizationState
-  alias TDLib.SessionRegistry, as: Registry
   use ExUnit.Case
   doctest TDLib
 
@@ -11,23 +10,19 @@ defmodule TDLibTest do
     assert 1 == 1
   end
 
+  @tag :integration
   test "Session management" do
-    # Ensure the registry is empty
-    assert Enum.count(Registry.dump) == 0
+    assert Session.build_name(@session) |> GenServer.whereis() == nil
 
-    # Open a new session
-    {:ok, _pid} = TDLib.open @session, self(), TDLib.default_config()
+    {:ok, pid} = TDLib.open(@session, self(), TDLib.default_config())
 
     assert wait_for_authstate() == "authorizationStateWaitTdlibParameters"
-    assert Enum.count(Registry.dump) == 1
-    assert Registry.get(@session) |> Map.get(:client_pid) == self()
+    assert Session.build_name(@session) |> GenServer.whereis() == pid
+    assert StateHolder.get_state(@session).client_pid == self()
 
-    # Close the session
     TDLib.close(@session)
 
-
-    # Ensure the registry is empty again
-    assert Enum.count(Registry.dump) == 0
+    assert Session.build_name(@session) |> GenServer.whereis() == nil
   end
 
   @tag :manual
@@ -37,9 +32,11 @@ defmodule TDLibTest do
     {api_id, _} = IO.gets("Please provide API id: ") |> Integer.parse()
     api_hash = IO.gets("Please provide API hash: ") |> String.trim()
 
-    config = struct(
-      TDLib.default_config(), %{api_id: api_id, api_hash: api_hash}
-    )
+    config =
+      struct(
+        TDLib.default_config(),
+        %{api_id: api_id, api_hash: api_hash}
+      )
 
     # Open a new session
     {:ok, _pid} = TDLib.open(@session, self(), config)
@@ -48,27 +45,33 @@ defmodule TDLibTest do
     assert wait_for_authstate() == "authorizationStateWaitEncryptionKey"
 
     case wait_for_authstate() do
-      "authorizationStateReady" -> :ok
+      "authorizationStateReady" ->
+        :ok
+
       "authorizationStateWaitPhoneNumber" ->
-        phone_number = IO.gets("Please provide phone number: ") |> String.trim
+        phone_number = IO.gets("Please provide phone number: ") |> String.trim()
+
         query = %Method.SetAuthenticationPhoneNumber{
           phone_number: phone_number,
           settings: %Object.PhoneNumberAuthenticationSettings{
             allow_flash_call: false
           }
         }
-        TDLib.transmit @session, query
+
+        TDLib.transmit(@session, query)
 
         assert wait_for_authstate() == "authorizationStateWaitCode"
 
         code = IO.gets("Please authentication code: ") |> String.trim()
         query = %Method.CheckAuthenticationCode{code: code}
-        TDLib.transmit @session, query
+        TDLib.transmit(@session, query)
 
         assert wait_for_authstate() == "authorizationStateReady"
-        # ^ The user has been successfully authorized. TDLib is now ready to answer
-        # queries.
-      other_state -> raise("Unexpected #{other_state} received")
+
+      # ^ The user has been successfully authorized. TDLib is now ready to answer
+      # queries.
+      other_state ->
+        raise("Unexpected #{other_state} received")
     end
 
     # Close
@@ -80,7 +83,7 @@ defmodule TDLibTest do
   defp wait_for(struct, timeout \\ 2_000) do
     receive do
       {:recv, msg} ->
-        #IO.inspect msg
+        # IO.inspect msg
         if Map.get(msg, :__struct__) == struct do
           msg
         else
@@ -92,7 +95,8 @@ defmodule TDLibTest do
   end
 
   defp wait_for_authstate() do
-    wait_for(UpdateAuthorizationState) |> Map.get(:authorization_state)
-                                       |> Map.get(:"@type")
+    wait_for(UpdateAuthorizationState)
+    |> Map.get(:authorization_state)
+    |> Map.get(:"@type")
   end
 end

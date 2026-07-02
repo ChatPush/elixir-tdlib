@@ -41,7 +41,10 @@ defmodule TDLib do
   def default_config(), do: @default_config
 
   @doc """
-  Open a new session. Spawns a new instance of `tdlib-json-cli`.
+  Open a session or reconnect an existing one.
+
+  If a session with `session_name` already exists, its `client_pid`, `config`,
+  and `encryption_key` are updated without restarting the TDLib backend.
 
   * `session_name` is the identifier of the session
   * `client_pid` is the PID of the process receiving the incoming messages

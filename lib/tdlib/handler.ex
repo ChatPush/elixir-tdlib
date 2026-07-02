@@ -7,6 +7,8 @@ defmodule TDLib.Handler do
   alias TDLib.StateHolder
 
   @disable_handling Application.compile_env(:tdlib, :disable_handling)
+  @backend_ready_retry_ms 20
+  @backend_ready_max_attempts 100
 
   def start_link(session_name) do
     GenServer.start_link(__MODULE__, session_name, [])
@@ -19,7 +21,13 @@ defmodule TDLib.Handler do
 
   def handle_continue(:init, session_name) do
     StateHolder.update_state(session_name, %{handler_pid: self()})
+    sync_authorization_state(session_name, 0)
     {:noreply, session_name}
+  end
+
+  def handle_info({:sync_auth_state, attempt}, session) do
+    sync_authorization_state(session, attempt)
+    {:noreply, session}
   end
 
   def handle_info({:tdlib, msg}, session) do
@@ -47,44 +55,97 @@ defmodule TDLib.Handler do
   def handle_object(json, session) do
     type = Map.get(json, "@type")
 
-    struct =
-      try do
-        recursive_match(:object, json, "Elixir.TDLib.Object.")
-      rescue
-        _ -> nil
-      end
+    case decode_tdlib_object(json) do
+      nil ->
+        Logger.error("#{session}: no matching object found: #{inspect(type)}")
 
-    if struct do
-      Logger.info("#{session}: received object #{type}")
+      object ->
+        object
+        |> maybe_wrap_authorization_state()
+        |> then(&deliver_object(session, &1))
+    end
+  end
 
-      unless @disable_handling do
-        case struct do
-          %Object.Error{code: code, message: message} ->
-            Logger.error("#{session}: error #{code} - #{message}")
-
-          %Object.UpdateAuthorizationState{} ->
-            case struct.authorization_state do
-              %Object.AuthorizationStateWaitTdlibParameters{} ->
-                config = StateHolder.get_state(session) |> Map.get(:config)
-                transmit(session, struct(Method.SetTdlibParameters, config))
-
-              _ ->
-                :ignore
-            end
-
-          _ ->
-            :ignore
-        end
-      end
-
-      # Forward to client
-      client_pid = StateHolder.get_state(session) |> Map.get(:client_pid)
-
-      if is_pid(client_pid) and Process.alive?(client_pid) do
-        Kernel.send(client_pid, {:recv, struct})
-      end
+  defp maybe_wrap_authorization_state(%{__struct__: module} = object) do
+    if authorization_state_module?(module) do
+      %Object.UpdateAuthorizationState{authorization_state: object}
     else
-      Logger.error("No matching object found: #{inspect(type)}")
+      object
+    end
+  end
+
+  defp authorization_state_module?(module) do
+    module != Object.AuthorizationState &&
+      module
+      |> Module.split()
+      |> List.last()
+      |> String.starts_with?("AuthorizationState")
+  end
+
+  defp decode_tdlib_object(json) do
+    try do
+      recursive_match(:object, json, "Elixir.TDLib.Object.")
+    rescue
+      exception ->
+        Logger.warning(
+          "Failed to decode TDLib object #{inspect(Map.get(json, "@type"))}: #{Exception.message(exception)}"
+        )
+
+        nil
+    end
+  end
+
+  defp deliver_object(session, object) do
+    type = Map.get(object, :"@type")
+    Logger.info("#{session}: received object #{type}")
+
+    case object do
+      %Object.Error{code: code, message: message} ->
+        Logger.error("#{session}: error #{code} - #{message}")
+
+      %Object.UpdateAuthorizationState{} ->
+        unless @disable_handling, do: maybe_apply_library_side_effects(session, object)
+
+      _ ->
+        :ok
+    end
+
+    forward_to_client(session, object)
+  end
+
+  defp maybe_apply_library_side_effects(session, %Object.UpdateAuthorizationState{
+         authorization_state: %Object.AuthorizationStateWaitTdlibParameters{}
+       }) do
+    config = StateHolder.get_state(session) |> Map.get(:config)
+    transmit(session, struct(Method.SetTdlibParameters, config))
+  end
+
+  defp maybe_apply_library_side_effects(_session, %Object.UpdateAuthorizationState{}), do: :ok
+
+  defp forward_to_client(session, object) do
+    client_pid = StateHolder.get_state(session) |> Map.get(:client_pid)
+
+    if is_pid(client_pid) and Process.alive?(client_pid) do
+      Kernel.send(client_pid, {:recv, object})
+    end
+  end
+
+  defp sync_authorization_state(session_name, attempt) do
+    case StateHolder.get_state(session_name) |> Map.get(:backend_pid) do
+      pid when is_pid(pid) ->
+        transmit(session_name, %Method.GetAuthorizationState{"@extra": "sync_auth_state"})
+
+      _ when attempt < @backend_ready_max_attempts ->
+        Process.send_after(
+          self(),
+          {:sync_auth_state, attempt + 1},
+          @backend_ready_retry_ms
+        )
+
+      _ ->
+        Logger.error(
+          "#{session_name}: backend not ready after #{attempt} attempts, skipping GetAuthorizationState"
+        )
     end
   end
 
@@ -96,10 +157,17 @@ defmodule TDLib.Handler do
       |> Map.delete(:__struct__)
       |> Jason.encode!()
 
-    backend_pid = StateHolder.get_state(session) |> Map.get(:backend_pid)
+    type = Map.get(map, :"@type")
 
-    Logger.info("#{session}: sending #{Map.get(map, :"@type")}")
-    GenServer.call(backend_pid, {:transmit, msg})
+    case StateHolder.get_state(session) |> Map.get(:backend_pid) do
+      pid when is_pid(pid) ->
+        Logger.info("#{session}: sending #{type}")
+        GenServer.call(pid, {:transmit, msg})
+
+      _ ->
+        Logger.warning("#{session}: backend not ready, cannot send #{type}")
+        {:error, :backend_not_ready}
+    end
   end
 
   defp recursive_match(:object, json, prefix) do
