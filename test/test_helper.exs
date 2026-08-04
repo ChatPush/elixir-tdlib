@@ -1,2 +1,2 @@
-ExUnit.configure(exclude: [manual: true])
+ExUnit.configure(exclude: [manual: true, integration: true])
 ExUnit.start()
