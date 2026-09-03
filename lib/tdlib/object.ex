@@ -1,8 +1,21 @@
 defmodule TDLib.Object do
   @moduledoc """
   This module was generated using Telegram's TDLib documentation. It contains
-  2230 submodules (= structs).
+  2394 submodules (= structs).
   """
+defmodule RichTextButton do
+  @moduledoc  """
+  A button.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | button | inlineButton | The button. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_button.html).
+  """
+
+  defstruct "@type": "richTextButton", "@extra": nil, button: nil
+end
 defmodule AffiliateProgramSortOrderCreationDate do
   @moduledoc  """
   The affiliate programs must be sorted by creation date.
@@ -97,6 +110,21 @@ defmodule UpdateNewCustomQuery do
 
   defstruct "@type": "updateNewCustomQuery", "@extra": nil, id: nil, data: nil, timeout: nil
 end
+defmodule InputPageBlockVideo do
+  @moduledoc  """
+  A video.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | video | inputVideo | The video to be sent. |
+  | caption | pageBlockCaption | Video caption; pass null if none. |
+  | has_spoiler | bool | True, if the video preview must be covered by a spoiler animation. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_video.html).
+  """
+
+  defstruct "@type": "inputPageBlockVideo", "@extra": nil, video: nil, caption: nil, has_spoiler: nil
+end
 defmodule UpdateChatActionBar do
   @moduledoc  """
   The chat action bar was changed.
@@ -179,16 +207,6 @@ defmodule StoreTransactionGooglePlay do
 
   defstruct "@type": "storeTransactionGooglePlay", "@extra": nil, package_name: nil, store_product_id: nil, purchase_token: nil
 end
-defmodule SessionTypeChrome do
-  @moduledoc  """
-  The session is running on the Chrome browser.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_chrome.html).
-  """
-
-  defstruct "@type": "sessionTypeChrome", "@extra": nil
-end
 defmodule Message do
   @moduledoc  """
   Describes a message.
@@ -197,6 +215,7 @@ defmodule Message do
   |------|------| ------------|
   | id | int53 | Message identifier; unique for the chat to which the message belongs. |
   | sender_id | MessageSender | Identifier of the sender of the message. |
+  | receiver_id | MessageSender | Identifier of the user or the chat which received the ephemeral message; may be null. Always null for non-ephemeral messages. |
   | chat_id | int53 | Chat identifier. |
   | sending_state | MessageSendingState | The sending state of the message; may be null if the message isn't being sent and didn't fail to be sent. |
   | scheduling_state | MessageSchedulingState | The scheduling state of the message; may be null if the message isn't scheduled. |
@@ -207,10 +226,11 @@ defmodule Message do
   | has_timestamped_media | bool | True, if media timestamp entities refers to a media in this message as opposed to a media in the replied message. |
   | is_channel_post | bool | True, if the message is a channel post. All messages to channels are channel posts, all other messages are not channel posts. |
   | is_paid_star_suggested_post | bool | True, if the message is a suggested channel post which was paid in Telegram Stars; a warning must be shown if the message is deleted in less than <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_lifetime_min") seconds after sending. |
-  | is_paid_ton_suggested_post | bool | True, if the message is a suggested channel post which was paid in Toncoins; a warning must be shown if the message is deleted in less than <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_lifetime_min") seconds after sending. |
+  | is_paid_gram_suggested_post | bool | True, if the message is a suggested channel post which was paid in TON Grams; a warning must be shown if the message is deleted in less than <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_lifetime_min") seconds after sending. |
   | contains_unread_mention | bool | True, if the message contains an unread mention for the current user. |
+  | contains_unread_poll_votes | bool | True, if the message is a poll message with unread votes. |
   | date | int32 | Point in time (Unix timestamp) when the message was sent; 0 for scheduled messages. |
-  | edit_date | int32 | Point in time (Unix timestamp) when the message was last edited; 0 for scheduled messages. |
+  | edit_date | int32 | Point in time (Unix timestamp) when the message was last edited; 0 for scheduled messages. If <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("show_message_edit_date_by_default") is true, then the date must be shown along with the message instead of the date when the message was sent. |
   | forward_info | messageForwardInfo | Information about the initial message sender; may be null if none or unknown. |
   | import_info | messageImportInfo | Information about the initial message for messages created with <a class="el" href="classtd_1_1td__api_1_1import_messages.html">importMessages</a>; may be null if the message isn't imported. |
   | interaction_info | messageInteractionInfo | Information about interactions with the message; may be null if none. |
@@ -223,6 +243,7 @@ defmodule Message do
   | self_destruct_in | double | Time left before the message self-destruct timer expires, in seconds; 0 if self-destruction isn't scheduled yet. |
   | auto_delete_in | double | Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never. |
   | via_bot_user_id | int53 | If non-zero, the user identifier of the inline bot through which this message was sent. |
+  | guest_bot_caller_id | MessageSender | The identifier of the user or chat which used a guest bot to send the message; may be null if none. |
   | sender_business_bot_user_id | int53 | If non-zero, the user identifier of the business bot that sent this message. |
   | sender_boost_count | int32 | Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead. |
   | sender_tag | string | Tag of the sender of the message in the supergroup at the time the message was sent; may be empty if none or unknown. For messages sent in basic groups or supergroup administrators, the current custom title or tag must be used instead. |
@@ -233,12 +254,15 @@ defmodule Message do
   | restriction_info | restrictionInfo | Information about the restrictions that must be applied to the message content; may be null if none. |
   | summary_language_code | string | IETF language tag of the message language on which it can be summarized; empty if summary isn't available for the message. |
   | content | MessageContent | Content of the message. |
+  | ephemeral_content | ephemeralMessageContent | Content of the message, which is visible only to the current user and must be shown instead of the regular content; may be null if none. |
   | reply_markup | ReplyMarkup | Reply markup for the message; may be null if none. |
+  | ephemeral_message_id | int32 | Unique identifier of the ephemeral message if the message is ephemeral; for bots only. |
+  | chat_instance | int64 | Identifier that uniquely corresponds to the chat to which the message was sent; for bots only. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message.html).
   """
 
-  defstruct "@type": "message", "@extra": nil, id: nil, sender_id: nil, chat_id: nil, sending_state: nil, scheduling_state: nil, is_outgoing: nil, is_pinned: nil, is_from_offline: nil, can_be_saved: nil, has_timestamped_media: nil, is_channel_post: nil, is_paid_star_suggested_post: nil, is_paid_ton_suggested_post: nil, contains_unread_mention: nil, date: nil, edit_date: nil, forward_info: nil, import_info: nil, interaction_info: nil, unread_reactions: nil, fact_check: nil, suggested_post_info: nil, reply_to: nil, topic_id: nil, self_destruct_type: nil, self_destruct_in: nil, auto_delete_in: nil, via_bot_user_id: nil, sender_business_bot_user_id: nil, sender_boost_count: nil, sender_tag: nil, paid_message_star_count: nil, author_signature: nil, media_album_id: nil, effect_id: nil, restriction_info: nil, summary_language_code: nil, content: nil, reply_markup: nil
+  defstruct "@type": "message", "@extra": nil, id: nil, sender_id: nil, receiver_id: nil, chat_id: nil, sending_state: nil, scheduling_state: nil, is_outgoing: nil, is_pinned: nil, is_from_offline: nil, can_be_saved: nil, has_timestamped_media: nil, is_channel_post: nil, is_paid_star_suggested_post: nil, is_paid_gram_suggested_post: nil, contains_unread_mention: nil, contains_unread_poll_votes: nil, date: nil, edit_date: nil, forward_info: nil, import_info: nil, interaction_info: nil, unread_reactions: nil, fact_check: nil, suggested_post_info: nil, reply_to: nil, topic_id: nil, self_destruct_type: nil, self_destruct_in: nil, auto_delete_in: nil, via_bot_user_id: nil, guest_bot_caller_id: nil, sender_business_bot_user_id: nil, sender_boost_count: nil, sender_tag: nil, paid_message_star_count: nil, author_signature: nil, media_album_id: nil, effect_id: nil, restriction_info: nil, summary_language_code: nil, content: nil, ephemeral_content: nil, reply_markup: nil, ephemeral_message_id: nil, chat_instance: nil
 end
 defmodule PassportElementTypeInternalPassport do
   @moduledoc  """
@@ -415,6 +439,20 @@ defmodule RichTextUnderline do
   """
 
   defstruct "@type": "richTextUnderline", "@extra": nil, text: nil
+end
+defmodule WelcomeMessage do
+  @moduledoc  """
+  Describes a set up welcome message.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int32 | Welcome message identifier; unique for the chat to which the welcome message belongs. |
+  | content | MessageContent | Content of the welcome message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1welcome_message.html).
+  """
+
+  defstruct "@type": "welcomeMessage", "@extra": nil, id: nil, content: nil
 end
 defmodule Game do
   @moduledoc  """
@@ -633,7 +671,7 @@ defmodule PageBlockPullQuote do
   | Name | Type | Description |
   |------|------| ------------|
   | text | RichText | Quote text. |
-  | credit | RichText | Quote credit. |
+  | credit | RichText | Quote credit; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_pull_quote.html).
   """
@@ -648,6 +686,16 @@ defmodule InputStoryContent do
   """
 
   defstruct "@type": "InputStoryContent", "@extra": nil
+end
+defmodule PremiumLimitTypeMessageTextLength do
+  @moduledoc  """
+  The maximum length of text of sent messages.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_message_text_length.html).
+  """
+
+  defstruct "@type": "premiumLimitTypeMessageTextLength", "@extra": nil
 end
 defmodule SuggestedPostInfo do
   @moduledoc  """
@@ -711,7 +759,7 @@ defmodule LinkPreview do
   |------|------| ------------|
   | url | string | Original URL of the link. |
   | display_url | string | URL to display. |
-  | site_name | string | Short name of the site (e.g., Google Docs, App Store). |
+  | site_name | string | Short name of the website (e.g., Google Docs, App Store). |
   | title | string | Title of the content. |
   | description | formattedText | Description of the content. |
   | author | string | Author of the content. |
@@ -878,6 +926,16 @@ defmodule Seconds do
 
   defstruct "@type": "seconds", "@extra": nil, seconds: nil
 end
+defmodule SessionDeviceTypeIphone do
+  @moduledoc  """
+  The session is running on an iPhone device.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_iphone.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeIphone", "@extra": nil
+end
 defmodule DeviceTokenSimplePush do
   @moduledoc  """
   A token for Simple Push API for Firefox OS.
@@ -1007,21 +1065,6 @@ defmodule LinkPreviewTypeVideo do
 
   defstruct "@type": "linkPreviewTypeVideo", "@extra": nil, video: nil, cover: nil, start_timestamp: nil
 end
-defmodule TonRevenueStatistics do
-  @moduledoc  """
-  A detailed statistics about Toncoins earned by the current user.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | revenue_by_day_graph | StatisticalGraph | A graph containing amount of revenue in a given day. |
-  | status | tonRevenueStatus | Amount of earned revenue. |
-  | usd_rate | double | Current conversion rate of nanotoncoin to USD cents. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_revenue_statistics.html).
-  """
-
-  defstruct "@type": "tonRevenueStatistics", "@extra": nil, revenue_by_day_graph: nil, status: nil, usd_rate: nil
-end
 defmodule PushMessageContentChecklistTasksAdded do
   @moduledoc  """
   Some tasks were added to a checklist.
@@ -1103,6 +1146,15 @@ defmodule UserStatusOnline do
   """
 
   defstruct "@type": "userStatusOnline", "@extra": nil, expires: nil
+end
+defmodule SearchChatTypeFilter do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_search_chat_type_filter.html).
+  """
+
+  defstruct "@type": "SearchChatTypeFilter", "@extra": nil
 end
 defmodule GiftPurchaseOfferState do
   @moduledoc  """
@@ -1231,7 +1283,7 @@ defmodule WebAppInfo do
   | Name | Type | Description |
   |------|------| ------------|
   | launch_id | int64 | Unique identifier for the Web App launch. |
-  | url | string | A Web App URL to open in a web view. |
+  | url | webAppUrl | The Web App URL to open in a web view. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_app_info.html).
   """
@@ -1255,6 +1307,19 @@ defmodule InputPaidMedia do
   """
 
   defstruct "@type": "inputPaidMedia", "@extra": nil, type: nil, media: nil, thumbnail: nil, added_sticker_file_ids: nil, width: nil, height: nil
+end
+defmodule GiftResalePriceGram do
+  @moduledoc  """
+  Describes price of a resold gift in TON Grams.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gram_cent_count | int53 | The amount of 1/100 of Gram expected to be paid for the gift. Must be in the range <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_resale_gram_cent_count_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_resale_gram_cent_count_max"). |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_resale_price_gram.html).
+  """
+
+  defstruct "@type": "giftResalePriceGram", "@extra": nil, gram_cent_count: nil
 end
 defmodule PhoneNumberCodeType do
   @moduledoc  """
@@ -1298,6 +1363,25 @@ defmodule AuthenticationCodeTypeFragment do
   """
 
   defstruct "@type": "authenticationCodeTypeFragment", "@extra": nil, url: nil, length: nil
+end
+defmodule Community do
+  @moduledoc  """
+  Represents a community consisting of supergroup chats, channel chats and chats with bots.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int53 | Community identifier. |
+  | have_access | bool | If false, the community is inaccessible, and the only information known about the community is inside this class. Identifier of the community can't be passed to any method. |
+  | name | string | Community name. |
+  | photo | chatPhotoInfo | Community photo; may be null. |
+  | date | int32 | Point in time (Unix timestamp) when the community was joined, or the point in time when the community was created, in case the user is not a member of any chat in the community. |
+  | status | CommunityMemberStatus | Status of the current user in the community. |
+  | permissions | communityPermissions | Actions that non-administrator community members are allowed to take in the community. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1community.html).
+  """
+
+  defstruct "@type": "community", "@extra": nil, id: nil, have_access: nil, name: nil, photo: nil, date: nil, status: nil, permissions: nil
 end
 defmodule StarTransactionTypeChannelPaidReactionSend do
   @moduledoc  """
@@ -1348,7 +1432,7 @@ defmodule InputInlineQueryResultDocument do
   | thumbnail_width | int32 | Width of the thumbnail. |
   | thumbnail_height | int32 | Height of the thumbnail. |
   | reply_markup | ReplyMarkup | The message reply markup; pass null if none. Must be of type <a class="el" href="classtd_1_1td__api_1_1reply_markup_inline_keyboard.html">replyMarkupInlineKeyboard</a> or null. |
-  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_document.html">inputMessageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_document.html">inputMessageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_live_location.html">inputMessageLiveLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_document.html).
   """
@@ -1416,15 +1500,16 @@ defmodule PageBlockTable do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | caption | RichText | Table caption. |
+  | caption | RichText | Table caption; may be null if none. |
   | cells | pageBlockTableCell | Table cells. |
   | is_bordered | bool | True, if the table is bordered. |
   | is_striped | bool | True, if the table is striped. |
+  | is_compact | bool | True, if table cells must have smaller indents. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_table.html).
   """
 
-  defstruct "@type": "pageBlockTable", "@extra": nil, caption: nil, cells: nil, is_bordered: nil, is_striped: nil
+  defstruct "@type": "pageBlockTable", "@extra": nil, caption: nil, cells: nil, is_bordered: nil, is_striped: nil, is_compact: nil
 end
 defmodule UpdateUnreadMessageCount do
   @moduledoc  """
@@ -1507,7 +1592,7 @@ defmodule InputInlineQueryResultAudio do
   | audio_url | string | The URL of the audio file. |
   | audio_duration | int32 | Audio file duration, in seconds. |
   | reply_markup | ReplyMarkup | The message reply markup; pass null if none. Must be of type <a class="el" href="classtd_1_1td__api_1_1reply_markup_inline_keyboard.html">replyMarkupInlineKeyboard</a> or null. |
-  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_audio.html">inputMessageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_audio.html">inputMessageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_live_location.html">inputMessageLiveLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_audio.html).
   """
@@ -1544,19 +1629,6 @@ defmodule MessageReadDateTooOld do
 
   defstruct "@type": "messageReadDateTooOld", "@extra": nil
 end
-defmodule UpdateOwnedTonCount do
-  @moduledoc  """
-  The number of Toncoins owned by the current user has changed.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | ton_amount | int53 | The new amount of owned Toncoins; in the smallest units of the cryptocurrency. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_owned_ton_count.html).
-  """
-
-  defstruct "@type": "updateOwnedTonCount", "@extra": nil, ton_amount: nil
-end
 defmodule StarTransactionTypeUnsupported do
   @moduledoc  """
   The transaction is a transaction of an unsupported type.
@@ -1592,6 +1664,20 @@ defmodule DatabaseStatistics do
   """
 
   defstruct "@type": "databaseStatistics", "@extra": nil, statistics: nil
+end
+defmodule RichTextMentionName do
+  @moduledoc  """
+  A rich text that serves as a mention of a user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text. |
+  | user_id | int53 | Identifier of the mentioned user. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_mention_name.html).
+  """
+
+  defstruct "@type": "richTextMentionName", "@extra": nil, text: nil, user_id: nil
 end
 defmodule StarRevenueStatistics do
   @moduledoc  """
@@ -1650,12 +1736,13 @@ defmodule ReplyMarkupShowKeyboard do
   | resize_keyboard | bool | True, if the application needs to resize the keyboard vertically. |
   | one_time | bool | True, if the application needs to hide the keyboard after use. |
   | is_personal | bool | True, if the keyboard must automatically be shown to the current user. For outgoing messages, specify true to show the keyboard only for the mentioned users and for the target user of a reply. |
+  | force_reply | bool | True, if the keyboard must force reply to the message with the keyboard. |
   | input_field_placeholder | string | If non-empty, the placeholder to be shown in the input field when the keyboard is active; 0-64 characters. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reply_markup_show_keyboard.html).
   """
 
-  defstruct "@type": "replyMarkupShowKeyboard", "@extra": nil, rows: nil, is_persistent: nil, resize_keyboard: nil, one_time: nil, is_personal: nil, input_field_placeholder: nil
+  defstruct "@type": "replyMarkupShowKeyboard", "@extra": nil, rows: nil, is_persistent: nil, resize_keyboard: nil, one_time: nil, is_personal: nil, force_reply: nil, input_field_placeholder: nil
 end
 defmodule ChatInviteLinkInfo do
   @moduledoc  """
@@ -1730,6 +1817,20 @@ defmodule UserLink do
 
   defstruct "@type": "userLink", "@extra": nil, url: nil, expires_in: nil
 end
+defmodule WebAppUrl do
+  @moduledoc  """
+  Contains information about a Web App URL.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | The Web App URL to open in a web view. |
+  | require_same_origin | bool | True, if events from the Web App must be accepted only from the same origin as the URL. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_app_url.html).
+  """
+
+  defstruct "@type": "webAppUrl", "@extra": nil, url: nil, require_same_origin: nil
+end
 defmodule StorageStatistics do
   @moduledoc  """
   Contains the exact storage usage statistics split by chats and file type.
@@ -1758,6 +1859,19 @@ defmodule ChatFolderIcon do
 
   defstruct "@type": "chatFolderIcon", "@extra": nil, name: nil
 end
+defmodule PollMediaSticker do
+  @moduledoc  """
+  A sticker.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | sticker | sticker | The sticker. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_media_sticker.html).
+  """
+
+  defstruct "@type": "pollMediaSticker", "@extra": nil, sticker: nil
+end
 defmodule RichTexts do
   @moduledoc  """
   A concatenation of rich texts.
@@ -1783,6 +1897,16 @@ defmodule InputPassportElementPhoneNumber do
   """
 
   defstruct "@type": "inputPassportElementPhoneNumber", "@extra": nil, phone_number: nil
+end
+defmodule SettingsSectionMyGrams do
+  @moduledoc  """
+  The TON Gram balance and transaction section.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_my_grams.html).
+  """
+
+  defstruct "@type": "settingsSectionMyGrams", "@extra": nil
 end
 defmodule ChatEventUsernameChanged do
   @moduledoc  """
@@ -1811,6 +1935,19 @@ defmodule StarTransactionTypePaidGroupCallMessageSend do
 
   defstruct "@type": "starTransactionTypePaidGroupCallMessageSend", "@extra": nil, chat_id: nil
 end
+defmodule InputPollMediaVenue do
+  @moduledoc  """
+  A venue.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | venue | venue | Venue to send. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_media_venue.html).
+  """
+
+  defstruct "@type": "inputPollMediaVenue", "@extra": nil, venue: nil
+end
 defmodule MessageReadDateMyPrivacyRestricted do
   @moduledoc  """
   The read date is unknown due to privacy settings of the current user, but will be known if the user subscribes to Telegram Premium.
@@ -1830,16 +1967,6 @@ defmodule ConnectionStateConnecting do
   """
 
   defstruct "@type": "connectionStateConnecting", "@extra": nil
-end
-defmodule SessionTypeSafari do
-  @moduledoc  """
-  The session is running on the Safari browser.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_safari.html).
-  """
-
-  defstruct "@type": "sessionTypeSafari", "@extra": nil
 end
 defmodule ChatRevenueTransactionTypeUnsupported do
   @moduledoc  """
@@ -1888,7 +2015,7 @@ defmodule InputInlineQueryResultVoiceNote do
   | voice_note_url | string | The URL of the voice note file. |
   | voice_note_duration | int32 | Duration of the voice note, in seconds. |
   | reply_markup | ReplyMarkup | The message reply markup; pass null if none. Must be of type <a class="el" href="classtd_1_1td__api_1_1reply_markup_inline_keyboard.html">replyMarkupInlineKeyboard</a> or null. |
-  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_voice_note.html">inputMessageVoiceNote</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_voice_note.html">inputMessageVoiceNote</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_live_location.html">inputMessageLiveLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_voice_note.html).
   """
@@ -1914,13 +2041,14 @@ defmodule CountryInfo do
   | country_code | string | A two-letter ISO 3166-1 alpha-2 country code. |
   | name | string | Native name of the country. |
   | english_name | string | English name of the country. |
+  | flag_emoji | string | An emoji for the flag of the country; may be empty if unknown. |
   | is_hidden | bool | True, if the country must be hidden from the list of all countries. |
   | calling_codes | string | List of country calling codes. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1country_info.html).
   """
 
-  defstruct "@type": "countryInfo", "@extra": nil, country_code: nil, name: nil, english_name: nil, is_hidden: nil, calling_codes: nil
+  defstruct "@type": "countryInfo", "@extra": nil, country_code: nil, name: nil, english_name: nil, flag_emoji: nil, is_hidden: nil, calling_codes: nil
 end
 defmodule SearchMessagesChatTypeFilter do
   @moduledoc  """
@@ -2014,6 +2142,19 @@ defmodule ChatMembersFilterMembers do
   """
 
   defstruct "@type": "chatMembersFilterMembers", "@extra": nil
+end
+defmodule UpdateWebBrowserSettings do
+  @moduledoc  """
+  Web browser settings have been updated.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | settings | webBrowserSettings | New settings. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_web_browser_settings.html).
+  """
+
+  defstruct "@type": "updateWebBrowserSettings", "@extra": nil, settings: nil
 end
 defmodule MessageForumTopicCreated do
   @moduledoc  """
@@ -2177,7 +2318,7 @@ defmodule AutosaveSettingsException do
 end
 defmodule AuthorizationStateWaitRegistration do
   @moduledoc  """
-  The user is unregistered and need to accept terms of service and enter their first name and last name to finish registration. Call registerUser to accept the terms of service and provide the data.
+  The user is unregistered and needs to accept terms of service and enter their first name and last name to finish registration. Call registerUser to accept the terms of service and provide the data.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -2187,6 +2328,27 @@ defmodule AuthorizationStateWaitRegistration do
   """
 
   defstruct "@type": "authorizationStateWaitRegistration", "@extra": nil, terms_of_service: nil
+end
+defmodule InputVideo do
+  @moduledoc  """
+  A video to be sent.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | video | InputFile | Video file to be sent. The video is expected to be re-encoded to MPEG4 format with H.264 codec by the sender. |
+  | thumbnail | inputThumbnail | Video thumbnail; pass null to skip thumbnail uploading. |
+  | cover | InputFile | Cover of the video; pass null to skip cover uploading; not supported in secret chats and for self-destructing messages. |
+  | start_timestamp | int32 | Timestamp from which the video playing must start, in seconds. |
+  | added_sticker_file_ids | int32 | File identifiers of the stickers added to the video, if applicable. |
+  | duration | int32 | Duration of the video, in seconds. |
+  | width | int32 | Video width. |
+  | height | int32 | Video height. |
+  | supports_streaming | bool | True, if the video is expected to be streamed. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_video.html).
+  """
+
+  defstruct "@type": "inputVideo", "@extra": nil, video: nil, thumbnail: nil, cover: nil, start_timestamp: nil, added_sticker_file_ids: nil, duration: nil, width: nil, height: nil, supports_streaming: nil
 end
 defmodule UpdateChatRemovedFromList do
   @moduledoc  """
@@ -2413,6 +2575,16 @@ defmodule SearchMessagesFilterUnreadReaction do
 
   defstruct "@type": "searchMessagesFilterUnreadReaction", "@extra": nil
 end
+defmodule PollVoteRestrictionReasonScheduled do
+  @moduledoc  """
+  The poll is from a scheduled message.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_vote_restriction_reason_scheduled.html).
+  """
+
+  defstruct "@type": "pollVoteRestrictionReasonScheduled", "@extra": nil
+end
 defmodule PremiumLimitTypePinnedChatCount do
   @moduledoc  """
   The maximum number of pinned chats in the main chat list.
@@ -2432,19 +2604,6 @@ defmodule CanPostStoryResultPremiumNeeded do
   """
 
   defstruct "@type": "canPostStoryResultPremiumNeeded", "@extra": nil
-end
-defmodule SentWebAppMessage do
-  @moduledoc  """
-  Information about the message sent by answerWebAppQuery.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | inline_message_id | string | Identifier of the sent inline message, if known. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sent_web_app_message.html).
-  """
-
-  defstruct "@type": "sentWebAppMessage", "@extra": nil, inline_message_id: nil
 end
 defmodule ChatRevenueTransactionTypeSponsoredMessageEarnings do
   @moduledoc  """
@@ -2514,13 +2673,13 @@ defmodule PageBlockCollage do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | page_blocks | PageBlock | Collage item contents. |
-  | caption | pageBlockCaption | Block caption. |
+  | blocks | PageBlock | Collage item contents. |
+  | caption | pageBlockCaption | Block caption; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_collage.html).
   """
 
-  defstruct "@type": "pageBlockCollage", "@extra": nil, page_blocks: nil, caption: nil
+  defstruct "@type": "pageBlockCollage", "@extra": nil, blocks: nil, caption: nil
 end
 defmodule AvailableGift do
   @moduledoc  """
@@ -2579,7 +2738,7 @@ defmodule InputInlineQueryResultVideo do
   | video_height | int32 | Height of the video. |
   | video_duration | int32 | Video duration, in seconds. |
   | reply_markup | ReplyMarkup | The message reply markup; pass null if none. Must be of type <a class="el" href="classtd_1_1td__api_1_1reply_markup_inline_keyboard.html">replyMarkupInlineKeyboard</a> or null. |
-  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video.html">inputMessageVideo</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video.html">inputMessageVideo</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_live_location.html">inputMessageLiveLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_video.html).
   """
@@ -2703,13 +2862,23 @@ defmodule MainWebApp do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | url | string | URL of the Web App to open. |
+  | url | webAppUrl | URL of the Web App to open. |
   | mode | WebAppOpenMode | The mode in which the Web App must be opened. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1main_web_app.html).
   """
 
   defstruct "@type": "mainWebApp", "@extra": nil, url: nil, mode: nil
+end
+defmodule TopChatCategoryGuestBots do
+  @moduledoc  """
+  A category containing frequently used chats with bots, which were used as guest bots.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1top_chat_category_guest_bots.html).
+  """
+
+  defstruct "@type": "topChatCategoryGuestBots", "@extra": nil
 end
 defmodule TMeUrlTypeChatInvite do
   @moduledoc  """
@@ -2747,6 +2916,23 @@ defmodule FileType do
 
   defstruct "@type": "FileType", "@extra": nil
 end
+defmodule CommunityFullInfo do
+  @moduledoc  """
+  Contains full information about a community.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | chatPhoto | Photo of the community. |
+  | chats | communityChat | Chats belonging to the community. |
+  | administrator_count | int32 | Number of privileged users in the community; 0 if the current user isn't an administrator of the community. |
+  | banned_count | int32 | Number of users banned from the community; 0 if the current user isn't an administrator of the community. |
+  | add_chat_request_count | int32 | Number of pending requests for addition of chats to the community; 0 if the current user isn't an administrator of the community. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1community_full_info.html).
+  """
+
+  defstruct "@type": "communityFullInfo", "@extra": nil, photo: nil, chats: nil, administrator_count: nil, banned_count: nil, add_chat_request_count: nil
+end
 defmodule UpdateNewCustomEvent do
   @moduledoc  """
   A new incoming event; for bots only.
@@ -2770,6 +2956,16 @@ defmodule PublicChatTypeIsLocationBased do
 
   defstruct "@type": "publicChatTypeIsLocationBased", "@extra": nil
 end
+defmodule PollVoteRestrictionReasonOther do
+  @moduledoc  """
+  The poll can't be voted by the user due to some other reason.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_vote_restriction_reason_other.html).
+  """
+
+  defstruct "@type": "pollVoteRestrictionReasonOther", "@extra": nil
+end
 defmodule TextEntity do
   @moduledoc  """
   Represents a part of the text that needs to be formatted in some unusual way.
@@ -2784,6 +2980,16 @@ defmodule TextEntity do
   """
 
   defstruct "@type": "textEntity", "@extra": nil, offset: nil, length: nil, type: nil
+end
+defmodule SessionDeviceTypeApple do
+  @moduledoc  """
+  The session is running on a generic Apple device.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_apple.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeApple", "@extra": nil
 end
 defmodule MessagePaymentRefunded do
   @moduledoc  """
@@ -2956,6 +3162,21 @@ defmodule MessageChatBoost do
 
   defstruct "@type": "messageChatBoost", "@extra": nil, boost_count: nil
 end
+defmodule RichMessage do
+  @moduledoc  """
+  Describes a message with rich formatting.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | blocks | PageBlock | Content of the message. |
+  | is_rtl | bool | True, if the message must be shown from right to left. |
+  | is_full | bool | True, if the object contains the full message. Otherwise, <a class="el" href="classtd_1_1td__api_1_1get_full_rich_message.html">getFullRichMessage</a> must be used to get the full message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_message.html).
+  """
+
+  defstruct "@type": "richMessage", "@extra": nil, blocks: nil, is_rtl: nil, is_full: nil
+end
 defmodule InternalLinkTypeBusinessChat do
   @moduledoc  """
   The link is a link to a business chat. Use getBusinessChatLinkInfo with the provided link name to get information about the link, then open received private chat and replace chat draft with the provided text.
@@ -2991,7 +3212,7 @@ defmodule BusinessGreetingMessageSettings do
   |------|------| ------------|
   | shortcut_id | int32 | Unique quick reply shortcut identifier for the greeting messages. |
   | recipients | businessRecipients | Chosen recipients of the greeting messages. |
-  | inactivity_days | int32 | The number of days after which a chat will be considered as inactive; currently, must be on of 7, 14, 21, or 28. |
+  | inactivity_days | int32 | The number of days after which a chat will be considered as inactive; currently, must be one of 7, 14, 21, or 28. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_greeting_message_settings.html).
   """
@@ -3058,7 +3279,7 @@ defmodule InputInlineQueryResultVenue do
   | thumbnail_width | int32 | Thumbnail width, if known. |
   | thumbnail_height | int32 | Thumbnail height, if known. |
   | reply_markup | ReplyMarkup | The message reply markup; pass null if none. Must be of type <a class="el" href="classtd_1_1td__api_1_1reply_markup_inline_keyboard.html">replyMarkupInlineKeyboard</a> or null. |
-  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_live_location.html">inputMessageLiveLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_venue.html).
   """
@@ -3194,19 +3415,20 @@ defmodule ChatAdministratorRights do
   | can_restrict_members | bool | True, if the administrator can restrict, ban, or unban chat members or view supergroup statistics. |
   | can_pin_messages | bool | True, if the administrator can pin messages; applicable to basic groups and supergroups only. |
   | can_manage_topics | bool | True, if the administrator can create, rename, close, reopen, hide, and unhide forum topics; applicable to forum supergroups only. |
-  | can_promote_members | bool | True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them. |
+  | can_promote_members | bool | True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them; applicable to supergroups and channels only. |
   | can_manage_video_chats | bool | True, if the administrator can manage video chats. |
   | can_post_stories | bool | True, if the administrator can create new chat stories, or edit and delete posted stories; applicable to supergroups and channels only. |
   | can_edit_stories | bool | True, if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access story archive; applicable to supergroups and channels only. |
   | can_delete_stories | bool | True, if the administrator can delete stories posted by other users; applicable to supergroups and channels only. |
   | can_manage_direct_messages | bool | True, if the administrator can answer to channel direct messages; applicable to channels only. |
   | can_manage_tags | bool | True, if the administrator can change tags of other users; applicable to basic groups and supergroups only. |
+  | can_send_welcome_messages | bool | True, if the administrator can manage and send welcome messages. |
   | is_anonymous | bool | True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_administrator_rights.html).
   """
 
-  defstruct "@type": "chatAdministratorRights", "@extra": nil, can_manage_chat: nil, can_change_info: nil, can_post_messages: nil, can_edit_messages: nil, can_delete_messages: nil, can_invite_users: nil, can_restrict_members: nil, can_pin_messages: nil, can_manage_topics: nil, can_promote_members: nil, can_manage_video_chats: nil, can_post_stories: nil, can_edit_stories: nil, can_delete_stories: nil, can_manage_direct_messages: nil, can_manage_tags: nil, is_anonymous: nil
+  defstruct "@type": "chatAdministratorRights", "@extra": nil, can_manage_chat: nil, can_change_info: nil, can_post_messages: nil, can_edit_messages: nil, can_delete_messages: nil, can_invite_users: nil, can_restrict_members: nil, can_pin_messages: nil, can_manage_topics: nil, can_promote_members: nil, can_manage_video_chats: nil, can_post_stories: nil, can_edit_stories: nil, can_delete_stories: nil, can_manage_direct_messages: nil, can_manage_tags: nil, can_send_welcome_messages: nil, is_anonymous: nil
 end
 defmodule TargetChatTypes do
   @moduledoc  """
@@ -3258,8 +3480,8 @@ defmodule BusinessInfo do
   | Name | Type | Description |
   |------|------| ------------|
   | location | businessLocation | Location of the business; may be null if none. |
-  | opening_hours | businessOpeningHours | Opening hours of the business; may be null if none. The hours are guaranteed to be valid and has already been split by week days. |
-  | local_opening_hours | businessOpeningHours | Opening hours of the business in the local time; may be null if none. The hours are guaranteed to be valid and has already been split by week days. Local time zone identifier will be empty. An <a class="el" href="classtd_1_1td__api_1_1update_user_full_info.html">updateUserFullInfo</a> update is not triggered when value of this field changes. |
+  | opening_hours | businessOpeningHours | Opening hours of the business; may be null if none. The hours are guaranteed to be valid and have already been split by week days. |
+  | local_opening_hours | businessOpeningHours | Opening hours of the business in the local time; may be null if none. The hours are guaranteed to be valid and have already been split by week days. Local time zone identifier will be empty. An <a class="el" href="classtd_1_1td__api_1_1update_user_full_info.html">updateUserFullInfo</a> update is not triggered when value of this field changes. |
   | next_open_in | int32 | Time left before the business will open the next time, in seconds; 0 if unknown. An <a class="el" href="classtd_1_1td__api_1_1update_user_full_info.html">updateUserFullInfo</a> update is not triggered when value of this field changes. |
   | next_close_in | int32 | Time left before the business will close the next time, in seconds; 0 if unknown. An <a class="el" href="classtd_1_1td__api_1_1update_user_full_info.html">updateUserFullInfo</a> update is not triggered when value of this field changes. |
   | greeting_message_settings | businessGreetingMessageSettings | The greeting message; may be null if none or the Business account is not of the current user. |
@@ -3319,6 +3541,20 @@ defmodule UserPrivacySettingAllowUnpaidMessages do
   """
 
   defstruct "@type": "userPrivacySettingAllowUnpaidMessages", "@extra": nil
+end
+defmodule RichTextDiff do
+  @moduledoc  """
+  A rich text replacing another rich text; not supported in inputRichMessage.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text. |
+  | old_text | RichText | The old text. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_diff.html).
+  """
+
+  defstruct "@type": "richTextDiff", "@extra": nil, text: nil, old_text: nil
 end
 defmodule StoryPrivacySettingsEveryone do
   @moduledoc  """
@@ -3455,16 +3691,14 @@ defmodule InputMessageVoiceNote do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | voice_note | InputFile | Voice note to be sent. The voice note must be encoded with the Opus codec and stored inside an OGG container with a single audio channel, or be in MP3 or M4A format as regular audio. |
-  | duration | int32 | Duration of the voice note, in seconds. |
-  | waveform | bytes | Waveform representation of the voice note in 5-bit format. |
-  | caption | formattedText | Voice note caption; may be null if empty; pass null to use an empty caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
+  | voice_note | inputVoiceNote | Voice note to be sent. |
+  | caption | formattedText | Voice note caption; pass null to use an empty caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
   | self_destruct_type | MessageSelfDestructType | Voice note self-destruct type; may be null if none; pass null if none; private chats only. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_voice_note.html).
   """
 
-  defstruct "@type": "inputMessageVoiceNote", "@extra": nil, voice_note: nil, duration: nil, waveform: nil, caption: nil, self_destruct_type: nil
+  defstruct "@type": "inputMessageVoiceNote", "@extra": nil, voice_note: nil, caption: nil, self_destruct_type: nil
 end
 defmodule InputMessageDice do
   @moduledoc  """
@@ -3473,7 +3707,7 @@ defmodule InputMessageDice do
   | Name | Type | Description |
   |------|------| ------------|
   | emoji | string | Emoji on which the dice throw animation is based. |
-  | clear_draft | bool | True, if the chat message draft must be deleted. |
+  | clear_draft | bool | Pass true to delete message draft in the chat. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_dice.html).
   """
@@ -3550,7 +3784,7 @@ defmodule ThemeSettings do
 end
 defmodule UpdateActiveGiftAuctions do
   @moduledoc  """
-  The list of auctions in which participate the current user has changed.
+  The list of auctions in which the current user participates has changed.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -3570,6 +3804,19 @@ defmodule PremiumLimitTypeMonthlyPostedStoryCount do
   """
 
   defstruct "@type": "premiumLimitTypeMonthlyPostedStoryCount", "@extra": nil
+end
+defmodule InputPollMediaLink do
+  @moduledoc  """
+  A link.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | URL of the link. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_media_link.html).
+  """
+
+  defstruct "@type": "inputPollMediaLink", "@extra": nil, url: nil
 end
 defmodule InternalLinkTypeInstantView do
   @moduledoc  """
@@ -3706,7 +3953,7 @@ defmodule StarSubscriptionTypeChannel do
   | Name | Type | Description |
   |------|------| ------------|
   | can_reuse | bool | True, if the subscription is active and the user can use the method <a class="el" href="classtd_1_1td__api_1_1reuse_star_subscription.html">reuseStarSubscription</a> to join the subscribed chat again. |
-  | invite_link | string | The invite link that can be used to renew the subscription if it has been expired; may be empty, if the link isn't available anymore. |
+  | invite_link | string | The invite link that can be used to renew the subscription if it has expired; may be empty if the link isn't available anymore. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_subscription_type_channel.html).
   """
@@ -3790,15 +4037,15 @@ defmodule ReportReasonUnrelatedLocation do
 
   defstruct "@type": "reportReasonUnrelatedLocation", "@extra": nil
 end
-defmodule SessionTypeMac do
+defmodule InlineKeyboardButtonTypeDisabled do
   @moduledoc  """
-  The session is running on a Mac device.
+  A disabled button.
 
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_mac.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_disabled.html).
   """
 
-  defstruct "@type": "sessionTypeMac", "@extra": nil
+  defstruct "@type": "inlineKeyboardButtonTypeDisabled", "@extra": nil
 end
 defmodule UserPrivacySettingAllowChatInvites do
   @moduledoc  """
@@ -3810,6 +4057,21 @@ defmodule UserPrivacySettingAllowChatInvites do
 
   defstruct "@type": "userPrivacySettingAllowChatInvites", "@extra": nil
 end
+defmodule CommunityChat do
+  @moduledoc  """
+  Describes a chat in a community.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat in the community. |
+  | can_view_history | bool | True, if message history of the chat can be viewed. |
+  | is_hidden | bool | True, if the chat is hidden in the list of community chats; for community administrators only. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1community_chat.html).
+  """
+
+  defstruct "@type": "communityChat", "@extra": nil, chat_id: nil, can_view_history: nil, is_hidden: nil
+end
 defmodule PassportElementType do
   @moduledoc  """
 
@@ -3819,9 +4081,24 @@ defmodule PassportElementType do
 
   defstruct "@type": "PassportElementType", "@extra": nil
 end
+defmodule GramRevenueStatistics do
+  @moduledoc  """
+  A detailed statistics about TON Grams earned by the current user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | revenue_by_day_graph | StatisticalGraph | A graph containing amount of revenue in a given day. |
+  | status | gramRevenueStatus | Amount of earned revenue. |
+  | usd_rate | double | Current conversion rate of nanogram to USD cents. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gram_revenue_statistics.html).
+  """
+
+  defstruct "@type": "gramRevenueStatistics", "@extra": nil, revenue_by_day_graph: nil, status: nil, usd_rate: nil
+end
 defmodule PageBlockAuthorDate do
   @moduledoc  """
-  The author and publishing date of a page.
+  The author and publishing date of a page; instant view only.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -4136,6 +4413,19 @@ defmodule SentGiftUpgraded do
 
   defstruct "@type": "sentGiftUpgraded", "@extra": nil, gift: nil
 end
+defmodule InputPollMediaSticker do
+  @moduledoc  """
+  A sticker.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | sticker | inputSticker | Sticker to be sent. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_media_sticker.html).
+  """
+
+  defstruct "@type": "inputPollMediaSticker", "@extra": nil, sticker: nil
+end
 defmodule StarRevenueStatus do
   @moduledoc  """
   Contains information about Telegram Stars earned by a user or a chat.
@@ -4217,6 +4507,19 @@ defmodule StarTransactionTypeBotInvoicePurchase do
   """
 
   defstruct "@type": "starTransactionTypeBotInvoicePurchase", "@extra": nil, user_id: nil, product_info: nil
+end
+defmodule PollMediaAnimation do
+  @moduledoc  """
+  An animation.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | animation | animation | The animation. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_media_animation.html).
+  """
+
+  defstruct "@type": "pollMediaAnimation", "@extra": nil, animation: nil
 end
 defmodule InputInlineQueryResult do
   @moduledoc  """
@@ -4341,6 +4644,36 @@ defmodule InputInvoiceTelegram do
   """
 
   defstruct "@type": "inputInvoiceTelegram", "@extra": nil, purpose: nil
+end
+defmodule InputPageBlockAnchor do
+  @moduledoc  """
+  An invisible anchor.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | name | string | Name of the anchor. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_anchor.html).
+  """
+
+  defstruct "@type": "inputPageBlockAnchor", "@extra": nil, name: nil
+end
+defmodule InputAudio do
+  @moduledoc  """
+  An audio to be sent.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | audio | InputFile | Audio file to be sent. |
+  | album_cover_thumbnail | inputThumbnail | Thumbnail of the cover for the album; pass null to skip thumbnail uploading. |
+  | duration | int32 | Duration of the audio, in seconds; may be replaced by the server. |
+  | title | string | Title of the audio; 0-64 characters; may be replaced by the server. |
+  | performer | string | Performer of the audio; 0-64 characters, may be replaced by the server. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_audio.html).
+  """
+
+  defstruct "@type": "inputAudio", "@extra": nil, audio: nil, album_cover_thumbnail: nil, duration: nil, title: nil, performer: nil
 end
 defmodule ChatStatisticsInviterInfo do
   @moduledoc  """
@@ -4499,6 +4832,22 @@ defmodule BusinessFeatureEmojiStatus do
 
   defstruct "@type": "businessFeatureEmojiStatus", "@extra": nil
 end
+defmodule WebBrowserSettings do
+  @moduledoc  """
+  Describes web browser settings.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | open_external_browser | bool | True, if links are opened in an external browser by default. |
+  | external_exceptions | webDomainException | The list of websites which must always be opened in an external browser. |
+  | in_app_exceptions | webDomainException | The list of websites which must always be opened in the in-app browser. |
+  | display_close_button | bool | True, if a close button must be shown in the in-app browser; for Android app only. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_browser_settings.html).
+  """
+
+  defstruct "@type": "webBrowserSettings", "@extra": nil, open_external_browser: nil, external_exceptions: nil, in_app_exceptions: nil, display_close_button: nil
+end
 defmodule InternalLinkTypeContactsPage do
   @moduledoc  """
   The link is a link to the Contacts tab or page.
@@ -4530,7 +4879,7 @@ defmodule RichTextAnchorLink do
   |------|------| ------------|
   | text | RichText | The link text. |
   | anchor_name | string | The anchor name. If the name is empty, the link must bring back to top. |
-  | url | string | An HTTP URL, opening the anchor. |
+  | url | string | An HTTP URL that opens the anchor. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_anchor_link.html).
   """
@@ -4614,18 +4963,17 @@ defmodule PollOptionProperties do
 end
 defmodule RichTextReference do
   @moduledoc  """
-  A reference to a richTexts object on the same page.
+  A reference.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | text | RichText | The text. |
-  | anchor_name | string | The name of a <a class="el" href="classtd_1_1td__api_1_1rich_text_anchor.html">richTextAnchor</a> object, which is the first element of the target <a class="el" href="classtd_1_1td__api_1_1rich_texts.html">richTexts</a> object. |
-  | url | string | An HTTP URL, opening the reference. |
+  | name | string | Reference name. |
+  | text | RichText | Text of the reference. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_reference.html).
   """
 
-  defstruct "@type": "richTextReference", "@extra": nil, text: nil, anchor_name: nil, url: nil
+  defstruct "@type": "richTextReference", "@extra": nil, name: nil, text: nil
 end
 defmodule ProfilePhoto do
   @moduledoc  """
@@ -4645,25 +4993,9 @@ defmodule ProfilePhoto do
 
   defstruct "@type": "profilePhoto", "@extra": nil, id: nil, small: nil, big: nil, minithumbnail: nil, has_animation: nil, is_personal: nil
 end
-defmodule UpdatePendingTextMessage do
-  @moduledoc  """
-  A new pending text message was received in a chat with a bot. The message must be shown in the chat for at most getOption("pending_text_message_period") seconds, replace any other pending message with the same draft_id, and be deleted whenever any incoming message from the bot in the message thread is received.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | chat_id | int53 | Chat identifier. |
-  | forum_topic_id | int32 | The forum topic identifier in which the message will be sent; 0 if none. |
-  | draft_id | int64 | Unique identifier of the message draft within the message thread. |
-  | text | formattedText | Text of the pending message. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_pending_text_message.html).
-  """
-
-  defstruct "@type": "updatePendingTextMessage", "@extra": nil, chat_id: nil, forum_topic_id: nil, draft_id: nil, text: nil
-end
 defmodule MessageUsersShared do
   @moduledoc  """
-  The current user shared users, which were requested by the bot.
+  The current user shared users who were requested by the bot.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -4754,7 +5086,7 @@ defmodule Story do
   | can_toggle_is_posted_to_chat_page | bool | True, if the story's is_posted_to_chat_page value can be changed. |
   | can_get_statistics | bool | True, if the story statistics are available through <a class="el" href="classtd_1_1td__api_1_1get_story_statistics.html">getStoryStatistics</a>. |
   | can_get_interactions | bool | True, if interactions with the story can be received through <a class="el" href="classtd_1_1td__api_1_1get_story_interactions.html">getStoryInteractions</a>. |
-  | has_expired_viewers | bool | True, if users viewed the story can't be received, because the story has expired more than <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("story_viewers_expiration_delay") seconds ago. |
+  | has_expired_viewers | bool | True, if users who viewed the story can't be received, because the story has expired more than <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("story_viewers_expiration_delay") seconds ago. |
   | repost_info | storyRepostInfo | Information about the original story; may be null if the story wasn't reposted. |
   | interaction_info | storyInteractionInfo | Information about interactions with the story; may be null if the story isn't owned or there were no interactions. |
   | chosen_reaction_type | ReactionType | Type of the chosen reaction; may be null if none. |
@@ -5129,6 +5461,29 @@ defmodule ChatEventMemberPromoted do
 
   defstruct "@type": "chatEventMemberPromoted", "@extra": nil, user_id: nil, old_status: nil, new_status: nil
 end
+defmodule InputMessageLiveLocation do
+  @moduledoc  """
+  A message with a live location.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | location | liveLocation | Initial state of the live location to be sent. Live period must be equal to 0x7FFFFFFF for permanent live locations, or between 60 and 86400. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_live_location.html).
+  """
+
+  defstruct "@type": "inputMessageLiveLocation", "@extra": nil, location: nil
+end
+defmodule ChatJoinResultRequestSent do
+  @moduledoc  """
+  The join request was sent and have to be approved by administrators of the chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_join_result_request_sent.html).
+  """
+
+  defstruct "@type": "chatJoinResultRequestSent", "@extra": nil
+end
 defmodule SettingsSectionChatFolders do
   @moduledoc  """
   The chat folder settings section.
@@ -5165,6 +5520,15 @@ defmodule UpdateSavedAnimations do
 
   defstruct "@type": "updateSavedAnimations", "@extra": nil, animation_ids: nil
 end
+defmodule InputPageBlock do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_input_page_block.html).
+  """
+
+  defstruct "@type": "InputPageBlock", "@extra": nil
+end
 defmodule AuthorizationStateWaitPremiumPurchase do
   @moduledoc  """
   The user must buy Telegram Premium as an in-store purchase to log in. Call checkAuthenticationPremiumPurchase and then setAuthenticationPremiumPurchaseTransaction.
@@ -5172,13 +5536,14 @@ defmodule AuthorizationStateWaitPremiumPurchase do
   | Name | Type | Description |
   |------|------| ------------|
   | store_product_id | string | Identifier of the store product that must be bought. |
+  | premium_day_count | int32 | Duration of the Telegram Premium subscription after the purchase; may be 0 if Telegram Premium subscription will not be granted. |
   | support_email_address | string | Email address to use for support if the user has issues with Telegram Premium purchase. |
   | support_email_subject | string | Subject for the email sent to the support email address. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_premium_purchase.html).
   """
 
-  defstruct "@type": "authorizationStateWaitPremiumPurchase", "@extra": nil, store_product_id: nil, support_email_address: nil, support_email_subject: nil
+  defstruct "@type": "authorizationStateWaitPremiumPurchase", "@extra": nil, store_product_id: nil, premium_day_count: nil, support_email_address: nil, support_email_subject: nil
 end
 defmodule TemporaryPasswordState do
   @moduledoc  """
@@ -5193,6 +5558,15 @@ defmodule TemporaryPasswordState do
   """
 
   defstruct "@type": "temporaryPasswordState", "@extra": nil, has_password: nil, valid_for: nil
+end
+defmodule CommunityMemberStatus do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_community_member_status.html).
+  """
+
+  defstruct "@type": "CommunityMemberStatus", "@extra": nil
 end
 defmodule UpdateUnreadChatCount do
   @moduledoc  """
@@ -5520,6 +5894,15 @@ defmodule MessageDocument do
 
   defstruct "@type": "messageDocument", "@extra": nil, document: nil, caption: nil
 end
+defmodule ChatJoinRequestResult do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_chat_join_request_result.html).
+  """
+
+  defstruct "@type": "ChatJoinRequestResult", "@extra": nil
+end
 defmodule GiveawayParameters do
   @moduledoc  """
   Describes parameters of a giveaway.
@@ -5594,7 +5977,7 @@ defmodule MessagePoll do
   |------|------| ------------|
   | poll | poll | Information about the poll. |
   | description | formattedText | Description of the poll. |
-  | media | MessageContent | Media attached to the poll. Currently, can be only of the types <a class="el" href="classtd_1_1td__api_1_1message_animation.html">messageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1message_audio.html">messageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1message_document.html">messageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1message_location.html">messageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1message_photo.html">messagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1message_venue.html">messageVenue</a>, or <a class="el" href="classtd_1_1td__api_1_1message_video.html">messageVideo</a> without caption. |
+  | media | PollMedia | Media attached to the poll; may be null if none. If present, currently, can be only of the types <a class="el" href="classtd_1_1td__api_1_1poll_media_animation.html">pollMediaAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_audio.html">pollMediaAudio</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_document.html">pollMediaDocument</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_location.html">pollMediaLocation</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_photo.html">pollMediaPhoto</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_venue.html">pollMediaVenue</a>, or <a class="el" href="classtd_1_1td__api_1_1poll_media_video.html">pollMediaVideo</a>. |
   | can_add_option | bool | True, if an option can be added to the poll using <a class="el" href="classtd_1_1td__api_1_1add_poll_option.html">addPollOption</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_poll.html).
@@ -5802,6 +6185,20 @@ defmodule ChatStatisticsSupergroup do
 
   defstruct "@type": "chatStatisticsSupergroup", "@extra": nil, period: nil, member_count: nil, message_count: nil, viewer_count: nil, sender_count: nil, member_count_graph: nil, join_graph: nil, join_by_source_graph: nil, language_graph: nil, message_content_graph: nil, action_graph: nil, day_graph: nil, week_graph: nil, top_senders: nil, top_administrators: nil, top_inviters: nil
 end
+defmodule RichTextCustomEmoji do
+  @moduledoc  """
+  A custom emoji.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | custom_emoji_id | int64 | Unique identifier of the custom emoji. |
+  | alternative_text | string | Alternative text for the custom emoji. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_custom_emoji.html).
+  """
+
+  defstruct "@type": "richTextCustomEmoji", "@extra": nil, custom_emoji_id: nil, alternative_text: nil
+end
 defmodule TopChatCategoryInlineBots do
   @moduledoc  """
   A category containing frequently used chats with inline bots sorted by their usage in inline mode.
@@ -5833,22 +6230,6 @@ defmodule TestBytes do
   """
 
   defstruct "@type": "testBytes", "@extra": nil, value: nil
-end
-defmodule TonRevenueStatus do
-  @moduledoc  """
-  Contains information about Toncoins earned by the current user.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | total_amount | int64 | Total Toncoin amount earned; in the smallest units of the cryptocurrency. |
-  | balance_amount | int64 | The Toncoin amount that isn't withdrawn yet; in the smallest units of the cryptocurrency. |
-  | available_amount | int64 | The Toncoin amount that is available for withdrawal; in the smallest units of the cryptocurrency. |
-  | withdrawal_enabled | bool | True, if Toncoins can be withdrawn. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_revenue_status.html).
-  """
-
-  defstruct "@type": "tonRevenueStatus", "@extra": nil, total_amount: nil, balance_amount: nil, available_amount: nil, withdrawal_enabled: nil
 end
 defmodule MessageGift do
   @moduledoc  """
@@ -5907,6 +6288,16 @@ defmodule ChatActionUploadingPhoto do
   """
 
   defstruct "@type": "chatActionUploadingPhoto", "@extra": nil, progress: nil
+end
+defmodule SearchChatTypeFilterBot do
+  @moduledoc  """
+  Returns only private chats with bots.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_chat_type_filter_bot.html).
+  """
+
+  defstruct "@type": "searchChatTypeFilterBot", "@extra": nil
 end
 defmodule UpdateGroupCallMessagesDeleted do
   @moduledoc  """
@@ -6017,6 +6408,19 @@ defmodule PushMessageContentMessageForwards do
 
   defstruct "@type": "pushMessageContentMessageForwards", "@extra": nil, total_count: nil
 end
+defmodule PageBlockThinking do
+  @moduledoc  """
+  A "Thinking..." placeholder; for pending rich messages only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text of the placeholder. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_thinking.html).
+  """
+
+  defstruct "@type": "pageBlockThinking", "@extra": nil, text: nil
+end
 defmodule GiftBackground do
   @moduledoc  """
   Describes background of a gift.
@@ -6038,13 +6442,52 @@ defmodule PageBlockVoiceNote do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | voice_note | voiceNote | Voice note; may be null. |
-  | caption | pageBlockCaption | Voice note caption. |
+  | voice_note | voiceNote | Voice note. |
+  | caption | pageBlockCaption | Voice note caption; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_voice_note.html).
   """
 
   defstruct "@type": "pageBlockVoiceNote", "@extra": nil, voice_note: nil, caption: nil
+end
+defmodule InputPageBlockThinking do
+  @moduledoc  """
+  A "Thinking..." placeholder; for pending rich messages only; for bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text of the placeholder. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_thinking.html).
+  """
+
+  defstruct "@type": "inputPageBlockThinking", "@extra": nil, text: nil
+end
+defmodule LiveLocation do
+  @moduledoc  """
+  A live location.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | location | location | The current location. |
+  | live_period | int32 | Time relative to the message send date, for which the location can be updated, in seconds; if 0x7FFFFFFF, then location can be updated forever. |
+  | heading | int32 | The direction in which the location moves, in degrees; 1-360; 0 if unknown. |
+  | proximity_alert_radius | int32 | The maximum distance to another chat member for proximity alerts, in meters (0-100000). 0 if the notification is disabled. Can't be enabled in direct messages chats, channels and Saved Messages. Available only to the message sender. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1live_location.html).
+  """
+
+  defstruct "@type": "liveLocation", "@extra": nil, location: nil, live_period: nil, heading: nil, proximity_alert_radius: nil
+end
+defmodule CommunityMemberStatusMember do
+  @moduledoc  """
+  The user is a member of the community, without any additional privileges or restrictions.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1community_member_status_member.html).
+  """
+
+  defstruct "@type": "communityMemberStatusMember", "@extra": nil
 end
 defmodule MessageChecklist do
   @moduledoc  """
@@ -6061,7 +6504,7 @@ defmodule MessageChecklist do
 end
 defmodule PageBlockKicker do
   @moduledoc  """
-  A kicker.
+  A kicker; instant view only.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -6324,6 +6767,19 @@ defmodule CallProblemEcho do
 
   defstruct "@type": "callProblemEcho", "@extra": nil
 end
+defmodule ChatJoinResultSuccess do
+  @moduledoc  """
+  The chat was joined successfully.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_join_result_success.html).
+  """
+
+  defstruct "@type": "chatJoinResultSuccess", "@extra": nil, chat_id: nil
+end
 defmodule UpdateChatUnreadPollVoteCount do
   @moduledoc  """
   The chat unread_poll_vote_count has changed.
@@ -6473,6 +6929,16 @@ defmodule ChatEventForumTopicCreated do
 
   defstruct "@type": "chatEventForumTopicCreated", "@extra": nil, topic_info: nil
 end
+defmodule SessionDeviceTypeEdge do
+  @moduledoc  """
+  The session is running on the Edge browser.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_edge.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeEdge", "@extra": nil
+end
 defmodule ReportChatResult do
   @moduledoc  """
 
@@ -6509,7 +6975,7 @@ defmodule InputInlineQueryResultLocation do
   | thumbnail_width | int32 | Thumbnail width, if known. |
   | thumbnail_height | int32 | Thumbnail height, if known. |
   | reply_markup | ReplyMarkup | The message reply markup; pass null if none. Must be of type <a class="el" href="classtd_1_1td__api_1_1reply_markup_inline_keyboard.html">replyMarkupInlineKeyboard</a> or null. |
-  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_live_location.html">inputMessageLiveLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_location.html).
   """
@@ -6810,6 +7276,19 @@ defmodule MaskPointForehead do
   """
 
   defstruct "@type": "maskPointForehead", "@extra": nil
+end
+defmodule InputPollMediaAudio do
+  @moduledoc  """
+  An audio.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | audio | inputAudio | The audio to be sent. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_media_audio.html).
+  """
+
+  defstruct "@type": "inputPollMediaAudio", "@extra": nil, audio: nil
 end
 defmodule AuthenticationCodeTypeSms do
   @moduledoc  """
@@ -7236,6 +7715,19 @@ defmodule LoginUrlInfo do
 
   defstruct "@type": "LoginUrlInfo", "@extra": nil
 end
+defmodule InputPollMediaLocation do
+  @moduledoc  """
+  A location.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | location | location | Location to be sent. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_media_location.html).
+  """
+
+  defstruct "@type": "inputPollMediaLocation", "@extra": nil, location: nil
+end
 defmodule StarTransactionTypeGiftSale do
   @moduledoc  """
   The transaction is a sale of a received gift; relevant for regular users and channel chats only.
@@ -7269,16 +7761,6 @@ defmodule PremiumLimitTypeShareableChatFolderCount do
 
   defstruct "@type": "premiumLimitTypeShareableChatFolderCount", "@extra": nil
 end
-defmodule SessionTypeXbox do
-  @moduledoc  """
-  The session is running on an Xbox console.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_xbox.html).
-  """
-
-  defstruct "@type": "sessionTypeXbox", "@extra": nil
-end
 defmodule ChatMembersFilterAdministrators do
   @moduledoc  """
   Returns the owner and administrators.
@@ -7291,7 +7773,7 @@ defmodule ChatMembersFilterAdministrators do
 end
 defmodule PageBlockCover do
   @moduledoc  """
-  A page cover.
+  A page cover; instant view only.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -7309,14 +7791,15 @@ defmodule PageBlockVideo do
   | Name | Type | Description |
   |------|------| ------------|
   | video | video | Video file; may be null. |
-  | caption | pageBlockCaption | Video caption. |
+  | caption | pageBlockCaption | Video caption; may be null if none. |
   | need_autoplay | bool | True, if the video must be played automatically. |
   | is_looped | bool | True, if the video must be looped. |
+  | has_spoiler | bool | True, if the video preview must be covered by a spoiler animation. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_video.html).
   """
 
-  defstruct "@type": "pageBlockVideo", "@extra": nil, video: nil, caption: nil, need_autoplay: nil, is_looped: nil
+  defstruct "@type": "pageBlockVideo", "@extra": nil, video: nil, caption: nil, need_autoplay: nil, is_looped: nil, has_spoiler: nil
 end
 defmodule MessageScreenshotTaken do
   @moduledoc  """
@@ -7373,6 +7856,19 @@ defmodule ChatEventPollStopped do
   """
 
   defstruct "@type": "chatEventPollStopped", "@extra": nil, message: nil
+end
+defmodule UpdateGramRevenueStatus do
+  @moduledoc  """
+  The TON Gram revenue earned by the current user has changed. If Gram transaction screen of the chat is opened, then getTonTransactions may be called to fetch new transactions.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | status | gramRevenueStatus | New Gram revenue status. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_gram_revenue_status.html).
+  """
+
+  defstruct "@type": "updateGramRevenueStatus", "@extra": nil, status: nil
 end
 defmodule SettingsSectionSendGift do
   @moduledoc  """
@@ -7446,6 +7942,16 @@ defmodule LanguagePackStrings do
 
   defstruct "@type": "languagePackStrings", "@extra": nil, strings: nil
 end
+defmodule ChatJoinResultDeclined do
+  @moduledoc  """
+  The join was declined by the guard bot.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_join_result_declined.html).
+  """
+
+  defstruct "@type": "chatJoinResultDeclined", "@extra": nil
+end
 defmodule PushMessageContentSuggestProfilePhoto do
   @moduledoc  """
   A profile photo was suggested to the user.
@@ -7465,6 +7971,23 @@ defmodule LinkPreviewTypePremiumGiftCode do
   """
 
   defstruct "@type": "linkPreviewTypePremiumGiftCode", "@extra": nil
+end
+defmodule InputPageBlockMap do
+  @moduledoc  """
+  A map. The map's width and height must not exceed 10000 in total. Width and height ratio must be at most 20.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | location | location | Location of the map center. |
+  | zoom | int32 | Map zoom level; 0-24. |
+  | width | int32 | Map width; 0-10000. |
+  | height | int32 | Map height; 0-10000. |
+  | caption | pageBlockCaption | Block caption; pass null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_map.html).
+  """
+
+  defstruct "@type": "inputPageBlockMap", "@extra": nil, location: nil, zoom: nil, width: nil, height: nil, caption: nil
 end
 defmodule CallbackQueryPayloadDataWithPassword do
   @moduledoc  """
@@ -7533,15 +8056,18 @@ defmodule AffiliateType do
 
   defstruct "@type": "AffiliateType", "@extra": nil
 end
-defmodule SessionTypeIpad do
+defmodule InlineMessageId do
   @moduledoc  """
-  The session is running on an iPad device.
+  Contains identifier of a sent guest message.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | string | Unique identifier for the message. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_ipad.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_message_id.html).
   """
 
-  defstruct "@type": "sessionTypeIpad", "@extra": nil
+  defstruct "@type": "inlineMessageId", "@extra": nil, id: nil
 end
 defmodule ChatFolderInviteLinks do
   @moduledoc  """
@@ -7585,7 +8111,7 @@ defmodule StoryAreaTypeMessage do
 end
 defmodule PageBlockChatLink do
   @moduledoc  """
-  A link to a chat.
+  A link to a chat; instant view only.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -7621,7 +8147,7 @@ defmodule ChatActiveStories do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat that posted the stories. |
   | list | StoryList | Identifier of the story list in which the stories are shown; may be null if the stories aren't shown in a story list. |
-  | order | int53 | A parameter used to determine order of the stories in the story list; 0 if the stories doesn't need to be shown in the story list. Stories must be sorted by the pair (order, story_poster_chat_id) in descending order. |
+  | order | int53 | A parameter used to determine order of the stories in the story list; 0 if the stories don't need to be shown in the story list. Stories must be sorted by the pair (order, story_poster_chat_id) in descending order. |
   | can_be_archived | bool | True, if the stories are shown in the main story list and can be archived; otherwise, the stories can be hidden from the main story list only by calling <a class="el" href="classtd_1_1td__api_1_1remove_top_chat.html">removeTopChat</a> with <a class="el" href="classtd_1_1td__api_1_1top_chat_category_users.html">topChatCategoryUsers</a> and the chat_id. Stories of the current user can't be archived nor hidden using <a class="el" href="classtd_1_1td__api_1_1remove_top_chat.html">removeTopChat</a>. |
   | max_read_story_id | int32 | Identifier of the last read active story. |
   | stories | storyInfo | Basic information about the stories; use <a class="el" href="classtd_1_1td__api_1_1get_story.html">getStory</a> to get full information about the stories. The stories are in chronological order (i.e., in order of increasing story identifiers). |
@@ -7786,7 +8312,7 @@ defmodule InviteGroupCallParticipantResult do
 end
 defmodule RichTextEmailAddress do
   @moduledoc  """
-  A rich text email link.
+  A rich text email address.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -7842,7 +8368,7 @@ defmodule PremiumSourceStoryFeature do
 end
 defmodule SupergroupMembersFilterContacts do
   @moduledoc  """
-  Returns contacts of the user, which are members of the supergroup or channel.
+  Returns contacts of the current user who are members of the supergroup or channel.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -7866,6 +8392,16 @@ defmodule PushMessageContentStory do
   """
 
   defstruct "@type": "pushMessageContentStory", "@extra": nil, is_mention: nil, is_pinned: nil
+end
+defmodule WebBrowserTypeExternal do
+  @moduledoc  """
+  An external web browser.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_browser_type_external.html).
+  """
+
+  defstruct "@type": "webBrowserTypeExternal", "@extra": nil
 end
 defmodule TimeZones do
   @moduledoc  """
@@ -7973,7 +8509,7 @@ defmodule InputPassportElementRentalAgreement do
 end
 defmodule ChatMemberStatusAdministrator do
   @moduledoc  """
-  The user is a member of the chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage video chats. In supergroups and channels, there are more detailed options for administrator privileges.
+  The user is a member of the chat and has some additional privileges. In basic groups, administrators have all applicable rights. In supergroups and channels, any subset of the rights can be chosen for an administrator.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -8040,7 +8576,7 @@ defmodule ReactionNotificationSettings do
   | message_reaction_source | ReactionNotificationSource | Source of message reactions for which notifications are shown. |
   | story_reaction_source | ReactionNotificationSource | Source of story reactions for which notifications are shown. |
   | poll_vote_source | ReactionNotificationSource | Source of poll votes for which notifications are shown. |
-  | sound_id | int64 | Identifier of the notification sound to be played; 0 if sound is disabled. |
+  | sound_id | int64 | Identifier of the notification sound to be played; 0 if sound is disabled; pass -1 to use the app-dependent default sound. |
   | show_preview | bool | True, if reaction sender and emoji must be displayed in notifications. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_notification_settings.html).
@@ -8050,7 +8586,7 @@ defmodule ReactionNotificationSettings do
 end
 defmodule PageBlockSubtitle do
   @moduledoc  """
-  The subtitle of a page.
+  The subtitle of a page; instant view only.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -8098,6 +8634,24 @@ defmodule RevenueWithdrawalStateSucceeded do
 
   defstruct "@type": "revenueWithdrawalStateSucceeded", "@extra": nil, date: nil, url: nil
 end
+defmodule InputAnimation do
+  @moduledoc  """
+  An animation to be sent.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | animation | InputFile | Animation file to be sent. |
+  | thumbnail | inputThumbnail | Animation thumbnail; pass null to skip thumbnail uploading. |
+  | added_sticker_file_ids | int32 | File identifiers of the stickers added to the animation, if applicable. |
+  | duration | int32 | Duration of the animation, in seconds; may be replaced by the server. |
+  | width | int32 | Width of the animation; may be replaced by the server. |
+  | height | int32 | Height of the animation; may be replaced by the server. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_animation.html).
+  """
+
+  defstruct "@type": "inputAnimation", "@extra": nil, animation: nil, thumbnail: nil, added_sticker_file_ids: nil, duration: nil, width: nil, height: nil
+end
 defmodule InternalLinkTypeUnknownDeepLink do
   @moduledoc  """
   The link is an unknown tg: link. Call getDeepLinkInfo to process the link.
@@ -8125,22 +8679,22 @@ defmodule RestrictionInfo do
 
   defstruct "@type": "restrictionInfo", "@extra": nil, restriction_reason: nil, has_sensitive_content: nil
 end
-defmodule UpdateTonRevenueStatus do
+defmodule MessageRichMessage do
   @moduledoc  """
-  The Toncoin revenue earned by the current user has changed. If Toncoin transaction screen of the chat is opened, then getTonTransactions may be called to fetch new transactions.
+  A rich message; the message can have multiple media of the same type, all of which must be shown in the corresponding profile tab.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | status | tonRevenueStatus | New Toncoin revenue status. |
+  | message | richMessage | The rich message. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_ton_revenue_status.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_rich_message.html).
   """
 
-  defstruct "@type": "updateTonRevenueStatus", "@extra": nil, status: nil
+  defstruct "@type": "messageRichMessage", "@extra": nil, message: nil
 end
 defmodule LinkPreviewTypeArticle do
   @moduledoc  """
-  The link is a link to a web site.
+  The link is a link to a website.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -8164,6 +8718,20 @@ defmodule LinkPreviewTypeStory do
   """
 
   defstruct "@type": "linkPreviewTypeStory", "@extra": nil, story_poster_chat_id: nil, story_id: nil
+end
+defmodule RichTextBankCardNumber do
+  @moduledoc  """
+  A bank card number.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text. |
+  | bank_card_number | string | The number of the bank card. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_bank_card_number.html).
+  """
+
+  defstruct "@type": "richTextBankCardNumber", "@extra": nil, text: nil, bank_card_number: nil
 end
 defmodule PremiumFeatureUpgradedStories do
   @moduledoc  """
@@ -8252,14 +8820,14 @@ defmodule TonTransactionTypeUpgradedGiftSale do
   |------|------| ------------|
   | user_id | int53 | Identifier of the user who bought the gift. |
   | gift | upgradedGift | The gift. |
-  | commission_per_mille | int32 | The number of Toncoins received by the Telegram for each 1000 Toncoins received by the seller of the gift. |
-  | commission_toncoin_amount | int53 | The Toncoin amount that was received by the Telegram; in the smallest units of the currency. |
+  | commission_per_mille | int32 | The number of Grams received by the Telegram for each 1000 Grams received by the seller of the gift. |
+  | commission_gram_amount | int53 | The Gram amount that was received by the Telegram; in the smallest units of the currency. |
   | via_offer | bool | True, if the gift was sold through a purchase offer. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transaction_type_upgraded_gift_sale.html).
   """
 
-  defstruct "@type": "tonTransactionTypeUpgradedGiftSale", "@extra": nil, user_id: nil, gift: nil, commission_per_mille: nil, commission_toncoin_amount: nil, via_offer: nil
+  defstruct "@type": "tonTransactionTypeUpgradedGiftSale", "@extra": nil, user_id: nil, gift: nil, commission_per_mille: nil, commission_gram_amount: nil, via_offer: nil
 end
 defmodule PushMessageContentChatSetBackground do
   @moduledoc  """
@@ -8368,7 +8936,7 @@ defmodule ChatActionTyping do
 end
 defmodule PageBlockHeader do
   @moduledoc  """
-  A header.
+  A header; instant view only.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -8484,6 +9052,16 @@ defmodule PaidReactionType do
 
   defstruct "@type": "PaidReactionType", "@extra": nil
 end
+defmodule PremiumLimitTypeCustomTextCompositionStyleCount do
+  @moduledoc  """
+  The maximum number of added text composition styles.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_custom_text_composition_style_count.html).
+  """
+
+  defstruct "@type": "premiumLimitTypeCustomTextCompositionStyleCount", "@extra": nil
+end
 defmodule ChatBackground do
   @moduledoc  """
   Describes a background set for a specific chat.
@@ -8507,6 +9085,21 @@ defmodule UpgradedGiftAttributeRarityRare do
   """
 
   defstruct "@type": "upgradedGiftAttributeRarityRare", "@extra": nil
+end
+defmodule RichTextReferenceLink do
+  @moduledoc  """
+  A link to a reference on the same page.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | The link text. |
+  | reference_name | string | The reference name. |
+  | url | string | An HTTP URL that opens the reference. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_reference_link.html).
+  """
+
+  defstruct "@type": "richTextReferenceLink", "@extra": nil, text: nil, reference_name: nil, url: nil
 end
 defmodule MessageFileTypeUnknown do
   @moduledoc  """
@@ -8655,6 +9248,23 @@ defmodule ConnectedAffiliatePrograms do
   """
 
   defstruct "@type": "connectedAffiliatePrograms", "@extra": nil, total_count: nil, programs: nil, next_offset: nil
+end
+defmodule UpdateUserSubscription do
+  @moduledoc  """
+  Subscription of a user to the bot was changed; for bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | user_id | int53 | Identifier of the user. |
+  | payload | string | Bot-specified subscription invoice payload. |
+  | is_canceled | bool | True, if the subscription was canceled. |
+  | is_restored | bool | True, if the subscription was restored. |
+  | is_payment_failed | bool | True, if the payment for the subscription has failed. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_user_subscription.html).
+  """
+
+  defstruct "@type": "updateUserSubscription", "@extra": nil, user_id: nil, payload: nil, is_canceled: nil, is_restored: nil, is_payment_failed: nil
 end
 defmodule Animations do
   @moduledoc  """
@@ -8860,15 +9470,14 @@ defmodule ChatBoost do
 
   defstruct "@type": "chatBoost", "@extra": nil, id: nil, count: nil, source: nil, start_date: nil, expiration_date: nil
 end
-defmodule SessionTypeLinux do
+defmodule PollVoteRestrictionReason do
   @moduledoc  """
-  The session is running on a Linux device.
 
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_linux.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_poll_vote_restriction_reason.html).
   """
 
-  defstruct "@type": "sessionTypeLinux", "@extra": nil
+  defstruct "@type": "PollVoteRestrictionReason", "@extra": nil
 end
 defmodule PremiumFeatureTextComposition do
   @moduledoc  """
@@ -8916,6 +9525,23 @@ defmodule MessagePaymentSuccessfulBot do
 
   defstruct "@type": "messagePaymentSuccessfulBot", "@extra": nil, currency: nil, total_amount: nil, subscription_until_date: nil, is_recurring: nil, is_first_recurring: nil, invoice_payload: nil, shipping_option_id: nil, order_info: nil, telegram_payment_charge_id: nil, provider_payment_charge_id: nil
 end
+defmodule InputPageBlockListItem do
+  @moduledoc  """
+  Describes an item of a list page block to be sent.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | blocks | InputPageBlock | Item blocks. |
+  | has_checkbox | bool | True, if the item has a checkbox. |
+  | is_checked | bool | True, if the item is checked. |
+  | value | int32 | Value of the item; pass 0 for unordered lists. |
+  | type | string | Type of the item numbering type; must be one of "a" for a lowercase letter, "A" for an uppercase letter, "i" for lowercase Roman numerals, "I" for uppercase Roman numerals, "1" for decimal numbers, or empty for unordered lists. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_list_item.html).
+  """
+
+  defstruct "@type": "inputPageBlockListItem", "@extra": nil, blocks: nil, has_checkbox: nil, is_checked: nil, value: nil, type: nil
+end
 defmodule Gift do
   @moduledoc  """
   Describes a gift that can be sent to another user or channel chat.
@@ -8935,10 +9561,10 @@ defmodule Gift do
   | auction_info | giftAuction | Information about the auction on which the gift can be purchased; may be null if the gift can be purchased directly. |
   | next_send_date | int32 | Point in time (Unix timestamp) when the gift can be sent next time by the current user; may be 0 or a date in the past. If the date is in the future, then call <a class="el" href="classtd_1_1td__api_1_1can_send_gift.html">canSendGift</a> to get the reason, why the gift can't be sent now. |
   | user_limits | giftPurchaseLimits | Number of times the gift can be purchased by the current user; may be null if not limited. |
-  | overall_limits | giftPurchaseLimits | Number of times the gift can be purchased all users; may be null if not limited. |
+  | overall_limits | giftPurchaseLimits | Number of times the gift can be purchased by all users; may be null if not limited. |
   | background | giftBackground | Background of the gift. |
-  | first_send_date | int32 | Point in time (Unix timestamp) when the gift was send for the first time; for sold out gifts only. |
-  | last_send_date | int32 | Point in time (Unix timestamp) when the gift was send for the last time; for sold out gifts only. |
+  | first_send_date | int32 | Point in time (Unix timestamp) when the gift was sent for the first time; for sold out gifts only. |
+  | last_send_date | int32 | Point in time (Unix timestamp) when the gift was sent for the last time; for sold out gifts only. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift.html).
   """
@@ -8973,6 +9599,16 @@ defmodule BotMediaPreview do
 
   defstruct "@type": "botMediaPreview", "@extra": nil, date: nil, content: nil
 end
+defmodule ChatJoinRequestResultDeclined do
+  @moduledoc  """
+  The request was declined.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_join_request_result_declined.html).
+  """
+
+  defstruct "@type": "chatJoinRequestResultDeclined", "@extra": nil
+end
 defmodule BotCommandScopeChat do
   @moduledoc  """
   A scope covering all members of a chat.
@@ -8995,6 +9631,16 @@ defmodule SearchMessagesFilterPoll do
   """
 
   defstruct "@type": "searchMessagesFilterPoll", "@extra": nil
+end
+defmodule PollVoteRestrictionReasonYetUnsent do
+  @moduledoc  """
+  The poll isn't sent yet.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_vote_restriction_reason_yet_unsent.html).
+  """
+
+  defstruct "@type": "pollVoteRestrictionReasonYetUnsent", "@extra": nil
 end
 defmodule SuggestedPostPriceStar do
   @moduledoc  """
@@ -9048,6 +9694,16 @@ defmodule ReadDatePrivacySettings do
 
   defstruct "@type": "readDatePrivacySettings", "@extra": nil, show_read_date: nil
 end
+defmodule SessionDeviceTypeUnknown do
+  @moduledoc  """
+  The session is running on an unknown type of device.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_unknown.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeUnknown", "@extra": nil
+end
 defmodule MessageSourceHistoryPreview do
   @moduledoc  """
   The message is from chat, message thread or forum topic history preview.
@@ -9060,20 +9716,19 @@ defmodule MessageSourceHistoryPreview do
 end
 defmodule InputSticker do
   @moduledoc  """
-  A sticker to be added to a sticker set.
+  A sticker to be sent.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | sticker | InputFile | File with the sticker; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side. See <a href="https://core.telegram.org/animated_stickers">https://core.telegram.org/animated_stickers</a>#technical-requirements for technical requirements. |
-  | format | StickerFormat | Format of the sticker. |
-  | emojis | string | String with 1-20 emoji corresponding to the sticker. |
-  | mask_position | maskPosition | Position where the mask is placed; pass null if not specified. |
-  | keywords | string | List of up to 20 keywords with total length up to 64 characters, which can be used to find the sticker. |
+  | sticker | InputFile | Sticker to be sent. |
+  | thumbnail | inputThumbnail | Sticker thumbnail; pass null to skip thumbnail uploading. |
+  | width | int32 | Sticker width. |
+  | height | int32 | Sticker height. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_sticker.html).
   """
 
-  defstruct "@type": "inputSticker", "@extra": nil, sticker: nil, format: nil, emojis: nil, mask_position: nil, keywords: nil
+  defstruct "@type": "inputSticker", "@extra": nil, sticker: nil, thumbnail: nil, width: nil, height: nil
 end
 defmodule PremiumLimitTypeSimilarChatCount do
   @moduledoc  """
@@ -9092,13 +9747,19 @@ defmodule TextCompositionStyle do
   | Name | Type | Description |
   |------|------| ------------|
   | name | string | Name of the style. |
-  | custom_emoji_id | int64 | Identifier of the custom emoji corresponding to the style. |
+  | custom_emoji_id | int64 | Identifier of the custom emoji corresponding to the style; 0 if none. |
   | title | string | Title of the style in the user application's language. |
+  | is_custom | bool | True, if the style is created by a user. |
+  | is_creator | bool | True, if the user is creator of the style. |
+  | install_count | int32 | Number of users that installed the style; for created custom styles only; 0 if unknown. |
+  | prompt | string | Prompt of the style; for created custom styles only. |
+  | creator_user_id | int53 | User identifier of the creator of the style; 0 if none or unknown. |
+  | english_example | textCompositionStyleExample | Example of the style usage in English; may be null if unknown. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_composition_style.html).
   """
 
-  defstruct "@type": "textCompositionStyle", "@extra": nil, name: nil, custom_emoji_id: nil, title: nil
+  defstruct "@type": "textCompositionStyle", "@extra": nil, name: nil, custom_emoji_id: nil, title: nil, is_custom: nil, is_creator: nil, install_count: nil, prompt: nil, creator_user_id: nil, english_example: nil
 end
 defmodule CallProblemDropped do
   @moduledoc  """
@@ -9109,6 +9770,20 @@ defmodule CallProblemDropped do
   """
 
   defstruct "@type": "callProblemDropped", "@extra": nil
+end
+defmodule InputRichMessageMedia do
+  @moduledoc  """
+  Describes a media to be used in a sent rich message.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | string | Unique identifier of the media; 1-64 base64url characters. |
+  | media | InputMessageContent | The media to send. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_animation.html">inputMessageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_audio.html">inputMessageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_photo.html">inputMessagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video.html">inputMessageVideo</a>, or <a class="el" href="classtd_1_1td__api_1_1input_message_voice_note.html">inputMessageVoiceNote</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_rich_message_media.html).
+  """
+
+  defstruct "@type": "inputRichMessageMedia", "@extra": nil, id: nil, media: nil
 end
 defmodule FileTypeSelfDestructingVideoNote do
   @moduledoc  """
@@ -9164,6 +9839,15 @@ defmodule Outline do
   """
 
   defstruct "@type": "outline", "@extra": nil, paths: nil
+end
+defmodule ChatJoinResult do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_chat_join_result.html).
+  """
+
+  defstruct "@type": "ChatJoinResult", "@extra": nil
 end
 defmodule StarTransactionTypePremiumBotDeposit do
   @moduledoc  """
@@ -9358,7 +10042,7 @@ defmodule InputMessageText do
   |------|------| ------------|
   | text | formattedText | Formatted text to be sent; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote, Code, Pre, PreCode, TextUrl, MentionName, and DateTime entities are allowed to be specified manually. |
   | link_preview_options | linkPreviewOptions | Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options. |
-  | clear_draft | bool | True, if the chat message draft must be deleted. |
+  | clear_draft | bool | Pass true to delete message draft in the chat. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_text.html).
   """
@@ -9449,7 +10133,7 @@ defmodule InputCall do
 end
 defmodule GiveawayParticipantStatusDisallowedCountry do
   @moduledoc  """
-  The user can't participate in the giveaway, because they phone number is from a disallowed country.
+  The user can't participate in the giveaway, because their phone number is from a disallowed country.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -9511,6 +10195,15 @@ defmodule SavedMessagesTopic do
 
   defstruct "@type": "savedMessagesTopic", "@extra": nil, id: nil, type: nil, is_pinned: nil, order: nil, last_message: nil, draft_message: nil
 end
+defmodule InputPollMedia do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_input_poll_media.html).
+  """
+
+  defstruct "@type": "InputPollMedia", "@extra": nil
+end
 defmodule UpdateSecretChat do
   @moduledoc  """
   Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the application.
@@ -9539,6 +10232,16 @@ defmodule BackgroundTypePattern do
   """
 
   defstruct "@type": "backgroundTypePattern", "@extra": nil, fill: nil, intensity: nil, is_inverted: nil, is_moving: nil
+end
+defmodule SessionDeviceTypeFirefox do
+  @moduledoc  """
+  The session is running on the Firefox browser.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_firefox.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeFirefox", "@extra": nil
 end
 defmodule InputCredentialsNew do
   @moduledoc  """
@@ -9625,6 +10328,19 @@ defmodule InputMessageInvoice do
 
   defstruct "@type": "inputMessageInvoice", "@extra": nil, invoice: nil, title: nil, description: nil, photo_url: nil, photo_size: nil, photo_width: nil, photo_height: nil, payload: nil, provider_token: nil, provider_data: nil, start_parameter: nil, paid_media: nil, paid_media_caption: nil
 end
+defmodule LinkPreviewTypeTextCompositionStyle do
+  @moduledoc  """
+  The link is a link to a text composition style.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | custom_emoji_id | int64 | Identifier of the custom emoji corresponding to the style; 0 if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_text_composition_style.html).
+  """
+
+  defstruct "@type": "linkPreviewTypeTextCompositionStyle", "@extra": nil, custom_emoji_id: nil
+end
 defmodule ReportChatResultMessagesRequired do
   @moduledoc  """
   The user must choose messages to report and repeat the reportChat request with the chosen messages.
@@ -9684,7 +10400,7 @@ defmodule StorePaymentPurposePremiumGift do
   |------|------| ------------|
   | currency | string | ISO 4217 currency code of the payment currency. |
   | amount | int53 | Paid amount, in the smallest units of the currency. |
-  | user_id | int53 | Identifiers of the user which will receive Telegram Premium. |
+  | user_id | int53 | Identifier of the user who will receive Telegram Premium. |
   | text | formattedText | Text to show along with the gift codes; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_premium_gift.html).
@@ -9883,6 +10599,19 @@ defmodule BotCommandScopeAllChatAdministrators do
   """
 
   defstruct "@type": "botCommandScopeAllChatAdministrators", "@extra": nil
+end
+defmodule UpdateOwnedGramCount do
+  @moduledoc  """
+  The number of TON Grams owned by the current user has changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gram_amount | int53 | The new amount of owned Grams; in the smallest units of the cryptocurrency. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_owned_gram_count.html).
+  """
+
+  defstruct "@type": "updateOwnedGramCount", "@extra": nil, gram_amount: nil
 end
 defmodule KeyboardButtonTypeRequestChat do
   @moduledoc  """
@@ -10177,6 +10906,29 @@ defmodule UpgradedGiftBackdropCount do
 
   defstruct "@type": "upgradedGiftBackdropCount", "@extra": nil, backdrop: nil, total_count: nil
 end
+defmodule MessageChatAddedToCommunity do
+  @moduledoc  """
+  The chat was added to a community.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | community_id | int53 | Identifier of the community to which the chat was added. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_added_to_community.html).
+  """
+
+  defstruct "@type": "messageChatAddedToCommunity", "@extra": nil, community_id: nil
+end
+defmodule SessionDeviceTypeChrome do
+  @moduledoc  """
+  The session is running on the Chrome browser.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_chrome.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeChrome", "@extra": nil
+end
 defmodule InlineKeyboardButtonTypeWebApp do
   @moduledoc  """
   A button that opens a Web App by calling openWebApp.
@@ -10275,12 +11027,7 @@ defmodule InputMessageAnimation do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | animation | InputFile | Animation file to be sent. |
-  | thumbnail | inputThumbnail | Animation thumbnail; pass null to skip thumbnail uploading. |
-  | added_sticker_file_ids | int32 | File identifiers of the stickers added to the animation, if applicable. |
-  | duration | int32 | Duration of the animation, in seconds. |
-  | width | int32 | Width of the animation; may be replaced by the server. |
-  | height | int32 | Height of the animation; may be replaced by the server. |
+  | animation | inputAnimation | The animation to be sent. |
   | caption | formattedText | Animation caption; pass null to use an empty caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
   | show_caption_above_media | bool | True, if the caption must be shown above the animation; otherwise, the caption must be shown below the animation; not supported in secret chats. |
   | has_spoiler | bool | True, if the animation preview must be covered by a spoiler animation; not supported in secret chats. |
@@ -10288,7 +11035,7 @@ defmodule InputMessageAnimation do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_animation.html).
   """
 
-  defstruct "@type": "inputMessageAnimation", "@extra": nil, animation: nil, thumbnail: nil, added_sticker_file_ids: nil, duration: nil, width: nil, height: nil, caption: nil, show_caption_above_media: nil, has_spoiler: nil
+  defstruct "@type": "inputMessageAnimation", "@extra": nil, animation: nil, caption: nil, show_caption_above_media: nil, has_spoiler: nil
 end
 defmodule PassportElementsWithErrors do
   @moduledoc  """
@@ -10424,6 +11171,19 @@ defmodule PushMessageContentContactRegistered do
 
   defstruct "@type": "pushMessageContentContactRegistered", "@extra": nil, as_premium_account: nil
 end
+defmodule PollVoteRestrictionReasonMembershipRequired do
+  @moduledoc  """
+  The user must be a member of the chat for at least a day to vote.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Identifier of the chat which must be joined for at least a day before the user can vote. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_vote_restriction_reason_membership_required.html).
+  """
+
+  defstruct "@type": "pollVoteRestrictionReasonMembershipRequired", "@extra": nil, chat_id: nil
+end
 defmodule MessageImportInfo do
   @moduledoc  """
   Contains information about a message created with importMessages.
@@ -10484,6 +11244,19 @@ defmodule PassportElementEmailAddress do
 
   defstruct "@type": "passportElementEmailAddress", "@extra": nil, email_address: nil
 end
+defmodule InputPageBlockFooter do
+  @moduledoc  """
+  The footer of the page.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | footer | RichText | Footer. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_footer.html).
+  """
+
+  defstruct "@type": "inputPageBlockFooter", "@extra": nil, footer: nil
+end
 defmodule BusinessMessage do
   @moduledoc  """
   Describes a message from a business account as received by a bot.
@@ -10523,6 +11296,16 @@ defmodule ReactionTypeEmoji do
   """
 
   defstruct "@type": "reactionTypeEmoji", "@extra": nil, emoji: nil
+end
+defmodule SessionDeviceTypeAndroid do
+  @moduledoc  """
+  The session is running on an Android device.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_android.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeAndroid", "@extra": nil
 end
 defmodule StoryOriginPublicStory do
   @moduledoc  """
@@ -10569,23 +11352,33 @@ defmodule UpgradedGiftAttributeIdSymbol do
 
   defstruct "@type": "upgradedGiftAttributeIdSymbol", "@extra": nil, sticker_id: nil
 end
+defmodule RichMessageSourceMarkdown do
+  @moduledoc  """
+  A Markdown-formatted rich message; for bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | string | Markdown-formatted text of the message. |
+  | media | inputRichMessageMedia | Media used in the message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_message_source_markdown.html).
+  """
+
+  defstruct "@type": "richMessageSourceMarkdown", "@extra": nil, text: nil, media: nil
+end
 defmodule InputMessageAudio do
   @moduledoc  """
   An audio message.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | audio | InputFile | Audio file to be sent. |
-  | album_cover_thumbnail | inputThumbnail | Thumbnail of the cover for the album; pass null to skip thumbnail uploading. |
-  | duration | int32 | Duration of the audio, in seconds; may be replaced by the server. |
-  | title | string | Title of the audio; 0-64 characters; may be replaced by the server. |
-  | performer | string | Performer of the audio; 0-64 characters, may be replaced by the server. |
+  | audio | inputAudio | Audio to be sent. |
   | caption | formattedText | Audio caption; pass null to use an empty caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_audio.html).
   """
 
-  defstruct "@type": "inputMessageAudio", "@extra": nil, audio: nil, album_cover_thumbnail: nil, duration: nil, title: nil, performer: nil, caption: nil
+  defstruct "@type": "inputMessageAudio", "@extra": nil, audio: nil, caption: nil
 end
 defmodule SuggestedPostStateApproved do
   @moduledoc  """
@@ -10672,7 +11465,7 @@ defmodule InputPassportElementErrorSource do
 end
 defmodule TonTransactionTypeFragmentDeposit do
   @moduledoc  """
-  The transaction is a deposit of Toncoins from Fragment.
+  The transaction is a deposit of Grams from Fragment.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -10738,7 +11531,7 @@ defmodule ChatEventMessageUnpinned do
 end
 defmodule SupergroupMembersFilterMention do
   @moduledoc  """
-  Returns users which can be mentioned in the supergroup.
+  Returns users who can be mentioned in the supergroup.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -10825,7 +11618,7 @@ defmodule InputInlineQueryResultAnimation do
   | video_width | int32 | Width of the video. |
   | video_height | int32 | Height of the video. |
   | reply_markup | ReplyMarkup | The message reply markup; pass null if none. Must be of type <a class="el" href="classtd_1_1td__api_1_1reply_markup_inline_keyboard.html">replyMarkupInlineKeyboard</a> or null. |
-  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_animation.html">inputMessageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_animation.html">inputMessageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_live_location.html">inputMessageLiveLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_animation.html).
   """
@@ -10919,6 +11712,34 @@ defmodule ChatFolderInfo do
 
   defstruct "@type": "chatFolderInfo", "@extra": nil, id: nil, name: nil, icon: nil, color_id: nil, is_shareable: nil, has_my_invite_links: nil
 end
+defmodule InputPageBlockPhoto do
+  @moduledoc  """
+  A photo.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | inputPhoto | The photo to be sent. |
+  | caption | pageBlockCaption | Photo caption; pass null if none. |
+  | has_spoiler | bool | True, if the photo preview must be covered by a spoiler animation. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_photo.html).
+  """
+
+  defstruct "@type": "inputPageBlockPhoto", "@extra": nil, photo: nil, caption: nil, has_spoiler: nil
+end
+defmodule SuggestedPostPriceGram do
+  @moduledoc  """
+  Describes price of a suggested post in TON Grams.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gram_cent_count | int53 | The amount of 1/100 of Gram expected to be paid for the post; <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_gram_cent_count_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_gram_cent_count_max"). |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_post_price_gram.html).
+  """
+
+  defstruct "@type": "suggestedPostPriceGram", "@extra": nil, gram_cent_count: nil
+end
 defmodule PremiumLimitTypeStoryCaptionLength do
   @moduledoc  """
   The maximum length of captions of posted stories.
@@ -10963,11 +11784,11 @@ defmodule ScopeNotificationSettings do
   | Name | Type | Description |
   |------|------| ------------|
   | mute_for | int32 | Time left before notifications will be unmuted, in seconds. |
-  | sound_id | int64 | Identifier of the notification sound to be played; 0 if sound is disabled. |
+  | sound_id | int64 | Identifier of the notification sound to be played; 0 if sound is disabled; pass -1 to use the app-dependent default sound. |
   | show_preview | bool | True, if message content must be displayed in notifications. |
   | use_default_mute_stories | bool | If true, story notifications are received only for the first 5 chats from <a class="el" href="classtd_1_1td__api_1_1top_chat_category_users.html">topChatCategoryUsers</a> regardless of the value of mute_stories. |
   | mute_stories | bool | True, if story notifications are disabled. |
-  | story_sound_id | int64 | Identifier of the notification sound to be played for stories; 0 if sound is disabled. |
+  | story_sound_id | int64 | Identifier of the notification sound to be played for stories; 0 if sound is disabled; pass -1 to use the app-dependent default sound. |
   | show_story_poster | bool | True, if the chat that posted a story must be displayed in notifications. |
   | disable_pinned_message_notifications | bool | True, if notifications for incoming pinned messages will be created as for an ordinary unread message. |
   | disable_mention_notifications | bool | True, if notifications for messages with mentions will be created as for an ordinary unread message. |
@@ -10998,6 +11819,20 @@ defmodule ReportSponsoredResult do
   """
 
   defstruct "@type": "ReportSponsoredResult", "@extra": nil
+end
+defmodule InputMessageRichMessage do
+  @moduledoc  """
+  A rich message.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | message | inputRichMessage | The rich message to send. |
+  | clear_draft | bool | Pass true to delete message draft in the chat. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_rich_message.html).
+  """
+
+  defstruct "@type": "inputMessageRichMessage", "@extra": nil, message: nil, clear_draft: nil
 end
 defmodule MessagePassportDataReceived do
   @moduledoc  """
@@ -11058,6 +11893,16 @@ defmodule AutosaveSettingsScope do
 
   defstruct "@type": "AutosaveSettingsScope", "@extra": nil
 end
+defmodule PollVoteRestrictionReasonClosed do
+  @moduledoc  """
+  The poll is closed.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_vote_restriction_reason_closed.html).
+  """
+
+  defstruct "@type": "pollVoteRestrictionReasonClosed", "@extra": nil
+end
 defmodule UpdateStoryStealthMode do
   @moduledoc  """
   Story stealth mode settings have changed.
@@ -11093,14 +11938,14 @@ defmodule ChatRevenueTransactions do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | ton_amount | int53 | The amount of owned Toncoins; in the smallest units of the cryptocurrency. |
+  | gram_amount | int53 | The amount of owned TON Grams; in the smallest units of the cryptocurrency. |
   | transactions | chatRevenueTransaction | List of transactions. |
   | next_offset | string | The offset for the next request. If empty, then there are no more results. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transactions.html).
   """
 
-  defstruct "@type": "chatRevenueTransactions", "@extra": nil, ton_amount: nil, transactions: nil, next_offset: nil
+  defstruct "@type": "chatRevenueTransactions", "@extra": nil, gram_amount: nil, transactions: nil, next_offset: nil
 end
 defmodule ReactionUnavailabilityReason do
   @moduledoc  """
@@ -11170,7 +12015,7 @@ defmodule StorePaymentPurposePremiumGiftCodes do
   | boosted_chat_id | int53 | Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user. |
   | currency | string | ISO 4217 currency code of the payment currency. |
   | amount | int53 | Paid amount, in the smallest units of the currency. |
-  | user_ids | int53 | Identifiers of the users which can activate the gift codes. |
+  | user_ids | int53 | Identifiers of the users who can activate the gift codes. |
   | text | formattedText | Text to show along with the gift codes; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_premium_gift_codes.html).
@@ -11238,6 +12083,20 @@ defmodule BusinessFeatureOpeningHours do
   """
 
   defstruct "@type": "businessFeatureOpeningHours", "@extra": nil
+end
+defmodule UpdateChatWelcomeMessages do
+  @moduledoc  """
+  The list of welcome messages of a chat has changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | The identifier of the chat. |
+  | messages | welcomeMessage | The new list of welcome messages of the chat in the order from the first to the last sent. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_welcome_messages.html).
+  """
+
+  defstruct "@type": "updateChatWelcomeMessages", "@extra": nil, chat_id: nil, messages: nil
 end
 defmodule SettingsSectionPrivacyPolicy do
   @moduledoc  """
@@ -11381,7 +12240,7 @@ defmodule AffiliateProgramParameters do
 end
 defmodule UpdateAgeVerificationParameters do
   @moduledoc  """
-  The parameters for age verification of the current user's account has changed.
+  The parameters for age verification of the current user's account have changed.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -11441,6 +12300,47 @@ defmodule ChatActionBarReportAddBlock do
   """
 
   defstruct "@type": "chatActionBarReportAddBlock", "@extra": nil, can_unarchive: nil, account_info: nil
+end
+defmodule TextCompositionStyleExample do
+  @moduledoc  """
+  Contains an example of text composition style usage.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | source_text | formattedText | Source text. |
+  | result_text | formattedText | The text after the style was applied to the source text. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_composition_style_example.html).
+  """
+
+  defstruct "@type": "textCompositionStyleExample", "@extra": nil, source_text: nil, result_text: nil
+end
+defmodule InputPageBlockParagraph do
+  @moduledoc  """
+  A text paragraph.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Paragraph text. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_paragraph.html).
+  """
+
+  defstruct "@type": "inputPageBlockParagraph", "@extra": nil, text: nil
+end
+defmodule InputPageBlockSlideshow do
+  @moduledoc  """
+  A slideshow.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | blocks | InputPageBlock | Slideshow item contents. |
+  | caption | pageBlockCaption | Block caption; pass null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_slideshow.html).
+  """
+
+  defstruct "@type": "inputPageBlockSlideshow", "@extra": nil, blocks: nil, caption: nil
 end
 defmodule ChatRevenueTransactionTypeFragmentWithdrawal do
   @moduledoc  """
@@ -11552,7 +12452,7 @@ defmodule MessageAutoDeleteTime do
 end
 defmodule PageBlockEmbedded do
   @moduledoc  """
-  An embedded web page.
+  An embedded web page; instant view only.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -11561,7 +12461,7 @@ defmodule PageBlockEmbedded do
   | poster_photo | photo | Poster photo, if available; may be null. |
   | width | int32 | Block width; 0 if unknown. |
   | height | int32 | Block height; 0 if unknown. |
-  | caption | pageBlockCaption | Block caption. |
+  | caption | pageBlockCaption | Block caption; may be null if none. |
   | is_full_width | bool | True, if the block must be full width. |
   | allow_scrolling | bool | True, if scrolling needs to be allowed. |
 
@@ -11609,6 +12509,16 @@ defmodule BotWriteAccessAllowReasonLaunchedWebApp do
   """
 
   defstruct "@type": "botWriteAccessAllowReasonLaunchedWebApp", "@extra": nil, web_app: nil
+end
+defmodule SessionDeviceTypeMac do
+  @moduledoc  """
+  The session is running on a Mac device.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_mac.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeMac", "@extra": nil
 end
 defmodule StarTransactionTypePaidMessageSend do
   @moduledoc  """
@@ -11688,7 +12598,7 @@ defmodule PageBlockMap do
   | zoom | int32 | Map zoom level. |
   | width | int32 | Map width. |
   | height | int32 | Map height. |
-  | caption | pageBlockCaption | Block caption. |
+  | caption | pageBlockCaption | Block caption; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_map.html).
   """
@@ -11707,7 +12617,7 @@ defmodule PushMessageContentVideoChatEnded do
 end
 defmodule StoryAreaTypeSuggestedReaction do
   @moduledoc  """
-  An area pointing to a suggested reaction. App needs to show a clickable reaction on the area and call setStoryReaction when the are is clicked.
+  An area pointing to a suggested reaction. App needs to show a clickable reaction on the area and call setStoryReaction when the area is clicked.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -11764,7 +12674,7 @@ defmodule StoryInteractionTypeForward do
 end
 defmodule UpdateAnimationSearchParameters do
   @moduledoc  """
-  The parameters of animation search through getOption("animation_search_bot_username") bot has changed.
+  The parameters of animation search through getOption("animation_search_bot_username") bot have changed.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -11831,6 +12741,16 @@ defmodule PremiumFeature do
   """
 
   defstruct "@type": "PremiumFeature", "@extra": nil
+end
+defmodule CommunityMemberStatusLeft do
+  @moduledoc  """
+  The user or the chat is not a community member.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1community_member_status_left.html).
+  """
+
+  defstruct "@type": "communityMemberStatusLeft", "@extra": nil
 end
 defmodule PollTypeRegular do
   @moduledoc  """
@@ -11918,15 +12838,29 @@ defmodule InputMessageDocument do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | document | InputFile | Document to be sent. |
-  | thumbnail | inputThumbnail | Document thumbnail; pass null to skip thumbnail uploading. |
-  | disable_content_type_detection | bool | Pass true to disable automatic file type detection and send the document as a file. Always true for files sent to secret chats. |
+  | document | inputDocument | Document to be sent. |
   | caption | formattedText | Document caption; pass null to use an empty caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_document.html).
   """
 
-  defstruct "@type": "inputMessageDocument", "@extra": nil, document: nil, thumbnail: nil, disable_content_type_detection: nil, caption: nil
+  defstruct "@type": "inputMessageDocument", "@extra": nil, document: nil, caption: nil
+end
+defmodule EphemeralMessageContent do
+  @moduledoc  """
+  Describes an ephemeral content of a regular message, which must be shown instead of the regular content.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | can_be_saved | bool | True, if content of the message can be saved locally. |
+  | has_timestamped_media | bool | True, if media timestamp entities refers to a media in this message as opposed to a media in the replied message. |
+  | content | MessageContent | Content of the message. |
+  | reply_markup | ReplyMarkup | Reply markup for the message; may be null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ephemeral_message_content.html).
+  """
+
+  defstruct "@type": "ephemeralMessageContent", "@extra": nil, can_be_saved: nil, has_timestamped_media: nil, content: nil, reply_markup: nil
 end
 defmodule KeyboardButtonTypeRequestLocation do
   @moduledoc  """
@@ -11940,7 +12874,7 @@ defmodule KeyboardButtonTypeRequestLocation do
 end
 defmodule UpdateSpeedLimitNotification do
   @moduledoc  """
-  Download or upload file speed for the user was limited, but it can be restored by subscription to Telegram Premium. The notification can be postponed until a being downloaded or uploaded file is visible to the user. Use getOption("premium_download_speedup") or getOption("premium_upload_speedup") to get expected speedup after subscription to Telegram Premium.
+  Download or upload file speed for the user was limited, but it can be restored by subscription to Telegram Premium. The notification can be postponed until a file being downloaded or uploaded is visible to the user. Use getOption("premium_download_speedup") or getOption("premium_upload_speedup") to get expected speedup after subscription to Telegram Premium.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -12024,6 +12958,7 @@ defmodule UserFullInfo do
   | personal_photo | chatPhoto | User profile photo set by the current user for the contact; may be null. If null and user.profile_photo is null, then the photo is empty; otherwise, it is unknown. If non-null, then it is the same photo as in user.profile_photo and chat.photo. This photo isn't returned in the list of user photos. |
   | photo | chatPhoto | User profile photo; may be null. If null and user.profile_photo is null, then the photo is empty; otherwise, it is unknown. If non-null and personal_photo is null, then it is the same photo as in user.profile_photo and chat.photo. |
   | public_photo | chatPhoto | User profile photo visible if the main photo is hidden by privacy settings; may be null. If null and user.profile_photo is null, then the photo is empty; otherwise, it is unknown. If non-null and both photo and personal_photo are null, then it is the same photo as in user.profile_photo and chat.photo. This photo isn't returned in the list of user photos. |
+  | community_id | int53 | Identifier of the community to which chat with the bot was added; for bots only. |
   | block_list | BlockList | Block list to which the user is added; may be null if none. |
   | can_be_called | bool | True, if the user can be called. |
   | supports_video_calls | bool | True, if a video call can be created with the user. |
@@ -12056,7 +12991,7 @@ defmodule UserFullInfo do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_full_info.html).
   """
 
-  defstruct "@type": "userFullInfo", "@extra": nil, personal_photo: nil, photo: nil, public_photo: nil, block_list: nil, can_be_called: nil, supports_video_calls: nil, has_private_calls: nil, has_private_forwards: nil, has_restricted_voice_and_video_note_messages: nil, has_posted_to_profile_stories: nil, has_sponsored_messages_enabled: nil, need_phone_number_privacy_exception: nil, set_chat_background: nil, uses_unofficial_app: nil, bio: nil, birthdate: nil, personal_chat_id: nil, gift_count: nil, group_in_common_count: nil, incoming_paid_message_star_count: nil, outgoing_paid_message_star_count: nil, gift_settings: nil, bot_verification: nil, main_profile_tab: nil, first_profile_audio: nil, rating: nil, pending_rating: nil, pending_rating_date: nil, note: nil, business_info: nil, bot_info: nil
+  defstruct "@type": "userFullInfo", "@extra": nil, personal_photo: nil, photo: nil, public_photo: nil, community_id: nil, block_list: nil, can_be_called: nil, supports_video_calls: nil, has_private_calls: nil, has_private_forwards: nil, has_restricted_voice_and_video_note_messages: nil, has_posted_to_profile_stories: nil, has_sponsored_messages_enabled: nil, need_phone_number_privacy_exception: nil, set_chat_background: nil, uses_unofficial_app: nil, bio: nil, birthdate: nil, personal_chat_id: nil, gift_count: nil, group_in_common_count: nil, incoming_paid_message_star_count: nil, outgoing_paid_message_star_count: nil, gift_settings: nil, bot_verification: nil, main_profile_tab: nil, first_profile_audio: nil, rating: nil, pending_rating: nil, pending_rating_date: nil, note: nil, business_info: nil, bot_info: nil
 end
 defmodule InputPassportElementErrorSourceFile do
   @moduledoc  """
@@ -12145,16 +13080,6 @@ defmodule InternalLinkTypePremiumFeaturesPage do
 
   defstruct "@type": "internalLinkTypePremiumFeaturesPage", "@extra": nil, referrer: nil
 end
-defmodule SessionTypeIphone do
-  @moduledoc  """
-  The session is running on an iPhone device.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_iphone.html).
-  """
-
-  defstruct "@type": "sessionTypeIphone", "@extra": nil
-end
 defmodule Contact do
   @moduledoc  """
   Describes a contact of a user.
@@ -12178,16 +13103,12 @@ defmodule MessageLocation do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | location | location | The location description. |
-  | live_period | int32 | Time relative to the message send date, for which the location can be updated, in seconds; if 0x7FFFFFFF, then location can be updated forever. |
-  | expires_in | int32 | Left time for which the location can be updated, in seconds. If 0, then the location can't be updated anymore. The update <a class="el" href="classtd_1_1td__api_1_1update_message_content.html">updateMessageContent</a> is not sent when this field changes. |
-  | heading | int32 | For live locations, a direction in which the location moves, in degrees; 1-360. If 0 the direction is unknown. |
-  | proximity_alert_radius | int32 | For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). 0 if the notification is disabled. Available only to the message sender. |
+  | location | location | The location. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_location.html).
   """
 
-  defstruct "@type": "messageLocation", "@extra": nil, location: nil, live_period: nil, expires_in: nil, heading: nil, proximity_alert_radius: nil
+  defstruct "@type": "messageLocation", "@extra": nil, location: nil
 end
 defmodule TelegramPaymentPurpose do
   @moduledoc  """
@@ -12197,6 +13118,20 @@ defmodule TelegramPaymentPurpose do
   """
 
   defstruct "@type": "TelegramPaymentPurpose", "@extra": nil
+end
+defmodule InputPageBlockDocument do
+  @moduledoc  """
+  A general file.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | document | inputDocument | The file to be sent. |
+  | caption | pageBlockCaption | File caption; pass null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_document.html).
+  """
+
+  defstruct "@type": "inputPageBlockDocument", "@extra": nil, document: nil, caption: nil
 end
 defmodule StarSubscription do
   @moduledoc  """
@@ -12208,7 +13143,7 @@ defmodule StarSubscription do
   | chat_id | int53 | Identifier of the chat that is subscribed. |
   | expiration_date | int32 | Point in time (Unix timestamp) when the subscription will expire or expired. |
   | is_canceled | bool | True, if the subscription was canceled. |
-  | is_expiring | bool | True, if the subscription expires soon and there are no enough Telegram Stars on the user's balance to extend it. |
+  | is_expiring | bool | True, if the subscription expires soon and there aren't enough Telegram Stars on the user's balance to extend it. |
   | pricing | starSubscriptionPricing | The subscription plan. |
   | type | StarSubscriptionType | Type of the subscription. |
 
@@ -12240,6 +13175,19 @@ defmodule ButtonStyleDefault do
 
   defstruct "@type": "buttonStyleDefault", "@extra": nil
 end
+defmodule RichMessageSourceBlocks do
+  @moduledoc  """
+  A rich message defined by blocks.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | blocks | InputPageBlock | Content of the message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_message_source_blocks.html).
+  """
+
+  defstruct "@type": "richMessageSourceBlocks", "@extra": nil, blocks: nil
+end
 defmodule InlineQueryResultsButtonTypeStartBot do
   @moduledoc  """
   Describes the button that opens a private chat with the bot and sends a start message to the bot with the given parameter.
@@ -12252,6 +13200,20 @@ defmodule InlineQueryResultsButtonTypeStartBot do
   """
 
   defstruct "@type": "inlineQueryResultsButtonTypeStartBot", "@extra": nil, parameter: nil
+end
+defmodule PollMediaLink do
+  @moduledoc  """
+  A link.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | URL of the link. |
+  | link_preview | linkPreview | Preview of the link; may be null if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_media_link.html).
+  """
+
+  defstruct "@type": "pollMediaLink", "@extra": nil, url: nil, link_preview: nil
 end
 defmodule UpdateHavePendingNotifications do
   @moduledoc  """
@@ -12282,6 +13244,16 @@ defmodule AuthenticationCodeInfo do
   """
 
   defstruct "@type": "authenticationCodeInfo", "@extra": nil, phone_number: nil, type: nil, next_type: nil, timeout: nil
+end
+defmodule SessionDeviceTypeUbuntu do
+  @moduledoc  """
+  The session is running on an Ubuntu device.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_ubuntu.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeUbuntu", "@extra": nil
 end
 defmodule FoundPositions do
   @moduledoc  """
@@ -12470,7 +13442,7 @@ defmodule UpdateMessageUnreadReactions do
   | chat_id | int53 | Chat identifier. |
   | message_id | int53 | Message identifier. |
   | unread_reactions | unreadReaction | The new list of unread reactions. |
-  | unread_reaction_count | int32 | The new number of messages with unread reactions left in the chat. |
+  | unread_reaction_count | int32 | The new number of messages with unread reactions in the chat. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_unread_reactions.html).
   """
@@ -12576,7 +13548,7 @@ defmodule Session do
   | is_unconfirmed | bool | True, if the session wasn't confirmed from another session. |
   | can_accept_secret_chats | bool | True, if incoming secret chats can be accepted by the session. |
   | can_accept_calls | bool | True, if incoming calls can be accepted by the session. |
-  | type | SessionType | Session type based on the system and application version, which can be used to display a corresponding icon. |
+  | device_type | SessionDeviceType | Session device type based on the system and application version, which can be used to display a corresponding icon. |
   | api_id | int32 | Telegram API identifier, as provided by the application. |
   | application_name | string | Name of the application, as provided by the application. |
   | application_version | string | The version of the application, as provided by the application. |
@@ -12592,7 +13564,7 @@ defmodule Session do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session.html).
   """
 
-  defstruct "@type": "session", "@extra": nil, id: nil, is_current: nil, is_password_pending: nil, is_unconfirmed: nil, can_accept_secret_chats: nil, can_accept_calls: nil, type: nil, api_id: nil, application_name: nil, application_version: nil, is_official_application: nil, device_model: nil, platform: nil, system_version: nil, log_in_date: nil, last_active_date: nil, ip_address: nil, location: nil
+  defstruct "@type": "session", "@extra": nil, id: nil, is_current: nil, is_password_pending: nil, is_unconfirmed: nil, can_accept_secret_chats: nil, can_accept_calls: nil, device_type: nil, api_id: nil, application_name: nil, application_version: nil, is_official_application: nil, device_model: nil, platform: nil, system_version: nil, log_in_date: nil, last_active_date: nil, ip_address: nil, location: nil
 end
 defmodule MessageReadDateUnread do
   @moduledoc  """
@@ -12618,6 +13590,20 @@ defmodule ChatEventMemberRestricted do
   """
 
   defstruct "@type": "chatEventMemberRestricted", "@extra": nil, member_id: nil, old_status: nil, new_status: nil
+end
+defmodule PageBlockExpandableBlockQuote do
+  @moduledoc  """
+  An expandable block quote.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text of the quote. |
+  | credit | RichText | Quote credit; may be null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_expandable_block_quote.html).
+  """
+
+  defstruct "@type": "pageBlockExpandableBlockQuote", "@extra": nil, text: nil, credit: nil
 end
 defmodule StarTransactionTypeGiftPurchaseOffer do
   @moduledoc  """
@@ -12792,9 +13778,23 @@ defmodule TelegramPaymentPurposeStars do
 
   defstruct "@type": "telegramPaymentPurposeStars", "@extra": nil, currency: nil, amount: nil, star_count: nil, chat_id: nil
 end
+defmodule RichTextCashtag do
+  @moduledoc  """
+  A cashtag.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text. |
+  | cashtag | string | The cashtag. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_cashtag.html).
+  """
+
+  defstruct "@type": "richTextCashtag", "@extra": nil, text: nil, cashtag: nil
+end
 defmodule InlineKeyboardButtonTypeLoginUrl do
   @moduledoc  """
-  A button that opens a specified URL and automatically authorize the current user by calling getLoginUrlInfo.
+  A button that opens a specified URL and automatically authorize the current user by calling getLoginUrlInfo; not supported in ephemeral messages.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -12834,9 +13834,34 @@ defmodule InputMessageReplyToExternalMessage do
 
   defstruct "@type": "inputMessageReplyToExternalMessage", "@extra": nil, chat_id: nil, message_id: nil, quote: nil, checklist_task_id: nil, poll_option_id: nil
 end
+defmodule RichTextDateTime do
+  @moduledoc  """
+  A date and time.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Original text. |
+  | unix_time | int32 | Point in time (Unix timestamp) representing the date and time. |
+  | formatting_type | DateTimeFormattingType | Date and time formatting type; may be null if none and the original text must not be changed. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_date_time.html).
+  """
+
+  defstruct "@type": "richTextDateTime", "@extra": nil, text: nil, unix_time: nil, formatting_type: nil
+end
+defmodule SessionDeviceTypeIpad do
+  @moduledoc  """
+  The session is running on an iPad device.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_ipad.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeIpad", "@extra": nil
+end
 defmodule TonTransactionTypeFragmentWithdrawal do
   @moduledoc  """
-  The transaction is a withdrawal of earned Toncoins to Fragment.
+  The transaction is a withdrawal of earned Grams to Fragment.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -12854,23 +13879,13 @@ defmodule InputMessageStakeDice do
   | Name | Type | Description |
   |------|------| ------------|
   | state_hash | string | Hash of the stake dice state. The state hash can be used only if it was received recently enough. Otherwise, a new state must be requested using <a class="el" href="classtd_1_1td__api_1_1get_stake_dice_state.html">getStakeDiceState</a>. |
-  | stake_toncoin_amount | int53 | The Toncoin amount that will be staked; in the smallest units of the currency. Must be in the range <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("stake_dice_stake_amount_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("stake_dice_stake_amount_max"). |
-  | clear_draft | bool | True, if the chat message draft must be deleted. |
+  | stake_gram_amount | int53 | The TON Gram amount that will be staked; in the smallest units of the currency. Must be in the range <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("stake_dice_stake_amount_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("stake_dice_stake_amount_max"). |
+  | clear_draft | bool | Pass true to delete message draft in the chat. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_stake_dice.html).
   """
 
-  defstruct "@type": "inputMessageStakeDice", "@extra": nil, state_hash: nil, stake_toncoin_amount: nil, clear_draft: nil
-end
-defmodule SessionTypeApple do
-  @moduledoc  """
-  The session is running on a generic Apple device.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_apple.html).
-  """
-
-  defstruct "@type": "sessionTypeApple", "@extra": nil
+  defstruct "@type": "inputMessageStakeDice", "@extra": nil, state_hash: nil, stake_gram_amount: nil, clear_draft: nil
 end
 defmodule UpdateQuickReplyShortcutMessages do
   @moduledoc  """
@@ -12947,6 +13962,21 @@ defmodule SettingsSectionBusiness do
 
   defstruct "@type": "settingsSectionBusiness", "@extra": nil, subsection: nil
 end
+defmodule UpdateStopMessageDraft do
+  @moduledoc  """
+  A message draft generation was stopped by the user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Chat identifier. |
+  | forum_topic_id | int32 | The forum topic identifier of the message draft. |
+  | draft_id | int64 | Identifier of the message draft within the message thread. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_stop_message_draft.html).
+  """
+
+  defstruct "@type": "updateStopMessageDraft", "@extra": nil, chat_id: nil, forum_topic_id: nil, draft_id: nil
+end
 defmodule ChatEventMessageAutoDeleteTimeChanged do
   @moduledoc  """
   The message auto-delete timer was changed.
@@ -12981,13 +14011,13 @@ defmodule PageBlockSlideshow do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | page_blocks | PageBlock | Slideshow item contents. |
-  | caption | pageBlockCaption | Block caption. |
+  | blocks | PageBlock | Slideshow item contents. |
+  | caption | pageBlockCaption | Block caption; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_slideshow.html).
   """
 
-  defstruct "@type": "pageBlockSlideshow", "@extra": nil, page_blocks: nil, caption: nil
+  defstruct "@type": "pageBlockSlideshow", "@extra": nil, blocks: nil, caption: nil
 end
 defmodule StoryContentType do
   @moduledoc  """
@@ -13101,7 +14131,7 @@ defmodule TelegramPaymentPurposePremiumGiftCodes do
   | boosted_chat_id | int53 | Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user. |
   | currency | string | ISO 4217 currency code of the payment currency. |
   | amount | int53 | Paid amount, in the smallest units of the currency. |
-  | user_ids | int53 | Identifiers of the users which can activate the gift codes. |
+  | user_ids | int53 | Identifiers of the users who can activate the gift codes. |
   | month_count | int32 | Number of months the Telegram Premium subscription will be active for the users. |
   | text | formattedText | Text to show along with the gift codes; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. |
 
@@ -13301,6 +14331,21 @@ defmodule LinkPreviewOptions do
 
   defstruct "@type": "linkPreviewOptions", "@extra": nil, is_disabled: nil, url: nil, force_small_media: nil, force_large_media: nil, show_above_text: nil
 end
+defmodule InlineButton do
+  @moduledoc  """
+  Represents a button inside a rich message.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text of the button; only <a class="el" href="classtd_1_1td__api_1_1rich_texts.html">richTexts</a>, <a class="el" href="classtd_1_1td__api_1_1rich_text_plain.html">richTextPlain</a>, and <a class="el" href="classtd_1_1td__api_1_1rich_text_custom_emoji.html">richTextCustomEmoji</a> are allowed. |
+  | style | ButtonStyle | Style of the button. |
+  | type | InlineKeyboardButtonType | Type of the button; must be one of <a class="el" href="classtd_1_1td__api_1_1inline_keyboard_button_type_url.html">inlineKeyboardButtonTypeUrl</a>, <a class="el" href="classtd_1_1td__api_1_1inline_keyboard_button_type_login_url.html">inlineKeyboardButtonTypeLoginUrl</a>, <a class="el" href="classtd_1_1td__api_1_1inline_keyboard_button_type_web_app.html">inlineKeyboardButtonTypeWebApp</a>, <a class="el" href="classtd_1_1td__api_1_1inline_keyboard_button_type_callback.html">inlineKeyboardButtonTypeCallback</a>, <a class="el" href="classtd_1_1td__api_1_1inline_keyboard_button_type_switch_inline.html">inlineKeyboardButtonTypeSwitchInline</a>, <a class="el" href="classtd_1_1td__api_1_1inline_keyboard_button_type_user.html">inlineKeyboardButtonTypeUser</a>, <a class="el" href="classtd_1_1td__api_1_1inline_keyboard_button_type_copy_text.html">inlineKeyboardButtonTypeCopyText</a>. Additionally, <a class="el" href="classtd_1_1td__api_1_1inline_keyboard_button_type_callback_with_password.html">inlineKeyboardButtonTypeCallbackWithPassword</a> and <a class="el" href="classtd_1_1td__api_1_1inline_keyboard_button_type_disabled.html">inlineKeyboardButtonTypeDisabled</a> may be received in incoming messages. Regular users may use only <a class="el" href="classtd_1_1td__api_1_1inline_keyboard_button_type_url.html">inlineKeyboardButtonTypeUrl</a>, <a class="el" href="classtd_1_1td__api_1_1inline_keyboard_button_type_user.html">inlineKeyboardButtonTypeUser</a> and <a class="el" href="classtd_1_1td__api_1_1inline_keyboard_button_type_copy_text.html">inlineKeyboardButtonTypeCopyText</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_button.html).
+  """
+
+  defstruct "@type": "inlineButton", "@extra": nil, text: nil, style: nil, type: nil
+end
 defmodule PollTypeQuiz do
   @moduledoc  """
   A poll in quiz mode, which has predefined correct answers.
@@ -13309,7 +14354,7 @@ defmodule PollTypeQuiz do
   |------|------| ------------|
   | correct_option_ids | int32 | Increasing list of 0-based identifiers of the correct answer options; empty for a yet unanswered poll. |
   | explanation | formattedText | Text that is shown when the user chooses an incorrect answer or taps on the lamp icon; empty for a yet unanswered poll. |
-  | explanation_media | MessageContent | Media that is shown when the user chooses an incorrect answer or taps on the lamp icon; may be null if none or the poll is unanswered yet. Currently, can be only of the types <a class="el" href="classtd_1_1td__api_1_1message_animation.html">messageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1message_audio.html">messageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1message_document.html">messageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1message_location.html">messageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1message_photo.html">messagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1message_venue.html">messageVenue</a>, or <a class="el" href="classtd_1_1td__api_1_1message_video.html">messageVideo</a> without caption. |
+  | explanation_media | PollMedia | Media that is shown when the user chooses an incorrect answer or taps on the lamp icon; may be null if none or the poll is unanswered yet. If present, currently, can be only of the types <a class="el" href="classtd_1_1td__api_1_1poll_media_animation.html">pollMediaAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_audio.html">pollMediaAudio</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_document.html">pollMediaDocument</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_location.html">pollMediaLocation</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_photo.html">pollMediaPhoto</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_venue.html">pollMediaVenue</a>, or <a class="el" href="classtd_1_1td__api_1_1poll_media_video.html">pollMediaVideo</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_type_quiz.html).
   """
@@ -13325,6 +14370,19 @@ defmodule FileTypeThumbnail do
   """
 
   defstruct "@type": "fileTypeThumbnail", "@extra": nil
+end
+defmodule InputPageBlockMathematicalExpression do
+  @moduledoc  """
+  A mathematical expression.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | expression | string | The expression in LaTeX format. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_mathematical_expression.html).
+  """
+
+  defstruct "@type": "inputPageBlockMathematicalExpression", "@extra": nil, expression: nil
 end
 defmodule BasicGroupFullInfo do
   @moduledoc  """
@@ -13345,6 +14403,20 @@ defmodule BasicGroupFullInfo do
   """
 
   defstruct "@type": "basicGroupFullInfo", "@extra": nil, photo: nil, description: nil, creator_user_id: nil, members: nil, can_hide_members: nil, can_toggle_aggressive_anti_spam: nil, invite_link: nil, bot_commands: nil
+end
+defmodule UpdateCommunityFullInfo do
+  @moduledoc  """
+  Some data in communityFullInfo has been changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | community_id | int53 | Identifier of the community. |
+  | community_full_info | communityFullInfo | New full information about the community. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_community_full_info.html).
+  """
+
+  defstruct "@type": "updateCommunityFullInfo", "@extra": nil, community_id: nil, community_full_info: nil
 end
 defmodule BusinessFeatureChatFolderTags do
   @moduledoc  """
@@ -13518,6 +14590,19 @@ defmodule StarTransactionTypePremiumPurchase do
 
   defstruct "@type": "starTransactionTypePremiumPurchase", "@extra": nil, user_id: nil, month_count: nil, sticker: nil
 end
+defmodule SessionTypeDevice do
+  @moduledoc  """
+  A regular session from a device.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | session_id | int64 | Unique identifier of the session. Use <a class="el" href="classtd_1_1td__api_1_1terminate_session.html">terminateSession</a> to terminate it or <a class="el" href="classtd_1_1td__api_1_1confirm_session.html">confirmSession</a> to confirm it if it isn't confirmed yet. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_device.html).
+  """
+
+  defstruct "@type": "sessionTypeDevice", "@extra": nil, session_id: nil
+end
 defmodule PassportElementPassport do
   @moduledoc  """
   A Telegram Passport element containing the user's passport.
@@ -13587,7 +14672,7 @@ defmodule SearchMessagesChatTypeFilterChannel do
 end
 defmodule UpdateSpeechRecognitionTrial do
   @moduledoc  """
-  The parameters of speech recognition without Telegram Premium subscription has changed.
+  The parameters of speech recognition without Telegram Premium subscription have changed.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -13623,6 +14708,22 @@ defmodule SettingsSectionDataAndStorage do
   """
 
   defstruct "@type": "settingsSectionDataAndStorage", "@extra": nil, subsection: nil
+end
+defmodule WebDomainException do
+  @moduledoc  """
+  Describes an exception for built-in browser usage.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | url | string | URL for which the exception is done. |
+  | domain | string | Domain of the URL. All URLs on the domain and subdomains of the domain are subject to the exception. |
+  | title | string | Title of the website. |
+  | favicon_custom_emoji_id | int64 | Identifier of the custom emoji with favicon of the website; may be 0 if unknown, in which case the first letter of the domain must be used. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_domain_exception.html).
+  """
+
+  defstruct "@type": "webDomainException", "@extra": nil, url: nil, domain: nil, title: nil, favicon_custom_emoji_id: nil
 end
 defmodule LinkPreviewTypeBackground do
   @moduledoc  """
@@ -13873,6 +14974,8 @@ defmodule MessageUpgradedGift do
   | receiver_id | MessageSender | Receiver of the gift. |
   | origin | UpgradedGiftOrigin | Origin of the upgraded gift. |
   | received_gift_id | string | Unique identifier of the received gift for the current user; only for the receiver of the gift. |
+  | text | formattedText | Message added to the gift. |
+  | is_private | bool | True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them. |
   | is_saved | bool | True, if the gift is displayed on the user's or the channel's profile page; only for the receiver of the gift. |
   | can_be_transferred | bool | True, if the gift can be transferred to another owner; only for the receiver of the gift. |
   | was_transferred | bool | True, if the gift has already been transferred to another owner; only for the receiver of the gift. |
@@ -13881,12 +14984,12 @@ defmodule MessageUpgradedGift do
   | next_transfer_date | int32 | Point in time (Unix timestamp) when the gift can be transferred to another owner; can be in the past; 0 if the gift can be transferred immediately or transfer isn't possible; only for the receiver of the gift. |
   | next_resale_date | int32 | Point in time (Unix timestamp) when the gift can be resold to another user; can be in the past; 0 if the gift can't be resold; only for the receiver of the gift. |
   | export_date | int32 | Point in time (Unix timestamp) when the gift can be transferred to the TON blockchain as an NFT; can be in the past; 0 if NFT export isn't possible; only for the receiver of the gift. |
-  | craft_date | int32 | Point in time (Unix timestamp) when the gift can be used to craft another gift can be in the past; only for the receiver of the gift. |
+  | craft_date | int32 | Point in time (Unix timestamp) when the gift can be used to craft another gift; can be in the past; only for the receiver of the gift. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_upgraded_gift.html).
   """
 
-  defstruct "@type": "messageUpgradedGift", "@extra": nil, gift: nil, sender_id: nil, receiver_id: nil, origin: nil, received_gift_id: nil, is_saved: nil, can_be_transferred: nil, was_transferred: nil, transfer_star_count: nil, drop_original_details_star_count: nil, next_transfer_date: nil, next_resale_date: nil, export_date: nil, craft_date: nil
+  defstruct "@type": "messageUpgradedGift", "@extra": nil, gift: nil, sender_id: nil, receiver_id: nil, origin: nil, received_gift_id: nil, text: nil, is_private: nil, is_saved: nil, can_be_transferred: nil, was_transferred: nil, transfer_star_count: nil, drop_original_details_star_count: nil, next_transfer_date: nil, next_resale_date: nil, export_date: nil, craft_date: nil
 end
 defmodule CallProblemPixelatedVideo do
   @moduledoc  """
@@ -13900,7 +15003,7 @@ defmodule CallProblemPixelatedVideo do
 end
 defmodule BusinessConnectedBot do
   @moduledoc  """
-  Describes a bot connected to a business account.
+  Describes a business bot connected to an account.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -13913,16 +15016,6 @@ defmodule BusinessConnectedBot do
 
   defstruct "@type": "businessConnectedBot", "@extra": nil, bot_user_id: nil, recipients: nil, rights: nil
 end
-defmodule SessionTypeVivaldi do
-  @moduledoc  """
-  The session is running on the Vivaldi browser.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_vivaldi.html).
-  """
-
-  defstruct "@type": "sessionTypeVivaldi", "@extra": nil
-end
 defmodule InputFile do
   @moduledoc  """
 
@@ -13931,6 +15024,19 @@ defmodule InputFile do
   """
 
   defstruct "@type": "InputFile", "@extra": nil
+end
+defmodule PollMediaVenue do
+  @moduledoc  """
+  A venue.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | venue | venue | The venue. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_media_venue.html).
+  """
+
+  defstruct "@type": "pollMediaVenue", "@extra": nil, venue: nil
 end
 defmodule UpdateOption do
   @moduledoc  """
@@ -14010,7 +15116,7 @@ defmodule FailedToAddMember do
 end
 defmodule MessageSuggestedPostApprovalFailed do
   @moduledoc  """
-  Approval of suggested post has failed, because the user which proposed the post had no enough funds.
+  Approval of suggested post has failed, because the user who proposed the post didn't have enough funds.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -14105,6 +15211,19 @@ defmodule StarTransactionTypeChannelPaidMediaSale do
 
   defstruct "@type": "starTransactionTypeChannelPaidMediaSale", "@extra": nil, user_id: nil, message_id: nil, media: nil
 end
+defmodule PollMediaDocument do
+  @moduledoc  """
+  A document (general file).
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | document | document | The document. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_media_document.html).
+  """
+
+  defstruct "@type": "pollMediaDocument", "@extra": nil, document: nil
+end
 defmodule SearchMessagesFilterPhotoAndVideo do
   @moduledoc  """
   Returns only photo and video messages.
@@ -14159,6 +15278,23 @@ defmodule UpdateUserStatus do
   """
 
   defstruct "@type": "updateUserStatus", "@extra": nil, user_id: nil, status: nil
+end
+defmodule InputPageBlockTable do
+  @moduledoc  """
+  A table.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | caption | RichText | Table caption. |
+  | cells | pageBlockTableCell | Table cells. |
+  | is_bordered | bool | Pass true if the table is bordered. |
+  | is_striped | bool | Pass true if the table is striped. |
+  | is_compact | bool | Pass true if table cells must have smaller indents. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_table.html).
+  """
+
+  defstruct "@type": "inputPageBlockTable", "@extra": nil, caption: nil, cells: nil, is_bordered: nil, is_striped: nil, is_compact: nil
 end
 defmodule ReportChatResultTextRequired do
   @moduledoc  """
@@ -14284,16 +15420,13 @@ defmodule InputMessageVideoNote do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | video_note | InputFile | Video note to be sent. The video is expected to be encoded to MPEG4 format with H.264 codec and have no data outside of the visible circle. |
-  | thumbnail | inputThumbnail | Video thumbnail; may be null if empty; pass null to skip thumbnail uploading. |
-  | duration | int32 | Duration of the video, in seconds; 0-60. |
-  | length | int32 | Video width and height; must be positive and not greater than 640. |
+  | video_note | inputVideoNote | Video note to be sent. |
   | self_destruct_type | MessageSelfDestructType | Video note self-destruct type; may be null if none; pass null if none; private chats only. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video_note.html).
   """
 
-  defstruct "@type": "inputMessageVideoNote", "@extra": nil, video_note: nil, thumbnail: nil, duration: nil, length: nil, self_destruct_type: nil
+  defstruct "@type": "inputMessageVideoNote", "@extra": nil, video_note: nil, self_destruct_type: nil
 end
 defmodule CraftGiftResultSuccess do
   @moduledoc  """
@@ -14331,11 +15464,12 @@ defmodule InputPollTypeQuiz do
   |------|------| ------------|
   | correct_option_ids | int32 | Increasing list of 0-based identifiers of the correct answer options; must be non-empty. |
   | explanation | formattedText | Text that is shown when the user chooses an incorrect answer or taps on the lamp icon; 0-200 characters with at most 2 line feeds. |
+  | explanation_media | InputPollMedia | Media that is shown when the user chooses an incorrect answer or taps on the lamp icon; pass null if none. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_poll_media_animation.html">inputPollMediaAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_audio.html">inputPollMediaAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_document.html">inputPollMediaDocument</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_location.html">inputPollMediaLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_photo.html">inputPollMediaPhoto</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_venue.html">inputPollMediaVenue</a>, or <a class="el" href="classtd_1_1td__api_1_1input_poll_media_video.html">inputPollMediaVideo</a> without caption. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_type_quiz.html).
   """
 
-  defstruct "@type": "inputPollTypeQuiz", "@extra": nil, correct_option_ids: nil, explanation: nil
+  defstruct "@type": "inputPollTypeQuiz", "@extra": nil, correct_option_ids: nil, explanation: nil, explanation_media: nil
 end
 defmodule InlineQueryResultSticker do
   @moduledoc  """
@@ -14770,7 +15904,7 @@ defmodule UpdateFileDownload do
 end
 defmodule AuthorizationStateWaitPhoneNumber do
   @moduledoc  """
-  TDLib needs the user's phone number to authorize. Call setAuthenticationPhoneNumber to provide the phone number, or use requestQrCodeAuthentication, getAuthenticationPasskeyParameters, or checkAuthenticationBotToken for other authentication options.
+  TDLib needs the user's phone number to authorize. Call setAuthenticationPhoneNumber to provide the phone number, or use requestQrCodeAuthentication, getAuthenticationPasskeyParameters, checkAuthenticationWebToken, or checkAuthenticationBotToken for other authentication options.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_phone_number.html).
@@ -14794,13 +15928,14 @@ defmodule PageBlockPhoto do
   | Name | Type | Description |
   |------|------| ------------|
   | photo | photo | Photo file; may be null. |
-  | caption | pageBlockCaption | Photo caption. |
-  | url | string | URL that needs to be opened when the photo is clicked. |
+  | caption | pageBlockCaption | Photo caption; may be null if none. |
+  | url | string | URL that needs to be opened when the photo is clicked; instant view only. |
+  | has_spoiler | bool | True, if the photo preview must be covered by a spoiler animation. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_photo.html).
   """
 
-  defstruct "@type": "pageBlockPhoto", "@extra": nil, photo: nil, caption: nil, url: nil
+  defstruct "@type": "pageBlockPhoto", "@extra": nil, photo: nil, caption: nil, url: nil, has_spoiler: nil
 end
 defmodule ChatPermissions do
   @moduledoc  """
@@ -14808,7 +15943,7 @@ defmodule ChatPermissions do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | can_send_basic_messages | bool | True, if the user can send text messages, contacts, giveaways, giveaway winners, invoices, locations, and venues. |
+  | can_send_basic_messages | bool | True, if the user can send text messages, rich messages, contacts, giveaways, giveaway winners, invoices, locations, and venues. |
   | can_send_audios | bool | True, if the user can send music files. |
   | can_send_documents | bool | True, if the user can send documents. |
   | can_send_photos | bool | True, if the user can send photos. |
@@ -14818,6 +15953,7 @@ defmodule ChatPermissions do
   | can_send_polls | bool | True, if the user can send polls and checklists. |
   | can_send_other_messages | bool | True, if the user can send animations, games, stickers, and dice and use inline bots. |
   | can_add_link_previews | bool | True, if the user may add a link preview to their messages. |
+  | can_react_to_messages | bool | True, if the user can react to messages. |
   | can_edit_tag | bool | True, if the user may change the tag of self. |
   | can_change_info | bool | True, if the user can change the chat title, photo, and other settings. |
   | can_invite_users | bool | True, if the user can invite new users to the chat. |
@@ -14827,7 +15963,7 @@ defmodule ChatPermissions do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_permissions.html).
   """
 
-  defstruct "@type": "chatPermissions", "@extra": nil, can_send_basic_messages: nil, can_send_audios: nil, can_send_documents: nil, can_send_photos: nil, can_send_videos: nil, can_send_video_notes: nil, can_send_voice_notes: nil, can_send_polls: nil, can_send_other_messages: nil, can_add_link_previews: nil, can_edit_tag: nil, can_change_info: nil, can_invite_users: nil, can_pin_messages: nil, can_create_topics: nil
+  defstruct "@type": "chatPermissions", "@extra": nil, can_send_basic_messages: nil, can_send_audios: nil, can_send_documents: nil, can_send_photos: nil, can_send_videos: nil, can_send_video_notes: nil, can_send_voice_notes: nil, can_send_polls: nil, can_send_other_messages: nil, can_add_link_previews: nil, can_react_to_messages: nil, can_edit_tag: nil, can_change_info: nil, can_invite_users: nil, can_pin_messages: nil, can_create_topics: nil
 end
 defmodule BotVerification do
   @moduledoc  """
@@ -14903,6 +16039,20 @@ defmodule MessageGameScore do
   """
 
   defstruct "@type": "messageGameScore", "@extra": nil, game_message_id: nil, game_id: nil, score: nil
+end
+defmodule UpdateChatHasWelcomeMessages do
+  @moduledoc  """
+  A chat's has_welcome_messages field has changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Chat identifier. |
+  | has_welcome_messages | bool | New value of has_welcome_messages. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_has_welcome_messages.html).
+  """
+
+  defstruct "@type": "updateChatHasWelcomeMessages", "@extra": nil, chat_id: nil, has_welcome_messages: nil
 end
 defmodule UpgradedGiftSymbol do
   @moduledoc  """
@@ -15059,13 +16209,13 @@ defmodule PageBlockDetails do
   | Name | Type | Description |
   |------|------| ------------|
   | header | RichText | Always visible heading for the block. |
-  | page_blocks | PageBlock | Block contents. |
+  | blocks | PageBlock | Block contents. |
   | is_open | bool | True, if the block is open by default. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_details.html).
   """
 
-  defstruct "@type": "pageBlockDetails", "@extra": nil, header: nil, page_blocks: nil, is_open: nil
+  defstruct "@type": "pageBlockDetails", "@extra": nil, header: nil, blocks: nil, is_open: nil
 end
 defmodule UpdateTopicMessageCount do
   @moduledoc  """
@@ -15128,6 +16278,21 @@ defmodule PaymentProvider do
 
   defstruct "@type": "PaymentProvider", "@extra": nil
 end
+defmodule InputVoiceNote do
+  @moduledoc  """
+  A video note to be sent.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | voice_note | InputFile | Voice note file to be sent. The voice note must be encoded with the Opus codec and stored inside an OGG container with a single audio channel, or be in MP3 or M4A format as regular audio. |
+  | duration | int32 | Duration of the voice note, in seconds. |
+  | waveform | bytes | Waveform representation of the voice note in 5-bit format. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_voice_note.html).
+  """
+
+  defstruct "@type": "inputVoiceNote", "@extra": nil, voice_note: nil, duration: nil, waveform: nil
+end
 defmodule AuthenticationCodeTypeFirebaseIos do
   @moduledoc  """
   A digit-only authentication code is delivered via Firebase Authentication to the official iOS application.
@@ -15158,7 +16323,7 @@ defmodule BusinessMessages do
 end
 defmodule StoryListArchive do
   @moduledoc  """
-  The list of stories, shown in the Arvhive chat list.
+  The list of stories, shown in the Archive chat list.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_list_archive.html).
@@ -15233,9 +16398,9 @@ defmodule PollOption do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | id | string | Unique identifier of the option in the poll. |
+  | id | string | Unique identifier of the option in the poll; may be empty if yet unassigned. |
   | text | formattedText | Option text; 1-100 characters; may contain only custom emoji entities. |
-  | media | MessageContent | Option media. Currently, can be only of the types <a class="el" href="classtd_1_1td__api_1_1message_animation.html">messageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1message_location.html">messageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1message_photo.html">messagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1message_sticker.html">messageSticker</a>, <a class="el" href="classtd_1_1td__api_1_1message_venue.html">messageVenue</a>, or <a class="el" href="classtd_1_1td__api_1_1message_video.html">messageVideo</a> without caption. |
+  | media | PollMedia | Option media; may be null if none. If present, currently, can be only of the types <a class="el" href="classtd_1_1td__api_1_1poll_media_animation.html">pollMediaAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_link.html">pollMediaLink</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_location.html">pollMediaLocation</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_photo.html">pollMediaPhoto</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_sticker.html">pollMediaSticker</a>, <a class="el" href="classtd_1_1td__api_1_1poll_media_venue.html">pollMediaVenue</a>, or <a class="el" href="classtd_1_1td__api_1_1poll_media_video.html">pollMediaVideo</a>. |
   | voter_count | int32 | Number of voters for this option, available only for closed or voted polls, or if the current user is the creator of the poll. |
   | vote_percentage | int32 | The percentage of votes for this option; 0-100. |
   | recent_voter_ids | MessageSender | Identifiers of recent voters for the option, if the poll is non-anonymous and poll results are available. |
@@ -15248,6 +16413,20 @@ defmodule PollOption do
   """
 
   defstruct "@type": "pollOption", "@extra": nil, id: nil, text: nil, media: nil, voter_count: nil, vote_percentage: nil, recent_voter_ids: nil, is_chosen: nil, is_being_chosen: nil, author: nil, addition_date: nil
+end
+defmodule InputPageBlockPullQuote do
+  @moduledoc  """
+  A pull quote.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Quote text. |
+  | credit | RichText | Quote credit; pass null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_pull_quote.html).
+  """
+
+  defstruct "@type": "inputPageBlockPullQuote", "@extra": nil, text: nil, credit: nil
 end
 defmodule RichTextItalic do
   @moduledoc  """
@@ -15411,7 +16590,7 @@ defmodule StoryContentLive do
 end
 defmodule MessageOriginHiddenUser do
   @moduledoc  """
-  The message was originally sent by a user, which is hidden by their privacy settings.
+  The message was originally sent by a user who is hidden by their privacy settings.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -15447,14 +16626,11 @@ defmodule InputMessageLocation do
   | Name | Type | Description |
   |------|------| ------------|
   | location | location | Location to be sent. |
-  | live_period | int32 | Period for which the location can be updated, in seconds; must be between 60 and 86400 for a temporary live location, 0x7FFFFFFF for permanent live location, and 0 otherwise. |
-  | heading | int32 | For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown. |
-  | proximity_alert_radius | int32 | For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_location.html).
   """
 
-  defstruct "@type": "inputMessageLocation", "@extra": nil, location: nil, live_period: nil, heading: nil, proximity_alert_radius: nil
+  defstruct "@type": "inputMessageLocation", "@extra": nil, location: nil
 end
 defmodule AttachmentMenuBotColor do
   @moduledoc  """
@@ -15570,6 +16746,16 @@ defmodule StickerFormatWebm do
   """
 
   defstruct "@type": "stickerFormatWebm", "@extra": nil
+end
+defmodule PageBlockUnsupported do
+  @moduledoc  """
+  Represents a block unsupported by the current application version.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_unsupported.html).
+  """
+
+  defstruct "@type": "pageBlockUnsupported", "@extra": nil
 end
 defmodule SettingsSectionInAppBrowser do
   @moduledoc  """
@@ -15743,12 +16929,22 @@ defmodule InputInlineQueryResultContact do
   | thumbnail_width | int32 | Thumbnail width, if known. |
   | thumbnail_height | int32 | Thumbnail height, if known. |
   | reply_markup | ReplyMarkup | The message reply markup; pass null if none. Must be of type <a class="el" href="classtd_1_1td__api_1_1reply_markup_inline_keyboard.html">replyMarkupInlineKeyboard</a> or null. |
-  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_live_location.html">inputMessageLiveLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_contact.html).
   """
 
   defstruct "@type": "inputInlineQueryResultContact", "@extra": nil, id: nil, contact: nil, thumbnail_url: nil, thumbnail_width: nil, thumbnail_height: nil, reply_markup: nil, input_message_content: nil
+end
+defmodule WebBrowserTypeInApp do
+  @moduledoc  """
+  The in-app browser.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_browser_type_in_app.html).
+  """
+
+  defstruct "@type": "webBrowserTypeInApp", "@extra": nil
 end
 defmodule FileTypeVoiceNote do
   @moduledoc  """
@@ -15759,6 +16955,33 @@ defmodule FileTypeVoiceNote do
   """
 
   defstruct "@type": "fileTypeVoiceNote", "@extra": nil
+end
+defmodule InputPageBlockButtonRow do
+  @moduledoc  """
+  A list of buttons shown in a row.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | buttons | inlineButton | The buttons. |
+  | align | PageBlockHorizontalAlignment | Horizontal alignment of the buttons; pass null if the buttons must be shown full-width. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_button_row.html).
+  """
+
+  defstruct "@type": "inputPageBlockButtonRow", "@extra": nil, buttons: nil, align: nil
+end
+defmodule CommunityId do
+  @moduledoc  """
+  Contains identifier of a community.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int53 | Community identifier. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1community_id.html).
+  """
+
+  defstruct "@type": "communityId", "@extra": nil, id: nil
 end
 defmodule StarTransactionTypeUpgradedGiftPurchase do
   @moduledoc  """
@@ -15838,6 +17061,16 @@ defmodule GameHighScore do
 
   defstruct "@type": "gameHighScore", "@extra": nil, position: nil, user_id: nil, score: nil
 end
+defmodule ButtonStyleLink do
+  @moduledoc  """
+  The button must be shown as a link. The style is allowed only for callback buttons in inlineButton.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1button_style_link.html).
+  """
+
+  defstruct "@type": "buttonStyleLink", "@extra": nil
+end
 defmodule UpdateChatMessageSender do
   @moduledoc  """
   The message sender that is selected to send messages in a chat has changed.
@@ -15875,6 +17108,32 @@ defmodule ChatInviteLinkMembers do
 
   defstruct "@type": "chatInviteLinkMembers", "@extra": nil, total_count: nil, members: nil
 end
+defmodule PollVoteRestrictionReasonCountryRestricted do
+  @moduledoc  """
+  The user is from a country, users from which aren't allowed to vote.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | country_code | string | Two-letter ISO 3166-1 alpha-2 code of the current user's country. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_vote_restriction_reason_country_restricted.html).
+  """
+
+  defstruct "@type": "pollVoteRestrictionReasonCountryRestricted", "@extra": nil, country_code: nil
+end
+defmodule SearchMessagesChatTypeFilterCommunity do
+  @moduledoc  """
+  Returns only messages in the specified community.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | community_id | int53 | Identifier of the community to search in. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_chat_type_filter_community.html).
+  """
+
+  defstruct "@type": "searchMessagesChatTypeFilterCommunity", "@extra": nil, community_id: nil
+end
 defmodule CurrentWeather do
   @moduledoc  """
   Describes the current weather.
@@ -15898,6 +17157,19 @@ defmodule InputPassportElement do
 
   defstruct "@type": "InputPassportElement", "@extra": nil
 end
+defmodule SessionTypeConnectedBot do
+  @moduledoc  """
+  A business bot connected to the current user's account.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | bot_user_id | int53 | User identifier of the bot. Use <a class="el" href="classtd_1_1td__api_1_1delete_business_connected_bot.html">deleteBusinessConnectedBot</a> to remove it or <a class="el" href="classtd_1_1td__api_1_1confirm_business_connected_bot.html">confirmBusinessConnectedBot</a> to confirm it if it isn't confirmed yet. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_connected_bot.html).
+  """
+
+  defstruct "@type": "sessionTypeConnectedBot", "@extra": nil, bot_user_id: nil
+end
 defmodule PassportElementTypeTemporaryRegistration do
   @moduledoc  """
   A Telegram Passport element containing the user's temporary registration.
@@ -15907,6 +17179,25 @@ defmodule PassportElementTypeTemporaryRegistration do
   """
 
   defstruct "@type": "passportElementTypeTemporaryRegistration", "@extra": nil
+end
+defmodule ReactionUnavailabilityReasonRestricted do
+  @moduledoc  """
+  The user is restricted in the chat.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_unavailability_reason_restricted.html).
+  """
+
+  defstruct "@type": "reactionUnavailabilityReasonRestricted", "@extra": nil
+end
+defmodule DraftMessageContent do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_draft_message_content.html).
+  """
+
+  defstruct "@type": "DraftMessageContent", "@extra": nil
 end
 defmodule InputMessageVenue do
   @moduledoc  """
@@ -16004,6 +17295,24 @@ defmodule ChatMemberStatus do
 
   defstruct "@type": "ChatMemberStatus", "@extra": nil
 end
+defmodule InputPhoto do
+  @moduledoc  """
+  A photo to be sent.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | InputFile | Photo to be sent. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. |
+  | thumbnail | inputThumbnail | Photo thumbnail; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats. |
+  | video | InputFile | Video of the live photo; not supported in secret chats; pass null if the photo isn't a live photo. |
+  | added_sticker_file_ids | int32 | File identifiers of the stickers added to the photo, if applicable. |
+  | width | int32 | Photo width; may be replaced by the server. |
+  | height | int32 | Photo height; may be replaced by the server. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_photo.html).
+  """
+
+  defstruct "@type": "inputPhoto", "@extra": nil, photo: nil, thumbnail: nil, video: nil, added_sticker_file_ids: nil, width: nil, height: nil
+end
 defmodule SuggestedActionSetProfilePhoto do
   @moduledoc  """
   Suggests the user to set profile photo.
@@ -16083,6 +17392,20 @@ defmodule ResendCodeReason do
 
   defstruct "@type": "ResendCodeReason", "@extra": nil
 end
+defmodule InputPageBlockSectionHeading do
+  @moduledoc  """
+  A section heading.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text of the section heading. |
+  | size | int32 | Relative size of the text font; 1-6, 1 is the largest, 6 is the smallest. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_section_heading.html).
+  """
+
+  defstruct "@type": "inputPageBlockSectionHeading", "@extra": nil, text: nil, size: nil
+end
 defmodule UpdateChatAddedToList do
   @moduledoc  """
   A chat was added to a chat list.
@@ -16115,7 +17438,7 @@ defmodule PremiumGiveawayPaymentOption do
   |------|------| ------------|
   | currency | string | ISO 4217 currency code for Telegram Premium gift code payment. |
   | amount | int53 | The amount to pay, in the smallest units of the currency. |
-  | winner_count | int32 | Number of users which will be able to activate the gift codes. |
+  | winner_count | int32 | Number of users who will be able to activate the gift codes. |
   | month_count | int32 | Number of months the Telegram Premium subscription will be active. |
   | store_product_id | string | Identifier of the store product associated with the option; may be empty if none. |
   | store_product_quantity | int32 | Number of times the store product must be paid. |
@@ -16124,16 +17447,6 @@ defmodule PremiumGiveawayPaymentOption do
   """
 
   defstruct "@type": "premiumGiveawayPaymentOption", "@extra": nil, currency: nil, amount: nil, winner_count: nil, month_count: nil, store_product_id: nil, store_product_quantity: nil
-end
-defmodule SessionTypeUbuntu do
-  @moduledoc  """
-  The session is running on an Ubuntu device.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_ubuntu.html).
-  """
-
-  defstruct "@type": "sessionTypeUbuntu", "@extra": nil
 end
 defmodule UpdateNewChat do
   @moduledoc  """
@@ -16169,6 +17482,19 @@ defmodule InputStoryAreaType do
   """
 
   defstruct "@type": "InputStoryAreaType", "@extra": nil
+end
+defmodule RichTextMathematicalExpression do
+  @moduledoc  """
+  A mathematical expression.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | expression | string | The expression in LaTeX format. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_mathematical_expression.html).
+  """
+
+  defstruct "@type": "richTextMathematicalExpression", "@extra": nil, expression: nil
 end
 defmodule ResendCodeReasonVerificationFailed do
   @moduledoc  """
@@ -16358,15 +17684,7 @@ defmodule InputMessageVideo do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | video | InputFile | Video to be sent. The video is expected to be re-encoded to MPEG4 format with H.264 codec by the sender. |
-  | thumbnail | inputThumbnail | Video thumbnail; pass null to skip thumbnail uploading. |
-  | cover | InputFile | Cover of the video; pass null to skip cover uploading; not supported in secret chats and for self-destructing messages. |
-  | start_timestamp | int32 | Timestamp from which the video playing must start, in seconds. |
-  | added_sticker_file_ids | int32 | File identifiers of the stickers added to the video, if applicable. |
-  | duration | int32 | Duration of the video, in seconds. |
-  | width | int32 | Video width. |
-  | height | int32 | Video height. |
-  | supports_streaming | bool | True, if the video is expected to be streamed. |
+  | video | inputVideo | Video to be sent. |
   | caption | formattedText | Video caption; pass null to use an empty caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
   | show_caption_above_media | bool | True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats. |
   | self_destruct_type | MessageSelfDestructType | Video self-destruct type; pass null if none; private chats only. |
@@ -16375,7 +17693,22 @@ defmodule InputMessageVideo do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video.html).
   """
 
-  defstruct "@type": "inputMessageVideo", "@extra": nil, video: nil, thumbnail: nil, cover: nil, start_timestamp: nil, added_sticker_file_ids: nil, duration: nil, width: nil, height: nil, supports_streaming: nil, caption: nil, show_caption_above_media: nil, self_destruct_type: nil, has_spoiler: nil
+  defstruct "@type": "inputMessageVideo", "@extra": nil, video: nil, caption: nil, show_caption_above_media: nil, self_destruct_type: nil, has_spoiler: nil
+end
+defmodule InputDocument do
+  @moduledoc  """
+  A document (general file) to be sent.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | document | InputFile | File to be sent. |
+  | thumbnail | inputThumbnail | Document thumbnail; pass null to skip thumbnail uploading. |
+  | disable_content_type_detection | bool | Pass true to disable automatic file type detection and send the document as a file. Always true for files sent to secret chats. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_document.html).
+  """
+
+  defstruct "@type": "inputDocument", "@extra": nil, document: nil, thumbnail: nil, disable_content_type_detection: nil
 end
 defmodule VectorPathCommand do
   @moduledoc  """
@@ -16393,6 +17726,7 @@ defmodule SupergroupFullInfo do
   | Name | Type | Description |
   |------|------| ------------|
   | photo | chatPhoto | Chat photo; may be null if empty or unknown. If non-null, then it is the same photo as in chat.photo. |
+  | community_id | int53 | Identifier of the community to which the corresponding chat was added. |
   | description | string | Supergroup or channel description. |
   | member_count | int32 | Number of members in the supergroup or channel; 0 if unknown. |
   | administrator_count | int32 | Number of privileged users in the supergroup or channel; 0 if unknown. |
@@ -16427,6 +17761,7 @@ defmodule SupergroupFullInfo do
   | custom_emoji_sticker_set_id | int64 | Identifier of the custom emoji sticker set that can be used in the supergroup without Telegram Premium subscription; 0 if none. |
   | location | chatLocation | Location to which the supergroup is connected; may be null if none. |
   | invite_link | chatInviteLink | Primary invite link for the chat; may be null. For chat administrators with can_invite_users right only. |
+  | guard_bot_user_id | int53 | User identifier of the guard bot in the group; for chat administrators only. |
   | bot_commands | botCommands | List of commands of bots in the group. |
   | bot_verification | botVerification | Information about verification status of the supergroup or the channel provided by a bot; may be null if none or unknown. |
   | main_profile_tab | ProfileTab | The main tab chosen by the administrators of the channel; may be null if not chosen manually. |
@@ -16436,7 +17771,7 @@ defmodule SupergroupFullInfo do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).
   """
 
-  defstruct "@type": "supergroupFullInfo", "@extra": nil, photo: nil, description: nil, member_count: nil, administrator_count: nil, restricted_count: nil, banned_count: nil, linked_chat_id: nil, direct_messages_chat_id: nil, slow_mode_delay: nil, slow_mode_delay_expires_in: nil, can_enable_paid_messages: nil, can_enable_paid_reaction: nil, can_get_members: nil, has_hidden_members: nil, can_hide_members: nil, can_set_sticker_set: nil, can_set_location: nil, can_get_statistics: nil, can_get_revenue_statistics: nil, can_get_star_revenue_statistics: nil, can_send_gift: nil, can_toggle_aggressive_anti_spam: nil, is_all_history_available: nil, can_have_sponsored_messages: nil, has_aggressive_anti_spam_enabled: nil, has_paid_media_allowed: nil, has_pinned_stories: nil, gift_count: nil, my_boost_count: nil, unrestrict_boost_count: nil, outgoing_paid_message_star_count: nil, sticker_set_id: nil, custom_emoji_sticker_set_id: nil, location: nil, invite_link: nil, bot_commands: nil, bot_verification: nil, main_profile_tab: nil, upgraded_from_basic_group_id: nil, upgraded_from_max_message_id: nil
+  defstruct "@type": "supergroupFullInfo", "@extra": nil, photo: nil, community_id: nil, description: nil, member_count: nil, administrator_count: nil, restricted_count: nil, banned_count: nil, linked_chat_id: nil, direct_messages_chat_id: nil, slow_mode_delay: nil, slow_mode_delay_expires_in: nil, can_enable_paid_messages: nil, can_enable_paid_reaction: nil, can_get_members: nil, has_hidden_members: nil, can_hide_members: nil, can_set_sticker_set: nil, can_set_location: nil, can_get_statistics: nil, can_get_revenue_statistics: nil, can_get_star_revenue_statistics: nil, can_send_gift: nil, can_toggle_aggressive_anti_spam: nil, is_all_history_available: nil, can_have_sponsored_messages: nil, has_aggressive_anti_spam_enabled: nil, has_paid_media_allowed: nil, has_pinned_stories: nil, gift_count: nil, my_boost_count: nil, unrestrict_boost_count: nil, outgoing_paid_message_star_count: nil, sticker_set_id: nil, custom_emoji_sticker_set_id: nil, location: nil, invite_link: nil, guard_bot_user_id: nil, bot_commands: nil, bot_verification: nil, main_profile_tab: nil, upgraded_from_basic_group_id: nil, upgraded_from_max_message_id: nil
 end
 defmodule MessageChatJoinByRequest do
   @moduledoc  """
@@ -16476,6 +17811,21 @@ defmodule StarTransactionTypeBusinessBotTransferReceive do
   """
 
   defstruct "@type": "starTransactionTypeBusinessBotTransferReceive", "@extra": nil, user_id: nil
+end
+defmodule UpdateChatJoinResult do
+  @moduledoc  """
+  A join request from the user was completed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | query_id | int64 | Identifier of the join request query as received in <a class="el" href="classtd_1_1td__api_1_1chat_join_result_guard_bot_approval_required.html">chatJoinResultGuardBotApprovalRequired</a>. If the corresponding Web App is still open, then it must be closed. |
+  | chat_id | int53 | Identifier of the joined chat, or 0 if the request wasn't approved. |
+  | result | ChatJoinRequestResult | Result of the join. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_join_result.html).
+  """
+
+  defstruct "@type": "updateChatJoinResult", "@extra": nil, query_id: nil, chat_id: nil, result: nil
 end
 defmodule FirebaseAuthenticationSettings do
   @moduledoc  """
@@ -16641,6 +17991,21 @@ defmodule GroupCallJoinParameters do
 
   defstruct "@type": "groupCallJoinParameters", "@extra": nil, audio_source_id: nil, payload: nil, is_muted: nil, is_my_video_enabled: nil
 end
+defmodule InputPageBlockAnimation do
+  @moduledoc  """
+  An animation.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | animation | inputAnimation | The animation to be sent. |
+  | caption | pageBlockCaption | Animation caption; pass null if none. |
+  | has_spoiler | bool | True, if the animation preview must be covered by a spoiler animation. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_animation.html).
+  """
+
+  defstruct "@type": "inputPageBlockAnimation", "@extra": nil, animation: nil, caption: nil, has_spoiler: nil
+end
 defmodule StarTransactionTypeFragmentWithdrawal do
   @moduledoc  """
   The transaction is a withdrawal of earned Telegram Stars to Fragment; relevant for regular users, bots, supergroup and channel chats only.
@@ -16747,11 +18112,12 @@ defmodule InputPollOption do
   | Name | Type | Description |
   |------|------| ------------|
   | text | formattedText | Option text; 1-100 characters. Only custom emoji entities are allowed to be added and only by Premium users. |
+  | media | InputPollMedia | Option media; pass null if none. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_poll_media_animation.html">inputPollMediaAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_link.html">inputPollMediaLink</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_location.html">inputPollMediaLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_photo.html">inputPollMediaPhoto</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_sticker.html">inputPollMediaSticker</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_venue.html">inputPollMediaVenue</a>, or <a class="el" href="classtd_1_1td__api_1_1input_poll_media_video.html">inputPollMediaVideo</a> without caption. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_option.html).
   """
 
-  defstruct "@type": "inputPollOption", "@extra": nil, text: nil
+  defstruct "@type": "inputPollOption", "@extra": nil, text: nil, media: nil
 end
 defmodule ChatActionBarInviteMembers do
   @moduledoc  """
@@ -16870,16 +18236,6 @@ defmodule StarTransactionTypePaidGroupCallMessageReceive do
   """
 
   defstruct "@type": "starTransactionTypePaidGroupCallMessageReceive", "@extra": nil, sender_id: nil, commission_per_mille: nil, commission_star_amount: nil
-end
-defmodule SettingsSectionMyToncoins do
-  @moduledoc  """
-  The Toncoin balance and transaction section.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1settings_section_my_toncoins.html).
-  """
-
-  defstruct "@type": "settingsSectionMyToncoins", "@extra": nil
 end
 defmodule UpdateAttachmentMenuBots do
   @moduledoc  """
@@ -17044,7 +18400,7 @@ defmodule CanSendGiftResult do
 end
 defmodule MessageGiveawayPrizeStars do
   @moduledoc  """
-  A Telegram Stars were received by the current user from a giveaway.
+  Telegram Stars were received by the current user from a giveaway.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -17109,7 +18465,7 @@ defmodule PageBlockHorizontalAlignmentRight do
 end
 defmodule FileTypeSelfDestructingLivePhotoVideo do
   @moduledoc  """
-  The file is a seld-destructing video for a live photo in a private chat.
+  The file is a self-destructing video for a live photo in a private chat.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_self_destructing_live_photo_video.html).
@@ -17166,7 +18522,7 @@ defmodule MessageSourceScreenshot do
 end
 defmodule PageBlockSubheader do
   @moduledoc  """
-  A subheader.
+  A subheader; instant view only.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -17186,6 +18542,19 @@ defmodule ReportSponsoredResultFailed do
   """
 
   defstruct "@type": "reportSponsoredResultFailed", "@extra": nil
+end
+defmodule InternalLinkTypeTextCompositionStyle do
+  @moduledoc  """
+  The link is a link to a text composition style. Call searchTextCompositionStyle with the given style name to get information about the style. If the style is found and the user wants to add it, then call addTextCompositionStyle.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | style_name | string | Name of the style. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_text_composition_style.html).
+  """
+
+  defstruct "@type": "internalLinkTypeTextCompositionStyle", "@extra": nil, style_name: nil
 end
 defmodule UserPrivacySettingAllowFindingByPhoneNumber do
   @moduledoc  """
@@ -17268,13 +18637,13 @@ defmodule MessageStakeDice do
   | initial_state | DiceStickers | The animated stickers with the initial dice animation; may be null if unknown. The update <a class="el" href="classtd_1_1td__api_1_1update_message_content.html">updateMessageContent</a> will be sent when the sticker became known. |
   | final_state | DiceStickers | The animated stickers with the final dice animation; may be null if unknown. The update <a class="el" href="classtd_1_1td__api_1_1update_message_content.html">updateMessageContent</a> will be sent when the sticker became known. |
   | value | int32 | The dice value. If the value is 0, then the dice don't have final state yet. |
-  | stake_toncoin_amount | int53 | The Toncoin amount that was staked; in the smallest units of the currency. |
-  | prize_toncoin_amount | int53 | The Toncoin amount that was gained from the roll; in the smallest units of the currency; -1 if the dice don't have final state yet. |
+  | stake_gram_amount | int53 | The TON Gram amount that was staked; in the smallest units of the currency. |
+  | prize_gram_amount | int53 | The TON Gram amount that was gained from the roll; in the smallest units of the currency; -1 if the dice don't have final state yet. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_stake_dice.html).
   """
 
-  defstruct "@type": "messageStakeDice", "@extra": nil, initial_state: nil, final_state: nil, value: nil, stake_toncoin_amount: nil, prize_toncoin_amount: nil
+  defstruct "@type": "messageStakeDice", "@extra": nil, initial_state: nil, final_state: nil, value: nil, stake_gram_amount: nil, prize_gram_amount: nil
 end
 defmodule UpdateAccentColors do
   @moduledoc  """
@@ -17325,6 +18694,23 @@ defmodule MessageEffectType do
   """
 
   defstruct "@type": "MessageEffectType", "@extra": nil
+end
+defmodule CommunityAdministratorRights do
+  @moduledoc  """
+  Describes rights of the administrator in a community.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | can_manage_community | bool | True, if the user is an administrator. Implied by any other privilege. |
+  | can_change_info | bool | True, if the administrator can change the community name, photo, and other settings. |
+  | can_edit_chat_list | bool | True, if the user can change the chats added to the community. |
+  | can_promote_members | bool | True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them. |
+  | can_ban_members | bool | True, if the administrator can ban, or unban community members. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1community_administrator_rights.html).
+  """
+
+  defstruct "@type": "communityAdministratorRights", "@extra": nil, can_manage_community: nil, can_change_info: nil, can_edit_chat_list: nil, can_promote_members: nil, can_ban_members: nil
 end
 defmodule ThumbnailFormatJpeg do
   @moduledoc  """
@@ -17407,6 +18793,19 @@ defmodule AttachmentMenuBot do
 
   defstruct "@type": "attachmentMenuBot", "@extra": nil, bot_user_id: nil, supports_self_chat: nil, supports_user_chats: nil, supports_bot_chats: nil, supports_group_chats: nil, supports_channel_chats: nil, request_write_access: nil, is_added: nil, show_in_attachment_menu: nil, show_in_side_menu: nil, show_disclaimer_in_side_menu: nil, name: nil, name_color: nil, default_icon: nil, ios_static_icon: nil, ios_animated_icon: nil, ios_side_menu_icon: nil, android_icon: nil, android_side_menu_icon: nil, macos_icon: nil, macos_side_menu_icon: nil, icon_color: nil, web_app_placeholder: nil
 end
+defmodule InputPollMediaVideo do
+  @moduledoc  """
+  A video.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | video | inputVideo | The video to be sent. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_media_video.html).
+  """
+
+  defstruct "@type": "inputPollMediaVideo", "@extra": nil, video: nil
+end
 defmodule PageBlockListItem do
   @moduledoc  """
   Describes an item of a list page block.
@@ -17414,12 +18813,30 @@ defmodule PageBlockListItem do
   | Name | Type | Description |
   |------|------| ------------|
   | label | string | Item label. |
-  | page_blocks | PageBlock | Item blocks. |
+  | blocks | PageBlock | Item blocks. |
+  | has_checkbox | bool | True, if the item has a checkbox. |
+  | is_checked | bool | True, if the item is checked. |
+  | value | int32 | Value of the item; 0 for unordered lists. |
+  | type | string | Type of the item numbering type; must be one of "a" for lowercase letters, "A" for uppercase letters, "i" for lowercase Roman numerals, "I" for uppercase Roman numerals, "1" for decimal numbers, or empty for unordered lists. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_list_item.html).
   """
 
-  defstruct "@type": "pageBlockListItem", "@extra": nil, label: nil, page_blocks: nil
+  defstruct "@type": "pageBlockListItem", "@extra": nil, label: nil, blocks: nil, has_checkbox: nil, is_checked: nil, value: nil, type: nil
+end
+defmodule PageBlockButtonRow do
+  @moduledoc  """
+  A list of buttons shown in a row.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | buttons | inlineButton | The buttons. |
+  | align | PageBlockHorizontalAlignment | Horizontal alignment of the buttons; may be null if the buttons must be shown full-width. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_button_row.html).
+  """
+
+  defstruct "@type": "pageBlockButtonRow", "@extra": nil, buttons: nil, align: nil
 end
 defmodule UserSupportInfo do
   @moduledoc  """
@@ -17469,6 +18886,16 @@ defmodule ChatMemberStatusRestricted do
   """
 
   defstruct "@type": "chatMemberStatusRestricted", "@extra": nil, is_member: nil, restricted_until_date: nil, permissions: nil
+end
+defmodule SessionDeviceTypeBrave do
+  @moduledoc  """
+  The session is running on the Brave browser.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_brave.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeBrave", "@extra": nil
 end
 defmodule StorePaymentPurposePremiumGiveaway do
   @moduledoc  """
@@ -17573,6 +19000,19 @@ defmodule UpdateStoryDeleted do
 
   defstruct "@type": "updateStoryDeleted", "@extra": nil, story_poster_chat_id: nil, story_id: nil
 end
+defmodule PollVoteStatistics do
+  @moduledoc  """
+  A detailed statistics about poll votes.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | vote_graph | StatisticalGraph | A graph containing distribution of votes in the poll. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_vote_statistics.html).
+  """
+
+  defstruct "@type": "pollVoteStatistics", "@extra": nil, vote_graph: nil
+end
 defmodule CanSendGiftResultFail do
   @moduledoc  """
   The gift can't be sent now by the current user.
@@ -17628,7 +19068,7 @@ defmodule InputInlineQueryResultPhoto do
   | photo_width | int32 | Width of the photo. |
   | photo_height | int32 | Height of the photo. |
   | reply_markup | ReplyMarkup | The message reply markup; pass null if none. Must be of type <a class="el" href="classtd_1_1td__api_1_1reply_markup_inline_keyboard.html">replyMarkupInlineKeyboard</a> or null. |
-  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_photo.html">inputMessagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_photo.html">inputMessagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_live_location.html">inputMessageLiveLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_photo.html).
   """
@@ -17773,6 +19213,15 @@ defmodule ChatPhotoStickerTypeRegularOrMask do
 
   defstruct "@type": "chatPhotoStickerTypeRegularOrMask", "@extra": nil, sticker_set_id: nil, sticker_id: nil
 end
+defmodule RichMessageSource do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_rich_message_source.html).
+  """
+
+  defstruct "@type": "RichMessageSource", "@extra": nil
+end
 defmodule PassportElementTypeDriverLicense do
   @moduledoc  """
   A Telegram Passport element containing the user's driver license.
@@ -17836,6 +19285,23 @@ defmodule BuiltInThemeArctic do
 
   defstruct "@type": "builtInThemeArctic", "@extra": nil
 end
+defmodule MessageGiftedGrams do
+  @moduledoc  """
+  TON Grams were gifted to a user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | gifter_user_id | int53 | The identifier of a user who gifted Grams; 0 if the gift was anonymous or is outgoing. |
+  | receiver_user_id | int53 | The identifier of a user who received Grams; 0 if the gift is incoming. |
+  | gram_amount | int53 | The received Gram amount, in the smallest units of the cryptocurrency. |
+  | transaction_id | string | Identifier of the transaction for Gram credit; for receiver only. |
+  | sticker | sticker | A sticker to be shown in the message; may be null if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_gifted_grams.html).
+  """
+
+  defstruct "@type": "messageGiftedGrams", "@extra": nil, gifter_user_id: nil, receiver_user_id: nil, gram_amount: nil, transaction_id: nil, sticker: nil
+end
 defmodule DraftMessage do
   @moduledoc  """
   Contains information about a message draft.
@@ -17844,14 +19310,14 @@ defmodule DraftMessage do
   |------|------| ------------|
   | reply_to | InputMessageReplyTo | Information about the message to be replied; <a class="el" href="classtd_1_1td__api_1_1input_message_reply_to_story.html">inputMessageReplyToStory</a> is unsupported; may be null if none. |
   | date | int32 | Point in time (Unix timestamp) when the draft was created. |
-  | input_message_text | InputMessageContent | Content of the message draft; must be of the type <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video_note.html">inputMessageVideoNote</a>, or <a class="el" href="classtd_1_1td__api_1_1input_message_voice_note.html">inputMessageVoiceNote</a>. |
+  | content | DraftMessageContent | Content of the message draft. |
   | effect_id | int64 | Identifier of the effect to apply to the message when it is sent; 0 if none. |
   | suggested_post_info | inputSuggestedPostInfo | Information about the suggested post; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1draft_message.html).
   """
 
-  defstruct "@type": "draftMessage", "@extra": nil, reply_to: nil, date: nil, input_message_text: nil, effect_id: nil, suggested_post_info: nil
+  defstruct "@type": "draftMessage", "@extra": nil, reply_to: nil, date: nil, content: nil, effect_id: nil, suggested_post_info: nil
 end
 defmodule UpdateFileAddedToDownloads do
   @moduledoc  """
@@ -17885,6 +19351,23 @@ defmodule GroupCallVideoQuality do
   """
 
   defstruct "@type": "GroupCallVideoQuality", "@extra": nil
+end
+defmodule PollMediaVideo do
+  @moduledoc  """
+  A video.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | video | video | The video description. |
+  | alternative_videos | alternativeVideo | Alternative qualities of the video. |
+  | storyboards | videoStoryboard | Available storyboards for the video. |
+  | cover | photo | Cover of the video; may be null if none. |
+  | start_timestamp | int32 | Timestamp from which the video playing must start, in seconds. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_media_video.html).
+  """
+
+  defstruct "@type": "pollMediaVideo", "@extra": nil, video: nil, alternative_videos: nil, storyboards: nil, cover: nil, start_timestamp: nil
 end
 defmodule UpdateForumTopicInfo do
   @moduledoc  """
@@ -18303,8 +19786,8 @@ defmodule PageBlockAudio do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | audio | audio | Audio file; may be null. |
-  | caption | pageBlockCaption | Audio file caption. |
+  | audio | audio | Audio file. |
+  | caption | pageBlockCaption | Audio file caption; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_audio.html).
   """
@@ -18346,7 +19829,7 @@ defmodule MessageGiveaway do
   | Name | Type | Description |
   |------|------| ------------|
   | parameters | giveawayParameters | Giveaway parameters. |
-  | winner_count | int32 | Number of users which will receive Telegram Premium subscription gift codes. |
+  | winner_count | int32 | Number of users who will receive Telegram Premium subscription gift codes. |
   | prize | GiveawayPrize | Prize of the giveaway. |
   | sticker | sticker | A sticker to be shown in the message; may be null if unknown. |
 
@@ -18354,6 +19837,29 @@ defmodule MessageGiveaway do
   """
 
   defstruct "@type": "messageGiveaway", "@extra": nil, parameters: nil, winner_count: nil, prize: nil, sticker: nil
+end
+defmodule UpdateCommunity do
+  @moduledoc  """
+  Some data of a community has changed. This update is guaranteed to come before the community identifier is returned to the application.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | community | community | New data about the community. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_community.html).
+  """
+
+  defstruct "@type": "updateCommunity", "@extra": nil, community: nil
+end
+defmodule MessageChatRemovedFromCommunity do
+  @moduledoc  """
+  The chat was removed from a community.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_removed_from_community.html).
+  """
+
+  defstruct "@type": "messageChatRemovedFromCommunity", "@extra": nil
 end
 defmodule InternalLinkTypePublicChat do
   @moduledoc  """
@@ -18469,6 +19975,21 @@ defmodule GiftCollections do
 
   defstruct "@type": "giftCollections", "@extra": nil, collections: nil
 end
+defmodule InputRichMessage do
+  @moduledoc  """
+  A rich message to send. Total length of all texts, including custom emoji alternative text and formula source, must not exceed getOption("rich_message_text_length_max"). The total number of all blocks, list items and table rows must not exceed getOption("rich_message_block_count_max"). The maximum allowed depth of nested blocks and rich texts is getOption("rich_message_depth_max"). The total number of media in all blocks must not exceed getOption("rich_message_media_count_max"). The maximum allowed number of table columns is getOption("rich_message_table_column_count_max").
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | source | RichMessageSource | Source of the rich message. |
+  | is_rtl | bool | Pass true if the message must be shown from right to left. |
+  | detect_automatic_blocks | bool | Pass true to enable detection of URLs, email addresses and other automatic blocks. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_rich_message.html).
+  """
+
+  defstruct "@type": "inputRichMessage", "@extra": nil, source: nil, is_rtl: nil, detect_automatic_blocks: nil
+end
 defmodule CallStateHangingUp do
   @moduledoc  """
   The call is hanging up after discardCall has been called.
@@ -18530,7 +20051,7 @@ defmodule InputInlineQueryResultArticle do
   | thumbnail_width | int32 | Thumbnail width, if known. |
   | thumbnail_height | int32 | Thumbnail height, if known. |
   | reply_markup | ReplyMarkup | The message reply markup; pass null if none. Must be of type <a class="el" href="classtd_1_1td__api_1_1reply_markup_inline_keyboard.html">replyMarkupInlineKeyboard</a> or null. |
-  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_live_location.html">inputMessageLiveLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_article.html).
   """
@@ -18657,6 +20178,22 @@ defmodule BackgroundTypeChatTheme do
   """
 
   defstruct "@type": "backgroundTypeChatTheme", "@extra": nil, theme_name: nil
+end
+defmodule BusinessConnectedBotInfo do
+  @moduledoc  """
+  Describes a connection of a bot to an account.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | bot | businessConnectedBot | Information about the bot. |
+  | connection_date | int32 | Point in time (Unix timestamp) when the bot was added; may be 0 if unknown. |
+  | device_model | string | Model of the device that was used for the bot connection, as provided by the application; may be empty if unknown. |
+  | location | string | A human-readable description of the location from which the bot was connected, based on the IP address; may be empty if unknown. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_connected_bot_info.html).
+  """
+
+  defstruct "@type": "businessConnectedBotInfo", "@extra": nil, bot: nil, connection_date: nil, device_model: nil, location: nil
 end
 defmodule ChatEventIsAllHistoryAvailableToggled do
   @moduledoc  """
@@ -19108,6 +20645,20 @@ defmodule StoryAreaPosition do
 
   defstruct "@type": "storyAreaPosition", "@extra": nil, x_percentage: nil, y_percentage: nil, width_percentage: nil, height_percentage: nil, rotation_angle: nil, corner_radius_percentage: nil
 end
+defmodule InputPageBlockExpandableBlockQuote do
+  @moduledoc  """
+  An expandable block quote.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Quote text. |
+  | credit | RichText | Quote credit; pass null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_expandable_block_quote.html).
+  """
+
+  defstruct "@type": "inputPageBlockExpandableBlockQuote", "@extra": nil, text: nil, credit: nil
+end
 defmodule PushMessageContentMediaAlbum do
   @moduledoc  """
   A media album.
@@ -19168,7 +20719,7 @@ defmodule WebPageInstantView do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | page_blocks | PageBlock | Content of the instant view page. |
+  | blocks | PageBlock | Content of the instant view page. |
   | view_count | int32 | Number of the instant view views; 0 if unknown. |
   | version | int32 | Version of the instant view; currently, can be 1 or 2. |
   | is_rtl | bool | True, if the instant view must be shown from right to left. |
@@ -19178,7 +20729,7 @@ defmodule WebPageInstantView do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_page_instant_view.html).
   """
 
-  defstruct "@type": "webPageInstantView", "@extra": nil, page_blocks: nil, view_count: nil, version: nil, is_rtl: nil, is_full: nil, feedback_link: nil
+  defstruct "@type": "webPageInstantView", "@extra": nil, blocks: nil, view_count: nil, version: nil, is_rtl: nil, is_full: nil, feedback_link: nil
 end
 defmodule Point do
   @moduledoc  """
@@ -19214,11 +20765,12 @@ defmodule ReplyMarkupInlineKeyboard do
   | Name | Type | Description |
   |------|------| ------------|
   | rows | inlineKeyboardButton | A list of rows of inline keyboard buttons. |
+  | force_reply | bool | True, if a reply to the message must be forced when the message is received. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reply_markup_inline_keyboard.html).
   """
 
-  defstruct "@type": "replyMarkupInlineKeyboard", "@extra": nil, rows: nil
+  defstruct "@type": "replyMarkupInlineKeyboard", "@extra": nil, rows: nil, force_reply: nil
 end
 defmodule ChatEventMemberJoinedByRequest do
   @moduledoc  """
@@ -19311,6 +20863,20 @@ defmodule ProfileTabVoice do
 
   defstruct "@type": "profileTabVoice", "@extra": nil
 end
+defmodule InputPageBlockAudio do
+  @moduledoc  """
+  An audio file.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | audio | inputAudio | The audio to be sent. |
+  | caption | pageBlockCaption | Audio file caption; pass null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_audio.html).
+  """
+
+  defstruct "@type": "inputPageBlockAudio", "@extra": nil, audio: nil, caption: nil
+end
 defmodule MessageChecklistTasksAdded do
   @moduledoc  """
   Some tasks were added to a checklist.
@@ -19378,15 +20944,15 @@ defmodule UnconfirmedSession do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | id | int64 | Session identifier. |
-  | log_in_date | int32 | Point in time (Unix timestamp) when the user has logged in. |
+  | type | SessionType | Session type. |
+  | date | int32 | Point in time (Unix timestamp) when the user has logged in or the business bot was connected. |
   | device_model | string | Model of the device that was used for the session creation, as provided by the application. |
   | location | string | A human-readable description of the location from which the session was created, based on the IP address. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1unconfirmed_session.html).
   """
 
-  defstruct "@type": "unconfirmedSession", "@extra": nil, id: nil, log_in_date: nil, device_model: nil, location: nil
+  defstruct "@type": "unconfirmedSession", "@extra": nil, type: nil, date: nil, device_model: nil, location: nil
 end
 defmodule PremiumFeatureMessageEffects do
   @moduledoc  """
@@ -19588,6 +21154,22 @@ defmodule SecretChatStatePending do
 
   defstruct "@type": "secretChatStatePending", "@extra": nil
 end
+defmodule GramRevenueStatus do
+  @moduledoc  """
+  Contains information about TON Grams earned by the current user.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | total_amount | int64 | Total Gram amount earned; in the smallest units of the cryptocurrency. |
+  | balance_amount | int64 | The Gram amount that isn't withdrawn yet; in the smallest units of the cryptocurrency. |
+  | available_amount | int64 | The Gram amount that is available for withdrawal; in the smallest units of the cryptocurrency. |
+  | withdrawal_enabled | bool | True, if Grams can be withdrawn. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gram_revenue_status.html).
+  """
+
+  defstruct "@type": "gramRevenueStatus", "@extra": nil, total_amount: nil, balance_amount: nil, available_amount: nil, withdrawal_enabled: nil
+end
 defmodule LinkPreviewTypeGroupCall do
   @moduledoc  """
   The link is a link to a group call that isn't bound to a chat.
@@ -19706,6 +21288,19 @@ defmodule VideoMessageAdvertisements do
   """
 
   defstruct "@type": "videoMessageAdvertisements", "@extra": nil, advertisements: nil, start_delay: nil, between_delay: nil
+end
+defmodule DraftMessageContentInputRichMessage do
+  @moduledoc  """
+  A rich message draft; only for setChatDraftMessage.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | message | inputRichMessage | The rich message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1draft_message_content_input_rich_message.html).
+  """
+
+  defstruct "@type": "draftMessageContentInputRichMessage", "@extra": nil, message: nil
 end
 defmodule ChatListFolder do
   @moduledoc  """
@@ -19900,6 +21495,16 @@ defmodule PassportElementUtilityBill do
 
   defstruct "@type": "passportElementUtilityBill", "@extra": nil, utility_bill: nil
 end
+defmodule ChatJoinRequestResultQueued do
+  @moduledoc  """
+  The request was postponed without a decision.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_join_request_result_queued.html).
+  """
+
+  defstruct "@type": "chatJoinRequestResultQueued", "@extra": nil
+end
 defmodule PushMessageContentContact do
   @moduledoc  """
   A message with a user contact.
@@ -20071,7 +21676,7 @@ defmodule WebAppOpenModeFullSize do
 end
 defmodule PageBlockEmbeddedPost do
   @moduledoc  """
-  An embedded post.
+  An embedded post; instant view only.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -20079,13 +21684,13 @@ defmodule PageBlockEmbeddedPost do
   | author | string | Post author. |
   | author_photo | photo | Post author photo; may be null. |
   | date | int32 | Point in time (Unix timestamp) when the post was created; 0 if unknown. |
-  | page_blocks | PageBlock | Post content. |
-  | caption | pageBlockCaption | Post caption. |
+  | blocks | PageBlock | Post content. |
+  | caption | pageBlockCaption | Post caption; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_embedded_post.html).
   """
 
-  defstruct "@type": "pageBlockEmbeddedPost", "@extra": nil, url: nil, author: nil, author_photo: nil, date: nil, page_blocks: nil, caption: nil
+  defstruct "@type": "pageBlockEmbeddedPost", "@extra": nil, url: nil, author: nil, author_photo: nil, date: nil, blocks: nil, caption: nil
 end
 defmodule KeyboardButtonTypeWebApp do
   @moduledoc  """
@@ -20276,7 +21881,7 @@ defmodule Passkey do
   | name | string | Name of the passkey. |
   | addition_date | int32 | Point in time (Unix timestamp) when the passkey was added. |
   | last_usage_date | int32 | Point in time (Unix timestamp) when the passkey was used last time; 0 if never. |
-  | software_icon_custom_emoji_id | int64 | Identifier of the custom emoji that is used as the icon of the software, which created the passkey; 0 if unknown. |
+  | software_icon_custom_emoji_id | int64 | Identifier of the custom emoji that is used as the icon of the software that created the passkey; 0 if unknown. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passkey.html).
   """
@@ -20314,16 +21919,13 @@ defmodule InputMessageSticker do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | sticker | InputFile | Sticker to be sent. |
-  | thumbnail | inputThumbnail | Sticker thumbnail; pass null to skip thumbnail uploading. |
-  | width | int32 | Sticker width. |
-  | height | int32 | Sticker height. |
+  | sticker | inputSticker | Sticker to be sent. |
   | emoji | string | Emoji used to choose the sticker. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_sticker.html).
   """
 
-  defstruct "@type": "inputMessageSticker", "@extra": nil, sticker: nil, thumbnail: nil, width: nil, height: nil, emoji: nil
+  defstruct "@type": "inputMessageSticker", "@extra": nil, sticker: nil, emoji: nil
 end
 defmodule InputMessageStory do
   @moduledoc  """
@@ -20338,6 +21940,36 @@ defmodule InputMessageStory do
   """
 
   defstruct "@type": "inputMessageStory", "@extra": nil, story_poster_chat_id: nil, story_id: nil
+end
+defmodule UpdateMessageContainsUnreadPollVotes do
+  @moduledoc  """
+  Unread votes were added or removed from a poll message.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Chat identifier. |
+  | message_id | int53 | Message identifier. |
+  | contains_unread_poll_votes | bool | True, if the message is a poll message with unread votes. |
+  | unread_poll_vote_count | int32 | The new number of messages with unread poll votes in the chat. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_contains_unread_poll_votes.html).
+  """
+
+  defstruct "@type": "updateMessageContainsUnreadPollVotes", "@extra": nil, chat_id: nil, message_id: nil, contains_unread_poll_votes: nil, unread_poll_vote_count: nil
+end
+defmodule DraftMessageContentText do
+  @moduledoc  """
+  A text message draft.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | formattedText | Formatted text to be saved as a draft; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_text_length_max") characters. |
+  | link_preview_options | linkPreviewOptions | Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1draft_message_content_text.html).
+  """
+
+  defstruct "@type": "draftMessageContentText", "@extra": nil, text: nil, link_preview_options: nil
 end
 defmodule InputMessageContact do
   @moduledoc  """
@@ -20378,23 +22010,6 @@ defmodule JsonValueArray do
   """
 
   defstruct "@type": "jsonValueArray", "@extra": nil, values: nil
-end
-defmodule MessageGiftedTon do
-  @moduledoc  """
-  Toncoins were gifted to a user.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | gifter_user_id | int53 | The identifier of a user who gifted Toncoins; 0 if the gift was anonymous or is outgoing. |
-  | receiver_user_id | int53 | The identifier of a user who received Toncoins; 0 if the gift is incoming. |
-  | ton_amount | int53 | The received Toncoin amount, in the smallest units of the cryptocurrency. |
-  | transaction_id | string | Identifier of the transaction for Toncoin credit; for receiver only. |
-  | sticker | sticker | A sticker to be shown in the message; may be null if unknown. |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_gifted_ton.html).
-  """
-
-  defstruct "@type": "messageGiftedTon", "@extra": nil, gifter_user_id: nil, receiver_user_id: nil, ton_amount: nil, transaction_id: nil, sticker: nil
 end
 defmodule SettingsSectionPremium do
   @moduledoc  """
@@ -20488,6 +22103,20 @@ defmodule UpdateChatBackground do
 
   defstruct "@type": "updateChatBackground", "@extra": nil, chat_id: nil, background: nil
 end
+defmodule PollMediaPhoto do
+  @moduledoc  """
+  A photo.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | photo | The photo. |
+  | video | video | The video representing the live photo; may be null if the photo is static. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_media_photo.html).
+  """
+
+  defstruct "@type": "pollMediaPhoto", "@extra": nil, photo: nil, video: nil
+end
 defmodule VectorPathCommandLine do
   @moduledoc  """
   A straight line to a given point.
@@ -20518,6 +22147,21 @@ defmodule MessagePhoto do
   """
 
   defstruct "@type": "messagePhoto", "@extra": nil, photo: nil, video: nil, caption: nil, show_caption_above_media: nil, has_spoiler: nil, is_secret: nil
+end
+defmodule UpdateNewGuestQuery do
+  @moduledoc  """
+  A new incoming guest query; for bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | id | int64 | Unique query identifier. |
+  | message | message | The message with the query. |
+  | reference_messages | message | The list of reference messages. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_guest_query.html).
+  """
+
+  defstruct "@type": "updateNewGuestQuery", "@extra": nil, id: nil, message: nil, reference_messages: nil
 end
 defmodule PageBlockVerticalAlignmentMiddle do
   @moduledoc  """
@@ -20602,6 +22246,29 @@ defmodule EmojiStatusTypeCustomEmoji do
 
   defstruct "@type": "emojiStatusTypeCustomEmoji", "@extra": nil, custom_emoji_id: nil
 end
+defmodule PageBlockDocument do
+  @moduledoc  """
+  A general file.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | document | document | The file. |
+  | caption | pageBlockCaption | File caption; may be null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_document.html).
+  """
+
+  defstruct "@type": "pageBlockDocument", "@extra": nil, document: nil, caption: nil
+end
+defmodule PollMedia do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_poll_media.html).
+  """
+
+  defstruct "@type": "PollMedia", "@extra": nil
+end
 defmodule InputInlineQueryResultSticker do
   @moduledoc  """
   Represents a link to a WEBP, TGS, or WEBM sticker.
@@ -20614,7 +22281,7 @@ defmodule InputInlineQueryResultSticker do
   | sticker_width | int32 | Width of the sticker. |
   | sticker_height | int32 | Height of the sticker. |
   | reply_markup | ReplyMarkup | The message reply markup; pass null if none. Must be of type <a class="el" href="classtd_1_1td__api_1_1reply_markup_inline_keyboard.html">replyMarkupInlineKeyboard</a> or null. |
-  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_sticker.html">inputMessageSticker</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_sticker.html">inputMessageSticker</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_live_location.html">inputMessageLiveLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_sticker.html).
   """
@@ -20645,6 +22312,20 @@ defmodule NotificationType do
 
   defstruct "@type": "NotificationType", "@extra": nil
 end
+defmodule InputPageBlockVoiceNote do
+  @moduledoc  """
+  A voice note.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | voice_note | inputVoiceNote | The voice note to be sent. |
+  | caption | pageBlockCaption | Voice note caption; pass null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_voice_note.html).
+  """
+
+  defstruct "@type": "inputPageBlockVoiceNote", "@extra": nil, voice_note: nil, caption: nil
+end
 defmodule LinkPreviewTypeDocument do
   @moduledoc  """
   The link is a link to a general file.
@@ -20666,6 +22347,20 @@ defmodule StickerFormat do
   """
 
   defstruct "@type": "StickerFormat", "@extra": nil
+end
+defmodule RichMessageSourceHtml do
+  @moduledoc  """
+  An HTML-formatted rich message; for bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | string | HTML-formatted text of the message. |
+  | media | inputRichMessageMedia | Media used in the message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_message_source_html.html).
+  """
+
+  defstruct "@type": "richMessageSourceHtml", "@extra": nil, text: nil, media: nil
 end
 defmodule BusinessFeatureUpgradedStories do
   @moduledoc  """
@@ -20699,6 +22394,20 @@ defmodule StatisticalGraphError do
 
   defstruct "@type": "statisticalGraphError", "@extra": nil, error_message: nil
 end
+defmodule PageBlockSectionHeading do
+  @moduledoc  """
+  A section heading.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text of the section heading. |
+  | size | int32 | Relative size of the text font; 1-6, 1 is the largest, 6 is the smallest. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_section_heading.html).
+  """
+
+  defstruct "@type": "pageBlockSectionHeading", "@extra": nil, text: nil, size: nil
+end
 defmodule MessagePollOptionDeleted do
   @moduledoc  """
   A message with information about a deleted poll option.
@@ -20713,6 +22422,20 @@ defmodule MessagePollOptionDeleted do
   """
 
   defstruct "@type": "messagePollOptionDeleted", "@extra": nil, poll_message_id: nil, option_id: nil, text: nil
+end
+defmodule InputPageBlockPreformatted do
+  @moduledoc  """
+  A preformatted text paragraph.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Paragraph text. |
+  | language | string | Programming language for which the text needs to be formatted. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_preformatted.html).
+  """
+
+  defstruct "@type": "inputPageBlockPreformatted", "@extra": nil, text: nil, language: nil
 end
 defmodule CheckStickerSetNameResultNameOccupied do
   @moduledoc  """
@@ -20926,12 +22649,27 @@ defmodule ReceivedGift do
   | next_resale_date | int32 | Point in time (Unix timestamp) when the gift can be resold to another user; can be in the past; 0 if the gift can't be resold; only for the receiver of the gift. |
   | export_date | int32 | Point in time (Unix timestamp) when the upgraded gift can be transferred to the TON blockchain as an NFT; can be in the past; 0 if NFT export isn't possible; only for the receiver of the gift. |
   | prepaid_upgrade_hash | string | If non-empty, then the user can pay for an upgrade of the gift using <a class="el" href="classtd_1_1td__api_1_1buy_gift_upgrade.html">buyGiftUpgrade</a>. |
-  | craft_date | int32 | Point in time (Unix timestamp) when the gift can be used to craft another gift can be in the past; only for the receiver of the gift. |
+  | craft_date | int32 | Point in time (Unix timestamp) when the gift can be used to craft another gift; can be in the past; only for the receiver of the gift. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1received_gift.html).
   """
 
   defstruct "@type": "receivedGift", "@extra": nil, received_gift_id: nil, sender_id: nil, text: nil, unique_gift_number: nil, is_private: nil, is_saved: nil, is_pinned: nil, can_be_upgraded: nil, can_be_transferred: nil, was_refunded: nil, date: nil, gift: nil, collection_ids: nil, sell_star_count: nil, prepaid_upgrade_star_count: nil, is_upgrade_separate: nil, transfer_star_count: nil, drop_original_details_star_count: nil, next_transfer_date: nil, next_resale_date: nil, export_date: nil, prepaid_upgrade_hash: nil, craft_date: nil
+end
+defmodule UpdateMessageEphemeralContent do
+  @moduledoc  """
+  The message ephemeral content has changed.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Chat identifier. |
+  | message_id | int53 | Message identifier. |
+  | ephemeral_content | ephemeralMessageContent | New ephemeral content of the message; may be null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_ephemeral_content.html).
+  """
+
+  defstruct "@type": "updateMessageEphemeralContent", "@extra": nil, chat_id: nil, message_id: nil, ephemeral_content: nil
 end
 defmodule LinkPreviewTypeStoryAlbum do
   @moduledoc  """
@@ -21082,6 +22820,16 @@ defmodule ChatAdministrator do
 
   defstruct "@type": "chatAdministrator", "@extra": nil, user_id: nil, custom_title: nil, is_owner: nil, can_be_edited: nil
 end
+defmodule SessionDeviceTypeVivaldi do
+  @moduledoc  """
+  The session is running on the Vivaldi browser.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_vivaldi.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeVivaldi", "@extra": nil
+end
 defmodule InputPassportElementPassport do
   @moduledoc  """
   A Telegram Passport element to be saved containing the user's passport.
@@ -21124,15 +22872,17 @@ defmodule UserTypeBot do
   | can_manage_bots | bool | True, if the bot can manage other bots. |
   | is_inline | bool | True, if the bot supports inline queries. |
   | inline_query_placeholder | string | Placeholder for inline queries (displayed on the application input field). |
+  | supports_guest_queries | bool | True, if the bot can be queried by username from any non-secret chat. |
+  | is_guard | bool | True, if the bot can be set as a guard bot in supergroup chats. |
   | need_location | bool | True, if the location of the user is expected to be sent with every inline query to this bot. |
-  | can_connect_to_business | bool | True, if the bot supports connection to Telegram Business accounts. |
+  | can_connect_to_business | bool | True, if the bot supports connection to user accounts for chat automation. |
   | can_be_added_to_attachment_menu | bool | True, if the bot can be added to attachment or side menu. |
   | active_user_count | int32 | The number of recently active users of the bot. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html).
   """
 
-  defstruct "@type": "userTypeBot", "@extra": nil, can_be_edited: nil, can_join_groups: nil, can_read_all_group_messages: nil, has_main_web_app: nil, has_topics: nil, allows_users_to_create_topics: nil, can_manage_bots: nil, is_inline: nil, inline_query_placeholder: nil, need_location: nil, can_connect_to_business: nil, can_be_added_to_attachment_menu: nil, active_user_count: nil
+  defstruct "@type": "userTypeBot", "@extra": nil, can_be_edited: nil, can_join_groups: nil, can_read_all_group_messages: nil, has_main_web_app: nil, has_topics: nil, allows_users_to_create_topics: nil, can_manage_bots: nil, is_inline: nil, inline_query_placeholder: nil, supports_guest_queries: nil, is_guard: nil, need_location: nil, can_connect_to_business: nil, can_be_added_to_attachment_menu: nil, active_user_count: nil
 end
 defmodule UpdateDeleteMessages do
   @moduledoc  """
@@ -21307,6 +23057,19 @@ defmodule StarTransactionTypeGiftOriginalDetailsDrop do
 
   defstruct "@type": "starTransactionTypeGiftOriginalDetailsDrop", "@extra": nil, owner_id: nil, gift: nil
 end
+defmodule DraftMessageContentRichMessage do
+  @moduledoc  """
+  A rich message draft; not supported in setChatDraftMessage.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | message | richMessage | The rich message. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1draft_message_content_rich_message.html).
+  """
+
+  defstruct "@type": "draftMessageContentRichMessage", "@extra": nil, message: nil
+end
 defmodule PassportElementErrorSourceTranslationFiles do
   @moduledoc  """
   The translation of the document contains an error. The error will be considered resolved when the list of translation files changes.
@@ -21448,19 +23211,6 @@ defmodule ChatBoostLink do
   """
 
   defstruct "@type": "chatBoostLink", "@extra": nil, link: nil, is_public: nil
-end
-defmodule GiftResalePriceTon do
-  @moduledoc  """
-  Describes price of a resold gift in Toncoins.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | toncoin_cent_count | int53 | The amount of 1/100 of Toncoin expected to be paid for the gift. Must be in the range <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_resale_toncoin_cent_count_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_resale_toncoin_cent_count_max"). |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_resale_price_ton.html).
-  """
-
-  defstruct "@type": "giftResalePriceTon", "@extra": nil, toncoin_cent_count: nil
 end
 defmodule InputIdentityDocument do
   @moduledoc  """
@@ -21698,7 +23448,7 @@ defmodule InternalLinkTypeRequestManagedBot do
   | Name | Type | Description |
   |------|------| ------------|
   | manager_bot_username | string | Username of the bot which will manage the new bot. |
-  | suggested_bot_username | string | Suggested username for the bot. |
+  | suggested_bot_username | string | Suggested username for the bot; always ends with "bot" case-insensitive. |
   | suggested_bot_name | string | Suggested name for the bot; may be empty if not specified. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_request_managed_bot.html).
@@ -21786,6 +23536,22 @@ defmodule OauthLinkInfo do
   """
 
   defstruct "@type": "oauthLinkInfo", "@extra": nil, user_id: nil, url: nil, domain: nil, from_app: nil, verified_app_name: nil, bot_user_id: nil, request_write_access: nil, request_phone_number_access: nil, browser: nil, platform: nil, ip_address: nil, location: nil, match_code_first: nil, match_codes: nil
+end
+defmodule DraftMessageContentVideoNote do
+  @moduledoc  """
+  A video note message draft.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | file_path | string | Path to the file with the video note. |
+  | duration | int32 | Duration of the video, in seconds; 0-60. |
+  | length | int32 | Video width and height; must be positive and not greater than 640. |
+  | self_destruct_type | MessageSelfDestructType | Video note self-destruct type; may be null if none; pass null if none; private chats only. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1draft_message_content_video_note.html).
+  """
+
+  defstruct "@type": "draftMessageContentVideoNote", "@extra": nil, file_path: nil, duration: nil, length: nil, self_destruct_type: nil
 end
 defmodule SearchMessagesFilterVideo do
   @moduledoc  """
@@ -21945,15 +23711,19 @@ defmodule UserPrivacySettingRuleAllowBots do
 
   defstruct "@type": "userPrivacySettingRuleAllowBots", "@extra": nil
 end
-defmodule SessionTypeAndroid do
+defmodule CommunityMemberStatusAdministrator do
   @moduledoc  """
-  The session is running on an Android device.
+  The user is a member of the community and has some additional privileges.
 
+  | Name | Type | Description |
+  |------|------| ------------|
+  | can_be_edited | bool | True, if the current user can edit the administrator privileges for the called user. |
+  | rights | communityAdministratorRights | Rights of the administrator. |
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_android.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1community_member_status_administrator.html).
   """
 
-  defstruct "@type": "sessionTypeAndroid", "@extra": nil
+  defstruct "@type": "communityMemberStatusAdministrator", "@extra": nil, can_be_edited: nil, rights: nil
 end
 defmodule RevenueWithdrawalState do
   @moduledoc  """
@@ -22189,6 +23959,16 @@ defmodule SuggestedActionAddLoginPasskey do
 
   defstruct "@type": "suggestedActionAddLoginPasskey", "@extra": nil
 end
+defmodule SessionDeviceTypeLinux do
+  @moduledoc  """
+  The session is running on a Linux device.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_linux.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeLinux", "@extra": nil
+end
 defmodule StarGiveawayPaymentOptions do
   @moduledoc  """
   Contains a list of options for creating of Telegram Star giveaway.
@@ -22267,6 +24047,19 @@ defmodule GroupCallStreams do
 
   defstruct "@type": "groupCallStreams", "@extra": nil, streams: nil
 end
+defmodule MessageChatJoinFromCommunity do
+  @moduledoc  """
+  A new member joined the chat from a community.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | community_id | int53 | Identifier of the community from which the user joined the chat. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_join_from_community.html).
+  """
+
+  defstruct "@type": "messageChatJoinFromCommunity", "@extra": nil, community_id: nil
+end
 defmodule LoginUrlInfoRequestConfirmation do
   @moduledoc  """
   An authorization confirmation dialog needs to be shown to the user.
@@ -22332,6 +24125,19 @@ defmodule BotVerificationParameters do
   """
 
   defstruct "@type": "botVerificationParameters", "@extra": nil, icon_custom_emoji_id: nil, organization_name: nil, default_custom_description: nil, can_set_custom_description: nil
+end
+defmodule CommunityPermissions do
+  @moduledoc  """
+  Describes actions that a user is allowed to take in a community.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | can_edit_chat_list | bool | True, if the user can change the chats added to the community. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1community_permissions.html).
+  """
+
+  defstruct "@type": "communityPermissions", "@extra": nil, can_edit_chat_list: nil
 end
 defmodule GiftAuctionState do
   @moduledoc  """
@@ -22441,6 +24247,20 @@ defmodule ChatActionBar do
   """
 
   defstruct "@type": "ChatActionBar", "@extra": nil
+end
+defmodule ChatJoinResultGuardBotApprovalRequired do
+  @moduledoc  """
+  An approval from a guard bot through a Web App is required to join the chat.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | bot_user_id | int53 | Identifier of the guard bot. |
+  | query_id | int64 | Unique identifier of the join request, which will be used in <a class="el" href="classtd_1_1td__api_1_1get_guard_bot_web_app_url.html">getGuardBotWebAppUrl</a> and <a class="el" href="classtd_1_1td__api_1_1update_chat_join_result.html">updateChatJoinResult</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_join_result_guard_bot_approval_required.html).
+  """
+
+  defstruct "@type": "chatJoinResultGuardBotApprovalRequired", "@extra": nil, bot_user_id: nil, query_id: nil
 end
 defmodule BusinessFeatureQuickReplies do
   @moduledoc  """
@@ -22568,7 +24388,7 @@ defmodule DiffText do
   | Name | Type | Description |
   |------|------| ------------|
   | text | string | The text. |
-  | entities | diffEntity | Entities describing changes in the text. Entities doesn't mutually intersect with each other. |
+  | entities | diffEntity | Entities describing changes in the text. Entities don't mutually intersect with each other. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1diff_text.html).
   """
@@ -22669,6 +24489,15 @@ defmodule CallDiscardReason do
 
   defstruct "@type": "CallDiscardReason", "@extra": nil
 end
+defmodule SessionDeviceType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_session_device_type.html).
+  """
+
+  defstruct "@type": "SessionDeviceType", "@extra": nil
+end
 defmodule BotCommand do
   @moduledoc  """
   Represents a command supported by a bot.
@@ -22677,11 +24506,12 @@ defmodule BotCommand do
   |------|------| ------------|
   | command | string | Text of the bot command. |
   | description | string | Description of the bot command. |
+  | is_ephemeral | bool | True, if the command must send an ephemeral message instead of a regular one. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_command.html).
   """
 
-  defstruct "@type": "botCommand", "@extra": nil, command: nil, description: nil
+  defstruct "@type": "botCommand", "@extra": nil, command: nil, description: nil, is_ephemeral: nil
 end
 defmodule Sticker do
   @moduledoc  """
@@ -22879,7 +24709,7 @@ defmodule TelegramPaymentPurposePremiumGiveaway do
   | parameters | giveawayParameters | Giveaway parameters. |
   | currency | string | ISO 4217 currency code of the payment currency. |
   | amount | int53 | Paid amount, in the smallest units of the currency. |
-  | winner_count | int32 | Number of users which will be able to activate the gift codes. |
+  | winner_count | int32 | Number of users who will be able to activate the gift codes. |
   | month_count | int32 | Number of months the Telegram Premium subscription will be active for the users. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_premium_giveaway.html).
@@ -23052,13 +24882,14 @@ defmodule PageBlockAnimation do
   | Name | Type | Description |
   |------|------| ------------|
   | animation | animation | Animation file; may be null. |
-  | caption | pageBlockCaption | Animation caption. |
+  | caption | pageBlockCaption | Animation caption; may be null if none. |
   | need_autoplay | bool | True, if the animation must be played automatically. |
+  | has_spoiler | bool | True, if the animation preview must be covered by a spoiler animation. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_animation.html).
   """
 
-  defstruct "@type": "pageBlockAnimation", "@extra": nil, animation: nil, caption: nil, need_autoplay: nil
+  defstruct "@type": "pageBlockAnimation", "@extra": nil, animation: nil, caption: nil, need_autoplay: nil, has_spoiler: nil
 end
 defmodule AccentColor do
   @moduledoc  """
@@ -23079,7 +24910,7 @@ defmodule AccentColor do
 end
 defmodule RichTextIcon do
   @moduledoc  """
-  A small image inside the text.
+  A small image inside the text; instant view only.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -23091,6 +24922,16 @@ defmodule RichTextIcon do
   """
 
   defstruct "@type": "richTextIcon", "@extra": nil, document: nil, width: nil, height: nil
+end
+defmodule SessionDeviceTypeSafari do
+  @moduledoc  """
+  The session is running on the Safari browser.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_safari.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeSafari", "@extra": nil
 end
 defmodule SharedChat do
   @moduledoc  """
@@ -23115,13 +24956,13 @@ defmodule GiftResaleParameters do
   | Name | Type | Description |
   |------|------| ------------|
   | star_count | int53 | Resale price of the gift in Telegram Stars. |
-  | toncoin_cent_count | int53 | Resale price of the gift in 1/100 of Toncoin. |
-  | toncoin_only | bool | True, if the gift can be bought only using Toncoins. |
+  | gram_cent_count | int53 | Resale price of the gift in 1/100 of TON Gram. |
+  | gram_only | bool | True, if the gift can be bought only using Grams. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_resale_parameters.html).
   """
 
-  defstruct "@type": "giftResaleParameters", "@extra": nil, star_count: nil, toncoin_cent_count: nil, toncoin_only: nil
+  defstruct "@type": "giftResaleParameters", "@extra": nil, star_count: nil, gram_cent_count: nil, gram_only: nil
 end
 defmodule DeviceTokenTizenPush do
   @moduledoc  """
@@ -23364,6 +25205,16 @@ defmodule UpdateAnimatedEmojiMessageClicked do
 
   defstruct "@type": "updateAnimatedEmojiMessageClicked", "@extra": nil, chat_id: nil, message_id: nil, sticker: nil
 end
+defmodule SessionDeviceTypeXbox do
+  @moduledoc  """
+  The session is running on an Xbox console.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_xbox.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeXbox", "@extra": nil
+end
 defmodule ChatThemeGift do
   @moduledoc  """
   A chat theme based on an upgraded gift.
@@ -23529,6 +25380,16 @@ defmodule InternalLinkTypeGiftCollection do
 
   defstruct "@type": "internalLinkTypeGiftCollection", "@extra": nil, gift_owner_username: nil, collection_id: nil
 end
+defmodule ChatJoinRequestResultApproved do
+  @moduledoc  """
+  The request was approved.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_join_request_result_approved.html).
+  """
+
+  defstruct "@type": "chatJoinRequestResultApproved", "@extra": nil
+end
 defmodule InternalLinkTypeDirectMessagesChat do
   @moduledoc  """
   The link is a link to a channel direct messages chat by username of the channel. Call searchPublicChat with the given chat username to process the link. If the chat is found and is channel, open the direct messages chat of the channel.
@@ -23551,6 +25412,31 @@ defmodule SavedMessagesTopicTypeMyNotes do
   """
 
   defstruct "@type": "savedMessagesTopicTypeMyNotes", "@extra": nil
+end
+defmodule WebBrowserType do
+  @moduledoc  """
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_web_browser_type.html).
+  """
+
+  defstruct "@type": "WebBrowserType", "@extra": nil
+end
+defmodule InputVideoNote do
+  @moduledoc  """
+  A video note to be sent.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | video_note | InputFile | Video note file to be sent. The video is expected to be encoded to MPEG4 format with H.264 codec and have no data outside of the visible circle. |
+  | thumbnail | inputThumbnail | Video thumbnail; may be null if empty; pass null to skip thumbnail uploading. |
+  | duration | int32 | Duration of the video, in seconds; 0-60. |
+  | length | int32 | Video width and height; must be positive and not greater than 640. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_video_note.html).
+  """
+
+  defstruct "@type": "inputVideoNote", "@extra": nil, video_note: nil, thumbnail: nil, duration: nil, length: nil
 end
 defmodule MessageSourceOther do
   @moduledoc  """
@@ -23586,6 +25472,19 @@ defmodule PageBlockVerticalAlignmentTop do
 
   defstruct "@type": "pageBlockVerticalAlignmentTop", "@extra": nil
 end
+defmodule InputPollMediaPhoto do
+  @moduledoc  """
+  A photo.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | photo | inputPhoto | Photo to be sent. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_media_photo.html).
+  """
+
+  defstruct "@type": "inputPollMediaPhoto", "@extra": nil, photo: nil
+end
 defmodule PhoneNumberAuthenticationSettings do
   @moduledoc  """
   Contains settings for the authentication of the user's phone number.
@@ -23617,19 +25516,6 @@ defmodule SpeechRecognitionResultText do
   """
 
   defstruct "@type": "speechRecognitionResultText", "@extra": nil, text: nil
-end
-defmodule SuggestedPostPriceTon do
-  @moduledoc  """
-  Describes price of a suggested post in Toncoins.
-
-  | Name | Type | Description |
-  |------|------| ------------|
-  | toncoin_cent_count | int53 | The amount of 1/100 of Toncoin expected to be paid for the post; <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_toncoin_cent_count_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_toncoin_cent_count_max"). |
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_post_price_ton.html).
-  """
-
-  defstruct "@type": "suggestedPostPriceTon", "@extra": nil, toncoin_cent_count: nil
 end
 defmodule TopChatCategoryBots do
   @moduledoc  """
@@ -23839,11 +25725,12 @@ defmodule UpdateNewChatJoinRequest do
   | request | chatJoinRequest | Join request. |
   | user_chat_id | int53 | Chat identifier of the private chat with the user. |
   | invite_link | chatInviteLink | The invite link, which was used to send join request; may be null. |
+  | query_id | int64 | Identifier of the join request query, which can be used in <a class="el" href="classtd_1_1td__api_1_1answer_chat_join_request_query.html">answerChatJoinRequestQuery</a>; 0 if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_chat_join_request.html).
   """
 
-  defstruct "@type": "updateNewChatJoinRequest", "@extra": nil, chat_id: nil, request: nil, user_chat_id: nil, invite_link: nil
+  defstruct "@type": "updateNewChatJoinRequest", "@extra": nil, chat_id: nil, request: nil, user_chat_id: nil, invite_link: nil, query_id: nil
 end
 defmodule ButtonStylePrimary do
   @moduledoc  """
@@ -23932,18 +25819,18 @@ defmodule MessageSendingStateFailed do
 end
 defmodule TonTransactions do
   @moduledoc  """
-  Represents a list of Toncoin transactions.
+  Represents a list of TON Gram transactions.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | ton_amount | int53 | The total amount of owned Toncoins. |
-  | transactions | tonTransaction | List of Toncoin transactions. |
+  | gram_amount | int53 | The total amount of owned Grams, in the smallest units of the cryptocurrency. |
+  | transactions | tonTransaction | List of Gram transactions. |
   | next_offset | string | The offset for the next request. If empty, then there are no more results. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transactions.html).
   """
 
-  defstruct "@type": "tonTransactions", "@extra": nil, ton_amount: nil, transactions: nil, next_offset: nil
+  defstruct "@type": "tonTransactions", "@extra": nil, gram_amount: nil, transactions: nil, next_offset: nil
 end
 defmodule StoryContentTypeVideo do
   @moduledoc  """
@@ -24163,6 +26050,19 @@ defmodule StoryPrivacySettingsSelectedUsers do
 
   defstruct "@type": "storyPrivacySettingsSelectedUsers", "@extra": nil, user_ids: nil
 end
+defmodule InputMessageReplyToEphemeralMessage do
+  @moduledoc  """
+  Describes an ephemeral message to be replied; for bots only.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | ephemeral_message_id | int32 | The identifier of the ephemeral message to be replied. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_reply_to_ephemeral_message.html).
+  """
+
+  defstruct "@type": "inputMessageReplyToEphemeralMessage", "@extra": nil, ephemeral_message_id: nil
+end
 defmodule MessageChatChangePhoto do
   @moduledoc  """
   An updated chat photo.
@@ -24246,16 +26146,6 @@ defmodule ReactionUnavailabilityReasonGuest do
 
   defstruct "@type": "reactionUnavailabilityReasonGuest", "@extra": nil
 end
-defmodule SessionTypeBrave do
-  @moduledoc  """
-  The session is running on the Brave browser.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_brave.html).
-  """
-
-  defstruct "@type": "sessionTypeBrave", "@extra": nil
-end
 defmodule OptionValue do
   @moduledoc  """
 
@@ -24273,6 +26163,20 @@ defmodule InputInvoice do
   """
 
   defstruct "@type": "InputInvoice", "@extra": nil
+end
+defmodule RichTextMention do
+  @moduledoc  """
+  A mention of a Telegram user or chat by a username.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text. |
+  | username | string | The username. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_mention.html).
+  """
+
+  defstruct "@type": "richTextMention", "@extra": nil, text: nil, username: nil
 end
 defmodule AuthorizationStateWaitPassword do
   @moduledoc  """
@@ -24343,7 +26247,7 @@ defmodule Animation do
   | height | int32 | Height of the animation. |
   | file_name | string | Original name of the file; as defined by the sender. |
   | mime_type | string | MIME type of the file, usually "image/gif" or "video/mp4". |
-  | has_stickers | bool | True, if stickers were added to the animation. The list of corresponding sticker set can be received using <a class="el" href="classtd_1_1td__api_1_1get_attached_sticker_sets.html">getAttachedStickerSets</a>. |
+  | has_stickers | bool | True, if stickers were added to the animation. The list of corresponding sticker sets can be received using <a class="el" href="classtd_1_1td__api_1_1get_attached_sticker_sets.html">getAttachedStickerSets</a>. |
   | minithumbnail | minithumbnail | Animation minithumbnail; may be null. |
   | thumbnail | thumbnail | Animation thumbnail in JPEG or MPEG4 format; may be null. |
   | animation | file | File containing the animation. |
@@ -24548,10 +26452,11 @@ defmodule MessageProperties do
   | can_be_forwarded | bool | True, if the message can be forwarded using <a class="el" href="classtd_1_1td__api_1_1input_message_forwarded.html">inputMessageForwarded</a> or <a class="el" href="classtd_1_1td__api_1_1forward_messages.html">forwardMessages</a> without copy options. |
   | can_be_paid | bool | True, if the message can be paid using <a class="el" href="classtd_1_1td__api_1_1input_invoice_message.html">inputInvoiceMessage</a>. |
   | can_be_pinned | bool | True, if the message can be pinned or unpinned in the chat using <a class="el" href="classtd_1_1td__api_1_1pin_chat_message.html">pinChatMessage</a> or <a class="el" href="classtd_1_1td__api_1_1unpin_chat_message.html">unpinChatMessage</a>. |
-  | can_be_replied | bool | True, if the message can be replied in the same chat and forum topic using <a class="el" href="classtd_1_1td__api_1_1input_message_reply_to_message.html">inputMessageReplyToMessage</a>. |
+  | can_be_replied | bool | True, if the message can be replied in the same chat and forum topic using <a class="el" href="classtd_1_1td__api_1_1input_message_reply_to_message.html">inputMessageReplyToMessage</a>. Ephemeral messages can be replied only by other ephemeral messages. |
   | can_be_replied_in_another_chat | bool | True, if the message can be replied in another chat or forum topic using <a class="el" href="classtd_1_1td__api_1_1input_message_reply_to_external_message.html">inputMessageReplyToExternalMessage</a>. |
   | can_be_saved | bool | True, if content of the message can be saved locally. |
   | can_be_shared_in_story | bool | True, if the message can be shared in a story using <a class="el" href="classtd_1_1td__api_1_1input_story_area_type_message.html">inputStoryAreaTypeMessage</a>. |
+  | can_delete_reactions | bool | True, if the user can delete reactions of other users in the message using the method <a class="el" href="classtd_1_1td__api_1_1delete_message_reactions_from_sender.html">deleteMessageReactionsFromSender</a>. |
   | can_edit_media | bool | True, if the message can be edited using the method <a class="el" href="classtd_1_1td__api_1_1edit_message_media.html">editMessageMedia</a>. |
   | can_edit_scheduling_state | bool | True, if scheduling state of the message can be edited. |
   | can_edit_suggested_post_info | bool | True, if another price or post send time can be suggested using <a class="el" href="classtd_1_1td__api_1_1add_offer.html">addOffer</a>. |
@@ -24560,9 +26465,10 @@ defmodule MessageProperties do
   | can_get_link | bool | True, if a link can be generated for the message using <a class="el" href="classtd_1_1td__api_1_1get_message_link.html">getMessageLink</a>. |
   | can_get_media_timestamp_links | bool | True, if media timestamp links can be generated for media timestamp entities in the message text, caption or link preview description using <a class="el" href="classtd_1_1td__api_1_1get_message_link.html">getMessageLink</a>. |
   | can_get_message_thread | bool | True, if information about the message thread is available through <a class="el" href="classtd_1_1td__api_1_1get_message_thread.html">getMessageThread</a> and <a class="el" href="classtd_1_1td__api_1_1get_message_thread_history.html">getMessageThreadHistory</a>. |
+  | can_get_poll_vote_statistics | bool | True, if the message is a poll and vote statistics are available through <a class="el" href="classtd_1_1td__api_1_1get_poll_vote_statistics.html">getPollVoteStatistics</a>. |
   | can_get_read_date | bool | True, if read date of the message can be received through <a class="el" href="classtd_1_1td__api_1_1get_message_read_date.html">getMessageReadDate</a>. |
   | can_get_statistics | bool | True, if message statistics are available through <a class="el" href="classtd_1_1td__api_1_1get_message_statistics.html">getMessageStatistics</a> and message forwards can be received using <a class="el" href="classtd_1_1td__api_1_1get_message_public_forwards.html">getMessagePublicForwards</a>. |
-  | can_get_video_advertisements | bool | True, if advertisements for video of the message can be received though <a class="el" href="classtd_1_1td__api_1_1get_video_message_advertisements.html">getVideoMessageAdvertisements</a>. |
+  | can_get_video_advertisements | bool | True, if advertisements for video of the message can be received through <a class="el" href="classtd_1_1td__api_1_1get_video_message_advertisements.html">getVideoMessageAdvertisements</a>. |
   | can_get_viewers | bool | True, if chat members already viewed the message can be received through <a class="el" href="classtd_1_1td__api_1_1get_message_viewers.html">getMessageViewers</a>. |
   | can_mark_tasks_as_done | bool | True, if tasks can be marked as done or not done in the message's checklist using <a class="el" href="classtd_1_1td__api_1_1mark_checklist_tasks_as_done.html">markChecklistTasksAsDone</a> if the current user has Telegram Premium subscription. |
   | can_recognize_speech | bool | True, if speech can be recognized for the message through <a class="el" href="classtd_1_1td__api_1_1recognize_speech.html">recognizeSpeech</a>. |
@@ -24577,7 +26483,7 @@ defmodule MessageProperties do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).
   """
 
-  defstruct "@type": "messageProperties", "@extra": nil, can_add_offer: nil, can_add_tasks: nil, can_be_approved: nil, can_be_copied: nil, can_be_copied_to_secret_chat: nil, can_be_declined: nil, can_be_deleted_only_for_self: nil, can_be_deleted_for_all_users: nil, can_be_edited: nil, can_be_forwarded: nil, can_be_paid: nil, can_be_pinned: nil, can_be_replied: nil, can_be_replied_in_another_chat: nil, can_be_saved: nil, can_be_shared_in_story: nil, can_edit_media: nil, can_edit_scheduling_state: nil, can_edit_suggested_post_info: nil, can_get_author: nil, can_get_embedding_code: nil, can_get_link: nil, can_get_media_timestamp_links: nil, can_get_message_thread: nil, can_get_read_date: nil, can_get_statistics: nil, can_get_video_advertisements: nil, can_get_viewers: nil, can_mark_tasks_as_done: nil, can_recognize_speech: nil, can_report_chat: nil, can_report_reactions: nil, can_report_supergroup_spam: nil, can_set_fact_check: nil, has_protected_content_by_current_user: nil, has_protected_content_by_other_user: nil, need_show_statistics: nil
+  defstruct "@type": "messageProperties", "@extra": nil, can_add_offer: nil, can_add_tasks: nil, can_be_approved: nil, can_be_copied: nil, can_be_copied_to_secret_chat: nil, can_be_declined: nil, can_be_deleted_only_for_self: nil, can_be_deleted_for_all_users: nil, can_be_edited: nil, can_be_forwarded: nil, can_be_paid: nil, can_be_pinned: nil, can_be_replied: nil, can_be_replied_in_another_chat: nil, can_be_saved: nil, can_be_shared_in_story: nil, can_delete_reactions: nil, can_edit_media: nil, can_edit_scheduling_state: nil, can_edit_suggested_post_info: nil, can_get_author: nil, can_get_embedding_code: nil, can_get_link: nil, can_get_media_timestamp_links: nil, can_get_message_thread: nil, can_get_poll_vote_statistics: nil, can_get_read_date: nil, can_get_statistics: nil, can_get_video_advertisements: nil, can_get_viewers: nil, can_mark_tasks_as_done: nil, can_recognize_speech: nil, can_report_chat: nil, can_report_reactions: nil, can_report_supergroup_spam: nil, can_set_fact_check: nil, has_protected_content_by_current_user: nil, has_protected_content_by_other_user: nil, need_show_statistics: nil
 end
 defmodule PremiumFeatureBusiness do
   @moduledoc  """
@@ -24608,6 +26514,24 @@ defmodule CollectibleItemType do
 
   defstruct "@type": "CollectibleItemType", "@extra": nil
 end
+defmodule UpdatePendingMessage do
+  @moduledoc  """
+  A new pending text or rich message was received in a chat with a bot. The message must be shown in the chat for at most getOption("pending_text_message_period") seconds, replace any other pending message with the same draft_id with animation, and be deleted whenever any incoming message or a pending message with another draft_id is received in the message thread.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | chat_id | int53 | Chat identifier. |
+  | forum_topic_id | int32 | The forum topic identifier in which the message will be sent; 0 if none. |
+  | draft_id | int64 | Unique identifier of the message draft within the message thread. |
+  | can_stop | bool | True, if a button that calls <a class="el" href="classtd_1_1td__api_1_1stop_pending_message.html">stopPendingMessage</a> to stop further message generation must be shown. |
+  | keep_on_stop | bool | True, if the pending message must not be automatically deleted when the user presses the Stop button. |
+  | content | MessageContent | Content of the message; always of the type <a class="el" href="classtd_1_1td__api_1_1message_text.html">messageText</a> or <a class="el" href="classtd_1_1td__api_1_1message_rich_message.html">messageRichMessage</a>. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_pending_message.html).
+  """
+
+  defstruct "@type": "updatePendingMessage", "@extra": nil, chat_id: nil, forum_topic_id: nil, draft_id: nil, can_stop: nil, keep_on_stop: nil, content: nil
+end
 defmodule FileTypePhoto do
   @moduledoc  """
   The file is a photo.
@@ -24617,6 +26541,19 @@ defmodule FileTypePhoto do
   """
 
   defstruct "@type": "fileTypePhoto", "@extra": nil
+end
+defmodule PageBlockMathematicalExpression do
+  @moduledoc  """
+  A mathematical expression.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | expression | string | The expression in LaTeX format. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_mathematical_expression.html).
+  """
+
+  defstruct "@type": "pageBlockMathematicalExpression", "@extra": nil, expression: nil
 end
 defmodule SavedCredentials do
   @moduledoc  """
@@ -24675,6 +26612,16 @@ defmodule InternalLinkTypeUserToken do
 
   defstruct "@type": "internalLinkTypeUserToken", "@extra": nil, token: nil
 end
+defmodule PremiumFeatureRichMessages do
+  @moduledoc  """
+  The ability to send rich messages.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_rich_messages.html).
+  """
+
+  defstruct "@type": "premiumFeatureRichMessages", "@extra": nil
+end
 defmodule InlineQueryResultGame do
   @moduledoc  """
   Represents information about a game.
@@ -24695,7 +26642,7 @@ defmodule PushMessageContentGiveaway do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | winner_count | int32 | Number of users which will receive giveaway prizes; 0 for pinned message. |
+  | winner_count | int32 | Number of users who will receive giveaway prizes; 0 for pinned message. |
   | prize | GiveawayPrize | Prize of the giveaway; may be null for pinned message. |
   | is_pinned | bool | True, if the message is a pinned message with the specified content. |
 
@@ -24779,7 +26726,7 @@ defmodule TelegramPaymentPurposePremiumGift do
   |------|------| ------------|
   | currency | string | ISO 4217 currency code of the payment currency, or "XTR" for payments in Telegram Stars. |
   | amount | int53 | Paid amount, in the smallest units of the currency. |
-  | user_id | int53 | Identifier of the user which will receive Telegram Premium. |
+  | user_id | int53 | Identifier of the user who will receive Telegram Premium. |
   | month_count | int32 | Number of months the Telegram Premium subscription will be active for the user. |
   | text | formattedText | Text to show to the user receiving Telegram Premium; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. |
 
@@ -24894,7 +26841,7 @@ defmodule PrepaidGiveaway do
   | Name | Type | Description |
   |------|------| ------------|
   | id | int64 | Unique identifier of the prepaid giveaway. |
-  | winner_count | int32 | Number of users which will receive giveaway prize. |
+  | winner_count | int32 | Number of users who will receive giveaway prize. |
   | prize | GiveawayPrize | Prize of the giveaway. |
   | boost_count | int32 | The number of boosts received by the chat from the giveaway; for Telegram Star giveaways only. |
   | payment_date | int32 | Point in time (Unix timestamp) when the giveaway was paid. |
@@ -24904,6 +26851,20 @@ defmodule PrepaidGiveaway do
 
   defstruct "@type": "prepaidGiveaway", "@extra": nil, id: nil, winner_count: nil, prize: nil, boost_count: nil, payment_date: nil
 end
+defmodule InputPageBlockCollage do
+  @moduledoc  """
+  A collage.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | blocks | InputPageBlock | Collage item contents. |
+  | caption | pageBlockCaption | Block caption; pass null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_collage.html).
+  """
+
+  defstruct "@type": "inputPageBlockCollage", "@extra": nil, blocks: nil, caption: nil
+end
 defmodule MessageSuggestedPostPaid do
   @moduledoc  """
   A suggested post was published for getOption("suggested_post_lifetime_min") seconds and payment for the post was received.
@@ -24912,12 +26873,12 @@ defmodule MessageSuggestedPostPaid do
   |------|------| ------------|
   | suggested_post_message_id | int53 | Identifier of the message with the suggested post; may be 0 or an identifier of a deleted message. |
   | star_amount | starAmount | The amount of received Telegram Stars. |
-  | ton_amount | int53 | The amount of received Toncoins; in the smallest units of the cryptocurrency. |
+  | gram_amount | int53 | The amount of received TON Grams; in the smallest units of the cryptocurrency. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_suggested_post_paid.html).
   """
 
-  defstruct "@type": "messageSuggestedPostPaid", "@extra": nil, suggested_post_message_id: nil, star_amount: nil, ton_amount: nil
+  defstruct "@type": "messageSuggestedPostPaid", "@extra": nil, suggested_post_message_id: nil, star_amount: nil, gram_amount: nil
 end
 defmodule UpdateScopeNotificationSettings do
   @moduledoc  """
@@ -25082,7 +27043,7 @@ defmodule PageBlockCaption do
   | Name | Type | Description |
   |------|------| ------------|
   | text | RichText | Content of the caption. |
-  | credit | RichText | Block credit (like HTML tag <cite>). |
+  | credit | RichText | Block credit (like HTML tag <cite>); may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_caption.html).
   """
@@ -25104,12 +27065,12 @@ defmodule RichTextAnchor do
 end
 defmodule TonTransaction do
   @moduledoc  """
-  Represents a transaction changing the amount of owned Toncoins.
+  Represents a transaction changing the amount of owned TON Grams.
 
   | Name | Type | Description |
   |------|------| ------------|
   | id | string | Unique identifier of the transaction. |
-  | ton_amount | int53 | The amount of added owned Toncoins; negative for outgoing transactions. |
+  | gram_amount | int53 | The amount of added owned Grams, in the smallest units of the cryptocurrency; negative for outgoing transactions. |
   | is_refund | bool | True, if the transaction is a refund of a previous transaction. |
   | date | int32 | Point in time (Unix timestamp) when the transaction was completed. |
   | type | TonTransactionType | Type of the transaction. |
@@ -25117,7 +27078,7 @@ defmodule TonTransaction do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_transaction.html).
   """
 
-  defstruct "@type": "tonTransaction", "@extra": nil, id: nil, ton_amount: nil, is_refund: nil, date: nil, type: nil
+  defstruct "@type": "tonTransaction", "@extra": nil, id: nil, gram_amount: nil, is_refund: nil, date: nil, type: nil
 end
 defmodule MessageVideoNote do
   @moduledoc  """
@@ -25148,16 +27109,6 @@ defmodule StarTransactionTypeChannelPaidMediaPurchase do
   """
 
   defstruct "@type": "starTransactionTypeChannelPaidMediaPurchase", "@extra": nil, chat_id: nil, message_id: nil, media: nil
-end
-defmodule SessionTypeEdge do
-  @moduledoc  """
-  The session is running on the Edge browser.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_edge.html).
-  """
-
-  defstruct "@type": "sessionTypeEdge", "@extra": nil
 end
 defmodule LinkPreviewTypeVoiceNote do
   @moduledoc  """
@@ -25281,6 +27232,7 @@ defmodule Chat do
   | is_marked_as_unread | bool | True, if the chat is marked as unread. |
   | view_as_topics | bool | True, if the chat is a forum supergroup that must be shown in the "View as topics" mode, or Saved Messages chat that must be shown in the "View as chats". |
   | has_scheduled_messages | bool | True, if the chat has scheduled messages. |
+  | has_welcome_messages | bool | True, if the chat has welcome messages; for chat administrators with can_change_info administrator right only. |
   | can_be_deleted_only_for_self | bool | True, if the chat messages can be deleted only for the current user while other users will continue to see the messages. |
   | can_be_deleted_for_all_users | bool | True, if the chat messages can be deleted for all users. |
   | can_be_reported | bool | True, if the chat can be reported to Telegram moderators through <a class="el" href="classtd_1_1td__api_1_1report_chat.html">reportChat</a> or <a class="el" href="classtd_1_1td__api_1_1report_chat_photo.html">reportChatPhoto</a>. |
@@ -25308,7 +27260,21 @@ defmodule Chat do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat.html).
   """
 
-  defstruct "@type": "chat", "@extra": nil, id: nil, type: nil, title: nil, photo: nil, accent_color_id: nil, background_custom_emoji_id: nil, upgraded_gift_colors: nil, profile_accent_color_id: nil, profile_background_custom_emoji_id: nil, permissions: nil, last_message: nil, positions: nil, chat_lists: nil, message_sender_id: nil, block_list: nil, has_protected_content: nil, is_translatable: nil, is_marked_as_unread: nil, view_as_topics: nil, has_scheduled_messages: nil, can_be_deleted_only_for_self: nil, can_be_deleted_for_all_users: nil, can_be_reported: nil, default_disable_notification: nil, unread_count: nil, last_read_inbox_message_id: nil, last_read_outbox_message_id: nil, unread_mention_count: nil, unread_reaction_count: nil, unread_poll_vote_count: nil, notification_settings: nil, available_reactions: nil, message_auto_delete_time: nil, emoji_status: nil, background: nil, theme: nil, action_bar: nil, business_bot_manage_bar: nil, video_chat: nil, pending_join_requests: nil, reply_markup_message_id: nil, draft_message: nil, client_data: nil
+  defstruct "@type": "chat", "@extra": nil, id: nil, type: nil, title: nil, photo: nil, accent_color_id: nil, background_custom_emoji_id: nil, upgraded_gift_colors: nil, profile_accent_color_id: nil, profile_background_custom_emoji_id: nil, permissions: nil, last_message: nil, positions: nil, chat_lists: nil, message_sender_id: nil, block_list: nil, has_protected_content: nil, is_translatable: nil, is_marked_as_unread: nil, view_as_topics: nil, has_scheduled_messages: nil, has_welcome_messages: nil, can_be_deleted_only_for_self: nil, can_be_deleted_for_all_users: nil, can_be_reported: nil, default_disable_notification: nil, unread_count: nil, last_read_inbox_message_id: nil, last_read_outbox_message_id: nil, unread_mention_count: nil, unread_reaction_count: nil, unread_poll_vote_count: nil, notification_settings: nil, available_reactions: nil, message_auto_delete_time: nil, emoji_status: nil, background: nil, theme: nil, action_bar: nil, business_bot_manage_bar: nil, video_chat: nil, pending_join_requests: nil, reply_markup_message_id: nil, draft_message: nil, client_data: nil
+end
+defmodule InputPageBlockBlockQuote do
+  @moduledoc  """
+  A block quote.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | blocks | InputPageBlock | Quote blocks. |
+  | credit | RichText | Quote credit; pass null if none. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_block_quote.html).
+  """
+
+  defstruct "@type": "inputPageBlockBlockQuote", "@extra": nil, blocks: nil, credit: nil
 end
 defmodule PassportElementErrorSourceDataField do
   @moduledoc  """
@@ -25322,6 +27288,19 @@ defmodule PassportElementErrorSourceDataField do
   """
 
   defstruct "@type": "passportElementErrorSourceDataField", "@extra": nil, field_name: nil
+end
+defmodule InputPollMediaAnimation do
+  @moduledoc  """
+  An animation.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | animation | inputAnimation | The animation to be sent. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_media_animation.html).
+  """
+
+  defstruct "@type": "inputPollMediaAnimation", "@extra": nil, animation: nil
 end
 defmodule TargetChatInternalLink do
   @moduledoc  """
@@ -25366,12 +27345,7 @@ defmodule InputMessagePhoto do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | photo | InputFile | Photo to send. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. |
-  | thumbnail | inputThumbnail | Photo thumbnail to be sent; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats. |
-  | video | InputFile | Video of the live photo; not supported in secret chats; pass null if the photo isn't a live photo. |
-  | added_sticker_file_ids | int32 | File identifiers of the stickers added to the photo, if applicable. |
-  | width | int32 | Photo width. |
-  | height | int32 | Photo height. |
+  | photo | inputPhoto | Photo to be sent. |
   | caption | formattedText | Photo caption; pass null to use an empty caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
   | show_caption_above_media | bool | True, if the caption must be shown above the photo; otherwise, the caption must be shown below the photo; not supported in secret chats. |
   | self_destruct_type | MessageSelfDestructType | Photo self-destruct type; pass null if none; private chats only. |
@@ -25380,7 +27354,7 @@ defmodule InputMessagePhoto do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_photo.html).
   """
 
-  defstruct "@type": "inputMessagePhoto", "@extra": nil, photo: nil, thumbnail: nil, video: nil, added_sticker_file_ids: nil, width: nil, height: nil, caption: nil, show_caption_above_media: nil, self_destruct_type: nil, has_spoiler: nil
+  defstruct "@type": "inputMessagePhoto", "@extra": nil, photo: nil, caption: nil, show_caption_above_media: nil, self_destruct_type: nil, has_spoiler: nil
 end
 defmodule StoryVideo do
   @moduledoc  """
@@ -25526,6 +27500,19 @@ defmodule SuggestedPostRefundReasonPaymentRefunded do
   """
 
   defstruct "@type": "suggestedPostRefundReasonPaymentRefunded", "@extra": nil
+end
+defmodule InputPageBlockList do
+  @moduledoc  """
+  A list of data blocks.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | items | inputPageBlockListItem | The items of the list. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_list.html).
+  """
+
+  defstruct "@type": "inputPageBlockList", "@extra": nil, items: nil
 end
 defmodule SearchMessagesFilterFailedToSend do
   @moduledoc  """
@@ -25909,6 +27896,19 @@ defmodule Thumbnail do
 
   defstruct "@type": "thumbnail", "@extra": nil, format: nil, width: nil, height: nil, file: nil
 end
+defmodule PollMediaLocation do
+  @moduledoc  """
+  A location.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | location | location | The location. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_media_location.html).
+  """
+
+  defstruct "@type": "pollMediaLocation", "@extra": nil, location: nil
+end
 defmodule PremiumStatePaymentOption do
   @moduledoc  """
   Describes an option for buying or upgrading Telegram Premium for self.
@@ -25924,6 +27924,16 @@ defmodule PremiumStatePaymentOption do
   """
 
   defstruct "@type": "premiumStatePaymentOption", "@extra": nil, payment_option: nil, is_current: nil, is_upgrade: nil, last_transaction_id: nil
+end
+defmodule InputPageBlockDivider do
+  @moduledoc  """
+  An empty block separating the page.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_divider.html).
+  """
+
+  defstruct "@type": "inputPageBlockDivider", "@extra": nil
 end
 defmodule PremiumFeatureImprovedDownloadSpeed do
   @moduledoc  """
@@ -26034,12 +28044,29 @@ defmodule RichTextUrl do
   |------|------| ------------|
   | text | RichText | Text. |
   | url | string | URL. |
-  | is_cached | bool | True, if the URL has cached instant view server-side. |
+  | is_cached | bool | True, if the URL has cached instant view server-side; instant view only. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_url.html).
   """
 
   defstruct "@type": "richTextUrl", "@extra": nil, text: nil, url: nil, is_cached: nil
+end
+defmodule NewSticker do
+  @moduledoc  """
+  A sticker to be added to a sticker set.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | sticker | InputFile | File with the sticker; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side. See <a href="https://core.telegram.org/animated_stickers">https://core.telegram.org/animated_stickers</a>#technical-requirements for technical requirements. |
+  | format | StickerFormat | Format of the sticker. |
+  | emojis | string | String with 1-20 emoji corresponding to the sticker. |
+  | mask_position | maskPosition | Position where the mask is placed; pass null if not specified. |
+  | keywords | string | List of up to 20 keywords with total length up to 64 characters, which can be used to find the sticker. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1new_sticker.html).
+  """
+
+  defstruct "@type": "newSticker", "@extra": nil, sticker: nil, format: nil, emojis: nil, mask_position: nil, keywords: nil
 end
 defmodule Date do
   @moduledoc  """
@@ -26055,6 +28082,21 @@ defmodule Date do
   """
 
   defstruct "@type": "date", "@extra": nil, day: nil, month: nil, year: nil
+end
+defmodule InputPageBlockDetails do
+  @moduledoc  """
+  A collapsible block.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | header | RichText | Always visible heading for the block. |
+  | blocks | InputPageBlock | Block contents. |
+  | is_open | bool | True, if the block is open by default. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_page_block_details.html).
+  """
+
+  defstruct "@type": "inputPageBlockDetails", "@extra": nil, header: nil, blocks: nil, is_open: nil
 end
 defmodule DiceStickers do
   @moduledoc  """
@@ -26101,13 +28143,23 @@ defmodule AutoDownloadSettings do
   | video_upload_bitrate | int32 | The maximum suggested bitrate for uploaded videos, in kbit/s. |
   | preload_large_videos | bool | True, if the beginning of video files needs to be preloaded for instant playback. |
   | preload_next_audio | bool | True, if the next audio track needs to be preloaded while the user is listening to an audio file. |
-  | preload_stories | bool | True, if stories needs to be preloaded. |
+  | preload_stories | bool | True, if stories need to be preloaded. |
   | use_less_data_for_calls | bool | True, if "use less data for calls" option needs to be enabled. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1auto_download_settings.html).
   """
 
   defstruct "@type": "autoDownloadSettings", "@extra": nil, is_auto_download_enabled: nil, max_photo_file_size: nil, max_video_file_size: nil, max_other_file_size: nil, video_upload_bitrate: nil, preload_large_videos: nil, preload_next_audio: nil, preload_stories: nil, use_less_data_for_calls: nil
+end
+defmodule CommunityMemberStatusCreator do
+  @moduledoc  """
+  The user is the owner of the community and has all the administrator privileges.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1community_member_status_creator.html).
+  """
+
+  defstruct "@type": "communityMemberStatusCreator", "@extra": nil
 end
 defmodule MessageChatJoinByLink do
   @moduledoc  """
@@ -26208,7 +28260,7 @@ defmodule FileTypeAudio do
 end
 defmodule UpgradedGiftOriginPrepaidUpgrade do
   @moduledoc  """
-  The sender or receiver of the message has paid for upgraid of the gift, which has been completed.
+  The sender or receiver of the message has paid for upgrade of the gift, which has been completed.
 
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_origin_prepaid_upgrade.html).
@@ -26294,20 +28346,24 @@ defmodule Poll do
   | options | pollOption | List of poll answer options. |
   | total_voter_count | int32 | Total number of voters, participating in the poll. |
   | recent_voter_ids | MessageSender | Identifiers of recent voters, if the poll is non-anonymous and poll results are available. |
-  | can_get_voters | bool | True, if the current user can get voters in the poll. |
+  | can_get_voters | bool | True, if the current user can get voters in the poll using <a class="el" href="classtd_1_1td__api_1_1get_poll_voters.html">getPollVoters</a>. |
+  | can_see_results | bool | True, if the current user can see results of the poll. |
   | is_anonymous | bool | True, if the poll is anonymous. |
   | allows_multiple_answers | bool | True, if multiple answer options can be chosen simultaneously. |
   | allows_revoting | bool | True, if the poll can be answered multiple times. |
+  | members_only | bool | True, if only the users that are members of the chat for more than a day will be able to vote. |
+  | country_codes | string | The list of two-letter ISO 3166-1 alpha-2 codes of countries, users from which will be able to vote. If empty, then all users can participate in the poll. |
   | option_order | int32 | The list of 0-based poll identifiers in which the options of the poll must be shown; empty if the order of options must not be changed. |
   | type | PollType | Type of the poll. |
   | open_period | int32 | Amount of time the poll will be active after creation, in seconds. |
   | close_date | int32 | Point in time (Unix timestamp) when the poll will automatically be closed. |
   | is_closed | bool | True, if the poll is closed. |
+  | vote_restriction_reason | PollVoteRestrictionReason | The reason describing, why the current user can't vote in the poll; may be null if the user can vote in the poll. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll.html).
   """
 
-  defstruct "@type": "poll", "@extra": nil, id: nil, question: nil, options: nil, total_voter_count: nil, recent_voter_ids: nil, can_get_voters: nil, is_anonymous: nil, allows_multiple_answers: nil, allows_revoting: nil, option_order: nil, type: nil, open_period: nil, close_date: nil, is_closed: nil
+  defstruct "@type": "poll", "@extra": nil, id: nil, question: nil, options: nil, total_voter_count: nil, recent_voter_ids: nil, can_get_voters: nil, can_see_results: nil, is_anonymous: nil, allows_multiple_answers: nil, allows_revoting: nil, members_only: nil, country_codes: nil, option_order: nil, type: nil, open_period: nil, close_date: nil, is_closed: nil, vote_restriction_reason: nil
 end
 defmodule PassportElementTypePersonalDetails do
   @moduledoc  """
@@ -26410,16 +28466,6 @@ defmodule ChatEventMemberTagChanged do
 
   defstruct "@type": "chatEventMemberTagChanged", "@extra": nil, user_id: nil, old_tag: nil, new_tag: nil
 end
-defmodule SessionTypeUnknown do
-  @moduledoc  """
-  The session is running on an unknown type of device.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_unknown.html).
-  """
-
-  defstruct "@type": "sessionTypeUnknown", "@extra": nil
-end
 defmodule PaidMediaVideo do
   @moduledoc  """
   The media is a video.
@@ -26468,13 +28514,13 @@ defmodule PageBlockBlockQuote do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | text | RichText | Quote text. |
-  | credit | RichText | Quote credit. |
+  | blocks | PageBlock | Quote blocks. |
+  | credit | RichText | Quote credit; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_block_quote.html).
   """
 
-  defstruct "@type": "pageBlockBlockQuote", "@extra": nil, text: nil, credit: nil
+  defstruct "@type": "pageBlockBlockQuote", "@extra": nil, blocks: nil, credit: nil
 end
 defmodule SuggestedActionEnableArchiveAndMuteNewChats do
   @moduledoc  """
@@ -26485,6 +28531,20 @@ defmodule SuggestedActionEnableArchiveAndMuteNewChats do
   """
 
   defstruct "@type": "suggestedActionEnableArchiveAndMuteNewChats", "@extra": nil
+end
+defmodule MessageLiveLocation do
+  @moduledoc  """
+  A message with a live location.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | location | liveLocation | The current location. |
+  | expires_in | int32 | Left time for which the location can be updated, in seconds. If 0, then the location can't be updated anymore. The update <a class="el" href="classtd_1_1td__api_1_1update_message_content.html">updateMessageContent</a> is not sent when this field changes. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_live_location.html).
+  """
+
+  defstruct "@type": "messageLiveLocation", "@extra": nil, location: nil, expires_in: nil
 end
 defmodule ReportReasonViolence do
   @moduledoc  """
@@ -26565,6 +28625,16 @@ defmodule Update do
   """
 
   defstruct "@type": "Update", "@extra": nil
+end
+defmodule SearchChatTypeFilterChannel do
+  @moduledoc  """
+  Returns only channel chats.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_chat_type_filter_channel.html).
+  """
+
+  defstruct "@type": "searchChatTypeFilterChannel", "@extra": nil
 end
 defmodule GroupCallInfo do
   @moduledoc  """
@@ -26676,6 +28746,22 @@ defmodule GiftPurchaseOfferStatePending do
 
   defstruct "@type": "giftPurchaseOfferStatePending", "@extra": nil
 end
+defmodule DraftMessageContentVoiceNote do
+  @moduledoc  """
+  A voice note message draft.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | file_path | string | Path to the file with the voice note. |
+  | duration | int32 | Duration of the voice note, in seconds. |
+  | waveform | bytes | Waveform representation of the voice note in 5-bit format. |
+  | self_destruct_type | MessageSelfDestructType | Voice note self-destruct type; may be null if none; pass null if none; private chats only. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1draft_message_content_voice_note.html).
+  """
+
+  defstruct "@type": "draftMessageContentVoiceNote", "@extra": nil, file_path: nil, duration: nil, waveform: nil, self_destruct_type: nil
+end
 defmodule GiftAuction do
   @moduledoc  """
   Describes an auction on which a gift can be purchased.
@@ -26725,16 +28811,17 @@ defmodule AddedProxy do
   | id | int32 | Unique identifier of the proxy. |
   | last_used_date | int32 | Point in time (Unix timestamp) when the proxy was last used; 0 if never. |
   | is_enabled | bool | True, if the proxy is enabled now. |
+  | comment | string | Comment for the proxy added by the user. |
   | proxy | proxy | The proxy. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1added_proxy.html).
   """
 
-  defstruct "@type": "addedProxy", "@extra": nil, id: nil, last_used_date: nil, is_enabled: nil, proxy: nil
+  defstruct "@type": "addedProxy", "@extra": nil, id: nil, last_used_date: nil, is_enabled: nil, comment: nil, proxy: nil
 end
 defmodule VideoMessageAdvertisement do
   @moduledoc  """
-  Describes an advertisent to be shown while a video from a message is watched.
+  Describes an advertisement to be shown while a video from a message is watched.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -26853,16 +28940,6 @@ defmodule AuthorizationStateLoggingOut do
   """
 
   defstruct "@type": "authorizationStateLoggingOut", "@extra": nil
-end
-defmodule SessionTypeFirefox do
-  @moduledoc  """
-  The session is running on the Firefox browser.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_firefox.html).
-  """
-
-  defstruct "@type": "sessionTypeFirefox", "@extra": nil
 end
 defmodule UserStatusOffline do
   @moduledoc  """
@@ -27137,6 +29214,19 @@ defmodule GroupCallParticipantVideoInfo do
 
   defstruct "@type": "groupCallParticipantVideoInfo", "@extra": nil, source_groups: nil, endpoint_id: nil, is_paused: nil
 end
+defmodule InputPollMediaDocument do
+  @moduledoc  """
+  A document (general file).
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | document | inputDocument | The document to be sent. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_poll_media_document.html).
+  """
+
+  defstruct "@type": "inputPollMediaDocument", "@extra": nil, document: nil
+end
 defmodule StarTransactionTypeBotSubscriptionSale do
   @moduledoc  """
   The transaction is a sale of a subscription by the bot; relevant for bots only.
@@ -27162,6 +29252,20 @@ defmodule AuthorizationState do
   """
 
   defstruct "@type": "AuthorizationState", "@extra": nil
+end
+defmodule BotAccessSettings do
+  @moduledoc  """
+  Describes users that have access to a bot.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | is_restricted | bool | True, if access to the bot is restricted to its owner and selected users. |
+  | added_user_ids | int53 | Identifiers of the users who can use the bot additionally to the owner of the bot. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_access_settings.html).
+  """
+
+  defstruct "@type": "botAccessSettings", "@extra": nil, is_restricted: nil, added_user_ids: nil
 end
 defmodule CheckStickerSetNameResultNameInvalid do
   @moduledoc  """
@@ -27206,11 +29310,12 @@ defmodule UpdateUnconfirmedSession do
   | Name | Type | Description |
   |------|------| ------------|
   | session | unconfirmedSession | The unconfirmed session; may be null if none. |
+  | unconfirmed_session_count | int32 | The total number of unconfirmed sessions. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_unconfirmed_session.html).
   """
 
-  defstruct "@type": "updateUnconfirmedSession", "@extra": nil, session: nil
+  defstruct "@type": "updateUnconfirmedSession", "@extra": nil, session: nil, unconfirmed_session_count: nil
 end
 defmodule InternalLinkTypeMessageDraft do
   @moduledoc  """
@@ -27286,6 +29391,16 @@ defmodule ChatEventHasAggressiveAntiSpamEnabledToggled do
   """
 
   defstruct "@type": "chatEventHasAggressiveAntiSpamEnabledToggled", "@extra": nil, has_aggressive_anti_spam_enabled: nil
+end
+defmodule SessionDeviceTypeOpera do
+  @moduledoc  """
+  The session is running on the Opera browser.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_opera.html).
+  """
+
+  defstruct "@type": "sessionDeviceTypeOpera", "@extra": nil
 end
 defmodule ChatEventMessageEdited do
   @moduledoc  """
@@ -27399,7 +29514,7 @@ defmodule ChatRevenueTransactionTypeSuggestedPostEarnings do
 end
 defmodule UpgradedGiftAttributeRarityPerMille do
   @moduledoc  """
-  The rarity is represented as the numeric frequence of the model.
+  The rarity is represented as the numeric frequency of the model.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -27450,6 +29565,20 @@ defmodule StarGiveawayWinnerOption do
 
   defstruct "@type": "starGiveawayWinnerOption", "@extra": nil, winner_count: nil, won_star_count: nil, is_default: nil
 end
+defmodule RichTextHashtag do
+  @moduledoc  """
+  A hashtag.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text. |
+  | hashtag | string | The hashtag. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_hashtag.html).
+  """
+
+  defstruct "@type": "richTextHashtag", "@extra": nil, text: nil, hashtag: nil
+end
 defmodule ThumbnailFormatGif do
   @moduledoc  """
   The thumbnail is in static GIF format. It will be used only for some bot inline query results.
@@ -27493,11 +29622,12 @@ defmodule MessageManagedBotCreated do
   | Name | Type | Description |
   |------|------| ------------|
   | bot_user_id | int53 | User identifier of the created bot. |
+  | manager_bot_user_id | int53 | Identifier of the bot which will manage the new bot. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_managed_bot_created.html).
   """
 
-  defstruct "@type": "messageManagedBotCreated", "@extra": nil, bot_user_id: nil
+  defstruct "@type": "messageManagedBotCreated", "@extra": nil, bot_user_id: nil, manager_bot_user_id: nil
 end
 defmodule UpdateNotification do
   @moduledoc  """
@@ -27533,7 +29663,7 @@ defmodule InputSuggestedPostInfo do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | price | SuggestedPostPrice | Price of the suggested post; pass null to suggest a post without payment. If the current user isn't an administrator of the channel direct messages chat and has no enough funds to pay for the post, then the error "BALANCE_TOO_LOW" will be returned immediately. |
+  | price | SuggestedPostPrice | Price of the suggested post; pass null to suggest a post without payment. If the current user isn't an administrator of the channel direct messages chat and doesn't have enough funds to pay for the post, then the error "BALANCE_TOO_LOW" will be returned immediately. |
   | send_date | int32 | Point in time (Unix timestamp) when the post is expected to be published; pass 0 if the date isn't restricted. If specified, then the date must be <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_send_delay_min")-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_send_delay_max") seconds in the future. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_suggested_post_info.html).
@@ -27553,7 +29683,7 @@ defmodule UserPrivacySettingShowPhoneNumber do
 end
 defmodule PageBlockRelatedArticles do
   @moduledoc  """
-  Related articles.
+  Related articles; instant view only.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -27722,6 +29852,19 @@ defmodule JsonObjectMember do
 
   defstruct "@type": "jsonObjectMember", "@extra": nil, key: nil, value: nil
 end
+defmodule PollMediaAudio do
+  @moduledoc  """
+  An audio.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | audio | audio | The audio. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_media_audio.html).
+  """
+
+  defstruct "@type": "pollMediaAudio", "@extra": nil, audio: nil
+end
 defmodule SearchMessagesFilterUnreadPollVote do
   @moduledoc  """
   Returns only messages with unread poll votes for the current user. When using this filter the results can't be additionally filtered by a query or by the sending user.
@@ -27785,6 +29928,20 @@ defmodule DeepLinkInfo do
   """
 
   defstruct "@type": "deepLinkInfo", "@extra": nil, text: nil, need_update_application: nil
+end
+defmodule RichTextBotCommand do
+  @moduledoc  """
+  A bot command.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text. |
+  | bot_command | string | The bot command. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_bot_command.html).
+  """
+
+  defstruct "@type": "richTextBotCommand", "@extra": nil, text: nil, bot_command: nil
 end
 defmodule StorePaymentPurpose do
   @moduledoc  """
@@ -28068,16 +30225,6 @@ defmodule PremiumLimitTypeChatFolderInviteLinkCount do
 
   defstruct "@type": "premiumLimitTypeChatFolderInviteLinkCount", "@extra": nil
 end
-defmodule SessionTypeOpera do
-  @moduledoc  """
-  The session is running on the Opera browser.
-
-
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_opera.html).
-  """
-
-  defstruct "@type": "sessionTypeOpera", "@extra": nil
-end
 defmodule MessageChatOwnerChanged do
   @moduledoc  """
   The owner of the chat has changed.
@@ -28253,7 +30400,7 @@ defmodule UpgradedGift do
   | total_upgraded_count | int32 | Total number of gifts that were upgraded from the same gift. |
   | max_upgraded_count | int32 | The maximum number of gifts that can be upgraded from the same gift. |
   | is_burned | bool | True, if the gift was used to craft another gift. |
-  | is_crafted | bool | True, if the gift was craft from another gifts. |
+  | is_crafted | bool | True, if the gift was crafted from other gifts. |
   | is_premium | bool | True, if the original gift could have been bought only by Telegram Premium subscribers. |
   | is_theme_available | bool | True, if the gift can be used to set a theme in a chat. |
   | used_theme_chat_id | int53 | Identifier of the chat for which the gift is used to set a theme; 0 if none or the gift isn't owned by the current user. |
@@ -28304,7 +30451,7 @@ defmodule BusinessFeatureStartPage do
 end
 defmodule ChatMembersFilterMention do
   @moduledoc  """
-  Returns users which can be mentioned in the chat.
+  Returns users who can be mentioned in the chat.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -28484,7 +30631,7 @@ defmodule CanTransferOwnershipResult do
 end
 defmodule Supergroup do
   @moduledoc  """
-  Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup: only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos. Unlike supergroups, channels can have an unlimited number of subscribers.
+  Represents a supergroup or channel with zero or more members (subscribers in the case of channels).
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -28500,9 +30647,9 @@ defmodule Supergroup do
   | sign_messages | bool | True, if messages sent to the channel contains name of the sender. This field is only applicable to channels. |
   | show_message_sender | bool | True, if messages sent to the channel have information about the sender user. This field is only applicable to channels. |
   | join_to_send_messages | bool | True, if users need to join the supergroup before they can send messages. May be false only for discussion supergroups and channel direct messages groups. |
-  | join_by_request | bool | True, if all users directly joining the supergroup need to be approved by supergroup administrators. May be true only for non-broadcast supergroups with username, location, or a linked chat. |
+  | join_by_request | bool | True, if all users directly joining the supergroup need to be approved by supergroup administrators. |
   | is_slow_mode_enabled | bool | True, if the slow mode is enabled in the supergroup. |
-  | is_channel | bool | True, if the supergroup is a channel. |
+  | is_channel | bool | True, if the supergroup is a channel, which can have an unlimited number of subscribers, but only administrators can post there and see the list of subscribers. |
   | is_broadcast_group | bool | True, if the supergroup is a broadcast group, i.e. only administrators can send messages and there is no limit on the number of members. |
   | is_forum | bool | True, if the supergroup is a forum with topics. |
   | is_direct_messages_group | bool | True, if the supergroup is a direct message group for a channel chat. |
@@ -28581,16 +30728,16 @@ defmodule StakeDiceState do
   | Name | Type | Description |
   |------|------| ------------|
   | state_hash | string | Hash of the state to use for sending the next dice; may be empty if the stake dice can't be sent by the current user. |
-  | stake_toncoin_amount | int53 | The Toncoin amount that was staked in the previous roll; in the smallest units of the currency. |
-  | suggested_stake_toncoin_amounts | int53 | The amounts of Toncoins that are suggested to be staked; in the smallest units of the currency. |
+  | stake_gram_amount | int53 | The amount of TON Grams staked in the previous roll; in the smallest units of the currency. |
+  | suggested_stake_gram_amounts | int53 | The amounts of Grams that are suggested to be staked; in the smallest units of the currency. |
   | current_streak | int32 | The number of rolled sixes towards the streak; 0-2. |
-  | prize_per_mille | int32 | The number of Toncoins received by the user for each 1000 Toncoins staked if the dice outcome is 1-6 correspondingly; may be empty if the stake dice can't be sent by the current user. |
-  | streak_prize_per_mille | int32 | The number of Toncoins received by the user for each 1000 Toncoins staked if the dice outcome is 6 three times in a row with the same stake. |
+  | prize_per_mille | int32 | The number of Grams received by the user for each 1000 Grams staked if the dice outcome is 1-6 correspondingly; may be empty if the stake dice can't be sent by the current user. |
+  | streak_prize_per_mille | int32 | The number of Grams received by the user for each 1000 Grams staked if the dice outcome is 6 three times in a row with the same stake. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1stake_dice_state.html).
   """
 
-  defstruct "@type": "stakeDiceState", "@extra": nil, state_hash: nil, stake_toncoin_amount: nil, suggested_stake_toncoin_amounts: nil, current_streak: nil, prize_per_mille: nil, streak_prize_per_mille: nil
+  defstruct "@type": "stakeDiceState", "@extra": nil, state_hash: nil, stake_gram_amount: nil, suggested_stake_gram_amounts: nil, current_streak: nil, prize_per_mille: nil, streak_prize_per_mille: nil
 end
 defmodule MessageReplyTo do
   @moduledoc  """
@@ -28694,7 +30841,7 @@ defmodule MessageReactions do
 end
 defmodule PageBlockTitle do
   @moduledoc  """
-  The title of a page.
+  The title of a page; instant view only.
 
   | Name | Type | Description |
   |------|------| ------------|
@@ -29179,11 +31326,14 @@ defmodule InputMessagePoll do
   | Name | Type | Description |
   |------|------| ------------|
   | question | formattedText | Poll question; 1-255 characters (up to 300 characters for bots). Only custom emoji entities are allowed to be added and only by Premium users. |
-  | options | inputPollOption | List of poll answer options; 2-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("poll_answer_count_max") options. |
+  | options | inputPollOption | List of poll answer options; 1-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("poll_answer_count_max") options. |
   | description | formattedText | Poll description; pass null to use an empty description; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
+  | media | InputPollMedia | Media attached to the poll; pass null if none. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_poll_media_animation.html">inputPollMediaAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_audio.html">inputPollMediaAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_document.html">inputPollMediaDocument</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_location.html">inputPollMediaLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_photo.html">inputPollMediaPhoto</a>, <a class="el" href="classtd_1_1td__api_1_1input_poll_media_venue.html">inputPollMediaVenue</a>, or <a class="el" href="classtd_1_1td__api_1_1input_poll_media_video.html">inputPollMediaVideo</a> without caption. |
   | is_anonymous | bool | True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels. |
   | allows_multiple_answers | bool | True, if multiple answer options can be chosen simultaneously. |
   | allows_revoting | bool | True, if the poll can be answered multiple times. |
+  | members_only | bool | True, if only the users that are members of the chat for more than a day will be able to vote; for channel chats only. |
+  | country_codes | string | The list of two-letter ISO 3166-1 alpha-2 codes of countries, users from which will be able to vote; for channel chats only. If empty, then all users can participate in the poll. There can be up to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("poll_country_count_max") chosen countries. |
   | shuffle_options | bool | True, if poll options must be shown in a fixed random order. |
   | hide_results_until_closes | bool | True, if the poll results will appear only after the poll closes. |
   | type | InputPollType | Type of the poll. |
@@ -29194,7 +31344,7 @@ defmodule InputMessagePoll do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_poll.html).
   """
 
-  defstruct "@type": "inputMessagePoll", "@extra": nil, question: nil, options: nil, description: nil, is_anonymous: nil, allows_multiple_answers: nil, allows_revoting: nil, shuffle_options: nil, hide_results_until_closes: nil, type: nil, open_period: nil, close_date: nil, is_closed: nil
+  defstruct "@type": "inputMessagePoll", "@extra": nil, question: nil, options: nil, description: nil, media: nil, is_anonymous: nil, allows_multiple_answers: nil, allows_revoting: nil, members_only: nil, country_codes: nil, shuffle_options: nil, hide_results_until_closes: nil, type: nil, open_period: nil, close_date: nil, is_closed: nil
 end
 defmodule GiftUpgradePrice do
   @moduledoc  """
@@ -29369,6 +31519,19 @@ defmodule UserPrivacySettingRuleRestrictContacts do
 
   defstruct "@type": "userPrivacySettingRuleRestrictContacts", "@extra": nil
 end
+defmodule RichTextSpoiler do
+  @moduledoc  """
+  A spoilered rich text.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_spoiler.html).
+  """
+
+  defstruct "@type": "richTextSpoiler", "@extra": nil, text: nil
+end
 defmodule TopChatCategoryWebAppBots do
   @moduledoc  """
   A category containing frequently used chats with bots, which Web Apps were opened.
@@ -29392,6 +31555,16 @@ defmodule MessagePositions do
   """
 
   defstruct "@type": "messagePositions", "@extra": nil, total_count: nil, positions: nil
+end
+defmodule CommunityMemberStatusBanned do
+  @moduledoc  """
+  The user or the chat was banned in the community; implies ban in all chats in the community.
+
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1community_member_status_banned.html).
+  """
+
+  defstruct "@type": "communityMemberStatusBanned", "@extra": nil
 end
 defmodule InputPollTypeRegular do
   @moduledoc  """
@@ -29556,15 +31729,15 @@ defmodule Photo do
 
   defstruct "@type": "photo", "@extra": nil, has_stickers: nil, minithumbnail: nil, sizes: nil
 end
-defmodule SessionTypeWindows do
+defmodule SessionDeviceTypeWindows do
   @moduledoc  """
   The session is running on a Windows device.
 
 
-  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_windows.html).
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_device_type_windows.html).
   """
 
-  defstruct "@type": "sessionTypeWindows", "@extra": nil
+  defstruct "@type": "sessionDeviceTypeWindows", "@extra": nil
 end
 defmodule DeviceTokenApplePush do
   @moduledoc  """
