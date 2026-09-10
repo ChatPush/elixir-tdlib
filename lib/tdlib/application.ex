@@ -17,7 +17,13 @@ defmodule TDLib.Application do
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: TDLib.Supervisor]
+    opts = [
+      strategy: :one_for_one,
+      name: TDLib.Supervisor,
+      max_restarts: 50_000,
+      max_seconds: 60
+    ]
+
     Supervisor.start_link(children, opts)
   end
 end
