@@ -5,7 +5,7 @@ defmodule TDLib.Method do
   """
 defmodule GetWebAppLinkUrl do
   @moduledoc  """
-  Returns an HTTPS URL of a Web App to open after a link of the type internalLinkTypeWebApp is clicked.
+  Returns an HTTPS URL of a Web App to open after a link of the type [internalLinkTypeWebApp](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_web_app.html) is clicked.
   Returns object_ptr<WebAppUrl>.
 
   | Name | Type | Description |
@@ -13,7 +13,7 @@ defmodule GetWebAppLinkUrl do
   | chat_id | int53 | Identifier of the chat in which the link was clicked; pass 0 if none. |
   | bot_user_id | int53 | Identifier of the target bot. |
   | web_app_short_name | string | Short name of the Web App. |
-  | start_parameter | string | Start parameter from <a class="el" href="classtd_1_1td__api_1_1internal_link_type_web_app.html">internalLinkTypeWebApp</a>. |
+  | start_parameter | string | Start parameter from [internalLinkTypeWebApp](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_web_app.html). |
   | allow_write_access | bool | Pass true if the current user allowed the bot to send them messages. |
   | parameters | webAppOpenParameters | Parameters to use to open the Web App. |
 
@@ -105,7 +105,7 @@ defmodule EditChatWelcomeMessage do
   |------|------| ------------|
   | chat_id | int53 | The identifier of the chat. |
   | welcome_message_id | int32 | The identifier of the welcome message. |
-  | input_message_content | InputMessageContent | New content of the message. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_animation.html">inputMessageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_audio.html">inputMessageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_document.html">inputMessageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_photo.html">inputMessagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_sticker.html">inputMessageSticker</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video.html">inputMessageVideo</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video_note.html">inputMessageVideoNote</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_voice_note.html">inputMessageVoiceNote</a>. |
+  | input_message_content | InputMessageContent | New content of the message. Must be one of the following types: [inputMessageText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_text.html), [inputMessageAnimation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_animation.html), [inputMessageAudio](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_audio.html), [inputMessageDocument](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_document.html), [inputMessagePhoto](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_photo.html), [inputMessageRichMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_rich_message.html), [inputMessageSticker](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_sticker.html), [inputMessageVideo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video.html), [inputMessageVideoNote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video_note.html), [inputMessageVoiceNote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_voice_note.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_chat_welcome_message.html).
   """
@@ -114,7 +114,7 @@ defmodule EditChatWelcomeMessage do
 end
 defmodule GetOauthLinkInfo do
   @moduledoc  """
-  Returns information about an OAuth deep link. Use checkOauthRequestMatchCode, acceptOauthRequest or declineOauthRequest to process the link.
+  Returns information about an OAuth deep link. Use [checkOauthRequestMatchCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_oauth_request_match_code.html), [acceptOauthRequest](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1accept_oauth_request.html) or [declineOauthRequest](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1decline_oauth_request.html) to process the link.
   Returns object_ptr<OauthLinkInfo>.
 
   | Name | Type | Description |
@@ -138,7 +138,7 @@ defmodule EditBusinessMessageText do
   | chat_id | int53 | The chat the message belongs to. |
   | message_id | int53 | Identifier of the message. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none. |
-  | input_message_content | InputMessageContent | New text content of the message. Must be of type <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>. |
+  | input_message_content | InputMessageContent | New text content of the message. Must be of type [inputMessageText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_text.html) or [inputMessageRichMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_rich_message.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_business_message_text.html).
   """
@@ -153,9 +153,9 @@ defmodule EditMessageCaption do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | The chat the message belongs to. |
-  | message_id | int53 | Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited. |
+  | message_id | int53 | Identifier of the message. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_edited to check whether the message can be edited. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none; for bots only. |
-  | caption | formattedText | New message content caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters; pass null to remove caption. |
+  | caption | formattedText | New message content caption; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("message_caption_length_max") characters; pass null to remove caption. |
   | show_caption_above_media | bool | Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_message_caption.html).
@@ -171,8 +171,8 @@ defmodule SetChatProfileAccentColor do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier. |
-  | profile_accent_color_id | int32 | Identifier of the accent color to use for profile; pass -1 if none. The chat must have at least profileAccentColor.min_supergroup_chat_boost_level for supergroups or profileAccentColor.min_channel_chat_boost_level for channels boost level to pass the corresponding color. |
-  | profile_background_custom_emoji_id | int64 | Identifier of a custom emoji to be shown on the chat's profile photo background; 0 if none. Use chatBoostLevelFeatures.can_set_profile_background_custom_emoji to check whether a custom emoji can be set. |
+  | profile_accent_color_id | int32 | Identifier of the accent color to use for profile; pass -1 if none. The chat must have at least [profileAccentColor](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1profile_accent_color.html).min_supergroup_chat_boost_level for supergroups or [profileAccentColor](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1profile_accent_color.html).min_channel_chat_boost_level for channels boost level to pass the corresponding color. |
+  | profile_background_custom_emoji_id | int64 | Identifier of a custom emoji to be shown on the chat's profile photo background; 0 if none. Use [chatBoostLevelFeatures](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_level_features.html).can_set_profile_background_custom_emoji to check whether a custom emoji can be set. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_profile_accent_color.html).
   """
@@ -234,7 +234,7 @@ defmodule GetPremiumStickerExamples do
 end
 defmodule SetTdlibParameters do
   @moduledoc  """
-  Sets the parameters for TDLib initialization. Works only when the current authorization state is authorizationStateWaitTdlibParameters.
+  Sets the parameters for TDLib initialization. Works only when the current authorization state is [authorizationStateWaitTdlibParameters](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_tdlib_parameters.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -247,8 +247,8 @@ defmodule SetTdlibParameters do
   | use_chat_info_database | bool | Pass true to keep cache of users, basic groups, supergroups, channels and secret chats between restarts. Implies use_file_database. |
   | use_message_database | bool | Pass true to keep cache of chats and messages between restarts. Implies use_chat_info_database. |
   | use_secret_chats | bool | Pass true to enable support for secret chats. |
-  | api_id | int32 | Application identifier for Telegram API access, which can be obtained at <a href="https://my.telegram.org">https://my.telegram.org</a>. |
-  | api_hash | string | Application identifier hash for Telegram API access, which can be obtained at <a href="https://my.telegram.org">https://my.telegram.org</a>. |
+  | api_id | int32 | Application identifier for Telegram API access, which can be obtained at https://my.telegram.org. |
+  | api_hash | string | Application identifier hash for Telegram API access, which can be obtained at https://my.telegram.org. |
   | system_language_code | string | IETF language tag of the user's operating system language; must be non-empty. |
   | device_model | string | Model of the device the application is being run on; must be non-empty. |
   | system_version | string | Version of the operating system the application is being run on. If empty, the version is automatically detected by TDLib. |
@@ -267,7 +267,7 @@ defmodule GetPollVoteStatistics do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to which the poll belongs. |
-  | message_id | int53 | Identifier of the message containing the poll. Use messageProperties.can_get_poll_vote_statistics to check whether the method can be used for a message. |
+  | message_id | int53 | Identifier of the message containing the poll. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_poll_vote_statistics to check whether the method can be used for a message. |
   | is_dark | bool | Pass true if a dark theme is used by the application. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_poll_vote_statistics.html).
@@ -277,7 +277,7 @@ defmodule GetPollVoteStatistics do
 end
 defmodule OpenChatSimilarChat do
   @moduledoc  """
-  Informs TDLib that a chat was opened from the list of similar chats. The method is independent of openChat and closeChat methods.
+  Informs TDLib that a chat was opened from the list of similar chats. The method is independent of [openChat](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1open_chat.html) and [closeChat](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1close_chat.html) methods.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -352,9 +352,9 @@ defmodule EditTextCompositionStyle do
   | Name | Type | Description |
   |------|------| ------------|
   | name | string | Name of the style. |
-  | title | string | Title of the style; 1-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("text_composition_style_title_length_max") characters. |
+  | title | string | Title of the style; 1-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("text_composition_style_title_length_max") characters. |
   | custom_emoji_id | int64 | Identifier of the custom emoji corresponding to the style. |
-  | prompt | string | Prompt that will be used for text composition; 1-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("text_composition_style_prompt_length_max") characters. |
+  | prompt | string | Prompt that will be used for text composition; 1-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("text_composition_style_prompt_length_max") characters. |
   | show_creator | bool | Pass true if the current user must be shown as the creator of the style. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_text_composition_style.html).
@@ -385,7 +385,7 @@ defmodule ToggleSupergroupJoinByRequest do
   |------|------| ------------|
   | supergroup_id | int53 | Identifier of the supergroup that isn't a broadcast group and isn't a channel direct message group. |
   | join_by_request | bool | New value of join_by_request. |
-  | guard_bot_user_id | int53 | Identifier of the bot which will be the guard bot in the group; pass 0 if none; ignored if join_by_request == false. The bot must have administrator privileges and can_invite_users right in the supergroup chat, and must have userTypeBot.is_guard == true. |
+  | guard_bot_user_id | int53 | Identifier of the bot which will be the guard bot in the group; pass 0 if none; ignored if join_by_request == false. The bot must have administrator privileges and can_invite_users right in the supergroup chat, and must have [userTypeBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html).is_guard == true. |
   | apply_to_invite_links | bool | Pass true to apply the change to the existing invite links, including primary links. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_join_by_request.html).
@@ -402,7 +402,7 @@ defmodule AddContact do
   |------|------| ------------|
   | user_id | int53 | Identifier of the user. |
   | contact | importedContact | The contact to add or edit; phone number may be empty and needs to be specified only if known. |
-  | share_phone_number | bool | Pass true to share the current user's phone number with the new contact. A corresponding rule to <a class="el" href="classtd_1_1td__api_1_1user_privacy_setting_show_phone_number.html">userPrivacySettingShowPhoneNumber</a> will be added if needed. Use the field userFullInfo.need_phone_number_privacy_exception to check whether the current user needs to be asked to share their phone number. |
+  | share_phone_number | bool | Pass true to share the current user's phone number with the new contact. A corresponding rule to [userPrivacySettingShowPhoneNumber](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_show_phone_number.html) will be added if needed. Use the field [userFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_full_info.html).need_phone_number_privacy_exception to check whether the current user needs to be asked to share their phone number. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_contact.html).
   """
@@ -479,7 +479,7 @@ defmodule GetGroupCallParticipants do
 end
 defmodule GetChats do
   @moduledoc  """
-  Returns an ordered list of chats from the beginning of a chat list. For informational purposes only. Use loadChats and updates processing instead to maintain chat lists in a consistent state.
+  Returns an ordered list of chats from the beginning of a chat list. For informational purposes only. Use [loadChats](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1load_chats.html) and updates processing instead to maintain chat lists in a consistent state.
   Returns object_ptr<Chats>.
 
   | Name | Type | Description |
@@ -512,7 +512,7 @@ defmodule SearchFileDownloads do
 end
 defmodule ReplaceStickerInSet do
   @moduledoc  """
-  Replaces existing sticker in a set. The function is equivalent to removeStickerFromSet, then addStickerToSet, then setStickerPositionInSet.
+  Replaces existing sticker in a set. The function is equivalent to [removeStickerFromSet](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_sticker_from_set.html), then [addStickerToSet](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_sticker_to_set.html), then [setStickerPositionInSet](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_sticker_position_in_set.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -529,7 +529,7 @@ defmodule ReplaceStickerInSet do
 end
 defmodule TerminateAllOtherSessions do
   @moduledoc  """
-  Terminates all other sessions of the current user. Additionally, the user must be suggested to delete the connected business bot using deleteBusinessConnectedBot if there is any.
+  Terminates all other sessions of the current user. Additionally, the user must be suggested to delete the connected business bot using [deleteBusinessConnectedBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_business_connected_bot.html) if there is any.
   Returns object_ptr<Ok>.
 
 
@@ -559,9 +559,9 @@ defmodule PostStory do
   | chat_id | int53 | Identifier of the chat that will post the story. Pass Saved Messages chat identifier when posting a story on behalf of the current user. |
   | content | InputStoryContent | Content of the story. |
   | areas | inputStoryAreas | Clickable rectangle areas to be shown on the story media; pass null if none. |
-  | caption | formattedText | Story caption; pass null to use an empty caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("story_caption_length_max") characters; can have entities only if <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("can_use_text_entities_in_story_caption"). |
+  | caption | formattedText | Story caption; pass null to use an empty caption; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("story_caption_length_max") characters; can have entities only if [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("can_use_text_entities_in_story_caption"). |
   | privacy_settings | StoryPrivacySettings | The privacy settings for the story; ignored for stories posted on behalf of supergroup and channel chats. |
-  | album_ids | int32 | Identifiers of story albums to which the story will be added upon posting. An album can have up to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("story_album_size_max") stories. |
+  | album_ids | int32 | Identifiers of story albums to which the story will be added upon posting. An album can have up to [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("story_album_size_max") stories. |
   | active_period | int32 | Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise. |
   | from_story_full_id | storyFullId | Full identifier of the original story, which content was used to create the story; pass null if the story isn't repost of another story. |
   | is_posted_to_chat_page | bool | Pass true to keep the story accessible after expiration. |
@@ -574,7 +574,7 @@ defmodule PostStory do
 end
 defmodule SetChatLocation do
   @moduledoc  """
-  Changes the location of a chat. Available only for some location-based supergroups, use supergroupFullInfo.can_set_location to check whether the method is allowed to use.
+  Changes the location of a chat. Available only for some location-based supergroups, use [supergroupFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).can_set_location to check whether the method is allowed to use.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -655,7 +655,7 @@ defmodule GetUpgradedGiftWithdrawalUrl do
 end
 defmodule SetLoginEmailAddress do
   @moduledoc  """
-  Changes the login email address of the user. The email address can be changed only if the current user already has login email and passwordState.login_email_address_pattern is non-empty, or the user received suggestedActionSetLoginEmailAddress and isLoginEmailAddressRequired succeeds. The change will not be applied until the new login email address is confirmed with checkLoginEmailAddressCode. To use Apple ID/Google ID instead of an email address, call checkLoginEmailAddressCode directly.
+  Changes the login email address of the user. The email address can be changed only if the current user already has login email and [passwordState](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1password_state.html).login_email_address_pattern is non-empty, or the user received [suggestedActionSetLoginEmailAddress](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_set_login_email_address.html) and [isLoginEmailAddressRequired](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1is_login_email_address_required.html) succeeds. The change will not be applied until the new login email address is confirmed with [checkLoginEmailAddressCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_login_email_address_code.html). To use Apple ID/Google ID instead of an email address, call [checkLoginEmailAddressCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_login_email_address_code.html) directly.
   Returns object_ptr<EmailAddressAuthenticationCodeInfo>.
 
   | Name | Type | Description |
@@ -669,7 +669,7 @@ defmodule SetLoginEmailAddress do
 end
 defmodule SetSupergroupCustomEmojiStickerSet do
   @moduledoc  """
-  Changes the custom emoji sticker set of a supergroup; requires can_change_info administrator right. The chat must have at least chatBoostFeatures.min_custom_emoji_sticker_set_boost_level boost level to pass the corresponding color.
+  Changes the custom emoji sticker set of a supergroup; requires can_change_info administrator right. The chat must have at least [chatBoostFeatures](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_features.html).min_custom_emoji_sticker_set_boost_level boost level to pass the corresponding color.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -684,7 +684,7 @@ defmodule SetSupergroupCustomEmojiStickerSet do
 end
 defmodule SetChatMemberStatus do
   @moduledoc  """
-  Changes the status of a chat member; requires can_invite_users member right to add a chat member, can_promote_members administrator right to change administrator rights of the member, and can_restrict_members administrator right to change restrictions of a user. This function is currently not suitable for transferring chat ownership; use transferChatOwnership instead. Use addChatMember or banChatMember if some additional parameters need to be passed.
+  Changes the status of a chat member; requires can_invite_users member right to add a chat member, can_promote_members administrator right to change administrator rights of the member, and can_restrict_members administrator right to change restrictions of a user. This function is currently not suitable for transferring chat ownership; use [transferChatOwnership](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1transfer_chat_ownership.html) instead. Use [addChatMember](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_chat_member.html) or [banChatMember](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ban_chat_member.html) if some additional parameters need to be passed.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -728,7 +728,7 @@ defmodule GetCustomEmojiStickers do
 end
 defmodule AddFileToDownloads do
   @moduledoc  """
-  Adds a file from a message to the list of file downloads. Download progress and completion of the download will be notified through updateFile updates. If message database is used, the list of file downloads is persistent across application restarts. The downloading is independent of download using downloadFile, i.e. it continues if downloadFile is canceled or is used to download a part of the file.
+  Adds a file from a message to the list of file downloads. Download progress and completion of the download will be notified through [updateFile](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_file.html) updates. If message database is used, the list of file downloads is persistent across application restarts. The downloading is independent of download using [downloadFile](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1download_file.html), i.e. it continues if [downloadFile](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1download_file.html) is canceled or is used to download a part of the file.
   Returns object_ptr<File>.
 
   | Name | Type | Description |
@@ -736,7 +736,7 @@ defmodule AddFileToDownloads do
   | file_id | int32 | Identifier of the file to download. |
   | chat_id | int53 | Chat identifier of the message with the file. |
   | message_id | int53 | Message identifier. |
-  | priority | int32 | Priority of the download (1-32). The higher the priority, the earlier the file will be downloaded. If the priorities of two files are equal, then the last one for which downloadFile/addFileToDownloads was called will be downloaded first. |
+  | priority | int32 | Priority of the download (1-32). The higher the priority, the earlier the file will be downloaded. If the priorities of two files are equal, then the last one for which [downloadFile](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1download_file.html)/[addFileToDownloads](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_file_to_downloads.html) was called will be downloaded first. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_file_to_downloads.html).
   """
@@ -824,7 +824,7 @@ defmodule EditCallbackQueryMessage do
   | callback_query_id | int64 | Identifier of the callback query. |
   | protect_content | bool | Pass true if the content of the message must be protected from forwarding and saving. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none. |
-  | input_message_content | InputMessageContent | New content of the message. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_animation.html">inputMessageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_audio.html">inputMessageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_document.html">inputMessageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_photo.html">inputMessagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_sticker.html">inputMessageSticker</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video.html">inputMessageVideo</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video_note.html">inputMessageVideoNote</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_voice_note.html">inputMessageVoiceNote</a>. |
+  | input_message_content | InputMessageContent | New content of the message. Must be one of the following types: [inputMessageText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_text.html), [inputMessageAnimation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_animation.html), [inputMessageAudio](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_audio.html), [inputMessageDocument](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_document.html), [inputMessagePhoto](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_photo.html), [inputMessageRichMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_rich_message.html), [inputMessageSticker](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_sticker.html), [inputMessageVideo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video.html), [inputMessageVideoNote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video_note.html), [inputMessageVoiceNote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_voice_note.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_callback_query_message.html).
   """
@@ -847,7 +847,7 @@ defmodule ReportPhoneNumberCodeMissing do
 end
 defmodule SendAuthenticationFirebaseSms do
   @moduledoc  """
-  Sends Firebase Authentication SMS to the phone number of the user. Works only when the current authorization state is authorizationStateWaitCode and the server returned code of the type authenticationCodeTypeFirebaseAndroid or authenticationCodeTypeFirebaseIos.
+  Sends Firebase Authentication SMS to the phone number of the user. Works only when the current authorization state is [authorizationStateWaitCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_code.html) and the server returned code of the type [authenticationCodeTypeFirebaseAndroid](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_firebase_android.html) or [authenticationCodeTypeFirebaseIos](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_firebase_ios.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -881,7 +881,7 @@ defmodule AddChatToList do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier. |
-  | chat_list | ChatList | The chat list. Use <a class="el" href="classtd_1_1td__api_1_1get_chat_lists_to_add_chat.html">getChatListsToAddChat</a> to get suitable chat lists. |
+  | chat_list | ChatList | The chat list. Use [getChatListsToAddChat](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_lists_to_add_chat.html) to get suitable chat lists. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_chat_to_list.html).
   """
@@ -904,7 +904,7 @@ defmodule GetUpgradedGiftValueInfo do
 end
 defmodule AddQuickReplyShortcutInlineQueryResultMessage do
   @moduledoc  """
-  Adds a message to a quick reply shortcut via inline bot. If shortcut doesn't exist and there are less than getOption("quick_reply_shortcut_count_max") shortcuts, then a new shortcut is created. The shortcut must not contain more than getOption("quick_reply_shortcut_message_count_max") messages after adding the new message. Returns the added message.
+  Adds a message to a quick reply shortcut via inline bot. If shortcut doesn't exist and there are less than [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("quick_reply_shortcut_count_max") shortcuts, then a new shortcut is created. The shortcut must not contain more than [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("quick_reply_shortcut_message_count_max") messages after adding the new message. Returns the added message.
   Returns object_ptr<QuickReplyMessage>.
 
   | Name | Type | Description |
@@ -913,7 +913,7 @@ defmodule AddQuickReplyShortcutInlineQueryResultMessage do
   | reply_to_message_id | int53 | Identifier of a quick reply message in the same shortcut to be replied; pass 0 if none. |
   | query_id | int64 | Identifier of the inline query. |
   | result_id | string | Identifier of the inline query result. |
-  | hide_via_bot | bool | Pass true to hide the bot, via which the message is sent. Can be used only for bots <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("animation_search_bot_username"), <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("photo_search_bot_username"), and <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("venue_search_bot_username"). |
+  | hide_via_bot | bool | Pass true to hide the bot, via which the message is sent. Can be used only for bots [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("animation_search_bot_username"), [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("photo_search_bot_username"), and [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("venue_search_bot_username"). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_quick_reply_shortcut_inline_query_result_message.html).
   """
@@ -1007,7 +1007,7 @@ defmodule GetMe do
 end
 defmodule LoadChatWelcomeMessages do
   @moduledoc  """
-  Loads welcome messages of a chat; requires can_send_welcome_messages administrator right in the chat. The loaded messages will be sent through updateChatWelcomeMessages.
+  Loads welcome messages of a chat; requires can_send_welcome_messages administrator right in the chat. The loaded messages will be sent through [updateChatWelcomeMessages](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_welcome_messages.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -1073,7 +1073,7 @@ defmodule SetChatDirectMessagesGroup do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the channel chat. |
   | is_enabled | bool | Pass true if the direct messages group is enabled for the channel chat; pass false otherwise. |
-  | paid_message_star_count | int53 | The new number of Telegram Stars that must be paid for each message that is sent to the direct messages chat unless the sender is an administrator of the channel chat; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("paid_message_star_count_max"). The channel will receive <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("paid_message_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for message sending. Requires supergroupFullInfo.can_enable_paid_messages for positive amounts. |
+  | paid_message_star_count | int53 | The new number of Telegram Stars that must be paid for each message that is sent to the direct messages chat unless the sender is an administrator of the channel chat; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("paid_message_star_count_max"). The channel will receive [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("paid_message_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for message sending. Requires [supergroupFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).can_enable_paid_messages for positive amounts. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_direct_messages_group.html).
   """
@@ -1259,14 +1259,14 @@ defmodule EditBusinessChatLink do
 end
 defmodule AddMessageReaction do
   @moduledoc  """
-  Adds a reaction or a tag to a message. Use getMessageAvailableReactions to receive the list of available reactions for the message.
+  Adds a reaction or a tag to a message. Use [getMessageAvailableReactions](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_available_reactions.html) to receive the list of available reactions for the message.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to which the message belongs. |
   | message_id | int53 | Identifier of the message. |
-  | reaction_type | ReactionType | Type of the reaction to add. Use <a class="el" href="classtd_1_1td__api_1_1add_pending_paid_message_reaction.html">addPendingPaidMessageReaction</a> instead to add the paid reaction. |
+  | reaction_type | ReactionType | Type of the reaction to add. Use [addPendingPaidMessageReaction](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_pending_paid_message_reaction.html) instead to add the paid reaction. |
   | is_big | bool | Pass true if the reaction is added with a big animation. |
   | update_recent_reactions | bool | Pass true if the reaction needs to be added to recent reactions; tags are never added to the list of recent reactions. |
 
@@ -1372,7 +1372,7 @@ defmodule EditMessageReplyMarkup do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | The chat the message belongs to. |
-  | message_id | int53 | Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited. |
+  | message_id | int53 | Identifier of the message. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_edited to check whether the message can be edited. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_message_reply_markup.html).
@@ -1520,7 +1520,7 @@ defmodule UnpinChatMessage do
 end
 defmodule GetMessageLink do
   @moduledoc  """
-  Returns an HTTPS link to a message in a chat. Available only if messageProperties.can_get_link, or if messageProperties.can_get_media_timestamp_links and a media timestamp link is generated. This is an offline method.
+  Returns an HTTPS link to a message in a chat. Available only if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_link, or if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_media_timestamp_links and a media timestamp link is generated. This is an offline method.
   Returns object_ptr<MessageLink>.
 
   | Name | Type | Description |
@@ -1554,7 +1554,7 @@ defmodule RemoveRecentlyFoundChat do
 end
 defmodule RemoveBusinessConnectedBotFromChat do
   @moduledoc  """
-  Removes the connected business bot from a specific chat by adding the chat to businessRecipients.excluded_chat_ids.
+  Removes the connected business bot from a specific chat by adding the chat to [businessRecipients](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_recipients.html).excluded_chat_ids.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -1667,7 +1667,7 @@ defmodule SetProfileAccentColor do
 end
 defmodule UpgradeBasicGroupChatToSupergroupChat do
   @moduledoc  """
-  Creates a new supergroup from an existing basic group and sends a corresponding messageChatUpgradeTo and messageChatUpgradeFrom; requires owner privileges. Deactivates the original basic group.
+  Creates a new supergroup from an existing basic group and sends a corresponding [messageChatUpgradeTo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_upgrade_to.html) and [messageChatUpgradeFrom](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_upgrade_from.html); requires owner privileges. Deactivates the original basic group.
   Returns object_ptr<Chat>.
 
   | Name | Type | Description |
@@ -1725,7 +1725,7 @@ defmodule ProcessGiftPurchaseOffer do
 end
 defmodule GetLoginUrlInfo do
   @moduledoc  """
-  Returns information about a button of type inlineKeyboardButtonTypeLoginUrl. The method needs to be called when the user presses the button.
+  Returns information about a button of type [inlineKeyboardButtonTypeLoginUrl](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_login_url.html). The method needs to be called when the user presses the button.
   Returns object_ptr<LoginUrlInfo>.
 
   | Name | Type | Description |
@@ -1972,9 +1972,9 @@ defmodule CreateTextCompositionStyle do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | title | string | Title of the style; 1-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("text_composition_style_title_length_max") characters. |
+  | title | string | Title of the style; 1-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("text_composition_style_title_length_max") characters. |
   | custom_emoji_id | int64 | Identifier of the custom emoji corresponding to the style. |
-  | prompt | string | Prompt that will be used for text composition; 1-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("text_composition_style_prompt_length_max") characters. |
+  | prompt | string | Prompt that will be used for text composition; 1-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("text_composition_style_prompt_length_max") characters. |
   | show_creator | bool | Pass true if the current user must be shown as the creator of the style. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_text_composition_style.html).
@@ -2032,7 +2032,7 @@ defmodule SendPhoneNumberCode do
 end
 defmodule TestUseUpdate do
   @moduledoc  """
-  Does nothing and ensures that the Update object is used; for testing only. This is an offline method. Can be called before authorization.
+  Does nothing and ensures that the [Update](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_update.html) object is used; for testing only. This is an offline method. Can be called before authorization.
   Returns object_ptr<Update>.
 
 
@@ -2134,7 +2134,7 @@ defmodule TerminateSession do
 end
 defmodule LogOut do
   @moduledoc  """
-  Closes the TDLib instance after a proper logout. Requires an available network connection. All local data will be destroyed. After the logout completes, updateAuthorizationState with authorizationStateClosed will be sent.
+  Closes the TDLib instance after a proper logout. Requires an available network connection. All local data will be destroyed. After the logout completes, [updateAuthorizationState](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_authorization_state.html) with [authorizationStateClosed](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_closed.html) will be sent.
   Returns object_ptr<Ok>.
 
 
@@ -2233,7 +2233,7 @@ defmodule GetInternalLink do
 end
 defmodule ShareUsersWithBot do
   @moduledoc  """
-  Shares users after pressing a keyboardButtonTypeRequestUsers button with the bot.
+  Shares users after pressing a [keyboardButtonTypeRequestUsers](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_users.html) button with the bot.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -2366,7 +2366,7 @@ defmodule AddStoryAlbumStories do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat that owns the stories. |
   | story_album_id | int32 | Identifier of the story album. |
-  | story_ids | int32 | Identifier of the stories to add to the album; 1-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("story_album_size_max") identifiers. If after addition the album has more than <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("story_album_size_max") stories, then the last one are removed from the album. |
+  | story_ids | int32 | Identifier of the stories to add to the album; 1-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("story_album_size_max") identifiers. If after addition the album has more than [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("story_album_size_max") stories, then the last one are removed from the album. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_story_album_stories.html).
   """
@@ -2485,7 +2485,7 @@ defmodule SetUserEmojiStatus do
 end
 defmodule CreateChatFolder do
   @moduledoc  """
-  Creates new chat folder. Returns information about the created chat folder. There can be up to getOption("chat_folder_count_max") chat folders, but the limit can be increased with Telegram Premium.
+  Creates new chat folder. Returns information about the created chat folder. There can be up to [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("chat_folder_count_max") chat folders, but the limit can be increased with Telegram Premium.
   Returns object_ptr<ChatFolderInfo>.
 
   | Name | Type | Description |
@@ -2533,13 +2533,13 @@ defmodule GetDirectMessagesChatTopicHistory do
 end
 defmodule BanGroupCallParticipants do
   @moduledoc  """
-  Bans users from a group call not bound to a chat; requires groupCall.is_owned. Only the owner of the group call can invite the banned users back.
+  Bans users from a group call not bound to a chat; requires [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).is_owned. Only the owner of the group call can invite the banned users back.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | group_call_id | int32 | Group call identifier. |
-  | user_ids | int64 | Identifiers of group call participants to ban; identifiers of unknown users from the update <a class="el" href="classtd_1_1td__api_1_1update_group_call_participants.html">updateGroupCallParticipants</a> can be also passed to the method. |
+  | user_ids | int64 | Identifiers of group call participants to ban; identifiers of unknown users from the update [updateGroupCallParticipants](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_group_call_participants.html) can be also passed to the method. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ban_group_call_participants.html).
   """
@@ -2548,15 +2548,15 @@ defmodule BanGroupCallParticipants do
 end
 defmodule ResendMessages do
   @moduledoc  """
-  Resends messages which failed to send. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed. If a message is re-sent, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can't be re-sent, null will be returned instead of the message.
+  Resends messages which failed to send. Can be called only for messages for which [messageSendingStateFailed](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sending_state_failed.html).can_retry is true and after specified in [messageSendingStateFailed](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sending_state_failed.html).retry_after time passed. If a message is re-sent, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can't be re-sent, null will be returned instead of the message.
   Returns object_ptr<Messages>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to send messages. |
   | message_ids | int53 | Identifiers of the messages to resend. Message identifiers must be in a strictly increasing order. |
-  | quote | inputTextQuote | New manually chosen quote from the message to be replied; pass null if none. Ignored if more than one message is re-sent, or if messageSendingStateFailed.need_another_reply_quote == false. |
-  | paid_message_star_count | int53 | The number of Telegram Stars the user agreed to pay to send the messages. Ignored if messageSendingStateFailed.required_paid_message_star_count == 0. |
+  | quote | inputTextQuote | New manually chosen quote from the message to be replied; pass null if none. Ignored if more than one message is re-sent, or if [messageSendingStateFailed](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sending_state_failed.html).need_another_reply_quote == false. |
+  | paid_message_star_count | int53 | The number of Telegram Stars the user agreed to pay to send the messages. Ignored if [messageSendingStateFailed](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sending_state_failed.html).required_paid_message_star_count == 0. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1resend_messages.html).
   """
@@ -2576,13 +2576,13 @@ defmodule GetCountryCode do
 end
 defmodule SendWebAppData do
   @moduledoc  """
-  Sends data received from a keyboardButtonTypeWebApp Web App to a bot.
+  Sends data received from a [keyboardButtonTypeWebApp](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_web_app.html) Web App to a bot.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | bot_user_id | int53 | Identifier of the target bot. |
-  | button_text | string | Text of the <a class="el" href="classtd_1_1td__api_1_1keyboard_button_type_web_app.html">keyboardButtonTypeWebApp</a> button, which opened the Web App. |
+  | button_text | string | Text of the [keyboardButtonTypeWebApp](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_web_app.html) button, which opened the Web App. |
   | data | string | The data. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_web_app_data.html).
@@ -2636,7 +2636,7 @@ defmodule GetStorageStatistics do
 end
 defmodule GetChatRevenueTransactions do
   @moduledoc  """
-  Returns the list of revenue transactions for a chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true or bots if userFullInfo.bot_info.can_get_revenue_statistics == true.
+  Returns the list of revenue transactions for a chat. Currently, this method can be used only for channels if [supergroupFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).can_get_revenue_statistics == true or bots if [userFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_full_info.html).bot_info.can_get_revenue_statistics == true.
   Returns object_ptr<ChatRevenueTransactions>.
 
   | Name | Type | Description |
@@ -2665,7 +2665,7 @@ defmodule OptimizeStorage do
   | chat_ids | int53 | If non-empty, only files from the given chats are considered. Use 0 as chat identifier to delete files not belonging to any chat (e.g., profile photos). |
   | exclude_chat_ids | int53 | If non-empty, files from the given chats are excluded. Use 0 as chat identifier to exclude all files not belonging to any chat (e.g., profile photos). |
   | return_deleted_file_statistics | bool | Pass true if statistics about the files that were deleted must be returned instead of the whole storage usage statistics. Affects only returned statistics. |
-  | chat_limit | int32 | Same as in <a class="el" href="classtd_1_1td__api_1_1get_storage_statistics.html">getStorageStatistics</a>. Affects only returned statistics. |
+  | chat_limit | int32 | Same as in [getStorageStatistics](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_storage_statistics.html). Affects only returned statistics. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1optimize_storage.html).
   """
@@ -2722,7 +2722,7 @@ defmodule GetBackgroundUrl do
   | Name | Type | Description |
   |------|------| ------------|
   | name | string | Background name. |
-  | type | BackgroundType | Background type; <a class="el" href="classtd_1_1td__api_1_1background_type_chat_theme.html">backgroundTypeChatTheme</a> isn't supported. |
+  | type | BackgroundType | Background type; [backgroundTypeChatTheme](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_type_chat_theme.html) isn't supported. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_background_url.html).
   """
@@ -2844,7 +2844,7 @@ defmodule SearchMessages do
   | query | string | Query to search for. |
   | offset | string | Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results. |
   | limit | int32 | The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit. |
-  | filter | SearchMessagesFilter | Additional filter for messages to search; pass null to search for all messages. Filters <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_mention.html">searchMessagesFilterMention</a>, <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_unread_mention.html">searchMessagesFilterUnreadMention</a>, <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_unread_reaction.html">searchMessagesFilterUnreadReaction</a>, <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_unread_poll_vote.html">searchMessagesFilterUnreadPollVote</a>, <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_failed_to_send.html">searchMessagesFilterFailedToSend</a>, and <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_pinned.html">searchMessagesFilterPinned</a> are unsupported in this function. |
+  | filter | SearchMessagesFilter | Additional filter for messages to search; pass null to search for all messages. Filters [searchMessagesFilterMention](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_mention.html), [searchMessagesFilterUnreadMention](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_mention.html), [searchMessagesFilterUnreadReaction](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_reaction.html), [searchMessagesFilterUnreadPollVote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_poll_vote.html), [searchMessagesFilterFailedToSend](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_failed_to_send.html), and [searchMessagesFilterPinned](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_pinned.html) are unsupported in this function. |
   | chat_type_filter | SearchMessagesChatTypeFilter | Additional filter for type of the chat of the searched messages; pass null to search for messages in all chats. |
   | min_date | int32 | If not 0, the minimum date of the messages to return. |
   | max_date | int32 | If not 0, the maximum date of the messages to return. |
@@ -2910,13 +2910,13 @@ defmodule JoinChat do
 end
 defmodule SetGroupCallPaidMessageStarCount do
   @moduledoc  """
-  Changes the minimum number of Telegram Stars that must be paid by general participant for each sent message to a live story call. Requires groupCall.can_be_managed right.
+  Changes the minimum number of Telegram Stars that must be paid by general participant for each sent message to a live story call. Requires [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).can_be_managed right.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | group_call_id | int32 | Group call identifier; must be an identifier of a live story call. |
-  | paid_message_star_count | int53 | The new minimum number of Telegram Stars; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("paid_group_call_message_star_count_max"). |
+  | paid_message_star_count | int53 | The new minimum number of Telegram Stars; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("paid_group_call_message_star_count_max"). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_group_call_paid_message_star_count.html).
   """
@@ -2930,7 +2930,7 @@ defmodule GetPaymentReceipt do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | chat_id | int53 | Chat identifier of the <a class="el" href="classtd_1_1td__api_1_1message_payment_successful.html">messagePaymentSuccessful</a> message. |
+  | chat_id | int53 | Chat identifier of the [messagePaymentSuccessful](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_payment_successful.html) message. |
   | message_id | int53 | Message identifier. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_payment_receipt.html).
@@ -3020,7 +3020,7 @@ defmodule EditMessageLiveLocation do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | The chat the message belongs to. |
-  | message_id | int53 | Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited. |
+  | message_id | int53 | Identifier of the message. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_edited to check whether the message can be edited. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none; for bots only. |
   | location | liveLocation | New live location of the message; pass null to stop sharing the live location. If the new live_period isn't set to 0x7FFFFFFF, then it must not exceed the current live_period by more than a day, and the live location expiration date must remain in the next 90 days. |
 
@@ -3031,7 +3031,7 @@ defmodule EditMessageLiveLocation do
 end
 defmodule SharePhoneNumber do
   @moduledoc  """
-  Shares the phone number of the current user with a mutual contact. Supposed to be called when the user clicks on chatActionBarSharePhoneNumber.
+  Shares the phone number of the current user with a mutual contact. Supposed to be called when the user clicks on [chatActionBarSharePhoneNumber](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_bar_share_phone_number.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -3139,7 +3139,7 @@ defmodule SetGiftResalePrice do
   | Name | Type | Description |
   |------|------| ------------|
   | received_gift_id | string | Identifier of the unique gift. |
-  | price | GiftResalePrice | The new price for the unique gift; pass null to disallow gift resale. The current user will receive <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_resale_star_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for the gift if the gift price is in Telegram Stars or <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_resale_gram_earnings_per_mille") TON Grams for each 1000 Grams paid for the gift if the gift price is in Grams. |
+  | price | GiftResalePrice | The new price for the unique gift; pass null to disallow gift resale. The current user will receive [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("gift_resale_star_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for the gift if the gift price is in Telegram Stars or [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("gift_resale_gram_earnings_per_mille") TON Grams for each 1000 Grams paid for the gift if the gift price is in Grams. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_gift_resale_price.html).
   """
@@ -3224,7 +3224,7 @@ defmodule GetDirectMessagesChatTopicMessageByDate do
 end
 defmodule GetChatBoostLinkInfo do
   @moduledoc  """
-  Returns information about a link to boost a chat. Can be called for any internal link of the type internalLinkTypeChatBoost.
+  Returns information about a link to boost a chat. Can be called for any internal link of the type [internalLinkTypeChatBoost](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_chat_boost.html).
   Returns object_ptr<ChatBoostLinkInfo>.
 
   | Name | Type | Description |
@@ -3245,7 +3245,7 @@ defmodule ToggleGroupCallParticipantIsHandRaised do
   |------|------| ------------|
   | group_call_id | int32 | Group call identifier. |
   | participant_id | MessageSender | Participant identifier. |
-  | is_hand_raised | bool | Pass true if the user's hand needs to be raised. Only self hand can be raised. Requires groupCall.can_be_managed right to lower other's hand. |
+  | is_hand_raised | bool | Pass true if the user's hand needs to be raised. Only self hand can be raised. Requires [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).can_be_managed right to lower other's hand. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_group_call_participant_is_hand_raised.html).
   """
@@ -3300,7 +3300,7 @@ defmodule EditBotMediaPreview do
 end
 defmodule ToggleVideoChatMuteNewParticipants do
   @moduledoc  """
-  Toggles whether new participants of a video chat can be unmuted only by administrators of the video chat. Requires groupCall.can_toggle_mute_new_participants right.
+  Toggles whether new participants of a video chat can be unmuted only by administrators of the video chat. Requires [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).can_toggle_mute_new_participants right.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -3337,7 +3337,7 @@ defmodule SendGift do
   |------|------| ------------|
   | gift_id | int64 | Identifier of the gift to send. |
   | owner_id | MessageSender | Identifier of the user or the channel chat that will receive the gift; limited gifts can't be sent to channel chats. |
-  | text | formattedText | Text to show along with the gift; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. Must be empty if the receiver enabled paid messages. |
+  | text | formattedText | Text to show along with the gift; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. Must be empty if the receiver enabled paid messages. |
   | is_private | bool | Pass true to show gift text and sender only to the gift receiver; otherwise, everyone will be able to see them. |
   | pay_for_upgrade | bool | Pass true to additionally pay for the gift upgrade and allow the receiver to upgrade it for free. |
 
@@ -3378,7 +3378,7 @@ defmodule ReadAllForumTopicPollVotes do
 end
 defmodule GetAuthorizationState do
   @moduledoc  """
-  Returns the current authorization state. This is an offline method. For informational purposes only. Use updateAuthorizationState instead to maintain the current authorization state. Can be called before initialization.
+  Returns the current authorization state. This is an offline method. For informational purposes only. Use [updateAuthorizationState](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_authorization_state.html) instead to maintain the current authorization state. Can be called before initialization.
   Returns object_ptr<AuthorizationState>.
 
 
@@ -3389,7 +3389,7 @@ defmodule GetAuthorizationState do
 end
 defmodule ToggleBotUsernameIsActive do
   @moduledoc  """
-  Changes active state for a username of a bot. The editable username can be disabled only if there are other active usernames. May return an error with a message "USERNAMES_ACTIVE_TOO_MUCH" if the maximum number of active usernames has been reached. Can be called only if userTypeBot.can_be_edited == true.
+  Changes active state for a username of a bot. The editable username can be disabled only if there are other active usernames. May return an error with a message "USERNAMES_ACTIVE_TOO_MUCH" if the maximum number of active usernames has been reached. Can be called only if [userTypeBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html).can_be_edited == true.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -3412,7 +3412,7 @@ defmodule CreateStoryAlbum do
   |------|------| ------------|
   | story_poster_chat_id | int53 | Identifier of the chat that posted the stories. |
   | name | string | Name of the album; 1-12 characters. |
-  | story_ids | int32 | Identifiers of stories to add to the album; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("story_album_size_max") identifiers. |
+  | story_ids | int32 | Identifiers of stories to add to the album; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("story_album_size_max") identifiers. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_story_album.html).
   """
@@ -3421,7 +3421,7 @@ defmodule CreateStoryAlbum do
 end
 defmodule GetChatFolderNewChats do
   @moduledoc  """
-  Returns new chats added to a shareable chat folder by its owner. The method must be called at most once in getOption("chat_folder_new_chats_update_period") for the given chat folder.
+  Returns new chats added to a shareable chat folder by its owner. The method must be called at most once in [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("chat_folder_new_chats_update_period") for the given chat folder.
   Returns object_ptr<Chats>.
 
   | Name | Type | Description |
@@ -3441,7 +3441,7 @@ defmodule StopPoll do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to which the poll belongs. |
-  | message_id | int53 | Identifier of the message containing the poll. Use messageProperties.can_be_edited to check whether the poll can be stopped. |
+  | message_id | int53 | Identifier of the message containing the poll. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_edited to check whether the poll can be stopped. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none; for bots only. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1stop_poll.html).
@@ -3471,7 +3471,7 @@ defmodule SendBusinessMessageAlbum do
 end
 defmodule GetBotName do
   @moduledoc  """
-  Returns the name of a bot in the given language. Can be called only if userTypeBot.can_be_edited == true.
+  Returns the name of a bot in the given language. Can be called only if [userTypeBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html).can_be_edited == true.
   Returns object_ptr<Text>.
 
   | Name | Type | Description |
@@ -3493,7 +3493,7 @@ defmodule GetMessageAddedReactions do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to which the message belongs. |
   | message_id | int53 | Identifier of the message. Use message.interaction_info.reactions.can_get_added_reactions to check whether added reactions can be received for the message. |
-  | reaction_type | ReactionType | Type of the reactions to return; pass null to return all added reactions; <a class="el" href="classtd_1_1td__api_1_1reaction_type_paid.html">reactionTypePaid</a> isn't supported. |
+  | reaction_type | ReactionType | Type of the reactions to return; pass null to return all added reactions; [reactionTypePaid](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_type_paid.html) isn't supported. |
   | offset | string | Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results. |
   | limit | int32 | The maximum number of reactions to be returned; must be positive and can't be greater than 100. |
 
@@ -3568,7 +3568,7 @@ defmodule AddRecentSticker do
 end
 defmodule SetChatEmojiStatus do
   @moduledoc  """
-  Changes the emoji status of a chat. Use chatBoostLevelFeatures.can_set_emoji_status to check whether an emoji status can be set. Requires can_change_info administrator right.
+  Changes the emoji status of a chat. Use [chatBoostLevelFeatures](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_level_features.html).can_set_emoji_status to check whether an emoji status can be set. Requires can_change_info administrator right.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -3641,7 +3641,7 @@ defmodule GetUpgradedGift do
 end
 defmodule GetPhoneNumberInfoSync do
   @moduledoc  """
-  Returns information about a phone number by its prefix synchronously. getCountries must be called at least once after changing localization to the specified language if properly localized country information is expected. Can be called synchronously.
+  Returns information about a phone number by its prefix synchronously. [getCountries](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_countries.html) must be called at least once after changing localization to the specified language if properly localized country information is expected. Can be called synchronously.
   Returns object_ptr<PhoneNumberInfo>.
 
   | Name | Type | Description |
@@ -3709,13 +3709,13 @@ defmodule ClearAllDraftMessages do
 end
 defmodule AddBotMediaPreview do
   @moduledoc  """
-  Adds a new media preview to the beginning of the list of media previews of a bot. Returns the added preview after addition is completed server-side. The total number of previews must not exceed getOption("bot_media_preview_count_max") for the given language.
+  Adds a new media preview to the beginning of the list of media previews of a bot. Returns the added preview after addition is completed server-side. The total number of previews must not exceed [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("bot_media_preview_count_max") for the given language.
   Returns object_ptr<BotMediaPreview>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | bot_user_id | int53 | Identifier of the target bot. The bot must be owned and must have the main Web App. |
-  | language_code | string | A two-letter ISO 639-1 language code for which preview is added. If empty, then the preview will be shown to all users for whose languages there are no dedicated previews. If non-empty, then there must be an official language pack of the same name, which is returned by <a class="el" href="classtd_1_1td__api_1_1get_localization_target_info.html">getLocalizationTargetInfo</a>. |
+  | language_code | string | A two-letter ISO 639-1 language code for which preview is added. If empty, then the preview will be shown to all users for whose languages there are no dedicated previews. If non-empty, then there must be an official language pack of the same name, which is returned by [getLocalizationTargetInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_localization_target_info.html). |
   | content | InputStoryContent | Content of the added preview. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_bot_media_preview.html).
@@ -3767,7 +3767,7 @@ defmodule DeleteSavedOrderInfo do
 end
 defmodule ToggleSupergroupCanHaveSponsoredMessages do
   @moduledoc  """
-  Toggles whether sponsored messages are shown in the channel chat; requires owner privileges in the channel. The chat must have at least chatBoostFeatures.min_sponsored_message_disable_boost_level boost level to disable sponsored messages.
+  Toggles whether sponsored messages are shown in the channel chat; requires owner privileges in the channel. The chat must have at least [chatBoostFeatures](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_features.html).min_sponsored_message_disable_boost_level boost level to disable sponsored messages.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -3845,9 +3845,9 @@ defmodule SetChatBackground do
   |------|------| ------------|
   | chat_id | int53 | Chat identifier. |
   | background | InputBackground | The input background to use; pass null to create a new filled or chat theme background. |
-  | type | BackgroundType | Background type; pass null to use default background type for the chosen background; <a class="el" href="classtd_1_1td__api_1_1background_type_chat_theme.html">backgroundTypeChatTheme</a> isn't supported for private and secret chats. Use chatBoostLevelFeatures.chat_theme_background_count and chatBoostLevelFeatures.can_set_custom_background to check whether the background type can be set in the boosted chat. |
+  | type | BackgroundType | Background type; pass null to use default background type for the chosen background; [backgroundTypeChatTheme](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_type_chat_theme.html) isn't supported for private and secret chats. Use [chatBoostLevelFeatures](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_level_features.html).chat_theme_background_count and [chatBoostLevelFeatures](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_level_features.html).can_set_custom_background to check whether the background type can be set in the boosted chat. |
   | dark_theme_dimming | int32 | Dimming of the background in dark themes, as a percentage; 0-100. Applied only to Wallpaper and Fill types of background. |
-  | only_for_self | bool | Pass true to set background only for self; pass false to set background for all chat users. Always false for backgrounds set in boosted chats. Background can be set for both users only by Telegram Premium users and if set background isn't of the type <a class="el" href="classtd_1_1td__api_1_1input_background_previous.html">inputBackgroundPrevious</a>. |
+  | only_for_self | bool | Pass true to set background only for self; pass false to set background for all chat users. Always false for backgrounds set in boosted chats. Background can be set for both users only by Telegram Premium users and if set background isn't of the type [inputBackgroundPrevious](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_background_previous.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_background.html).
   """
@@ -4022,7 +4022,7 @@ defmodule GetChatMessageCount do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat in which to count messages. |
   | topic_id | MessageTopic | Pass topic identifier to get number of messages only in specific topic; pass null to get number of messages in all topics; message threads aren't supported. |
-  | filter | SearchMessagesFilter | Filter for message content; <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_empty.html">searchMessagesFilterEmpty</a> is unsupported in this function. |
+  | filter | SearchMessagesFilter | Filter for message content; [searchMessagesFilterEmpty](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_empty.html) is unsupported in this function. |
   | return_local | bool | Pass true to get the number of messages without sending network requests, or -1 if the number of messages is unknown locally. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_message_count.html).
@@ -4139,7 +4139,7 @@ defmodule EditInlineMessageMedia do
   |------|------| ------------|
   | inline_message_id | string | Inline message identifier. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none; for bots only. |
-  | input_message_content | InputMessageContent | New content of the message. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_animation.html">inputMessageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_audio.html">inputMessageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_document.html">inputMessageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_photo.html">inputMessagePhoto</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_video.html">inputMessageVideo</a>. |
+  | input_message_content | InputMessageContent | New content of the message. Must be one of the following types: [inputMessageAnimation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_animation.html), [inputMessageAudio](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_audio.html), [inputMessageDocument](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_document.html), [inputMessagePhoto](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_photo.html) or [inputMessageVideo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_inline_message_media.html).
   """
@@ -4184,8 +4184,8 @@ defmodule TranslateMessageText do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to which the message belongs. |
   | message_id | int53 | Identifier of the message. |
-  | to_language_code | string | Language code of the language to which the message is translated. See translateText.to_language_code for the list of supported values. |
-  | tone | string | Tone of the translation; see translateText.tone for the list of supported values. |
+  | to_language_code | string | Language code of the language to which the message is translated. See [translateText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_text.html).to_language_code for the list of supported values. |
+  | tone | string | Tone of the translation; see [translateText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_text.html).tone for the list of supported values. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_message_text.html).
   """
@@ -4223,14 +4223,14 @@ defmodule GetChatSimilarChats do
 end
 defmodule PreliminaryUploadFile do
   @moduledoc  """
-  Preliminarily uploads a file to the cloud before sending it in a message, which can be useful for uploading of being recorded voice and video notes. In all other cases there is no need to preliminary upload a file. Updates updateFile will be used to notify about upload progress. The upload will not be completed until the file is sent in a message.
+  Preliminarily uploads a file to the cloud before sending it in a message, which can be useful for uploading of being recorded voice and video notes. In all other cases there is no need to preliminary upload a file. Updates [updateFile](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_file.html) will be used to notify about upload progress. The upload will not be completed until the file is sent in a message.
   Returns object_ptr<File>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | file | InputFile | File to upload. |
   | file_type | FileType | File type; pass null if unknown. |
-  | priority | int32 | Priority of the upload (1-32). The higher the priority, the earlier the file will be uploaded. If the priorities of two files are equal, then the first one for which <a class="el" href="classtd_1_1td__api_1_1preliminary_upload_file.html">preliminaryUploadFile</a> was called will be uploaded first. |
+  | priority | int32 | Priority of the upload (1-32). The higher the priority, the earlier the file will be uploaded. If the priorities of two files are equal, then the first one for which [preliminaryUploadFile](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1preliminary_upload_file.html) was called will be uploaded first. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1preliminary_upload_file.html).
   """
@@ -4343,7 +4343,7 @@ defmodule SetPaidMessageReactionType do
 end
 defmodule LoadSavedMessagesTopics do
   @moduledoc  """
-  Loads more Saved Messages topics. The loaded topics will be sent through updateSavedMessagesTopic. Topics are sorted by their topic.order in descending order. Returns a 404 error if all topics have been loaded.
+  Loads more Saved Messages topics. The loaded topics will be sent through [updateSavedMessagesTopic](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_saved_messages_topic.html). Topics are sorted by their topic.order in descending order. Returns a 404 error if all topics have been loaded.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -4357,7 +4357,7 @@ defmodule LoadSavedMessagesTopics do
 end
 defmodule LoadQuickReplyShortcutMessages do
   @moduledoc  """
-  Loads quick reply messages that can be sent by a given quick reply shortcut. The loaded messages will be sent through updateQuickReplyShortcutMessages.
+  Loads quick reply messages that can be sent by a given quick reply shortcut. The loaded messages will be sent through [updateQuickReplyShortcutMessages](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_quick_reply_shortcut_messages.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -4376,7 +4376,7 @@ defmodule GetStarTransactions do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | owner_id | MessageSender | Identifier of the owner of the Telegram Stars; can be the identifier of the current user, identifier of an owned bot, or identifier of a supergroup or a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true. |
+  | owner_id | MessageSender | Identifier of the owner of the Telegram Stars; can be the identifier of the current user, identifier of an owned bot, or identifier of a supergroup or a channel chat with [supergroupFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).can_get_star_revenue_statistics == true. |
   | subscription_id | string | If non-empty, only transactions related to the Star Subscription will be returned. |
   | direction | TransactionDirection | Direction of the transactions to receive; pass null to get all transactions. |
   | offset | string | Offset of the first transaction to return as received from the previous request; use empty string to get the first chunk of results. |
@@ -4422,7 +4422,7 @@ defmodule DeletePollOption do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to which the poll belongs. |
   | message_id | int53 | Identifier of the message containing the poll. |
-  | option_id | string | Unique identifier of the option. Use pollOptionProperties.can_be_deleted to check whether the option can be deleted by the user. |
+  | option_id | string | Unique identifier of the option. Use [pollOptionProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_option_properties.html).can_be_deleted to check whether the option can be deleted by the user. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_poll_option.html).
   """
@@ -4469,8 +4469,8 @@ defmodule TranslateMessageRichMessage do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to which the message belongs. |
   | message_id | int53 | Identifier of the message. |
-  | to_language_code | string | Language code of the language to which the message is translated. See translateText.to_language_code for the list of supported values. |
-  | tone | string | Tone of the translation; see translateText.tone for the list of supported values. |
+  | to_language_code | string | Language code of the language to which the message is translated. See [translateText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_text.html).to_language_code for the list of supported values. |
+  | tone | string | Tone of the translation; see [translateText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_text.html).tone for the list of supported values. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_message_rich_message.html).
   """
@@ -4530,7 +4530,7 @@ defmodule GetForumTopicLink do
 end
 defmodule InviteGroupCallParticipant do
   @moduledoc  """
-  Invites a user to an active group call; for group calls not bound to a chat only. Sends a service message of the type messageGroupCall. The group call can have at most getOption("group_call_participant_count_max") participants.
+  Invites a user to an active group call; for group calls not bound to a chat only. Sends a service message of the type [messageGroupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_group_call.html). The group call can have at most [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("group_call_participant_count_max") participants.
   Returns object_ptr<InviteGroupCallParticipantResult>.
 
   | Name | Type | Description |
@@ -4546,12 +4546,12 @@ defmodule InviteGroupCallParticipant do
 end
 defmodule GetGuardBotWebAppUrl do
   @moduledoc  """
-  Returns an HTTPS URL of a Web App of a guard bot to open after receiving chatJoinResultGuardBotApprovalRequired.
+  Returns an HTTPS URL of a Web App of a guard bot to open after receiving [chatJoinResultGuardBotApprovalRequired](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_join_result_guard_bot_approval_required.html).
   Returns object_ptr<WebAppUrl>.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | query_id | int64 | Unique identifier of the join request as received in <a class="el" href="classtd_1_1td__api_1_1chat_join_result_guard_bot_approval_required.html">chatJoinResultGuardBotApprovalRequired</a>. |
+  | query_id | int64 | Unique identifier of the join request as received in [chatJoinResultGuardBotApprovalRequired](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_join_result_guard_bot_approval_required.html). |
   | parameters | webAppOpenParameters | Parameters to use to open the Web App. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_guard_bot_web_app_url.html).
@@ -4591,7 +4591,7 @@ defmodule ToggleGroupCallParticipantIsMuted do
 end
 defmodule SetAuthenticationPremiumPurchaseTransaction do
   @moduledoc  """
-  Informs server about an in-store purchase of Telegram Premium before authorization. Works only when the current authorization state is authorizationStateWaitPremiumPurchase.
+  Informs server about an in-store purchase of Telegram Premium before authorization. Works only when the current authorization state is [authorizationStateWaitPremiumPurchase](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_premium_purchase.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -4625,7 +4625,7 @@ defmodule ProcessChatJoinRequests do
 end
 defmodule RequestQrCodeAuthentication do
   @moduledoc  """
-  Requests QR code authentication by scanning a QR code on another logged in device. Works only when the current authorization state is authorizationStateWaitPhoneNumber, or if there is no pending authentication query and the current authorization state is authorizationStateWaitPremiumPurchase, authorizationStateWaitEmailAddress, authorizationStateWaitEmailCode, authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword.
+  Requests QR code authentication by scanning a QR code on another logged in device. Works only when the current authorization state is [authorizationStateWaitPhoneNumber](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_phone_number.html), or if there is no pending authentication query and the current authorization state is [authorizationStateWaitPremiumPurchase](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_premium_purchase.html), [authorizationStateWaitEmailAddress](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_email_address.html), [authorizationStateWaitEmailCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_email_code.html), [authorizationStateWaitCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_code.html), [authorizationStateWaitRegistration](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_registration.html), or [authorizationStateWaitPassword](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_password.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -4691,7 +4691,7 @@ defmodule GetTextCompositionStyleExample do
   | Name | Type | Description |
   |------|------| ------------|
   | name | string | Name of the style. |
-  | example_number | int32 | 0-based unique number of the requested example; must be non-negative and less than <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("text_composition_style_example_count"). |
+  | example_number | int32 | 0-based unique number of the requested example; must be non-negative and less than [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("text_composition_style_example_count"). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_text_composition_style_example.html).
   """
@@ -4737,12 +4737,12 @@ defmodule HideContactCloseBirthdays do
 end
 defmodule LoadGroupCallParticipants do
   @moduledoc  """
-  Loads more participants of a group call; not supported in live stories. The loaded participants will be received through updates. Use the field groupCall.loaded_all_participants to check whether all participants have already been loaded.
+  Loads more participants of a group call; not supported in live stories. The loaded participants will be received through updates. Use the field [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).loaded_all_participants to check whether all participants have already been loaded.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | group_call_id | int32 | Group call identifier. The group call must be previously received through <a class="el" href="classtd_1_1td__api_1_1get_group_call.html">getGroupCall</a> and must be joined or being joined. |
+  | group_call_id | int32 | Group call identifier. The group call must be previously received through [getGroupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_group_call.html) and must be joined or being joined. |
   | limit | int32 | The maximum number of participants to load; up to 100. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1load_group_call_participants.html).
@@ -4787,9 +4787,9 @@ defmodule EditMessageText do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | The chat the message belongs to. |
-  | message_id | int53 | Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited. |
+  | message_id | int53 | Identifier of the message. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_edited to check whether the message can be edited. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none; for bots only. |
-  | input_message_content | InputMessageContent | New text content of the message. Must be of type <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>. |
+  | input_message_content | InputMessageContent | New text content of the message. Must be of type [inputMessageText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_text.html) or [inputMessageRichMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_rich_message.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_message_text.html).
   """
@@ -4804,8 +4804,8 @@ defmodule ImportMessages do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info member right. |
-  | message_file | InputFile | File with messages to import. Only <a class="el" href="classtd_1_1td__api_1_1input_file_local.html">inputFileLocal</a> and <a class="el" href="classtd_1_1td__api_1_1input_file_generated.html">inputFileGenerated</a> are supported. The file must not be previously uploaded. |
-  | attached_files | InputFile | Files used in the imported messages. Only <a class="el" href="classtd_1_1td__api_1_1input_file_local.html">inputFileLocal</a> and <a class="el" href="classtd_1_1td__api_1_1input_file_generated.html">inputFileGenerated</a> are supported. The files must not be previously uploaded. |
+  | message_file | InputFile | File with messages to import. Only [inputFileLocal](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_file_local.html) and [inputFileGenerated](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_file_generated.html) are supported. The file must not be previously uploaded. |
+  | attached_files | InputFile | Files used in the imported messages. Only [inputFileLocal](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_file_local.html) and [inputFileGenerated](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_file_generated.html) are supported. The files must not be previously uploaded. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1import_messages.html).
   """
@@ -4814,7 +4814,7 @@ defmodule ImportMessages do
 end
 defmodule CanBotSendMessages do
   @moduledoc  """
-  Checks whether the specified bot can send messages to the user. Returns a 404 error if can't and the access can be granted by call to allowBotToSendMessages.
+  Checks whether the specified bot can send messages to the user. Returns a 404 error if can't and the access can be granted by call to [allowBotToSendMessages](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1allow_bot_to_send_messages.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -4909,8 +4909,8 @@ defmodule ApproveSuggestedPost do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier of the channel direct messages chat. |
-  | message_id | int53 | Identifier of the message with the suggested post. Use messageProperties.can_be_approved to check whether the suggested post can be approved. |
-  | send_date | int32 | Point in time (Unix timestamp) when the post is expected to be published; pass 0 if the date has already been chosen. If specified, then the date must be in the future, but at most <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("suggested_post_send_delay_max") seconds in the future. |
+  | message_id | int53 | Identifier of the message with the suggested post. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_approved to check whether the suggested post can be approved. |
+  | send_date | int32 | Point in time (Unix timestamp) when the post is expected to be published; pass 0 if the date has already been chosen. If specified, then the date must be in the future, but at most [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("suggested_post_send_delay_max") seconds in the future. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1approve_suggested_post.html).
   """
@@ -4919,7 +4919,7 @@ defmodule ApproveSuggestedPost do
 end
 defmodule GetAllStickerEmojis do
   @moduledoc  """
-  Returns unique emoji that correspond to stickers to be found by the getStickers(sticker_type, query, 1000000, chat_id).
+  Returns unique emoji that correspond to stickers to be found by the [getStickers](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_stickers.html)(sticker_type, query, 1000000, chat_id).
   Returns object_ptr<Emojis>.
 
   | Name | Type | Description |
@@ -4979,7 +4979,7 @@ defmodule PingProxy do
 end
 defmodule ResetAuthenticationEmailAddress do
   @moduledoc  """
-  Resets the login email address. May return an error with a message "TASK_ALREADY_EXISTS" if reset is still pending. Works only when the current authorization state is authorizationStateWaitEmailCode and authorization_state.can_reset_email_address == true.
+  Resets the login email address. May return an error with a message "TASK_ALREADY_EXISTS" if reset is still pending. Works only when the current authorization state is [authorizationStateWaitEmailCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_email_code.html) and authorization_state.can_reset_email_address == true.
   Returns object_ptr<Ok>.
 
 
@@ -4990,7 +4990,7 @@ defmodule ResetAuthenticationEmailAddress do
 end
 defmodule GetMessageAuthor do
   @moduledoc  """
-  Returns information about actual author of a message sent on behalf of a channel. The method can be called if messageProperties.can_get_author == true.
+  Returns information about actual author of a message sent on behalf of a channel. The method can be called if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_author == true.
   Returns object_ptr<User>.
 
   | Name | Type | Description |
@@ -5011,7 +5011,7 @@ defmodule SetQuickReplyShortcutName do
   | Name | Type | Description |
   |------|------| ------------|
   | shortcut_id | int32 | Unique identifier of the quick reply shortcut. |
-  | name | string | New name for the shortcut. Use <a class="el" href="classtd_1_1td__api_1_1check_quick_reply_shortcut_name.html">checkQuickReplyShortcutName</a> to check its validness. |
+  | name | string | New name for the shortcut. Use [checkQuickReplyShortcutName](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_quick_reply_shortcut_name.html) to check its validness. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_quick_reply_shortcut_name.html).
   """
@@ -5058,7 +5058,7 @@ defmodule EditBusinessMessageMedia do
   | chat_id | int53 | The chat the message belongs to. |
   | message_id | int53 | Identifier of the message. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none; for bots only. |
-  | input_message_content | InputMessageContent | New content of the message. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_animation.html">inputMessageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_audio.html">inputMessageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_document.html">inputMessageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_photo.html">inputMessagePhoto</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_video.html">inputMessageVideo</a>. |
+  | input_message_content | InputMessageContent | New content of the message. Must be one of the following types: [inputMessageAnimation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_animation.html), [inputMessageAudio](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_audio.html), [inputMessageDocument](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_document.html), [inputMessagePhoto](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_photo.html) or [inputMessageVideo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_business_message_media.html).
   """
@@ -5096,12 +5096,12 @@ defmodule GetCommands do
 end
 defmodule GetJsonString do
   @moduledoc  """
-  Converts a JsonValue object to corresponding JSON-serialized string. Can be called synchronously.
+  Converts a [JsonValue](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_json_value.html) object to corresponding JSON-serialized string. Can be called synchronously.
   Returns object_ptr<Text>.
 
   | Name | Type | Description |
   |------|------| ------------|
-  | json_value | JsonValue | The <a class="el" href="classtd_1_1td__api_1_1_json_value.html">JsonValue</a> object. |
+  | json_value | JsonValue | The [JsonValue](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_json_value.html) object. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_json_string.html).
   """
@@ -5110,7 +5110,7 @@ defmodule GetJsonString do
 end
 defmodule SetAuthenticationEmailAddress do
   @moduledoc  """
-  Sets the email address of the user and sends an authentication code to the email address. Works only when the current authorization state is authorizationStateWaitEmailAddress.
+  Sets the email address of the user and sends an authentication code to the email address. Works only when the current authorization state is [authorizationStateWaitEmailAddress](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_email_address.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -5194,7 +5194,7 @@ defmodule EditEphemeralMessageCaption do
   | receiver_user_id | int53 | Identifier of the user who received the message. |
   | ephemeral_message_id | int32 | Identifier of the ephemeral message. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none. |
-  | caption | formattedText | New message content caption; pass null to remove caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
+  | caption | formattedText | New message content caption; pass null to remove caption; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("message_caption_length_max") characters. |
   | show_caption_above_media | bool | Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_ephemeral_message_caption.html).
@@ -5227,7 +5227,7 @@ defmodule SetUserPersonalProfilePhoto do
   | Name | Type | Description |
   |------|------| ------------|
   | user_id | int53 | User identifier. |
-  | photo | InputChatPhoto | Profile photo to set; pass null to delete the photo; <a class="el" href="classtd_1_1td__api_1_1input_chat_photo_previous.html">inputChatPhotoPrevious</a> isn't supported in this function. |
+  | photo | InputChatPhoto | Profile photo to set; pass null to delete the photo; [inputChatPhotoPrevious](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_chat_photo_previous.html) isn't supported in this function. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_user_personal_profile_photo.html).
   """
@@ -5379,14 +5379,14 @@ defmodule AnswerCallbackQuery do
 end
 defmodule AddPendingPaidMessageReaction do
   @moduledoc  """
-  Adds the paid message reaction to a message. Use getMessageAvailableReactions to check whether the reaction is available for the message.
+  Adds the paid message reaction to a message. Use [getMessageAvailableReactions](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_available_reactions.html) to check whether the reaction is available for the message.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to which the message belongs. |
   | message_id | int53 | Identifier of the message. |
-  | star_count | int53 | Number of Telegram Stars to be used for the reaction. The total number of pending paid reactions must not exceed <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("paid_reaction_star_count_max"). |
+  | star_count | int53 | Number of Telegram Stars to be used for the reaction. The total number of pending paid reactions must not exceed [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("paid_reaction_star_count_max"). |
   | type | PaidReactionType | Type of the paid reaction; pass null if the user didn't choose reaction type explicitly, for example, the reaction is set from the message bubble. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_pending_paid_message_reaction.html).
@@ -5396,7 +5396,7 @@ defmodule AddPendingPaidMessageReaction do
 end
 defmodule GetBotInfoDescription do
   @moduledoc  """
-  Returns the text shown in the chat with a bot if the chat is empty in the given language. Can be called only if userTypeBot.can_be_edited == true.
+  Returns the text shown in the chat with a bot if the chat is empty in the given language. Can be called only if [userTypeBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html).can_be_edited == true.
   Returns object_ptr<Text>.
 
   | Name | Type | Description |
@@ -5411,7 +5411,7 @@ defmodule GetBotInfoDescription do
 end
 defmodule GetLoginUrl do
   @moduledoc  """
-  Returns an HTTP URL which can be used to automatically authorize the user on a website after clicking an inline button of type inlineKeyboardButtonTypeLoginUrl. Use the method getLoginUrlInfo to find whether a prior user confirmation is needed. If an error is returned, then the button must be handled as an ordinary URL button.
+  Returns an HTTP URL which can be used to automatically authorize the user on a website after clicking an inline button of type [inlineKeyboardButtonTypeLoginUrl](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_login_url.html). Use the method [getLoginUrlInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_login_url_info.html) to find whether a prior user confirmation is needed. If an error is returned, then the button must be handled as an ordinary URL button.
   Returns object_ptr<HttpUrl>.
 
   | Name | Type | Description |
@@ -5443,7 +5443,7 @@ defmodule DeleteChatFolder do
 end
 defmodule ResendPhoneNumberCode do
   @moduledoc  """
-  Resends the authentication code sent to a phone number. Works only if the previously received authenticationCodeInfo next_code_type was not null and the server-specified timeout has passed.
+  Resends the authentication code sent to a phone number. Works only if the previously received [authenticationCodeInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_info.html) next_code_type was not null and the server-specified timeout has passed.
   Returns object_ptr<AuthenticationCodeInfo>.
 
   | Name | Type | Description |
@@ -5479,7 +5479,7 @@ defmodule ActivateStoryStealthMode do
 end
 defmodule CreateNewSupergroupChat do
   @moduledoc  """
-  Creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat.
+  Creates a new supergroup or channel and sends a corresponding [messageSupergroupChatCreate](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_supergroup_chat_create.html). Returns the newly created chat.
   Returns object_ptr<Chat>.
 
   | Name | Type | Description |
@@ -5490,7 +5490,7 @@ defmodule CreateNewSupergroupChat do
   | description | string | Chat description; 0-255 characters. |
   | location | chatLocation | Chat location if a location-based supergroup is being created; pass null to create an ordinary supergroup chat. |
   | message_auto_delete_time | int32 | Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically. |
-  | for_import | bool | Pass true to create a supergroup for importing messages using <a class="el" href="classtd_1_1td__api_1_1import_messages.html">importMessages</a>. |
+  | for_import | bool | Pass true to create a supergroup for importing messages using [importMessages](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1import_messages.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_new_supergroup_chat.html).
   """
@@ -5538,7 +5538,7 @@ defmodule SetEmojiStatus do
 end
 defmodule GetActiveSessions do
   @moduledoc  """
-  Returns all active sessions of the current user. Additionally, getBusinessConnectedBot must be used to show the bot on top of active sessions.
+  Returns all active sessions of the current user. Additionally, [getBusinessConnectedBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_business_connected_bot.html) must be used to show the bot on top of active sessions.
   Returns object_ptr<Sessions>.
 
 
@@ -5571,7 +5571,7 @@ defmodule ResetPassword do
 end
 defmodule ShareChatWithBot do
   @moduledoc  """
-  Shares a chat after pressing a keyboardButtonTypeRequestChat button with the bot.
+  Shares a chat after pressing a [keyboardButtonTypeRequestChat](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_chat.html) button with the bot.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -5579,7 +5579,7 @@ defmodule ShareChatWithBot do
   | source | KeyboardButtonSource | Source of the button. |
   | button_id | int32 | Identifier of the button. |
   | shared_chat_id | int53 | Identifier of the shared chat. |
-  | only_check | bool | Pass true to check that the chat can be shared by the button instead of actually sharing it. Doesn't check bot_is_member and bot_administrator_rights restrictions. If the bot must be a member, then all chats from <a class="el" href="classtd_1_1td__api_1_1get_groups_in_common.html">getGroupsInCommon</a> and all chats, where the user can add the bot, are suitable. In the latter case the bot will be automatically added to the chat. If the bot must be an administrator, then all chats, where the bot already has requested rights or can be added to administrators by the user, are suitable. In the latter case the bot will be automatically granted requested rights. |
+  | only_check | bool | Pass true to check that the chat can be shared by the button instead of actually sharing it. Doesn't check bot_is_member and bot_administrator_rights restrictions. If the bot must be a member, then all chats from [getGroupsInCommon](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_groups_in_common.html) and all chats, where the user can add the bot, are suitable. In the latter case the bot will be automatically added to the chat. If the bot must be an administrator, then all chats, where the bot already has requested rights or can be added to administrators by the user, are suitable. In the latter case the bot will be automatically granted requested rights. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1share_chat_with_bot.html).
   """
@@ -5588,13 +5588,13 @@ defmodule ShareChatWithBot do
 end
 defmodule GetChatSparseMessagePositions do
   @moduledoc  """
-  Returns sparse positions of messages of the specified type in the chat to be used for Shared Media scroll implementation. Returns the results in reverse chronological order (i.e., in order of decreasing message_id). Cannot be used in secret chats or with searchMessagesFilterFailedToSend filter without an enabled message database.
+  Returns sparse positions of messages of the specified type in the chat to be used for Shared Media scroll implementation. Returns the results in reverse chronological order (i.e., in order of decreasing message_id). Cannot be used in secret chats or with [searchMessagesFilterFailedToSend](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_failed_to_send.html) filter without an enabled message database.
   Returns object_ptr<MessagePositions>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat in which to return information about message positions. |
-  | filter | SearchMessagesFilter | Filter for message content. Filters <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_empty.html">searchMessagesFilterEmpty</a>, <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_mention.html">searchMessagesFilterMention</a>, <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_unread_mention.html">searchMessagesFilterUnreadMention</a>, <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_unread_reaction.html">searchMessagesFilterUnreadReaction</a>, and <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_unread_poll_vote.html">searchMessagesFilterUnreadPollVote</a> are unsupported in this function. |
+  | filter | SearchMessagesFilter | Filter for message content. Filters [searchMessagesFilterEmpty](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_empty.html), [searchMessagesFilterMention](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_mention.html), [searchMessagesFilterUnreadMention](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_mention.html), [searchMessagesFilterUnreadReaction](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_reaction.html), and [searchMessagesFilterUnreadPollVote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_poll_vote.html) are unsupported in this function. |
   | from_message_id | int53 | The message identifier from which to return information about message positions. |
   | limit | int32 | The expected number of message positions to be returned; 50-2000. A smaller number of positions can be returned, if there are not enough appropriate messages. |
   | saved_messages_topic_id | int53 | If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages. |
@@ -5620,7 +5620,7 @@ defmodule SetBusinessLocation do
 end
 defmodule ToggleForumTopicIsPinned do
   @moduledoc  """
-  Changes the pinned state of a topic in a forum supergroup chat or a chat with a bot with topics; requires can_manage_topics administrator right in the supergroup. There can be up to getOption("pinned_forum_topic_count_max") pinned forum topics.
+  Changes the pinned state of a topic in a forum supergroup chat or a chat with a bot with topics; requires can_manage_topics administrator right in the supergroup. There can be up to [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("pinned_forum_topic_count_max") pinned forum topics.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -5759,7 +5759,7 @@ defmodule SendRichMessageDraft do
 end
 defmodule CancelPasswordReset do
   @moduledoc  """
-  Cancels reset of 2-step verification password. The method can be called if passwordState.pending_reset_date > 0.
+  Cancels reset of 2-step verification password. The method can be called if [passwordState](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1password_state.html).pending_reset_date > 0.
   Returns object_ptr<Ok>.
 
 
@@ -5770,7 +5770,7 @@ defmodule CancelPasswordReset do
 end
 defmodule GetCurrentState do
   @moduledoc  """
-  Returns all updates needed to restore current TDLib state, i.e. all actual updateAuthorizationState/updateUser/updateNewChat and others. This is especially useful if TDLib is run in a separate process. Can be called before initialization.
+  Returns all updates needed to restore current TDLib state, i.e. all actual [updateAuthorizationState](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_authorization_state.html)/[updateUser](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_user.html)/[updateNewChat](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_chat.html) and others. This is especially useful if TDLib is run in a separate process. Can be called before initialization.
   Returns object_ptr<Updates>.
 
 
@@ -5796,7 +5796,7 @@ defmodule ToggleGroupCallScreenSharingIsPaused do
 end
 defmodule ToggleSupergroupHasAutomaticTranslation do
   @moduledoc  """
-  Toggles whether messages are automatically translated in the channel chat; requires can_change_info administrator right in the channel. The chat must have at least chatBoostFeatures.min_automatic_translation_boost_level boost level to enable automatic translation.
+  Toggles whether messages are automatically translated in the channel chat; requires can_change_info administrator right in the channel. The chat must have at least [chatBoostFeatures](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_features.html).min_automatic_translation_boost_level boost level to enable automatic translation.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -5811,7 +5811,7 @@ defmodule ToggleSupergroupHasAutomaticTranslation do
 end
 defmodule RecoverAuthenticationPassword do
   @moduledoc  """
-  Recovers the 2-step verification password with a password recovery code sent to an email address that was previously set up. Works only when the current authorization state is authorizationStateWaitPassword.
+  Recovers the 2-step verification password with a password recovery code sent to an email address that was previously set up. Works only when the current authorization state is [authorizationStateWaitPassword](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_password.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -5850,7 +5850,7 @@ defmodule EditForumTopic do
   | forum_topic_id | int32 | Forum topic identifier. |
   | name | string | New name of the topic; 0-128 characters. If empty, the previous topic name is kept. |
   | edit_icon_custom_emoji | bool | Pass true to edit the icon of the topic. Icon of the General topic can't be edited. |
-  | icon_custom_emoji_id | int64 | Identifier of the new custom emoji for topic icon; pass 0 to remove the custom emoji. Ignored if edit_icon_custom_emoji is false. Telegram Premium users can use any custom emoji, other users can use only a custom emoji returned by <a class="el" href="classtd_1_1td__api_1_1get_forum_topic_default_icons.html">getForumTopicDefaultIcons</a>. |
+  | icon_custom_emoji_id | int64 | Identifier of the new custom emoji for topic icon; pass 0 to remove the custom emoji. Ignored if edit_icon_custom_emoji is false. Telegram Premium users can use any custom emoji, other users can use only a custom emoji returned by [getForumTopicDefaultIcons](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_forum_topic_default_icons.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_forum_topic.html).
   """
@@ -5974,7 +5974,7 @@ defmodule DeleteChatMessagesBySender do
 end
 defmodule ToggleBotIsAddedToAttachmentMenu do
   @moduledoc  """
-  Adds or removes a bot to attachment and side menu. Bot can be added to the menu, only if userTypeBot.can_be_added_to_attachment_menu == true.
+  Adds or removes a bot to attachment and side menu. Bot can be added to the menu, only if [userTypeBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html).can_be_added_to_attachment_menu == true.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -6004,7 +6004,7 @@ defmodule TestCallVectorInt do
 end
 defmodule ReorderBotActiveUsernames do
   @moduledoc  """
-  Changes order of active usernames of a bot. Can be called only if userTypeBot.can_be_edited == true.
+  Changes order of active usernames of a bot. Can be called only if [userTypeBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html).can_be_edited == true.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -6039,7 +6039,7 @@ defmodule SetDefaultBackground do
   | Name | Type | Description |
   |------|------| ------------|
   | background | InputBackground | The input background to use; pass null to create a new filled background. |
-  | type | BackgroundType | Background type; pass null to use the default type of the remote background; <a class="el" href="classtd_1_1td__api_1_1background_type_chat_theme.html">backgroundTypeChatTheme</a> isn't supported. |
+  | type | BackgroundType | Background type; pass null to use the default type of the remote background; [backgroundTypeChatTheme](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_type_chat_theme.html) isn't supported. |
   | for_dark_theme | bool | Pass true if the background is set for a dark theme. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_default_background.html).
@@ -6077,7 +6077,7 @@ defmodule GetPremiumGiveawayPaymentOptions do
 end
 defmodule SearchChatMessages do
   @moduledoc  """
-  Searches for messages with given words in the chat. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. Cannot be used in secret chats with a non-empty query (searchSecretMessages must be used instead), or without an enabled message database. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit. A combination of query, sender_id, filter and topic_id search criteria is expected to be supported, only if it is required for Telegram official application implementation.
+  Searches for messages with given words in the chat. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. Cannot be used in secret chats with a non-empty query ([searchSecretMessages](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_secret_messages.html) must be used instead), or without an enabled message database. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit. A combination of query, sender_id, filter and topic_id search criteria is expected to be supported, only if it is required for Telegram official application implementation.
   Returns object_ptr<FoundChatMessages>.
 
   | Name | Type | Description |
@@ -6123,7 +6123,7 @@ defmodule StartLiveStory do
   | protect_content | bool | Pass true if the content of the story must be protected from screenshotting. |
   | is_rtmp_stream | bool | Pass true to create an RTMP stream instead of an ordinary group call. |
   | enable_messages | bool | Pass true to allow viewers of the story to send messages. |
-  | paid_message_star_count | int53 | The minimum number of Telegram Stars that must be paid by viewers for each sent message to the call; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("paid_group_call_message_star_count_max"). |
+  | paid_message_star_count | int53 | The minimum number of Telegram Stars that must be paid by viewers for each sent message to the call; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("paid_group_call_message_star_count_max"). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1start_live_story.html).
   """
@@ -6205,7 +6205,7 @@ defmodule GetWebAppPlaceholder do
 end
 defmodule GetVideoMessageAdvertisements do
   @moduledoc  """
-  Returns advertisements to be shown while a video from a message is watched. Available only if messageProperties.can_get_video_advertisements.
+  Returns advertisements to be shown while a video from a message is watched. Available only if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_video_advertisements.
   Returns object_ptr<VideoMessageAdvertisements>.
 
   | Name | Type | Description |
@@ -6232,10 +6232,10 @@ defmodule SendEphemeralMessage do
   | replace_callback_query_message | bool | Pass true if the ephemeral message must replace the message from which the callback query originated; for bots only. |
   | reply_to | InputMessageReplyTo | Information about the message to be replied; pass null if none. The message can be an incoming ephemeral message. |
   | protect_content | bool | Pass true if the content of the message must be protected from forwarding and saving; for bots only. |
-  | sending_id | int32 | Non-persistent identifier, which will be returned back in <a class="el" href="classtd_1_1td__api_1_1message_sending_state_pending.html">messageSendingStatePending</a> object and can be used to match sent messages and corresponding <a class="el" href="classtd_1_1td__api_1_1update_new_message.html">updateNewMessage</a> updates. |
+  | sending_id | int32 | Non-persistent identifier, which will be returned back in [messageSendingStatePending](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sending_state_pending.html) object and can be used to match sent messages and corresponding [updateNewMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_message.html) updates. |
   | only_preview | bool | Pass true to get a fake message instead of actually sending them. |
   | reply_markup | ReplyMarkup | Markup for replying to the message; pass null if none; for bots only. |
-  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_animation.html">inputMessageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_audio.html">inputMessageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_document.html">inputMessageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_photo.html">inputMessagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_sticker.html">inputMessageSticker</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video.html">inputMessageVideo</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video_note.html">inputMessageVideoNote</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_voice_note.html">inputMessageVoiceNote</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: [inputMessageText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_text.html), [inputMessageAnimation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_animation.html), [inputMessageAudio](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_audio.html), [inputMessageDocument](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_document.html), [inputMessagePhoto](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_photo.html), [inputMessageRichMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_rich_message.html), [inputMessageSticker](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_sticker.html), [inputMessageVideo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video.html), [inputMessageVideoNote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video_note.html), [inputMessageVoiceNote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_voice_note.html), [inputMessageLocation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_location.html), [inputMessageVenue](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_venue.html), [inputMessageContact](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_contact.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_ephemeral_message.html).
   """
@@ -6276,15 +6276,15 @@ defmodule AddLocalMessage do
 end
 defmodule EditMessageMedia do
   @moduledoc  """
-  Edits the media content of a message, including message caption. If only the caption needs to be edited, use editMessageCaption instead. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa. Returns the edited message after the edit is completed on the server side.
+  Edits the media content of a message, including message caption. If only the caption needs to be edited, use [editMessageCaption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_message_caption.html) instead. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa. Returns the edited message after the edit is completed on the server side.
   Returns object_ptr<Message>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | The chat the message belongs to. |
-  | message_id | int53 | Identifier of the message. Use messageProperties.can_edit_media to check whether the message can be edited. |
+  | message_id | int53 | Identifier of the message. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_edit_media to check whether the message can be edited. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none; for bots only. |
-  | input_message_content | InputMessageContent | New content of the message. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_animation.html">inputMessageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_audio.html">inputMessageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_document.html">inputMessageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_photo.html">inputMessagePhoto</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_video.html">inputMessageVideo</a>. |
+  | input_message_content | InputMessageContent | New content of the message. Must be one of the following types: [inputMessageAnimation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_animation.html), [inputMessageAudio](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_audio.html), [inputMessageDocument](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_document.html), [inputMessagePhoto](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_photo.html) or [inputMessageVideo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_message_media.html).
   """
@@ -6293,7 +6293,7 @@ defmodule EditMessageMedia do
 end
 defmodule CreateNewBasicGroupChat do
   @moduledoc  """
-  Creates a new basic group and sends a corresponding messageBasicGroupChatCreate. Returns information about the newly created chat.
+  Creates a new basic group and sends a corresponding [messageBasicGroupChatCreate](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_basic_group_chat_create.html). Returns information about the newly created chat.
   Returns object_ptr<CreatedBasicGroupChat>.
 
   | Name | Type | Description |
@@ -6326,7 +6326,7 @@ defmodule ReportChatPhoto do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier. |
-  | file_id | int32 | Identifier of the photo to report. Only full photos from <a class="el" href="classtd_1_1td__api_1_1chat_photo.html">chatPhoto</a> can be reported. |
+  | file_id | int32 | Identifier of the photo to report. Only full photos from [chatPhoto](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_photo.html) can be reported. |
   | reason | ReportReason | The reason for reporting the chat photo. |
   | text | string | Additional report details; 0-1024 characters. |
 
@@ -6412,7 +6412,7 @@ defmodule GetStickerOutline do
 end
 defmodule OpenMessageContent do
   @moduledoc  """
-  Informs TDLib that the message content has been opened (e.g., the user has opened a photo, video, document, location or venue, or has listened to an audio file or voice note message). An updateMessageContentOpened update will be generated if something has changed.
+  Informs TDLib that the message content has been opened (e.g., the user has opened a photo, video, document, location or venue, or has listened to an audio file or voice note message). An [updateMessageContentOpened](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_content_opened.html) update will be generated if something has changed.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -6455,7 +6455,7 @@ defmodule AddRecentlyFoundChat do
 end
 defmodule ToggleSupergroupHasAggressiveAntiSpamEnabled do
   @moduledoc  """
-  Toggles whether aggressive anti-spam checks are enabled in the supergroup. Can be called only if supergroupFullInfo.can_toggle_aggressive_anti_spam == true.
+  Toggles whether aggressive anti-spam checks are enabled in the supergroup. Can be called only if [supergroupFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).can_toggle_aggressive_anti_spam == true.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -6495,7 +6495,7 @@ defmodule ResendRecoveryEmailAddressCode do
 end
 defmodule SetAuthenticationPhoneNumber do
   @moduledoc  """
-  Sets the phone number of the user and sends an authentication code to the user. Works only when the current authorization state is authorizationStateWaitPhoneNumber, or if there is no pending authentication query and the current authorization state is authorizationStateWaitPremiumPurchase, authorizationStateWaitEmailAddress, authorizationStateWaitEmailCode, authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword.
+  Sets the phone number of the user and sends an authentication code to the user. Works only when the current authorization state is [authorizationStateWaitPhoneNumber](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_phone_number.html), or if there is no pending authentication query and the current authorization state is [authorizationStateWaitPremiumPurchase](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_premium_purchase.html), [authorizationStateWaitEmailAddress](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_email_address.html), [authorizationStateWaitEmailCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_email_code.html), [authorizationStateWaitCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_code.html), [authorizationStateWaitRegistration](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_registration.html), or [authorizationStateWaitPassword](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_password.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -6618,7 +6618,7 @@ defmodule SetCommunityName do
 end
 defmodule GetThemeParametersJsonString do
   @moduledoc  """
-  Converts a themeParameters object to corresponding JSON-serialized string. Can be called synchronously.
+  Converts a [themeParameters](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1theme_parameters.html) object to corresponding JSON-serialized string. Can be called synchronously.
   Returns object_ptr<Text>.
 
   | Name | Type | Description |
@@ -6735,7 +6735,7 @@ defmodule SetStickerKeywords do
 end
 defmodule CheckBotUsername do
   @moduledoc  """
-  Checks whether a username can be set for a new bot. Use checkChatUsername to check username for other chat types.
+  Checks whether a username can be set for a new bot. Use [checkChatUsername](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_chat_username.html) to check username for other chat types.
   Returns object_ptr<CheckChatUsernameResult>.
 
   | Name | Type | Description |
@@ -6749,7 +6749,7 @@ defmodule CheckBotUsername do
 end
 defmodule GetPaymentForm do
   @moduledoc  """
-  Returns an invoice payment form. This method must be called when the user presses inline button of the type inlineKeyboardButtonTypeBuy, or wants to buy access to media in a messagePaidMedia message.
+  Returns an invoice payment form. This method must be called when the user presses inline button of the type [inlineKeyboardButtonTypeBuy](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_buy.html), or wants to buy access to media in a [messagePaidMedia](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_paid_media.html) message.
   Returns object_ptr<PaymentForm>.
 
   | Name | Type | Description |
@@ -6805,7 +6805,7 @@ defmodule EditBusinessMessageCaption do
   | chat_id | int53 | The chat the message belongs to. |
   | message_id | int53 | Identifier of the message. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none. |
-  | caption | formattedText | New message content caption; pass null to remove caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
+  | caption | formattedText | New message content caption; pass null to remove caption; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("message_caption_length_max") characters. |
   | show_caption_above_media | bool | Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_business_message_caption.html).
@@ -6867,7 +6867,7 @@ defmodule SetMessageSenderBotVerification do
   |------|------| ------------|
   | bot_user_id | int53 | Identifier of the owned bot, which will verify the user or the chat. |
   | verified_id | MessageSender | Identifier of the user or the supergroup or channel chat, which will be verified by the bot. |
-  | custom_description | string | Custom description of verification reason; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("bot_verification_custom_description_length_max"). If empty, then "was verified by organization "organization_name"" will be used as description. Can be specified only if the bot is allowed to provide custom description. |
+  | custom_description | string | Custom description of verification reason; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("bot_verification_custom_description_length_max"). If empty, then "was verified by organization "organization_name"" will be used as description. Can be specified only if the bot is allowed to provide custom description. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_message_sender_bot_verification.html).
   """
@@ -6876,7 +6876,7 @@ defmodule SetMessageSenderBotVerification do
 end
 defmodule GetChatsToPostStories do
   @moduledoc  """
-  Returns supergroup and channel chats in which the current user has the right to post stories. The chats must be rechecked with canPostStory before actually trying to post a story there.
+  Returns supergroup and channel chats in which the current user has the right to post stories. The chats must be rechecked with [canPostStory](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story.html) before actually trying to post a story there.
   Returns object_ptr<Chats>.
 
 
@@ -6922,7 +6922,7 @@ defmodule SearchSecretMessages do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat in which to search. Specify 0 to search in all secret chats. |
-  | query | string | Query to search for. If empty, <a class="el" href="classtd_1_1td__api_1_1search_chat_messages.html">searchChatMessages</a> must be used instead. |
+  | query | string | Query to search for. If empty, [searchChatMessages](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_chat_messages.html) must be used instead. |
   | offset | string | Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results. |
   | limit | int32 | The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit. |
   | filter | SearchMessagesFilter | Additional filter for messages to search; pass null to search for all messages. |
@@ -6939,7 +6939,7 @@ defmodule SetPersonalChat do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | chat_id | int53 | Identifier of the new personal chat; pass 0 to remove the chat. Use <a class="el" href="classtd_1_1td__api_1_1get_suitable_personal_chats.html">getSuitablePersonalChats</a> to get suitable chats. |
+  | chat_id | int53 | Identifier of the new personal chat; pass 0 to remove the chat. Use [getSuitablePersonalChats](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_suitable_personal_chats.html) to get suitable chats. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_personal_chat.html).
   """
@@ -7043,7 +7043,7 @@ defmodule GetCountryFlagEmoji do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | country_code | string | A two-letter ISO 3166-1 alpha-2 country code as received from <a class="el" href="classtd_1_1td__api_1_1get_countries.html">getCountries</a>. |
+  | country_code | string | A two-letter ISO 3166-1 alpha-2 country code as received from [getCountries](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_countries.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_country_flag_emoji.html).
   """
@@ -7059,8 +7059,8 @@ defmodule SummarizeMessage do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to which the message belongs. |
   | message_id | int53 | Identifier of the message. |
-  | translate_to_language_code | string | Pass a language code to which the summary will be translated; pass an empty string if translation isn't needed. See translateText.to_language_code for the list of supported values. |
-  | tone | string | Tone of the summarization; see translateText.tone for the list of supported values. |
+  | translate_to_language_code | string | Pass a language code to which the summary will be translated; pass an empty string if translation isn't needed. See [translateText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_text.html).to_language_code for the list of supported values. |
+  | tone | string | Tone of the summarization; see [translateText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_text.html).tone for the list of supported values. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1summarize_message.html).
   """
@@ -7083,7 +7083,7 @@ defmodule SearchUserByToken do
 end
 defmodule SetNewChatPrivacySettings do
   @moduledoc  """
-  Changes privacy settings for new chat creation; can be used only if getOption("can_set_new_chat_privacy_settings").
+  Changes privacy settings for new chat creation; can be used only if [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("can_set_new_chat_privacy_settings").
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -7112,7 +7112,7 @@ defmodule SendCallSignalingData do
 end
 defmodule GetMessageViewers do
   @moduledoc  """
-  Returns viewers of a recent outgoing message in a basic group or a supergroup chat. For video notes and voice notes only users, opened content of the message, are returned. The method can be called if messageProperties.can_get_viewers == true.
+  Returns viewers of a recent outgoing message in a basic group or a supergroup chat. For video notes and voice notes only users, opened content of the message, are returned. The method can be called if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_viewers == true.
   Returns object_ptr<MessageViewers>.
 
   | Name | Type | Description |
@@ -7135,7 +7135,7 @@ defmodule PlaceGiftAuctionBid do
   | gift_id | int64 | Identifier of the gift to place the bid on. |
   | star_count | int53 | The number of Telegram Stars to place in the bid. |
   | user_id | int53 | Identifier of the user who will receive the gift. |
-  | text | formattedText | Text to show along with the gift; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. Must be empty if the receiver enabled paid messages. |
+  | text | formattedText | Text to show along with the gift; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. Must be empty if the receiver enabled paid messages. |
   | is_private | bool | Pass true to show gift text and sender only to the gift receiver; otherwise, everyone will be able to see them. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1place_gift_auction_bid.html).
@@ -7238,7 +7238,7 @@ defmodule GetVideoChatInviteLink do
   | Name | Type | Description |
   |------|------| ------------|
   | group_call_id | int32 | Group call identifier. |
-  | can_self_unmute | bool | Pass true if the invite link needs to contain an invite hash, passing which to <a class="el" href="classtd_1_1td__api_1_1join_video_chat.html">joinVideoChat</a> would allow the invited user to unmute themselves. Requires groupCall.can_be_managed right. |
+  | can_self_unmute | bool | Pass true if the invite link needs to contain an invite hash, passing which to [joinVideoChat](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1join_video_chat.html) would allow the invited user to unmute themselves. Requires [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).can_be_managed right. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_video_chat_invite_link.html).
   """
@@ -7300,7 +7300,7 @@ defmodule DeleteFile do
 end
 defmodule ClearAutosaveSettingsExceptions do
   @moduledoc  """
-  Clears the list of all autosave settings exceptions. The method is guaranteed to work only after at least one call to getAutosaveSettings.
+  Clears the list of all autosave settings exceptions. The method is guaranteed to work only after at least one call to [getAutosaveSettings](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_autosave_settings.html).
   Returns object_ptr<Ok>.
 
 
@@ -7423,7 +7423,7 @@ defmodule JoinVideoChat do
   | group_call_id | int32 | Group call identifier. |
   | participant_id | MessageSender | Identifier of a group call participant, which will be used to join the call; pass null to join as self. |
   | join_parameters | groupCallJoinParameters | Parameters to join the call. |
-  | invite_hash | string | Invite hash as received from <a class="el" href="classtd_1_1td__api_1_1internal_link_type_video_chat.html">internalLinkTypeVideoChat</a>. |
+  | invite_hash | string | Invite hash as received from [internalLinkTypeVideoChat](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_video_chat.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1join_video_chat.html).
   """
@@ -7501,7 +7501,7 @@ defmodule SendCallLog do
   | Name | Type | Description |
   |------|------| ------------|
   | call_id | InputCall | Call identifier. |
-  | log_file | InputFile | Call log file. Only <a class="el" href="classtd_1_1td__api_1_1input_file_local.html">inputFileLocal</a> and <a class="el" href="classtd_1_1td__api_1_1input_file_generated.html">inputFileGenerated</a> are supported. |
+  | log_file | InputFile | Call log file. Only [inputFileLocal](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_file_local.html) and [inputFileGenerated](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_file_generated.html) are supported. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_call_log.html).
   """
@@ -7531,7 +7531,7 @@ defmodule EditInlineMessageCaption do
   |------|------| ------------|
   | inline_message_id | string | Inline message identifier. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none. |
-  | caption | formattedText | New message content caption; pass null to remove caption; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("message_caption_length_max") characters. |
+  | caption | formattedText | New message content caption; pass null to remove caption; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("message_caption_length_max") characters. |
   | show_caption_above_media | bool | Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_inline_message_caption.html).
@@ -7577,7 +7577,7 @@ defmodule SetChatPinnedStories do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat that posted the stories. |
-  | story_ids | int32 | New list of pinned stories. All stories must be posted to the chat page first. There can be up to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("pinned_story_count_max") pinned stories on a chat page. |
+  | story_ids | int32 | New list of pinned stories. All stories must be posted to the chat page first. There can be up to [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("pinned_story_count_max") pinned stories on a chat page. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_pinned_stories.html).
   """
@@ -7632,14 +7632,14 @@ defmodule ViewPremiumFeature do
 end
 defmodule SetMessageFactCheck do
   @moduledoc  """
-  Changes the fact-check of a message. Can be only used if messageProperties.can_set_fact_check == true.
+  Changes the fact-check of a message. Can be only used if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_set_fact_check == true.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | The channel chat the message belongs to. |
   | message_id | int53 | Identifier of the message. |
-  | text | formattedText | New text of the fact-check; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("fact_check_length_max") characters; pass null to remove it. Only Bold, Italic, and TextUrl entities with <a href="https://t.me/">https://t.me/</a> links are supported. |
+  | text | formattedText | New text of the fact-check; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("fact_check_length_max") characters; pass null to remove it. Only Bold, Italic, and TextUrl entities with https://t.me/ links are supported. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_message_fact_check.html).
   """
@@ -7648,14 +7648,14 @@ defmodule SetMessageFactCheck do
 end
 defmodule AddQuickReplyShortcutMessage do
   @moduledoc  """
-  Adds a message to a quick reply shortcut. If shortcut doesn't exist and there are less than getOption("quick_reply_shortcut_count_max") shortcuts, then a new shortcut is created. The shortcut must not contain more than getOption("quick_reply_shortcut_message_count_max") messages after adding the new message. Returns the added message.
+  Adds a message to a quick reply shortcut. If shortcut doesn't exist and there are less than [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("quick_reply_shortcut_count_max") shortcuts, then a new shortcut is created. The shortcut must not contain more than [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("quick_reply_shortcut_message_count_max") messages after adding the new message. Returns the added message.
   Returns object_ptr<QuickReplyMessage>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | shortcut_name | string | Name of the target shortcut. |
   | reply_to_message_id | int53 | Identifier of a quick reply message in the same shortcut to be replied; pass 0 if none. |
-  | input_message_content | InputMessageContent | The content of the message to be added; <a class="el" href="classtd_1_1td__api_1_1input_message_paid_media.html">inputMessagePaidMedia</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_forwarded.html">inputMessageForwarded</a> and <a class="el" href="classtd_1_1td__api_1_1input_message_live_location.html">inputMessageLiveLocation</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be added; [inputMessagePaidMedia](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_paid_media.html), [inputMessageForwarded](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_forwarded.html) and [inputMessageLiveLocation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_live_location.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_quick_reply_shortcut_message.html).
   """
@@ -7672,7 +7672,7 @@ defmodule CreateForumTopic do
   | chat_id | int53 | Identifier of the chat. |
   | name | string | Name of the topic; 1-128 characters. |
   | is_name_implicit | bool | Pass true if the name of the topic wasn't entered explicitly; for chats with bots only. |
-  | icon | forumTopicIcon | Icon of the topic. Icon color must be one of 0x6FB9F0, 0xFFD67E, 0xCB86DB, 0x8EEE98, 0xFF93B2, or 0xFB6F5F. Telegram Premium users can use any custom emoji as topic icon, other users can use only a custom emoji returned by <a class="el" href="classtd_1_1td__api_1_1get_forum_topic_default_icons.html">getForumTopicDefaultIcons</a>. |
+  | icon | forumTopicIcon | Icon of the topic. Icon color must be one of 0x6FB9F0, 0xFFD67E, 0xCB86DB, 0x8EEE98, 0xFF93B2, or 0xFB6F5F. Telegram Premium users can use any custom emoji as topic icon, other users can use only a custom emoji returned by [getForumTopicDefaultIcons](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_forum_topic_default_icons.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_forum_topic.html).
   """
@@ -7721,7 +7721,7 @@ defmodule GetEmojiCategories do
 end
 defmodule GetMessagePublicForwards do
   @moduledoc  """
-  Returns forwarded copies of a channel message to different public channels and public reposts as a story. Can be used only if messageProperties.can_get_statistics == true. For optimal performance, the number of returned messages and stories is chosen by TDLib.
+  Returns forwarded copies of a channel message to different public channels and public reposts as a story. Can be used only if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_statistics == true. For optimal performance, the number of returned messages and stories is chosen by TDLib.
   Returns object_ptr<PublicForwards>.
 
   | Name | Type | Description |
@@ -7760,7 +7760,7 @@ defmodule GiftPremiumWithStars do
   | user_id | int53 | Identifier of the user who will receive Telegram Premium. |
   | star_count | int53 | The number of Telegram Stars to pay for subscription. |
   | month_count | int32 | Number of months the Telegram Premium subscription will be active for the user. |
-  | text | formattedText | Text to show to the user receiving Telegram Premium; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. |
+  | text | formattedText | Text to show to the user receiving Telegram Premium; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_premium_with_stars.html).
   """
@@ -7774,7 +7774,7 @@ defmodule ParseMarkdown do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | text | formattedText | The text to parse. For example, "<b>italic</b> <strike>strikethrough</strike> ||spoiler|| <b>bold</b> <code>code</code> <code>pre</code> <b>[italic</b> text_url](telegram.org) __italic**bold italic__bold**". |
+  | text | formattedText | The text to parse. For example, "__italic__ ~~strikethrough~~ \|\|spoiler\|\| **bold** `code` ```pre``` __[italic__ text_url](telegram.org) __italic**bold italic__bold**". |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1parse_markdown.html).
   """
@@ -7822,7 +7822,7 @@ defmodule SetChatDiscussionGroup do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the channel chat. Pass 0 to remove a link from the supergroup passed in the second argument to a linked channel chat (requires can_pin_messages member right in the supergroup). |
-  | discussion_chat_id | int53 | Identifier of a new channel's discussion group. Use 0 to remove the discussion group. Use the method <a class="el" href="classtd_1_1td__api_1_1get_suitable_discussion_chats.html">getSuitableDiscussionChats</a> to find all suitable groups. Basic group chats must be first upgraded to supergroup chats. If new chat members don't have access to old messages in the supergroup, then <a class="el" href="classtd_1_1td__api_1_1toggle_supergroup_is_all_history_available.html">toggleSupergroupIsAllHistoryAvailable</a> must be used first to change that. |
+  | discussion_chat_id | int53 | Identifier of a new channel's discussion group. Use 0 to remove the discussion group. Use the method [getSuitableDiscussionChats](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_suitable_discussion_chats.html) to find all suitable groups. Basic group chats must be first upgraded to supergroup chats. If new chat members don't have access to old messages in the supergroup, then [toggleSupergroupIsAllHistoryAvailable](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_is_all_history_available.html) must be used first to change that. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_discussion_group.html).
   """
@@ -7838,7 +7838,7 @@ defmodule EditInlineMessageText do
   |------|------| ------------|
   | inline_message_id | string | Inline message identifier. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none. |
-  | input_message_content | InputMessageContent | New text content of the message. Must be of type <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a> or <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>; file upload isn't supported. |
+  | input_message_content | InputMessageContent | New text content of the message. Must be of type [inputMessageText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_text.html) or [inputMessageRichMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_rich_message.html); file upload isn't supported. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_inline_message_text.html).
   """
@@ -7852,7 +7852,7 @@ defmodule SetUpgradedGiftColors do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | upgraded_gift_colors_id | int64 | Identifier of the <a class="el" href="classtd_1_1td__api_1_1upgraded_gift_colors.html">upgradedGiftColors</a> scheme to use. |
+  | upgraded_gift_colors_id | int64 | Identifier of the [upgradedGiftColors](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_colors.html) scheme to use. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_upgraded_gift_colors.html).
   """
@@ -7963,7 +7963,7 @@ defmodule GetConnectedWebsites do
 end
 defmodule EndGroupCall do
   @moduledoc  """
-  Ends a group call. Requires groupCall.can_be_managed right for video chats and live stories or groupCall.is_owned otherwise.
+  Ends a group call. Requires [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).can_be_managed right for video chats and live stories or [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).is_owned otherwise.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -8035,7 +8035,7 @@ defmodule GetSuggestedFileName do
 end
 defmodule SetBotName do
   @moduledoc  """
-  Sets the name of a bot. Can be called only if userTypeBot.can_be_edited == true.
+  Sets the name of a bot. Can be called only if [userTypeBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html).can_be_edited == true.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -8093,13 +8093,13 @@ defmodule GetInstalledBackgrounds do
 end
 defmodule AddChatWelcomeMessage do
   @moduledoc  """
-  Adds a message to the list of welcome messages of a chat; requires can_send_welcome_messages administrator right in the chat. There can be up to getOption("welcome_message_count_max") welcome messages in a chat.
+  Adds a message to the list of welcome messages of a chat; requires can_send_welcome_messages administrator right in the chat. There can be up to [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("welcome_message_count_max") welcome messages in a chat.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | The identifier of the chat. |
-  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_animation.html">inputMessageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_audio.html">inputMessageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_document.html">inputMessageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_photo.html">inputMessagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_sticker.html">inputMessageSticker</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video.html">inputMessageVideo</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video_note.html">inputMessageVideoNote</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_voice_note.html">inputMessageVoiceNote</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_location.html">inputMessageLocation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_venue.html">inputMessageVenue</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_contact.html">inputMessageContact</a>. |
+  | input_message_content | InputMessageContent | The content of the message to be sent. Must be one of the following types: [inputMessageText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_text.html), [inputMessageAnimation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_animation.html), [inputMessageAudio](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_audio.html), [inputMessageDocument](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_document.html), [inputMessagePhoto](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_photo.html), [inputMessageRichMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_rich_message.html), [inputMessageSticker](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_sticker.html), [inputMessageVideo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video.html), [inputMessageVideoNote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video_note.html), [inputMessageVoiceNote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_voice_note.html), [inputMessageLocation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_location.html), [inputMessageVenue](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_venue.html), [inputMessageContact](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_contact.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_chat_welcome_message.html).
   """
@@ -8146,7 +8146,7 @@ defmodule SendQuickReplyShortcutMessages do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to which to send messages. The chat must be a private chat with a regular user. |
   | shortcut_id | int32 | Unique identifier of the quick reply shortcut. |
-  | sending_id | int32 | Non-persistent identifier, which will be returned back in <a class="el" href="classtd_1_1td__api_1_1message_sending_state_pending.html">messageSendingStatePending</a> object and can be used to match sent messages and corresponding <a class="el" href="classtd_1_1td__api_1_1update_new_message.html">updateNewMessage</a> updates. |
+  | sending_id | int32 | Non-persistent identifier, which will be returned back in [messageSendingStatePending](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sending_state_pending.html) object and can be used to match sent messages and corresponding [updateNewMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_message.html) updates. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_quick_reply_shortcut_messages.html).
   """
@@ -8191,7 +8191,7 @@ defmodule GetChatStoryInteractions do
   |------|------| ------------|
   | story_poster_chat_id | int53 | The identifier of the poster of the story. |
   | story_id | int32 | Story identifier. |
-  | reaction_type | ReactionType | Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions; <a class="el" href="classtd_1_1td__api_1_1reaction_type_paid.html">reactionTypePaid</a> isn't supported. |
+  | reaction_type | ReactionType | Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions; [reactionTypePaid](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_type_paid.html) isn't supported. |
   | prefer_forwards | bool | Pass true to get forwards and reposts first, then reactions, then other views; pass false to get interactions sorted just by interaction date. |
   | offset | string | Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results. |
   | limit | int32 | The maximum number of story interactions to return. |
@@ -8379,7 +8379,7 @@ defmodule SendBotStartMessage do
   |------|------| ------------|
   | bot_user_id | int53 | Identifier of the bot. |
   | chat_id | int53 | Identifier of the target chat. |
-  | parameter | string | A hidden parameter sent to the bot for deep linking purposes (<a href="https://core.telegram.org/bots">https://core.telegram.org/bots</a>#deep-linking). |
+  | parameter | string | A hidden parameter sent to the bot for deep linking purposes (https://core.telegram.org/bots#deep-linking). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_bot_start_message.html).
   """
@@ -8481,15 +8481,15 @@ defmodule GetCloseFriends do
 end
 defmodule CreateBot do
   @moduledoc  """
-  Creates a bot which will be managed by another bot. Returns the created bot. May return an error with a message "BOT_CREATE_LIMIT_EXCEEDED" if the user already owns the maximum allowed number of bots as per getOption("owned_bot_count_max"). An internal link "https://t.me/BotFather?start=deletebot" can be processed to handle the error.
+  Creates a bot which will be managed by another bot. Returns the created bot. May return an error with a message "BOT_CREATE_LIMIT_EXCEEDED" if the user already owns the maximum allowed number of bots as per [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("owned_bot_count_max"). An internal link "https://t.me/BotFather?start=deletebot" can be processed to handle the error.
   Returns object_ptr<User>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | manager_bot_user_id | int53 | Identifier of the bot that will manage the created bot. |
   | name | string | Name of the bot; 1-64 characters. |
-  | username | string | Username of the bot. The username must end with "bot". Use <a class="el" href="classtd_1_1td__api_1_1check_bot_username.html">checkBotUsername</a> to find whether the name is suitable. |
-  | via_link | bool | Pass true if the bot is created from an <a class="el" href="classtd_1_1td__api_1_1internal_link_type_request_managed_bot.html">internalLinkTypeRequestManagedBot</a> link. |
+  | username | string | Username of the bot. The username must end with "bot". Use [checkBotUsername](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_bot_username.html) to find whether the name is suitable. |
+  | via_link | bool | Pass true if the bot is created from an [internalLinkTypeRequestManagedBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_request_managed_bot.html) link. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_bot.html).
   """
@@ -8513,13 +8513,13 @@ defmodule SetStickerEmojis do
 end
 defmodule SetChatPaidMessageStarCount do
   @moduledoc  """
-  Changes the Telegram Star amount that must be paid to send a message to a supergroup chat; requires can_restrict_members administrator right and supergroupFullInfo.can_enable_paid_messages.
+  Changes the Telegram Star amount that must be paid to send a message to a supergroup chat; requires can_restrict_members administrator right and [supergroupFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).can_enable_paid_messages.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the supergroup chat. |
-  | paid_message_star_count | int53 | The new number of Telegram Stars that must be paid for each message that is sent to the supergroup chat unless the sender is an administrator of the chat; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("paid_message_star_count_max"). The supergroup will receive <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("paid_message_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for message sending. |
+  | paid_message_star_count | int53 | The new number of Telegram Stars that must be paid for each message that is sent to the supergroup chat unless the sender is an administrator of the chat; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("paid_message_star_count_max"). The supergroup will receive [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("paid_message_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for message sending. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_paid_message_star_count.html).
   """
@@ -8634,7 +8634,7 @@ defmodule GetChatMessageCalendar do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat in which to return information about messages. |
   | topic_id | MessageTopic | Pass topic identifier to get the result only in specific topic; pass null to get the result in all topics; forum topics and message threads aren't supported. |
-  | filter | SearchMessagesFilter | Filter for message content. Filters <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_empty.html">searchMessagesFilterEmpty</a>, <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_mention.html">searchMessagesFilterMention</a>, <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_unread_mention.html">searchMessagesFilterUnreadMention</a>, <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_unread_reaction.html">searchMessagesFilterUnreadReaction</a>, and <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_unread_poll_vote.html">searchMessagesFilterUnreadPollVote</a> are unsupported in this function. |
+  | filter | SearchMessagesFilter | Filter for message content. Filters [searchMessagesFilterEmpty](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_empty.html), [searchMessagesFilterMention](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_mention.html), [searchMessagesFilterUnreadMention](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_mention.html), [searchMessagesFilterUnreadReaction](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_reaction.html), and [searchMessagesFilterUnreadPollVote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_poll_vote.html) are unsupported in this function. |
   | from_message_id | int53 | The message identifier from which to return information about messages; use 0 to get results from the last message. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_message_calendar.html).
@@ -8703,14 +8703,14 @@ defmodule ReadAllForumTopicMentions do
 end
 defmodule CreateGiftCollection do
   @moduledoc  """
-  Creates a collection from gifts on the current user's or a channel's profile page; requires can_post_messages administrator right in the channel chat. An owner can have up to getOption("gift_collection_count_max") gift collections. The new collection will be added to the end of the gift collection list of the owner. Returns the created collection.
+  Creates a collection from gifts on the current user's or a channel's profile page; requires can_post_messages administrator right in the channel chat. An owner can have up to [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("gift_collection_count_max") gift collections. The new collection will be added to the end of the gift collection list of the owner. Returns the created collection.
   Returns object_ptr<GiftCollection>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | owner_id | MessageSender | Identifier of the user or the channel chat that received the gifts. |
   | name | string | Name of the collection; 1-12 characters. |
-  | received_gift_ids | string | Identifier of the gifts to add to the collection; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_collection_size_max") identifiers. |
+  | received_gift_ids | string | Identifier of the gifts to add to the collection; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("gift_collection_size_max") identifiers. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_gift_collection.html).
   """
@@ -8761,7 +8761,7 @@ defmodule RecognizeSpeech do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to which the message belongs. |
-  | message_id | int53 | Identifier of the message. Use messageProperties.can_recognize_speech to check whether the message is suitable. |
+  | message_id | int53 | Identifier of the message. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_recognize_speech to check whether the message is suitable. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1recognize_speech.html).
   """
@@ -8785,7 +8785,7 @@ defmodule ReportVideoMessageAdvertisement do
 end
 defmodule CheckAuthenticationCode do
   @moduledoc  """
-  Checks the authentication code. Works only when the current authorization state is authorizationStateWaitCode.
+  Checks the authentication code. Works only when the current authorization state is [authorizationStateWaitCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_code.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -8824,7 +8824,7 @@ defmodule GetRecentInlineBots do
 end
 defmodule DeleteGroupCallMessagesBySender do
   @moduledoc  """
-  Deletes all messages sent by the specified message sender in a group call; for live story calls only. Requires groupCall.can_delete_messages right.
+  Deletes all messages sent by the specified message sender in a group call; for live story calls only. Requires [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).can_delete_messages right.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -8861,7 +8861,7 @@ defmodule AddOffer do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the channel direct messages chat. |
-  | message_id | int53 | Identifier of the message in the chat which will be sent as suggested post. Use messageProperties.can_add_offer to check whether an offer can be added or messageProperties.can_edit_suggested_post_info to check whether price or time of sending of the post can be changed. |
+  | message_id | int53 | Identifier of the message in the chat which will be sent as suggested post. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_add_offer to check whether an offer can be added or [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_edit_suggested_post_info to check whether price or time of sending of the post can be changed. |
   | options | messageSendOptions | Options to be used to send the message. New information about the suggested post must always be specified. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_offer.html).
@@ -8899,7 +8899,7 @@ defmodule EditMessageChecklist do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | The chat the message belongs to. |
-  | message_id | int53 | Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited. |
+  | message_id | int53 | Identifier of the message. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_edited to check whether the message can be edited. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none; for bots only. |
   | checklist | inputChecklist | The new checklist. If some tasks were completed, this information will be kept. |
 
@@ -8957,7 +8957,7 @@ defmodule GetStoryAvailableReactions do
 end
 defmodule CheckAuthenticationEmailCode do
   @moduledoc  """
-  Checks the authentication of an email address. Works only when the current authorization state is authorizationStateWaitEmailCode.
+  Checks the authentication of an email address. Works only when the current authorization state is [authorizationStateWaitEmailCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_email_code.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -9029,7 +9029,7 @@ defmodule DeleteBusinessConnectedBot do
 end
 defmodule AllowUnpaidMessagesFromUser do
   @moduledoc  """
-  Allows the specified user to send unpaid private messages to the current user by adding a rule to userPrivacySettingAllowUnpaidMessages.
+  Allows the specified user to send unpaid private messages to the current user by adding a rule to [userPrivacySettingAllowUnpaidMessages](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_allow_unpaid_messages.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -9092,14 +9092,14 @@ defmodule SetStoryAlbumName do
 end
 defmodule SendGroupCallMessage do
   @moduledoc  """
-  Sends a message to other participants of a group call. Requires groupCall.can_send_messages right.
+  Sends a message to other participants of a group call. Requires [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).can_send_messages right.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | group_call_id | int32 | Group call identifier. |
-  | text | formattedText | Text of the message to send; 1-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("group_call_message_text_length_max") characters for non-live-stories; see <a class="el" href="classtd_1_1td__api_1_1update_group_call_message_levels.html">updateGroupCallMessageLevels</a> for live story restrictions, which depends on paid_message_star_count. Can't contain line feeds for live stories. Can contain only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities for live stories. |
-  | paid_message_star_count | int53 | The number of Telegram Stars the user agreed to pay to send the message; for live stories only; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("paid_group_call_message_star_count_max"). Must be 0 for messages sent to live stories posted by the current user. |
+  | text | formattedText | Text of the message to send; 1-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("group_call_message_text_length_max") characters for non-live-stories; see [updateGroupCallMessageLevels](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_group_call_message_levels.html) for live story restrictions, which depends on paid_message_star_count. Can't contain line feeds for live stories. Can contain only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities for live stories. |
+  | paid_message_star_count | int53 | The number of Telegram Stars the user agreed to pay to send the message; for live stories only; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("paid_group_call_message_star_count_max"). Must be 0 for messages sent to live stories posted by the current user. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_group_call_message.html).
   """
@@ -9138,7 +9138,7 @@ defmodule SearchTextCompositionStyle do
 end
 defmodule CheckAuthenticationPasswordRecoveryCode do
   @moduledoc  """
-  Checks whether a 2-step verification password recovery code sent to an email address is valid. Works only when the current authorization state is authorizationStateWaitPassword.
+  Checks whether a 2-step verification password recovery code sent to an email address is valid. Works only when the current authorization state is [authorizationStateWaitPassword](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_password.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -9152,7 +9152,7 @@ defmodule CheckAuthenticationPasswordRecoveryCode do
 end
 defmodule GetChatRevenueStatistics do
   @moduledoc  """
-  Returns detailed revenue statistics about a chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true or bots if userFullInfo.bot_info.can_get_revenue_statistics == true.
+  Returns detailed revenue statistics about a chat. Currently, this method can be used only for channels if [supergroupFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).can_get_revenue_statistics == true or bots if [userFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_full_info.html).bot_info.can_get_revenue_statistics == true.
   Returns object_ptr<ChatRevenueStatistics>.
 
   | Name | Type | Description |
@@ -9198,7 +9198,7 @@ defmodule ReadAllForumTopicReactions do
 end
 defmodule AddLoginPasskey do
   @moduledoc  """
-  Adds a passkey allowed to be used for the login by the current user and returns the added passkey. Call getPasskeyParameters to get parameters for creating of the passkey.
+  Adds a passkey allowed to be used for the login by the current user and returns the added passkey. Call [getPasskeyParameters](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_passkey_parameters.html) to get parameters for creating of the passkey.
   Returns object_ptr<Passkey>.
 
   | Name | Type | Description |
@@ -9219,7 +9219,7 @@ defmodule DeleteMessages do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier. |
-  | message_ids | int53 | Identifiers of the messages to be deleted. Use messageProperties.can_be_deleted_only_for_self and messageProperties.can_be_deleted_for_all_users to get suitable messages. |
+  | message_ids | int53 | Identifiers of the messages to be deleted. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_deleted_only_for_self and [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_deleted_for_all_users to get suitable messages. |
   | revoke | bool | Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_messages.html).
@@ -9272,7 +9272,7 @@ defmodule CommitPendingPaidMessageReactions do
 end
 defmodule ReportAuthenticationCodeMissing do
   @moduledoc  """
-  Reports that authentication code wasn't delivered via SMS; for official mobile applications only. Works only when the current authorization state is authorizationStateWaitCode.
+  Reports that authentication code wasn't delivered via SMS; for official mobile applications only. Works only when the current authorization state is [authorizationStateWaitCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_code.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -9286,7 +9286,7 @@ defmodule ReportAuthenticationCodeMissing do
 end
 defmodule CheckOauthRequestMatchCode do
   @moduledoc  """
-  Checks a match-code for an OAuth authorization request. If fails, then the authorization request has failed. Otherwise, authorization confirmation dialog must be shown and the link must be processed using acceptOauthRequest or declineOauthRequest.
+  Checks a match-code for an OAuth authorization request. If fails, then the authorization request has failed. Otherwise, authorization confirmation dialog must be shown and the link must be processed using [acceptOauthRequest](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1accept_oauth_request.html) or [declineOauthRequest](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1decline_oauth_request.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -9315,7 +9315,7 @@ defmodule TestSquareInt do
 end
 defmodule ToggleSupergroupHasHiddenMembers do
   @moduledoc  """
-  Toggles whether non-administrators can receive only administrators and bots using getSupergroupMembers or searchChatMembers. Can be called only if supergroupFullInfo.can_hide_members == true.
+  Toggles whether non-administrators can receive only administrators and bots using [getSupergroupMembers](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_supergroup_members.html) or [searchChatMembers](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_chat_members.html). Can be called only if [supergroupFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).can_hide_members == true.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -9392,13 +9392,13 @@ defmodule SetForumTopicNotificationSettings do
 end
 defmodule DeclineGroupCallInvitation do
   @moduledoc  """
-  Declines an invitation to an active group call via messageGroupCall. Can be called both by the sender and the receiver of the invitation.
+  Declines an invitation to an active group call via [messageGroupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_group_call.html). Can be called both by the sender and the receiver of the invitation.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat with the message. |
-  | message_id | int53 | Identifier of the message of the type <a class="el" href="classtd_1_1td__api_1_1message_group_call.html">messageGroupCall</a>. |
+  | message_id | int53 | Identifier of the message of the type [messageGroupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_group_call.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1decline_group_call_invitation.html).
   """
@@ -9413,7 +9413,7 @@ defmodule SetPinnedGifts do
   | Name | Type | Description |
   |------|------| ------------|
   | owner_id | MessageSender | Identifier of the user or the channel chat that received the gifts. |
-  | received_gift_ids | string | New list of pinned gifts. All gifts must be upgraded and saved on the profile page first. There can be up to <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("pinned_gift_count_max") pinned gifts. |
+  | received_gift_ids | string | New list of pinned gifts. All gifts must be upgraded and saved on the profile page first. There can be up to [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("pinned_gift_count_max") pinned gifts. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_pinned_gifts.html).
   """
@@ -9539,7 +9539,7 @@ defmodule GetBotMediaPreviews do
 end
 defmodule GetMessageLinkInfo do
   @moduledoc  """
-  Returns information about a public or private message link. Can be called for any internal link of the type internalLinkTypeMessage.
+  Returns information about a public or private message link. Can be called for any internal link of the type [internalLinkTypeMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_message.html).
   Returns object_ptr<MessageLinkInfo>.
 
   | Name | Type | Description |
@@ -9581,7 +9581,7 @@ defmodule GetSearchSponsoredChats do
 end
 defmodule DeleteChatReplyMarkup do
   @moduledoc  """
-  Deletes the default reply markup from a chat. Must be called after a one-time keyboard or a replyMarkupForceReply reply markup has been used or dismissed.
+  Deletes the default reply markup from a chat. Must be called after a one-time keyboard or a [replyMarkupForceReply](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reply_markup_force_reply.html) reply markup has been used or dismissed.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -9617,7 +9617,7 @@ defmodule ReportSupergroupSpam do
   | Name | Type | Description |
   |------|------| ------------|
   | supergroup_id | int53 | Supergroup identifier. |
-  | message_ids | int53 | Identifiers of messages to report. Use messageProperties.can_report_supergroup_spam to check whether the message can be reported. |
+  | message_ids | int53 | Identifiers of messages to report. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_report_supergroup_spam to check whether the message can be reported. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_supergroup_spam.html).
   """
@@ -9626,7 +9626,7 @@ defmodule ReportSupergroupSpam do
 end
 defmodule Close do
   @moduledoc  """
-  Closes the TDLib instance. All databases will be flushed to disk and properly closed. After the close completes, updateAuthorizationState with authorizationStateClosed will be sent. Can be called before initialization.
+  Closes the TDLib instance. All databases will be flushed to disk and properly closed. After the close completes, [updateAuthorizationState](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_authorization_state.html) with [authorizationStateClosed](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_closed.html) will be sent. Can be called before initialization.
   Returns object_ptr<Ok>.
 
 
@@ -9716,7 +9716,7 @@ defmodule GetChatAdministrators do
 end
 defmodule StartGroupCallRecording do
   @moduledoc  """
-  Starts recording of an active group call; for video chats only. Requires groupCall.can_be_managed right.
+  Starts recording of an active group call; for video chats only. Requires [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).can_be_managed right.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -9792,7 +9792,7 @@ defmodule AddChecklistTasks do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat with the message. |
-  | message_id | int53 | Identifier of the message containing the checklist. Use messageProperties.can_add_tasks to check whether the tasks can be added. |
+  | message_id | int53 | Identifier of the message containing the checklist. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_add_tasks to check whether the tasks can be added. |
   | tasks | inputChecklistTask | List of added tasks. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_checklist_tasks.html).
@@ -9835,7 +9835,7 @@ defmodule EditChatFolderInviteLink do
   | chat_folder_id | int32 | Chat folder identifier. |
   | invite_link | string | Invite link to be edited. |
   | name | string | New name of the link; 0-32 characters. |
-  | chat_ids | int53 | New identifiers of chats to be accessible by the invite link. Use <a class="el" href="classtd_1_1td__api_1_1get_chats_for_chat_folder_invite_link.html">getChatsForChatFolderInviteLink</a> to get suitable chats. Basic groups will be automatically converted to supergroups before link editing. |
+  | chat_ids | int53 | New identifiers of chats to be accessible by the invite link. Use [getChatsForChatFolderInviteLink](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chats_for_chat_folder_invite_link.html) to get suitable chats. Basic groups will be automatically converted to supergroups before link editing. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_chat_folder_invite_link.html).
   """
@@ -9850,7 +9850,7 @@ defmodule SetUserNote do
   | Name | Type | Description |
   |------|------| ------------|
   | user_id | int53 | User identifier. |
-  | note | formattedText | Note to set for the user; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("user_note_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. |
+  | note | formattedText | Note to set for the user; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("user_note_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_user_note.html).
   """
@@ -9888,7 +9888,7 @@ defmodule DeleteAllRevokedChatInviteLinks do
 end
 defmodule SendPassportAuthorizationForm do
   @moduledoc  """
-  Sends a Telegram Passport authorization form, effectively sharing data with the service. This method must be called after getPassportAuthorizationFormAvailableElements if some previously available elements are going to be reused.
+  Sends a Telegram Passport authorization form, effectively sharing data with the service. This method must be called after [getPassportAuthorizationFormAvailableElements](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_passport_authorization_form_available_elements.html) if some previously available elements are going to be reused.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -9936,8 +9936,8 @@ defmodule SetChatAccentColor do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier. |
-  | accent_color_id | int32 | Identifier of the accent color to use. The chat must have at least accentColor.min_channel_chat_boost_level boost level to pass the corresponding color. |
-  | background_custom_emoji_id | int64 | Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none. Use chatBoostLevelFeatures.can_set_background_custom_emoji to check whether a custom emoji can be set. |
+  | accent_color_id | int32 | Identifier of the accent color to use. The chat must have at least [accentColor](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1accent_color.html).min_channel_chat_boost_level boost level to pass the corresponding color. |
+  | background_custom_emoji_id | int64 | Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none. Use [chatBoostLevelFeatures](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_level_features.html).can_set_background_custom_emoji to check whether a custom emoji can be set. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_accent_color.html).
   """
@@ -10021,7 +10021,7 @@ defmodule GetPremiumLimit do
 end
 defmodule PinChatMessage do
   @moduledoc  """
-  Pins a message in a chat. A message can be pinned only if messageProperties.can_be_pinned.
+  Pins a message in a chat. A message can be pinned only if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_pinned.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -10096,7 +10096,7 @@ defmodule AnswerPreCheckoutQuery do
 end
 defmodule ResendAuthenticationCode do
   @moduledoc  """
-  Resends an authentication code to the user. Works only when the current authorization state is authorizationStateWaitCode, the next_code_type of the result is not null and the server-specified timeout has passed, or when the current authorization state is authorizationStateWaitEmailCode.
+  Resends an authentication code to the user. Works only when the current authorization state is [authorizationStateWaitCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_code.html), the next_code_type of the result is not null and the server-specified timeout has passed, or when the current authorization state is [authorizationStateWaitEmailCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_email_code.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -10195,7 +10195,7 @@ defmodule GetChatInviteLink do
 end
 defmodule SendResoldGift do
   @moduledoc  """
-  Sends an upgraded gift that is available for resale to another user or channel chat; gifts already owned by the current user must be transferred using transferGift and can't be passed to the method.
+  Sends an upgraded gift that is available for resale to another user or channel chat; gifts already owned by the current user must be transferred using [transferGift](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1transfer_gift.html) and can't be passed to the method.
   Returns object_ptr<GiftResaleResult>.
 
   | Name | Type | Description |
@@ -10203,7 +10203,7 @@ defmodule SendResoldGift do
   | gift_name | string | Name of the upgraded gift to send. |
   | owner_id | MessageSender | Identifier of the user or the channel chat that will receive the gift. |
   | price | GiftResalePrice | The price that the user agreed to pay for the gift. |
-  | text | formattedText | Text to show along with the gift; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. Must be empty if the receiver enabled paid messages and the price of the gift is less than the price of a paid message to the user. |
+  | text | formattedText | Text to show along with the gift; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. Must be empty if the receiver enabled paid messages and the price of the gift is less than the price of a paid message to the user. |
   | is_private | bool | Pass true to show gift text and sender only to the gift receiver; otherwise, everyone will be able to see them. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_resold_gift.html).
@@ -10213,7 +10213,7 @@ defmodule SendResoldGift do
 end
 defmodule ReportMessageReactions do
   @moduledoc  """
-  Reports reactions set on a message to the Telegram moderators. Reactions on a message can be reported only if messageProperties.can_report_reactions.
+  Reports reactions set on a message to the Telegram moderators. Reactions on a message can be reported only if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_report_reactions.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -10243,7 +10243,7 @@ defmodule CanPurchaseFromStore do
 end
 defmodule CheckAuthenticationPassword do
   @moduledoc  """
-  Checks the 2-step verification password for correctness. Works only when the current authorization state is authorizationStateWaitPassword.
+  Checks the 2-step verification password for correctness. Works only when the current authorization state is [authorizationStateWaitPassword](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_password.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -10400,13 +10400,13 @@ defmodule GetMessages do
 end
 defmodule GetSupergroupMembers do
   @moduledoc  """
-  Returns information about members or banned users in a supergroup or channel. Can be used only if supergroupFullInfo.can_get_members == true; additionally, administrator privileges may be required for some filters.
+  Returns information about members or banned users in a supergroup or channel. Can be used only if [supergroupFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).can_get_members == true; additionally, administrator privileges may be required for some filters.
   Returns object_ptr<ChatMembers>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | supergroup_id | int53 | Identifier of the supergroup or channel. |
-  | filter | SupergroupMembersFilter | The type of users to return; pass null to use <a class="el" href="classtd_1_1td__api_1_1supergroup_members_filter_recent.html">supergroupMembersFilterRecent</a>. |
+  | filter | SupergroupMembersFilter | The type of users to return; pass null to use [supergroupMembersFilterRecent](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_members_filter_recent.html). |
   | offset | int32 | Number of users to skip. |
   | limit | int32 | The maximum number of users to be returned; up to 200. |
 
@@ -10555,7 +10555,7 @@ defmodule SetManagedBotAccessSettings do
 end
 defmodule GetChatRevenueWithdrawalUrl do
   @moduledoc  """
-  Returns a URL for chat revenue withdrawal; requires owner privileges in the channel chat or the bot. Currently, this method can be used only if getOption("can_withdraw_chat_revenue") for channels with supergroupFullInfo.can_get_revenue_statistics == true or bots with userFullInfo.bot_info.can_get_revenue_statistics == true.
+  Returns a URL for chat revenue withdrawal; requires owner privileges in the channel chat or the bot. Currently, this method can be used only if [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("can_withdraw_chat_revenue") for channels with [supergroupFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).can_get_revenue_statistics == true or bots with [userFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_full_info.html).bot_info.can_get_revenue_statistics == true.
   Returns object_ptr<HttpUrl>.
 
   | Name | Type | Description |
@@ -10576,7 +10576,7 @@ defmodule GetStarWithdrawalUrl do
   | Name | Type | Description |
   |------|------| ------------|
   | owner_id | MessageSender | Identifier of the owner of the Telegram Stars; can be identifier of the current user, an owned bot, or an owned supergroup or channel chat. |
-  | star_count | int53 | The number of Telegram Stars to withdraw; must be between <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("star_withdrawal_count_min") and <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("star_withdrawal_count_max"). |
+  | star_count | int53 | The number of Telegram Stars to withdraw; must be between [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("star_withdrawal_count_min") and [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("star_withdrawal_count_max"). |
   | password | string | The 2-step verification password of the current user. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_star_withdrawal_url.html).
@@ -10607,7 +10607,7 @@ defmodule SetNetworkType do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | type | NetworkType | The new network type; pass null to set network type to <a class="el" href="classtd_1_1td__api_1_1network_type_other.html">networkTypeOther</a>. |
+  | type | NetworkType | The new network type; pass null to set network type to [networkTypeOther](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1network_type_other.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_network_type.html).
   """
@@ -10713,7 +10713,7 @@ defmodule UploadStickerFile do
   |------|------| ------------|
   | user_id | int53 | Sticker file owner; ignored for regular users. |
   | sticker_format | StickerFormat | Sticker format. |
-  | sticker | InputFile | File to upload; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side. See <a href="https://core.telegram.org/animated_stickers">https://core.telegram.org/animated_stickers</a>#technical-requirements for technical requirements. |
+  | sticker | InputFile | File to upload; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upload_sticker_file.html).
   """
@@ -11019,7 +11019,7 @@ defmodule TransferGift do
 end
 defmodule SendPhoneNumberFirebaseSms do
   @moduledoc  """
-  Sends Firebase Authentication SMS to the specified phone number. Works only when received a code of the type authenticationCodeTypeFirebaseAndroid or authenticationCodeTypeFirebaseIos.
+  Sends Firebase Authentication SMS to the specified phone number. Works only when received a code of the type [authenticationCodeTypeFirebaseAndroid](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_firebase_android.html) or [authenticationCodeTypeFirebaseIos](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_firebase_ios.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -11047,7 +11047,7 @@ defmodule ImportContacts do
 end
 defmodule GetMessageThreadHistory do
   @moduledoc  """
-  Returns messages in a message thread of a message. Can be used only if messageProperties.can_get_message_thread == true. Message thread of a channel message is in the channel's linked supergroup. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib.
+  Returns messages in a message thread of a message. Can be used only if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_message_thread == true. Message thread of a channel message is in the channel's linked supergroup. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib.
   Returns object_ptr<Messages>.
 
   | Name | Type | Description |
@@ -11072,7 +11072,7 @@ defmodule GetMainWebApp do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat in which the Web App is opened; pass 0 if none. |
   | bot_user_id | int53 | Identifier of the target bot. If the bot is restricted for the current user, then show an error instead of calling the method. |
-  | start_parameter | string | Start parameter from <a class="el" href="classtd_1_1td__api_1_1internal_link_type_main_web_app.html">internalLinkTypeMainWebApp</a>. |
+  | start_parameter | string | Start parameter from [internalLinkTypeMainWebApp](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_main_web_app.html). |
   | parameters | webAppOpenParameters | Parameters to use to open the Web App. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_main_web_app.html).
@@ -11082,7 +11082,7 @@ defmodule GetMainWebApp do
 end
 defmodule CheckAuthenticationWebToken do
   @moduledoc  """
-  Checks a web token to log in to the corresponding account; for official Telegram apps only. Works only when the current authorization state is authorizationStateWaitPhoneNumber or authorizationStateWaitOtherDeviceConfirmation.
+  Checks a web token to log in to the corresponding account; for official Telegram apps only. Works only when the current authorization state is [authorizationStateWaitPhoneNumber](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_phone_number.html) or [authorizationStateWaitOtherDeviceConfirmation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_other_device_confirmation.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -11103,7 +11103,7 @@ defmodule SetBusinessAccountBio do
   | Name | Type | Description |
   |------|------| ------------|
   | business_connection_id | string | Unique identifier of business connection. |
-  | bio | string | The new value of the bio; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("bio_length_max") characters without line feeds. |
+  | bio | string | The new value of the bio; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("bio_length_max") characters without line feeds. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_business_account_bio.html).
   """
@@ -11144,7 +11144,7 @@ defmodule EditBusinessMessageChecklist do
 end
 defmodule RevokeGroupCallInviteLink do
   @moduledoc  """
-  Revokes invite link for a group call. Requires groupCall.can_be_managed right for video chats or groupCall.is_owned otherwise.
+  Revokes invite link for a group call. Requires [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).can_be_managed right for video chats or [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).is_owned otherwise.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -11158,7 +11158,7 @@ defmodule RevokeGroupCallInviteLink do
 end
 defmodule DeleteAccount do
   @moduledoc  """
-  Deletes the account of the current user, deleting all information associated with the user from the server. The phone number of the account can be used to create a new account. Can be called before authorization when the current authorization state is authorizationStateWaitPassword.
+  Deletes the account of the current user, deleting all information associated with the user from the server. The phone number of the account can be used to create a new account. Can be called before authorization when the current authorization state is [authorizationStateWaitPassword](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_password.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -11173,7 +11173,7 @@ defmodule DeleteAccount do
 end
 defmodule LoadQuickReplyShortcuts do
   @moduledoc  """
-  Loads quick reply shortcuts created by the current user. The loaded data will be sent through updateQuickReplyShortcut and updateQuickReplyShortcuts.
+  Loads quick reply shortcuts created by the current user. The loaded data will be sent through [updateQuickReplyShortcut](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_quick_reply_shortcut.html) and [updateQuickReplyShortcuts](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_quick_reply_shortcuts.html).
   Returns object_ptr<Ok>.
 
 
@@ -11263,7 +11263,7 @@ defmodule GetChatMessageByDate do
 end
 defmodule DeleteGroupCallMessages do
   @moduledoc  """
-  Deletes messages in a group call; for live story calls only. Requires groupCallMessage.can_be_deleted right.
+  Deletes messages in a group call; for live story calls only. Requires [groupCallMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_message.html).can_be_deleted right.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -11331,7 +11331,7 @@ defmodule ReportChat do
   |------|------| ------------|
   | chat_id | int53 | Chat identifier. |
   | option_id | bytes | Option identifier chosen by the user; leave empty for the initial request. |
-  | message_ids | int53 | Identifiers of reported messages. Use messageProperties.can_report_chat to check whether the message can be reported. |
+  | message_ids | int53 | Identifiers of reported messages. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_report_chat to check whether the message can be reported. |
   | text | string | Additional report details if asked by the server; 0-1024 characters; leave empty for the initial request. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat.html).
@@ -11388,14 +11388,14 @@ defmodule GetChatBoosts do
 end
 defmodule EditQuickReplyMessage do
   @moduledoc  """
-  Asynchronously edits the text, media or caption of a quick reply message. Use quickReplyMessage.can_be_edited to check whether a message can be edited. Media message can be edited only to a media message. Checklist messages can be edited only to a checklist message. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa.
+  Asynchronously edits the text, media or caption of a quick reply message. Use [quickReplyMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1quick_reply_message.html).can_be_edited to check whether a message can be edited. Media message can be edited only to a media message. Checklist messages can be edited only to a checklist message. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | shortcut_id | int32 | Unique identifier of the quick reply shortcut with the message. |
   | message_id | int53 | Identifier of the message. |
-  | input_message_content | InputMessageContent | New content of the message. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_animation.html">inputMessageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_audio.html">inputMessageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_checklist.html">inputMessageChecklist</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_document.html">inputMessageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_photo.html">inputMessagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, or <a class="el" href="classtd_1_1td__api_1_1input_message_video.html">inputMessageVideo</a>. |
+  | input_message_content | InputMessageContent | New content of the message. Must be one of the following types: [inputMessageAnimation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_animation.html), [inputMessageAudio](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_audio.html), [inputMessageChecklist](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_checklist.html), [inputMessageDocument](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_document.html), [inputMessagePhoto](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_photo.html), [inputMessageRichMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_rich_message.html), [inputMessageText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_text.html), or [inputMessageVideo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_quick_reply_message.html).
   """
@@ -11411,7 +11411,7 @@ defmodule AddGiftCollectionGifts do
   |------|------| ------------|
   | owner_id | MessageSender | Identifier of the user or the channel chat that owns the collection. |
   | collection_id | int32 | Identifier of the gift collection. |
-  | received_gift_ids | string | Identifier of the gifts to add to the collection; 1-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_collection_size_max") identifiers. If after addition the collection has more than <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("gift_collection_size_max") gifts, then the last one are removed from the collection. |
+  | received_gift_ids | string | Identifier of the gifts to add to the collection; 1-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("gift_collection_size_max") identifiers. If after addition the collection has more than [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("gift_collection_size_max") gifts, then the last one are removed from the collection. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_gift_collection_gifts.html).
   """
@@ -11467,7 +11467,7 @@ defmodule EditStoryCover do
 end
 defmodule CancelPreliminaryUploadFile do
   @moduledoc  """
-  Stops the preliminary uploading of a file. Supported only for files uploaded by using preliminaryUploadFile.
+  Stops the preliminary uploading of a file. Supported only for files uploaded by using [preliminaryUploadFile](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1preliminary_upload_file.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -11496,7 +11496,7 @@ defmodule GetMessageLocally do
 end
 defmodule InviteVideoChatParticipants do
   @moduledoc  """
-  Invites users to an active video chat. Sends a service message of the type messageInviteVideoChatParticipants to the chat bound to the group call.
+  Invites users to an active video chat. Sends a service message of the type [messageInviteVideoChatParticipants](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_invite_video_chat_participants.html) to the chat bound to the group call.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -11536,7 +11536,7 @@ defmodule GetSupergroup do
 end
 defmodule GetPreparedKeyboardButton do
   @moduledoc  """
-  Returns a keyboard button prepared by the bot for the user. The button will be of the type keyboardButtonTypeRequestUsers, keyboardButtonTypeRequestChat, or keyboardButtonTypeRequestManagedBot.
+  Returns a keyboard button prepared by the bot for the user. The button will be of the type [keyboardButtonTypeRequestUsers](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_users.html), [keyboardButtonTypeRequestChat](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_chat.html), or [keyboardButtonTypeRequestManagedBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_managed_bot.html).
   Returns object_ptr<KeyboardButton>.
 
   | Name | Type | Description |
@@ -11551,7 +11551,7 @@ defmodule GetPreparedKeyboardButton do
 end
 defmodule CheckAuthenticationBotToken do
   @moduledoc  """
-  Checks the authentication token of a bot; to log in as a bot. Works only when the current authorization state is authorizationStateWaitPhoneNumber. Can be used instead of setAuthenticationPhoneNumber and checkAuthenticationCode to log in.
+  Checks the authentication token of a bot; to log in as a bot. Works only when the current authorization state is [authorizationStateWaitPhoneNumber](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_phone_number.html). Can be used instead of [setAuthenticationPhoneNumber](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_authentication_phone_number.html) and [checkAuthenticationCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_authentication_code.html) to log in.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -11726,7 +11726,7 @@ defmodule SetPinnedSavedMessagesTopics do
 end
 defmodule GetMessageThread do
   @moduledoc  """
-  Returns information about a message thread. Can be used only if messageProperties.can_get_message_thread == true.
+  Returns information about a message thread. Can be used only if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_message_thread == true.
   Returns object_ptr<MessageThreadInfo>.
 
   | Name | Type | Description |
@@ -11755,7 +11755,7 @@ defmodule ChangeImportedContacts do
 end
 defmodule SetAutosaveSettings do
   @moduledoc  """
-  Sets autosave settings for the given scope. The method is guaranteed to work only after at least one call to getAutosaveSettings.
+  Sets autosave settings for the given scope. The method is guaranteed to work only after at least one call to [getAutosaveSettings](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_autosave_settings.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -11801,7 +11801,7 @@ defmodule DeleteGiftCollection do
 end
 defmodule ReaddQuickReplyShortcutMessages do
   @moduledoc  """
-  Re-adds quick reply messages which failed to add. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed. If a message is re-added, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can't be re-added, null will be returned instead of the message.
+  Re-adds quick reply messages which failed to add. Can be called only for messages for which [messageSendingStateFailed](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sending_state_failed.html).can_retry is true and after specified in [messageSendingStateFailed](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sending_state_failed.html).retry_after time passed. If a message is re-added, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can't be re-added, null will be returned instead of the message.
   Returns object_ptr<QuickReplyMessages>.
 
   | Name | Type | Description |
@@ -11816,7 +11816,7 @@ defmodule ReaddQuickReplyShortcutMessages do
 end
 defmodule CreateBusinessChatLink do
   @moduledoc  """
-  Creates a business chat link for the current account. Requires Telegram Business subscription. There can be up to getOption("business_chat_link_count_max") links created. Returns the created link.
+  Creates a business chat link for the current account. Requires Telegram Business subscription. There can be up to [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("business_chat_link_count_max") links created. Returns the created link.
   Returns object_ptr<BusinessChatLink>.
 
   | Name | Type | Description |
@@ -11860,7 +11860,7 @@ defmodule SetUsername do
 end
 defmodule SetBotInfoDescription do
   @moduledoc  """
-  Sets the text shown in the chat with a bot if the chat is empty. Can be called only if userTypeBot.can_be_edited == true.
+  Sets the text shown in the chat with a bot if the chat is empty. Can be called only if [userTypeBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html).can_be_edited == true.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -11891,7 +11891,7 @@ defmodule GetLinkPreview do
 end
 defmodule CloseSecretChat do
   @moduledoc  """
-  Closes a secret chat, effectively transferring its state to secretChatStateClosed.
+  Closes a secret chat, effectively transferring its state to [secretChatStateClosed](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1secret_chat_state_closed.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -11916,7 +11916,7 @@ defmodule GetProxies do
 end
 defmodule RequestAuthenticationPasswordRecovery do
   @moduledoc  """
-  Requests to send a 2-step verification password recovery code to an email address that was previously set up. Works only when the current authorization state is authorizationStateWaitPassword.
+  Requests to send a 2-step verification password recovery code to an email address that was previously set up. Works only when the current authorization state is [authorizationStateWaitPassword](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_password.html).
   Returns object_ptr<Ok>.
 
 
@@ -12024,13 +12024,13 @@ defmodule ViewSponsoredChat do
 end
 defmodule GetExternalLink do
   @moduledoc  """
-  Returns an HTTP URL which can be used to automatically authorize the current user on a website after clicking an HTTP link. Use the method getExternalLinkInfo to find whether a prior user confirmation is needed. May return an empty link if just a toast about successful login has to be shown.
+  Returns an HTTP URL which can be used to automatically authorize the current user on a website after clicking an HTTP link. Use the method [getExternalLinkInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_external_link_info.html) to find whether a prior user confirmation is needed. May return an empty link if just a toast about successful login has to be shown.
   Returns object_ptr<HttpUrl>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | link | string | The HTTP link. |
-  | allow_write_access | bool | Pass true if the current user allowed the bot that was returned in <a class="el" href="classtd_1_1td__api_1_1get_external_link_info.html">getExternalLinkInfo</a>, to send them messages. |
+  | allow_write_access | bool | Pass true if the current user allowed the bot that was returned in [getExternalLinkInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_external_link_info.html), to send them messages. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_external_link.html).
   """
@@ -12054,7 +12054,7 @@ defmodule SetAutoDownloadSettings do
 end
 defmodule SearchOutgoingDocumentMessages do
   @moduledoc  """
-  Searches for outgoing messages with content of the type messageDocument in all chats except secret chats. Returns the results in reverse chronological order.
+  Searches for outgoing messages with content of the type [messageDocument](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_document.html) in all chats except secret chats. Returns the results in reverse chronological order.
   Returns object_ptr<FoundMessages>.
 
   | Name | Type | Description |
@@ -12076,8 +12076,8 @@ defmodule AcceptOauthRequest do
   |------|------| ------------|
   | url | string | URL of the OAuth deep link. |
   | match_code | string | The matching code chosen by the user. |
-  | allow_write_access | bool | Pass true if the current user allowed the bot that was returned in <a class="el" href="classtd_1_1td__api_1_1get_oauth_link_info.html">getOauthLinkInfo</a>, to send them messages. |
-  | allow_phone_number_access | bool | Pass true if the current user allowed the bot that was returned in <a class="el" href="classtd_1_1td__api_1_1get_oauth_link_info.html">getOauthLinkInfo</a>, to access their phone number. |
+  | allow_write_access | bool | Pass true if the current user allowed the bot that was returned in [getOauthLinkInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_oauth_link_info.html), to send them messages. |
+  | allow_phone_number_access | bool | Pass true if the current user allowed the bot that was returned in [getOauthLinkInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_oauth_link_info.html), to access their phone number. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1accept_oauth_request.html).
   """
@@ -12086,14 +12086,14 @@ defmodule AcceptOauthRequest do
 end
 defmodule OpenWebApp do
   @moduledoc  """
-  Informs TDLib that a Web App is being opened from the attachment menu, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an inlineKeyboardButtonTypeWebApp button. For each bot, a confirmation alert about data sent to the bot must be shown once.
+  Informs TDLib that a Web App is being opened from the attachment menu, a [botMenuButton](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_menu_button.html) button, an [internalLinkTypeAttachmentMenuBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_attachment_menu_bot.html) link, or an [inlineKeyboardButtonTypeWebApp](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_web_app.html) button. For each bot, a confirmation alert about data sent to the bot must be shown once.
   Returns object_ptr<WebAppInfo>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat in which the Web App is opened. The Web App can't be opened in secret chats. |
   | bot_user_id | int53 | Identifier of the bot, providing the Web App. If the bot is restricted for the current user, then show an error instead of calling the method. |
-  | url | string | The URL from an <a class="el" href="classtd_1_1td__api_1_1inline_keyboard_button_type_web_app.html">inlineKeyboardButtonTypeWebApp</a> button, a <a class="el" href="classtd_1_1td__api_1_1bot_menu_button.html">botMenuButton</a> button, an <a class="el" href="classtd_1_1td__api_1_1internal_link_type_attachment_menu_bot.html">internalLinkTypeAttachmentMenuBot</a> link, or an empty string otherwise. |
+  | url | string | The URL from an [inlineKeyboardButtonTypeWebApp](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_web_app.html) button, a [botMenuButton](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_menu_button.html) button, an [internalLinkTypeAttachmentMenuBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_attachment_menu_bot.html) link, or an empty string otherwise. |
   | topic_id | MessageTopic | Topic in which the message will be sent; pass null if none. |
   | reply_to | InputMessageReplyTo | Information about the message or story to be replied in the message sent by the Web App; pass null if none. |
   | parameters | webAppOpenParameters | Parameters to use to open the Web App. |
@@ -12125,7 +12125,7 @@ defmodule EditEphemeralMessage do
   | receiver_user_id | int53 | Identifier of the user who received the message. |
   | ephemeral_message_id | int32 | Identifier of the ephemeral message. |
   | reply_markup | ReplyMarkup | The new message reply markup; pass null if none. |
-  | input_message_content | InputMessageContent | New content of the message; pass null to edit only reply markup. Must be one of the following types: <a class="el" href="classtd_1_1td__api_1_1input_message_text.html">inputMessageText</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_animation.html">inputMessageAnimation</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_audio.html">inputMessageAudio</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_document.html">inputMessageDocument</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_photo.html">inputMessagePhoto</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_rich_message.html">inputMessageRichMessage</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_sticker.html">inputMessageSticker</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video.html">inputMessageVideo</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_video_note.html">inputMessageVideoNote</a>, <a class="el" href="classtd_1_1td__api_1_1input_message_voice_note.html">inputMessageVoiceNote</a>. |
+  | input_message_content | InputMessageContent | New content of the message; pass null to edit only reply markup. Must be one of the following types: [inputMessageText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_text.html), [inputMessageAnimation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_animation.html), [inputMessageAudio](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_audio.html), [inputMessageDocument](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_document.html), [inputMessagePhoto](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_photo.html), [inputMessageRichMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_rich_message.html), [inputMessageSticker](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_sticker.html), [inputMessageVideo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video.html), [inputMessageVideoNote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video_note.html), [inputMessageVoiceNote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_voice_note.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_ephemeral_message.html).
   """
@@ -12150,13 +12150,13 @@ defmodule SetCommands do
 end
 defmodule GetWebAppUrl do
   @moduledoc  """
-  Returns an HTTPS URL of a Web App to open from the side menu, a keyboardButtonTypeWebApp button, or an inlineQueryResultsButtonTypeWebApp button.
+  Returns an HTTPS URL of a Web App to open from the side menu, a [keyboardButtonTypeWebApp](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_web_app.html) button, or an [inlineQueryResultsButtonTypeWebApp](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_results_button_type_web_app.html) button.
   Returns object_ptr<WebAppUrl>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | bot_user_id | int53 | Identifier of the target bot. If the bot is restricted for the current user, then show an error instead of calling the method. |
-  | url | string | The URL from a <a class="el" href="classtd_1_1td__api_1_1keyboard_button_type_web_app.html">keyboardButtonTypeWebApp</a> button, <a class="el" href="classtd_1_1td__api_1_1inline_query_results_button_type_web_app.html">inlineQueryResultsButtonTypeWebApp</a> button, or an empty string when the bot is opened from the side menu. |
+  | url | string | The URL from a [keyboardButtonTypeWebApp](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_web_app.html) button, [inlineQueryResultsButtonTypeWebApp](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_results_button_type_web_app.html) button, or an empty string when the bot is opened from the side menu. |
   | parameters | webAppOpenParameters | Parameters to use to open the Web App. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_web_app_url.html).
@@ -12227,7 +12227,7 @@ defmodule EditBusinessStory do
 end
 defmodule GetMessageEmbeddingCode do
   @moduledoc  """
-  Returns an HTML code for embedding the message. Available only if messageProperties.can_get_embedding_code.
+  Returns an HTML code for embedding the message. Available only if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_embedding_code.
   Returns object_ptr<Text>.
 
   | Name | Type | Description |
@@ -12263,8 +12263,8 @@ defmodule ComposeTextWithAi do
   | Name | Type | Description |
   |------|------| ------------|
   | text | formattedText | The original text. |
-  | translate_to_language_code | string | Pass a language code to which the text will be translated; pass an empty string if translation isn't needed. See translateText.to_language_code for the list of supported values. |
-  | style_name | string | Name of the style of the resulted text; handle <a class="el" href="classtd_1_1td__api_1_1update_text_composition_styles.html">updateTextCompositionStyles</a> to get the list of supported styles; pass an empty string to keep the current style of the text. |
+  | translate_to_language_code | string | Pass a language code to which the text will be translated; pass an empty string if translation isn't needed. See [translateText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_text.html).to_language_code for the list of supported values. |
+  | style_name | string | Name of the style of the resulted text; handle [updateTextCompositionStyles](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_text_composition_styles.html) to get the list of supported styles; pass an empty string to keep the current style of the text. |
   | add_emojis | bool | Pass true to add emoji to the text. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1compose_text_with_ai.html).
@@ -12288,7 +12288,7 @@ defmodule ToggleSupergroupIsBroadcastGroup do
 end
 defmodule GetMessageAvailableReactions do
   @moduledoc  """
-  Returns reactions, which can be added to a message. The list can change after updateActiveEmojiReactions, updateChatAvailableReactions for the chat, or updateMessageInteractionInfo for the message.
+  Returns reactions, which can be added to a message. The list can change after [updateActiveEmojiReactions](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_active_emoji_reactions.html), [updateChatAvailableReactions](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_available_reactions.html) for the chat, or [updateMessageInteractionInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_interaction_info.html) for the message.
   Returns object_ptr<AvailableReactions>.
 
   | Name | Type | Description |
@@ -12332,7 +12332,7 @@ defmodule CloseChat do
 end
 defmodule GetSuitableDiscussionChats do
   @moduledoc  """
-  Returns a list of basic group and supergroup chats, which can be used as a discussion group for a channel. Returned basic group chats must be first upgraded to supergroups before they can be set as a discussion group. To set a returned supergroup as a discussion group, access to its old messages must be enabled using toggleSupergroupIsAllHistoryAvailable first.
+  Returns a list of basic group and supergroup chats, which can be used as a discussion group for a channel. Returned basic group chats must be first upgraded to supergroups before they can be set as a discussion group. To set a returned supergroup as a discussion group, access to its old messages must be enabled using [toggleSupergroupIsAllHistoryAvailable](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_is_all_history_available.html) first.
   Returns object_ptr<Chats>.
 
 
@@ -12413,7 +12413,7 @@ defmodule GetChatListsToAddChat do
 end
 defmodule SearchGiftsForResale do
   @moduledoc  """
-  Returns upgraded gifts that can be bought from other owners using sendResoldGift.
+  Returns upgraded gifts that can be bought from other owners using [sendResoldGift](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_resold_gift.html).
   Returns object_ptr<GiftsForResale>.
 
   | Name | Type | Description |
@@ -12461,7 +12461,7 @@ defmodule DeleteMessageReactionsFromSender do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier. |
-  | message_id | int53 | Identifier of the message containing the reactions. Use messageProperties.can_delete_reactions to check whether the method can be used for a message. |
+  | message_id | int53 | Identifier of the message containing the reactions. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_delete_reactions to check whether the method can be used for a message. |
   | sender_id | MessageSender | Identifier of the sender of reactions to delete. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_message_reactions_from_sender.html).
@@ -12508,7 +12508,7 @@ defmodule CloseWebApp do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | web_app_launch_id | int64 | Identifier of Web App launch, received from <a class="el" href="classtd_1_1td__api_1_1open_web_app.html">openWebApp</a>. |
+  | web_app_launch_id | int64 | Identifier of Web App launch, received from [openWebApp](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1open_web_app.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1close_web_app.html).
   """
@@ -12537,9 +12537,9 @@ defmodule ComposeRichMessageWithAi do
   | Name | Type | Description |
   |------|------| ------------|
   | message | inputRichMessage | The original message. |
-  | translate_to_language_code | string | Pass a language code to which the text will be translated; pass an empty string if translation isn't needed. See translateText.to_language_code for the list of supported values. |
-  | style_name | string | Name of the style of the resulted text; handle <a class="el" href="classtd_1_1td__api_1_1update_text_composition_styles.html">updateTextCompositionStyles</a> to get the list of supported styles; pass an empty string to keep the current style of the text or if a custom prompt is used. |
-  | custom_prompt | string | Custom prompt that will be used instead of style_name; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("text_composition_style_prompt_length_max") characters. |
+  | translate_to_language_code | string | Pass a language code to which the text will be translated; pass an empty string if translation isn't needed. See [translateText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_text.html).to_language_code for the list of supported values. |
+  | style_name | string | Name of the style of the resulted text; handle [updateTextCompositionStyles](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_text_composition_styles.html) to get the list of supported styles; pass an empty string to keep the current style of the text or if a custom prompt is used. |
+  | custom_prompt | string | Custom prompt that will be used instead of style_name; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("text_composition_style_prompt_length_max") characters. |
   | add_emojis | bool | Pass true to add emoji to the text. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1compose_rich_message_with_ai.html).
@@ -12570,7 +12570,7 @@ defmodule SearchChatAffiliateProgram do
   | Name | Type | Description |
   |------|------| ------------|
   | username | string | Username of the chat. |
-  | referrer | string | The referrer from an <a class="el" href="classtd_1_1td__api_1_1internal_link_type_chat_affiliate_program.html">internalLinkTypeChatAffiliateProgram</a> link. |
+  | referrer | string | The referrer from an [internalLinkTypeChatAffiliateProgram](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_chat_affiliate_program.html) link. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_chat_affiliate_program.html).
   """
@@ -12607,7 +12607,7 @@ defmodule SetArchiveChatListSettings do
 end
 defmodule GetJsonValue do
   @moduledoc  """
-  Converts a JSON-serialized string to corresponding JsonValue object. Can be called synchronously.
+  Converts a JSON-serialized string to corresponding [JsonValue](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1_json_value.html) object. Can be called synchronously.
   Returns object_ptr<JsonValue>.
 
   | Name | Type | Description |
@@ -12686,7 +12686,7 @@ defmodule CreateRichMessageWithAi do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | prompt | string | Prompt that will be used to create the message; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("text_composition_style_prompt_length_max") characters. |
+  | prompt | string | Prompt that will be used to create the message; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("text_composition_style_prompt_length_max") characters. |
   | language_code | string | Pass a language code in which the text will be created. |
   | add_emojis | bool | Pass true to add emoji to the text. |
 
@@ -12759,8 +12759,8 @@ defmodule SendPaymentForm do
   | Name | Type | Description |
   |------|------| ------------|
   | input_invoice | InputInvoice | The invoice. |
-  | payment_form_id | int64 | Payment form identifier returned by <a class="el" href="classtd_1_1td__api_1_1get_payment_form.html">getPaymentForm</a>. |
-  | order_info_id | string | Identifier returned by <a class="el" href="classtd_1_1td__api_1_1validate_order_info.html">validateOrderInfo</a>, or an empty string. |
+  | payment_form_id | int64 | Payment form identifier returned by [getPaymentForm](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_payment_form.html). |
+  | order_info_id | string | Identifier returned by [validateOrderInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1validate_order_info.html), or an empty string. |
   | shipping_option_id | string | Identifier of a chosen shipping option, if applicable. |
   | credentials | InputCredentials | The credentials chosen by user for payment; pass null for a payment in Telegram Stars. |
   | tip_amount | int53 | Chosen by the user amount of tip in the smallest units of the currency. |
@@ -12855,7 +12855,7 @@ defmodule SendGiftPurchaseOffer do
   | gift_name | string | Name of the upgraded gift. |
   | price | GiftResalePrice | The price that the user agreed to pay for the gift. |
   | duration | int32 | Duration of the offer, in seconds; must be one of 21600, 43200, 86400, 129600, 172800, or 259200. Can also be 120 if Telegram test environment is used. |
-  | paid_message_star_count | int53 | The number of Telegram Stars the user agreed to pay additionally for sending of the offer message to the current gift owner; pass userFullInfo.outgoing_paid_message_star_count for users and 0 otherwise. |
+  | paid_message_star_count | int53 | The number of Telegram Stars the user agreed to pay additionally for sending of the offer message to the current gift owner; pass [userFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_full_info.html).outgoing_paid_message_star_count for users and 0 otherwise. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_gift_purchase_offer.html).
   """
@@ -12872,9 +12872,9 @@ defmodule ForwardMessages do
   | chat_id | int53 | Identifier of the chat to which to forward messages. |
   | topic_id | MessageTopic | Topic in which the messages will be forwarded; message threads aren't supported; pass null if none. |
   | from_chat_id | int53 | Identifier of the chat from which to forward messages. |
-  | message_ids | int53 | Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously. A message can be forwarded only if messageProperties.can_be_forwarded. |
+  | message_ids | int53 | Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously. A message can be forwarded only if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_forwarded. |
   | options | messageSendOptions | Options to be used to send the messages; pass null to use default options. |
-  | send_copy | bool | Pass true to copy content of the messages without reference to the original sender. Always true if the messages are forwarded to a secret chat or are local. Use messageProperties.can_be_copied and messageProperties.can_be_copied_to_secret_chat to check whether the message is suitable. |
+  | send_copy | bool | Pass true to copy content of the messages without reference to the original sender. Always true if the messages are forwarded to a secret chat or are local. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_copied and [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_copied_to_secret_chat to check whether the message is suitable. |
   | remove_caption | bool | Pass true to remove media captions of message copies. Ignored if send_copy is false. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1forward_messages.html).
@@ -12910,7 +12910,7 @@ defmodule DisconnectAllWebsites do
 end
 defmodule Destroy do
   @moduledoc  """
-  Closes the TDLib instance, destroying all local data without a proper logout. The current user session will remain in the list of all active sessions. All local data will be destroyed. After the destruction completes updateAuthorizationState with authorizationStateClosed will be sent. Can be called before authorization.
+  Closes the TDLib instance, destroying all local data without a proper logout. The current user session will remain in the list of all active sessions. All local data will be destroyed. After the destruction completes [updateAuthorizationState](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_authorization_state.html) with [authorizationStateClosed](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_closed.html) will be sent. Can be called before authorization.
   Returns object_ptr<Ok>.
 
 
@@ -12921,7 +12921,7 @@ defmodule Destroy do
 end
 defmodule CheckAuthenticationPremiumPurchase do
   @moduledoc  """
-  Checks whether an in-store purchase of Telegram Premium is possible before authorization. Works only when the current authorization state is authorizationStateWaitPremiumPurchase.
+  Checks whether an in-store purchase of Telegram Premium is possible before authorization. Works only when the current authorization state is [authorizationStateWaitPremiumPurchase](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_premium_purchase.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -13018,7 +13018,7 @@ defmodule SavePreparedKeyboardButton do
   | Name | Type | Description |
   |------|------| ------------|
   | user_id | int53 | Identifier of the user. |
-  | button | keyboardButton | The button; must be of the type <a class="el" href="classtd_1_1td__api_1_1keyboard_button_type_request_users.html">keyboardButtonTypeRequestUsers</a>, <a class="el" href="classtd_1_1td__api_1_1keyboard_button_type_request_chat.html">keyboardButtonTypeRequestChat</a>, or <a class="el" href="classtd_1_1td__api_1_1keyboard_button_type_request_managed_bot.html">keyboardButtonTypeRequestManagedBot</a>. |
+  | button | keyboardButton | The button; must be of the type [keyboardButtonTypeRequestUsers](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_users.html), [keyboardButtonTypeRequestChat](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_chat.html), or [keyboardButtonTypeRequestManagedBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_managed_bot.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1save_prepared_keyboard_button.html).
   """
@@ -13033,7 +13033,7 @@ defmodule CreateInvoiceLink do
   | Name | Type | Description |
   |------|------| ------------|
   | business_connection_id | string | Unique identifier of business connection on behalf of which to send the request. |
-  | invoice | InputMessageContent | Information about the invoice of the type <a class="el" href="classtd_1_1td__api_1_1input_message_invoice.html">inputMessageInvoice</a>. |
+  | invoice | InputMessageContent | Information about the invoice of the type [inputMessageInvoice](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_invoice.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_invoice_link.html).
   """
@@ -13146,7 +13146,7 @@ defmodule DeclineSuggestedPost do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier of the channel direct messages chat. |
-  | message_id | int53 | Identifier of the message with the suggested post. Use messageProperties.can_be_declined to check whether the suggested post can be declined. |
+  | message_id | int53 | Identifier of the message with the suggested post. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_be_declined to check whether the suggested post can be declined. |
   | comment | string | Comment for the creator of the suggested post; 0-128 characters. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1decline_suggested_post.html).
@@ -13163,7 +13163,7 @@ defmodule GetChatMessagePosition do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat in which to find message position. |
   | topic_id | MessageTopic | Pass topic identifier to get position among messages only in specific topic; pass null to get position among all chat messages; message threads aren't supported. |
-  | filter | SearchMessagesFilter | Filter for message content; <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_empty.html">searchMessagesFilterEmpty</a>, <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_unread_mention.html">searchMessagesFilterUnreadMention</a>, <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_unread_reaction.html">searchMessagesFilterUnreadReaction</a>, <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_unread_poll_vote.html">searchMessagesFilterUnreadPollVote</a>, and <a class="el" href="classtd_1_1td__api_1_1search_messages_filter_failed_to_send.html">searchMessagesFilterFailedToSend</a> are unsupported in this function. |
+  | filter | SearchMessagesFilter | Filter for message content; [searchMessagesFilterEmpty](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_empty.html), [searchMessagesFilterUnreadMention](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_mention.html), [searchMessagesFilterUnreadReaction](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_reaction.html), [searchMessagesFilterUnreadPollVote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_poll_vote.html), and [searchMessagesFilterFailedToSend](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_failed_to_send.html) are unsupported in this function. |
   | message_id | int53 | Message identifier. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_message_position.html).
@@ -13232,7 +13232,7 @@ defmodule ClickVideoMessageAdvertisement do
 end
 defmodule SetBotInfoShortDescription do
   @moduledoc  """
-  Sets the text shown on a bot's profile page and sent together with the link when users share the bot. Can be called only if userTypeBot.can_be_edited == true.
+  Sets the text shown on a bot's profile page and sent together with the link when users share the bot. Can be called only if [userTypeBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html).can_be_edited == true.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -13311,7 +13311,7 @@ defmodule GetGameHighScores do
 end
 defmodule GetMessageReadDate do
   @moduledoc  """
-  Returns read date of a recent outgoing message in a private chat. The method can be called if messageProperties.can_get_read_date == true.
+  Returns read date of a recent outgoing message in a private chat. The method can be called if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_read_date == true.
   Returns object_ptr<MessageReadDate>.
 
   | Name | Type | Description |
@@ -13363,7 +13363,7 @@ defmodule CreateChatFolderInviteLink do
   |------|------| ------------|
   | chat_folder_id | int32 | Chat folder identifier. |
   | name | string | Name of the link; 0-32 characters. |
-  | chat_ids | int53 | Identifiers of chats to be accessible by the invite link. Use <a class="el" href="classtd_1_1td__api_1_1get_chats_for_chat_folder_invite_link.html">getChatsForChatFolderInviteLink</a> to get suitable chats. Basic groups will be automatically converted to supergroups before link creation. |
+  | chat_ids | int53 | Identifiers of chats to be accessible by the invite link. Use [getChatsForChatFolderInviteLink](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chats_for_chat_folder_invite_link.html) to get suitable chats. Basic groups will be automatically converted to supergroups before link creation. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_chat_folder_invite_link.html).
   """
@@ -13372,13 +13372,13 @@ defmodule CreateChatFolderInviteLink do
 end
 defmodule AddPendingLiveStoryReaction do
   @moduledoc  """
-  Adds pending paid reaction in a live story group call. Can't be used in live stories posted by the current user. Call commitPendingLiveStoryReactions or removePendingLiveStoryReactions to actually send all pending reactions when the undo timer is over or abort the sending.
+  Adds pending paid reaction in a live story group call. Can't be used in live stories posted by the current user. Call [commitPendingLiveStoryReactions](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1commit_pending_live_story_reactions.html) or [removePendingLiveStoryReactions](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_pending_live_story_reactions.html) to actually send all pending reactions when the undo timer is over or abort the sending.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | group_call_id | int32 | Group call identifier. |
-  | star_count | int53 | Number of Telegram Stars to be used for the reaction. The total number of pending paid reactions must not exceed <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("paid_group_call_message_star_count_max"). |
+  | star_count | int53 | Number of Telegram Stars to be used for the reaction. The total number of pending paid reactions must not exceed [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("paid_group_call_message_star_count_max"). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_pending_live_story_reaction.html).
   """
@@ -13413,7 +13413,7 @@ defmodule SendInlineQueryResultMessage do
   | options | messageSendOptions | Options to be used to send the message; pass null to use default options. |
   | query_id | int64 | Identifier of the inline query. |
   | result_id | string | Identifier of the inline query result. |
-  | hide_via_bot | bool | Pass true to hide the bot, via which the message is sent. Can be used only for bots <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("animation_search_bot_username"), <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("photo_search_bot_username"), and <a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("venue_search_bot_username"). |
+  | hide_via_bot | bool | Pass true to hide the bot, via which the message is sent. Can be used only for bots [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("animation_search_bot_username"), [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("photo_search_bot_username"), and [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("venue_search_bot_username"). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_inline_query_result_message.html).
   """
@@ -13428,7 +13428,7 @@ defmodule ProcessChatHasProtectedContentDisableRequest do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier. |
-  | request_message_id | int53 | Identifier of the message with the request. The message must be incoming and has content of the type <a class="el" href="classtd_1_1td__api_1_1message_chat_has_protected_content_disable_requested.html">messageChatHasProtectedContentDisableRequested</a>. |
+  | request_message_id | int53 | Identifier of the message with the request. The message must be incoming and has content of the type [messageChatHasProtectedContentDisableRequested](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_has_protected_content_disable_requested.html). |
   | approve | bool | Pass true to approve the request; pass false to reject the request. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1process_chat_has_protected_content_disable_request.html).
@@ -13467,7 +13467,7 @@ defmodule GetGrossingWebAppBots do
 end
 defmodule GetMessageStatistics do
   @moduledoc  """
-  Returns detailed statistics about a message. Can be used only if messageProperties.can_get_statistics == true.
+  Returns detailed statistics about a message. Can be used only if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_statistics == true.
   Returns object_ptr<MessageStatistics>.
 
   | Name | Type | Description |
@@ -13630,8 +13630,8 @@ defmodule EditMessageSchedulingState do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | The chat the message belongs to. |
-  | message_id | int53 | Identifier of the message. Use messageProperties.can_edit_scheduling_state to check whether the message is suitable. |
-  | scheduling_state | MessageSchedulingState | The new message scheduling state; pass null to send the message immediately. Must be null for messages in the state <a class="el" href="classtd_1_1td__api_1_1message_scheduling_state_send_when_video_processed.html">messageSchedulingStateSendWhenVideoProcessed</a>. |
+  | message_id | int53 | Identifier of the message. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_edit_scheduling_state to check whether the message is suitable. |
+  | scheduling_state | MessageSchedulingState | The new message scheduling state; pass null to send the message immediately. Must be null for messages in the state [messageSchedulingStateSendWhenVideoProcessed](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_scheduling_state_send_when_video_processed.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_message_scheduling_state.html).
   """
@@ -13675,7 +13675,7 @@ defmodule SetBio do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | bio | string | The new value of the user bio; 0-<a class="el" href="classtd_1_1td__api_1_1get_option.html">getOption</a>("bio_length_max") characters without line feeds. |
+  | bio | string | The new value of the user bio; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("bio_length_max") characters without line feeds. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_bio.html).
   """
@@ -13765,7 +13765,7 @@ defmodule AddPollOption do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to which the poll belongs. |
-  | message_id | int53 | Identifier of the message containing the poll. Use messagePoll.can_add_option to check whether an option can be added. |
+  | message_id | int53 | Identifier of the message containing the poll. Use [messagePoll](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_poll.html).can_add_option to check whether an option can be added. |
   | option | inputPollOption | The new option. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_poll_option.html).
@@ -13789,16 +13789,16 @@ defmodule ClearRecentStickers do
 end
 defmodule DownloadFile do
   @moduledoc  """
-  Downloads a file from the cloud. Download progress and completion of the download will be notified through updateFile updates.
+  Downloads a file from the cloud. Download progress and completion of the download will be notified through [updateFile](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_file.html) updates.
   Returns object_ptr<File>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | file_id | int32 | Identifier of the file to download. |
-  | priority | int32 | Priority of the download (1-32). The higher the priority, the earlier the file will be downloaded. If the priorities of two files are equal, then the last one for which downloadFile/addFileToDownloads was called will be downloaded first. |
+  | priority | int32 | Priority of the download (1-32). The higher the priority, the earlier the file will be downloaded. If the priorities of two files are equal, then the last one for which [downloadFile](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1download_file.html)/[addFileToDownloads](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_file_to_downloads.html) was called will be downloaded first. |
   | offset | int53 | The starting position from which the file needs to be downloaded. |
   | limit | int53 | Number of bytes which need to be downloaded starting from the "offset" position before the download will automatically be canceled; use 0 to download without a limit. |
-  | synchronous | bool | Pass true to return response only after the file download has succeeded, has failed, has been canceled, or a new <a class="el" href="classtd_1_1td__api_1_1download_file.html">downloadFile</a> request with different offset/limit parameters was sent; pass false to return file state immediately, just after the download has been started. |
+  | synchronous | bool | Pass true to return response only after the file download has succeeded, has failed, has been canceled, or a new [downloadFile](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1download_file.html) request with different offset/limit parameters was sent; pass false to return file state immediately, just after the download has been started. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1download_file.html).
   """
@@ -13901,7 +13901,7 @@ defmodule SuggestUserProfilePhoto do
   | Name | Type | Description |
   |------|------| ------------|
   | user_id | int53 | User identifier. |
-  | photo | InputChatPhoto | Profile photo to suggest; <a class="el" href="classtd_1_1td__api_1_1input_chat_photo_previous.html">inputChatPhotoPrevious</a> isn't supported in this function. |
+  | photo | InputChatPhoto | Profile photo to suggest; [inputChatPhotoPrevious](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_chat_photo_previous.html) isn't supported in this function. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggest_user_profile_photo.html).
   """
@@ -13942,7 +13942,7 @@ defmodule GetStarRevenueStatistics do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | owner_id | MessageSender | Identifier of the owner of the Telegram Stars; can be identifier of the current user, an owned bot, or a supergroup or a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true. |
+  | owner_id | MessageSender | Identifier of the owner of the Telegram Stars; can be identifier of the current user, an owned bot, or a supergroup or a channel chat with [supergroupFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).can_get_star_revenue_statistics == true. |
   | is_dark | bool | Pass true if a dark theme is used by the application. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_star_revenue_statistics.html).
@@ -13995,7 +13995,7 @@ defmodule AddProxy do
 end
 defmodule TransferChatOwnership do
   @moduledoc  """
-  Changes the owner of a chat; for basic groups, supergroups and channel chats only; requires owner privileges in the chat. Use the method canTransferOwnership to check whether the ownership can be transferred from the current session.
+  Changes the owner of a chat; for basic groups, supergroups and channel chats only; requires owner privileges in the chat. Use the method [canTransferOwnership](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_transfer_ownership.html) to check whether the ownership can be transferred from the current session.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -14025,7 +14025,7 @@ defmodule GetStarGiftPaymentOptions do
 end
 defmodule LoadDirectMessagesChatTopics do
   @moduledoc  """
-  Loads more topics in a channel direct messages chat administered by the current user. The loaded topics will be sent through updateDirectMessagesChatTopic. Topics are sorted by their topic.order in descending order. Returns a 404 error if all topics have been loaded.
+  Loads more topics in a channel direct messages chat administered by the current user. The loaded topics will be sent through [updateDirectMessagesChatTopic](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_direct_messages_chat_topic.html). Topics are sorted by their topic.order in descending order. Returns a 404 error if all topics have been loaded.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -14040,7 +14040,7 @@ defmodule LoadDirectMessagesChatTopics do
 end
 defmodule GetChatStatistics do
   @moduledoc  """
-  Returns detailed statistics about a chat. Currently, this method can be used only for supergroups and channels. Can be used only if supergroupFullInfo.can_get_statistics == true.
+  Returns detailed statistics about a chat. Currently, this method can be used only for supergroups and channels. Can be used only if [supergroupFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).can_get_statistics == true.
   Returns object_ptr<ChatStatistics>.
 
   | Name | Type | Description |
@@ -14150,7 +14150,7 @@ defmodule MarkChecklistTasksAsDone do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat with the message. |
-  | message_id | int53 | Identifier of the message containing the checklist. Use messageProperties.can_mark_tasks_as_done to check whether the tasks can be marked as done or not done. |
+  | message_id | int53 | Identifier of the message containing the checklist. Use [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_mark_tasks_as_done to check whether the tasks can be marked as done or not done. |
   | marked_as_done_task_ids | int32 | Identifiers of tasks that were marked as done. |
   | marked_as_not_done_task_ids | int32 | Identifiers of tasks that were marked as not done. |
 
@@ -14207,7 +14207,7 @@ defmodule SetDefaultGroupAdministratorRights do
 end
 defmodule AddTextCompositionStyle do
   @moduledoc  """
-  Adds a custom text composition style to the list of used by the user styles. May return an error with a message "TONES_SAVED_TOO_MANY" if the maximum number of added custom styles getOption("added_text_composition_style_count_max") has been reached.
+  Adds a custom text composition style to the list of used by the user styles. May return an error with a message "TONES_SAVED_TOO_MANY" if the maximum number of added custom styles [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("added_text_composition_style_count_max") has been reached.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -14286,10 +14286,10 @@ defmodule CreateNewStickerSet do
   |------|------| ------------|
   | user_id | int53 | Sticker set owner; ignored for regular users. |
   | title | string | Sticker set title; 1-64 characters. |
-  | name | string | Sticker set name. Can contain only English letters, digits and underscores. Must end with <em>"<em>by</em><bot username>"</em> (<em><bot_username></em> is case insensitive) for bots; 0-64 characters. If empty, then the name returned by <a class="el" href="classtd_1_1td__api_1_1get_suggested_sticker_set_name.html">getSuggestedStickerSetName</a> will be used automatically. |
+  | name | string | Sticker set name. Can contain only English letters, digits and underscores. Must end with *"_by_<bot username>"* (*<bot_username>* is case insensitive) for bots; 0-64 characters. If empty, then the name returned by [getSuggestedStickerSetName](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_suggested_sticker_set_name.html) will be used automatically. |
   | sticker_type | StickerType | Type of the stickers in the set. |
   | needs_repainting | bool | Pass true if stickers in the sticker set must be repainted; for custom emoji sticker sets only. |
-  | stickers | newSticker | List of stickers to be added to the set; 1-200 stickers for custom emoji sticker sets, and 1-120 stickers otherwise. For TGS stickers, <a class="el" href="classtd_1_1td__api_1_1upload_sticker_file.html">uploadStickerFile</a> must be used before the sticker is shown. |
+  | stickers | newSticker | List of stickers to be added to the set; 1-200 stickers for custom emoji sticker sets, and 1-120 stickers otherwise. For TGS stickers, [uploadStickerFile](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upload_sticker_file.html) must be used before the sticker is shown. |
   | source | string | Source of the sticker set; may be empty if unknown. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_new_sticker_set.html).
@@ -14299,7 +14299,7 @@ defmodule CreateNewStickerSet do
 end
 defmodule GetBotInfoShortDescription do
   @moduledoc  """
-  Returns the text shown on a bot's profile page and sent together with the link when users share the bot in the given language. Can be called only if userTypeBot.can_be_edited == true.
+  Returns the text shown on a bot's profile page and sent together with the link when users share the bot in the given language. Can be called only if [userTypeBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html).can_be_edited == true.
   Returns object_ptr<Text>.
 
   | Name | Type | Description |
@@ -14362,7 +14362,7 @@ defmodule AllowBotToSendMessages do
 end
 defmodule RegisterUser do
   @moduledoc  """
-  Finishes user registration. Works only when the current authorization state is authorizationStateWaitRegistration.
+  Finishes user registration. Works only when the current authorization state is [authorizationStateWaitRegistration](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_registration.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -14416,7 +14416,7 @@ defmodule GetForumTopicDefaultIcons do
 end
 defmodule ToggleChatIsPinned do
   @moduledoc  """
-  Changes the pinned state of a chat. There can be up to getOption("pinned_chat_count_max")/getOption("pinned_archived_chat_count_max") pinned non-secret chats and the same number of secret chats in the main/archive chat list. The limit can be increased with Telegram Premium.
+  Changes the pinned state of a chat. There can be up to [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("pinned_chat_count_max")/[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("pinned_archived_chat_count_max") pinned non-secret chats and the same number of secret chats in the main/archive chat list. The limit can be increased with Telegram Premium.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -14540,7 +14540,7 @@ defmodule DeleteChatBackground do
   | Name | Type | Description |
   |------|------| ------------|
   | chat_id | int53 | Chat identifier. |
-  | restore_previous | bool | Pass true to restore previously set background. Can be used only in private and secret chats with non-deleted users if userFullInfo.set_chat_background == true. Supposed to be used from <a class="el" href="classtd_1_1td__api_1_1message_chat_set_background.html">messageChatSetBackground</a> messages with the currently set background that was set for both sides by the other user. |
+  | restore_previous | bool | Pass true to restore previously set background. Can be used only in private and secret chats with non-deleted users if [userFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_full_info.html).set_chat_background == true. Supposed to be used from [messageChatSetBackground](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_set_background.html) messages with the currently set background that was set for both sides by the other user. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_chat_background.html).
   """
@@ -14549,7 +14549,7 @@ defmodule DeleteChatBackground do
 end
 defmodule EndGroupCallRecording do
   @moduledoc  """
-  Ends recording of an active group call; for video chats only. Requires groupCall.can_be_managed right.
+  Ends recording of an active group call; for video chats only. Requires [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).can_be_managed right.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -14666,7 +14666,7 @@ defmodule SendMessageAlbum do
 end
 defmodule ToggleGroupCallAreMessagesAllowed do
   @moduledoc  """
-  Toggles whether participants of a group call can send messages there. Requires groupCall.can_toggle_are_messages_allowed right.
+  Toggles whether participants of a group call can send messages there. Requires [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).can_toggle_are_messages_allowed right.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -14696,7 +14696,7 @@ defmodule ListenToAudio do
 end
 defmodule CheckAuthenticationPasskey do
   @moduledoc  """
-  Checks a passkey to log in to the corresponding account. Call getAuthenticationPasskeyParameters to get parameters for the passkey. Works only when the current authorization state is authorizationStateWaitPhoneNumber or authorizationStateWaitOtherDeviceConfirmation, or if there is no pending authentication query and the current authorization state is authorizationStateWaitPremiumPurchase, authorizationStateWaitEmailAddress, authorizationStateWaitEmailCode, authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword.
+  Checks a passkey to log in to the corresponding account. Call [getAuthenticationPasskeyParameters](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_authentication_passkey_parameters.html) to get parameters for the passkey. Works only when the current authorization state is [authorizationStateWaitPhoneNumber](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_phone_number.html) or [authorizationStateWaitOtherDeviceConfirmation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_other_device_confirmation.html), or if there is no pending authentication query and the current authorization state is [authorizationStateWaitPremiumPurchase](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_premium_purchase.html), [authorizationStateWaitEmailAddress](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_email_address.html), [authorizationStateWaitEmailCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_email_code.html), [authorizationStateWaitCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_code.html), [authorizationStateWaitRegistration](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_registration.html), or [authorizationStateWaitPassword](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_password.html).
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -14743,7 +14743,7 @@ defmodule GetFileDownloadedPrefixSize do
 end
 defmodule GetExternalLinkInfo do
   @moduledoc  """
-  Returns information about an action to be done when the current user clicks an external link. Don't use this method for links from secret chats if link preview is disabled in secret chats, and use directly getLinkWebBrowserType.
+  Returns information about an action to be done when the current user clicks an external link. Don't use this method for links from secret chats if link preview is disabled in secret chats, and use directly [getLinkWebBrowserType](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_link_web_browser_type.html).
   Returns object_ptr<LoginUrlInfo>.
 
   | Name | Type | Description |
@@ -14768,7 +14768,7 @@ defmodule GetSavedAnimations do
 end
 defmodule ToggleSavedMessagesTopicIsPinned do
   @moduledoc  """
-  Changes the pinned state of a Saved Messages topic. There can be up to getOption("pinned_saved_messages_topic_count_max") pinned topics. The limit can be increased with Telegram Premium.
+  Changes the pinned state of a Saved Messages topic. There can be up to [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("pinned_saved_messages_topic_count_max") pinned topics. The limit can be increased with Telegram Premium.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -14788,7 +14788,7 @@ defmodule SetApplicationVerificationToken do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | verification_id | int53 | Unique identifier for the verification process as received from <a class="el" href="classtd_1_1td__api_1_1update_application_verification_required.html">updateApplicationVerificationRequired</a> or <a class="el" href="classtd_1_1td__api_1_1update_application_recaptcha_verification_required.html">updateApplicationRecaptchaVerificationRequired</a>. |
+  | verification_id | int53 | Unique identifier for the verification process as received from [updateApplicationVerificationRequired](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_application_verification_required.html) or [updateApplicationRecaptchaVerificationRequired](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_application_recaptcha_verification_required.html). |
   | token | string | Play Integrity API token for the Android application, or secret from push notification for the iOS application for application verification, or reCAPTCHA token for reCAPTCHA verifications; pass an empty string to abort verification and receive the error "VERIFICATION_FAILED" for the request. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_application_verification_token.html).
@@ -14827,13 +14827,13 @@ defmodule SetSupergroupUnrestrictBoostCount do
 end
 defmodule ReportSupergroupAntiSpamFalsePositive do
   @moduledoc  """
-  Reports a false deletion of a message by aggressive anti-spam checks; requires administrator rights in the supergroup. Can be called only for messages from chatEventMessageDeleted with can_report_anti_spam_false_positive == true.
+  Reports a false deletion of a message by aggressive anti-spam checks; requires administrator rights in the supergroup. Can be called only for messages from [chatEventMessageDeleted](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_message_deleted.html) with can_report_anti_spam_false_positive == true.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
   |------|------| ------------|
   | supergroup_id | int53 | Supergroup identifier. |
-  | message_id | int53 | Identifier of the erroneously deleted message from <a class="el" href="classtd_1_1td__api_1_1chat_event_message_deleted.html">chatEventMessageDeleted</a>. |
+  | message_id | int53 | Identifier of the erroneously deleted message from [chatEventMessageDeleted](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_message_deleted.html). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_supergroup_anti_spam_false_positive.html).
   """
@@ -14907,7 +14907,7 @@ defmodule SetInlineGameScore do
 end
 defmodule SetVideoChatTitle do
   @moduledoc  """
-  Sets title of a video chat; requires groupCall.can_be_managed right.
+  Sets title of a video chat; requires [groupCall](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html).can_be_managed right.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |
@@ -15007,7 +15007,7 @@ defmodule GetReceivedGifts do
   | exclude_upgradable | bool | Pass true to exclude gifts that can be purchased limited number of times and can be upgraded. |
   | exclude_non_upgradable | bool | Pass true to exclude gifts that can be purchased limited number of times and can't be upgraded. |
   | exclude_upgraded | bool | Pass true to exclude upgraded gifts. |
-  | exclude_without_colors | bool | Pass true to exclude gifts that can't be used in <a class="el" href="classtd_1_1td__api_1_1set_upgraded_gift_colors.html">setUpgradedGiftColors</a>. |
+  | exclude_without_colors | bool | Pass true to exclude gifts that can't be used in [setUpgradedGiftColors](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_upgraded_gift_colors.html). |
   | exclude_hosted | bool | Pass true to exclude gifts that are just hosted and are not owned by the owner. |
   | sort_by_price | bool | Pass true to sort results by gift price instead of send date. |
   | offset | string | Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results. |
@@ -15026,8 +15026,8 @@ defmodule TranslateRichMessage do
   | Name | Type | Description |
   |------|------| ------------|
   | message | inputRichMessage | Rich message to translate. |
-  | to_language_code | string | Language code of the language to which the message is translated. See translateText.to_language_code for the list of supported values. |
-  | tone | string | Tone of the translation; see translateText.tone for the list of supported values. |
+  | to_language_code | string | Language code of the language to which the message is translated. See [translateText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_text.html).to_language_code for the list of supported values. |
+  | tone | string | Tone of the translation; see [translateText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_text.html).tone for the list of supported values. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_rich_message.html).
   """
@@ -15156,7 +15156,7 @@ defmodule GetMessage do
 end
 defmodule GetRepliedMessage do
   @moduledoc  """
-  Returns information about a non-bundled message that is replied by a given message. Also, returns the pinned message for messagePinMessage, the game message for messageGameScore, the invoice message for messagePaymentSuccessful, the message with a previously set same background for messageChatSetBackground, the giveaway message for messageGiveawayCompleted, the checklist message for messageChecklistTasksDone, messageChecklistTasksAdded, the message with suggested post information for messageSuggestedPostApprovalFailed, messageSuggestedPostApproved, messageSuggestedPostDeclined, messageSuggestedPostPaid, messageSuggestedPostRefunded, the message with the regular gift that was upgraded for messageUpgradedGift with origin of the type upgradedGiftOriginUpgrade, the message with gift purchase offer for messageUpgradedGiftPurchaseOfferRejected, the message with the request to disable content protection for messageChatHasProtectedContentToggled, the message with the poll for messagePollOptionAdded and messagePollOptionDeleted, and the topic creation message for topic messages without non-bundled replied message. Returns a 404 error if the message doesn't exist.
+  Returns information about a non-bundled message that is replied by a given message. Also, returns the pinned message for [messagePinMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_pin_message.html), the game message for [messageGameScore](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_game_score.html), the invoice message for [messagePaymentSuccessful](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_payment_successful.html), the message with a previously set same background for [messageChatSetBackground](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_set_background.html), the giveaway message for [messageGiveawayCompleted](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_giveaway_completed.html), the checklist message for [messageChecklistTasksDone](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_checklist_tasks_done.html), [messageChecklistTasksAdded](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_checklist_tasks_added.html), the message with suggested post information for [messageSuggestedPostApprovalFailed](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_suggested_post_approval_failed.html), [messageSuggestedPostApproved](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_suggested_post_approved.html), [messageSuggestedPostDeclined](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_suggested_post_declined.html), [messageSuggestedPostPaid](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_suggested_post_paid.html), [messageSuggestedPostRefunded](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_suggested_post_refunded.html), the message with the regular gift that was upgraded for [messageUpgradedGift](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_upgraded_gift.html) with origin of the type [upgradedGiftOriginUpgrade](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_origin_upgrade.html), the message with gift purchase offer for [messageUpgradedGiftPurchaseOfferRejected](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_upgraded_gift_purchase_offer_rejected.html), the message with the request to disable content protection for [messageChatHasProtectedContentToggled](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_has_protected_content_toggled.html), the message with the poll for [messagePollOptionAdded](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_poll_option_added.html) and [messagePollOptionDeleted](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_poll_option_deleted.html), and the topic creation message for topic messages without non-bundled replied message. Returns a 404 error if the message doesn't exist.
   Returns object_ptr<Message>.
 
   | Name | Type | Description |

@@ -28,7 +28,7 @@ defmodule TDLib.Mixfile do
 
   defp package() do
     [
-      files: ["lib/tdlib*", "Makefile", "mix.exs", "README*", "LICENSE*", "CHANGELOG.*"],
+      files: ["lib/tdlib*", "mix.exs", "README*", "LICENSE*", "CHANGELOG.*"],
       maintainers: ["Timothée Floure"],
       licenses: ["AGPL-3.0"],
       links: %{
@@ -51,14 +51,7 @@ defmodule TDLib.Mixfile do
   defp deps do
     [
       {:jason, "~> 1.4"},
-      {:elixir_make, "~> 0.4", runtime: false},
-      {:ex_doc, "~> 0.21", only: :dev, runtime: false},
-      {:tdlib_json_cli,
-        git: "https://github.com/PushSMS/tdlib-json-cli",
-        submodules: true,
-        app: false,
-        compile: false
-      }
+      {:ex_doc, "~> 0.21", only: :dev, runtime: false}
     ]
   end
 end
