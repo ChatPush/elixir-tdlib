@@ -35,7 +35,10 @@ download.
 
 To update TDLib, open a "TDLib update" issue with the commit of
 [tdlib/td](https://github.com/tdlib/td). The workflow builds the binaries,
-regenerates `TDLib.Object` and `TDLib.Method` and opens a pull request.
+regenerates `TDLib.Object` and `TDLib.Method` and opens a pull request. To
+ship a [tdlib-json-cli](https://github.com/ChatPush/tdlib-json-cli) change,
+fill in its branch and keep the td commit from `tdlib_binary.exs`. The release
+keeps the binaries, so merging that branch later does not require a rebuild.
 To test it before merging, point the dependency at the pull request branch
 (`branch: "tdlib-update/<short sha>"`) and run `mix deps.update tdlib`. After
 the merge, switch back to `branch: "master"` and run `mix deps.update tdlib`
