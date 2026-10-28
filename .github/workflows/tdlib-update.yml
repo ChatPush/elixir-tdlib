@@ -141,7 +141,7 @@ jobs:
       BINARY: tdlib_json_cli-${{ matrix.platform }}
     steps:
       - name: Checkout tdlib-json-cli
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: ChatPush/tdlib-json-cli
           ref: ${{ needs.resolve.outputs.cli_sha }}
@@ -197,7 +197,7 @@ jobs:
           grep -q '"event":"client_created"' smoke.log
           grep -q "\"value\":\"$VERSION\"" smoke.log
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: ${{ env.BINARY }}
           path: dist/${{ env.BINARY }}
@@ -209,7 +209,7 @@ jobs:
     env:
       SHA: ${{ needs.resolve.outputs.sha }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: erlef/setup-beam@v1
         with:
@@ -227,7 +227,7 @@ jobs:
       - name: Check generated code compiles
         run: mix compile --warnings-as-errors
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: types
           path: |
@@ -252,11 +252,11 @@ jobs:
       RELEASE_TAG: ${{ needs.resolve.outputs.release_tag }}
       DIST: ${{ github.workspace }}/../dist
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Download binaries
         if: needs.build.result == 'success'
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: tdlib_json_cli-*
           path: ${{ env.DIST }}
@@ -282,7 +282,7 @@ jobs:
       - name: Replace generated types
         run: rm -rf lib/tdlib/object lib/tdlib/method
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: types
           path: lib/tdlib
@@ -323,7 +323,7 @@ jobs:
 
       - name: Create pull request
         id: pr
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           branch: tdlib-update/${{ env.SHORT }}
           delete-branch: true
