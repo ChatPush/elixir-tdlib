@@ -208,6 +208,8 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       SHA: ${{ needs.resolve.outputs.sha }}
+      # The binary for this commit is built in parallel and not released yet
+      TDLIB_SKIP_BINARY_DOWNLOAD: "1"
     steps:
       - uses: actions/checkout@v7
 
