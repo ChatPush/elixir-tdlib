@@ -1,0 +1,32 @@
+# Tags every new version from mix.exs pushed to master: bump the version in a
+# PR, merge it, get a `vX.Y.Z` tag and a GitHub release.
+name: Release
+
+on:
+  push:
+    branches: [master]
+
+permissions:
+  contents: write
+
+jobs:
+  tag:
+    runs-on: ubuntu-22.04
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create tag and release
+        run: |
+          set -euo pipefail
+          version=$(sed -nE 's/^ +version: "([^"]+)".*/\1/p' mix.exs | head -n1)
+          tag="v$version"
+
+          if git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null; then
+            echo "$tag already exists"
+            exit 0
+          fi
+
+          gh release create "$tag" --target "$GITHUB_SHA" --title "$tag" --generate-notes --latest
