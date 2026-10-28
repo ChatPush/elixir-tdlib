@@ -5,9 +5,9 @@ defmodule TDLib.Mixfile do
     [
       app: :tdlib,
       version: "0.1.0",
-      elixir: "~> 1.5",
-      start_permanent: Mix.env == :prod,
-      compilers: Mix.compilers,
+      elixir: "~> 1.15",
+      start_permanent: Mix.env() == :prod,
+      compilers: Mix.compilers() ++ [:tdlib_binary],
       deps: deps(),
 
       # Hex
@@ -28,7 +28,15 @@ defmodule TDLib.Mixfile do
 
   defp package() do
     [
-      files: ["lib/tdlib*", "mix.exs", "README*", "LICENSE*", "CHANGELOG.*"],
+      files: [
+        "lib/tdlib*",
+        "lib/mix",
+        "mix.exs",
+        "tdlib_binary.exs",
+        "README*",
+        "LICENSE*",
+        "CHANGELOG.*"
+      ],
       maintainers: ["Timothée Floure"],
       licenses: ["AGPL-3.0"],
       links: %{

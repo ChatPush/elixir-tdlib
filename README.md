@@ -21,19 +21,21 @@ Add the following to your `mix.exs` :
 
 ```elixir
 def deps do
-  [{:tdlib, "~> 0.0.2"}]
+  [{:tdlib, github: "ChatPush/elixir-tdlib", tag: "v0.1.0"}]
 end
 ```
 
-Note that compiling this project will compile Telegram's TDLib (C++) itself,
-it's going to take a while and depends on the following :
+A prebuilt `tdlib_json_cli` binary (`linux-x86_64` or `macos-arm64`) is
+downloaded from the GitHub releases at compile time and checked against the
+sha256 in `tdlib_binary.exs`. It ends up in `priv/` of the `:tdlib` app, so
+`mix release` ships it. On other platforms, build
+[tdlib-json-cli](https://github.com/ChatPush/tdlib-json-cli) yourself and set
+the `:backend_binary` option. Set `TDLIB_SKIP_BINARY_DOWNLOAD=1` to skip the
+download.
 
- * C++14 compatible compiler (clang 3.4+, GCC 4.9+, MSVC 19.0+ (Visual Studio
-   2015+), Intel C++ Compiler 17+)
- * OpenSSL
- * zlib
- * gperf
- * CMake (3.0.2+)
+To update TDLib, open a "TDLib update" issue with the commit of
+[tdlib/td](https://github.com/tdlib/td). The workflow builds the binaries,
+regenerates `TDLib.Object` and `TDLib.Method` and opens a pull request.
 
 # Configuration
 
@@ -43,10 +45,10 @@ available :
 ```elixir
 # Disable automatic handling of authentification and directly forward the
 # incoming messages to the client
-config :telegram_tdlib, disable_handling: false
+config :tdlib, disable_handling: false
 
-# Override default path of the telegram-json-cli binary
-config :telegram_tdlib, backend_binary: "/path/to/my/binary"
+# Override the path of the downloaded tdlib_json_cli binary
+config :tdlib, backend_binary: "/path/to/my/binary"
 ```
 
 # Usage / Example
