@@ -11,8 +11,15 @@ body:
       placeholder: 0e88653
     validations:
       required: true
+  - type: input
+    id: cli_ref
+    attributes:
+      label: tdlib-json-cli ref
+      description: >-
+        Branch, tag or commit of https://github.com/ChatPush/tdlib-json-cli, master if empty.
+        To ship only a tdlib-json-cli fix, keep the td commit from tdlib_binary.exs.
+      placeholder: master
   - type: markdown
     attributes:
       value: |
         The [TDLib update workflow](../actions/workflows/tdlib-update.yml) reports progress in this issue: about 40 minutes for the build, then a link to the PR.
-        After the PR is merged, a `vX.Y.Z` tag is created automatically.

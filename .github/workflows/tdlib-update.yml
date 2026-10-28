@@ -2,8 +2,8 @@
 # TDLib.Method from its td_api.tl and opens a PR.
 #
 # Start it by opening an issue from the "TDLib update" template (it gets the
-# `tdlib-update` label), or run it by hand via workflow_dispatch, e.g. to
-# rebuild after a change in ChatPush/tdlib-json-cli's main.cpp.
+# `tdlib-update` label), or run it by hand via workflow_dispatch. Both take an
+# optional ChatPush/tdlib-json-cli ref, e.g. a branch with a main.cpp fix.
 name: TDLib update
 
 on:
@@ -67,15 +67,33 @@ jobs:
         id: resolve
         env:
           # Untrusted input, never interpolate it into the script directly.
-          ISSUE_TEXT: ${{ github.event.issue.title }} ${{ github.event.issue.body }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
           TD_COMMIT: ${{ inputs.td_commit }}
-          CLI_REF: ${{ inputs.cli_ref || 'master' }}
+          CLI_REF: ${{ inputs.cli_ref }}
         run: |
           set -euo pipefail
 
-          commit=$(printf '%s\n%s\n' "$TD_COMMIT" "$ISSUE_TEXT" | grep -oiE '\b[0-9a-f]{7,40}\b' | head -n1 || true)
+          # Value of an issue form field: the first non-empty line after "### <label>"
+          field() {
+            printf '%s\n' "$ISSUE_BODY" | tr -d '\r' |
+              awk -v h="### $1" '$0 == h { f = 1; next } /^### / { f = 0 } f && NF { print; exit }' |
+              grep -vx '_No response_' || true
+          }
+
+          # Issues not created from the template: look for a SHA anywhere
+          td_text=${TD_COMMIT:-$(field "td commit")}
+          td_text=${td_text:-$ISSUE_TITLE $ISSUE_BODY}
+          commit=$(printf '%s\n' "$td_text" | grep -oiE '\b[0-9a-f]{7,40}\b' | head -n1 || true)
           if [ -z "$commit" ]; then
             echo "::error::No tdlib/td commit SHA found"
+            exit 1
+          fi
+
+          cli_ref=${CLI_REF:-$(field "tdlib-json-cli ref")}
+          cli_ref=$(printf '%s' "${cli_ref:-master}" | tr -d '[:space:]')
+          if ! printf '%s' "$cli_ref" | grep -qE '^[A-Za-z0-9._/-]+$' || [[ "$cli_ref" == *..* ]]; then
+            echo "::error::Invalid tdlib-json-cli ref: $cli_ref"
             exit 1
           fi
 
@@ -86,7 +104,7 @@ jobs:
             echo "::error::No TDLib version in CMakeLists.txt of $sha"
             exit 1
           fi
-          cli_sha=$(gh api "repos/ChatPush/tdlib-json-cli/commits/$CLI_REF" --jq .sha)
+          cli_sha=$(gh api "repos/ChatPush/tdlib-json-cli/commits/$cli_ref" --jq .sha)
           release_tag="td-${sha:0:7}-cli-${cli_sha:0:7}"
 
           # The same sources were already built: reuse the binaries, so that
@@ -111,6 +129,7 @@ jobs:
         if: env.ISSUE != ''
         env:
           SHA: ${{ steps.resolve.outputs.sha }}
+          CLI_SHA: ${{ steps.resolve.outputs.cli_sha }}
           VERSION: ${{ steps.resolve.outputs.version }}
           RELEASE_EXISTS: ${{ steps.resolve.outputs.release_exists }}
         run: |
@@ -118,7 +137,7 @@ jobs:
           if [ "$RELEASE_EXISTS" = true ]; then
             note="Binaries for these commits already exist, only regenerating types."
           fi
-          gh issue comment "$ISSUE" --body "Started TDLib $VERSION ([\`${SHA:0:7}\`](https://github.com/tdlib/td/commit/$SHA)). $note [Run]($RUN_URL)"
+          gh issue comment "$ISSUE" --body "Started TDLib $VERSION ([tdlib/td@${SHA:0:7}](https://github.com/tdlib/td/commit/$SHA), [tdlib-json-cli@${CLI_SHA:0:7}](https://github.com/ChatPush/tdlib-json-cli/commit/$CLI_SHA)). $note [Run]($RUN_URL)"
 
   build:
     needs: resolve
@@ -327,15 +346,17 @@ jobs:
         id: pr
         uses: peter-evans/create-pull-request@v8
         with:
-          branch: tdlib-update/${{ env.SHORT }}
+          # One branch per td + tdlib-json-cli pair
+          branch: tdlib-update/${{ env.RELEASE_TAG }}
           delete-branch: true
-          commit-message: Update TDLib to ${{ env.VERSION }} (${{ env.SHORT }})
-          title: Update TDLib to ${{ env.VERSION }} (${{ env.SHORT }})
+          commit-message: Update TDLib to ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
+          title: Update TDLib to ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
           body: |
             Updates TDLib to ${{ env.VERSION }}: [tdlib/td@${{ env.SHORT }}](https://github.com/tdlib/td/commit/${{ env.SHA }}).
 
             * Binaries: [${{ env.RELEASE_TAG }}](${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ env.RELEASE_TAG }}), built from [ChatPush/tdlib-json-cli@${{ needs.resolve.outputs.cli_short }}](https://github.com/ChatPush/tdlib-json-cli/commit/${{ env.CLI_SHA }})
-            * Version: v${{ steps.update.outputs.new_version }}, the tag is created after merge
+            * Version: v${{ steps.update.outputs.new_version }}
+            * To test before merging: `{:tdlib, github: "${{ github.repository }}", branch: "tdlib-update/${{ env.RELEASE_TAG }}"}` and `mix deps.update tdlib`
             * [Workflow run](${{ env.RUN_URL }})
 
             ${{ env.ISSUE && format('Closes #{0}', env.ISSUE) || '' }}
