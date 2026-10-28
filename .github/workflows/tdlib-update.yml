@@ -1,0 +1,351 @@
+# Builds tdlib_json_cli for a tdlib/td commit, regenerates TDLib.Object and
+# TDLib.Method from its td_api.tl and opens a PR.
+#
+# Start it by opening an issue from the "TDLib update" template (it gets the
+# `tdlib-update` label), or run it by hand via workflow_dispatch, e.g. to
+# rebuild after a change in ChatPush/tdlib-json-cli's main.cpp.
+name: TDLib update
+
+on:
+  issues:
+    # Creating an issue with a label also fires `labeled`, so `opened` is not
+    # needed. Re-adding the label restarts the update.
+    types: [labeled]
+  workflow_dispatch:
+    inputs:
+      td_commit:
+        description: tdlib/td commit SHA (7-40 hex chars)
+        required: true
+      cli_ref:
+        description: ChatPush/tdlib-json-cli branch, tag or commit
+        default: master
+      issue:
+        description: Issue number to report progress to (optional)
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: tdlib-update
+  cancel-in-progress: false
+
+env:
+  GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
+  ISSUE: ${{ github.event.issue.number || inputs.issue }}
+  RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+jobs:
+  resolve:
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'tdlib-update'
+    runs-on: ubuntu-22.04
+    outputs:
+      sha: ${{ steps.resolve.outputs.sha }}
+      short: ${{ steps.resolve.outputs.short }}
+      version: ${{ steps.resolve.outputs.version }}
+      cli_sha: ${{ steps.resolve.outputs.cli_sha }}
+      cli_short: ${{ steps.resolve.outputs.cli_short }}
+      release_tag: ${{ steps.resolve.outputs.release_tag }}
+      release_exists: ${{ steps.resolve.outputs.release_exists }}
+    steps:
+      - name: Check permissions
+        if: github.event_name == 'issues'
+        env:
+          SENDER: ${{ github.event.sender.login }}
+        run: |
+          # The repo is public: anyone can open an issue from the template.
+          permission=$(gh api "repos/$GH_REPO/collaborators/$SENDER/permission" --jq .permission)
+          case "$permission" in
+            admin|maintain|write) ;;
+            *) echo "::error::$SENDER has no write access to $GH_REPO"; exit 1 ;;
+          esac
+
+      - name: Resolve commits
+        id: resolve
+        env:
+          # Untrusted input, never interpolate it into the script directly.
+          ISSUE_TEXT: ${{ github.event.issue.title }} ${{ github.event.issue.body }}
+          TD_COMMIT: ${{ inputs.td_commit }}
+          CLI_REF: ${{ inputs.cli_ref || 'master' }}
+        run: |
+          set -euo pipefail
+
+          commit=$(printf '%s\n%s\n' "$TD_COMMIT" "$ISSUE_TEXT" | grep -oiE '\b[0-9a-f]{7,40}\b' | head -n1 || true)
+          if [ -z "$commit" ]; then
+            echo "::error::No tdlib/td commit SHA found"
+            exit 1
+          fi
+
+          sha=$(gh api "repos/tdlib/td/commits/$commit" --jq .sha)
+          version=$(gh api "repos/tdlib/td/contents/CMakeLists.txt?ref=$sha" -H "Accept: application/vnd.github.raw" |
+            sed -nE 's/^project\(TDLib VERSION ([0-9.]+).*/\1/p')
+          if [ -z "$version" ]; then
+            echo "::error::No TDLib version in CMakeLists.txt of $sha"
+            exit 1
+          fi
+          cli_sha=$(gh api "repos/ChatPush/tdlib-json-cli/commits/$CLI_REF" --jq .sha)
+          release_tag="td-${sha:0:7}-cli-${cli_sha:0:7}"
+
+          # The same sources were already built: reuse the binaries, so that
+          # checksums in tdlib_binary.exs of older versions stay valid.
+          if gh release view "$release_tag" >/dev/null 2>&1; then
+            release_exists=true
+          else
+            release_exists=false
+          fi
+
+          {
+            echo "sha=$sha"
+            echo "short=${sha:0:7}"
+            echo "version=$version"
+            echo "cli_sha=$cli_sha"
+            echo "cli_short=${cli_sha:0:7}"
+            echo "release_tag=$release_tag"
+            echo "release_exists=$release_exists"
+          } | tee -a "$GITHUB_OUTPUT"
+
+      - name: Report start
+        if: env.ISSUE != ''
+        env:
+          SHA: ${{ steps.resolve.outputs.sha }}
+          VERSION: ${{ steps.resolve.outputs.version }}
+          RELEASE_EXISTS: ${{ steps.resolve.outputs.release_exists }}
+        run: |
+          note="Building tdlib_json_cli, takes about 40 minutes."
+          if [ "$RELEASE_EXISTS" = true ]; then
+            note="Binaries for these commits already exist, only regenerating types."
+          fi
+          gh issue comment "$ISSUE" --body "Started TDLib $VERSION ([\`${SHA:0:7}\`](https://github.com/tdlib/td/commit/$SHA)). $note [Run]($RUN_URL)"
+
+  build:
+    needs: resolve
+    if: needs.resolve.outputs.release_exists != 'true'
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-22.04 # same glibc as the production image (ubuntu:22.04)
+            platform: linux-x86_64
+            jobs: 4
+          - os: macos-14
+            platform: macos-arm64
+            jobs: 3 # the runner has 7 GB of RAM
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 150
+    env:
+      SHA: ${{ needs.resolve.outputs.sha }}
+      VERSION: ${{ needs.resolve.outputs.version }}
+      BINARY: tdlib_json_cli-${{ matrix.platform }}
+    steps:
+      - name: Checkout tdlib-json-cli
+        uses: actions/checkout@v4
+        with:
+          repository: ChatPush/tdlib-json-cli
+          ref: ${{ needs.resolve.outputs.cli_sha }}
+
+      - name: Checkout td
+        run: |
+          # The submodule is pinned to an old commit, fetch the requested one instead.
+          rm -rf td
+          git init -q td
+          git -C td fetch -q --depth 1 https://github.com/tdlib/td "$SHA"
+          git -C td checkout -q FETCH_HEAD
+
+      - name: Install dependencies (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gperf libssl-dev zlib1g-dev
+
+      - name: Install dependencies (macOS)
+        if: runner.os == 'macOS'
+        run: brew install gperf openssl@3
+
+      - name: Build
+        run: |
+          cmake_args=(-DCMAKE_BUILD_TYPE=Release)
+          if [ "$RUNNER_OS" = macOS ]; then
+            # Link OpenSSL statically, so that the binary does not need Homebrew.
+            cmake_args+=(-DOPENSSL_ROOT_DIR="$(brew --prefix openssl@3)" -DOPENSSL_USE_STATIC_LIBS=TRUE)
+          fi
+          cmake -S . -B build "${cmake_args[@]}"
+          cmake --build build --target tdlib_json_cli -j ${{ matrix.jobs }}
+          mkdir dist
+          cp build/bin/tdlib_json_cli "dist/$BINARY"
+
+      - name: Check linked libraries
+        run: |
+          if [ "$RUNNER_OS" = macOS ]; then
+            otool -L "dist/$BINARY"
+            if otool -L "dist/$BINARY" | grep -q /opt/homebrew; then
+              echo "::error::Binary depends on Homebrew libraries"
+              exit 1
+            fi
+          else
+            ldd "dist/$BINARY"
+          fi
+
+      - name: Smoke test
+        timeout-minutes: 2
+        run: |
+          { echo '{"@type":"getOption","name":"version"}'; sleep 10; echo exit; } | "dist/$BINARY" > smoke.log
+          cat smoke.log
+          grep -q '"event":"client_created"' smoke.log
+          grep -q "\"value\":\"$VERSION\"" smoke.log
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.BINARY }}
+          path: dist/${{ env.BINARY }}
+          if-no-files-found: error
+
+  generate:
+    needs: resolve
+    runs-on: ubuntu-22.04
+    env:
+      SHA: ${{ needs.resolve.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: erlef/setup-beam@v1
+        with:
+          # Keep in sync with .tool-versions
+          otp-version: "26.2.1"
+          elixir-version: "1.16.3"
+
+      - run: mix deps.get
+
+      - name: Generate types
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/td_api.tl" "https://raw.githubusercontent.com/tdlib/td/$SHA/td/generate/scheme/td_api.tl"
+          mix generate_types "$RUNNER_TEMP/td_api.tl"
+
+      - name: Check generated code compiles
+        run: mix compile --warnings-as-errors
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: types
+          path: |
+            lib/tdlib/object.ex
+            lib/tdlib/object/
+            lib/tdlib/method.ex
+            lib/tdlib/method/
+          if-no-files-found: error
+
+  publish:
+    needs: [resolve, build, generate]
+    # build is skipped when the release already exists
+    if: >-
+      !cancelled() && needs.resolve.result == 'success' && needs.generate.result == 'success' &&
+      (needs.build.result == 'success' || needs.build.result == 'skipped')
+    runs-on: ubuntu-22.04
+    env:
+      SHA: ${{ needs.resolve.outputs.sha }}
+      SHORT: ${{ needs.resolve.outputs.short }}
+      VERSION: ${{ needs.resolve.outputs.version }}
+      CLI_SHA: ${{ needs.resolve.outputs.cli_sha }}
+      RELEASE_TAG: ${{ needs.resolve.outputs.release_tag }}
+      DIST: ${{ github.workspace }}/../dist
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download binaries
+        if: needs.build.result == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          pattern: tdlib_json_cli-*
+          path: ${{ env.DIST }}
+          merge-multiple: true
+
+      - name: Create release
+        if: needs.build.result == 'success'
+        working-directory: ${{ env.DIST }}
+        run: |
+          shasum -a 256 tdlib_json_cli-* > SHA256SUMS
+          cat SHA256SUMS
+          gh release create "$RELEASE_TAG" tdlib_json_cli-* SHA256SUMS \
+            --prerelease --latest=false \
+            --title "tdlib_json_cli for TDLib $VERSION (${SHA:0:7})" \
+            --notes "Built from [tdlib/td@${SHA:0:7}](https://github.com/tdlib/td/commit/$SHA) and [ChatPush/tdlib-json-cli@${CLI_SHA:0:7}](https://github.com/ChatPush/tdlib-json-cli/commit/$CLI_SHA)."
+
+      - name: Download existing checksums
+        if: needs.build.result == 'skipped'
+        run: |
+          mkdir -p "$DIST"
+          gh release download "$RELEASE_TAG" --pattern SHA256SUMS --dir "$DIST"
+
+      - name: Replace generated types
+        run: rm -rf lib/tdlib/object lib/tdlib/method
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: types
+          path: lib/tdlib
+
+      - name: Update manifest, version and changelog
+        id: update
+        run: |
+          set -euo pipefail
+          sum() { awk -v f="tdlib_json_cli-$1" '$2 == f { print $1 }' "$DIST/SHA256SUMS"; }
+
+          cat > tdlib_binary.exs <<EOF
+          # Generated by .github/workflows/tdlib-update.yml, do not edit by hand.
+          %{
+            version: "$VERSION",
+            td_commit: "$SHA",
+            cli_commit: "$CLI_SHA",
+            release_tag: "$RELEASE_TAG",
+            sha256: %{
+              "linux-x86_64" => "$(sum linux-x86_64)",
+              "macos-arm64" => "$(sum macos-arm64)"
+            }
+          }
+          EOF
+
+          # Bump minor version: 0.1.2 -> 0.2.0
+          perl -pi -e 's/^(\s+version: ")(\d+)\.(\d+)\.\d+(")/$1.$2.".".($3+1).".0".$4/e' mix.exs
+          new_version=$(sed -nE 's/^ +version: "([^"]+)".*/\1/p' mix.exs | head -n1)
+          echo "new_version=$new_version" >> "$GITHUB_OUTPUT"
+
+          today=$(date -u +%F)
+          export ENTRY="## v$new_version ($today)
+
+          * Update TDLib to $VERSION ([tdlib/td@${SHA:0:7}](https://github.com/tdlib/td/commit/$SHA), [tdlib-json-cli@${CLI_SHA:0:7}](https://github.com/ChatPush/tdlib-json-cli/commit/$CLI_SHA))"
+          # Insert after the "# Changelog" header
+          perl -0pi -e 's/\n\n/\n\n$ENV{ENTRY}\n\n/' CHANGELOG.md
+
+          git status --short | head -n 50
+
+      - name: Create pull request
+        id: pr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: tdlib-update/${{ env.SHORT }}
+          delete-branch: true
+          commit-message: Update TDLib to ${{ env.VERSION }} (${{ env.SHORT }})
+          title: Update TDLib to ${{ env.VERSION }} (${{ env.SHORT }})
+          body: |
+            Updates TDLib to ${{ env.VERSION }}: [tdlib/td@${{ env.SHORT }}](https://github.com/tdlib/td/commit/${{ env.SHA }}).
+
+            * Binaries: [${{ env.RELEASE_TAG }}](${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ env.RELEASE_TAG }}), built from [ChatPush/tdlib-json-cli@${{ needs.resolve.outputs.cli_short }}](https://github.com/ChatPush/tdlib-json-cli/commit/${{ env.CLI_SHA }})
+            * Version: v${{ steps.update.outputs.new_version }}, the tag is created after merge
+            * [Workflow run](${{ env.RUN_URL }})
+
+            ${{ env.ISSUE && format('Closes #{0}', env.ISSUE) || '' }}
+
+      - name: Report pull request
+        if: env.ISSUE != ''
+        env:
+          PR_URL: ${{ steps.pr.outputs.pull-request-url }}
+        run: |
+          gh issue comment "$ISSUE" --body "Pull request is ready: $PR_URL"
+
+  report-failure:
+    needs: [resolve, build, generate, publish]
+    if: failure() && (github.event.issue.number || inputs.issue)
+    runs-on: ubuntu-22.04
+    steps:
+      - run: gh issue comment "$ISSUE" --body "TDLib update failed, see [the run]($RUN_URL)."
