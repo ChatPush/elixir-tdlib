@@ -3,8 +3,11 @@ defmodule Mix.Tasks.GenerateTypes do
 
   @shortdoc "Generates TDLib.Object and TDLib.Method from td_api.tl"
 
+  # One file per type, so that Elixir compiles them in parallel.
   @object_module "lib/tdlib/object.ex"
+  @object_dir "lib/tdlib/object"
   @method_module "lib/tdlib/method.ex"
+  @method_dir "lib/tdlib/method"
   @docs_url "https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1"
   @url_regex ~r{(?:https?|tg)://[^\s"]+}
 
@@ -122,8 +125,8 @@ defmodule Mix.Tasks.GenerateTypes do
 
   defp remove_old_modules() do
     IO.puts("Removing old modules...")
-    File.rm(@object_module)
-    File.rm(@method_module)
+    File.rm_rf!(@object_dir)
+    File.rm_rf!(@method_dir)
   end
 
   defp build_fields_string(list) do
@@ -166,8 +169,8 @@ defmodule Mix.Tasks.GenerateTypes do
     end
   end
 
-  defp build_type(key, json_type) do
-    module_name = build_module_name(key)
+  defp build_type(namespace, key, json_type) do
+    module_name = namespace <> "." <> build_module_name(key)
 
     %{"url" => url, "fields" => fields} = json_type
     # desc may not be present
@@ -199,51 +202,39 @@ defmodule Mix.Tasks.GenerateTypes do
       """
   end
 
-  defp generate_object_module(json, objects) do
-    IO.puts("Writing object module...")
-    fd = File.open!(@object_module, [:write])
+  defp generate_modules(namespace, module_file, dir, json, keys) do
+    IO.puts("Writing #{namespace} modules...")
 
-    # Write header
-    IO.write(fd, """
-    defmodule TDLib.Object do
+    File.write!(module_file, """
+    defmodule #{namespace} do
       @moduledoc \"""
       This module was generated using Telegram's TDLib documentation. It contains
-      #{Enum.count(objects)} submodules (= structs).
+      #{Enum.count(keys)} submodules (= structs).
       \"""
+    end
     """)
 
-    # Generate and write a new module for every object
-    for key <- objects do
-      json_object = Map.get(json, key)
-      IO.write(fd, build_type(key, json_object))
-    end
+    File.mkdir_p!(dir)
 
-    # Write footer
-    IO.write(fd, "end")
+    for key <- keys do
+      File.write!(Path.join(dir, file_name(key)), build_type(namespace, key, Map.get(json, key)))
+    end
   end
 
-  defp generate_method_module(json, methods) do
-    IO.puts("Writing method module...")
-    fd = File.open!(@method_module, [:write])
-
-    # Write header
-    IO.write(fd, """
-    defmodule TDLib.Method do
-      @moduledoc \"""
-      This module was generated using Telegram's TDLib documentation. It contains
-      #{Enum.count(methods)} submodules (= structs).
-      \"""
-    """)
-
-    # Generate and write a new module for every object
-    for key <- methods do
-      json_method = Map.get(json, key)
-      IO.write(fd, build_type(key, json_method))
+  # Abstract classes and constructors differ only in the first letter case
+  # ("AuthenticationCodeType" vs "authenticationCodeType..."), so file names
+  # must stay unique on case-insensitive file systems.
+  defp check_file_names!(keys) do
+    keys
+    |> Enum.group_by(&String.downcase(file_name(&1)))
+    |> Enum.filter(fn {_file, keys} -> length(keys) > 1 end)
+    |> case do
+      [] -> :ok
+      clashes -> Mix.raise("Types with clashing file names: #{inspect(clashes)}")
     end
-
-    # Write footer
-    IO.write(fd, "end")
   end
+
+  defp file_name(key), do: key |> build_module_name() |> Macro.underscore() |> Kernel.<>(".ex")
 
   defp build_module_name(string) do
     Macro.camelize(string)
@@ -258,9 +249,12 @@ defmodule Mix.Tasks.GenerateTypes do
     IO.puts("#{Enum.count(objects)} objects found.")
     IO.puts("#{Enum.count(methods)} methods found.")
 
+    check_file_names!(objects)
+    check_file_names!(methods)
+
     remove_old_modules()
-    generate_object_module(json, objects)
-    generate_method_module(json, methods)
+    generate_modules("TDLib.Object", @object_module, @object_dir, json, objects)
+    generate_modules("TDLib.Method", @method_module, @method_dir, json, methods)
 
     IO.puts("Everything looks fine. Bye!")
   end
