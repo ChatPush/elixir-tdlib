@@ -21,7 +21,7 @@ Add the following to your `mix.exs` :
 
 ```elixir
 def deps do
-  [{:tdlib, github: "ChatPush/elixir-tdlib", tag: "v0.1.0"}]
+  [{:tdlib, github: "ChatPush/elixir-tdlib", branch: "master"}]
 end
 ```
 
@@ -36,6 +36,10 @@ download.
 To update TDLib, open a "TDLib update" issue with the commit of
 [tdlib/td](https://github.com/tdlib/td). The workflow builds the binaries,
 regenerates `TDLib.Object` and `TDLib.Method` and opens a pull request.
+To test it before merging, point the dependency at the pull request branch
+(`branch: "tdlib-update/<short sha>"`) and run `mix deps.update tdlib`. After
+the merge, switch back to `branch: "master"` and run `mix deps.update tdlib`
+again.
 
 # Configuration
 
