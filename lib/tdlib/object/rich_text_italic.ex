@@ -1,0 +1,13 @@
+defmodule TDLib.Object.RichTextItalic do
+  @moduledoc  """
+  An italicized rich text.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | text | RichText | Text. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_italic.html).
+  """
+
+  defstruct "@type": "richTextItalic", "@extra": nil, text: nil
+end
