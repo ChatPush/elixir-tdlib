@@ -1,5 +1,9 @@
 # Changelog for elixir-tdlib
 
+## v0.1.0 (2026-10-28)
+
+* Update TDLib to 1.8.67 ([tdlib/td@bc9c263](https://github.com/tdlib/td/commit/bc9c263e2bfee06aaab41e82db51a103376030bc), [tdlib-json-cli@37238cc](https://github.com/ChatPush/tdlib-json-cli/commit/37238cc696771fd91808ff5afbaeed471facfcd5))
+
 ## v0.0.3 (2019-09-13)
 
 * Update tdlib-json-cli from v1.1.1 to v1.1.2
