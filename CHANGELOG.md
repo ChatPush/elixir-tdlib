@@ -2,7 +2,7 @@
 
 ## v0.2.0 (2026-10-29)
 
-* Update TDLib to 1.8.67 ([tdlib/td@bc9c263](https://github.com/tdlib/td/commit/bc9c263e2bfee06aaab41e82db51a103376030bc), [tdlib-json-cli@c321d91](https://github.com/ChatPush/tdlib-json-cli/commit/c321d9197f86a37e0986544e2ceb86c47b01d1e3))
+* Update TDLib to 1.8.67 ([tdlib/td@bc9c263](https://github.com/tdlib/td/commit/bc9c263e2bfee06aaab41e82db51a103376030bc), [cli@bf72474](https://github.com/ChatPush/elixir-tdlib/tree/bf72474c73d10dd295f00a3c2771a4431018d1cd/cli))
 * tdlib_json_cli closes TDLib before exiting, so restarts no longer corrupt `td.binlog`
 * Wait up to 35 seconds for tdlib_json_cli to close TDLib when a session stops
 * Prebuilt binary for Intel macOS (`macos-x86_64`)
