@@ -349,8 +349,8 @@ jobs:
           # One branch per td + cli/ pair
           branch: tdlib-update/${{ env.RELEASE_TAG }}
           delete-branch: true
-          commit-message: Обновить TDLib до ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
-          title: Обновить TDLib до ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
+          commit-message: Update TDLib to ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
+          title: Update TDLib to ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
           body: |
             Обновляет TDLib до ${{ env.VERSION }}: [tdlib/td@${{ env.SHORT }}](https://github.com/tdlib/td/commit/${{ env.SHA }}).
 
