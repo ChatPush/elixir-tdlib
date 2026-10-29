@@ -12,6 +12,10 @@ defmodule TDLib.Backend do
 
   @stderr_lines_limit 50
 
+  # How long terminate/2 waits for tdlib_json_cli to close TDLib and exit.
+  # Keep it below the shutdown of the backend child in TDLib.Session.
+  @close_timeout :timer.seconds(20)
+
   defstruct [:name, :port, :stderr_path, buffer: ""]
 
   def start_link(name) do
@@ -19,6 +23,11 @@ defmodule TDLib.Backend do
   end
 
   def init(name) do
+    # Without it the supervisor kills the backend on shutdown without calling
+    # terminate/2, the port closes and the session is gone while the CLI is
+    # still closing TDLib.
+    Process.flag(:trap_exit, true)
+
     binary = TDLib.get_backend_binary()
     stderr_path = stderr_file_path(name)
     port = open_cli_port(binary, stderr_path)
@@ -61,6 +70,15 @@ defmodule TDLib.Backend do
     {:stop, reason, %{state | port: nil, stderr_path: nil}}
   end
 
+  # The port is linked to the backend. A normal exit is reported by
+  # {:exit_status, _} above, any other one stops the backend as before
+  # trap_exit was set.
+  def handle_info({:EXIT, port, :normal}, %{port: port} = state), do: {:noreply, state}
+
+  def handle_info({:EXIT, port, reason}, %{port: port} = state) do
+    {:stop, reason, %{state | port: nil}}
+  end
+
   def handle_info({_from, {:data, data}}, state) do
     case data do
       {:eol, tail} ->
@@ -101,11 +119,7 @@ defmodule TDLib.Backend do
   end
 
   def terminate(_reason, %{port: port} = state) do
-    case Port.info(port) do
-      nil -> :ok
-      _result -> Port.close(port)
-    end
-
+    close_cli(state.name, port)
     cleanup_stderr_file(state.stderr_path)
     :ok
   end
@@ -119,6 +133,28 @@ defmodule TDLib.Backend do
       "exec #{shell_quote(binary)} #{shell_quote(verbosity)} 2>#{shell_quote(stderr_path)}"
 
     Port.open({:spawn_executable, "/bin/sh"}, @port_opts ++ [args: ["-c", cmd]])
+  end
+
+  # "exit" makes tdlib_json_cli close TDLib, which flushes its databases, and
+  # exit. Closing the port right away would leave the CLI running after the
+  # session is gone, while its files are copied or opened by a new session.
+  defp close_cli(name, port) do
+    Port.command(port, "exit\n")
+
+    receive do
+      {^port, {:exit_status, 0}} ->
+        :ok
+
+      {^port, {:exit_status, status}} ->
+        Logger.warning("#{name}: TDLib port exited with status #{status} while closing")
+    after
+      @close_timeout ->
+        Logger.warning("#{name}: TDLib did not close in #{@close_timeout} ms, closing the port")
+        Port.close(port)
+    end
+  rescue
+    # The port is already closed
+    ArgumentError -> :ok
   end
 
   defp shell_quote(value) do

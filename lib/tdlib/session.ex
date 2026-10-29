@@ -24,7 +24,9 @@ defmodule TDLib.Session do
         start: {Backend, :start_link, [name]},
         # Do not silently restart a dead CLI forever (e.g. corrupt td.binlog → SIGABRT).
         # Backend notifies client_pid and tears the session down on port exit.
-        restart: :temporary
+        restart: :temporary,
+        # Backend waits up to 20 seconds for the CLI to close TDLib on shutdown
+        shutdown: :timer.seconds(25)
       },
       %{
         id: :handler,
