@@ -14,12 +14,10 @@ defmodule Mix.Tasks.Compile.TdlibBinaryTest do
     assert TdlibBinary.platform({:win32, :nt}, ~c"win32") == nil
   end
 
-  test "manifest has checksums for supported platforms only" do
+  test "manifest has a checksum for every supported platform" do
     {manifest, _} = Code.eval_file("tdlib_binary.exs")
 
-    # Manifests built before macos-x86_64 was added have no checksum for it
-    assert "linux-x86_64" in Map.keys(manifest.sha256)
-    assert Map.keys(manifest.sha256) -- ["linux-x86_64", "macos-arm64", "macos-x86_64"] == []
+    assert Map.keys(manifest.sha256) == ["linux-x86_64", "macos-arm64", "macos-x86_64"]
     assert Enum.all?(Map.values(manifest.sha256), &(&1 =~ ~r/^[0-9a-f]{64}$/))
   end
 end
