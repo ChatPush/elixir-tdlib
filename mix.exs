@@ -4,7 +4,7 @@ defmodule TDLib.Mixfile do
   def project do
     [
       app: :tdlib,
-      version: "0.1.0",
+      version: "0.2.0",
       elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       compilers: Mix.compilers() ++ [:tdlib_binary],

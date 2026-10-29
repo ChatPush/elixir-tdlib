@@ -2,10 +2,11 @@
 %{
   version: "1.8.67",
   td_commit: "bc9c263e2bfee06aaab41e82db51a103376030bc",
-  cli_commit: "37238cc696771fd91808ff5afbaeed471facfcd5",
-  release_tag: "td-bc9c263-cli-37238cc",
+  cli_commit: "c321d9197f86a37e0986544e2ceb86c47b01d1e3",
+  release_tag: "td-bc9c263-cli-c321d91",
   sha256: %{
-    "linux-x86_64" => "f0ddc2f3a0dc225708a781c3183e5174767eb1f3a9db026600f546f4f0282ad5",
-    "macos-arm64" => "f2ed7e95a54fbf3b2e85eedc42c709db5553216f91a6aa866a3aa197c1cab5f9"
+    "linux-x86_64" => "73c24c301b652af2cf8d950466e4af7b006cdaa08374c213db16ccf2b5c268c1",
+    "macos-arm64" => "2998c7f272215e87d75b9e45538a548d0a566291940cf0a99ca0d072cbfd0c89",
+    "macos-x86_64" => "f99d0e1a10513d7e75814a5876d25d67463a86225c5073e5ca39b09e887f4fc1"
   }
 }
