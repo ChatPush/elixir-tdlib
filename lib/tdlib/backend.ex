@@ -13,8 +13,12 @@ defmodule TDLib.Backend do
   @stderr_lines_limit 50
 
   # How long terminate/2 waits for tdlib_json_cli to close TDLib and exit.
+  # The CLI waits up to 30 seconds for authorizationStateClosed and up to 1 more
+  # for its last lines (close_timeout and final_write_timeout in its main.cpp),
+  # keep it above their sum. Port.close/1 doesn't stop a CLI that is still
+  # closing: it keeps writing the databases after the session is gone.
   # Keep it below the shutdown of the backend child in TDLib.Session.
-  @close_timeout :timer.seconds(20)
+  @close_timeout :timer.seconds(35)
 
   defstruct [:name, :port, :stderr_path, buffer: ""]
 
