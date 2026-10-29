@@ -18,3 +18,7 @@ erl_crash.dump
 
 # Also ignore archive artifacts (built via "mix archive.build").
 *.ez
+
+# TDLib sources and the build of tdlib_json_cli, see cli/README.md
+/cli/td/
+/cli/build/
