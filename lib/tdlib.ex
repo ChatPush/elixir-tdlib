@@ -101,9 +101,11 @@ defmodule TDLib do
     app_name = Application.get_env(:tdlib, :app_name)
     binary_path = Application.get_env(:tdlib, :backend_binary)
 
-    case app_name do
-      nil -> binary_path
-      _ -> Path.join(Application.app_dir(app_name), binary_path)
+    cond do
+      # Downloaded by Mix.Tasks.Compile.TdlibBinary
+      binary_path == nil -> Application.app_dir(:tdlib, "priv/tdlib_json_cli")
+      app_name == nil -> binary_path
+      true -> Path.join(Application.app_dir(app_name), binary_path)
     end
   end
 

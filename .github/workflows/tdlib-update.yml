@@ -2,8 +2,9 @@
 # TDLib.Method from its td_api.tl and opens a PR.
 #
 # Start it by opening an issue from the "Обновление TDLib" template (it gets the
-# `tdlib-update` label), or run it by hand via workflow_dispatch. Both take an
-# optional ChatPush/tdlib-json-cli ref, e.g. a branch with a main.cpp fix.
+# `tdlib-update` label), or run it by hand via workflow_dispatch. cli/ is built
+# from the same commit the PR is based on: master for issues, the selected branch
+# for workflow_dispatch.
 name: TDLib update
 
 on:
@@ -16,9 +17,6 @@ on:
       td_commit:
         description: SHA коммита tdlib/td (7-40 hex-символов)
         required: true
-      cli_ref:
-        description: Ветка, тег или коммит ChatPush/tdlib-json-cli
-        default: master
       issue:
         description: Номер issue, куда писать ход работы (необязательно)
         required: false
@@ -46,8 +44,9 @@ jobs:
       sha: ${{ steps.resolve.outputs.sha }}
       short: ${{ steps.resolve.outputs.short }}
       version: ${{ steps.resolve.outputs.version }}
-      cli_sha: ${{ steps.resolve.outputs.cli_sha }}
+      cli_commit: ${{ steps.resolve.outputs.cli_commit }}
       cli_short: ${{ steps.resolve.outputs.cli_short }}
+      cli_tree: ${{ steps.resolve.outputs.cli_tree }}
       release_tag: ${{ steps.resolve.outputs.release_tag }}
       release_exists: ${{ steps.resolve.outputs.release_exists }}
     steps:
@@ -70,7 +69,6 @@ jobs:
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
           TD_COMMIT: ${{ inputs.td_commit }}
-          CLI_REF: ${{ inputs.cli_ref }}
         run: |
           set -euo pipefail
 
@@ -90,13 +88,6 @@ jobs:
             exit 1
           fi
 
-          cli_ref=${CLI_REF:-$(field "Ref tdlib-json-cli")}
-          cli_ref=$(printf '%s' "${cli_ref:-master}" | tr -d '[:space:]')
-          if ! printf '%s' "$cli_ref" | grep -qE '^[A-Za-z0-9._/-]+$' || [[ "$cli_ref" == *..* ]]; then
-            echo "::error::Некорректный ref tdlib-json-cli: $cli_ref"
-            exit 1
-          fi
-
           sha=$(gh api "repos/tdlib/td/commits/$commit" --jq .sha)
           version=$(gh api "repos/tdlib/td/contents/CMakeLists.txt?ref=$sha" -H "Accept: application/vnd.github.raw" |
             sed -nE 's/^project\(TDLib VERSION ([0-9.]+).*/\1/p')
@@ -104,8 +95,15 @@ jobs:
             echo "::error::Нет версии TDLib в CMakeLists.txt коммита $sha"
             exit 1
           fi
-          cli_sha=$(gh api "repos/ChatPush/tdlib-json-cli/commits/$cli_ref" --jq .sha)
-          release_tag="td-${sha:0:7}-cli-${cli_sha:0:7}"
+          cli_commit=$GITHUB_SHA
+          # The hash of cli/ changes only with its contents, so commits that
+          # touch only the Elixir code, or merge cli/ unchanged, keep the tag.
+          cli_tree=$(gh api "repos/$GH_REPO/git/trees/$cli_commit" --jq '.tree[] | select(.path == "cli") | .sha')
+          if [ -z "$cli_tree" ]; then
+            echo "::error::Нет каталога cli/ в коммите $cli_commit"
+            exit 1
+          fi
+          release_tag="td-${sha:0:7}-cli-${cli_tree:0:7}"
 
           # The same sources were already built: reuse the binaries, so that
           # checksums in tdlib_binary.exs of older versions stay valid.
@@ -119,8 +117,9 @@ jobs:
             echo "sha=$sha"
             echo "short=${sha:0:7}"
             echo "version=$version"
-            echo "cli_sha=$cli_sha"
-            echo "cli_short=${cli_sha:0:7}"
+            echo "cli_commit=$cli_commit"
+            echo "cli_short=${cli_commit:0:7}"
+            echo "cli_tree=$cli_tree"
             echo "release_tag=$release_tag"
             echo "release_exists=$release_exists"
           } | tee -a "$GITHUB_OUTPUT"
@@ -129,7 +128,7 @@ jobs:
         if: env.ISSUE != ''
         env:
           SHA: ${{ steps.resolve.outputs.sha }}
-          CLI_SHA: ${{ steps.resolve.outputs.cli_sha }}
+          CLI_COMMIT: ${{ steps.resolve.outputs.cli_commit }}
           VERSION: ${{ steps.resolve.outputs.version }}
           RELEASE_EXISTS: ${{ steps.resolve.outputs.release_exists }}
         run: |
@@ -137,7 +136,7 @@ jobs:
           if [ "$RELEASE_EXISTS" = true ]; then
             note="Бинарники для этих коммитов уже есть, только перегенерирую типы."
           fi
-          gh issue comment "$ISSUE" --body "Запущено обновление TDLib $VERSION ([tdlib/td@${SHA:0:7}](https://github.com/tdlib/td/commit/$SHA), [tdlib-json-cli@${CLI_SHA:0:7}](https://github.com/ChatPush/tdlib-json-cli/commit/$CLI_SHA)). $note [Запуск]($RUN_URL)"
+          gh issue comment "$ISSUE" --body "Запущено обновление TDLib $VERSION ([tdlib/td@${SHA:0:7}](https://github.com/tdlib/td/commit/$SHA), [cli@${CLI_COMMIT:0:7}](https://github.com/$GH_REPO/tree/$CLI_COMMIT/cli)). $note [Запуск]($RUN_URL)"
 
   build:
     needs: resolve
@@ -162,19 +161,13 @@ jobs:
       VERSION: ${{ needs.resolve.outputs.version }}
       BINARY: tdlib_json_cli-${{ matrix.platform }}
     steps:
-      - name: Checkout tdlib-json-cli
-        uses: actions/checkout@v7
-        with:
-          repository: ChatPush/tdlib-json-cli
-          ref: ${{ needs.resolve.outputs.cli_sha }}
+      - uses: actions/checkout@v7
 
       - name: Checkout td
         run: |
-          # The submodule is pinned to an old commit, fetch the requested one instead.
-          rm -rf td
-          git init -q td
-          git -C td fetch -q --depth 1 https://github.com/tdlib/td "$SHA"
-          git -C td checkout -q FETCH_HEAD
+          git init -q cli/td
+          git -C cli/td fetch -q --depth 1 https://github.com/tdlib/td "$SHA"
+          git -C cli/td checkout -q FETCH_HEAD
 
       - name: Install dependencies (Linux)
         if: runner.os == 'Linux'
@@ -188,16 +181,16 @@ jobs:
 
       - name: Build
         run: |
-          # tdlib-json-cli requires CMake 3.1, which CMake 4 (macos-14) refuses without this
+          # cli/CMakeLists.txt requires CMake 3.1, which CMake 4 (macos-14) refuses without this
           cmake_args=(-DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5)
           if [ "$RUNNER_OS" = macOS ]; then
             # Link OpenSSL statically, so that the binary does not need Homebrew.
             cmake_args+=(-DOPENSSL_ROOT_DIR="$(brew --prefix openssl@3)" -DOPENSSL_USE_STATIC_LIBS=TRUE)
           fi
-          cmake -S . -B build "${cmake_args[@]}"
-          cmake --build build --target tdlib_json_cli -j ${{ matrix.jobs }}
+          cmake -S cli -B cli/build "${cmake_args[@]}"
+          cmake --build cli/build --target tdlib_json_cli -j ${{ matrix.jobs }}
           mkdir dist
-          cp build/bin/tdlib_json_cli "dist/$BINARY"
+          cp cli/build/bin/tdlib_json_cli "dist/$BINARY"
 
       - name: Check linked libraries
         run: |
@@ -273,7 +266,8 @@ jobs:
       SHA: ${{ needs.resolve.outputs.sha }}
       SHORT: ${{ needs.resolve.outputs.short }}
       VERSION: ${{ needs.resolve.outputs.version }}
-      CLI_SHA: ${{ needs.resolve.outputs.cli_sha }}
+      CLI_COMMIT: ${{ needs.resolve.outputs.cli_commit }}
+      CLI_TREE: ${{ needs.resolve.outputs.cli_tree }}
       RELEASE_TAG: ${{ needs.resolve.outputs.release_tag }}
       DIST: ${{ github.workspace }}/../dist
     steps:
@@ -296,7 +290,7 @@ jobs:
           gh release create "$RELEASE_TAG" tdlib_json_cli-* SHA256SUMS \
             --prerelease --latest=false \
             --title "tdlib_json_cli для TDLib $VERSION (${SHA:0:7})" \
-            --notes "Собрано из [tdlib/td@${SHA:0:7}](https://github.com/tdlib/td/commit/$SHA) и [ChatPush/tdlib-json-cli@${CLI_SHA:0:7}](https://github.com/ChatPush/tdlib-json-cli/commit/$CLI_SHA)."
+            --notes "Собрано из [tdlib/td@${SHA:0:7}](https://github.com/tdlib/td/commit/$SHA) и [cli@${CLI_COMMIT:0:7}](https://github.com/$GH_REPO/tree/$CLI_COMMIT/cli)."
 
       - name: Download existing checksums
         if: needs.build.result == 'skipped'
@@ -323,7 +317,8 @@ jobs:
           %{
             version: "$VERSION",
             td_commit: "$SHA",
-            cli_commit: "$CLI_SHA",
+            cli_commit: "$CLI_COMMIT",
+            cli_tree: "$CLI_TREE",
             release_tag: "$RELEASE_TAG",
             sha256: %{
               "linux-x86_64" => "$(sum linux-x86_64)",
@@ -341,7 +336,7 @@ jobs:
           today=$(date -u +%F)
           export ENTRY="## v$new_version ($today)
 
-          * Update TDLib to $VERSION ([tdlib/td@${SHA:0:7}](https://github.com/tdlib/td/commit/$SHA), [tdlib-json-cli@${CLI_SHA:0:7}](https://github.com/ChatPush/tdlib-json-cli/commit/$CLI_SHA))"
+          * Update TDLib to $VERSION ([tdlib/td@${SHA:0:7}](https://github.com/tdlib/td/commit/$SHA), [cli@${CLI_COMMIT:0:7}](https://github.com/$GH_REPO/tree/$CLI_COMMIT/cli))"
           # Insert after the "# Changelog" header
           perl -0pi -e 's/\n\n/\n\n$ENV{ENTRY}\n\n/' CHANGELOG.md
 
@@ -351,15 +346,15 @@ jobs:
         id: pr
         uses: peter-evans/create-pull-request@v8
         with:
-          # One branch per td + tdlib-json-cli pair
+          # One branch per td + cli/ pair
           branch: tdlib-update/${{ env.RELEASE_TAG }}
           delete-branch: true
-          commit-message: Обновить TDLib до ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
-          title: Обновить TDLib до ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
+          commit-message: Update TDLib to ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
+          title: Update TDLib to ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
           body: |
             Обновляет TDLib до ${{ env.VERSION }}: [tdlib/td@${{ env.SHORT }}](https://github.com/tdlib/td/commit/${{ env.SHA }}).
 
-            * Бинарники: [${{ env.RELEASE_TAG }}](${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ env.RELEASE_TAG }}), собраны из [ChatPush/tdlib-json-cli@${{ needs.resolve.outputs.cli_short }}](https://github.com/ChatPush/tdlib-json-cli/commit/${{ env.CLI_SHA }})
+            * Бинарники: [${{ env.RELEASE_TAG }}](${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ env.RELEASE_TAG }}), собраны из [cli@${{ needs.resolve.outputs.cli_short }}](${{ github.server_url }}/${{ github.repository }}/tree/${{ env.CLI_COMMIT }}/cli)
             * Версия: v${{ steps.update.outputs.new_version }}
             * Проверить до мержа: `{:tdlib, github: "${{ github.repository }}", branch: "tdlib-update/${{ env.RELEASE_TAG }}"}` и `mix deps.update tdlib`
             * [Запуск workflow](${{ env.RUN_URL }})
