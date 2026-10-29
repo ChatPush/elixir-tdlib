@@ -10,11 +10,11 @@ import Config
 
 # You can configure your application as:
 #
-#     config :telegram_tdlib, key: :value
+#     config :tdlib, key: :value
 #
 # and access this configuration in your application as:
 #
-#     Application.get_env(:telegram_tdlib, :key)
+#     Application.get_env(:tdlib, :key)
 #
 # You can also configure a 3rd-party app:
 #

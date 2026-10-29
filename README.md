@@ -26,10 +26,11 @@ end
 ```
 
 A prebuilt `tdlib_json_cli` binary (`linux-x86_64`, `macos-arm64` or
-`macos-x86_64`) is
-downloaded from the GitHub releases at compile time and checked against the
-sha256 in `tdlib_binary.exs`. It ends up in `priv/` of the `:tdlib` app, so
-`mix release` ships it. On other platforms, build
+`macos-x86_64`) is downloaded from the GitHub releases at compile time and
+checked against the sha256 in `tdlib_binary.exs`. It ends up in `priv/` of the
+`:tdlib` app, so `mix release` ships it. The Linux binary is built on Ubuntu
+22.04 and needs glibc 2.35 or newer. On other platforms, including musl-based
+Linux (Alpine), build
 [tdlib-json-cli](https://github.com/ChatPush/tdlib-json-cli) yourself and set
 the `:backend_binary` option. Set `TDLIB_SKIP_BINARY_DOWNLOAD=1` to skip the
 download.

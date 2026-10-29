@@ -6,7 +6,8 @@ defmodule Mix.Tasks.Compile.TdlibBinary do
   into `priv/tdlib_json_cli` of the build directory, so it ends up in releases.
 
   The binary is published by `.github/workflows/tdlib-update.yml` for
-  `linux-x86_64`, `macos-arm64` and `macos-x86_64`. On other platforms, or when
+  `linux-x86_64` (glibc 2.35+), `macos-arm64` and `macos-x86_64`. On other
+  platforms, including musl-based Linux (Alpine), or when
   `tdlib_binary.exs` has no checksum for the platform, the download is skipped
   and the binary has to be provided via the `:backend_binary` config.
 
@@ -59,7 +60,11 @@ defmodule Mix.Tasks.Compile.TdlibBinary do
   @doc false
   def platform({:unix, :darwin}, ~c"aarch64-" ++ _), do: "macos-arm64"
   def platform({:unix, :darwin}, ~c"x86_64-" ++ _), do: "macos-x86_64"
-  def platform({:unix, :linux}, ~c"x86_64-" ++ _), do: "linux-x86_64"
+  # Built on Ubuntu 22.04 against glibc, it doesn't run on musl (Alpine).
+  def platform({:unix, :linux}, ~c"x86_64-" ++ _ = arch) do
+    if List.to_string(arch) =~ "-linux-gnu", do: "linux-x86_64"
+  end
+
   def platform(_os, _arch), do: nil
 
   defp read_manifest do
@@ -74,6 +79,8 @@ defmodule Mix.Tasks.Compile.TdlibBinary do
     path = binary_path()
 
     if File.exists?(path) and file_sha256(path) == sha256 do
+      # The file may have been copied without the executable bit
+      File.chmod!(path, 0o755)
       {:noop, []}
     else
       url = "#{@release_url}/#{release_tag}/tdlib_json_cli-#{platform}"

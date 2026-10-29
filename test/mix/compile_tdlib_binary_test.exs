@@ -11,6 +11,7 @@ defmodule Mix.Tasks.Compile.TdlibBinaryTest do
 
   test "returns nil for platforms without a prebuilt binary" do
     assert TdlibBinary.platform({:unix, :linux}, ~c"aarch64-unknown-linux-gnu") == nil
+    assert TdlibBinary.platform({:unix, :linux}, ~c"x86_64-pc-linux-musl") == nil
     assert TdlibBinary.platform({:win32, :nt}, ~c"win32") == nil
   end
 

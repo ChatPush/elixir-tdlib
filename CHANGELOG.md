@@ -6,6 +6,7 @@
 * tdlib_json_cli closes TDLib before exiting, so restarts no longer corrupt `td.binlog`
 * Wait up to 20 seconds for tdlib_json_cli to close TDLib when a session stops
 * Prebuilt binary for Intel macOS (`macos-x86_64`)
+* No prebuilt binary for musl-based Linux (Alpine), the Linux one needs glibc 2.35+
 
 ## v0.1.0 (2026-10-28)
 
