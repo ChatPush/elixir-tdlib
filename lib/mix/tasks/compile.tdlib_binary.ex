@@ -6,7 +6,8 @@ defmodule Mix.Tasks.Compile.TdlibBinary do
   into `priv/tdlib_json_cli` of the build directory, so it ends up in releases.
 
   The binary is published by `.github/workflows/tdlib-update.yml` for
-  `linux-x86_64` and `macos-arm64`. On other platforms the download is skipped
+  `linux-x86_64`, `macos-arm64` and `macos-x86_64`. On other platforms, or when
+  `tdlib_binary.exs` has no checksum for the platform, the download is skipped
   and the binary has to be provided via the `:backend_binary` config.
 
   Set `TDLIB_SKIP_BINARY_DOWNLOAD=1` to skip the download (e.g. in tests that
@@ -29,18 +30,27 @@ defmodule Mix.Tasks.Compile.TdlibBinary do
         {:noop, []}
 
       platform = platform(:os.type(), :erlang.system_info(:system_architecture)) ->
-        ensure_binary(read_manifest(), platform)
+        manifest = read_manifest()
+
+        case manifest.sha256[platform] do
+          nil -> warn_no_binary()
+          sha256 -> ensure_binary(manifest.release_tag, platform, sha256)
+        end
 
       true ->
-        Mix.shell().info([
-          :yellow,
-          "warning: no prebuilt tdlib_json_cli for #{:erlang.system_info(:system_architecture)}, " <>
-            "set the :backend_binary config of :tdlib",
-          :reset
-        ])
-
-        {:noop, []}
+        warn_no_binary()
     end
+  end
+
+  defp warn_no_binary do
+    Mix.shell().info([
+      :yellow,
+      "warning: no prebuilt tdlib_json_cli for #{:erlang.system_info(:system_architecture)}, " <>
+        "set the :backend_binary config of :tdlib",
+      :reset
+    ])
+
+    {:noop, []}
   end
 
   @doc false
@@ -48,6 +58,7 @@ defmodule Mix.Tasks.Compile.TdlibBinary do
 
   @doc false
   def platform({:unix, :darwin}, ~c"aarch64-" ++ _), do: "macos-arm64"
+  def platform({:unix, :darwin}, ~c"x86_64-" ++ _), do: "macos-x86_64"
   def platform({:unix, :linux}, ~c"x86_64-" ++ _), do: "linux-x86_64"
   def platform(_os, _arch), do: nil
 
@@ -59,14 +70,13 @@ defmodule Mix.Tasks.Compile.TdlibBinary do
     |> elem(0)
   end
 
-  defp ensure_binary(manifest, platform) do
+  defp ensure_binary(release_tag, platform, sha256) do
     path = binary_path()
-    sha256 = Map.fetch!(manifest.sha256, platform)
 
     if File.exists?(path) and file_sha256(path) == sha256 do
       {:noop, []}
     else
-      url = "#{@release_url}/#{manifest.release_tag}/tdlib_json_cli-#{platform}"
+      url = "#{@release_url}/#{release_tag}/tdlib_json_cli-#{platform}"
       Mix.shell().info("Downloading #{url}")
       binary = download!(url)
 

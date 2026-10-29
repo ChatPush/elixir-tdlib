@@ -1,25 +1,25 @@
-name: TDLib update
-description: Build tdlib_json_cli for a tdlib/td commit, regenerate types and open a PR
-title: "Update TDLib"
+name: Обновление TDLib
+description: Собрать tdlib_json_cli для коммита tdlib/td, перегенерировать типы и открыть PR
+title: "Обновить TDLib"
 labels: [tdlib-update]
 body:
   - type: input
     id: td_commit
     attributes:
-      label: td commit
-      description: Commit SHA from https://github.com/tdlib/td/commits/master (7-40 characters)
+      label: Коммит td
+      description: SHA коммита из https://github.com/tdlib/td/commits/master (7-40 символов)
       placeholder: 0e88653
     validations:
       required: true
   - type: input
     id: cli_ref
     attributes:
-      label: tdlib-json-cli ref
+      label: Ref tdlib-json-cli
       description: >-
-        Branch, tag or commit of https://github.com/ChatPush/tdlib-json-cli, master if empty.
-        To ship only a tdlib-json-cli fix, keep the td commit from tdlib_binary.exs.
+        Ветка, тег или коммит https://github.com/ChatPush/tdlib-json-cli, если пусто — master.
+        Чтобы выпустить только правку tdlib-json-cli, оставьте коммит td из tdlib_binary.exs.
       placeholder: master
   - type: markdown
     attributes:
       value: |
-        The [TDLib update workflow](../actions/workflows/tdlib-update.yml) reports progress in this issue: about 40 minutes for the build, then a link to the PR.
+        [Workflow обновления TDLib](../actions/workflows/tdlib-update.yml) пишет ход работы в этот issue: около 40 минут на сборку, затем ссылка на PR.

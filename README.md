@@ -25,7 +25,8 @@ def deps do
 end
 ```
 
-A prebuilt `tdlib_json_cli` binary (`linux-x86_64` or `macos-arm64`) is
+A prebuilt `tdlib_json_cli` binary (`linux-x86_64`, `macos-arm64` or
+`macos-x86_64`) is
 downloaded from the GitHub releases at compile time and checked against the
 sha256 in `tdlib_binary.exs`. It ends up in `priv/` of the `:tdlib` app, so
 `mix release` ships it. On other platforms, build
@@ -33,7 +34,7 @@ sha256 in `tdlib_binary.exs`. It ends up in `priv/` of the `:tdlib` app, so
 the `:backend_binary` option. Set `TDLIB_SKIP_BINARY_DOWNLOAD=1` to skip the
 download.
 
-To update TDLib, open a "TDLib update" issue with the commit of
+To update TDLib, open an "Обновление TDLib" issue with the commit of
 [tdlib/td](https://github.com/tdlib/td). The workflow builds the binaries,
 regenerates `TDLib.Object` and `TDLib.Method` and opens a pull request. To
 ship a [tdlib-json-cli](https://github.com/ChatPush/tdlib-json-cli) change,

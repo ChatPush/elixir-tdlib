@@ -1,7 +1,7 @@
 # Builds tdlib_json_cli for a tdlib/td commit, regenerates TDLib.Object and
 # TDLib.Method from its td_api.tl and opens a PR.
 #
-# Start it by opening an issue from the "TDLib update" template (it gets the
+# Start it by opening an issue from the "Обновление TDLib" template (it gets the
 # `tdlib-update` label), or run it by hand via workflow_dispatch. Both take an
 # optional ChatPush/tdlib-json-cli ref, e.g. a branch with a main.cpp fix.
 name: TDLib update
@@ -14,13 +14,13 @@ on:
   workflow_dispatch:
     inputs:
       td_commit:
-        description: tdlib/td commit SHA (7-40 hex chars)
+        description: SHA коммита tdlib/td (7-40 hex-символов)
         required: true
       cli_ref:
-        description: ChatPush/tdlib-json-cli branch, tag or commit
+        description: Ветка, тег или коммит ChatPush/tdlib-json-cli
         default: master
       issue:
-        description: Issue number to report progress to (optional)
+        description: Номер issue, куда писать ход работы (необязательно)
         required: false
 
 permissions:
@@ -60,7 +60,7 @@ jobs:
           permission=$(gh api "repos/$GH_REPO/collaborators/$SENDER/permission" --jq .permission)
           case "$permission" in
             admin|maintain|write) ;;
-            *) echo "::error::$SENDER has no write access to $GH_REPO"; exit 1 ;;
+            *) echo "::error::У $SENDER нет прав на запись в $GH_REPO"; exit 1 ;;
           esac
 
       - name: Resolve commits
@@ -82,18 +82,18 @@ jobs:
           }
 
           # Issues not created from the template: look for a SHA anywhere
-          td_text=${TD_COMMIT:-$(field "td commit")}
+          td_text=${TD_COMMIT:-$(field "Коммит td")}
           td_text=${td_text:-$ISSUE_TITLE $ISSUE_BODY}
           commit=$(printf '%s\n' "$td_text" | grep -oiE '\b[0-9a-f]{7,40}\b' | head -n1 || true)
           if [ -z "$commit" ]; then
-            echo "::error::No tdlib/td commit SHA found"
+            echo "::error::Не найден SHA коммита tdlib/td"
             exit 1
           fi
 
-          cli_ref=${CLI_REF:-$(field "tdlib-json-cli ref")}
+          cli_ref=${CLI_REF:-$(field "Ref tdlib-json-cli")}
           cli_ref=$(printf '%s' "${cli_ref:-master}" | tr -d '[:space:]')
           if ! printf '%s' "$cli_ref" | grep -qE '^[A-Za-z0-9._/-]+$' || [[ "$cli_ref" == *..* ]]; then
-            echo "::error::Invalid tdlib-json-cli ref: $cli_ref"
+            echo "::error::Некорректный ref tdlib-json-cli: $cli_ref"
             exit 1
           fi
 
@@ -101,7 +101,7 @@ jobs:
           version=$(gh api "repos/tdlib/td/contents/CMakeLists.txt?ref=$sha" -H "Accept: application/vnd.github.raw" |
             sed -nE 's/^project\(TDLib VERSION ([0-9.]+).*/\1/p')
           if [ -z "$version" ]; then
-            echo "::error::No TDLib version in CMakeLists.txt of $sha"
+            echo "::error::Нет версии TDLib в CMakeLists.txt коммита $sha"
             exit 1
           fi
           cli_sha=$(gh api "repos/ChatPush/tdlib-json-cli/commits/$cli_ref" --jq .sha)
@@ -133,11 +133,11 @@ jobs:
           VERSION: ${{ steps.resolve.outputs.version }}
           RELEASE_EXISTS: ${{ steps.resolve.outputs.release_exists }}
         run: |
-          note="Building tdlib_json_cli, takes about 40 minutes."
+          note="Собираю tdlib_json_cli, это около 40 минут."
           if [ "$RELEASE_EXISTS" = true ]; then
-            note="Binaries for these commits already exist, only regenerating types."
+            note="Бинарники для этих коммитов уже есть, только перегенерирую типы."
           fi
-          gh issue comment "$ISSUE" --body "Started TDLib $VERSION ([tdlib/td@${SHA:0:7}](https://github.com/tdlib/td/commit/$SHA), [tdlib-json-cli@${CLI_SHA:0:7}](https://github.com/ChatPush/tdlib-json-cli/commit/$CLI_SHA)). $note [Run]($RUN_URL)"
+          gh issue comment "$ISSUE" --body "Запущено обновление TDLib $VERSION ([tdlib/td@${SHA:0:7}](https://github.com/tdlib/td/commit/$SHA), [tdlib-json-cli@${CLI_SHA:0:7}](https://github.com/ChatPush/tdlib-json-cli/commit/$CLI_SHA)). $note [Запуск]($RUN_URL)"
 
   build:
     needs: resolve
@@ -152,6 +152,9 @@ jobs:
           - os: macos-14
             platform: macos-arm64
             jobs: 3 # the runner has 7 GB of RAM
+          - os: macos-15-intel
+            platform: macos-x86_64
+            jobs: 3
     runs-on: ${{ matrix.os }}
     timeout-minutes: 150
     env:
@@ -200,8 +203,9 @@ jobs:
         run: |
           if [ "$RUNNER_OS" = macOS ]; then
             otool -L "dist/$BINARY"
-            if otool -L "dist/$BINARY" | grep -q /opt/homebrew; then
-              echo "::error::Binary depends on Homebrew libraries"
+            # Homebrew lives in /opt/homebrew on arm64 and in /usr/local on Intel
+            if otool -L "dist/$BINARY" | grep -qE '/opt/homebrew|/usr/local'; then
+              echo "::error::Бинарник зависит от библиотек Homebrew"
               exit 1
             fi
           else
@@ -291,8 +295,8 @@ jobs:
           cat SHA256SUMS
           gh release create "$RELEASE_TAG" tdlib_json_cli-* SHA256SUMS \
             --prerelease --latest=false \
-            --title "tdlib_json_cli for TDLib $VERSION (${SHA:0:7})" \
-            --notes "Built from [tdlib/td@${SHA:0:7}](https://github.com/tdlib/td/commit/$SHA) and [ChatPush/tdlib-json-cli@${CLI_SHA:0:7}](https://github.com/ChatPush/tdlib-json-cli/commit/$CLI_SHA)."
+            --title "tdlib_json_cli для TDLib $VERSION (${SHA:0:7})" \
+            --notes "Собрано из [tdlib/td@${SHA:0:7}](https://github.com/tdlib/td/commit/$SHA) и [ChatPush/tdlib-json-cli@${CLI_SHA:0:7}](https://github.com/ChatPush/tdlib-json-cli/commit/$CLI_SHA)."
 
       - name: Download existing checksums
         if: needs.build.result == 'skipped'
@@ -323,7 +327,8 @@ jobs:
             release_tag: "$RELEASE_TAG",
             sha256: %{
               "linux-x86_64" => "$(sum linux-x86_64)",
-              "macos-arm64" => "$(sum macos-arm64)"
+              "macos-arm64" => "$(sum macos-arm64)",
+              "macos-x86_64" => "$(sum macos-x86_64)"
             }
           }
           EOF
@@ -349,15 +354,15 @@ jobs:
           # One branch per td + tdlib-json-cli pair
           branch: tdlib-update/${{ env.RELEASE_TAG }}
           delete-branch: true
-          commit-message: Update TDLib to ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
-          title: Update TDLib to ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
+          commit-message: Обновить TDLib до ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
+          title: Обновить TDLib до ${{ env.VERSION }} (${{ env.RELEASE_TAG }})
           body: |
-            Updates TDLib to ${{ env.VERSION }}: [tdlib/td@${{ env.SHORT }}](https://github.com/tdlib/td/commit/${{ env.SHA }}).
+            Обновляет TDLib до ${{ env.VERSION }}: [tdlib/td@${{ env.SHORT }}](https://github.com/tdlib/td/commit/${{ env.SHA }}).
 
-            * Binaries: [${{ env.RELEASE_TAG }}](${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ env.RELEASE_TAG }}), built from [ChatPush/tdlib-json-cli@${{ needs.resolve.outputs.cli_short }}](https://github.com/ChatPush/tdlib-json-cli/commit/${{ env.CLI_SHA }})
-            * Version: v${{ steps.update.outputs.new_version }}
-            * To test before merging: `{:tdlib, github: "${{ github.repository }}", branch: "tdlib-update/${{ env.RELEASE_TAG }}"}` and `mix deps.update tdlib`
-            * [Workflow run](${{ env.RUN_URL }})
+            * Бинарники: [${{ env.RELEASE_TAG }}](${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ env.RELEASE_TAG }}), собраны из [ChatPush/tdlib-json-cli@${{ needs.resolve.outputs.cli_short }}](https://github.com/ChatPush/tdlib-json-cli/commit/${{ env.CLI_SHA }})
+            * Версия: v${{ steps.update.outputs.new_version }}
+            * Проверить до мержа: `{:tdlib, github: "${{ github.repository }}", branch: "tdlib-update/${{ env.RELEASE_TAG }}"}` и `mix deps.update tdlib`
+            * [Запуск workflow](${{ env.RUN_URL }})
 
             ${{ env.ISSUE && format('Closes #{0}', env.ISSUE) || '' }}
 
@@ -366,11 +371,11 @@ jobs:
         env:
           PR_URL: ${{ steps.pr.outputs.pull-request-url }}
         run: |
-          gh issue comment "$ISSUE" --body "Pull request is ready: $PR_URL"
+          gh issue comment "$ISSUE" --body "Pull request готов: $PR_URL"
 
   report-failure:
     needs: [resolve, build, generate, publish]
     if: failure() && (github.event.issue.number || inputs.issue)
     runs-on: ubuntu-22.04
     steps:
-      - run: gh issue comment "$ISSUE" --body "TDLib update failed, see [the run]($RUN_URL)."
+      - run: gh issue comment "$ISSUE" --body "Обновление TDLib упало, см. [запуск]($RUN_URL)."
