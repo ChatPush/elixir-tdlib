@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetChatEventLog do
   @moduledoc  """
-  Returns a list of service actions taken by chat members and administrators in the last 48 hours. Available only in supergroups and channels. Requires administrator rights. Returns results in reverse chronological order (i.e., in order of decreasing event_id).
+  Returns a list of service actions taken by chat members and administrators in the last 48 hours. Available only in supergroups and channels. Requires administrator rights. Returns results in reverse chronological order (i.e., in order of decreasing [chatEvent](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event.html).id).
   Returns object_ptr<ChatEvents>.
 
   | Name | Type | Description |

@@ -9,6 +9,7 @@ defmodule TDLib.Method.PostStory do
   | content | InputStoryContent | Content of the story. |
   | areas | inputStoryAreas | Clickable rectangle areas to be shown on the story media; pass null if none. |
   | caption | formattedText | Story caption; pass null to use an empty caption; 0-[getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("story_caption_length_max") characters; can have entities only if [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("can_use_text_entities_in_story_caption"). |
+  | music | inputAudio | Music to be attached to the story; pass null if none. The music can be up to 60 seconds long. |
   | privacy_settings | StoryPrivacySettings | The privacy settings for the story; ignored for stories posted on behalf of supergroup and channel chats. |
   | album_ids | int32 | Identifiers of story albums to which the story will be added upon posting. An album can have up to [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("story_album_size_max") stories. |
   | active_period | int32 | Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise. |
@@ -19,5 +20,5 @@ defmodule TDLib.Method.PostStory do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1post_story.html).
   """
 
-  defstruct "@type": "postStory", "@extra": nil, chat_id: nil, content: nil, areas: nil, caption: nil, privacy_settings: nil, album_ids: nil, active_period: nil, from_story_full_id: nil, is_posted_to_chat_page: nil, protect_content: nil
+  defstruct "@type": "postStory", "@extra": nil, chat_id: nil, content: nil, areas: nil, caption: nil, music: nil, privacy_settings: nil, album_ids: nil, active_period: nil, from_story_full_id: nil, is_posted_to_chat_page: nil, protect_content: nil
 end

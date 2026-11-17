@@ -5,7 +5,7 @@ defmodule TDLib.Object.ConnectedAffiliateProgram do
   | Name | Type | Description |
   |------|------| ------------|
   | url | string | The link that can be used to refer users if the program is still active. |
-  | bot_user_id | int53 | User identifier of the bot created the program. |
+  | bot_user_id | int53 | User identifier of the bot that created the program. |
   | parameters | affiliateProgramParameters | The parameters of the affiliate program. |
   | connection_date | int32 | Point in time (Unix timestamp) when the affiliate program was connected. |
   | is_disconnected | bool | True, if the program was canceled by the bot, or disconnected by the chat owner and isn't available anymore. |

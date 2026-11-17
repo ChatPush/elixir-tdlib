@@ -4,7 +4,7 @@ defmodule TDLib.Object.UpdateSavedMessagesTags do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | saved_messages_topic_id | int53 | Identifier of Saved Messages topic which tags were changed; 0 if tags for the whole chat has changed. |
+  | saved_messages_topic_id | int53 | Identifier of Saved Messages topic which tags were changed; 0 if tags for the whole chat have changed. |
   | tags | savedMessagesTags | The new tags. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_saved_messages_tags.html).

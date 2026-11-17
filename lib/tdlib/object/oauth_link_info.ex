@@ -12,6 +12,10 @@ defmodule TDLib.Object.OauthLinkInfo do
   | bot_user_id | int53 | User identifier of a bot linked with the website. |
   | request_write_access | bool | True, if the user must be asked for the permission to the bot to send them messages. |
   | request_phone_number_access | bool | True, if the user must be asked for the permission to share their phone number. |
+  | request_ton_wallet_access | bool | True, if access to the user's TON wallet is requested by the app. If true and the user agrees to give access, then use [createTonConnectSession](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_ton_connect_session.html) with dapp_client_id and ton_connect_manifest_url to create the TON Connect session, then [setTonConnectSessionWalletClientId](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_ton_connect_session_wallet_client_id.html), then create a [tonWalletOwnershipProof](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ton_wallet_ownership_proof.html) for the given domain with the payload ton_proof_payload, and then pass all data to [acceptOauthRequest](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1accept_oauth_request.html) in the parameter ton_connect_connect_data. |
+  | dapp_client_id | string | Hex-encoded public X25519 key of the dApp; may be empty if TON wallet access wasn't requested. |
+  | ton_connect_manifest_url | string | URL of the TON Connect manifest of the dApp; may be empty if TON wallet access wasn't requested. |
+  | ton_proof_payload | string | Payload for TON wallet ownership proof; may be empty if TON wallet access wasn't requested. |
   | browser | string | The version of a browser used for the authorization. |
   | platform | string | Operating system the browser is running on. |
   | ip_address | string | IP address from which the authorization is performed, in human-readable format. |
@@ -22,5 +26,5 @@ defmodule TDLib.Object.OauthLinkInfo do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1oauth_link_info.html).
   """
 
-  defstruct "@type": "oauthLinkInfo", "@extra": nil, user_id: nil, url: nil, domain: nil, from_app: nil, verified_app_name: nil, bot_user_id: nil, request_write_access: nil, request_phone_number_access: nil, browser: nil, platform: nil, ip_address: nil, location: nil, match_code_first: nil, match_codes: nil
+  defstruct "@type": "oauthLinkInfo", "@extra": nil, user_id: nil, url: nil, domain: nil, from_app: nil, verified_app_name: nil, bot_user_id: nil, request_write_access: nil, request_phone_number_access: nil, request_ton_wallet_access: nil, dapp_client_id: nil, ton_connect_manifest_url: nil, ton_proof_payload: nil, browser: nil, platform: nil, ip_address: nil, location: nil, match_code_first: nil, match_codes: nil
 end

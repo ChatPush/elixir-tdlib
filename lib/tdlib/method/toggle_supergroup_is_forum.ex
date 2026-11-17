@@ -8,9 +8,10 @@ defmodule TDLib.Method.ToggleSupergroupIsForum do
   | supergroup_id | int53 | Identifier of the supergroup. |
   | is_forum | bool | New value of is_forum. |
   | has_forum_tabs | bool | New value of has_forum_tabs; ignored if is_forum is false. |
+  | has_forum_sidebar | bool | New value of has_forum_sidebar; ignored if is_forum is false. Must be false if has_forum_tabs is true. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_is_forum.html).
   """
 
-  defstruct "@type": "toggleSupergroupIsForum", "@extra": nil, supergroup_id: nil, is_forum: nil, has_forum_tabs: nil
+  defstruct "@type": "toggleSupergroupIsForum", "@extra": nil, supergroup_id: nil, is_forum: nil, has_forum_tabs: nil, has_forum_sidebar: nil
 end

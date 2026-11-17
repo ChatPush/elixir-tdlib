@@ -9,6 +9,7 @@ defmodule TDLib.Object.UserTypeBot do
   | can_read_all_group_messages | bool | True, if the bot can read all messages in basic group or supergroup chats and not just those addressed to the bot. In private and channel chats a bot can always read all messages. |
   | has_main_web_app | bool | True, if the bot has the main Web App. |
   | has_topics | bool | True, if the bot has topics. |
+  | has_topic_sidebar | bool | True, if the bot has topics, which are shown in a sidebar. |
   | allows_users_to_create_topics | bool | True, if users can create and delete topics in the chat with the bot. |
   | can_manage_bots | bool | True, if the bot can manage other bots. |
   | is_inline | bool | True, if the bot supports inline queries. |
@@ -23,5 +24,5 @@ defmodule TDLib.Object.UserTypeBot do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html).
   """
 
-  defstruct "@type": "userTypeBot", "@extra": nil, can_be_edited: nil, can_join_groups: nil, can_read_all_group_messages: nil, has_main_web_app: nil, has_topics: nil, allows_users_to_create_topics: nil, can_manage_bots: nil, is_inline: nil, inline_query_placeholder: nil, supports_guest_queries: nil, is_guard: nil, need_location: nil, can_connect_to_business: nil, can_be_added_to_attachment_menu: nil, active_user_count: nil
+  defstruct "@type": "userTypeBot", "@extra": nil, can_be_edited: nil, can_join_groups: nil, can_read_all_group_messages: nil, has_main_web_app: nil, has_topics: nil, has_topic_sidebar: nil, allows_users_to_create_topics: nil, can_manage_bots: nil, is_inline: nil, inline_query_placeholder: nil, supports_guest_queries: nil, is_guard: nil, need_location: nil, can_connect_to_business: nil, can_be_added_to_attachment_menu: nil, active_user_count: nil
 end

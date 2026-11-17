@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetChatScheduledMessages do
   @moduledoc  """
-  Returns all scheduled messages in a chat. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id).
+  Returns all scheduled messages in a chat. The messages are returned in reverse chronological order (i.e., in order of decreasing message.id).
   Returns object_ptr<Messages>.
 
   | Name | Type | Description |

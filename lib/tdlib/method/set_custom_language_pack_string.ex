@@ -1,6 +1,6 @@
 defmodule TDLib.Method.SetCustomLanguagePackString do
   @moduledoc  """
-  Adds, edits or deletes a string in a custom local language pack. Can be called before authorization.
+  Adds, edits, or deletes a string in a custom local language pack. Can be called before authorization.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |

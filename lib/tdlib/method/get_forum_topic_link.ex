@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetForumTopicLink do
   @moduledoc  """
-  Returns an HTTPS link to a topic in a forum supergroup chat. This is an offline method.
+  Returns an HTTPS link to a topic in a forum supergroup chat or a chat with a bot. This is an offline method.
   Returns object_ptr<MessageLink>.
 
   | Name | Type | Description |

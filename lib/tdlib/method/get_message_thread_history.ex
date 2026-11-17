@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetMessageThreadHistory do
   @moduledoc  """
-  Returns messages in a message thread of a message. Can be used only if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_message_thread == true. Message thread of a channel message is in the channel's linked supergroup. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib.
+  Returns messages in a message thread of a message. Can be used only if [messageProperties](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html).can_get_message_thread == true. Message thread of a channel message is in the channel's linked supergroup. The messages are returned in reverse chronological order (i.e., in order of decreasing message.id). For optimal performance, the number of returned messages is chosen by TDLib.
   Returns object_ptr<Messages>.
 
   | Name | Type | Description |

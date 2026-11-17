@@ -7,7 +7,7 @@ defmodule TDLib.Object.ChatPhoto do
   | id | int64 | Unique photo identifier. |
   | added_date | int32 | Point in time (Unix timestamp) when the photo has been added. |
   | minithumbnail | minithumbnail | Photo minithumbnail; may be null. |
-  | sizes | photoSize | Available variants of the photo in JPEG format, in different size. |
+  | sizes | photoSize | Available variants of the photo in JPEG format, in different sizes. |
   | animation | animatedChatPhoto | A big (up to 1280x1280) animated variant of the photo in MPEG4 format; may be null. |
   | small_animation | animatedChatPhoto | A small (160x160) animated variant of the photo in MPEG4 format; may be null even if the big animation is available. |
   | sticker | chatPhotoSticker | Sticker-based version of the chat photo; may be null. |

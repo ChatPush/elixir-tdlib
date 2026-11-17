@@ -1,6 +1,6 @@
 defmodule TDLib.Method.SetSupergroupCustomEmojiStickerSet do
   @moduledoc  """
-  Changes the custom emoji sticker set of a supergroup; requires can_change_info administrator right. The chat must have at least [chatBoostFeatures](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_features.html).min_custom_emoji_sticker_set_boost_level boost level to pass the corresponding color.
+  Changes the custom emoji sticker set of a supergroup; requires can_change_info administrator right. The chat must have at least [chatBoostFeatures](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_features.html).min_custom_emoji_sticker_set_boost_level boost level to set a custom emoji sticker set.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |

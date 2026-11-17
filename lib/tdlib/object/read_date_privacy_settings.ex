@@ -4,7 +4,7 @@ defmodule TDLib.Object.ReadDatePrivacySettings do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | show_read_date | bool | True, if message read date is shown to other users in private chats. If false and the current user isn't a Telegram Premium user, then they will not be able to see other's message read date. |
+  | show_read_date | bool | True, if message read date is shown to other users in private chats. If false and the current user isn't a Telegram Premium user, then they will not be able to see others' message read date. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1read_date_privacy_settings.html).
   """

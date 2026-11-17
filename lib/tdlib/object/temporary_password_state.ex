@@ -1,6 +1,6 @@
 defmodule TDLib.Object.TemporaryPasswordState do
   @moduledoc  """
-  Returns information about the availability of a temporary password, which can be used for payments.
+  Contains information about the availability of a temporary password, which can be used for payments and withdrawal of upgraded gifts.
 
   | Name | Type | Description |
   |------|------| ------------|

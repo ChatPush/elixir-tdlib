@@ -1,6 +1,6 @@
 defmodule TDLib.Method.CreateTemporaryPassword do
   @moduledoc  """
-  Creates a new temporary password for processing payments.
+  Creates a new temporary password for processing payments and withdrawal of upgraded gifts.
   Returns object_ptr<TemporaryPasswordState>.
 
   | Name | Type | Description |

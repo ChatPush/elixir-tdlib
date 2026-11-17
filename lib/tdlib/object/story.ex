@@ -30,10 +30,11 @@ defmodule TDLib.Object.Story do
   | content | StoryContent | Content of the story. |
   | areas | storyArea | Clickable areas to be shown on the story content. |
   | caption | formattedText | Caption of the story. |
+  | music | audio | Music attached to the story; may be null if none. |
   | album_ids | int32 | Identifiers of story albums to which the story is added; only for manageable stories. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story.html).
   """
 
-  defstruct "@type": "story", "@extra": nil, id: nil, poster_chat_id: nil, poster_id: nil, date: nil, is_being_posted: nil, is_being_edited: nil, is_edited: nil, is_posted_to_chat_page: nil, is_visible_only_for_self: nil, can_be_added_to_album: nil, can_be_deleted: nil, can_be_edited: nil, can_be_forwarded: nil, can_be_replied: nil, can_set_privacy_settings: nil, can_toggle_is_posted_to_chat_page: nil, can_get_statistics: nil, can_get_interactions: nil, has_expired_viewers: nil, repost_info: nil, interaction_info: nil, chosen_reaction_type: nil, privacy_settings: nil, content: nil, areas: nil, caption: nil, album_ids: nil
+  defstruct "@type": "story", "@extra": nil, id: nil, poster_chat_id: nil, poster_id: nil, date: nil, is_being_posted: nil, is_being_edited: nil, is_edited: nil, is_posted_to_chat_page: nil, is_visible_only_for_self: nil, can_be_added_to_album: nil, can_be_deleted: nil, can_be_edited: nil, can_be_forwarded: nil, can_be_replied: nil, can_set_privacy_settings: nil, can_toggle_is_posted_to_chat_page: nil, can_get_statistics: nil, can_get_interactions: nil, has_expired_viewers: nil, repost_info: nil, interaction_info: nil, chosen_reaction_type: nil, privacy_settings: nil, content: nil, areas: nil, caption: nil, music: nil, album_ids: nil
 end

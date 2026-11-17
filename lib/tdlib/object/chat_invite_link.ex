@@ -16,7 +16,7 @@ defmodule TDLib.Object.ChatInviteLink do
   | expired_member_count | int32 | Number of chat members, which joined the chat using the link, but have already left because of expired subscription; for subscription links only. |
   | pending_join_request_count | int32 | Number of pending join requests created using this link. |
   | creates_join_request | bool | True, if the link only creates join request. If true, total number of joining members will be unlimited. |
-  | is_primary | bool | True, if the link is primary. Primary invite link can't have name, expiration date, or usage limit. There is exactly one primary invite link for each administrator with can_invite_users right at a given time. |
+  | is_primary | bool | True, if the link is primary. Primary invite link can't have name, expiration date, or usage limit. Primary link can create join requests only if this is set up using [toggleSupergroupJoinByRequest](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_join_by_request.html). There is exactly one primary invite link for each administrator with can_invite_users right at a given time. |
   | is_revoked | bool | True, if the link was revoked. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_invite_link.html).

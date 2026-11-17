@@ -8,7 +8,7 @@ defmodule TDLib.Object.MessageThreadInfo do
   | message_thread_id | int53 | Message thread identifier, unique within the chat. |
   | reply_info | messageReplyInfo | Information about the message thread; may be null for forum topic threads. |
   | unread_message_count | int32 | Approximate number of unread messages in the message thread. |
-  | messages | message | The messages from which the thread starts. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id). |
+  | messages | message | The messages from which the thread starts. The messages are returned in reverse chronological order (i.e., in order of decreasing message.id). |
   | draft_message | draftMessage | A draft of a message in the message thread; may be null if none. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_thread_info.html).

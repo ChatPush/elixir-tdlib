@@ -1,6 +1,6 @@
 defmodule TDLib.Method.ProcessChatFolderNewChats do
   @moduledoc  """
-  Process new chats added to a shareable chat folder by its owner.
+  Processes new chats added to a shareable chat folder by its owner.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |

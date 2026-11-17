@@ -6,7 +6,7 @@ defmodule TDLib.Object.EncryptedPassportElement do
   |------|------| ------------|
   | type | PassportElementType | Type of Telegram Passport element. |
   | data | bytes | Encrypted JSON-encoded data about the user. |
-  | front_side | datedFile | The front side of an identity document. |
+  | front_side | datedFile | The front side of an identity document; may be null if the element isn't an identity document. |
   | reverse_side | datedFile | The reverse side of an identity document; may be null. |
   | selfie | datedFile | Selfie with the document; may be null. |
   | translation | datedFile | List of files containing a certified English translation of the document. |

@@ -1,6 +1,6 @@
 defmodule TDLib.Method.ToggleGroupCallParticipantIsHandRaised do
   @moduledoc  """
-  Toggles whether a group call participant hand is rased; for video chats only.
+  Toggles whether a group call participant hand is raised; for video chats only.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |

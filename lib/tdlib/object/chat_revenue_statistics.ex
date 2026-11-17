@@ -7,7 +7,7 @@ defmodule TDLib.Object.ChatRevenueStatistics do
   | revenue_by_hour_graph | StatisticalGraph | A graph containing amount of revenue in a given hour. |
   | revenue_graph | StatisticalGraph | A graph containing amount of revenue. |
   | revenue_amount | chatRevenueAmount | Amount of earned revenue. |
-  | usd_rate | double | Current conversion rate of the cryptocurrency in which revenue is calculated to USD. |
+  | usd_rate | double | Current exchange rate of the cryptocurrency in which revenue is calculated to USD. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_statistics.html).
   """

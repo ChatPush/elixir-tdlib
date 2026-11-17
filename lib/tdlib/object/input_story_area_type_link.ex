@@ -1,6 +1,6 @@
 defmodule TDLib.Object.InputStoryAreaTypeLink do
   @moduledoc  """
-  An area pointing to a HTTP or tg:// link.
+  An area pointing to an HTTP or tg:// link.
 
   | Name | Type | Description |
   |------|------| ------------|

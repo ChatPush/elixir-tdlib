@@ -4,7 +4,7 @@ defmodule TDLib.Object.InputStoryArea do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | position | storyAreaPosition | Position of the area. |
+  | position | areaPosition | Position of the area. |
   | type | InputStoryAreaType | Type of the area. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_area.html).

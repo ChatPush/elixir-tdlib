@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetGiftsForCrafting do
   @moduledoc  """
-  Returns upgraded gifts of the current user who can be used to craft another gifts.
+  Returns upgraded gifts of the current user, which can be used to craft other gifts.
   Returns object_ptr<GiftsForCrafting>.
 
   | Name | Type | Description |

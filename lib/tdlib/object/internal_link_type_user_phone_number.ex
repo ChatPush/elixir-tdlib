@@ -7,9 +7,10 @@ defmodule TDLib.Object.InternalLinkTypeUserPhoneNumber do
   | phone_number | string | Phone number of the user. |
   | draft_text | string | Draft text for message to send in the chat. |
   | open_profile | bool | True, if user's profile information screen must be opened; otherwise, the chat itself must be opened. |
+  | unpaid_messages_token | string | Token, which allows the current user to send unpaid messages to the user; may be empty if none. If the token isn't empty and the user is found, then call [applyUnpaidMessagesToken](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1apply_unpaid_messages_token.html) with the user and the token. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_user_phone_number.html).
   """
 
-  defstruct "@type": "internalLinkTypeUserPhoneNumber", "@extra": nil, phone_number: nil, draft_text: nil, open_profile: nil
+  defstruct "@type": "internalLinkTypeUserPhoneNumber", "@extra": nil, phone_number: nil, draft_text: nil, open_profile: nil, unpaid_messages_token: nil
 end

@@ -7,7 +7,7 @@ defmodule TDLib.Method.GetMessageAvailableReactions do
   |------|------| ------------|
   | chat_id | int53 | Identifier of the chat to which the message belongs. |
   | message_id | int53 | Identifier of the message. |
-  | row_size | int32 | Number of reaction per row, 5-25. |
+  | row_size | int32 | Number of reactions per row, 5-25. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_available_reactions.html).
   """

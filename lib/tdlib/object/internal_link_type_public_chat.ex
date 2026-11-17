@@ -7,9 +7,10 @@ defmodule TDLib.Object.InternalLinkTypePublicChat do
   | chat_username | string | Username of the chat. |
   | draft_text | string | Draft text for message to send in the chat. |
   | open_profile | bool | True, if chat profile information screen must be opened; otherwise, the chat itself must be opened. |
+  | unpaid_messages_token | string | Token, which allows the current user to send unpaid messages; may be empty if none. If the token isn't empty and the chat is a private chat with a regular user, then call [applyUnpaidMessagesToken](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1apply_unpaid_messages_token.html) with the user and the token. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_public_chat.html).
   """
 
-  defstruct "@type": "internalLinkTypePublicChat", "@extra": nil, chat_username: nil, draft_text: nil, open_profile: nil
+  defstruct "@type": "internalLinkTypePublicChat", "@extra": nil, chat_username: nil, draft_text: nil, open_profile: nil, unpaid_messages_token: nil
 end

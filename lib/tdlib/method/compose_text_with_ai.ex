@@ -7,7 +7,7 @@ defmodule TDLib.Method.ComposeTextWithAi do
   |------|------| ------------|
   | text | formattedText | The original text. |
   | translate_to_language_code | string | Pass a language code to which the text will be translated; pass an empty string if translation isn't needed. See [translateText](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_text.html).to_language_code for the list of supported values. |
-  | style_name | string | Name of the style of the resulted text; handle [updateTextCompositionStyles](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_text_composition_styles.html) to get the list of supported styles; pass an empty string to keep the current style of the text. |
+  | style_name | string | Name of the style of the resulting text; handle [updateTextCompositionStyles](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_text_composition_styles.html) to get the list of supported styles; pass an empty string to keep the current style of the text. |
   | add_emojis | bool | Pass true to add emoji to the text. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1compose_text_with_ai.html).

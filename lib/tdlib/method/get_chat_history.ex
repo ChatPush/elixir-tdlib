@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetChatHistory do
   @moduledoc  """
-  Returns messages in a chat. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib. This is an offline method if only_local is true.
+  Returns messages in a chat. The messages are returned in reverse chronological order (i.e., in order of decreasing message.id). For optimal performance, the number of returned messages is chosen by TDLib. This is an offline method if only_local is true.
   Returns object_ptr<Messages>.
 
   | Name | Type | Description |

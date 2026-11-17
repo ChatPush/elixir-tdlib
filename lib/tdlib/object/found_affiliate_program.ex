@@ -4,7 +4,7 @@ defmodule TDLib.Object.FoundAffiliateProgram do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | bot_user_id | int53 | User identifier of the bot created the program. |
+  | bot_user_id | int53 | User identifier of the bot that created the program. |
   | info | affiliateProgramInfo | Information about the affiliate program. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_affiliate_program.html).

@@ -1,6 +1,6 @@
 defmodule TDLib.Method.ShareUsersWithBot do
   @moduledoc  """
-  Shares users after pressing a [keyboardButtonTypeRequestUsers](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_users.html) button with the bot.
+  Shares users after pressing a [keyboardButtonTypeRequestUsers](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_users.html) or [keyboardButtonTypeRequestManagedBot](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_managed_bot.html) button with the bot.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |

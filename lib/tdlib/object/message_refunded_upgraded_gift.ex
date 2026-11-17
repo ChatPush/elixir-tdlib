@@ -1,6 +1,6 @@
 defmodule TDLib.Object.MessageRefundedUpgradedGift do
   @moduledoc  """
-  A gift which purchase, upgrade or transfer were refunded.
+  A gift which purchase, upgrade, or transfer were refunded.
 
   | Name | Type | Description |
   |------|------| ------------|

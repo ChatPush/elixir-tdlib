@@ -26,6 +26,7 @@ defmodule TDLib.Object.Supergroup do
   | verification_status | verificationStatus | Information about verification status of the supergroup or channel; may be null if none. |
   | has_direct_messages_group | bool | True, if the channel has direct messages group. |
   | has_forum_tabs | bool | True, if the supergroup is a forum, which topics are shown in the same way as in channel direct messages groups. |
+  | has_forum_sidebar | bool | True, if the supergroup is a forum, which topics are shown in a sidebar. If true, then has_forum_tabs is false. |
   | restriction_info | restrictionInfo | Information about the restrictions that must be applied to the corresponding supergroup or channel chat; may be null if none. |
   | paid_message_star_count | int53 | Number of Telegram Stars that must be paid by non-administrator users of the supergroup chat for each sent message. |
   | active_story_state | ActiveStoryState | State of active stories of the supergroup or channel; may be null if there are no active stories. |
@@ -33,5 +34,5 @@ defmodule TDLib.Object.Supergroup do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup.html).
   """
 
-  defstruct "@type": "supergroup", "@extra": nil, id: nil, usernames: nil, date: nil, status: nil, member_count: nil, boost_level: nil, has_automatic_translation: nil, has_linked_chat: nil, has_location: nil, sign_messages: nil, show_message_sender: nil, join_to_send_messages: nil, join_by_request: nil, is_slow_mode_enabled: nil, is_channel: nil, is_broadcast_group: nil, is_forum: nil, is_direct_messages_group: nil, is_administered_direct_messages_group: nil, verification_status: nil, has_direct_messages_group: nil, has_forum_tabs: nil, restriction_info: nil, paid_message_star_count: nil, active_story_state: nil
+  defstruct "@type": "supergroup", "@extra": nil, id: nil, usernames: nil, date: nil, status: nil, member_count: nil, boost_level: nil, has_automatic_translation: nil, has_linked_chat: nil, has_location: nil, sign_messages: nil, show_message_sender: nil, join_to_send_messages: nil, join_by_request: nil, is_slow_mode_enabled: nil, is_channel: nil, is_broadcast_group: nil, is_forum: nil, is_direct_messages_group: nil, is_administered_direct_messages_group: nil, verification_status: nil, has_direct_messages_group: nil, has_forum_tabs: nil, has_forum_sidebar: nil, restriction_info: nil, paid_message_star_count: nil, active_story_state: nil
 end

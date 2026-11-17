@@ -1,5 +1,9 @@
 # Changelog for elixir-tdlib
 
+## v0.3.0 (2026-11-17)
+
+* Update TDLib to 1.8.70 ([tdlib/td@23383ae](https://github.com/tdlib/td/commit/23383aef218a3123f02b744bfa91bde21056a814), [cli@a20f0ca](https://github.com/ChatPush/elixir-tdlib/tree/a20f0cad55c694f1204eb35002496b56b7347536/cli))
+
 ## v0.2.0 (2026-10-29)
 
 * Update TDLib to 1.8.67 ([tdlib/td@bc9c263](https://github.com/tdlib/td/commit/bc9c263e2bfee06aaab41e82db51a103376030bc), [cli@bf72474](https://github.com/ChatPush/elixir-tdlib/tree/bf72474c73d10dd295f00a3c2771a4431018d1cd/cli))

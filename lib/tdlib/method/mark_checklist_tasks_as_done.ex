@@ -1,6 +1,6 @@
 defmodule TDLib.Method.MarkChecklistTasksAsDone do
   @moduledoc  """
-  Adds tasks of a checklist in a message as done or not done.
+  Marks tasks of a checklist in a message as done or not done.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |

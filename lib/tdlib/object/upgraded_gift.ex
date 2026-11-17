@@ -22,6 +22,7 @@ defmodule TDLib.Object.UpgradedGift do
   | owner_address | string | Address of the gift NFT owner in TON blockchain; may be empty if none. Append the address to [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("ton_blockchain_explorer_url") to get a link with information about the address. |
   | owner_name | string | Name of the owner for the case when owner identifier and address aren't known. |
   | gift_address | string | Address of the gift NFT in TON blockchain; may be empty if none. Append the address to [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("ton_blockchain_explorer_url") to get a link with information about the address. |
+  | can_be_ton_wallet_card_background | bool | True, if the gift NFT can be used as background_nft_address in [setTonWalletCardStickers](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_ton_wallet_card_stickers.html). |
   | model | upgradedGiftModel | Model of the upgraded gift. |
   | symbol | upgradedGiftSymbol | Symbol of the upgraded gift. |
   | backdrop | upgradedGiftBackdrop | Backdrop of the upgraded gift. |
@@ -37,5 +38,5 @@ defmodule TDLib.Object.UpgradedGift do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift.html).
   """
 
-  defstruct "@type": "upgradedGift", "@extra": nil, id: nil, regular_gift_id: nil, publisher_chat_id: nil, title: nil, name: nil, number: nil, total_upgraded_count: nil, max_upgraded_count: nil, is_burned: nil, is_crafted: nil, is_premium: nil, is_theme_available: nil, used_theme_chat_id: nil, host_id: nil, owner_id: nil, owner_address: nil, owner_name: nil, gift_address: nil, model: nil, symbol: nil, backdrop: nil, original_details: nil, colors: nil, resale_parameters: nil, can_send_purchase_offer: nil, craft_probability_per_mille: nil, value_currency: nil, value_amount: nil, value_usd_amount: nil
+  defstruct "@type": "upgradedGift", "@extra": nil, id: nil, regular_gift_id: nil, publisher_chat_id: nil, title: nil, name: nil, number: nil, total_upgraded_count: nil, max_upgraded_count: nil, is_burned: nil, is_crafted: nil, is_premium: nil, is_theme_available: nil, used_theme_chat_id: nil, host_id: nil, owner_id: nil, owner_address: nil, owner_name: nil, gift_address: nil, can_be_ton_wallet_card_background: nil, model: nil, symbol: nil, backdrop: nil, original_details: nil, colors: nil, resale_parameters: nil, can_send_purchase_offer: nil, craft_probability_per_mille: nil, value_currency: nil, value_amount: nil, value_usd_amount: nil
 end

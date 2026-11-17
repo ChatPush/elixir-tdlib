@@ -1,6 +1,6 @@
 defmodule TDLib.Method.SearchMessages do
   @moduledoc  """
-  Searches for messages in all chats except secret chats. Returns the results in reverse chronological order (i.e., in order of decreasing (date, chat_id, message_id)). For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
+  Searches for messages in all chats except secret chats. Returns the results in reverse chronological order (i.e., in order of decreasing (message.date, message.chat_id, message.id)). For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
   Returns object_ptr<FoundMessages>.
 
   | Name | Type | Description |

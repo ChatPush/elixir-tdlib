@@ -4,7 +4,7 @@ defmodule TDLib.Object.InputThumbnail do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | thumbnail | InputFile | Thumbnail file to send. Sending thumbnails by file_id is currently not supported. |
+  | thumbnail | InputFile | Thumbnail file to send. Sending thumbnails by [inputFileId](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_file_id.html) or [inputFileRemote](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_file_remote.html) is currently not supported. |
   | width | int32 | Thumbnail width, usually shouldn't exceed 320. Use 0 if unknown. |
   | height | int32 | Thumbnail height, usually shouldn't exceed 320. Use 0 if unknown. |
 

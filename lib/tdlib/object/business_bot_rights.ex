@@ -13,7 +13,7 @@ defmodule TDLib.Object.BusinessBotRights do
   | can_edit_profile_photo | bool | True, if the bot can edit profile photo of the business account. |
   | can_edit_username | bool | True, if the bot can edit username of the business account. |
   | can_view_gifts_and_stars | bool | True, if the bot can view gifts and Telegram Star amount owned by the business account. |
-  | can_sell_gifts | bool | True, if the bot can sell regular gifts received by the business account. |
+  | can_sell_gifts | bool | True, if the bot can sell or delete regular gifts received by the business account. |
   | can_change_gift_settings | bool | True, if the bot can change gift receiving settings of the business account. |
   | can_transfer_and_upgrade_gifts | bool | True, if the bot can transfer and upgrade gifts received by the business account. |
   | can_transfer_stars | bool | True, if the bot can transfer Telegram Stars received by the business account to account of the bot, or use them to upgrade and transfer gifts. |

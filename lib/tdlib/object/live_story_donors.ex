@@ -4,7 +4,7 @@ defmodule TDLib.Object.LiveStoryDonors do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | total_star_count | int53 | Total amount of spend Telegram Stars. |
+  | total_star_count | int53 | Total amount of spent Telegram Stars. |
   | top_donors | paidReactor | List of top donors in the live story. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1live_story_donors.html).

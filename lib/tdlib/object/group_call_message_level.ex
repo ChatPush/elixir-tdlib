@@ -10,7 +10,7 @@ defmodule TDLib.Object.GroupCallMessageLevel do
   | max_custom_emoji_count | int32 | The maximum allowed number of custom emoji in the message text. |
   | first_color | int32 | The first color used to show the message text in the RGB format. |
   | second_color | int32 | The second color used to show the message text in the RGB format. |
-  | background_color | int32 | Background color for the message the RGB format. |
+  | background_color | int32 | Background color for the message in the RGB format. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_message_level.html).
   """
