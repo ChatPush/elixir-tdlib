@@ -148,7 +148,7 @@ jobs:
           - os: ubuntu-22.04 # same glibc as the production image (ubuntu:22.04)
             platform: linux-x86_64
             jobs: 4
-          - os: macos-14
+          - os: macos-15
             platform: macos-arm64
             jobs: 3 # the runner has 7 GB of RAM
           - os: macos-15-intel
@@ -181,7 +181,7 @@ jobs:
 
       - name: Build
         run: |
-          # cli/CMakeLists.txt requires CMake 3.1, which CMake 4 (macos-14) refuses without this
+          # cli/CMakeLists.txt requires CMake 3.1, which CMake 4 (macOS runners) refuses without this
           cmake_args=(-DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5)
           if [ "$RUNNER_OS" = macOS ]; then
             # Link OpenSSL statically, so that the binary does not need Homebrew.
