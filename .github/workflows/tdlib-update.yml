@@ -340,7 +340,7 @@ jobs:
           # Insert after the "# Changelog" header
           perl -0pi -e 's/\n\n/\n\n$ENV{ENTRY}\n\n/' CHANGELOG.md
 
-          git status --short | head -n 50
+          git status --short
 
       - name: Create pull request
         id: pr
