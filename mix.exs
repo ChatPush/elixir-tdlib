@@ -4,10 +4,10 @@ defmodule TDLib.Mixfile do
   def project do
     [
       app: :tdlib,
-      version: "0.0.3",
-      elixir: "~> 1.5",
-      start_permanent: Mix.env == :prod,
-      compilers: Mix.compilers,
+      version: "0.2.0",
+      elixir: "~> 1.15",
+      start_permanent: Mix.env() == :prod,
+      compilers: Mix.compilers() ++ [:tdlib_binary],
       deps: deps(),
 
       # Hex
@@ -16,8 +16,8 @@ defmodule TDLib.Mixfile do
 
       # Docs
       name: "TDLib",
-      source_url: "https://git.sr.ht/~fnux/elixir-tdlib",
-      homepage_url: "https://git.sr.ht/~fnux/elixir-tdlib",
+      source_url: "https://github.com/ChatPush/elixir-tdlib",
+      homepage_url: "https://github.com/ChatPush/elixir-tdlib",
       docs: [main: "readme", extras: ["README.md"]]
     ]
   end
@@ -28,12 +28,19 @@ defmodule TDLib.Mixfile do
 
   defp package() do
     [
-      files: ["lib/tdlib*", "Makefile", "mix.exs", "README*", "LICENSE*", "CHANGELOG.*"],
+      files: [
+        "lib/tdlib*",
+        "lib/mix",
+        "mix.exs",
+        "tdlib_binary.exs",
+        "README*",
+        "LICENSE*",
+        "CHANGELOG.*"
+      ],
       maintainers: ["Timothée Floure"],
       licenses: ["AGPL-3.0"],
       links: %{
-        "Sources (git.sr.ht)" => "https://git.sr.ht/~fnux/elixir-tdlib",
-        "Bug Tracker (todo.sr.ht)" => "https://todo.sr.ht/~fnux/elixir-tdlib",
+        "GitHub" => "https://github.com/ChatPush/elixir-tdlib",
         "Telegram TDLib" => "https://core.telegram.org/tdlib"
       }
     ]
@@ -51,14 +58,7 @@ defmodule TDLib.Mixfile do
   defp deps do
     [
       {:jason, "~> 1.4"},
-      {:elixir_make, "~> 0.4", runtime: false},
-      {:ex_doc, "~> 0.21", only: :dev, runtime: false},
-      {:tdlib_json_cli,
-        git: "https://github.com/PushSMS/tdlib-json-cli",
-        submodules: true,
-        app: false,
-        compile: false
-      }
+      {:ex_doc, "~> 0.21", only: :dev, runtime: false}
     ]
   end
 end

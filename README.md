@@ -6,13 +6,14 @@ Telegram as a full-fledged client (not as a bot!). It ships :
 
 * [Telegram's tdlib](https://github.com/tdlib/td), licensed under the Boost
   Software License 1.0 (BSL-1.0)
-* [oott123's tdlib-json-cli](https://github.com/oott123), licensed under the
+* tdlib_json_cli in [`cli/`](cli/README.md), based on [oott123's
+  tdlib-json-cli](https://github.com/oott123/tdlib-json-cli), licensed under the
   GNU Affero General Public License v3.0 (AGPL-3.0)
 
 Most of the interactions with this project are done via the `TDLib` module. Any
 structure used to interact with TDLib is defined under either `TDLib.Object` or
 `TDLib.Method`. You can create as many session as you want, but note that each
-of them launch a new instance of tdlib-json-cli via a
+of them launch a new instance of tdlib_json_cli via a
 [port](https://hexdocs.pm/elixir/Port.html).
 
 # Installation
@@ -21,19 +22,30 @@ Add the following to your `mix.exs` :
 
 ```elixir
 def deps do
-  [{:tdlib, "~> 0.0.2"}]
+  [{:tdlib, github: "ChatPush/elixir-tdlib", branch: "master"}]
 end
 ```
 
-Note that compiling this project will compile Telegram's TDLib (C++) itself,
-it's going to take a while and depends on the following :
+A prebuilt `tdlib_json_cli` binary (`linux-x86_64`, `macos-arm64` or
+`macos-x86_64`) is downloaded from the GitHub releases at compile time and
+checked against the sha256 in `tdlib_binary.exs`. It ends up in `priv/` of the
+`:tdlib` app, so `mix release` ships it. The Linux binary is built on Ubuntu
+22.04 and needs glibc 2.35 or newer. On other platforms, including musl-based
+Linux (Alpine), build it from [`cli/`](cli/README.md#build) yourself and set
+the `:backend_binary` option. Set `TDLIB_SKIP_BINARY_DOWNLOAD=1` to skip the
+download.
 
- * C++14 compatible compiler (clang 3.4+, GCC 4.9+, MSVC 19.0+ (Visual Studio
-   2015+), Intel C++ Compiler 17+)
- * OpenSSL
- * zlib
- * gperf
- * CMake (3.0.2+)
+To update TDLib, open an "Обновление TDLib" issue with the commit of
+[tdlib/td](https://github.com/tdlib/td). The workflow builds the binaries,
+regenerates `TDLib.Object` and `TDLib.Method` and opens a pull request into
+master. To ship a change to `cli/` before it is merged, run the workflow by hand
+from its branch with the td commit from `tdlib_binary.exs`; the pull request then
+goes into that branch. Binaries are tagged by the contents of `cli/`, so merging
+that branch later does not require a rebuild.
+To test it before merging, point the dependency at the pull request branch
+(`branch: "tdlib-update/<short sha>"`) and run `mix deps.update tdlib`. After
+the merge, switch back to `branch: "master"` and run `mix deps.update tdlib`
+again.
 
 # Configuration
 
@@ -43,10 +55,10 @@ available :
 ```elixir
 # Disable automatic handling of authentification and directly forward the
 # incoming messages to the client
-config :telegram_tdlib, disable_handling: false
+config :tdlib, disable_handling: false
 
-# Override default path of the telegram-json-cli binary
-config :telegram_tdlib, backend_binary: "/path/to/my/binary"
+# Override the path of the downloaded tdlib_json_cli binary
+config :tdlib, backend_binary: "/path/to/my/binary"
 ```
 
 # Usage / Example

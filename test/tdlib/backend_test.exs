@@ -79,6 +79,27 @@ defmodule TDLib.BackendTest do
     end)
   end
 
+  test "waits for the CLI to close TDLib when shut down by its supervisor", %{session: session} do
+    closed_marker =
+      Path.join(Path.dirname(Application.get_env(:tdlib, :backend_binary)), "closed")
+
+    write_fake_cli("""
+    #!/bin/sh
+    while IFS= read -r line; do
+      if [ "$line" = exit ]; then
+        sleep 1
+        touch '#{closed_marker}'
+        exit 0
+      fi
+    done
+    """)
+
+    start_supervised!(%{id: :backend, start: {Backend, :start_link, [session]}, shutdown: 5_000})
+    stop_supervised!(:backend)
+
+    assert File.exists?(closed_marker)
+  end
+
   describe "session teardown" do
     setup do
       Process.flag(:trap_exit, true)

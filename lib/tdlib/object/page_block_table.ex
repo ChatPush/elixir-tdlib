@@ -1,0 +1,17 @@
+defmodule TDLib.Object.PageBlockTable do
+  @moduledoc  """
+  A table.
+
+  | Name | Type | Description |
+  |------|------| ------------|
+  | caption | RichText | Table caption; may be null if none. |
+  | cells | pageBlockTableCell | Table cells. |
+  | is_bordered | bool | True, if the table is bordered. |
+  | is_striped | bool | True, if the table is striped. |
+  | is_compact | bool | True, if table cells must have smaller indents. |
+
+  More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_table.html).
+  """
+
+  defstruct "@type": "pageBlockTable", "@extra": nil, caption: nil, cells: nil, is_bordered: nil, is_striped: nil, is_compact: nil
+end
