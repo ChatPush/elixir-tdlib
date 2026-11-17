@@ -6,7 +6,7 @@ defmodule TDLib.Object.GramRevenueStatistics do
   |------|------| ------------|
   | revenue_by_day_graph | StatisticalGraph | A graph containing amount of revenue in a given day. |
   | status | gramRevenueStatus | Amount of earned revenue. |
-  | usd_rate | double | Current conversion rate of nanogram to USD cents. |
+  | usd_rate | double | Current exchange rate of nanogram to USD cents. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gram_revenue_statistics.html).
   """

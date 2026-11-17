@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetTonTransactions do
   @moduledoc  """
-  Returns the list of TON blockchain transactions of the current user.
+  Returns the list of TON Gram transactions of the current user.
   Returns object_ptr<TonTransactions>.
 
   | Name | Type | Description |

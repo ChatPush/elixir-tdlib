@@ -5,7 +5,7 @@ defmodule TDLib.Object.InternalLinkTypeRequestManagedBot do
   | Name | Type | Description |
   |------|------| ------------|
   | manager_bot_username | string | Username of the bot which will manage the new bot. |
-  | suggested_bot_username | string | Suggested username for the bot; always ends with "bot" case-insensitive. |
+  | suggested_bot_username | string | Suggested username for the bot; always ends with "bot" or a string from [updateAllowedBotUsernamePremiumSuffixes](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_allowed_bot_username_premium_suffixes.html) case-insensitive. |
   | suggested_bot_name | string | Suggested name for the bot; may be empty if not specified. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_request_managed_bot.html).

@@ -9,7 +9,7 @@ defmodule TDLib.Method.AddQuickReplyShortcutInlineQueryResultMessage do
   | reply_to_message_id | int53 | Identifier of a quick reply message in the same shortcut to be replied; pass 0 if none. |
   | query_id | int64 | Identifier of the inline query. |
   | result_id | string | Identifier of the inline query result. |
-  | hide_via_bot | bool | Pass true to hide the bot, via which the message is sent. Can be used only for bots [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("animation_search_bot_username"), [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("photo_search_bot_username"), and [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("venue_search_bot_username"). |
+  | hide_via_bot | bool | Pass true to hide the bot, via which the message is sent. Can be used only for bots [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("animation_search_bot_username") and [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("photo_search_bot_username"). |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_quick_reply_shortcut_inline_query_result_message.html).
   """

@@ -7,7 +7,7 @@ defmodule TDLib.Method.AddQuickReplyShortcutMessage do
   |------|------| ------------|
   | shortcut_name | string | Name of the target shortcut. |
   | reply_to_message_id | int53 | Identifier of a quick reply message in the same shortcut to be replied; pass 0 if none. |
-  | input_message_content | InputMessageContent | The content of the message to be added; [inputMessagePaidMedia](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_paid_media.html), [inputMessageForwarded](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_forwarded.html) and [inputMessageLiveLocation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_live_location.html). |
+  | input_message_content | InputMessageContent | The content of the message to be added; [inputMessagePaidMedia](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_paid_media.html), [inputMessageForwarded](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_forwarded.html) and [inputMessageLiveLocation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_live_location.html) aren't supported. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_quick_reply_shortcut_message.html).
   """

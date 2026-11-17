@@ -1,6 +1,6 @@
 defmodule TDLib.Object.PassportElementsWithErrors do
   @moduledoc  """
-  Contains information about a Telegram Passport elements and corresponding errors.
+  Contains information about Telegram Passport elements and corresponding errors.
 
   | Name | Type | Description |
   |------|------| ------------|

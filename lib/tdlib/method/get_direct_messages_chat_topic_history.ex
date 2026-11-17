@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetDirectMessagesChatTopicHistory do
   @moduledoc  """
-  Returns messages in the topic in a channel direct messages chat administered by the current user. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id).
+  Returns messages in the topic in a channel direct messages chat administered by the current user. The messages are returned in reverse chronological order (i.e., in order of decreasing message.id).
   Returns object_ptr<Messages>.
 
   | Name | Type | Description |

@@ -1,6 +1,6 @@
 defmodule TDLib.Object.StarTransactionTypePaidGroupCallReactionSend do
   @moduledoc  """
-  The transaction is a sending of a paid group reaction; relevant for regular users only.
+  The transaction is a sending of a paid group call reaction; relevant for regular users only.
 
   | Name | Type | Description |
   |------|------| ------------|

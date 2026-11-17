@@ -5,7 +5,7 @@ defmodule TDLib.Method.GetStoryAvailableReactions do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | row_size | int32 | Number of reaction per row, 5-25. |
+  | row_size | int32 | Number of reactions per row, 5-25. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_story_available_reactions.html).
   """

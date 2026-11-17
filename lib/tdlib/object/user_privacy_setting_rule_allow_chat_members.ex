@@ -1,6 +1,6 @@
 defmodule TDLib.Object.UserPrivacySettingRuleAllowChatMembers do
   @moduledoc  """
-  A rule to allow all members of certain specified basic groups and supergroups to doing something.
+  A rule to allow all members of certain specified basic groups and supergroups to do something.
 
   | Name | Type | Description |
   |------|------| ------------|

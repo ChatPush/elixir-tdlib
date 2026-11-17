@@ -5,7 +5,7 @@ defmodule TDLib.Method.GetConnectedAffiliateProgram do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | affiliate | AffiliateType | The affiliate to which the affiliate program will be connected. |
+  | affiliate | AffiliateType | The affiliate to which the affiliate program is connected. |
   | bot_user_id | int53 | Identifier of the bot that created the program. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_connected_affiliate_program.html).

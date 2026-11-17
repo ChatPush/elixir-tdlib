@@ -1,6 +1,6 @@
 defmodule TDLib.Object.GiftAuctionState do
   @moduledoc  """
-  Represent auction state of a gift.
+  Represents auction state of a gift.
 
   | Name | Type | Description |
   |------|------| ------------|

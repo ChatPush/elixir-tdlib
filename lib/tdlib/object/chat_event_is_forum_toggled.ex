@@ -1,6 +1,6 @@
 defmodule TDLib.Object.ChatEventIsForumToggled do
   @moduledoc  """
-  The is_forum setting of a channel was toggled.
+  The is_forum setting of a supergroup was toggled.
 
   | Name | Type | Description |
   |------|------| ------------|

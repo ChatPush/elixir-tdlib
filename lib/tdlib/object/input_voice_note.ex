@@ -1,6 +1,6 @@
 defmodule TDLib.Object.InputVoiceNote do
   @moduledoc  """
-  A video note to be sent.
+  A voice note to be sent.
 
   | Name | Type | Description |
   |------|------| ------------|

@@ -9,9 +9,10 @@ defmodule TDLib.Method.AcceptOauthRequest do
   | match_code | string | The matching code chosen by the user. |
   | allow_write_access | bool | Pass true if the current user allowed the bot that was returned in [getOauthLinkInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_oauth_link_info.html), to send them messages. |
   | allow_phone_number_access | bool | Pass true if the current user allowed the bot that was returned in [getOauthLinkInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_oauth_link_info.html), to access their phone number. |
+  | ton_connect_connect_data | tonConnectConnectData | Pass data required to access the user's TON wallet via TON Connect if the current user allowed this; pass null if the access wasn't requested or the user declined access. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1accept_oauth_request.html).
   """
 
-  defstruct "@type": "acceptOauthRequest", "@extra": nil, url: nil, match_code: nil, allow_write_access: nil, allow_phone_number_access: nil
+  defstruct "@type": "acceptOauthRequest", "@extra": nil, url: nil, match_code: nil, allow_write_access: nil, allow_phone_number_access: nil, ton_connect_connect_data: nil
 end

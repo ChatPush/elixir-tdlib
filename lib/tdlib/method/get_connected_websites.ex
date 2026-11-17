@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetConnectedWebsites do
   @moduledoc  """
-  Returns all website where the current user used Telegram to log in.
+  Returns all websites where the current user used Telegram to log in.
   Returns object_ptr<ConnectedWebsites>.
 
 

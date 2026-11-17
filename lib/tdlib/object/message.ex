@@ -37,7 +37,7 @@ defmodule TDLib.Object.Message do
   | guest_bot_caller_id | MessageSender | The identifier of the user or chat which used a guest bot to send the message; may be null if none. |
   | sender_business_bot_user_id | int53 | If non-zero, the user identifier of the business bot that sent this message. |
   | sender_boost_count | int32 | Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, [supergroupFullInfo](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html).my_boost_count must be used instead. |
-  | sender_tag | string | Tag of the sender of the message in the supergroup at the time the message was sent; may be empty if none or unknown. For messages sent in basic groups or supergroup administrators, the current custom title or tag must be used instead. |
+  | sender_tag | string | Tag of the sender of the message in the supergroup at the time the message was sent; may be empty if none or unknown. For messages sent in basic groups or by supergroup administrators, the current custom title or tag must be used instead. |
   | paid_message_star_count | int53 | The number of Telegram Stars the sender paid to send the message. |
   | author_signature | string | For channel posts and anonymous group messages, optional author signature. |
   | media_album_id | int64 | Unique identifier of an album this message belongs to; 0 if none. Only audios, documents, photos and videos can be grouped together in albums. |

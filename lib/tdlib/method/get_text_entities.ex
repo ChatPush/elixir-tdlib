@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetTextEntities do
   @moduledoc  """
-  Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, URLs, and email addresses) found in the text. Can be called synchronously.
+  Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, TON blockchain addresses, URLs, and email addresses) found in the text. Can be called synchronously.
   Returns object_ptr<TextEntities>.
 
   | Name | Type | Description |

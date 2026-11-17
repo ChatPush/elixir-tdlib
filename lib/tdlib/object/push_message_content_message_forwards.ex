@@ -1,6 +1,6 @@
 defmodule TDLib.Object.PushMessageContentMessageForwards do
   @moduledoc  """
-  A forwarded messages.
+  Forwarded messages.
 
   | Name | Type | Description |
   |------|------| ------------|

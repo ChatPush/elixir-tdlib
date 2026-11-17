@@ -1,6 +1,6 @@
 defmodule TDLib.Method.SearchSavedMessages do
   @moduledoc  """
-  Searches for messages tagged by the given reaction and with the given words in the Saved Messages chat; for Telegram Premium users only. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
+  Searches for messages tagged by the given reaction and with the given words in the Saved Messages chat; for Telegram Premium users only. Returns the results in reverse chronological order, i.e. in order of decreasing message.id. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
   Returns object_ptr<FoundChatMessages>.
 
   | Name | Type | Description |

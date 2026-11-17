@@ -18,7 +18,7 @@ defmodule TDLib.Object.Gift do
   | next_send_date | int32 | Point in time (Unix timestamp) when the gift can be sent next time by the current user; may be 0 or a date in the past. If the date is in the future, then call [canSendGift](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_gift.html) to get the reason, why the gift can't be sent now. |
   | user_limits | giftPurchaseLimits | Number of times the gift can be purchased by the current user; may be null if not limited. |
   | overall_limits | giftPurchaseLimits | Number of times the gift can be purchased by all users; may be null if not limited. |
-  | background | giftBackground | Background of the gift. |
+  | background | giftBackground | Background of the gift; may be null if the gift has no background. |
   | first_send_date | int32 | Point in time (Unix timestamp) when the gift was sent for the first time; for sold out gifts only. |
   | last_send_date | int32 | Point in time (Unix timestamp) when the gift was sent for the last time; for sold out gifts only. |
 

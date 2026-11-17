@@ -11,9 +11,10 @@ defmodule TDLib.Object.Community do
   | date | int32 | Point in time (Unix timestamp) when the community was joined, or the point in time when the community was created, in case the user is not a member of any chat in the community. |
   | status | CommunityMemberStatus | Status of the current user in the community. |
   | permissions | communityPermissions | Actions that non-administrator community members are allowed to take in the community. |
+  | are_chats_collapsed | bool | True, if all chats of the community are collapsed into one entry in the chat list. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1community.html).
   """
 
-  defstruct "@type": "community", "@extra": nil, id: nil, have_access: nil, name: nil, photo: nil, date: nil, status: nil, permissions: nil
+  defstruct "@type": "community", "@extra": nil, id: nil, have_access: nil, name: nil, photo: nil, date: nil, status: nil, permissions: nil, are_chats_collapsed: nil
 end

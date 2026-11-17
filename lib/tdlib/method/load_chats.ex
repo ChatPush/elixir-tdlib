@@ -1,6 +1,6 @@
 defmodule TDLib.Method.LoadChats do
   @moduledoc  """
-  Loads more chats from a chat list. The loaded chats and their positions in the chat list will be sent through updates. Chats are sorted by the pair (chat.position.order, chat.id) in descending order. Returns a 404 error if all chats have been loaded.
+  Loads more chats from a chat list. The loaded chats and their positions in the chat list will be sent through updates. Chats are sorted by the pair ([chatPosition](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_position.html).order, chat.id) in descending order. Returns a 404 error if all chats have been loaded.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |

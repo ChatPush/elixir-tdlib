@@ -5,7 +5,7 @@ defmodule TDLib.Method.GetFullRichMessage do
 
   | Name | Type | Description |
   |------|------| ------------|
-  | chat_id | int53 | Identifier of the chat the messages belong to. |
+  | chat_id | int53 | Identifier of the chat the message belongs to. |
   | message_id | int53 | Identifier of the message. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_full_rich_message.html).

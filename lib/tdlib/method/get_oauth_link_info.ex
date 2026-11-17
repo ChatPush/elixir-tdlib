@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetOauthLinkInfo do
   @moduledoc  """
-  Returns information about an OAuth deep link. Use [checkOauthRequestMatchCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_oauth_request_match_code.html), [acceptOauthRequest](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1accept_oauth_request.html) or [declineOauthRequest](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1decline_oauth_request.html) to process the link.
+  Returns information about an OAuth deep link. Use [checkOauthRequestMatchCode](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_oauth_request_match_code.html), [acceptOauthRequest](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1accept_oauth_request.html), or [declineOauthRequest](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1decline_oauth_request.html) to process the link.
   Returns object_ptr<OauthLinkInfo>.
 
   | Name | Type | Description |

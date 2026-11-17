@@ -7,7 +7,7 @@ defmodule TDLib.Object.TelegramPaymentPurposeStars do
   | currency | string | ISO 4217 currency code of the payment currency. |
   | amount | int53 | Paid amount, in the smallest units of the currency. |
   | star_count | int53 | Number of bought Telegram Stars. |
-  | chat_id | int53 | Identifier of the chat that is supposed to receive the Telegram Stars; pass 0 if none. |
+  | chat_id | int53 | Identifier of the chat that is supposed to receive the Telegram Stars; pass 0 if none. If non-zero and [getOption](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html)("star_top_up_disabled"), then the payment isn't allowed and the user can't buy Telegram Stars in this place. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_stars.html).
   """

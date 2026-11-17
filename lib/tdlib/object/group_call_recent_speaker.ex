@@ -5,7 +5,7 @@ defmodule TDLib.Object.GroupCallRecentSpeaker do
   | Name | Type | Description |
   |------|------| ------------|
   | participant_id | MessageSender | Group call participant identifier. |
-  | is_speaking | bool | True, is the user has spoken recently. |
+  | is_speaking | bool | True, if the user has spoken recently. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_recent_speaker.html).
   """

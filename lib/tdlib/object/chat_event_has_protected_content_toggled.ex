@@ -1,6 +1,6 @@
 defmodule TDLib.Object.ChatEventHasProtectedContentToggled do
   @moduledoc  """
-  The has_protected_content setting of a channel was toggled.
+  The has_protected_content setting of a chat was toggled.
 
   | Name | Type | Description |
   |------|------| ------------|

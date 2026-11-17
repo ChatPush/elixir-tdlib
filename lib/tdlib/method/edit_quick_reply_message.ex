@@ -1,6 +1,6 @@
 defmodule TDLib.Method.EditQuickReplyMessage do
   @moduledoc  """
-  Asynchronously edits the text, media or caption of a quick reply message. Use [quickReplyMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1quick_reply_message.html).can_be_edited to check whether a message can be edited. Media message can be edited only to a media message. Checklist messages can be edited only to a checklist message. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa.
+  Asynchronously edits the text, media, or caption of a quick reply message. Use [quickReplyMessage](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1quick_reply_message.html).can_be_edited to check whether a message can be edited. Media message can be edited only to a media message. Checklist messages can be edited only to a checklist message. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa.
   Returns object_ptr<Ok>.
 
   | Name | Type | Description |

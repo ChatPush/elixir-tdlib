@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetSavedMessagesTopicHistory do
   @moduledoc  """
-  Returns messages in a Saved Messages topic. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id).
+  Returns messages in a Saved Messages topic. The messages are returned in reverse chronological order (i.e., in order of decreasing message.id).
   Returns object_ptr<Messages>.
 
   | Name | Type | Description |

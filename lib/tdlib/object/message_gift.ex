@@ -18,6 +18,7 @@ defmodule TDLib.Object.MessageGift do
   | is_saved | bool | True, if the gift is displayed on the user's or the channel's profile page; only for the receiver of the gift. |
   | is_prepaid_upgrade | bool | True, if the message is about prepaid upgrade of the gift by another user. |
   | can_be_upgraded | bool | True, if the gift can be upgraded to a unique gift; only for the receiver of the gift. |
+  | can_be_deleted | bool | True, if the gift can be deleted using [deleteGift](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_gift.html); only for the receiver of the gift. |
   | was_converted | bool | True, if the gift was converted to Telegram Stars; only for the receiver of the gift. |
   | was_upgraded | bool | True, if the gift was upgraded to a unique gift. |
   | was_refunded | bool | True, if the gift was refunded and isn't available anymore. |
@@ -27,5 +28,5 @@ defmodule TDLib.Object.MessageGift do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_gift.html).
   """
 
-  defstruct "@type": "messageGift", "@extra": nil, gift: nil, sender_id: nil, receiver_id: nil, received_gift_id: nil, text: nil, unique_gift_number: nil, sell_star_count: nil, prepaid_upgrade_star_count: nil, is_upgrade_separate: nil, is_from_auction: nil, is_private: nil, is_saved: nil, is_prepaid_upgrade: nil, can_be_upgraded: nil, was_converted: nil, was_upgraded: nil, was_refunded: nil, upgraded_received_gift_id: nil, prepaid_upgrade_hash: nil
+  defstruct "@type": "messageGift", "@extra": nil, gift: nil, sender_id: nil, receiver_id: nil, received_gift_id: nil, text: nil, unique_gift_number: nil, sell_star_count: nil, prepaid_upgrade_star_count: nil, is_upgrade_separate: nil, is_from_auction: nil, is_private: nil, is_saved: nil, is_prepaid_upgrade: nil, can_be_upgraded: nil, can_be_deleted: nil, was_converted: nil, was_upgraded: nil, was_refunded: nil, upgraded_received_gift_id: nil, prepaid_upgrade_hash: nil
 end

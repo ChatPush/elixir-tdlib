@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetChatPostedToChatPageStories do
   @moduledoc  """
-  Returns the list of stories that posted by the given chat to its chat page. If from_story_id == 0, then pinned stories are returned first. Then, stories are returned in reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib.
+  Returns the list of stories that were posted by the given chat to its chat page. If from_story_id == 0, then pinned stories are returned first. Then, stories are returned in reverse chronological order (i.e., in order of decreasing story.id). For optimal performance, the number of returned stories is chosen by TDLib.
   Returns object_ptr<Stories>.
 
   | Name | Type | Description |

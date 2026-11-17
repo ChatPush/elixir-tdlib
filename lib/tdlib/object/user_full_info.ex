@@ -34,11 +34,13 @@ defmodule TDLib.Object.UserFullInfo do
   | pending_rating | userRating | The rating of the user after the next change; may be null if the user isn't the current user or there are no pending rating changes. |
   | pending_rating_date | int32 | Unix timestamp when rating of the user will change to pending_rating; 0 if the user isn't the current user or there are no pending rating changes. |
   | note | formattedText | Note added to the user's contact; may be null if none. |
+  | ton_wallet_card | tonWalletCard | TON wallet card of the user; may be null if none. |
+  | share_theme | ProfileShareTheme | Theme of the screen for sharing a link to the user; may be null if the default theme is used. |
   | business_info | businessInfo | Information about business settings for Telegram Business accounts; may be null if none. |
   | bot_info | botInfo | For bots, information about the bot; may be null if the user isn't a bot. |
 
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_full_info.html).
   """
 
-  defstruct "@type": "userFullInfo", "@extra": nil, personal_photo: nil, photo: nil, public_photo: nil, community_id: nil, block_list: nil, can_be_called: nil, supports_video_calls: nil, has_private_calls: nil, has_private_forwards: nil, has_restricted_voice_and_video_note_messages: nil, has_posted_to_profile_stories: nil, has_sponsored_messages_enabled: nil, need_phone_number_privacy_exception: nil, set_chat_background: nil, uses_unofficial_app: nil, bio: nil, birthdate: nil, personal_chat_id: nil, gift_count: nil, group_in_common_count: nil, incoming_paid_message_star_count: nil, outgoing_paid_message_star_count: nil, gift_settings: nil, bot_verification: nil, main_profile_tab: nil, first_profile_audio: nil, rating: nil, pending_rating: nil, pending_rating_date: nil, note: nil, business_info: nil, bot_info: nil
+  defstruct "@type": "userFullInfo", "@extra": nil, personal_photo: nil, photo: nil, public_photo: nil, community_id: nil, block_list: nil, can_be_called: nil, supports_video_calls: nil, has_private_calls: nil, has_private_forwards: nil, has_restricted_voice_and_video_note_messages: nil, has_posted_to_profile_stories: nil, has_sponsored_messages_enabled: nil, need_phone_number_privacy_exception: nil, set_chat_background: nil, uses_unofficial_app: nil, bio: nil, birthdate: nil, personal_chat_id: nil, gift_count: nil, group_in_common_count: nil, incoming_paid_message_star_count: nil, outgoing_paid_message_star_count: nil, gift_settings: nil, bot_verification: nil, main_profile_tab: nil, first_profile_audio: nil, rating: nil, pending_rating: nil, pending_rating_date: nil, note: nil, ton_wallet_card: nil, share_theme: nil, business_info: nil, bot_info: nil
 end

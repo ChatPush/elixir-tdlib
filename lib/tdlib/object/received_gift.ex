@@ -8,11 +8,12 @@ defmodule TDLib.Object.ReceivedGift do
   | sender_id | MessageSender | Identifier of a user or a chat that sent the gift; may be null if unknown. |
   | text | formattedText | Message added to the gift. |
   | unique_gift_number | int32 | Unique number of the gift among gifts upgraded from the same gift after upgrade; 0 if yet unassigned. |
-  | is_private | bool | True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone are able to see them. |
+  | is_private | bool | True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone is able to see them. |
   | is_saved | bool | True, if the gift is displayed on the chat's profile page; only for the receiver of the gift. |
   | is_pinned | bool | True, if the gift is pinned to the top of the chat's profile page. |
   | can_be_upgraded | bool | True, if the gift is a regular gift that can be upgraded to a unique gift; only for the receiver of the gift. |
   | can_be_transferred | bool | True, if the gift is an upgraded gift that can be transferred to another owner; only for the receiver of the gift. |
+  | can_be_deleted | bool | True, if the gift is a regular gift that can be deleted using [deleteGift](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_gift.html); only for the receiver of the gift. |
   | was_refunded | bool | True, if the gift was refunded and isn't available anymore. |
   | date | int32 | Point in time (Unix timestamp) when the gift was sent. |
   | gift | SentGift | The gift. |
@@ -31,5 +32,5 @@ defmodule TDLib.Object.ReceivedGift do
   More details on [telegram's documentation](https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1received_gift.html).
   """
 
-  defstruct "@type": "receivedGift", "@extra": nil, received_gift_id: nil, sender_id: nil, text: nil, unique_gift_number: nil, is_private: nil, is_saved: nil, is_pinned: nil, can_be_upgraded: nil, can_be_transferred: nil, was_refunded: nil, date: nil, gift: nil, collection_ids: nil, sell_star_count: nil, prepaid_upgrade_star_count: nil, is_upgrade_separate: nil, transfer_star_count: nil, drop_original_details_star_count: nil, next_transfer_date: nil, next_resale_date: nil, export_date: nil, prepaid_upgrade_hash: nil, craft_date: nil
+  defstruct "@type": "receivedGift", "@extra": nil, received_gift_id: nil, sender_id: nil, text: nil, unique_gift_number: nil, is_private: nil, is_saved: nil, is_pinned: nil, can_be_upgraded: nil, can_be_transferred: nil, can_be_deleted: nil, was_refunded: nil, date: nil, gift: nil, collection_ids: nil, sell_star_count: nil, prepaid_upgrade_star_count: nil, is_upgrade_separate: nil, transfer_star_count: nil, drop_original_details_star_count: nil, next_transfer_date: nil, next_resale_date: nil, export_date: nil, prepaid_upgrade_hash: nil, craft_date: nil
 end

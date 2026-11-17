@@ -1,6 +1,6 @@
 defmodule TDLib.Method.GetChatPinnedMessage do
   @moduledoc  """
-  Returns information about a newest pinned message in the chat. Returns a 404 error if the message doesn't exist.
+  Returns information about the newest pinned message in the chat. Returns a 404 error if the message doesn't exist.
   Returns object_ptr<Message>.
 
   | Name | Type | Description |

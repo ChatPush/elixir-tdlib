@@ -1,6 +1,6 @@
 defmodule TDLib.Object.ChatRevenueTransaction do
   @moduledoc  """
-  Contains a chat revenue transactions.
+  Contains a chat revenue transaction.
 
   | Name | Type | Description |
   |------|------| ------------|

@@ -6,7 +6,7 @@ defmodule TDLib.Object.StarTransactionTypeBotSubscriptionSale do
   |------|------| ------------|
   | user_id | int53 | Identifier of the user who bought the subscription. |
   | subscription_period | int32 | The number of seconds between consecutive Telegram Star debitings. |
-  | product_info | productInfo | Information about the bought subscription. |
+  | product_info | productInfo | Information about the bought subscription; may be null if no information about the subscription is available. |
   | invoice_payload | bytes | Invoice payload. |
   | affiliate | affiliateInfo | Information about the affiliate which received commission from the transaction; may be null if none. |
 
